@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Nisekoi.mp3-f86c7ce03b4fbefb1ed0f82dde60dc9a.mp3str"
+
+[deps]
+
+source_file="res://addons/godot_beautifier/themes/Night Breeze/startup_sounds/Nisekoi.mp3"
+dest_files=[ "res://.import/Nisekoi.mp3-f86c7ce03b4fbefb1ed0f82dde60dc9a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Miss Kobayashi's Dragon Maid.mp3-bfb4a554e38070aeee1847cf0f89b95d.mp3str"
+
+[deps]
+
+source_file="res://addons/godot_beautifier/themes/Night Breeze/startup_sounds/Miss Kobayashi's Dragon Maid.mp3"
+dest_files=[ "res://.import/Miss Kobayashi's Dragon Maid.mp3-bfb4a554e38070aeee1847cf0f89b95d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/blood_ord.png" type="Texture" id=1]
+
+[node name="Control" type="Control"]
+margin_right = 200.0
+margin_bottom = 200.0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 200.0
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 200, 200 )
+
+[node name="Sprite" type="Sprite" parent="ViewportContainer/Viewport"]
+texture = ExtResource( 1 )

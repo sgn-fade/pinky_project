@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Miaow.mp3-9ff00a49840140b15d5febe26ba99f45.mp3str"
+
+[deps]
+
+source_file="res://addons/godot_beautifier/themes/Night Breeze/startup_sounds/Miaow.mp3"
+dest_files=[ "res://.import/Miaow.mp3-9ff00a49840140b15d5febe26ba99f45.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

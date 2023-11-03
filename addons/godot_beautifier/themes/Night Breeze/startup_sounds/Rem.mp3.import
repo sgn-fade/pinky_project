@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Rem.mp3-c4877b52f7daffe5bc14fdbf2128ce0d.mp3str"
+
+[deps]
+
+source_file="res://addons/godot_beautifier/themes/Night Breeze/startup_sounds/Rem.mp3"
+dest_files=[ "res://.import/Rem.mp3-c4877b52f7daffe5bc14fdbf2128ce0d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fate.mp3-bf4bede63a87f0dc6e7d1f067fc1363a.mp3str"
+
+[deps]
+
+source_file="res://addons/godot_beautifier/themes/Night Breeze/startup_sounds/Fate.mp3"
+dest_files=[ "res://.import/Fate.mp3-bf4bede63a87f0dc6e7d1f067fc1363a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

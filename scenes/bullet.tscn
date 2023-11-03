@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/bullet.gd" type="Script" id=2]
+[ext_resource path="res://sprites/light.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 4.6366, 4.5 )
+
+[node name="bullet" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 3, 0 )
+shape = SubResource( 8 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+offset = Vector2( 0, 4.105 )
+texture_scale = 0.1
+color = Color( 0.921569, 0.596078, 0.0901961, 0.45098 )
+energy = 0.4
+
+[node name="bullets" type="Node2D" parent="."]

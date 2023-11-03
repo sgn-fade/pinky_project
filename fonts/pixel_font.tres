@@ -1,0 +1,11 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+override_oversampling = 1.278
+font_path = "res://fonts/000webfont1.ttf"
+
+[resource]
+size = 100
+outline_size = 1
+outline_color = Color( 0.0862745, 0.0470588, 0.0470588, 1 )
+font_data = SubResource( 1 )

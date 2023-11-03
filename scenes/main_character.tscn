@@ -1,0 +1,522 @@
+[gd_scene load_steps=90 format=2]
+
+[ext_resource path="res://sprites/light.png" type="Texture" id=1]
+[ext_resource path="res://sprites/move.png" type="Texture" id=2]
+[ext_resource path="res://sprites/main_character_idle.png" type="Texture" id=3]
+[ext_resource path="res://scripts/character.gd" type="Script" id=4]
+[ext_resource path="res://scripts/hands.gd" type="Script" id=5]
+[ext_resource path="res://sprites/particles/heal_particle.png" type="Texture" id=6]
+[ext_resource path="res://sprites/particles/player_dash_particle.png" type="Texture" id=7]
+[ext_resource path="res://sprites/particles/blood_rain_particle.png" type="Texture" id=8]
+[ext_resource path="res://sprites/character_death (1).png" type="Texture" id=9]
+[ext_resource path="res://sprites/particles/dead_particles.png" type="Texture" id=10]
+[ext_resource path="res://sprites/shadow_under.png" type="Texture" id=11]
+[ext_resource path="res://sprites/particles/dash_particles.png" type="Texture" id=12]
+[ext_resource path="res://sprites/character_pillon_cast.png" type="Texture" id=13]
+[ext_resource path="res://sprites/character_fire_teleport_start_player.png" type="Texture" id=14]
+[ext_resource path="res://sprites/character_fire_teleport_end_player.png" type="Texture" id=15]
+[ext_resource path="res://sprites/spell_character_animation/body/spear_throw.png" type="Texture" id=16]
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 9 )
+region = Rect2( 35, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 9 )
+region = Rect2( 70, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 9 )
+region = Rect2( 105, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 9 )
+region = Rect2( 140, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 9 )
+region = Rect2( 175, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 9 )
+region = Rect2( 210, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 9 )
+region = Rect2( 245, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 9 )
+region = Rect2( 280, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 9 )
+region = Rect2( 315, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 9 )
+region = Rect2( 350, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 9 )
+region = Rect2( 385, 0, 35, 35 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 3 )
+region = Rect2( 14, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 2 )
+region = Rect2( 14, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 2 )
+region = Rect2( 28, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 2 )
+region = Rect2( 42, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 13 )
+region = Rect2( 14, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 13 )
+region = Rect2( 28, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 13 )
+region = Rect2( 42, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 13 )
+region = Rect2( 56, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 13 )
+region = Rect2( 70, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 13 )
+region = Rect2( 84, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 13 )
+region = Rect2( 98, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 13 )
+region = Rect2( 112, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 13 )
+region = Rect2( 126, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 13 )
+region = Rect2( 140, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 13 )
+region = Rect2( 154, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 13 )
+region = Rect2( 168, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 13 )
+region = Rect2( 182, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=70]
+atlas = ExtResource( 13 )
+region = Rect2( 196, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 13 )
+region = Rect2( 210, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 13 )
+region = Rect2( 224, 0, 14, 15 )
+
+[sub_resource type="AtlasTexture" id=100]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 46, 47 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 16 )
+region = Rect2( 46, 0, 46, 47 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 16 )
+region = Rect2( 92, 0, 46, 47 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 16 )
+region = Rect2( 138, 0, 46, 47 )
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 16 )
+region = Rect2( 184, 0, 46, 47 )
+
+[sub_resource type="AtlasTexture" id=105]
+atlas = ExtResource( 16 )
+region = Rect2( 230, 0, 46, 47 )
+
+[sub_resource type="AtlasTexture" id=106]
+atlas = ExtResource( 16 )
+region = Rect2( 276, 0, 46, 47 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 15 )
+region = Rect2( 34, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 15 )
+region = Rect2( 68, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 15 )
+region = Rect2( 102, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 15 )
+region = Rect2( 136, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 15 )
+region = Rect2( 170, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 15 )
+region = Rect2( 204, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 15 )
+region = Rect2( 238, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=81]
+atlas = ExtResource( 15 )
+region = Rect2( 272, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=82]
+atlas = ExtResource( 15 )
+region = Rect2( 306, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=83]
+atlas = ExtResource( 15 )
+region = Rect2( 340, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=84]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=85]
+atlas = ExtResource( 14 )
+region = Rect2( 34, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=86]
+atlas = ExtResource( 14 )
+region = Rect2( 68, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 14 )
+region = Rect2( 102, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=88]
+atlas = ExtResource( 14 )
+region = Rect2( 136, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=89]
+atlas = ExtResource( 14 )
+region = Rect2( 170, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=90]
+atlas = ExtResource( 14 )
+region = Rect2( 204, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=91]
+atlas = ExtResource( 14 )
+region = Rect2( 238, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=92]
+atlas = ExtResource( 14 )
+region = Rect2( 272, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=93]
+atlas = ExtResource( 14 )
+region = Rect2( 306, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=94]
+atlas = ExtResource( 14 )
+region = Rect2( 340, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=95]
+atlas = ExtResource( 14 )
+region = Rect2( 374, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=96]
+atlas = ExtResource( 14 )
+region = Rect2( 408, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=97]
+atlas = ExtResource( 14 )
+region = Rect2( 442, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=98]
+atlas = ExtResource( 14 )
+region = Rect2( 476, 0, 34, 35 )
+
+[sub_resource type="AtlasTexture" id=99]
+atlas = ExtResource( 14 )
+region = Rect2( 510, 0, 34, 35 )
+
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
+"loop": true,
+"name": "death",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 72 ) ],
+"loop": true,
+"name": "pillar_cast",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ) ],
+"loop": true,
+"name": "spear_throw",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ) ],
+"loop": true,
+"name": "teleport_end",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ) ],
+"loop": true,
+"name": "teleport_start",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 5.01356, 4.0147 )
+
+[sub_resource type="CanvasItemMaterial" id=43]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=42]
+blend_mode = 1
+light_mode = 2
+
+[node name="player" type="KinematicBody2D"]
+z_as_relative = false
+collision_layer = 33
+collision_mask = 5
+script = ExtResource( 4 )
+
+[node name="shadow_under" type="Sprite" parent="."]
+position = Vector2( 0, 6.5 )
+scale = Vector2( 0.5, 0.388 )
+texture = ExtResource( 11 )
+
+[node name="aSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( -1, 1 )
+frames = SubResource( 16 )
+animation = "spear_throw"
+flip_h = true
+
+[node name="Collision_character" type="CollisionShape2D" parent="."]
+position = Vector2( 3.05176e-05, 4.11139 )
+scale = Vector2( 1.3, -0.775 )
+shape = SubResource( 6 )
+
+[node name="player_area" type="Area2D" parent="."]
+collision_mask = 2147483681
+
+[node name="Collision_area" type="CollisionShape2D" parent="player_area"]
+position = Vector2( 4.33681e-19, 4 )
+scale = Vector2( 1.40094, -0.81829 )
+shape = SubResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -0.108994, 0.342203 )
+scale = Vector2( 0.923, 0.787 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 4.689 )
+texture_scale = 0.15
+color = Color( 0.203922, 0.0117647, 0.219608, 1 )
+energy = 1.5
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_filter_smooth = 2.8
+
+[node name="blood" type="CPUParticles2D" parent="."]
+position = Vector2( -0.109024, 0.342194 )
+emitting = false
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+randomness = 0.15
+lifetime_randomness = 0.8
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2( 5, 6.875 )
+spread = 63.24
+initial_velocity = 2.0
+radial_accel = 64.87
+radial_accel_random = 0.36
+damping = 60.07
+damping_random = 0.85
+color = Color( 0.803922, 0.137255, 0.152941, 1 )
+
+[node name="heal2" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.380392 )
+light_mask = 524288
+material = SubResource( 43 )
+scale = Vector2( 1, 4 )
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 1 )
+gravity = Vector2( 0, -20 )
+scale_amount = 0.6
+
+[node name="dash_particles2" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.380392 )
+light_mask = 524288
+material = SubResource( 43 )
+scale = Vector2( 1, 4 )
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+fract_delta = false
+local_coords = false
+texture = ExtResource( 7 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+color = Color( 0.862745, 0.0784314, 1, 1 )
+
+[node name="heal" type="CPUParticles2D" parent="."]
+light_mask = 524288
+material = SubResource( 42 )
+emitting = false
+amount = 3
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.5
+texture = ExtResource( 6 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 1 )
+gravity = Vector2( 0, -20 )
+scale_amount = 0.6
+
+[node name="dash_particles1" type="CPUParticles2D" parent="."]
+modulate = Color( 0.764706, 0, 0.898039, 1 )
+show_behind_parent = true
+emitting = false
+amount = 40
+lifetime = 0.1
+one_shot = true
+preprocess = 0.03
+speed_scale = 0.1
+explosiveness = 0.7
+lifetime_randomness = 1.0
+local_coords = false
+texture = ExtResource( 12 )
+emission_shape = 2
+emission_rect_extents = Vector2( 7, 7 )
+spread = 62.03
+gravity = Vector2( 0, -20 )
+angular_velocity = 720.0
+angular_velocity_random = 0.41
+angle = 116.8
+angle_random = 0.46
+scale_amount = 0.3
+scale_amount_random = 0.3
+
+[node name="dead_layer" type="CanvasLayer" parent="."]
+layer = 100
+scale = Vector2( 3, 3 )
+transform = Transform2D( 3, 0, 0, 3, 0, 0 )
+
+[node name="dead" type="CPUParticles2D" parent="dead_layer"]
+light_mask = 2
+position = Vector2( 168.667, 99.3333 )
+z_index = 7
+emitting = false
+amount = 250
+lifetime = 10.0
+speed_scale = 0.7
+randomness = 0.74
+lifetime_randomness = 0.8
+local_coords = false
+texture = ExtResource( 10 )
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 500 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+linear_accel = 1.0
+tangential_accel = 1.0
+tangential_accel_random = 0.53
+scale_amount = 1.5
+color = Color( 0.803922, 0.137255, 0.152941, 1 )
+
+[node name="rain" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( -72.109, -104.658 )
+amount = 200
+lifetime = 4.0
+preprocess = 5.0
+speed_scale = 2.0
+lifetime_randomness = 0.8
+local_coords = false
+texture = ExtResource( 8 )
+emission_shape = 2
+emission_rect_extents = Vector2( 200, 1 )
+gravity = Vector2( 50, 98 )
+initial_velocity = 20.0
+angle = 38.9
+scale_amount_random = 0.46
+color = Color( 0.278431, 0.290196, 0.537255, 1 )
+
+[node name="hands" type="Node2D" parent="."]
+script = ExtResource( 5 )
