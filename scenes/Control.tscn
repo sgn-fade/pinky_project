@@ -96,6 +96,7 @@ radial_initial_angle = 360.0
 [node name="Button_picture" parent="spell_slot_panel/R" instance=ExtResource( 4 )]
 position = Vector2( 29, 28 )
 scale = Vector2( 0.8, 0.8 )
+text = "R"
 
 [node name="Q" type="TextureProgress" parent="spell_slot_panel"]
 anchor_left = 0.196
@@ -116,6 +117,7 @@ radial_initial_angle = 360.0
 [node name="Button_picture" parent="spell_slot_panel/Q" instance=ExtResource( 4 )]
 position = Vector2( 29, 28 )
 scale = Vector2( 0.8, 0.8 )
+text = "Q"
 
 [node name="mouse_left_button" type="TextureProgress" parent="spell_slot_panel"]
 anchor_left = 0.319
@@ -136,6 +138,7 @@ radial_initial_angle = 360.0
 [node name="Button_picture" parent="spell_slot_panel/mouse_left_button" instance=ExtResource( 4 )]
 position = Vector2( 29, 28 )
 scale = Vector2( 0.8, 0.8 )
+text = "LMB"
 
 [node name="mouse_right_button" type="TextureProgress" parent="spell_slot_panel"]
 anchor_left = 0.685
@@ -155,6 +158,7 @@ fill_mode = 3
 [node name="Button_picture" parent="spell_slot_panel/mouse_right_button" instance=ExtResource( 4 )]
 position = Vector2( 29, 28 )
 scale = Vector2( 0.8, 0.8 )
+text = "RBM"
 
 [node name="dash_indicator" type="TextureProgress" parent="."]
 anchor_left = 0.5

@@ -6,7 +6,7 @@ var cooldown = 8
 
 func cast():
 	cooldown()
-	EventBus.emit_signal("player_teleport", get_tree().get_global_mouse_position())
+	EventBus.emit_signal("player_teleport", Player.get_body().get_global_mouse_position())
 	EventBus.emit_signal("hands_play_animation", 1.25, "teleport_start")
 	yield(EventBus, "spell_animation_ended")
 	EventBus.emit_signal("hands_play_animation", 0.833, "teleport_end")
