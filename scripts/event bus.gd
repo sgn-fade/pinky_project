@@ -23,13 +23,14 @@ signal player_teleport(position)
 signal show_module_stats_on_game_screen(module)
 signal hide_module_stats_on_game_screen()
 
-signal add_module_to_inventory(module, new)
+signal inventory_cell_choosed(cell)
+signal add_module_to_place(module, new, place)
 signal set_spell_to_button(module, button)
 signal set_spell_icon_to_game_ui(module_icon, button)
 signal start_spell_cooldown(time, button)
 signal damage_to_enemy(body, damage, status)
 
-signal spell_slot_button_pressed(button)
+signal spell_slot_button_choosed(button, equiped)
 signal remove_spell_icon_from_game_ui(button)
 signal update_character_hp_bar_value(hp, max_hp)
 

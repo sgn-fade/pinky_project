@@ -1,78 +1,69 @@
 extends Node
-onready var module_list = $module_list
-onready var slot1 = $"%1"
-onready var slot2 = $"%2"
-onready var slot3 = $"%3"
-onready var slot4 = $"%4"
 var selected_module = null
 var item_count = 0
 var module_array = []
 var hands
 var spell_slot_button_scene = load("res://scenes/ui/spell_slot_button.tscn")
-
+var choosed_cell = null
+var module_position_list = {
+	North = Vector2(418, 123),
+	North_East = Vector2(649, 209),
+	East = Vector2(733, 446),
+	South_East = Vector2(649, 685),
+	South = Vector2(418, 767),
+	South_West = Vector2(187, 684),
+	West = Vector2(103, 446),
+	North_West = Vector2(188, 208)
+}
+var positions = module_position_list.values()
 
 func _ready():
-	EventBus.connect("add_module_to_inventory", self, "add_module_to_inventory")
-	EventBus.connect("spell_slot_button_pressed", self, "_on_spell_slot_button_pressed")
+	
+	EventBus.connect("add_module_to_place", self, "add_module_to_place")
+	EventBus.connect("inventory_cell_choosed", self, "_on_inventory_cell_choosed")
+	EventBus.connect("spell_slot_button_choosed", self, "_on_spell_slot_button_choosed")
 
 
-func add_module_to_inventory(module, new):
+func add_module_to_place(module, new, place):
 	var slot = spell_slot_button_scene.instance()
-	$inventory/modules.add_child(slot)
-	if not new:
-		slot.new.visible = false
-	slot.set_button_texture(module)
-	
-	
+	slot.init(module)
+	if place == "inventory":
+		$inventory/modules.add_child(slot)
+		if new:
+			slot.set_new_label(true)
+	elif place == "equipment":
+		slot.rect_position = choosed_cell.rect_position
+		slot.set_equiped(true)
+		add_child(slot)
+		#slot.rect_position = positions.pop_at(randi() % positions.size())
 
 
+func _on_inventory_cell_choosed(cell):
+	choosed_cell = cell
 
-func _on_spell_slot_button_pressed(button):
-	selected_module = button
-
-
-func _on_1_pressed():
-	set_button_texture(slot1, "mouse_left_button")
-	remove_spell_from_slot(slot1, "mouse_left_button")
-func _on_2_pressed():
-	set_button_texture(slot2, "mouse_right_button")
-	remove_spell_from_slot(slot2, "mouse_right_button")
-	
-func _on_3_pressed():
-	set_button_texture(slot3, "Q")
-	remove_spell_from_slot(slot3, "Q")
-	
-func _on_4_pressed():
-	set_button_texture(slot4, "R")
-	remove_spell_from_slot(slot4, "R")
-	
+func _on_spell_slot_button_choosed(slot, equiped):
+	if !equiped:
+		while(choosed_cell == null):
+			yield(get_tree().create_timer(0.0001), "timeout")
+			if Input.is_action_just_pressed("mouse_right_button"):
+				return 
+		add_module_to_place(slot.module, false, "equipment")
+		slot.queue_free()
+		
 
 
 func remove_spell_from_slot(slot, button):
 	hands = get_node("/root/World/player/hands/h_spell")
 	if hands.get_spell_from_button(button) != null and Input.is_action_just_pressed("mouse_right_button"):
-		set_default_button_texture(slot)
-		EventBus.emit_signal("add_module_to_inventory", hands.remove_spell_from_button(button), false)
-		EventBus.emit_signal("remove_spell_icon_from_game_ui", button)
-
-
-func set_default_button_texture(slot):
-	slot.get_node("spell_icon").texture = null
-	slot.texture_pressed = load("res://sprites/ui/empty_inventory_slot_pressed.png")
-	slot.texture_normal = load("res://sprites/ui/empty_inventory_slot.png")
-	slot.texture_hover = load("res://sprites/ui/empty_inventory_slot_focused.png")
+		EventBus.emit_signal("add_module_to_place", hands.remove_spell_from_button(button), false)
+		EventBus.emit_signal("remove_spell_from_inventory", button)	
 
 
 func set_button_texture(slot, button):
 	hands = get_node("/root/World/player/hands/h_spell")
 	if selected_module != null:
 		if hands.get_spell_from_button(button) != null:
-			EventBus.emit_signal("add_module_to_inventory", hands.remove_spell_from_button(button), false)
+			EventBus.emit_signal("add_module_to_place", hands.remove_spell_from_button(button), false)
 		EventBus.emit_signal("set_spell_to_button", selected_module.module, button)
 		EventBus.emit_signal("set_spell_icon_to_game_ui", selected_module.module.spell_icon, button)
-		slot.get_node("spell_icon").texture = selected_module.module.spell_icon
-		slot.texture_pressed = load("res://sprites/ui/%s_module_button_pressed.png" % selected_module.module.rarity)
-		slot.texture_normal = load("res://sprites/ui/%s_module_button_state.png" % selected_module.module.rarity)
-		slot.texture_hover = load("res://sprites/ui/%s_module_button_hover.png" % selected_module.module.rarity)
-		selected_module.queue_free()
 		selected_module = null
