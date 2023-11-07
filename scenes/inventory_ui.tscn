@@ -8,15 +8,13 @@
 [ext_resource path="res://sprites/ui/item_panel/item_background.png" type="Texture" id=6]
 
 [node name="inventory_ui" type="Control"]
+light_mask = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
 texture = ExtResource( 1 )
-expand = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 anchor_left = 0.229

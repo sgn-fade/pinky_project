@@ -8,40 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "EditorPlugin",
-"class": "BeautifierAPI",
-"language": "GDScript",
-"path": "res://addons/godot_beautifier/src/apis.gd"
-}, {
-"base": "HBoxContainer",
-"class": "ContributorClass",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
-}, {
-"base": "PanelContainer",
-"class": "GistItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
-}, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
-}, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
-} ]
-_global_script_class_icons={
-"BeautifierAPI": "",
-"ContributorClass": "",
-"GistItem": "",
-"InvitationItem": "",
-"RepositoryItem": ""
-}
-
 [application]
 
 config/name="project pinky"
@@ -73,10 +39,13 @@ window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+<<<<<<< Updated upstream
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg", "res://addons/godot_beautifier/plugin.cfg" )
 
+=======
+>>>>>>> Stashed changes
 [global]
 
 "vertical synhronithation"=false

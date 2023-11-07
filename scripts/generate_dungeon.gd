@@ -13,7 +13,11 @@ var tile_size = 64
 var min_size = 2
 var max_size = 1
 var room_count
+<<<<<<< Updated upstream
 var room_generate_count = 10
+=======
+export var room_generate_count = 2
+>>>>>>> Stashed changes
 onready var Map = $TileMap
 onready var Grass = $grass
 var timer := Timer.new()
