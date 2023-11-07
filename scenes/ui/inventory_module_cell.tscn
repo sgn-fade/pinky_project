@@ -15,5 +15,4 @@ texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
 script = ExtResource( 2 )
 
-[connection signal="mouse_exited" from="." to="." method="_on_cell_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_cell_pressed"]

@@ -7,6 +7,8 @@ var velocity = Vector2.ZERO
 onready var _animated_sprite = get_node("/root/World/player/aSprite")
 onready var dash = get_node("/root/World/Ui/game_ui/dash_indicator")
 onready var ui = get_node("/root/World/Ui")
+var Base_weapon = load("res://scripts/weapon.gd")
+var weapon = Base_weapon.new()
 var input = Vector2.ZERO
 
 var timer := Timer.new()
@@ -60,6 +62,9 @@ func _ready():
 	timer.one_shot = false
 	add_child(timer)
 	Input.set_mouse_mode(1)
+
+func _input(event):
+	weapon.input(event)
 
 
 func move():

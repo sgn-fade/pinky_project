@@ -34,3 +34,10 @@ func get_body():
 
 func get_z_index():
 	return player.z_index
+
+
+func get_weapon():
+	return player.weapon
+
+func set_weapon(weapon):
+	player.weapon = weapon

@@ -5,11 +5,12 @@ var mouse_focus = false
 onready var new = get_node("button/new_label")
 onready var main_button = get_node("button")
 var equiped = false
-onready var equip_text = get_node("options_with_module/equip_button/new_label")
+
 
 func init(module_new):
 	self.module = module_new
 	set_button_texture()
+
 
 func _process(delta):
 	if $menu.animation == "open" and $menu.frame == 10:
@@ -19,10 +20,11 @@ func _process(delta):
 
 
 func set_equiped(state):
+	var equip_text = get_node("options_with_module/equip_button/new_label")
 	if state:
-		equip_text = "unequip"
+		equip_text.text = "remove"
 	else:
-		equip_text = "equip"
+		equip_text.text  = "equip"
 	self.equiped = state
 
 
@@ -51,7 +53,7 @@ func _on_drop_button_pressed():
 
 
 func _on_main_button_pressed():
-	if Input.is_action_just_released("mouse_right_button") and not self.equiped:
+	if Input.is_action_just_released("mouse_right_button"):
 		if $menu.animation == "open":
 			$menu.play("close")
 		else:

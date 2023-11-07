@@ -17,7 +17,7 @@ func _process(delta):
 
 
 func on_enemy_show_damage_value(damage_label_instance, player_damage):
-	if self == damage_label_instance:
+	if self == damage_label_instance and player_damage > 0:
 		self.time_to_free = 0.5
 		self.visible = true
 		damage += player_damage
