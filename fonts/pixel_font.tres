@@ -6,6 +6,5 @@ font_path = "res://fonts/000webfont1.ttf"
 
 [resource]
 size = 100
-outline_size = 1
 outline_color = Color( 0.0862745, 0.0470588, 0.0470588, 1 )
 font_data = SubResource( 1 )

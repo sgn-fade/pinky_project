@@ -1,5 +1,5 @@
 extends Node2D
-onready var module = load("res://scripts/spells/fire_spear_spell.gd")
+onready var module = load("res://scripts/spells/fire_eye_spell.gd")
 onready var module1 = load("res://scripts/spells/fireball_spell.gd")
 func _ready():
 <<<<<<< Updated upstream
