@@ -7,7 +7,7 @@ onready var fire_particles = $fire_particles
 onready var eye_animation = $sprite
 var spell_duration = 9
 var tick_time = 1
-var deal_damage_status = false
+var enemy_inside = []
 
 
 func _ready():
@@ -32,18 +32,19 @@ func _process(delta):
 
 
 func deal_damage(body):
-	while deal_damage_status:
+	while enemy_inside.has(body):
+		EventBus.emit_signal("damage_to_enemy", body, 2, null)
 		damage_timer.start(tick_time)
 		yield(damage_timer,"timeout")
-		EventBus.emit_signal("damage_to_enemy", body, 2, null)
 
 
 func _on_damage_area_body_entered(body):
-	deal_damage_status = true
+	enemy_inside.append(body)
 	deal_damage(body)
 
 
 func _on_damage_area_body_exited(body):
-	deal_damage_status = false
+	enemy_inside.erase(body)
 	EventBus.emit_signal("damage_to_enemy", body, 0, "burn")
+	
 
