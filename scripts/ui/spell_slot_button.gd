@@ -44,6 +44,8 @@ func _input(event):
 
 
 func _on_drop_button_pressed():
+	if equiped:
+		return
 	var modules_drops = modules_drop.instance()
 	GlobalWorld.add_child(modules_drops)
 	modules_drops.global_position = Player.get_position()

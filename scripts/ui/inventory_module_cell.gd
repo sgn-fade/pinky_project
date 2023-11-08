@@ -11,9 +11,10 @@ func _on_cell_pressed():
 	EventBus.emit_signal("inventory_cell_choosed", self)
 func _on_spell_slot_button_choosed(slot, equiped):
 	
-	if equiped or $light.scale.x >= 0.1:
+if equiped or $light.scale.x >= 0.1:
 		return
 	for i in 5:
+
 		$light.scale.x += 0.02
 		$light.scale.y += 0.02
 		timer.start(0.02)

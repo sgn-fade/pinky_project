@@ -21,6 +21,10 @@ config/icon="res://icon.png.jpg"
 EventBus="*res://scripts/event bus.gd"
 GlobalWorld="*res://scripts/World.gd"
 Player="*res://scripts/Player_Data.gd"
+PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
 [debug]
 
@@ -35,10 +39,13 @@ window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+<<<<<<< Updated upstream
 [editor_plugins]
 
 enabled=PoolStringArray(  )
 
+=======
+>>>>>>> Stashed changes
 [global]
 
 "vertical synhronithation"=false
