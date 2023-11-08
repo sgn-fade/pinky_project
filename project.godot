@@ -39,13 +39,10 @@ window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
-<<<<<<< Updated upstream
 [editor_plugins]
 
 enabled=PoolStringArray(  )
 
-=======
->>>>>>> Stashed changes
 [global]
 
 "vertical synhronithation"=false
