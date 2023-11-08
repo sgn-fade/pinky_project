@@ -38,16 +38,24 @@ var cells = []
 func get_cells():
 	return cells
 
+
+func _ready():
+	pass
+
+
 func _init():
 	EventBus.connect("add_module_to_place", self, "_on_add_module_to_place")
 	randomize()
-	for i in 8:
+	for i in 4:
+
 		cells.append(cell.new(positions.pop_at(randi()%positions.size())))
 
 
 func input(event):
 	var input_key = null
+
 	if Input.is_action_just_pressed(Buttons_binds[0]):
+
 		input_key = Buttons_binds[0]
 	if Input.is_action_just_pressed(Buttons_binds[1]):
 		input_key = Buttons_binds[1]
@@ -69,6 +77,16 @@ func _on_add_module_to_place(module, new, place, cell_index):
 		buttons.append(cells[cell_index].button)
 		cells[cell_index].button = null
 		cells[cell_index].module = null
+
+func remove_spell_from_button(button):
+	var module = Spells_buttons[button]
+	Spells_buttons[button] = null
+	return module
+
+
+func get_spell_from_button(button):
+	return Spells_buttons[button]
+
 
 
 class cell:

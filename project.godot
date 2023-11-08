@@ -35,7 +35,6 @@ gdscript/warnings/enable=false
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
@@ -43,7 +42,7 @@ window/stretch/aspect="keep"
 <<<<<<< Updated upstream
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot_beautifier/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 =======
 >>>>>>> Stashed changes

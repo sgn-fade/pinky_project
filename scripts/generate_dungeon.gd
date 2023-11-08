@@ -13,11 +13,9 @@ var tile_size = 64
 var min_size = 2
 var max_size = 1
 var room_count
-<<<<<<< Updated upstream
-var room_generate_count = 10
-=======
+
 export var room_generate_count = 2
->>>>>>> Stashed changes
+
 onready var Map = $TileMap
 onready var Grass = $grass
 var timer := Timer.new()
@@ -40,10 +38,10 @@ func create_empty_space(height, width, center):
 
 
 func generate(height, width, center):
-	spawn_goblin(center * tile_size, height, width)
+	#spawn_goblin(center * tile_size, height, width)
 	create_empty_space(height, width, center)
 	#spawn_light(center, height, width)
-	spawn_grass(center * tile_size, height * tile_size, width * tile_size)
+	#spawn_grass(center * tile_size, height * tile_size, width * tile_size)
 	for x in range(center.x - width, center.x + width):
 		for y in range(center.y - height, center.y + height):
 			Map.set_cell(x, y, 1)
