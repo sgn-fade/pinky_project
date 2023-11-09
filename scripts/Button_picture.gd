@@ -3,7 +3,7 @@ extends Sprite
 var button_text : String
 
 func _ready():
-	button_text = Options.keys.get(get_parent().name)
+	button_text = Options.Buttons_binds.get(get_parent().name)
 	if button_text.length() == 1:
 		get_node("Button_text").set_text(button_text)
 	else: 

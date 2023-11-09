@@ -3,21 +3,15 @@ var equiped
 var icon
 var rarity
 var modules = []
-var Buttons_binds = {
-	0 : "mouse_left_button",
-	1 : "mouse_right_button",
-	2 : "Q",
-	3 : "R",
-	4 : "X",
-	5 : "C"
-}
+var Buttons_binds = Options.Buttons_binds
+
 var Spells_buttons = {
-	Buttons_binds[0] : null,
-	Buttons_binds[1] : null,
-	Buttons_binds[2]: null,
-	Buttons_binds[3] : null,
-	Buttons_binds[4] : null,
-	Buttons_binds[5] : null,
+	Buttons_binds["slot1"] : null,
+	Buttons_binds["slot2"] : null,
+	Buttons_binds["slot3"] : null,
+	Buttons_binds["slot4"] : null,
+	Buttons_binds["slot5"] : null,
+	Buttons_binds["slot6"] : null,
 }
 var buttons = Spells_buttons.keys()
 
@@ -47,25 +41,22 @@ func _init():
 	EventBus.connect("add_module_to_place", self, "_on_add_module_to_place")
 	randomize()
 	for i in 4:
-
 		cells.append(cell.new(positions.pop_at(randi()%positions.size())))
 
 
 func input(event):
 	var input_key = null
-
-	if Input.is_action_just_pressed(Buttons_binds[0]):
-
-		input_key = Buttons_binds[0]
-	if Input.is_action_just_pressed(Buttons_binds[1]):
-		input_key = Buttons_binds[1]
-	if Input.is_action_just_pressed(Buttons_binds[2]):
-		input_key = Buttons_binds[2]
-	if Input.is_action_just_pressed(Buttons_binds[3]):
-		input_key = Buttons_binds[3]
+	if Input.is_action_just_pressed(Buttons_binds["slot1"]):
+		input_key = Buttons_binds["slot1"]
+	if Input.is_action_just_pressed(Buttons_binds["slot2"]):
+		input_key = Buttons_binds["slot2"]
+	if Input.is_action_just_pressed(Buttons_binds["slot3"]):
+		input_key = Buttons_binds["slot3"]
+	if Input.is_action_just_pressed(Buttons_binds["slot4"]):
+		input_key = Buttons_binds["slot4"]
 	if input_key != null and Spells_buttons[input_key] != null and Spells_buttons[input_key].get_ready():
 		Spells_buttons[input_key].cast()
-		EventBus.emit_signal("start_spell_cooldown", Spells_buttons[input_key].cooldown, input_key)
+		EventBus.emit_signal("start_spell_cooldown", Spells_buttons[input_key].cooldown, Options.Reverse_buttons_binds[input_key])
 
 
 func _on_add_module_to_place(module, new, place, cell_index):
