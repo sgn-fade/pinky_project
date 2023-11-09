@@ -7,7 +7,7 @@ func _ready():
 	EventBus.connect("remove_spell_icon_from_game_ui", self, "_on_remove_spell_icon_from_game_ui")
 	EventBus.connect("show_module_stats_on_game_screen", self, "_on_show_module_stats_on_game_screen")
 	EventBus.connect("hide_module_stats_on_game_screen", self, "_on_hide_module_stats_on_game_screen")
-	
+
 
 func _process(delta):
 	orb_label.text = "4"

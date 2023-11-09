@@ -11,10 +11,12 @@ var current_ui = game_ui
 func _ready():
 	current_ui = game_ui
 	game_ui.visible = true
-	
+
+
 func show_ui():
 	current_ui.visible = false
 	game_ui.visible = true
+
 
 func load_ui():
 	load_ui.visible = true
@@ -24,6 +26,7 @@ func load_ui():
 	current_ui = load_ui
 	Player.set_idle_state()
 	show_ui()
+
 
 func _process(delta):
 	if Input.is_action_just_pressed("open_inventory"):
@@ -37,7 +40,7 @@ func _process(delta):
 			game_ui.visible = true
 			current_ui = game_ui
 			get_tree().paused = false
-			
+
 
 	if Input.is_action_just_pressed("ui_cancel"):
 		if current_ui != pause_ui:
