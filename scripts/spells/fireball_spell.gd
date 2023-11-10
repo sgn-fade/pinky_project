@@ -11,13 +11,13 @@ func _init():
 
 
 func cast():
-	GlobalWorld.add_child(fireball.instance())
+	GlobalWorldInfo.get_world().add_child(fireball.instance())
 	EventBus.emit_signal("hands_play_animation", 0.2, animation_name)
 	cooldown()
 
 func cooldown():
 	ready = false
-	yield(GlobalWorld.get_tree().create_timer(cooldown), "timeout")
+	yield(GlobalWorldInfo.get_world().get_tree().create_timer(cooldown), "timeout")
 	ready = true
 
 func get_ready():

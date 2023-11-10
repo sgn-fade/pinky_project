@@ -45,7 +45,7 @@ func _input(event):
 
 func _on_drop_button_pressed():
 	var modules_drops = modules_drop.instance()
-	GlobalWorld.add_child(modules_drops)
+	GlobalWorldInfo.get_world().add_child(modules_drops)
 	modules_drops.global_position = Player.get_position()
 	modules_drops.module = module
 	modules_drops.z_index = Player.get_z_index()

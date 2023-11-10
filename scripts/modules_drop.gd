@@ -10,6 +10,7 @@ onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
 onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
 
 func _ready():
+	EventBus.connect("go_to_hub", self, "go_to_hub")
 	module_list.append(fire_eye_spell)
 	module_list.append(fire_pillar_spell)
 	module_list.append(fire_teleport_spell)
@@ -17,10 +18,13 @@ func _ready():
 	module_list.append(fireball_spell)
 	module = module_list[randi() % 5].new()
 
+func go_to_hub():
+	queue_free()
+
+
 func _process(delta):
 	body.z_index = global_position.y / 2
 	body.position.y = sin(OS.get_ticks_msec()  * 0.003) * 2
-	
 	if overlaps_body(Player.get_body()):
 		sprite.frame = 1
 		EventBus.emit_signal("show_module_stats_on_game_screen", module)

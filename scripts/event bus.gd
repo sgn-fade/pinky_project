@@ -34,3 +34,7 @@ signal damage_to_enemy(body, damage, status)
 
 signal update_character_hp_bar_value(hp, max_hp)
 
+signal generate_dungeon()
+signal go_to_hub()
+
+signal enemy_killed()

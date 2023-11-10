@@ -8,12 +8,14 @@ var altar = preload("res://scenes/altar.tscn")
 var grass = preload("res://scenes/grass.tscn")
 var modules_drop = load("res://scenes/modules_drop.tscn")
 var fire_elemental = load("res://scenes/enemies/elementals/fire_elemental.tscn")
+var portal = load("res://scenes/world_env/portal.tscn")
+
 
 var tile_size = 64
 var min_size = 2
 var max_size = 1
 var room_count
-var room_generate_count = 1
+var room_generate_count = 2
 onready var Map = $TileMap
 onready var Grass = $grass
 var timer := Timer.new()
@@ -21,12 +23,24 @@ var timer := Timer.new()
 func _ready():
 	Player.set_position(Vector2.ZERO)
 	EventBus.connect("survive_event_started", self, "_on_survive_event_started")
+	EventBus.connect("enemy_killed", self, "_on_enemy_killed")
 	add_child(timer)
 	timer.one_shot = false
 	randomize()
+
+func _on_enemy_killed():
+	if $mobs.get_children().size() == 1:
+		spawn_portal()
+
+
+func spawn_portal():
+	var object = portal.instance()
+	add_child(object)
+	object.global_position = Player.get_position() + Vector2(randi()%20, randi()%20)
+	
+func generate_dungeon():
 	create_center_room()
-
-
+	Player.set_position(Vector2.ZERO)
 func create_empty_space(height, width, center):
 	for x in range(center.x - width - 5, center.x + width + 5):
 		for y in range(center.y - height - 5, center.y + height + 5):
@@ -36,7 +50,7 @@ func create_empty_space(height, width, center):
 
 
 func generate(height, width, center):
-	#spawn_goblin(center * tile_size, height, width)
+	spawn_goblin(center * tile_size, height, width)
 	create_empty_space(height, width, center)
 	#spawn_light(center, height, width)
 	#spawn_grass(center * tile_size, height * tile_size, width * tile_size)
@@ -89,7 +103,7 @@ func random_mob_instance(coord, height, width):
 			mob = goblin.instance()
 		2:
 			mob = goblin_mage.instance()
-	add_child(mob)
+	$mobs.add_child(mob)
 	mob.global_position = Vector2(coord.x + (randi() % int(width) * 2 - int(width)) * (tile_size / 2.0) , 
 												  coord.y + (randi() % int(height) * 2 - int(height)) * (tile_size / 2.0))
 

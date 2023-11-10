@@ -71,6 +71,7 @@ position = Vector2( -0.108994, 0.342203 )
 scale = Vector2( 0.923, 0.787 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, 4.689 )
+texture_scale = 0.2
 color = Color( 0.203922, 0.0117647, 0.219608, 1 )
 energy = 1.5
 shadow_color = Color( 0, 0, 0, 1 )

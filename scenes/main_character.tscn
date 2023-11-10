@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://sprites/light.png" type="Texture" id=1]
 [ext_resource path="res://sprites/move.png" type="Texture" id=2]
@@ -331,8 +331,11 @@ animations = [ {
 "speed": 12.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=107]
+extents = Vector2( 5.38462, 4.51613 )
+
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 5.01356, 4.0147 )
+extents = Vector2( 5.0051, 4.16302 )
 
 [sub_resource type="CanvasItemMaterial" id=43]
 blend_mode = 1
@@ -359,15 +362,16 @@ animation = "spear_throw"
 flip_h = true
 
 [node name="Collision_character" type="CollisionShape2D" parent="."]
-position = Vector2( 3.05176e-05, 4.11139 )
+position = Vector2( 2.38419e-07, 3.5 )
 scale = Vector2( 1.3, -0.775 )
-shape = SubResource( 6 )
+shape = SubResource( 107 )
 
 [node name="player_area" type="Area2D" parent="."]
-collision_mask = 2147483681
+collision_layer = 2147483648
+collision_mask = 2147483648
 
 [node name="Collision_area" type="CollisionShape2D" parent="player_area"]
-position = Vector2( 4.33681e-19, 4 )
+position = Vector2( 0.0118483, 3.40656 )
 scale = Vector2( 1.40094, -0.81829 )
 shape = SubResource( 6 )
 
@@ -424,7 +428,7 @@ material = SubResource( 43 )
 scale = Vector2( 1, 4 )
 emitting = false
 amount = 10
-lifetime = 0.2
+lifetime = 0.4
 one_shot = true
 fract_delta = false
 local_coords = false
@@ -520,3 +524,8 @@ color = Color( 0.278431, 0.290196, 0.537255, 1 )
 
 [node name="hands" type="Node2D" parent="."]
 script = ExtResource( 5 )
+
+[node name="teleport_ray" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 1, 1 )
+collision_mask = 2147483648

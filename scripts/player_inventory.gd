@@ -41,6 +41,7 @@ func _on_inventory_cell_choosed(cell):
 	if choosed_slot != null:
 		EventBus.emit_signal("add_module_to_place", choosed_slot.module, false, "equipment", cell.cell_index)
 		choosed_slot.queue_free()
+
 func _on_spell_slot_button_choosed(slot, equiped):
 	if !equiped:
 		choosed_slot = slot
