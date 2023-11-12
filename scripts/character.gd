@@ -1,8 +1,15 @@
 
 extends KinematicBody2D
-var speed = 20
 var acceleration = 20
 var dash_cooldown = 0
+
+#stats
+var speed = 20
+var magic_damage = 1
+var hp = 40
+
+var closest_interactive_object = null
+
 var velocity = Vector2.ZERO
 onready var _animated_sprite = get_node("/root/World/player/aSprite")
 onready var dash = get_node("/root/World/Ui/game_ui/dash_indicator")

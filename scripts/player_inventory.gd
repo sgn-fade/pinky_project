@@ -4,6 +4,7 @@ var item_count = 0
 var module_array = []
 var hands
 var spell_slot_button_scene = load("res://scenes/ui/spell_slot_button.tscn")
+var weapon_card_scene = load("res://scenes/ui/weapon_card.tscn")
 var choosed_slot = null
 var empty_cell = load("res://scenes/ui/inventory_module_cell.tscn")
 var cells
@@ -11,6 +12,7 @@ var cells
 func _ready():
 	fill_cells()
 	EventBus.connect("add_module_to_place", self, "add_module_to_place")
+	EventBus.connect("add_weapon_to_inventory", self, "add_weapon_to_inventory")
 	EventBus.connect("inventory_cell_choosed", self, "_on_inventory_cell_choosed")
 	EventBus.connect("spell_slot_button_choosed", self, "_on_spell_slot_button_choosed")
 
@@ -23,6 +25,12 @@ func fill_cells():
 		current_cell.rect_position = cells[i].position
 		current_cell.cell_index = i
 
+
+func add_weapon_to_inventory(weapon):
+	var card = weapon_card_scene.instance()
+	$weapon_inventory/weapons.add_child(card)
+	card.init(weapon)
+	card.get_node("weapon_texture").texture = weapon.icon
 
 func add_module_to_place(module, is_new, place, cell_index):
 	var slot = spell_slot_button_scene.instance()
@@ -50,3 +58,13 @@ func _on_spell_slot_button_choosed(slot, equiped):
 		slot.queue_free()
 
 
+
+
+func _on_weapons_pressed():
+	$inventory.visible = false
+	$weapon_inventory.visible = true
+
+
+func _on_modules_pressed():
+	$inventory.visible = true
+	$weapon_inventory.visible = false

@@ -5,8 +5,12 @@ func _ready():
 	EventBus.connect("set_spell_icon_to_game_ui", self, "_on_set_spell_icon_to_game_ui")
 	EventBus.connect("start_spell_cooldown", self, "_on_start_spell_cooldown")
 	EventBus.connect("remove_spell_icon_from_game_ui", self, "_on_remove_spell_icon_from_game_ui")
+	
 	EventBus.connect("show_module_stats_on_game_screen", self, "_on_show_module_stats_on_game_screen")
 	EventBus.connect("hide_module_stats_on_game_screen", self, "_on_hide_module_stats_on_game_screen")
+	
+	EventBus.connect("show_weapon_stats_on_game_screen", self, "_on_show_weapon_stats_on_game_screen")
+	EventBus.connect("hide_weapon_stats_on_game_screen", self, "_on_hide_weapon_stats_on_game_screen")
 	
 
 func _process(delta):
@@ -18,6 +22,12 @@ func _on_show_module_stats_on_game_screen(module):
 	$module_discription/module_icon.texture = module.spell_icon
 func _on_hide_module_stats_on_game_screen():
 	$module_discription.visible = false
+
+func _on_show_weapon_stats_on_game_screen(weapon):
+	$weapon_discription.visible = true
+	$weapon_discription/weapon_texture.texture = weapon.icon
+func _on_hide_weapon_stats_on_game_screen():
+	$weapon_discription.visible = false
 
 
 func _on_remove_spell_icon_from_game_ui(button):

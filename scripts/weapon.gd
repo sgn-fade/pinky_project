@@ -1,4 +1,5 @@
 extends Node
+
 var equiped
 var icon
 var rarity
