@@ -2,9 +2,9 @@ extends Control
 onready var orb_label = get_node("blood_orb_count/Label")
 
 func _ready():
-	EventBus.connect("set_spell_icon_to_game_ui", self, "_on_set_spell_icon_to_game_ui")
+	EventBus.connect("set_spell_icon_to_game", self, "_on_set_spell_icon_to_game")
 	EventBus.connect("start_spell_cooldown", self, "_on_start_spell_cooldown")
-	EventBus.connect("remove_spell_icon_from_game_ui", self, "_on_remove_spell_icon_from_game_ui")
+	EventBus.connect("remove_spell_icon_from_game", self, "_on_remove_spell_icon_from_game_ui")
 	
 	EventBus.connect("show_module_stats_on_game_screen", self, "_on_show_module_stats_on_game_screen")
 	EventBus.connect("hide_module_stats_on_game_screen", self, "_on_hide_module_stats_on_game_screen")
@@ -29,11 +29,11 @@ func _on_hide_weapon_stats_on_game_screen():
 	$weapon_discription.visible = false
 
 
-func _on_remove_spell_icon_from_game_ui(button):
+func _on_remove_spell_icon_from_game(button):
 	get_node("spell_slot_panel/%s" % button).texture_progress = null
 
 
-func _on_set_spell_icon_to_game_ui(module_icon, button):
+func _on_set_spell_icon_to_game(module_icon, button):
 	get_node("spell_slot_panel/%s" % button).texture_progress = module_icon
 
 

@@ -33,6 +33,9 @@ signal remove_all_cells()
 signal spell_slot_button_choosed(button, equiped)
 signal inventory_cell_choosed(cell)
 
+signal set_spell_icon_to_game(module_icon, button)
+signal remove_spell_icon_from_game(button)
+
 signal add_weapon_to_inventory(weapon)
 signal remove_weapon_from_inventory()
 

@@ -3,7 +3,7 @@ var spell_icon = load("res://sprites/spell_icons/fire_pillar_icon.png")
 var rarity = "bronze"
 var fire_pillar
 var ready = true
-var cooldown = 1
+var cooldown = 8
 var animation_name = "pillar_cast"
 
 func _init():

@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sprites/locations/hub_zone/map_choose_table.png" type="Texture" id=1]
 [ext_resource path="res://sprites/light.png" type="Texture" id=2]
 [ext_resource path="res://scripts/map_env/map_terminal.gd" type="Script" id=3]
-[ext_resource path="res://scenes/Button_picture.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 1 )
@@ -82,7 +81,6 @@ range_item_cull_mask = 3
 light_mask = 2
 position = Vector2( 2, -82 )
 frames = SubResource( 13 )
-frame = 7
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -91,11 +89,6 @@ playing = true
 position = Vector2( -1, -68 )
 rotation = 1.5708
 shape = SubResource( 31 )
-
-[node name="Button_picture" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, -61 )
-scale = Vector2( 0.5, 0.5 )
-text = "E"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

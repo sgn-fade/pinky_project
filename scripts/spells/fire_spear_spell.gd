@@ -3,7 +3,7 @@ var spell_icon = load("res://sprites/spell_icons/fire_spear_spell_icon.png")
 var rarity = "bronze"
 var fire_spear
 var ready = true
-var cooldown = 0
+var cooldown = 4
 var animation_name = "spear_throw"
 
 func _init():

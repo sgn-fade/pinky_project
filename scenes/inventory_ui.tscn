@@ -133,6 +133,23 @@ rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = ExtResource( 5 )
 text = "modules"
 
+[node name="items" type="TextureButton" parent="."]
+margin_left = 1562.0
+margin_top = 17.0
+margin_right = 1676.0
+margin_bottom = 89.0
+rect_scale = Vector2( 3, 2.5 )
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="items"]
+margin_left = 26.6667
+margin_top = 20.4
+margin_right = 333.667
+margin_bottom = 105.69
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = ExtResource( 5 )
+text = "items"
+
 [node name="coins_indicator" type="Control" parent="."]
 margin_left = 1678.0
 margin_top = 989.0

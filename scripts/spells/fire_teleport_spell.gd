@@ -2,7 +2,7 @@ extends Node
 var spell_icon = load("res://sprites/spell_icons/fire_teleport_icon.png")
 var rarity = "bronze"
 var ready = true
-var cooldown = 1 #8
+var cooldown = 8 #8
 
 func cast():
 	cooldown()
