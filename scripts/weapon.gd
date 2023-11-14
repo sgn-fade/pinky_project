@@ -1,4 +1,5 @@
 extends Node
+
 var equiped
 var icon
 var rarity
@@ -62,7 +63,7 @@ func input(event):
 func _on_add_module_to_place(module, new, place, cell_index):
 	if place == "equipment":
 		cells[cell_index].module = module
-		cells[cell_index].button = buttons.pop_at(randi()%buttons.size())
+		cells[cell_index].button = buttons.pop_at(0)
 		Spells_buttons[cells[cell_index].button] = module
 	if place == "inventory" and not new:
 		buttons.append(cells[cell_index].button)

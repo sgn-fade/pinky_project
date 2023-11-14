@@ -53,6 +53,7 @@ func _on_player_body_entered(body):
 func enemy_death():
 	if self.hp <= 0:
 		spawn_drop()
+		EventBus.emit_signal("enemy_killed")
 		queue_free()
 
 func spawn_drop():
@@ -60,7 +61,7 @@ func spawn_drop():
 	#GlobalWorld.add_child(blood_orb)
 	#blood_orb.global_position = self.global_position
 	var modules_drops = modules_drop.instance()
-	GlobalWorld.add_child(modules_drops)
+	GlobalWorldInfo.get_world().add_child(modules_drops)
 	modules_drops.global_position = self.global_position
 	modules_drops.z_index = self.z_index
 
@@ -115,7 +116,6 @@ func _on_damage_to_enemy(body, damage, status):
 func _on_push_away_enemy(body, velocity):
 	#var t = 0.05
 	#var delta = 0.016
-	print(velocity)
 	if self == body && body.hp >= 1:
 		var distance = 7
 		velocity = velocity.normalized() * distance

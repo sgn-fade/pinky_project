@@ -1,8 +1,15 @@
 
 extends KinematicBody2D
-var speed = 60
 var acceleration = 20
 var dash_cooldown = 0
+
+#stats
+var speed = 20
+var magic_damage = 1
+var hp = 40
+
+var closest_interactive_object = null
+
 var velocity = Vector2.ZERO
 onready var _animated_sprite = get_node("/root/World/player/aSprite")
 onready var dash = get_node("/root/World/Ui/game_ui/dash_indicator")
@@ -14,7 +21,8 @@ var input = Vector2.ZERO
 var timer := Timer.new()
 var dash_butt_hit_timer = 0
 var dash_speed_const = 1
-
+var move_position = null
+var direction = 1
 var current_state = States.IDLE
 
 enum States{
@@ -40,7 +48,7 @@ func _process(delta):
 			die()
 		States.DASH:
 			rotating()
-			g_dash(delta)
+			move_player(delta)
 		States.BUTT_HIT_DASH:
 			pass
 		States.SPELL:
@@ -52,10 +60,12 @@ func rotating():
 	if get_local_mouse_position().x >= 0:
 		scale.x = 1
 	else:
+		direction *= -1
 		scale.x = -1
 
 
 func _ready():
+	#$teleport_ray.add_exception($player_area)
 	EventBus.connect("player_take_damage", self, "_on_player_take_damage")
 	EventBus.connect("player_teleport", self, "teleport")
 	EventBus.connect("player_cast_spell", self, "set_cast_state")
@@ -79,26 +89,33 @@ func move():
 		input.y += -1
 	if Input.is_action_pressed("ui_down"):
 		input.y += 1
+	
 	if input.length() == 0:
+		if speed >30:
+			speed = 30
 		animation = "idle"
 		current_state = States.IDLE
+	elif speed < 80:
+		speed += 5
 	input = input.normalized()
 	_animated_sprite.play(animation)
 	velocity = velocity.linear_interpolate(input * speed, acceleration * 0.016)
 	move_and_slide(velocity)
 
 
-func g_dash(delta):
+func move_player(delta):
 	var t = 0.05
-	velocity = velocity.linear_interpolate(input * 150, 0.016 / t)
-	if velocity.length() >= 149:
+	velocity = velocity.linear_interpolate(move_position, 0.016 / t)
+	if velocity.length() >= move_position.length() - 1:
 		current_state = States.IDLE
 	move_and_slide(velocity)
 	dash_speed_const += 1
 	
 
 func dash(delta):
-	if Input.is_action_just_pressed("ui_dash") && dash.ready && current_state != States.DASH:
+	if Input.is_action_just_pressed("Shift") && dash.ready && current_state != States.DASH:
+		move_position = input * 200
+		
 		current_state = States.DASH
 		$dash_particles1.emitting = true
 		$dash_particles2.emitting = true
@@ -138,8 +155,8 @@ func set_idle_state():
 
 func character_slowdown():
 	speed = 0
-	while speed < 60:
-		speed += 4
+	while speed < 20:
+		speed += 5
 		timer.start(0.05)
 		yield(timer, "timeout")
 
@@ -155,7 +172,6 @@ func enable_collision():
 
 
 func _on_player_take_damage(player_offcet_dir, enemy_damage):
-	print(2)
 	Player.update_hp(-enemy_damage)
 	var hp = Player.get_hp() 
 	var max_hp = Player.get_max_hp() 
@@ -196,10 +212,18 @@ func set_cast_state(animation_time, animation_name):
 
 func teleport(pos):
 	current_state = States.SPELL
+	$teleport_ray.cast_to = pos
+	var global_mouse_pos = get_global_mouse_position()
 	_animated_sprite.play("teleport_start")
 	timer.start(1.25)
 	yield(timer, "timeout")
-	global_position = pos
+	disable_collision()
+	if $teleport_ray.is_colliding():
+		global_position = $teleport_ray.get_collision_point() 
+		global_position += Vector2(-8 * direction, -4 -4 * pos.sign().y)
+	else:
+		global_position = global_mouse_pos
+	enable_collision()
 	_animated_sprite.play("teleport_end")
 	timer.start(0.833)
 	yield(timer, "timeout")
@@ -208,3 +232,6 @@ func teleport(pos):
 func set_inventory_state():
 	_animated_sprite.play("idle")
 	current_state = States.INVENTORY
+
+
+

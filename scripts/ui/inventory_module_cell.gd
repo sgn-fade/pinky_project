@@ -19,7 +19,8 @@ func _on_spell_slot_button_choosed(slot, equiped):
 		yield(timer,"timeout")
 
 func _on_inventory_cell_choosed(cell):
-
+	if $light.scale.x < 0.12:
+		return
 	for i in 5:
 		timer.start(0.02)
 		yield(timer,"timeout")

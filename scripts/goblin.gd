@@ -143,7 +143,7 @@ func throw_stone():
 		self.current_state = States.THROWING_STONE
 		var current_goblins_stone = throwing_stone.instance()
 		current_goblins_stone.global_position = global_position
-		GlobalWorld.add_child(current_goblins_stone)
+		GlobalWorldInfo.get_world().add_child(current_goblins_stone)
 		timer.start(0.5)
 		yield(timer, "timeout")
 		self.current_state = States.IDLE
@@ -171,7 +171,6 @@ func attack():
 
 
 func _on_melee_goblin_attack_area_entered(body):
-	print(body)
 	if body.name == "player" and current_state != States.DEALS_DAMAGE:
 		current_state = States.DEALS_DAMAGE
 		var player_offcet_dir = (-(self.global_position - Player.get_position()).normalized())
