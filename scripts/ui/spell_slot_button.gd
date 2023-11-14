@@ -39,6 +39,10 @@ func _input(event):
 		and not Rect2(Vector2(), main_button.rect_size).has_point(get_local_mouse_position())
 		and $menu.playing
 		):
+		if rect_scale.x > 1:
+			rect_scale.x -= 0.1
+			rect_scale.y -= 0.1
+		$light.visible = false
 		$menu.playing = false
 		$menu.play("close")
 
@@ -47,7 +51,7 @@ func _on_drop_button_pressed():
 	if equiped:
 		return
 	var modules_drops = modules_drop.instance()
-	GlobalWorld.add_child(modules_drops)
+	GlobalWorldInfo.get_world().add_child(modules_drops)
 	modules_drops.global_position = Player.get_position()
 	modules_drops.module = module
 	modules_drops.z_index = Player.get_z_index()
@@ -79,4 +83,8 @@ func set_button_texture():
 
 
 func _on_equip_button_pressed():
+	$menu.play("close")
+	rect_scale.x += 0.1
+	rect_scale.y += 0.1
+	$light.visible = true
 	EventBus.emit_signal("spell_slot_button_choosed", self, equiped)

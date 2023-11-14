@@ -12,13 +12,13 @@ func _init():
 
 func cast():
 	cooldown()
-	GlobalWorld.add_child(fire_pillar)
+	GlobalWorldInfo.get_world().add_child(fire_pillar)
 	EventBus.emit_signal("hands_play_animation", 1.5, animation_name)
 	EventBus.emit_signal("player_cast_spell", 1.5, animation_name)
 
 func cooldown():
 	ready = false
-	yield(GlobalWorld.get_tree().create_timer(cooldown), "timeout")
+	yield(GlobalWorldInfo.get_world().get_tree().create_timer(cooldown), "timeout")
 	ready = true
 
 
