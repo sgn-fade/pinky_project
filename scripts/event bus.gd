@@ -23,14 +23,8 @@ signal player_teleport(position)
 signal show_module_stats_on_game_screen(module)
 signal hide_module_stats_on_game_screen()
 
-signal show_weapon_stats_on_game_screen(weapon)
-signal hide_weapon_stats_on_game_screen()
-
 signal spell_slot_button_choosed(button, equiped)
 signal inventory_cell_choosed(cell)
-
-signal add_weapon_to_inventory(weapon)
-signal remove_weapon_from_inventory()
 
 signal add_module_to_place(module, new, place, cell_index)
 signal remove_module_from_place(button)
@@ -40,7 +34,3 @@ signal damage_to_enemy(body, damage, status)
 
 signal update_character_hp_bar_value(hp, max_hp)
 
-signal generate_dungeon()
-signal go_to_hub()
-
-signal enemy_killed()

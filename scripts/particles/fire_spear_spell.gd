@@ -22,7 +22,7 @@ func delete():
 
 
 func _on_body_entered(body):
-	EventBus.emit_signal("damage_to_enemy", body, 10, null)
+	EventBus.emit_signal("damage_to_enemy", body, 3, null)
 	EventBus.emit_signal("push_away_enemy", body, velocity)
 	delete()
 

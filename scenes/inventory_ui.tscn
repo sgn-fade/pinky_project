@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://sprites/ui/inventory_gun_slots_background.png" type="Texture" id=1]
+[ext_resource path="res://sprites/inventory_gun_slots_background.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player_inventory.gd" type="Script" id=2]
-[ext_resource path="res://sprites/ui/weapon_rarity_ui_bronze.png" type="Texture" id=3]
-[ext_resource path="res://sprites/ui/buttons/ui_button_2.png" type="Texture" id=4]
-[ext_resource path="res://fonts/pixel_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://sprites/ui/item_panel/item_background.png" type="Texture" id=6]
 
 [node name="inventory_ui" type="Control"]
@@ -34,12 +31,11 @@ anchor_left = 0.477
 anchor_top = 0.232
 anchor_right = 0.477
 anchor_bottom = 0.232
-margin_left = 1.0
+margin_left = -18.84
 margin_top = 3.44
-margin_right = 212.16
+margin_right = 193.16
 margin_bottom = 142.44
 rect_scale = Vector2( 5, 5 )
-rect_clip_content = false
 size_flags_horizontal = 15
 size_flags_vertical = 15
 scroll_horizontal_enabled = false
@@ -50,71 +46,4 @@ margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 custom_constants/vseparation = 40
 custom_constants/hseparation = 50
-columns = 4
-
-[node name="weapon_inventory" type="ScrollContainer" parent="."]
-anchor_left = 0.477
-anchor_top = 0.232
-anchor_right = 0.477
-anchor_bottom = 0.232
-margin_left = -18.84
-margin_top = 3.44
-margin_right = 193.16
-margin_bottom = 142.44
-rect_scale = Vector2( 5, 5 )
-size_flags_horizontal = 15
-size_flags_vertical = 15
-scroll_horizontal_enabled = false
-
-[node name="weapons" type="GridContainer" parent="weapon_inventory"]
-margin_right = 200.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-custom_constants/vseparation = 60
-custom_constants/hseparation = 51
-columns = 4
-
-[node name="weapon_rarity_bg" type="TextureRect" parent="."]
-margin_left = 258.0
-margin_top = 252.0
-margin_right = 308.0
-margin_bottom = 313.0
-rect_scale = Vector2( 7, 7 )
-texture = ExtResource( 3 )
-
-[node name="weapons" type="TextureButton" parent="."]
-margin_left = 869.0
-margin_top = 17.0
-margin_right = 983.0
-margin_bottom = 89.0
-rect_scale = Vector2( 3, 2.5 )
-texture_normal = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="weapons"]
-margin_left = 8.66663
-margin_top = 17.6
-margin_right = 315.667
-margin_bottom = 102.89
-rect_scale = Vector2( 0.3, 0.3 )
-custom_fonts/font = ExtResource( 5 )
-text = "weapons"
-
-[node name="modules" type="TextureButton" parent="."]
-margin_left = 1220.0
-margin_top = 17.0
-margin_right = 1334.0
-margin_bottom = 89.0
-rect_scale = Vector2( 3, 2.5 )
-texture_normal = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="modules"]
-margin_left = 8.66663
-margin_top = 17.6
-margin_right = 315.667
-margin_bottom = 102.89
-rect_scale = Vector2( 0.3, 0.3 )
-custom_fonts/font = ExtResource( 5 )
-text = "modules"
-
-[connection signal="pressed" from="weapons" to="." method="_on_weapons_pressed"]
-[connection signal="pressed" from="modules" to="." method="_on_modules_pressed"]
+columns = 2

@@ -32,7 +32,6 @@ _data = [ Vector2( 0.00757575, 1.60227 ), 0.0, -1.39726, 0, 0, Vector2( 1, 0.056
 script = ExtResource( 3 )
 
 [node name="detection_area" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5 )
 rotation = 1.5708
 shape = SubResource( 1 )
 

@@ -22,6 +22,7 @@ func delete():
 	$b.play("explode")
 	timer.start(0.33)
 	yield(timer, "timeout")
+	print(1)
 	$b.queue_free()
 	$end_partcl_pink.emitting = true
 	$end_partcl_white.emitting = true

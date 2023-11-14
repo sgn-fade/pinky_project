@@ -18,7 +18,7 @@ func _process(delta):
 	change_stance()
 
 func change_stance():
-	if Input.is_action_just_pressed("F") && current_state != States.FIREBALL:
+	if Input.is_action_just_pressed("spell_slot") && current_state != States.FIREBALL:
 		current_state = States.FIREBALL
 		var spell_instance = spell.instance()
 		remove_child(get_child(0))

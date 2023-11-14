@@ -11,25 +11,33 @@ var enemy_inside = []
 
 
 func _ready():
+	set_process(false)
 	timer.one_shot = false
 	add_child(timer)
 	damage_timer.one_shot = false
 	add_child(damage_timer)
+	global_position = get_global_mouse_position()
+	eye_animation.play("opening")
+	yield(eye_animation,"animation_finished")
+	print("animation_finished")
+	set_process(true)
+	$area_paricles.emitting = true
+	eye_animation.play("searching")
 	damage_area.connect("body_entered", self, "_on_damage_area_body_entered")
 	damage_area.connect("body_exited", self, "_on_damage_area_body_exited")
-	global_position = get_global_mouse_position()
-	eye_animation.frame = 0
-	eye_animation.play("searching")
-	
 	timer.start(spell_duration)
 	yield(timer,"timeout")
+	set_process(false)
+	damage_area.disconnect("body_entered", self, "_on_damage_area_body_entered")
+	enemy_inside.clear()
+	eye_animation.play("closing")
+	yield(eye_animation,"animation_finished")
 	queue_free()
-
 
 func _process(delta):
 	z_index = global_position.y / 2
 	eye_animation.position.y = sin(OS.get_ticks_msec()  * 0.003) * 3
-
+	
 
 func deal_damage(body):
 	while enemy_inside.has(body):
@@ -46,5 +54,5 @@ func _on_damage_area_body_entered(body):
 func _on_damage_area_body_exited(body):
 	enemy_inside.erase(body)
 	EventBus.emit_signal("damage_to_enemy", body, 0, "burn")
-	
+
 

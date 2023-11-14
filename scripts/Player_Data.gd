@@ -32,7 +32,6 @@ func set_position(position):
 func get_body():
 	return player
 
-
 func get_z_index():
 	return player.z_index
 
@@ -40,31 +39,5 @@ func get_z_index():
 func get_weapon():
 	return player.weapon
 
-
 func set_weapon(weapon):
 	player.weapon = weapon
-
-
-func set_magic_damage(new_magic_damage):
-	player.magic_damage = new_magic_damage
-
-
-func get_magic_damage():
-	return player.magic_damage
-
-
-func get_closest_object():
-	return player.closest_interactive_object
-	
-
-func set_closest_object(object):
-	if object == null:
-		player.closest_interactive_object = null
-		return true
-	if get_closest_object() == null:
-		player.closest_interactive_object = object
-		return true
-	if (object.global_position - get_position()).length() < (get_closest_object().global_position - get_position()).length():
-		player.closest_interactive_object = object
-		return true
-	return false

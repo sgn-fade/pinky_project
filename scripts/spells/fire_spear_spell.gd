@@ -14,12 +14,12 @@ func cast():
 	cooldown()
 	EventBus.emit_signal("hands_play_animation", 0.58, animation_name)
 	EventBus.emit_signal("player_cast_spell", 0.58, animation_name)
-	yield(GlobalWorldInfo.get_world().get_tree().create_timer(0.33), "timeout")
-	GlobalWorldInfo.get_world().add_child(fire_spear.instance())
+	yield(GlobalWorld.get_tree().create_timer(0.33), "timeout")
+	GlobalWorld.add_child(fire_spear.instance())
 
 func cooldown():
 	ready = false
-	yield(GlobalWorldInfo.get_world().get_tree().create_timer(cooldown), "timeout")
+	yield(GlobalWorld.get_tree().create_timer(cooldown), "timeout")
 	ready = true
 
 
