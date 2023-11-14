@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/particles/fog_single_particle.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.117647 )
+
+[node name="fog" type="Node2D"]
+scale = Vector2( 0.2, 0.2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2( 2.661, 0.723 )
+amount = 80
+lifetime = 5.0
+preprocess = 105.59
+speed_scale = 0.1
+local_coords = false
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+scale_amount = 0.02
+scale_amount_random = 0.5
+color = Color( 0.490196, 0.490196, 0.490196, 0.596078 )
+color_ramp = SubResource( 1 )

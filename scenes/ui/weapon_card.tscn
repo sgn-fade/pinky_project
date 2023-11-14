@@ -22,7 +22,7 @@ margin_bottom = 33.0
 rect_pivot_offset = Vector2( 25.5, 33 )
 script = ExtResource( 13 )
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="main_button" type="TextureButton" parent="."]
 anchor_left = 0.51
 anchor_top = 0.5
 anchor_right = 0.51
@@ -30,20 +30,22 @@ anchor_bottom = 0.5
 margin_left = -1.01
 margin_right = 42.99
 margin_bottom = 57.0
+button_mask = 2
 texture_normal = ExtResource( 2 )
 
-[node name="weapon_texture" type="TextureRect" parent="."]
+[node name="weapon_texture" type="TextureRect" parent="main_button"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -0.5
-margin_right = 43.5
-margin_bottom = 57.0
+margin_left = -22.0
+margin_top = -28.5
+margin_right = 22.0
+margin_bottom = 28.5
 texture = ExtResource( 1 )
 stretch_mode = 4
 
-[node name="options_with_module" type="Control" parent="."]
+[node name="options_with_weapon" type="Control" parent="."]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -54,7 +56,7 @@ margin_top = 9.0
 margin_right = 34.5
 margin_bottom = 42.0
 
-[node name="equip_button" type="TextureButton" parent="options_with_module"]
+[node name="equip_button" type="TextureButton" parent="options_with_weapon"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 27.0
@@ -63,7 +65,7 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 4 )
 
-[node name="new_label" type="Label" parent="options_with_module/equip_button"]
+[node name="new_label" type="Label" parent="options_with_weapon/equip_button"]
 margin_left = 4.28574
 margin_top = 1.07143
 margin_right = 199.286
@@ -74,7 +76,7 @@ custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "equip"
 
-[node name="info_button" type="TextureButton" parent="options_with_module"]
+[node name="info_button" type="TextureButton" parent="options_with_weapon"]
 margin_top = 10.0
 margin_right = 28.0
 margin_bottom = 20.0
@@ -82,7 +84,7 @@ texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 11 )
 
-[node name="new_label" type="Label" parent="options_with_module/info_button"]
+[node name="new_label" type="Label" parent="options_with_weapon/info_button"]
 margin_left = 7.5
 margin_top = -3.05176e-05
 margin_right = 202.5
@@ -93,7 +95,7 @@ custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "info"
 
-[node name="drop_button" type="TextureButton" parent="options_with_module"]
+[node name="drop_button" type="TextureButton" parent="options_with_weapon"]
 margin_top = 20.0
 margin_right = 28.0
 margin_bottom = 30.0
@@ -101,7 +103,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 8 )
 
-[node name="new_label" type="Label" parent="options_with_module/drop_button"]
+[node name="new_label" type="Label" parent="options_with_weapon/drop_button"]
 margin_left = 6.42856
 margin_top = -1.78571
 margin_right = 201.429
@@ -112,4 +114,6 @@ custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "drop"
 
-[connection signal="pressed" from="options_with_module/drop_button" to="." method="_on_drop_button_pressed"]
+[connection signal="pressed" from="main_button" to="." method="_on_mainbutton_pressed"]
+[connection signal="pressed" from="options_with_weapon/equip_button" to="." method="_on_equip_button_pressed"]
+[connection signal="pressed" from="options_with_weapon/drop_button" to="." method="_on_drop_button_pressed"]

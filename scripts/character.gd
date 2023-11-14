@@ -3,6 +3,8 @@ extends KinematicBody2D
 var acceleration = 20
 var dash_cooldown = 0
 
+#resources
+var coins = 0
 #stats
 var speed = 20
 var magic_damage = 1
@@ -14,8 +16,7 @@ var velocity = Vector2.ZERO
 onready var _animated_sprite = get_node("/root/World/player/aSprite")
 onready var dash = get_node("/root/World/Ui/game_ui/dash_indicator")
 onready var ui = get_node("/root/World/Ui")
-var Base_weapon = load("res://scripts/weapon.gd")
-var weapon = Base_weapon.new()
+var weapon = null
 var input = Vector2.ZERO
 
 var timer := Timer.new()
@@ -74,7 +75,8 @@ func _ready():
 	Input.set_mouse_mode(1)
 
 func _input(event):
-	weapon.input(event)
+	if weapon != null:
+		weapon.input(event)
 
 
 func move():

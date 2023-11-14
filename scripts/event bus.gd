@@ -26,6 +26,10 @@ signal hide_module_stats_on_game_screen()
 signal show_weapon_stats_on_game_screen(weapon)
 signal hide_weapon_stats_on_game_screen()
 
+
+signal weapon_in_inventory_choosed(weapon)
+signal remove_all_cells()
+
 signal spell_slot_button_choosed(button, equiped)
 signal inventory_cell_choosed(cell)
 

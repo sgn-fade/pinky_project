@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/particles/fire_pillar.gd" type="Script" id=1]
 [ext_resource path="res://sprites/fire_pillon.png" type="Texture" id=2]
 [ext_resource path="res://sprites/light.png" type="Texture" id=3]
+[ext_resource path="res://sounds/spell_sounds/firepillar_cast_sound.wav" type="AudioStream" id=4]
 [ext_resource path="res://sprites/particles/dash_particles.png" type="Texture" id=5]
 [ext_resource path="res://sprites/particles/1.png" type="Texture" id=6]
 
@@ -223,3 +224,8 @@ color = Color( 0.882353, 0.572549, 0.0352941, 1 )
 energy = 0.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_filter_smooth = 2.8
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -11.361
+attenuation = 0.00108356

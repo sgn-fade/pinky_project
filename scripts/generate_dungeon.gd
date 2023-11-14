@@ -9,7 +9,7 @@ var grass = preload("res://scenes/grass.tscn")
 var modules_drop = load("res://scenes/modules_drop.tscn")
 var fire_elemental = load("res://scenes/enemies/elementals/fire_elemental.tscn")
 var portal = load("res://scenes/world_env/portal.tscn")
-
+var fog_particles = load("res://scenes/particles/fog.tscn")
 
 var tile_size = 64
 var min_size = 2
@@ -50,10 +50,11 @@ func create_empty_space(height, width, center):
 
 
 func generate(height, width, center):
+	spawn_fog(center, height, width)
 	spawn_goblin(center * tile_size, height, width)
 	create_empty_space(height, width, center)
-	#spawn_light(center, height, width)
-	#spawn_grass(center * tile_size, height * tile_size, width * tile_size)
+	spawn_light(center, height, width)
+	spawn_grass(center * tile_size, height * tile_size, width * tile_size)
 	for x in range(center.x - width, center.x + width):
 		for y in range(center.y - height, center.y + height):
 			Map.set_cell(x, y, 1)
@@ -77,16 +78,22 @@ func spawn_grass(center, height, width):
 
 
 func spawn_light(center, height, width):
-	var x = -width / 2
-	for i in 2:
-		var y = -height / 2
-		for j in 2:
+	for x in range(-width/2, width/2, width):
+		for y in range(-height/2, height/2, width/2):
 			var light1 = light.instance()
 			add_child(light1)
 			light1.global_position = (center + Vector2(x, y)) * tile_size
 			light1.z_index = light1.global_position.y / 2
-			y += height
-		x += width
+
+
+func spawn_fog(center, height, width):
+	for x in range(-width * tile_size + 20, width * tile_size,  (randi()%70 + 50)):
+		for y in range(-height  * tile_size + 20, height * tile_size, (randi()%70 + 50)):
+			var fog = fog_particles.instance()
+			add_child(fog)
+			fog.global_position = (center * tile_size + Vector2(x, y))
+			fog.z_index = 1024
+
 
 
 func spawn_goblin(coord, height, width):

@@ -10,6 +10,7 @@ var current_state = States.IDLE
 
 
 func _process(delta):
+	
 	match current_state:
 		States.IDLE:
 			idle_state()

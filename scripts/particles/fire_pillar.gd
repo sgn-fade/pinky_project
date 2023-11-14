@@ -10,7 +10,7 @@ onready var floor_light = $light2
 func _ready():
 	damage_area.connect("body_entered", self, "_on_damage_area_body_entered")
 	pulls_tg_area.connect("body_entered", self, "_on_pulls_tg_area_body_entered")
-	
+	$sound.playing = true
 	timer.one_shot = false
 	light_timer.one_shot = false
 	partciles_timer.one_shot = false

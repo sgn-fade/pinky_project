@@ -5,6 +5,8 @@ var enemy_damage = 1
 onready var damage_label = load("res://scenes/damage_text.tscn")
 var blood_orb_drop = load("res://scenes/blood_orb.tscn")
 var modules_drop = load("res://scenes/modules_drop.tscn")
+var gold_drop = load("res://scenes/drops/gold_drop.tscn")
+
 
 onready var hp_bar = $hp_bar
 onready var collision = $collision
@@ -60,10 +62,11 @@ func spawn_drop():
 	#var blood_orb = blood_orb_drop.instance()
 	#GlobalWorld.add_child(blood_orb)
 	#blood_orb.global_position = self.global_position
-	var modules_drops = modules_drop.instance()
-	GlobalWorldInfo.get_world().add_child(modules_drops)
-	modules_drops.global_position = self.global_position
-	modules_drops.z_index = self.z_index
+	for i in 3:
+		var drop = gold_drop.instance()
+		GlobalWorldInfo.get_world().add_child(drop)
+		drop.global_position = Vector2(self.global_position.x + randi()% 10,self.global_position.y + randi()% 10)
+		drop.z_index = self.z_index
 
 
 

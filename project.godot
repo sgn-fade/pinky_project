@@ -172,6 +172,7 @@ Q={
 [layer_names]
 
 2d_physics/layer_3="enemy"
+2d_physics/layer_8="drops"
 2d_render/walls=false
 2d_physics/walls=false
 2d_navigation/walls=true
