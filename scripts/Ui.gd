@@ -8,6 +8,7 @@ onready var altar_ui = $altar_ui
 onready var current_ui = game_ui
 
 
+
 func load_animation():
 	load_ui.visible = true
 	for i in 1:
@@ -16,6 +17,7 @@ func load_animation():
 	current_ui = load_ui
 	Player.set_idle_state()
 	switch_ui(game_ui, "game", false)
+
 
 
 func _process(delta):

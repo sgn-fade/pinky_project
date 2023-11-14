@@ -15,7 +15,9 @@ var tile_size = 64
 var min_size = 2
 var max_size = 1
 var room_count
-var room_generate_count = 2
+
+export var room_generate_count = 2
+
 onready var Map = $TileMap
 onready var Grass = $grass
 var timer := Timer.new()

@@ -10,6 +10,7 @@ onready var weapon_drop = load("res://scenes/weapon_drop.tscn")
 
 var location
 func _ready():
+
 	var drop = weapon_drop.instance()
 	add_child(drop)
 	drop.global_position = Vector2(40, -10)
