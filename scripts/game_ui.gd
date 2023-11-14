@@ -8,7 +8,6 @@ func _ready():
 	
 	EventBus.connect("show_module_stats_on_game_screen", self, "_on_show_module_stats_on_game_screen")
 	EventBus.connect("hide_module_stats_on_game_screen", self, "_on_hide_module_stats_on_game_screen")
-	
 	EventBus.connect("show_weapon_stats_on_game_screen", self, "_on_show_weapon_stats_on_game_screen")
 	EventBus.connect("hide_weapon_stats_on_game_screen", self, "_on_hide_weapon_stats_on_game_screen")
 	
