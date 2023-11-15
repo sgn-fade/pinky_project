@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/ui/inventory_slot_cellt.png" type="Texture" id=1]
+[ext_resource path="res://scripts/ui/inventory_module_cell.gd" type="Script" id=2]
+[ext_resource path="res://sprites/ui/inventory_slot_cell_hover.png" type="Texture" id=3]
+[ext_resource path="res://sprites/light.png" type="Texture" id=4]
+
+[node name="cell" type="TextureButton"]
+
+light_mask = 0
+
+margin_left = -11.0
+margin_top = -11.0
+margin_right = 11.0
+margin_bottom = 11.0
+rect_scale = Vector2( 5, 5 )
+rect_pivot_offset = Vector2( 11, 11 )
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="light" type="Sprite" parent="."]
+
+modulate = Color( 0.917647, 0.270588, 0.270588, 1 )
+show_behind_parent = true
+position = Vector2( 11, 11 )
+scale = Vector2( 0.01, 0.01 )
+
+texture = ExtResource( 4 )
+
+[connection signal="pressed" from="." to="." method="_on_cell_pressed"]
