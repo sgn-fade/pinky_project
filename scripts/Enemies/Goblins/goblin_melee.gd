@@ -154,7 +154,7 @@ func throw_stone():
 		self.current_state = States.THROWING_STONE
 		var current_goblins_stone = throwing_stone.instance()
 		current_goblins_stone.global_position = global_position
-		GlobalWorld.add_child(current_goblins_stone)
+		GlobalWorldInfo.get_world().add_child(current_goblins_stone)
 		timer.start(0.5)
 		yield(timer, "timeout")
 		self.current_state = States.IDLE

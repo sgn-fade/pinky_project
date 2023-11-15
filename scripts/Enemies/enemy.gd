@@ -61,7 +61,7 @@ func spawn_drop():
 	#GlobalWorld.add_child(blood_orb)
 	#blood_orb.global_position = self.global_position
 	var modules_drops = modules_drop.instance()
-	GlobalWorld.add_child(modules_drops)
+	GlobalWorldInfo.get_world().add_child(modules_drops)
 	modules_drops.global_position = self.global_position
 	modules_drops.z_index = self.z_index
 

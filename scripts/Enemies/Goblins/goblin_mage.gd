@@ -69,7 +69,7 @@ func cast_fireball():
 	if fireball_cast_cooldown <= 0 && current_state != States.CASTING:
 		current_state = States.CASTING
 		var fireball_particle = fireball.instance()
-		GlobalWorld.add_child(fireball_particle)
+		GlobalWorldInfo.get_world().add_child(fireball_particle)
 		fireball_particle.global_position = self.global_position
 		fireball_cast_cooldown = 2
 		idle()
@@ -83,7 +83,7 @@ func summon_elemental():
 		current_state = States.SUMMONING
 		#play_animation
 		var summon = fire_elemental.instance()
-		GlobalWorld.add_child(summon)
+		GlobalWorldInfo.get_world().add_child(summon)
 		summon.global_position = self.global_position + Vector2(10, 0)
 		elemental_cooldown = 10
 		idle()

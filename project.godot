@@ -47,7 +47,6 @@ config/icon="res://icon.png.jpg"
 [autoload]
 
 EventBus="*res://scripts/event bus.gd"
-GlobalWorld="*res://scripts/World.gd"
 Player="*res://scripts/Player_Data.gd"
 Options="*res://scripts/Options.gd"
 GlobalWorldInfo="*res://scripts/Global_World_Info.gd"
