@@ -145,8 +145,8 @@ color = Color( 0.607843, 0.0313726, 0.0313726, 1 )
 light_mask = 2
 scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 14 )
-animation = "searching"
-frame = 10
+animation = "closing"
+frame = 4
 playing = true
 
 [node name="light" type="Light2D" parent="."]

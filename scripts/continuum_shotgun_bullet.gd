@@ -1,6 +1,6 @@
 extends "res://scripts/bullet.gd"
 
-onready var barrel = get_node("/root/World/main_character/hands/heands_continuum_shotgun/pos")
+onready var barrel = get_node("/root/World/player/hands/heands_continuum_shotgun/pos")
 var timer := Timer.new()
 
 func _ready():

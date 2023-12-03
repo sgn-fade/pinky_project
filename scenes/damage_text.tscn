@@ -5,8 +5,11 @@
 
 [node name="value" type="Label"]
 margin_left = -10.0
-margin_top = -10.0
+margin_top = -9.0
+margin_right = 66.0
+margin_bottom = 76.2895
 rect_scale = Vector2( 0.1, 0.1 )
+custom_colors/font_color = Color( 0.027451, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "-1"
 script = ExtResource( 2 )

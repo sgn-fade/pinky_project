@@ -7,4 +7,9 @@ func _process(delta):
 	global_position = get_global_mouse_position()
 
 func _on_crosshair_switch(type):
+	if type == "ui":
+		$part.emitting = true
+	else:
+		$part.emitting = false
+		
 	$Sprite.play(type)

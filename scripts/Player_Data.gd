@@ -1,14 +1,18 @@
 extends Node
 var hp = 50
 var max_hp = 50
+var coins = 0
 onready var ui = get_node("/root/World/Ui")
 onready var player = get_node("/root/World/player")
-
+var score = 0
 
 func _ready():
 	EventBus.emit_signal("update_character_hp_bar_value", hp, max_hp)
 
-
+func set_state(state):
+	player.change_state(state)
+func get_state():
+	return player.current_state
 func get_hp():
 	return hp
 func get_max_hp():
@@ -57,8 +61,18 @@ func set_closest_object(object):
 		return true
 	return false
 
+
 func get_money():
 	return player.coins
-func set_money(new_value):
-	if new_value > 0:
-		player.coins = new_value
+
+func set_money(value):
+	if value > 0:
+		player.coins += value
+		score += value * 10
+
+func get_score():
+	return score
+func set_score(value):
+	if value <= 0:
+		return
+	score += value

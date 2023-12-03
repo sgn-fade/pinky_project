@@ -1,11 +1,12 @@
 extends KinematicBody2D
 class_name Enemies
 var speed
-var hp = 0
+var hp = 1000000
 var enemy_damage = 1
 onready var damage_label = load("res://scenes/damage_text.tscn")
 var blood_orb_drop = load("res://scenes/blood_orb.tscn")
 var modules_drop = load("res://scenes/modules_drop.tscn")
+onready var gold = load("res://scenes/drops/gold_drop.tscn")
 
 onready var hp_bar = $hp_bar
 onready var collision = $collision
@@ -53,6 +54,7 @@ func _on_player_body_entered(body):
 	
 func enemy_death():
 	if self.hp <= 0:
+		EventBus.emit_signal("enemy_killed")
 		spawn_drop()
 		queue_free()
 
@@ -60,12 +62,7 @@ func spawn_drop():
 	#var blood_orb = blood_orb_drop.instance()
 	#GlobalWorld.add_child(blood_orb)
 	#blood_orb.global_position = self.global_position
-	var modules_drops = modules_drop.instance()
-	GlobalWorldInfo.get_world().add_child(modules_drops)
-	modules_drops.global_position = self.global_position
-	modules_drops.z_index = self.z_index
-
-
+	pass
 
 func update_hp():
 	self.hp_bar.value = self.hp * 10

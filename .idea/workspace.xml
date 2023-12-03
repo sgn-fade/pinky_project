@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/scenes/Control.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Control.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/Ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Ui.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/World.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/World.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/bullet.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/bullet.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/butt_hit_particle.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/continuum_shotgun_bullet.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/continuum_shotgun_bullet.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/drops/gold_drop.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/drops/gold_drop.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/enemies/Undeads/skeleton.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/Undeads/skeleton.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/enemies/goblins/goblin_mage.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/goblins/goblin_mage.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/enemies/goblins/goblin_melee.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/goblins/goblin_melee.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/fire_eye.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/fire_eye.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/grass.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/grass.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/h_shotgun.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/h_shotgun.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/h_spell.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/inventory_ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/inventory_ui.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/locations/dungeon.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/locations/dungeon.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/main_character.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main_character.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/modules_drop.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/modules_drop.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/pause_ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/pause_ui.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/shotgun.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/shotgun.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/shotgun_bullet.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/shotgun_bullet.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/throwing_stone.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/throwing_stone.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/weapon_drop.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/weapon_drop.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/world_env/portal.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/world_env/portal.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Enemies/Elementals/fire_elemental.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Enemies/Elementals/fire_elemental.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Enemies/enemy.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Enemies/enemy.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Player_Data.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Player_Data.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Ui.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/World.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/World.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/character.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/character.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/continuum_shotgun.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/continuum_shotgun.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/continuum_shotgun_bullet.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/continuum_shotgun_bullet.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/drops/weapon_drop.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/drops/weapon_drop.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/event bus.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/event bus.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/game_ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/game_ui.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/generate_dungeon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_dungeon.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/grass.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/grass.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/h_spell.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/hands.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/hands.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/map_env/portal.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/map_env/portal.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/player_inventory.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player_inventory.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/shotgun.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/shotgun.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ui/weapon_rarity_bg.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/weapon_rarity_bg.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/weapon.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/weapons/magic_weapon.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/weapons/magic_weapons/magic_wands.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/weapons/magic_weapons/magic_wands.gd" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2YwusW2YtwM4svBcDuWxZVDahDQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="" />
+      <created>1701449172621</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701449172621</updated>
+    </task>
+    <servers />
+  </component>
+</project>

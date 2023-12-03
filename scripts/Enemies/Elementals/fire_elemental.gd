@@ -11,7 +11,6 @@ func _ready():
 	hp = 40
 
 func _process(delta):
-	
 	move(Player.global_position - global_position)
 	
 func move(direction):

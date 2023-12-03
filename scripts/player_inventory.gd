@@ -11,8 +11,8 @@ var cells
 
 func _ready():
 	EventBus.connect("add_module_to_place", self, "add_module_to_place")
+	EventBus.connect("remove_weapon_from_slot", self, "_on_remove_weapon_from_slot")
 	EventBus.connect("add_weapon_to_inventory", self, "add_weapon_to_inventory")
-	EventBus.connect("remove_all_cells", self, "_on_remove_all_cells")
 	EventBus.connect("inventory_cell_choosed", self, "_on_inventory_cell_choosed")
 	EventBus.connect("weapon_in_inventory_choosed", self, "_on_weapon_in_inventory_choosed")
 	EventBus.connect("spell_slot_button_choosed", self, "_on_spell_slot_button_choosed")
@@ -35,7 +35,7 @@ func fill_cells():
 			slot.set_equiped(true)
 			$cells.add_child(slot)
 
-func _on_remove_all_cells():
+func remove_all_cells():
 	$weapon_slot.visible = true
 	for child in $cells.get_children():
 		child.queue_free()
@@ -45,6 +45,7 @@ func add_weapon_to_inventory(weapon):
 	$weapon_inventory/weapons.add_child(card)
 	card.init(weapon)
 	card.get_node("main_button/weapon_texture").texture = weapon.icon
+
 
 func add_module_to_place(module, is_new, place, cell_index):
 	var slot = spell_slot_button_scene.instance()
@@ -79,8 +80,18 @@ func _on_modules_pressed():
 	$inventory.visible = true
 	$weapon_inventory.visible = false
 
+func _on_remove_weapon_from_slot():
+	EventBus.emit_signal("add_weapon_to_inventory", Player.get_weapon())
+	EventBus.emit_signal("switch_hands_stance", null)
+	Player.set_weapon(null)
+	remove_all_cells()
+
+
 func _on_weapon_in_inventory_choosed(weapon):
+	if Player.get_weapon() != null:
+		_on_remove_weapon_from_slot()
 	Player.set_weapon(weapon)
+	EventBus.emit_signal("switch_hands_stance", weapon)
 	fill_cells()
 	$weapon_slot.visible = false
 	$weapon_rarity_bg.show_weapon(weapon)

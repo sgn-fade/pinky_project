@@ -48,7 +48,7 @@ func shoot(delta):
 				sprite.play("charging")
 			shoot_charge += delta
 			current_state = Default_States.SHOOT
-			Player.character_slowdown()
+			Player.get_body().character_slowdown()
 			
 		
 		elif shoot_charge > 0:
@@ -64,7 +64,7 @@ func shoot(delta):
 
 
 func shoot_stage_1():
-	Player.c_shotgun_recoil()
+	Player.get_body().c_shotgun_recoil()
 	sprite.play("shoot_1")
 	for i in 6:
 			var bullets_instance = bullet.instance()

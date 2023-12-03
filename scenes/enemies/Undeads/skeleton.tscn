@@ -42,8 +42,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 8, 6.0851 )
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 5.0
+height = 8.27691
 
 [node name="skeleton" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
@@ -62,7 +63,8 @@ playing = true
 offset = Vector2( 16, -1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
-position = Vector2( 1, 3.0071 )
+position = Vector2( 1, 5 )
+rotation = 1.5708
 scale = Vector2( 1, 0.984849 )
 shape = SubResource( 9 )
 
