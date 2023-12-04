@@ -64,3 +64,6 @@ signal go_to_hub()
 signal load_game() #loaded start hub after press button in main menu
 
 signal enemy_killed()
+
+
+signal add_player_to_board(player_name)

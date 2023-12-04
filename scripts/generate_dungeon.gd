@@ -56,8 +56,8 @@ func generate(height, width, center):
 	#spawn_fog(center, height, width)
 	spawn_goblin(center * tile_size, height, width)
 	create_empty_space(height, width, center)
-	#spawn_light(center, height, width)
-	#spawn_grass(center * tile_size, height * tile_size, width * tile_size)
+	spawn_light(center, height, width)
+	spawn_grass(center * tile_size, height * tile_size, width * tile_size)
 	for x in range(center.x - width, center.x + width):
 		for y in range(center.y - height, center.y + height):
 			Map.set_cell(x, y, 1)
@@ -110,7 +110,7 @@ func spawn_goblin(coord, height, width):
 func random_mob_instance(coord, height, width):
 	randomize()
 	var mob
-	match 3:#randi() % 3 + 1:
+	match 1:#randi() % 3 + 1:
 		1:
 			mob = goblin.instance()
 		2:

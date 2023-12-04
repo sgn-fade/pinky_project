@@ -27,6 +27,19 @@ rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 3 )
 text = "SCORE: "
 
+[node name="enter_name" type="Label" parent="."]
+anchor_left = 0.405
+anchor_top = 0.461
+anchor_right = 0.405
+anchor_bottom = 0.461
+margin_left = -589.6
+margin_top = 143.12
+margin_right = -144.6
+margin_bottom = 228.409
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 3 )
+text = "ENTER NAME:"
+
 [node name="label" type="Label" parent="."]
 anchor_left = 0.405
 anchor_top = 0.461
@@ -44,14 +57,15 @@ custom_fonts/font = ExtResource( 3 )
 text = "YOU Dead"
 
 [node name="restart" type="TextureButton" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -144.943
-margin_top = 188.0
-margin_right = 28.0569
-margin_bottom = 229.0
+margin_left = -169.0
+margin_top = 134.0
+margin_right = 3.99988
+margin_bottom = 175.0
 rect_scale = Vector2( 5.5, 5.5 )
 texture_normal = ExtResource( 1 )
 stretch_mode = 3
@@ -72,14 +86,15 @@ custom_fonts/font = ExtResource( 3 )
 text = "restart"
 
 [node name="quit" type="TextureButton" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -145.0
-margin_top = 253.0
-margin_right = 28.0001
-margin_bottom = 294.0
+margin_left = -166.0
+margin_top = 196.0
+margin_right = 7.00024
+margin_bottom = 237.0
 rect_scale = Vector2( 5.5, 5.5 )
 texture_normal = ExtResource( 1 )
 stretch_mode = 3
@@ -98,3 +113,14 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "quit"
+
+[node name="name_line" type="LineEdit" parent="."]
+margin_left = 1087.0
+margin_top = 679.0
+margin_right = 1483.0
+margin_bottom = 813.0
+custom_fonts/font = ExtResource( 3 )
+
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="text_entered" from="name_line" to="." method="_on_name_line_text_entered"]

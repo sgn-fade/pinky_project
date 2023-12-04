@@ -12,8 +12,7 @@ enum States{
 var current_state = States.GUN
 
 func _ready():
-	if Player.get_weapon() == null:
-		 switch_hands(clear)
+	switch_hands(clear)
 	
 	EventBus.connect("switch_hands_stance", self, "_on_switch_hands_stance")
 

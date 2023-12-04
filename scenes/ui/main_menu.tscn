@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/ui/label.png" type="Texture" id=1]
 [ext_resource path="res://fonts/pixel_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scripts/ui/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://scripts/ui/liderboard.gd" type="Script" id=4]
+[ext_resource path="res://sprites/backgrounds/planet.png" type="Texture" id=5]
 
 [node name="main_menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1922.0
+margin_bottom = 1084.0
+color = Color( 0, 0, 0, 0.407843 )
 
 [node name="play" type="TextureButton" parent="."]
 anchor_left = 0.5
@@ -101,8 +112,6 @@ margin_top = 32.0
 margin_right = 736.0
 margin_bottom = 890.0
 custom_fonts/font = ExtResource( 2 )
-text = "
-"
 script = ExtResource( 4 )
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]

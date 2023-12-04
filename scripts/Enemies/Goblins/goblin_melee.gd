@@ -182,7 +182,8 @@ func attack():
 
 
 func _on_melee_goblin_attack_area_entered(body):
-	if body.name == "player" and current_state != States.DEALS_DAMAGE:
+	
+	if body == Player.get_body() and current_state != States.DEALS_DAMAGE:
 		current_state = States.DEALS_DAMAGE
 		var player_offcet_dir = (-(self.global_position - Player.get_position()).normalized())
 		EventBus.emit_signal("player_take_damage", player_offcet_dir, 10)

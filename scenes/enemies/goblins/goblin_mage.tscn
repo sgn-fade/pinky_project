@@ -28,7 +28,6 @@ scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 2 )
 animation = "attack"
 
-
 [node name="shadow_under" parent="." index="1"]
 modulate = Color( 1, 1, 1, 0.729412 )
 position = Vector2( -78, -24 )
@@ -48,5 +47,4 @@ margin_bottom = 2.00002
 [node name="collision" type="CollisionShape2D" parent="." index="10"]
 position = Vector2( 1, 7 )
 rotation = 1.5708
-
 shape = SubResource( 3 )

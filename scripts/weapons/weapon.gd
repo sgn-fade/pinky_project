@@ -65,7 +65,7 @@ func input(event):
 	if Input.is_action_just_pressed(Buttons_binds["slot6"]):
 		input_key = "slot6"
 	if input_key != null and Spells_buttons[Buttons_binds[input_key]] != null and Spells_buttons[Buttons_binds[input_key]].get_ready():
-
+	
 		Spells_buttons[Buttons_binds[input_key]].cast()
 		EventBus.emit_signal("start_spell_cooldown", Spells_buttons[Buttons_binds[input_key]].cooldown, input_key)
 

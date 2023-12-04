@@ -50,4 +50,5 @@ func load_game():
 
 
 func spawn_player():
+	Player.spawn()
 	add_child(player_camera.instance())

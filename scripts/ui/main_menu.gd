@@ -2,12 +2,14 @@ extends Control
 
 
 func _ready():
-	$liderboard.createBoard()
+	$liderboard.print_board()
+	EventBus.connect("add_player_to_board", self, "_on_add_player")
+	
 
 
-func _on_option_pressed():
-	GlobalWorldInfo.add_player_to_board("We")
-	$liderboard.createBoard()
+func _on_add_player(text):
+	$liderboard.updateBoard(text)
+
 func _on_play_pressed():
 	EventBus.emit_signal("load_game")
 	visible = false

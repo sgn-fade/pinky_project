@@ -5,20 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/pixel_font.tres" beforeDir="false" afterPath="$PROJECT_DIR$/fonts/pixel_font.tres" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/Ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Ui.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/World.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/World.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/enemies/Undeads/skeleton.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/Undeads/skeleton.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/enemies/enemy.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/enemy.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/enemies/goblins/goblin.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/goblins/goblin.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/enemies/goblins/goblin_mage.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/goblins/goblin_mage.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/hands/clear_hands.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/hands/clear_hands.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/hands/magic_hands.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/hands/magic_hands.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/hit_particle.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/hit_particle.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/locations/dungeon.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/locations/dungeon.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/ui/death_screen.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/death_screen.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/ui/main_menu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/main_menu.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Enemies/Goblins/Goblins.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Enemies/Goblins/Goblins.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Enemies/enemy.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Enemies/enemy.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Enemies/Goblins/goblin_melee.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Enemies/Goblins/goblin_melee.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Global_World_Info.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Global_World_Info.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Player_Data.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Player_Data.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Ui.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/World.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/World.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/character.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/character.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/event bus.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/event bus.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/generate_dungeon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_dungeon.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/hands.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/hands.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/particles/sword_base_particle.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/particles/sword_base_particle.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/player_inventory.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player_inventory.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ui/death_screen.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/death_screen.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ui/liderboard.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/liderboard.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/ui/main_menu.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/main_menu.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/weapons/weapon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/weapons/weapon.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/particles/bone.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/particles/bone.png.import" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +43,18 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="671bd554-f911-46c7-bb72-4762b3eddf83" />
+        <option name="url" value="https://github.com/sgn-fade/pinky_project.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -59,11 +87,51 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/Version-_0.0.1_m" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="115" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Version-_0.0.1_m" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="date">
+                    <value>
+                      <list>
+                        <option value="1701598187342" />
+                        <option value="" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

@@ -43,10 +43,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=9]
-
 radius = 8.0
 height = 2.0
-
 
 [node name="skeleton" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
@@ -80,11 +78,9 @@ animation = "move"
 playing = true
 offset = Vector2( 16, -1 )
 
-
 [node name="collision" type="CollisionShape2D" parent="body" index="1"]
 position = Vector2( 1, 4 )
 rotation = 1.5708
-
 shape = SubResource( 9 )
 
 [node name="collision" type="CollisionShape2D" parent="." index="5"]

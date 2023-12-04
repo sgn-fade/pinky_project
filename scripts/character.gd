@@ -3,20 +3,14 @@ extends KinematicBody2D
 var acceleration = 20
 var dash_cooldown = 0
 
-#resources
-var coins = 0
 #stats
 var speed = 20
 var magic_damage = 1
-var hp = 40
 
-var closest_interactive_object = null
 
 var velocity = Vector2.ZERO
-onready var _animated_sprite = get_node("/root/World/player/aSprite")
-onready var dash = get_node("/root/World/Ui/game_ui/dash_indicator")
-onready var ui = get_node("/root/World/Ui")
-var weapon = null
+onready var _animated_sprite = get_node("aSprite")
+
 var input = Vector2.ZERO
 
 var timer := Timer.new()
@@ -66,6 +60,8 @@ func rotating():
 
 
 func _ready():
+	#stats
+	current_state = States.IDLE
 	set_hide_state(true)
 	EventBus.emit_signal("hands_play_animation",0, "idle")
 	#$teleport_ray.add_exception($player_area)
@@ -78,8 +74,9 @@ func _ready():
 	Input.set_mouse_mode(1)
 
 func _input(event):
-	if weapon != null:
-		weapon.input(event)
+	
+	if Player.get_weapon() != null:
+		Player.get_weapon().input(event)
 
 
 func move():
@@ -126,6 +123,7 @@ func move_player(delta):
 	
 
 func dash(delta):
+	var dash = get_node("/root/World/Ui/game_ui/dash_indicator")
 	if Input.is_action_just_pressed("Shift") && dash.ready && current_state != States.DASH:
 		move_position = input * 200
 		
@@ -183,6 +181,7 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 	disable_collision()
 	velocity = velocity.linear_interpolate(player_offcet_dir * 1000, 0.40)
 	move_and_slide(velocity)
+	print(Player.get_hp())
 	if Player.get_hp() <= 0:
 		die()
 	if hp >= 5:
@@ -242,6 +241,5 @@ func teleport(pos):
 func set_inventory_state():
 	_animated_sprite.play("idle")
 	current_state = States.INVENTORY
-
 
 
