@@ -63,6 +63,7 @@ visible = false
 visible = false
 
 [node name="death_screen" parent="." instance=ExtResource( 11 )]
+visible = false
 
 [node name="crosshair" type="KinematicBody2D" parent="."]
 scale = Vector2( 4, 4 )

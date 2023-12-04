@@ -4,7 +4,7 @@ var max_hp = 50
 var coins = 0
 onready var ui = get_node("/root/World/Ui")
 onready var player = get_node("/root/World/player")
-var score = 0
+var score = 50000
 
 func _ready():
 	EventBus.emit_signal("update_character_hp_bar_value", hp, max_hp)

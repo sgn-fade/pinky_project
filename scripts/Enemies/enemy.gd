@@ -6,7 +6,6 @@ var enemy_damage = 1
 onready var damage_label = load("res://scenes/damage_text.tscn")
 var blood_orb_drop = load("res://scenes/blood_orb.tscn")
 var modules_drop = load("res://scenes/modules_drop.tscn")
-onready var gold = load("res://scenes/drops/gold_drop.tscn")
 
 onready var hp_bar = $hp_bar
 onready var collision = $collision
@@ -20,8 +19,9 @@ var damage_label_instance = null
 var damage_to_enemy = null
 
 func _ready():
+	speed = 55
 	speed = 60
-	
+
 	damage_label_instance = damage_label.instance()
 	add_child(damage_label_instance)
 	add_child(white_bar_timer)

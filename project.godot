@@ -9,13 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Enemies",
+"class": "Elementals",
+"language": "GDScript",
+"path": "res://scripts/Enemies/Elementals/Elementals.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemies",
 "language": "GDScript",
 "path": "res://scripts/Enemies/enemy.gd"
+}, {
+"base": "Enemies",
+"class": "Goblins",
+"language": "GDScript",
+"path": "res://scripts/Enemies/Goblins/Goblins.gd"
+}, {
+"base": "Enemies",
+"class": "Undeads",
+"language": "GDScript",
+"path": "res://scripts/Enemies/Undeads/Undeads.gd"
 } ]
 _global_script_class_icons={
-"Enemies": ""
+"Elementals": "",
+"Enemies": "",
+"Goblins": "",
+"Undeads": ""
 }
 
 [application]
