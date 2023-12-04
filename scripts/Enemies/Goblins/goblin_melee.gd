@@ -1,5 +1,5 @@
 extends Goblins
-
+class_name Goblin_melee
 onready var throwing_stone = preload("res://scenes/throwing_stone.tscn")
 onready var attack_area = $body
 onready var sprite = $body/sprite
@@ -27,12 +27,12 @@ enum States {
 
 func _ready():
 	hp = 20
+	speed = 60
+	enemy_damage = 10
 	self.hp_bar.max_value = hp * 10
 	self.hp_bar.value = hp * 10
 	self.white_animation_bar.max_value = hp * 10
 	self.white_animation_bar.value = hp * 10
-	speed = 60
-	enemy_damage = 10
 	spawn_goblin()
 	attack_area.connect("body_entered", self, "_on_melee_goblin_attack_area_entered")
 
