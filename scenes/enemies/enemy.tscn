@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Enemies/enemy.gd" type="Script" id=1]
@@ -6,8 +7,10 @@
 [ext_resource path="res://sprites/enemy_health/enemy_health_middle.png" type="Texture" id=4]
 [ext_resource path="res://sprites/enemy_health/enemy_health_under.png" type="Texture" id=5]
 
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 11, 24 )
+
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
@@ -20,6 +23,7 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
 
 [node name="enemy" type="Node2D"]
 
@@ -57,5 +61,6 @@ texture_progress = ExtResource( 3 )
 texture_progress_offset = Vector2( 0, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="enemy"]
+
 position = Vector2( -1, -24 )
 frames = SubResource( 8 )

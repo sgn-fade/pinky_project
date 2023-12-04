@@ -3,6 +3,7 @@ extends Node2D
 var light = preload("res://scenes/Lights.tscn")
 var goblin = preload("res://scenes/enemies/goblins/goblin_melee.tscn")
 var goblin_mage = preload("res://scenes/enemies/goblins/goblin_mage.tscn")
+var skeleton = preload("res://scenes/enemies/undeads/skeleton.tscn")
 var box = preload("res://scenes/box.tscn")
 var altar = preload("res://scenes/altar.tscn")
 var grass = preload("res://scenes/grass.tscn")
@@ -101,20 +102,25 @@ func spawn_fog(center, height, width):
 func spawn_goblin(coord, height, width):
 	if coord == Vector2.ZERO:
 		return
-	for i in 4:
+	for i in 8:
 		random_mob_instance(coord, height, width)
+		yield(get_tree().create_timer(0.1), "timeout")
 
 
 func random_mob_instance(coord, height, width):
+	randomize()
 	var mob
-	match randi() % 2 + 1:
+	match 3:#randi() % 3 + 1:
 		1:
 			mob = goblin.instance()
 		2:
 			mob = goblin_mage.instance()
+		3:
+			mob = skeleton.instance()
 	$mobs.add_child(mob)
-	mob.global_position = Vector2(coord.x + (randi() % int(width) * 2 - int(width)) * (tile_size / 2.0) , 
-												  coord.y + (randi() % int(height) * 2 - int(height)) * (tile_size / 2.0))
+	mob.global_position = coord
+	mob.move_and_slide( (randi()%10) * Vector2(coord.x + (randi() % int(width) * 2 - int(width)) * (tile_size / 2.0) , 
+												  coord.y + (randi() % int(height) * 2 - int(height)) * (tile_size / 2.0)))
 
 
 func create_center_room():

@@ -19,10 +19,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Enemies/enemy.gd"
 }, {
+"base": "Goblins",
+"class": "Goblin_mage",
+"language": "GDScript",
+"path": "res://scripts/Enemies/Goblins/goblin_mage.gd"
+}, {
+"base": "Goblins",
+"class": "Goblin_melee",
+"language": "GDScript",
+"path": "res://scripts/Enemies/Goblins/goblin_melee.gd"
+}, {
 "base": "Enemies",
 "class": "Goblins",
 "language": "GDScript",
 "path": "res://scripts/Enemies/Goblins/Goblins.gd"
+}, {
+"base": "Undeads",
+"class": "Skelet",
+"language": "GDScript",
+"path": "res://scripts/Enemies/Undeads/skeleton.gd"
 }, {
 "base": "Enemies",
 "class": "Undeads",
@@ -32,7 +47,10 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Elementals": "",
 "Enemies": "",
+"Goblin_mage": "",
+"Goblin_melee": "",
 "Goblins": "",
+"Skelet": "",
 "Undeads": ""
 }
 

@@ -196,7 +196,6 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 	enable_collision()
 
 
-
 func c_shotgun_recoil():
 	var player_offcet_dir = (-(get_global_mouse_position() - global_position).normalized())
 	for i in 8:

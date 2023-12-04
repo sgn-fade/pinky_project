@@ -37,13 +37,16 @@ func _ready():
 	EventBus.connect("damage_to_enemy", self, "_on_damage_to_enemy")
 	EventBus.connect("push_away_enemy", self, "_on_push_away_enemy")
 
-func move(direction):
-	pass
 
 func _process(delta):
 	self.z_index = self.global_position.y / 2
-
-
+	
+func set_direction(dir):
+	direction = dir
+	
+func get_direction():
+	return direction
+	
 func _on_player_body_entered(body):
 	if self == body && body.hp > 0 && Player.get_hp() > 0:
 		var player_offcet_dir = (-(self.global_position - Player.global_position).normalized())
@@ -59,10 +62,11 @@ func enemy_death():
 		queue_free()
 
 func spawn_drop():
-	#var blood_orb = blood_orb_drop.instance()
-	#GlobalWorld.add_child(blood_orb)
-	#blood_orb.global_position = self.global_position
-	pass
+	var blood_orb = blood_orb_drop.instance()
+	GlobalWorldInfo.get_world().add_child(blood_orb)
+	blood_orb.global_position = self.global_position
+	blood_orb.z_index = self.z_index
+
 
 func update_hp():
 	self.hp_bar.value = self.hp * 10
@@ -92,8 +96,7 @@ func fire_damage(body):
 		enemy_death()
 	$period_dmg_particle.emitting = false
 	$status1.visible = false
-	
-	
+
 
 func _on_pulls_body(body, position):
 	pass
@@ -110,19 +113,16 @@ func _on_damage_to_enemy(body, damage, status):
 		chasing_player()
 		update_hp()
 		self.enemy_death()
-		
-#abstract method 
+
+
 func chasing_player():
 	 pass
 
 
 func _on_push_away_enemy(body, velocity):
-	#var t = 0.05
-	#var delta = 0.016
 	if self == body && body.hp >= 1:
 		var distance = 7
 		velocity = velocity.normalized() * distance
-		#velocity = velocity.linear_interpolate(velocity * 150, delta / t)
 		for i in 20:
 			velocity = velocity.normalized() * distance
 			move_and_slide(velocity)
