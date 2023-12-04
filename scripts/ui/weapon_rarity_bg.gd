@@ -9,8 +9,7 @@ func show_weapon(weapon):
 
 func _on_unequip_button_pressed():
 	visible = false
-	EventBus.emit_signal("add_weapon_to_inventory", Player.get_weapon())
-	EventBus.emit_signal("remove_all_cells")
+	EventBus.emit_signal("remove_weapon_from_slot")
 
 
 func _on_main_button_pressed():

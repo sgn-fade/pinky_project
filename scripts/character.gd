@@ -20,13 +20,14 @@ var weapon = null
 var input = Vector2.ZERO
 
 var timer := Timer.new()
-var dash_butt_hit_timer = 0
+
 var dash_speed_const = 1
 var move_position = null
 var direction = 1
 var current_state = States.IDLE
 
 enum States{
+	NONE,
 	IDLE,
 	MOVE,
 	DASH,
@@ -35,20 +36,19 @@ enum States{
 	DEAD,
 }
 func _process(delta):
-	z_index = global_position.y/2
-	dash_butt_hit_timer -= delta
+	z_index = global_position.y / 2
+
 	match current_state:
+		States.NONE:
+			pass
 		States.IDLE:
-			rotating()
+			play_animation("idle")
 			move()
-			die()
 		States.MOVE:
-			rotating()
+			play_animation("move")
 			move()
 			dash(delta)
-			die()
 		States.DASH:
-			rotating()
 			move_player(delta)
 		States.BUTT_HIT_DASH:
 			pass
@@ -66,9 +66,12 @@ func rotating():
 
 
 func _ready():
+	set_hide_state(true)
+	EventBus.emit_signal("hands_play_animation",0, "idle")
 	#$teleport_ray.add_exception($player_area)
 	EventBus.connect("player_take_damage", self, "_on_player_take_damage")
 	EventBus.connect("player_teleport", self, "teleport")
+	EventBus.connect("load_game", self, "load_game")
 	EventBus.connect("player_cast_spell", self, "set_cast_state")
 	timer.one_shot = false
 	add_child(timer)
@@ -85,8 +88,10 @@ func move():
 	current_state = States.MOVE
 	if Input.is_action_pressed("ui_right"):
 		input.x += 1
+		transform.x.x = 1
 	if Input.is_action_pressed("ui_left"):
 		input.x += -1
+		transform.x.x = -1
 	if Input.is_action_pressed("ui_up"):
 		input.y += -1
 	if Input.is_action_pressed("ui_down"):
@@ -100,10 +105,16 @@ func move():
 	elif speed < 80:
 		speed += 5
 	input = input.normalized()
-	_animated_sprite.play(animation)
+
 	velocity = velocity.linear_interpolate(input * speed, acceleration * 0.016)
 	move_and_slide(velocity)
 
+
+
+func play_animation(animation):
+
+	_animated_sprite.play(animation)
+	EventBus.emit_signal("hands_play_animation",0, animation)
 
 func move_player(delta):
 	var t = 0.05
@@ -123,38 +134,29 @@ func dash(delta):
 		$dash_particles2.emitting = true
 		disable_collision()
 		EventBus.emit_signal("dash_cooldown")
-		dash_butt_hit_timer = 0.7
 		character_slowdown()
 		
 
 
+func change_state(state):
+	current_state = state
+
 func die():
-	
-	if Player.get_hp() <= 0:
-		current_state = States.DEAD
-		EventBus.emit_signal("character_dead")
-		ui.visible = false
-		$dead_layer/dead.emitting = true
-		$Light2D.color = "FFFFFF"
-		$Light2D.texture_scale = 0.25
-		$Light2D.scale.x = 1.5
-		$Light2D.energy = 1
-		_animated_sprite.animation = "death"
-		_animated_sprite.stop()
-		_animated_sprite.frame = 0
-		timer.start(0.6)
-		yield(timer, "timeout")
-		_animated_sprite.play("death")
-		timer.start(1.375)
-		yield(timer, "timeout")
-		_animated_sprite.stop()
+	current_state = States.DEAD
+	EventBus.emit_signal("player_dead")
 
 
 func set_idle_state():
 	visible = true
 	current_state = States.IDLE
 
+func set_hide_state(state):
+	visible = !state
+	if state:
+		current_state = States.NONE
 
+func load_game():
+	set_hide_state(false)
 func character_slowdown():
 	speed = 0
 	while speed < 20:
@@ -181,6 +183,8 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 	disable_collision()
 	velocity = velocity.linear_interpolate(player_offcet_dir * 1000, 0.40)
 	move_and_slide(velocity)
+	if Player.get_hp() <= 0:
+		die()
 	if hp >= 5:
 		for i in 3:
 			modulate = "49ffffff"
@@ -200,6 +204,14 @@ func c_shotgun_recoil():
 			timer.start(0.005)
 			yield(timer, "timeout")
 
+func push_body():
+	var player_offcet_dir = (get_global_mouse_position() - global_position).normalized()
+	for i in 8:
+			velocity = velocity.linear_interpolate(player_offcet_dir * 50, 0.40)
+			move_and_slide(velocity)
+			timer.start(0.005)
+			yield(timer, "timeout")
+
 
 func set_cast_state(animation_time, animation_name):
 	current_state = States.SPELL
@@ -214,8 +226,8 @@ func teleport(pos):
 	$teleport_ray.cast_to = pos
 	var global_mouse_pos = get_global_mouse_position()
 	_animated_sprite.play("teleport_start")
-	timer.start(1.25)
-	yield(timer, "timeout")
+	yield(_animated_sprite, "animation_finished")
+	
 	disable_collision()
 	if $teleport_ray.is_colliding():
 		global_position = $teleport_ray.get_collision_point() 
@@ -224,8 +236,7 @@ func teleport(pos):
 		global_position = global_mouse_pos
 	enable_collision()
 	_animated_sprite.play("teleport_end")
-	timer.start(0.833)
-	yield(timer, "timeout")
+	yield(_animated_sprite, "animation_finished")
 	current_state = States.IDLE
 	
 func set_inventory_state():

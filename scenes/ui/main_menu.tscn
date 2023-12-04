@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/ui/label.png" type="Texture" id=1]
+[ext_resource path="res://fonts/pixel_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/ui/main_menu.gd" type="Script" id=3]
+[ext_resource path="res://scripts/ui/liderboard.gd" type="Script" id=4]
+
+[node name="main_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="play" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -126.943
+margin_top = -86.0
+margin_right = 46.057
+margin_bottom = -45.0
+rect_scale = Vector2( 5.5, 5.5 )
+texture_normal = ExtResource( 1 )
+stretch_mode = 3
+
+[node name="play" type="Label" parent="play"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.6012
+margin_top = -17.9546
+margin_right = 266.398
+margin_bottom = 155.624
+rect_scale = Vector2( 0.1, 0.1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "   play
+"
+
+[node name="option" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -126.943
+margin_top = -21.0
+margin_right = 46.057
+margin_bottom = 20.0
+rect_scale = Vector2( 5.5, 5.5 )
+texture_normal = ExtResource( 1 )
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="option"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.2375
+margin_top = -17.9545
+margin_right = 268.762
+margin_bottom = 155.624
+rect_scale = Vector2( 0.1, 0.1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "settings"
+
+[node name="quit" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -127.0
+margin_top = 44.0
+margin_right = 46.0
+margin_bottom = 85.0
+rect_scale = Vector2( 5.5, 5.5 )
+texture_normal = ExtResource( 1 )
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.9286
+margin_top = -17.6429
+margin_right = 276.071
+margin_bottom = 155.936
+rect_scale = Vector2( 0.1, 0.1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "quit"
+
+[node name="liderboard" type="Label" parent="."]
+margin_left = 37.0
+margin_top = 32.0
+margin_right = 736.0
+margin_bottom = 890.0
+custom_fonts/font = ExtResource( 2 )
+text = "
+"
+script = ExtResource( 4 )
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

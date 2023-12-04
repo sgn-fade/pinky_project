@@ -1,16 +1,29 @@
-[gd_scene load_steps=8 format=2]
+
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Enemies/enemy.gd" type="Script" id=1]
+[ext_resource path="res://sprites/enemies/training_stand.png" type="Texture" id=2]
 [ext_resource path="res://sprites/enemy_health/enemy_health_progress.png" type="Texture" id=3]
 [ext_resource path="res://sprites/enemy_health/enemy_health_middle.png" type="Texture" id=4]
 [ext_resource path="res://sprites/enemy_health/enemy_health_under.png" type="Texture" id=5]
-[ext_resource path="res://sprites/light.png" type="Texture" id=7]
+
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 7, 7.5 )
+extents = Vector2( 11, 24 )
 
-[sub_resource type="SpriteFrames" id=12]
-animations = [  ]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 21, 49 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 
 [node name="enemy" type="Node2D"]
 
@@ -21,13 +34,14 @@ collision/safe_margin = 0.008
 script = ExtResource( 1 )
 
 [node name="collision" type="CollisionShape2D" parent="enemy"]
+position = Vector2( -1, -24 )
 shape = SubResource( 6 )
 
 [node name="middle_white_bar" type="TextureProgress" parent="enemy"]
-margin_left = -9.0
-margin_top = -11.0
-margin_right = 28.0
-margin_bottom = 9.0
+margin_left = -11.0
+margin_top = -54.0
+margin_right = 26.0
+margin_bottom = -34.0
 rect_scale = Vector2( 0.5, 0.5 )
 max_value = 60.0
 value = 60.0
@@ -36,10 +50,10 @@ texture_progress = ExtResource( 4 )
 texture_progress_offset = Vector2( 0, 1 )
 
 [node name="hp_bar" type="TextureProgress" parent="enemy"]
-margin_left = -9.0
-margin_top = -11.0
-margin_right = 28.0
-margin_bottom = 9.0
+margin_left = -11.0
+margin_top = -54.0
+margin_right = 26.0
+margin_bottom = -34.0
 rect_scale = Vector2( 0.5, 0.5 )
 max_value = 60.0
 value = 60.0
@@ -47,24 +61,6 @@ texture_progress = ExtResource( 3 )
 texture_progress_offset = Vector2( 0, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="enemy"]
-modulate = Color( 1, 1, 1, 0.388235 )
-frames = SubResource( 12 )
 
-[node name="Light2D" type="Light2D" parent="enemy"]
-texture = ExtResource( 7 )
-offset = Vector2( 0, 4.105 )
-texture_scale = 0.1
-color = Color( 1, 1, 1, 0.686275 )
-energy = 0.88
-shadow_enabled = true
-
-[node name="period_dmg_particle" type="CPUParticles2D" parent="enemy"]
-emitting = false
-amount = 10
-lifetime = 0.5
-speed_scale = 0.3
-lifetime_randomness = 0.14
-emission_shape = 2
-emission_rect_extents = Vector2( 6, 5 )
-gravity = Vector2( 0, -98 )
-color = Color( 0.796078, 0.333333, 0.027451, 1 )
+position = Vector2( -1, -24 )
+frames = SubResource( 8 )

@@ -1,4 +1,4 @@
-extends "res://scripts/weapons/magic_weapon.gd"
+extends "res://scripts/weapons/magic_weapons/magic_weapon.gd"
 var damage_scale = 0
 var magic_wands_affixes = [
 	"magic_damage_increese"

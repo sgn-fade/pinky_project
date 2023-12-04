@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/ui/label.png" type="Texture" id=1]
+[ext_resource path="res://scripts/ui/death_screen.gd" type="Script" id=2]
+[ext_resource path="res://fonts/pixel_font.tres" type="DynamicFont" id=3]
+
+[node name="death_screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1919.0
+margin_bottom = 1084.0
+color = Color( 0.152941, 0.0588235, 0.0588235, 1 )
+
+[node name="score" type="Label" parent="."]
+anchor_left = 0.405
+anchor_top = 0.461
+anchor_right = 0.405
+anchor_bottom = 0.461
+margin_left = -200.6
+margin_top = -51.88
+margin_right = 69.4
+margin_bottom = 33.4095
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 3 )
+text = "SCORE: "
+
+[node name="label" type="Label" parent="."]
+anchor_left = 0.405
+anchor_top = 0.461
+anchor_right = 0.405
+anchor_bottom = 0.461
+margin_left = -456.6
+margin_top = -495.88
+margin_right = -117.6
+margin_bottom = -410.591
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.811765, 0.654902, 1 )
+custom_colors/font_outline_modulate = Color( 0.670588, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.996078, 0.0705882, 0.0705882, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "YOU Dead"
+
+[node name="restart" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.943
+margin_top = 188.0
+margin_right = 28.0569
+margin_bottom = 229.0
+rect_scale = Vector2( 5.5, 5.5 )
+texture_normal = ExtResource( 1 )
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="restart"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.2375
+margin_top = -17.9545
+margin_right = 268.762
+margin_bottom = 155.624
+rect_scale = Vector2( 0.1, 0.1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "restart"
+
+[node name="quit" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -145.0
+margin_top = 253.0
+margin_right = 28.0001
+margin_bottom = 294.0
+rect_scale = Vector2( 5.5, 5.5 )
+texture_normal = ExtResource( 1 )
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.9286
+margin_top = -17.6429
+margin_right = 276.071
+margin_bottom = 155.936
+rect_scale = Vector2( 0.1, 0.1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "quit"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://sprites/ui/main_game_ui_panel.png" type="Texture" id=1]
 [ext_resource path="res://scripts/ui/hp_bar.gd" type="Script" id=2]
@@ -28,17 +28,17 @@ void fragment() {
 
 
     float
-		sdf=length(uv),c=step(sdf,.85),
+		sdf=length(uv),c=step(sdf,0.85) * step(uv.x, 0),
 		
         vB=smoothstep(.1,.9,sin(uv.x+(PI*.5))-.3),
-		vBA=vB*sin(TIME*4.)*.07,
+		vBA=vB*sin((TIME - 2000.0)*4.)*.07,
         
         fW=(sin(((TIME*1.)+uv.x)*2.)*.05)+vBA,
 		bW=(sin(((TIME*-1.)+uv.x)*2.+PI)*.05)-vBA,
 		
         fA=(sin(TIME*4.)*.05)*vB,
         
-        fP=fV * 2.3 +(sin((TIME)*PI)*.1) - 1.1,
+        fP=fV * 2.4 +(sin((TIME)*PI)*.1) - 1.1,
 		
         fF=step(uv.y,(fA+fW)+fP)*c,
 		bF=step(uv.y,(-fA+bW)+fP) * c;
@@ -52,11 +52,54 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/amount = 300
 shader_param/fV = 1.0
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+const float PI = 3.14;
+uniform int amount = 300;
+// fV = fill value
+uniform float fV;
+
+void fragment() {
+	vec2 grid_uv = round(UV * float(amount)) / float(amount);
+    vec2 uv = ((grid_uv / -0.1)) + vec2(1.25,1.25);
+
+
+    float
+		sdf=length(uv),c=step(sdf,0.85) * step(uv.x, 0),
+		
+        vB=smoothstep(.1,.9,sin(uv.x+(PI*.5))-.3),
+		vBA=vB*sin((TIME - 20040.0)*4.)*.07,
+        
+        fW=(sin(((TIME*1.)+uv.x)*2.)*.05)+vBA,
+		bW=(sin(((TIME*-1.)+uv.x)*2.+PI)*.05)-vBA,
+		
+        fA=(sin(TIME*4.)*.05)*vB,
+        
+        fP=fV * 2.4 +(sin((TIME)*PI)*.1) - 1.1,
+		
+        fF=step(uv.y,(fA+fW)+fP)*c,
+		bF=step(uv.y,(-fA+bW)+fP) * c;
+
+    COLOR =
+		vec4(
+		(fF+(clamp(bF-fF,0.,1.)*.8))+
+		clamp(pow((sdf+.01)*
+		((1.-(fF+bF))*c),5.),0.,1.));
+		
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/amount = 300
+shader_param/fV = 1.0
+
 [node name="game_ui" type="Control"]
+pause_mode = 1
 anchor_left = 0.013
 anchor_top = 0.035
 anchor_right = 1.0
@@ -202,6 +245,7 @@ position = Vector2( 29, 28 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="dash_indicator" type="TextureProgress" parent="."]
+pause_mode = 1
 anchor_left = 0.5
 anchor_top = 0.827
 anchor_right = 0.5
@@ -212,7 +256,7 @@ margin_right = 22.5401
 margin_bottom = -22.0663
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 22, 0 )
-max_value = 1000.0
+max_value = 4000.0
 value = 1000.0
 texture_under = ExtResource( 13 )
 texture_progress = ExtResource( 14 )
@@ -266,7 +310,7 @@ margin_right = -914.54
 margin_bottom = -899.869
 script = ExtResource( 2 )
 
-[node name="liquid" type="TextureRect" parent="player_hp"]
+[node name="hp_bar" type="TextureRect" parent="player_hp"]
 modulate = Color( 0.929412, 0.152941, 0.152941, 1 )
 material = SubResource( 2 )
 margin_left = 811.08
@@ -276,6 +320,24 @@ margin_bottom = 1048.2
 rect_scale = Vector2( 18, 18 )
 texture = ExtResource( 8 )
 stretch_mode = 3
+
+[node name="mana_bar" type="TextureRect" parent="player_hp"]
+modulate = Color( 0.230208, 0.239307, 0.8125, 1 )
+material = SubResource( 4 )
+margin_left = 1099.08
+margin_top = 790.2
+margin_right = 1311.08
+margin_bottom = 1048.2
+rect_scale = Vector2( -18, 18 )
+texture = ExtResource( 8 )
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="player_hp"]
+margin_left = 952.08
+margin_top = 837.2
+margin_right = 957.08
+margin_bottom = 1032.2
+color = Color( 0, 0, 0, 1 )
 
 [node name="current_hp" type="Label" parent="player_hp"]
 margin_left = 930.08

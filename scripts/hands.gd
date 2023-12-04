@@ -1,40 +1,39 @@
 extends Node2D
-onready var shotgun = preload("res://scenes/heands_continuum_shotgun.tscn")
-onready var spell = preload("res://scenes/h_spell.tscn")
-
+onready var shotgun = preload("res://scenes/shotgun.tscn")
+onready var magic = preload("res://scenes/hands/magic_hands.tscn")
+onready var clear = preload("res://scenes/hands/clear_hands.tscn")
+onready var melee = preload("res://scenes/hands/melee_hands.tscn")
 enum States{
-	SHOTGUN
-	FIREBALL
+	EMPTY
+	MAGIC
+	GUN
+	MELEE
 }
-var current_state = States.SHOTGUN
+var current_state = States.GUN
 
 func _ready():
+	if Player.get_weapon() == null:
+		 switch_hands(clear)
 	
-	add_child(spell.instance())
+	EventBus.connect("switch_hands_stance", self, "_on_switch_hands_stance")
+
+func _on_switch_hands_stance(weapon):
+	if weapon == null:
+		switch_hands(clear)
+		return
+	match weapon.get_type():
+		"magic":
+			current_state = States.MAGIC
+			switch_hands(magic)
+
+		"melee":
+			current_state = States.MELEE
+			switch_hands(melee)
 
 
-func _process(delta):
+func switch_hands(type):
+	if get_child(0) != null:
+		get_child(0).queue_free()
 	
-	change_stance()
-
-func change_stance():
-	if Input.is_action_just_pressed("F") && current_state != States.FIREBALL:
-		current_state = States.FIREBALL
-		var spell_instance = spell.instance()
-		remove_child(get_child(0))
-		add_child(spell.instance())
-		
-		
-	if Input.is_action_just_pressed("slot_1") && current_state != States.SHOTGUN:
-		current_state = States.SHOTGUN
-		var shotgun_instance = shotgun.instance()
-		remove_child(get_child(0))
-		add_child(shotgun.instance())
-		
-
-func clear_hands():
-	if current_state == States.SHOTGUN:
-		$shotgun.queue_free()
-	elif  current_state == States.FIREBALL:
-		$spell.queue_free()
+	add_child(type.instance())
 

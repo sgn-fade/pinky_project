@@ -3,6 +3,7 @@ onready var sprite = $body/sprite
 onready var body = $body
 var old_goblins_magic_wand = load("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd")
 var fire_book_tome_1 = load("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd")
+var goblin_sword = load("res://scripts/weapons/melee/sword.gd")
 var weapon_list = []
 var weapon = null
 
@@ -10,7 +11,8 @@ var weapon = null
 func _ready():
 	weapon_list.append(old_goblins_magic_wand)
 	weapon_list.append(fire_book_tome_1)
-	weapon = weapon_list.pop_at(randi()%2).new()
+	weapon_list.append(goblin_sword)
+	weapon = goblin_sword.new()
 	EventBus.connect("go_to_hub", self, "go_to_hub")
 
 

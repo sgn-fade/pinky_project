@@ -2,13 +2,14 @@
 extends Enemies
 class_name Goblins
 
+
 var gold_drop = preload("res://scenes/drops/gold_drop.tscn")
+
 var type = "goblin"
 
 
 func _ready():
 	pass
-
 
 func spawn_drop():
 	randomize()

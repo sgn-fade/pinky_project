@@ -14,10 +14,10 @@ var fog_particles = load("res://scenes/particles/fog.tscn")
 
 var tile_size = 64
 var min_size = 2
-var max_size = 1
+var max_size = 2
 var room_count
 
-export var room_generate_count = 2
+export var room_generate_count = 7
 
 onready var Map = $TileMap
 onready var Grass = $grass
@@ -56,8 +56,8 @@ func generate(height, width, center):
 	#spawn_fog(center, height, width)
 	spawn_goblin(center * tile_size, height, width)
 	create_empty_space(height, width, center)
-	spawn_light(center, height, width)
-	spawn_grass(center * tile_size, height * tile_size, width * tile_size)
+	#spawn_light(center, height, width)
+	#spawn_grass(center * tile_size, height * tile_size, width * tile_size)
 	for x in range(center.x - width, center.x + width):
 		for y in range(center.y - height, center.y + height):
 			Map.set_cell(x, y, 1)

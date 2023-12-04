@@ -15,9 +15,8 @@ func _ready():
 	self.white_animation_bar.value = hp * 10
 
 func _process(delta):
-	
 	move(Player.get_position() - global_position)
-	
+
 func move(direction):
 	if hp > 0 && Player.get_hp() > 0 :
 		swap_sprite_direction(direction)

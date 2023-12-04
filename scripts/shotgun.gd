@@ -6,7 +6,6 @@ enum Shotgun_States{
 	BUTT_HIT,
 }
 
-
 func _process(delta):
 	shoot_cooldown -= delta
 	match current_state:
@@ -22,7 +21,7 @@ func _process(delta):
 			shoot()
 		Shotgun_States.BUTT_HIT:
 			rotating()
-	global_position = player.global_position
+	global_position = Player.get_body().get_position()
 
 
 func _ready():
@@ -42,7 +41,7 @@ func shoot():
 			shoot_cooldown <= 0
 	):
 		current_state = Default_States.SHOOT
-		player.character_slowdown()
+		Player.get_body().character_slowdown()
 		ammo -= 1
 		sprite.play("shoot")
 		timer.start(0.27)

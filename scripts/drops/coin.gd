@@ -26,5 +26,5 @@ func move_state():
 	direction = Player.get_position() - self.global_position
 	move_and_slide(direction.normalized() * 100)
 	if (Player.get_position() - self.global_position).length() < 7:
-		Player.set_money(Player.get_money() + 1)
+		Player.set_money(1)
 		self.queue_free()
