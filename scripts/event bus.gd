@@ -36,6 +36,8 @@ signal weapon_in_inventory_choosed(weapon)
 
 
 signal spell_slot_button_choosed(button, equiped)
+signal spell_slot_button_unselected()
+signal spell_cells_light_off()
 signal inventory_cell_choosed(cell)
 
 

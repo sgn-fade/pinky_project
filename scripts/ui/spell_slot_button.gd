@@ -41,6 +41,8 @@ func _input(event):
 		and not Rect2(Vector2(), main_button.rect_size).has_point(get_local_mouse_position())
 		and $menu.playing
 		):
+		
+		EventBus.emit_signal("spell_slot_button_unselected")
 		if rect_scale.x > 1:
 			rect_scale.x -= 0.1
 			rect_scale.y -= 0.1

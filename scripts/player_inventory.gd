@@ -1,5 +1,4 @@
 extends Node
-var selected_module = null
 var item_count = 0
 var module_array = []
 var hands
@@ -16,6 +15,7 @@ func _ready():
 	EventBus.connect("inventory_cell_choosed", self, "_on_inventory_cell_choosed")
 	EventBus.connect("weapon_in_inventory_choosed", self, "_on_weapon_in_inventory_choosed")
 	EventBus.connect("spell_slot_button_choosed", self, "_on_spell_slot_button_choosed")
+	EventBus.connect("spell_slot_button_unselected", self, "_on_spell_slot_button_unselected")
 
 
 func _process(detla):
@@ -67,6 +67,7 @@ func _on_inventory_cell_choosed(cell):
 		EventBus.emit_signal("add_module_to_place", choosed_slot.module, false, "equipment", cell.cell_index)
 		choosed_slot.queue_free()
 
+
 func _on_spell_slot_button_choosed(slot, equiped):
 	if !equiped:
 		choosed_slot = slot
@@ -74,6 +75,11 @@ func _on_spell_slot_button_choosed(slot, equiped):
 		EventBus.emit_signal("add_module_to_place", slot.module, false, "inventory", -1)
 		Player.get_weapon().remove_module_from_weapon(slot.module, slot.index)
 		slot.queue_free()
+
+func _on_spell_slot_button_unselected():
+	yield(get_tree().create_timer(0.1),"timeout")
+	choosed_slot = null
+	EventBus.emit_signal("spell_cells_light_off")
 
 
 func _on_weapons_pressed():
