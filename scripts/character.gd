@@ -204,6 +204,7 @@ func c_shotgun_recoil():
 			yield(timer, "timeout")
 
 func push_body():
+	_animated_sprite.play("idle")
 	var player_offcet_dir = (get_global_mouse_position() - global_position).normalized()
 	for i in 8:
 			velocity = velocity.linear_interpolate(player_offcet_dir * 50, 0.40)

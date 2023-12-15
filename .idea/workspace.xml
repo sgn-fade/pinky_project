@@ -5,36 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/export.rar" beforeDir="false" afterPath="$PROJECT_DIR$/export.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/my_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/Control.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Control.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/World.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/World.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/enemies/Undeads/skeleton.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/Undeads/skeleton.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/enemies/enemy.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/enemy.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/enemies/goblins/goblin.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/goblins/goblin.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/enemies/goblins/goblin_mage.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/goblins/goblin_mage.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/hands/clear_hands.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/hands/clear_hands.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/hands/magic_hands.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/hands/magic_hands.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/hit_particle.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/hit_particle.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/locations/dungeon.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/locations/dungeon.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/ui/death_screen.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/death_screen.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/ui/main_menu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/main_menu.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Enemies/Goblins/goblin_melee.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Enemies/Goblins/goblin_melee.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/enemies/elementals/fire_elemental.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/elementals/fire_elemental.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/locations/hub_zone.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/locations/hub_zone.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/main_character.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main_character.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/weapon_drop.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/weapon_drop.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Enemies/Goblins/goblin_mage.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Enemies/Goblins/goblin_mage.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Global_World_Info.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Global_World_Info.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Player_Data.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Player_Data.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Ui.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/World.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/World.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/character.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/character.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/event bus.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/event bus.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generate_dungeon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_dungeon.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/hands.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/hands.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/particles/sword_base_particle.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/particles/sword_base_particle.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/player_inventory.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player_inventory.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ui/death_screen.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/death_screen.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/drops/weapon_drop.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/drops/weapon_drop.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/game_ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/game_ui.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/ui/liderboard.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/liderboard.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ui/main_menu.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/main_menu.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/weapon.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/weapons/magic_weapon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/weapons/magic_weapon.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/weapons/weapon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/weapons/weapon.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/particles/bone.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/particles/bone.png.import" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,14 +59,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Version__0.0.1&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Version__0.0.1",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -257,12 +257,12 @@ margin_bottom = -22.0663
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 22, 0 )
 max_value = 4000.0
-value = 1000.0
+value = 4000.0
 texture_under = ExtResource( 13 )
 texture_progress = ExtResource( 14 )
 fill_mode = 4
 radial_initial_angle = 301.6
-radial_fill_degrees = 116.0
+radial_fill_degrees = 111.9
 radial_center_offset = Vector2( 0, 7.606 )
 script = ExtResource( 6 )
 

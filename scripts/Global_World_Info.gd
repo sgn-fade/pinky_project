@@ -1,5 +1,4 @@
 extends Node
-
 onready var world = get_node("/root")
 var liderboard = {
 	22032005:"XXXivanmigunXXX",

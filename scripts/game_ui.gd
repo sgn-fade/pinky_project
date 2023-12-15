@@ -5,6 +5,7 @@ func _ready():
 	EventBus.connect("set_spell_icon_to_game", self, "_on_set_spell_icon_to_game")
 	EventBus.connect("start_spell_cooldown", self, "_on_start_spell_cooldown")
 	EventBus.connect("remove_spell_icon_from_game", self, "_on_remove_spell_icon_from_game_ui")
+	EventBus.connect("clear_spell_icons", self, "clear_spell_icons")
 	
 	EventBus.connect("show_module_stats_on_game_screen", self, "_on_show_module_stats_on_game_screen")
 	EventBus.connect("hide_module_stats_on_game_screen", self, "_on_hide_module_stats_on_game_screen")
@@ -36,7 +37,10 @@ func _on_remove_spell_icon_from_game(button):
 func _on_set_spell_icon_to_game(module_icon, button):
 	get_node("spell_slot_panel/%s" % button).texture_progress = module_icon
 
-
+func clear_spell_icons():
+	for node in $spell_slot_panel.get_children():
+		node.texture_progress = null
+	
 func _on_start_spell_cooldown(time, button):
 	var timer := Timer.new()
 	timer.one_shot = false

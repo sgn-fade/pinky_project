@@ -5,17 +5,13 @@ func updateBoard(player_name):
 	
 func print_board():
 	text = ""
-	var liders = {}
+	var liders_int_keys = []
 	for key in GlobalWorldInfo.liderboard.keys():
-		liders[key] = GlobalWorldInfo.liderboard[key]
-	var highest_liders_score = -1
-	var highest_liders_name
-	while liders.size() > 0:
-		highest_liders_score = -1
-		var max_score = -1
-		highest_liders_score = liders.keys().max()
-		highest_liders_name = liders[highest_liders_score]
-
-		liders.erase(highest_liders_score)
+		liders_int_keys.append(int(key))
+	liders_int_keys.sort()
+	
+	for i in range(liders_int_keys.size()):
+		var highest_liders_score = liders_int_keys.pop_at(-1)
+		var highest_liders_name = GlobalWorldInfo.liderboard[String(highest_liders_score)]
 		text += highest_liders_name + " " + str(highest_liders_score) + "\n"
 
