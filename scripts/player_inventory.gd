@@ -1,5 +1,4 @@
 extends Node
-var selected_module = null
 var item_count = 0
 var module_array = []
 var hands
@@ -16,6 +15,7 @@ func _ready():
 	EventBus.connect("inventory_cell_choosed", self, "_on_inventory_cell_choosed")
 	EventBus.connect("weapon_in_inventory_choosed", self, "_on_weapon_in_inventory_choosed")
 	EventBus.connect("spell_slot_button_choosed", self, "_on_spell_slot_button_choosed")
+	EventBus.connect("spell_slot_button_unselected", self, "_on_spell_slot_button_unselected")
 
 
 func _process(detla):
@@ -30,10 +30,11 @@ func fill_cells():
 		current_cell.cell_index = i
 		if cells[i].module != null:
 			var slot = spell_slot_button_scene.instance()
-			slot.init( cells[i].module)
+			slot.init(cells[i].module, i)
 			slot.rect_position = cells[i].position
 			slot.set_equiped(true)
 			$cells.add_child(slot)
+			EventBus.emit_signal("set_spell_icon_to_game", cells[i].module.spell_icon, cells[i].button)
 
 func remove_all_cells():
 	$weapon_slot.visible = true
@@ -49,12 +50,13 @@ func add_weapon_to_inventory(weapon):
 
 func add_module_to_place(module, is_new, place, cell_index):
 	var slot = spell_slot_button_scene.instance()
-	slot.init(module)
+	slot.init(module, cell_index)
 	if place == "inventory":
 		$inventory/modules.add_child(slot)
 		if is_new:
 			slot.set_new_label(true)
 	elif place == "equipment":
+		Player.get_weapon().add_module_to_weapon(module, is_new, place, cell_index)
 		slot.rect_position = cells[cell_index].position
 		slot.set_equiped(true)
 		$cells.add_child(slot)
@@ -65,12 +67,19 @@ func _on_inventory_cell_choosed(cell):
 		EventBus.emit_signal("add_module_to_place", choosed_slot.module, false, "equipment", cell.cell_index)
 		choosed_slot.queue_free()
 
+
 func _on_spell_slot_button_choosed(slot, equiped):
 	if !equiped:
 		choosed_slot = slot
 	else:
 		EventBus.emit_signal("add_module_to_place", slot.module, false, "inventory", -1)
+		Player.get_weapon().remove_module_from_weapon(slot.module, slot.index)
 		slot.queue_free()
+
+func _on_spell_slot_button_unselected():
+	yield(get_tree().create_timer(0.1),"timeout")
+	choosed_slot = null
+	EventBus.emit_signal("spell_cells_light_off")
 
 
 func _on_weapons_pressed():
@@ -82,6 +91,7 @@ func _on_modules_pressed():
 
 func _on_remove_weapon_from_slot():
 	EventBus.emit_signal("add_weapon_to_inventory", Player.get_weapon())
+	EventBus.emit_signal("clear_spell_icons")
 	EventBus.emit_signal("switch_hands_stance", null)
 	Player.set_weapon(null)
 	remove_all_cells()

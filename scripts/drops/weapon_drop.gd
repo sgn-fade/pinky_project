@@ -12,7 +12,7 @@ func _ready():
 	weapon_list.append(old_goblins_magic_wand)
 	weapon_list.append(fire_book_tome_1)
 	weapon_list.append(goblin_sword)
-	weapon = goblin_sword.new()
+	weapon = weapon_list.pop_at(randi()% weapon_list.size()).new()
 	EventBus.connect("go_to_hub", self, "go_to_hub")
 
 

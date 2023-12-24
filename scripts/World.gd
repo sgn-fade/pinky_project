@@ -33,8 +33,8 @@ func go_to_hub():
 	Player.set_position(Vector2.ZERO)
 
 func load_game():
-	go_to_hub()
 	spawn_player()
+	go_to_hub()
 	var drop = weapon_drop.instance()
 	add_child(drop)
 	drop.global_position = Vector2(40, -10)

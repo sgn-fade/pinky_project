@@ -43,7 +43,6 @@ func _process(delta):
 func idle():
 	yield(get_tree().create_timer(randf()), "timeout")
 	current_state = States.IDLE
-
 func searching_player(delta):
 	
 	if current_state != States.SEARCH:

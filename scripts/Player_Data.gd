@@ -1,10 +1,10 @@
 extends Node
-var hp = 10
-var max_hp = 10
+var hp = 50
+var max_hp = 50
 var coins = 0
 onready var ui = get_node("/root/World/Ui")
 onready var player_scene = load("res://scenes/main_character.tscn")
-onready var player = player_scene.instance()
+onready var player = null
 var score = 0
 var weapon = null
 var closest_interactive_object = null
@@ -30,6 +30,10 @@ func get_position():
 func set_position(position):
 	player.global_position = position
 
+func ready():
+	if player != null:
+		return true
+	return false
 
 func get_body():
 	return player
@@ -89,5 +93,6 @@ func restart():
 	player.global_position = Vector2(0, 0)
 
 func spawn():
+	player = player_scene.instance()
 	GlobalWorldInfo.get_world().add_child(player)
 	

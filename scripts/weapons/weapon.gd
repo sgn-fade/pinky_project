@@ -44,10 +44,10 @@ func _ready():
 
 
 func _init():
-	EventBus.connect("add_module_to_place", self, "_on_add_module_to_place")
 	randomize()
-	for i in 4:
-		cells.append(cell.new(positions.pop_at(randi()%positions.size())))
+	if self.get_type() != "melee":
+		for i in 4:
+			cells.append(cell.new(positions.pop_at(randi()%positions.size())))
 
 
 func input(event):
@@ -70,22 +70,22 @@ func input(event):
 		EventBus.emit_signal("start_spell_cooldown", Spells_buttons[Buttons_binds[input_key]].cooldown, input_key)
 
 
-func _on_add_module_to_place(module, new, place, cell_index):
+func add_module_to_weapon(module, new, place, cell_index):
 	if place == "equipment":
 		cells[cell_index].module = module
 		cells[cell_index].button = buttons.pop_at(0)
 		Spells_buttons[Buttons_binds[cells[cell_index].button]] = module
 		EventBus.emit_signal("set_spell_icon_to_game", module.spell_icon, cells[cell_index].button)
-	if place == "inventory" and not new:
+	
+		
+
+func remove_module_from_weapon(module, cell_index):
+	if not module.is_new():
+		EventBus.emit_signal("remove_spell_icon_from_game", cells[cell_index].button)
 		buttons.append(cells[cell_index].button)
 		cells[cell_index].button = null
 		cells[cell_index].module = null
-
-func remove_spell_from_button(button):
-	EventBus.emit_signal("remove_spell_icon_from_game", button)
-	var module = Spells_buttons[button]
-	Spells_buttons[button] = null
-	return module
+		Spells_buttons[cells[cell_index].button] = null
 
 
 func get_spell_from_button(button):
@@ -95,10 +95,17 @@ func get_spell_from_button(button):
 class cell:
 	var button
 	var position
-	var module
+	var cell_index
+	var module setget set_module, get_module
 	var link
 	func _init(pos):
 		module = null
 		position = pos
-		
+	func get_position():
+		return position
+	
+	func get_module():
+		return module
+	func set_module(new_module):
+		module = new_module
 

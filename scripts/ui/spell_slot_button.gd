@@ -1,16 +1,16 @@
 extends Control
 var module = null
 var modules_drop = load("res://scenes/modules_drop.tscn")
-var mouse_focus = false
 onready var new = get_node("button/new_label")
 onready var main_button = get_node("button")
 var equiped = false
+var index = null
 
 
-func init(module_new):
+func init(module_new, cell_index):
 	self.module = module_new
+	self.index = cell_index
 	set_button_texture()
-
 
 func _process(delta):
 	if $menu.animation == "open" and $menu.frame == 10:
@@ -31,6 +31,8 @@ func set_equiped(state):
 func set_new_label(state):
 	new.visible = state
 
+func is_new():
+	return new.visible
 
 func _input(event):
 	if (
@@ -39,6 +41,8 @@ func _input(event):
 		and not Rect2(Vector2(), main_button.rect_size).has_point(get_local_mouse_position())
 		and $menu.playing
 		):
+		
+		EventBus.emit_signal("spell_slot_button_unselected")
 		if rect_scale.x > 1:
 			rect_scale.x -= 0.1
 			rect_scale.y -= 0.1

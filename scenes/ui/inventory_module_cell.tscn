@@ -6,9 +6,7 @@
 [ext_resource path="res://sprites/light.png" type="Texture" id=4]
 
 [node name="cell" type="TextureButton"]
-
 light_mask = 0
-
 margin_left = -11.0
 margin_top = -11.0
 margin_right = 11.0
@@ -20,12 +18,10 @@ texture_hover = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="light" type="Sprite" parent="."]
-
 modulate = Color( 0.917647, 0.270588, 0.270588, 1 )
 show_behind_parent = true
 position = Vector2( 11, 11 )
-scale = Vector2( 0.01, 0.01 )
-
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 4 )
 
 [connection signal="pressed" from="." to="." method="_on_cell_pressed"]

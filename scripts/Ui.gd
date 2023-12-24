@@ -26,6 +26,8 @@ func load_animation():
 
 
 func _process(delta):
+	if !Player.ready():
+		return
 	if Player.get_state() == Player.get_body().States.DEAD:
 		return
 	if Input.is_action_just_pressed("open_inventory"):
