@@ -53,6 +53,6 @@ func _on_damage_area_body_entered(body):
 
 func _on_damage_area_body_exited(body):
 	enemy_inside.erase(body)
-	EventBus.emit_signal("damage_to_enemy", body, 0, "burn")
+	EventBus.emit_signal("damage_to_enemy", body, 5, "burn")
 
 

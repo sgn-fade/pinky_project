@@ -116,11 +116,15 @@ animations = [ {
 
 [node name="fire_eye" type="KinematicBody2D"]
 z_index = 10
+collision_layer = 5
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="damage_area" type="Area2D" parent="."]
 position = Vector2( 0, 6 )
 scale = Vector2( 0.7, 0.7 )
+collision_layer = 5
+collision_mask = 5
 monitorable = false
 
 [node name="collision" type="CollisionShape2D" parent="damage_area"]

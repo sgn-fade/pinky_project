@@ -10,6 +10,7 @@ var modules_drop = load("res://scenes/modules_drop.tscn")
 onready var hp_bar = $hp_bar
 onready var collision = $collision
 onready var white_animation_bar = $middle_white_bar
+onready var status = $status1
 var white_bar_timer := Timer.new()
 var slowdown_timer := Timer.new()
 var timer := Timer.new()
@@ -85,7 +86,7 @@ func slowdown():
 
 
 func fire_damage(body):
-	$status1.visible = true
+	status.visible = true
 	$period_dmg_particle.emitting = true
 	for i in 3:
 		fire_damage_timer.start(1)
@@ -95,7 +96,7 @@ func fire_damage(body):
 		update_hp()
 		enemy_death()
 	$period_dmg_particle.emitting = false
-	$status1.visible = false
+	status.visible = false
 
 
 func _on_pulls_body(body, position):

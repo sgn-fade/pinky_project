@@ -87,3 +87,10 @@ shape = SubResource( 9 )
 position = Vector2( 1, 4 )
 rotation = 1.5708
 shape = SubResource( 9 )
+
+[node name="period_dmg_particle" parent="." index="6"]
+visible = false
+
+[node name="status1" parent="." index="7"]
+position = Vector2( -6, -23 )
+scale = Vector2( 0.2, 0.2 )
