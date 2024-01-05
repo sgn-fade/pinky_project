@@ -1,25 +1,25 @@
 extends CanvasLayer 
-onready var game_ui = $game_ui
-onready var inventory_ui = $inventory_ui
-onready var load_ui = $load_ui
-onready var load_bar = load_ui.get_node("TextureProgress")
-onready var pause_ui = $pause_ui
-onready var altar_ui = $altar_ui
-onready var menu_ui = $menu_ui
-onready var death_ui = $death_screen
-onready var current_ui = menu_ui
+@onready var game_ui = $game_ui
+@onready var inventory_ui = $inventory_ui
+@onready var load_ui = $load_ui
+@onready var load_bar = load_ui.get_node("TextureProgressBar")
+@onready var pause_ui = $pause_ui
+@onready var altar_ui = $altar_ui
+@onready var menu_ui = $menu_ui
+@onready var death_ui = $death_screen
+@onready var current_ui = menu_ui
 
 #TODO: add new melee weapon
 func _ready():
-	EventBus.connect("load_game", self, "load_animation")
-	EventBus.connect("player_dead", self, "_on_player_dead")
+	EventBus.connect("load_game", Callable(self, "load_animation"))
+	EventBus.connect("player_dead", Callable(self, "_on_player_dead"))
 	switch_ui(menu_ui, "ui", false)
 
 func load_animation():
 	load_ui.visible = true
 	for i in 1:
 		load_bar.value = i
-		yield(get_tree().create_timer(randf() / 100), "timeout")
+		await get_tree().create_timer(randf() / 100).timeout
 	current_ui = load_ui
 	Player.get_body().set_idle_state()
 	switch_ui(game_ui, "game", false)

@@ -11,7 +11,6 @@ enum States{
 	SUMMONING,
 }
 var current_state = States.IDLE
-var velocity = Vector2.ZERO
 var acceleration = 1
 var elemental_cooldown = 10
 
@@ -41,7 +40,7 @@ func _process(delta):
 			pass
 
 func idle():
-	yield(get_tree().create_timer(randf()), "timeout")
+	await get_tree().create_timer(randf()).timeout
 	current_state = States.IDLE
 func searching_player(delta):
 	
@@ -51,14 +50,16 @@ func searching_player(delta):
 		var t = 0
 		while(t < 1):
 			t += delta
-			velocity = velocity.linear_interpolate(direction, t)
+			velocity = velocity.lerp(direction, t)
 			
-			velocity = move_and_slide(velocity)
+			set_velocity(velocity)
+			move_and_slide()
+			velocity = velocity
 			if global_position.distance_to(Player.get_position()) < 300 and fireball_cast_cooldown <= 0:
 					cast_fireball()
 					summon_elemental()
-			yield(get_tree().create_timer(delta), "timeout")
-		yield(idle(), "completed")
+			await get_tree().create_timer(delta).timeout
+		await idle()
 		current_state = States.IDLE
 
 
@@ -69,8 +70,8 @@ func randomize_direction():
 func cast_fireball():
 	if fireball_cast_cooldown <= 0 && current_state != States.CASTING:
 		current_state = States.CASTING
-		var fireball_particle = fireball.instance()
-		GlobalWorldInfo.get_world().add_child(fireball_particle)
+		var fireball_particle = fireball.instantiate()
+		GlobalWorldInfo.get_world_3d().add_child(fireball_particle)
 		fireball_particle.global_position = self.global_position
 		fireball_cast_cooldown = 2
 		idle()
@@ -81,8 +82,8 @@ func run():
 func summon_elemental():
 	if elemental_cooldown <= 0 && current_state != States.SUMMONING:
 		current_state = States.SUMMONING
-		var summon = fire_elemental.instance()
-		GlobalWorldInfo.get_world().add_child(summon)
+		var summon = fire_elemental.instantiate()
+		GlobalWorldInfo.get_world_3d().add_child(summon)
 		summon.global_position = self.global_position + Vector2(10, 0)
 		elemental_cooldown = randi()%30+10
 		idle()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://sprites/sphere_animation.png" type="Texture" id=1]
-[ext_resource path="res://sprites/ui/under_load_texture.png" type="Texture" id=2]
-[ext_resource path="res://sprites/ui/progress_load_texture.png" type="Texture" id=3]
+[ext_resource path="res://sprites/sphere_animation.png" type="Texture2D" id=1]
+[ext_resource path="res://sprites/ui/under_load_texture.png" type="Texture2D" id=2]
+[ext_resource path="res://sprites/ui/progress_load_texture.png" type="Texture2D" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -145,10 +145,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.65
 anchor_bottom = 0.636
-margin_left = -1985.0
-margin_top = -1299.0
-margin_right = 1696.0
-margin_bottom = 602.4
+offset_left = -1985.0
+offset_top = -1299.0
+offset_right = 1696.0
+offset_bottom = 602.4
 color = Color( 0, 0, 0, 1 )
 
 [node name="load" type="VBoxContainer" parent="."]
@@ -156,28 +156,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 491.0
-margin_top = 163.0
-margin_right = -440.0
-margin_bottom = -246.0
+offset_left = 491.0
+offset_top = 163.0
+offset_right = -440.0
+offset_bottom = -246.0
 
-[node name="load" type="AnimatedSprite" parent="load"]
+[node name="load" type="AnimatedSprite2D" parent="load"]
 position = Vector2( -463, -103 )
 scale = Vector2( 2.7, 2.95 )
 frames = SubResource( 32 )
 frame = 14
 playing = true
 
-[node name="TextureProgress" type="TextureProgress" parent="."]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -186.0
-margin_top = -180.0
-margin_right = -71.9999
-margin_bottom = -164.0
-rect_scale = Vector2( 3.6, 3.6 )
+offset_left = -186.0
+offset_top = -180.0
+offset_right = -71.9999
+offset_bottom = -164.0
+scale = Vector2( 3.6, 3.6 )
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
 texture_progress_offset = Vector2( 3, 2 )

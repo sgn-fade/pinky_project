@@ -1,10 +1,9 @@
-extends KinematicBody2D
-var velocity = Vector2.ZERO
+extends CharacterBody2D
 var speed = 300
 
 
 func _ready():
-	$area.connect("body_entered", self, "_on_body_entered")
+	$area.connect("body_entered", Callable(self, "_on_body_entered"))
 	var end_position = get_global_mouse_position()
 	global_position = Player.get_position()
 	velocity = end_position - global_position
@@ -13,7 +12,9 @@ func _ready():
 
 func _process(delta):
 	velocity = velocity.normalized() * speed
-	velocity = move_and_slide(velocity) 
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity 
 	
 	
 func delete():

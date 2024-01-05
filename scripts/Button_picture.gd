@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 
 var button_text : String
 

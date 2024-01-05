@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://xbjxamyvlgcc"]
 
-[ext_resource path="res://scenes/Ui.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/World.gd" type="Script" id=7]
+[ext_resource type="PackedScene" uid="uid://qbrrhv0xfcu7" path="res://scenes/Ui.tscn" id="5"]
+[ext_resource type="Script" path="res://scripts/World.gd" id="7"]
 
 [node name="World" type="Node2D"]
-script = ExtResource( 7 )
+script = ExtResource("7")
 
-[node name="Ui" parent="." instance=ExtResource( 5 )]
-pause_mode = 2
+[node name="Ui" parent="." instance=ExtResource("5")]
+process_mode = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 process_priority = -71
-color = Color( 0.313726, 0.313726, 0.313726, 1 )
+color = Color(0.313726, 0.313726, 0.313726, 1)

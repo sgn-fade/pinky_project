@@ -1,7 +1,7 @@
 extends "res://scripts/hands/clear_hands.gd"
 
 func play_animation(animation_time, animation_name):
-	.play_animation(animation_time, animation_name)
+	super.play_animation(animation_time, animation_name)
 	if animation_name == "idle":
 		$particles.gravity.x = 0
 		$particles.gravity.y = -75

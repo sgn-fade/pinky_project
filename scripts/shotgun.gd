@@ -1,7 +1,7 @@
 extends "res://scripts/gun.gd"
 
 var ammo = 4
-onready var bullet = preload("res://scenes/shotgun_bullet.tscn")
+@onready var bullet = preload("res://scenes/shotgun_bullet.tscn")
 enum Shotgun_States{
 	BUTT_HIT,
 }
@@ -29,7 +29,7 @@ func _ready():
 	creating()
 	sprite.play("prep")
 	timer.start(preparation_animation_time)
-	yield(timer, "timeout")
+	await timer.timeout
 	set_idle_state()
 
 
@@ -45,14 +45,14 @@ func shoot():
 		ammo -= 1
 		sprite.play("shoot")
 		timer.start(0.27)
-		yield(timer, "timeout")
+		await timer.timeout
 		$pos/particles.emitting = true
 		$sleeve_particle.emitting = true
 		for i in 6:
 			var bullets_instance = bullet.instance()
 			world.add_child(bullets_instance)
 		timer.start(0.27)
-		yield(timer, "timeout")
+		await timer.timeout
 		set_idle_state()
 		shoot_cooldown = 0.5
 
@@ -70,7 +70,7 @@ func reload():
 		):
 			sprite.play("reload")
 			timer.start(0.4)
-			yield(timer, "timeout")
+			await timer.timeout
 			if current_state != Default_States.RELOAD:
 				return
 			ammo += 1

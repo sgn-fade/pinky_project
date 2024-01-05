@@ -1,11 +1,11 @@
 [gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/particles/fire_pillar.gd" type="Script" id=1]
-[ext_resource path="res://sprites/fire_pillon.png" type="Texture" id=2]
-[ext_resource path="res://sprites/light.png" type="Texture" id=3]
+[ext_resource path="res://sprites/fire_pillon.png" type="Texture2D" id=2]
+[ext_resource path="res://sprites/light.png" type="Texture2D" id=3]
 [ext_resource path="res://sounds/spell_sounds/firepillar_cast_sound.wav" type="AudioStream" id=4]
-[ext_resource path="res://sprites/particles/dash_particles.png" type="Texture" id=5]
-[ext_resource path="res://sprites/particles/1.png" type="Texture" id=6]
+[ext_resource path="res://sprites/particles/dash_particles.png" type="Texture2D" id=5]
+[ext_resource path="res://sprites/particles/1.png" type="Texture2D" id=6]
 
 [sub_resource type="Curve" id=45]
 max_value = 4.0
@@ -111,7 +111,7 @@ animations = [ {
 radius = 24.9999
 height = 44.0
 
-[node name="fire_pillar" type="KinematicBody2D"]
+[node name="fire_pillar" type="CharacterBody2D"]
 collision_layer = 12
 collision_mask = 12
 script = ExtResource( 1 )
@@ -180,7 +180,7 @@ scale_amount = 0.7
 scale_amount_random = 0.3
 color = Color( 0.937255, 0.490196, 0.180392, 0.52549 )
 
-[node name="light2" type="Light2D" parent="."]
+[node name="light2" type="PointLight2D" parent="."]
 position = Vector2( 0, -0.9436 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
@@ -191,7 +191,7 @@ energy = 0.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_filter_smooth = 2.8
 
-[node name="S" type="AnimatedSprite" parent="."]
+[node name="S" type="AnimatedSprite2D" parent="."]
 position = Vector2( -2, -48 )
 frames = SubResource( 23 )
 animation = "cast"
@@ -214,7 +214,7 @@ collision_mask = 12
 rotation = 1.5708
 shape = SubResource( 24 )
 
-[node name="light" type="Light2D" parent="."]
+[node name="light" type="PointLight2D" parent="."]
 position = Vector2( -1, -58.0313 )
 scale = Vector2( 0.071, 1.29771 )
 texture = ExtResource( 3 )

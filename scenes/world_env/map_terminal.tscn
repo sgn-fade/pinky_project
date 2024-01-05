@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://sprites/locations/hub_zone/map_choose_table.png" type="Texture" id=1]
-[ext_resource path="res://sprites/light.png" type="Texture" id=2]
+[ext_resource path="res://sprites/locations/hub_zone/map_choose_table.png" type="Texture2D" id=1]
+[ext_resource path="res://sprites/light.png" type="Texture2D" id=2]
 [ext_resource path="res://scripts/map_env/map_terminal.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=23]
@@ -53,9 +53,9 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="."]
 position = Vector2( -6, -52 )
-polygon = PoolVector2Array( 16, 4, 64, 0, 95, -9, 104, -16, 92, -22, 65, -28, 40, -30, -4, -31, -38, -29, -73, -24, -89, -17, -77, -10, -61, -4, -31, 2, 1, 4 )
+polygon = PackedVector2Array( 16, 4, 64, 0, 95, -9, 104, -16, 92, -22, 65, -28, 40, -30, -4, -31, -38, -29, -73, -24, -89, -17, -77, -10, -61, -4, -31, 2, 1, 4 )
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="."]
 modulate = Color( 0.694118, 0.392157, 0.392157, 1 )
 position = Vector2( 0, -60 )
 scale = Vector2( 1.858, 1 )
@@ -66,7 +66,7 @@ range_z_min = -4096
 range_z_max = 4096
 range_item_cull_mask = 2
 
-[node name="Light2D2" type="Light2D" parent="."]
+[node name="Light2D2" type="PointLight2D" parent="."]
 modulate = Color( 0.694118, 0.392157, 0.392157, 1 )
 position = Vector2( 1, -100 )
 scale = Vector2( 1.858, 1 )
@@ -77,7 +77,7 @@ range_z_min = -4096
 range_z_max = 4096
 range_item_cull_mask = 3
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 2
 position = Vector2( 2, -82 )
 frames = SubResource( 13 )

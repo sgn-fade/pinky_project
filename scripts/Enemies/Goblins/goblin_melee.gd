@@ -1,10 +1,9 @@
 extends Goblins
 class_name Goblin_melee
-onready var throwing_stone = preload("res://scenes/throwing_stone.tscn")
-onready var attack_area = $body
-onready var sprite = $body/sprite
-onready var shadow_under = $body/shadow_under
-var velocity = Vector2.ZERO
+@onready var throwing_stone = preload("res://scenes/throwing_stone.tscn")
+@onready var attack_area = $body
+@onready var sprite = $body/sprite
+@onready var shadow_under = $body/shadow_under
 var throw_cooldown = 0
 var attack_cooldown = 0
 var acceleration = 40
@@ -34,22 +33,22 @@ func _ready():
 	self.white_animation_bar.max_value = hp * 10
 	self.white_animation_bar.value = hp * 10
 	spawn_goblin()
-	attack_area.connect("body_entered", self, "_on_melee_goblin_attack_area_entered")
+	attack_area.connect("body_entered", Callable(self, "_on_melee_goblin_attack_area_entered"))
 
 
 func spawn_goblin():
 	
 	sprite.play("spawn")
 	timer.start(1.4)
-	yield(timer, "timeout")
+	await timer.timeout
 	sprite.play("idle")
 	$middle_white_bar.visible = true
 	$hp_bar.visible = true
 	shadow_under.visible = true
-	$Light2D.visible = true
+	$PointLight2D.visible = true
 	$collision.set_deferred("disabled", false)
 	timer.start(0.5)
-	yield(timer, "timeout")
+	await timer.timeout
 	current_state = States.IDLE
 	
 
@@ -101,16 +100,18 @@ func searching_players(delta):
 			if current_state == States.MOVE:
 				return
 			t += delta
-			velocity = velocity.linear_interpolate(direction, t)
+			velocity = velocity.lerp(direction, t)
 			
-			velocity = move_and_slide(velocity)
+			set_velocity(velocity)
+			move_and_slide()
+			velocity = velocity
 			if global_position.distance_to(Player.get_position()) < 100:
 				current_state = States.MOVE
 				return
-			yield(get_tree().create_timer(delta), "timeout")
+			await get_tree().create_timer(delta).timeout
 		if current_state == States.MOVE:
 			return
-		yield(idle(States.IDLE), "completed")
+		await idle(States.IDLE)
 
 
 func randomize_direction():
@@ -122,14 +123,16 @@ func move(dir):
 	sprite.play("move")
 	if hp > 0 && Player.get_hp() > 0 :
 		current_state = States.MOVE
-		move_and_slide((direction).normalized() * speed)
+		set_velocity((direction).normalized() * speed)
+		move_and_slide()
 		if (direction.length() >= 1000):
 			current_state = States.IDLE
 
 
 func attract(delta):
-	velocity = velocity.linear_interpolate((pull_source - global_position).normalized() * 50, delta / 0.1)
-	move_and_slide(velocity)
+	velocity = velocity.lerp((pull_source - global_position).normalized() * 50, delta / 0.1)
+	set_velocity(velocity)
+	move_and_slide()
 	if (pull_source - global_position).length() <= 3:
 		slowdown()
 		current_state = States.MOVE
@@ -139,7 +142,7 @@ func attract(delta):
 func idle(State):
 	sprite.play("idle")
 	timer.start(randf())
-	yield(timer, "timeout")
+	await timer.timeout
 	current_state = State
 
 
@@ -152,11 +155,11 @@ func throw_stone():
 	):
 		self.throw_cooldown = 3
 		self.current_state = States.THROWING_STONE
-		var current_goblins_stone = throwing_stone.instance()
+		var current_goblins_stone = throwing_stone.instantiate()
 		current_goblins_stone.global_position = global_position
-		GlobalWorldInfo.get_world().add_child(current_goblins_stone)
+		GlobalWorldInfo.get_world_3d().add_child(current_goblins_stone)
 		timer.start(0.5)
-		yield(timer, "timeout")
+		await timer.timeout
 		self.current_state = States.IDLE
 
 
@@ -167,16 +170,17 @@ func attack():
 		current_state = States.ATTACK
 		sprite.play("attack")
 		timer.start(0.8)
-		yield(timer, "timeout")
+		await timer.timeout
 		direction = Player.get_position() - global_position
 		self.attack_area.monitoring = true
 		for i in 4:
-			velocity = velocity.linear_interpolate(direction.normalized() * 320, 0.016 * acceleration)
-			move_and_slide(velocity)
+			velocity = velocity.lerp(direction.normalized() * 320, 0.016 * acceleration)
+			set_velocity(velocity)
+			move_and_slide()
 			timer.start(0.02)
-			yield(timer, "timeout")
+			await timer.timeout
 		timer.start(0.386)
-		yield(timer, "timeout")
+		await timer.timeout
 		idle(States.MOVE)
 		self.attack_area.monitoring = false
 

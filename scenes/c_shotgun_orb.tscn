@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://sprites/c_shotgun_explode.png" type="Texture" id=1]
-[ext_resource path="res://sprites/c_shotgun_2_stage_shoot_particle.png" type="Texture" id=2]
+[ext_resource path="res://sprites/c_shotgun_explode.png" type="Texture2D" id=1]
+[ext_resource path="res://sprites/c_shotgun_2_stage_shoot_particle.png" type="Texture2D" id=2]
 [ext_resource path="res://scenes/bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/c_shotgun_orb.gd" type="Script" id=4]
-[ext_resource path="res://sprites/particles/explode_particle_ord.png" type="Texture" id=5]
+[ext_resource path="res://sprites/particles/explode_particle_ord.png" type="Texture2D" id=5]
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
@@ -86,14 +86,14 @@ animations = [ {
 [node name="bullets" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
 
-[node name="b" type="AnimatedSprite" parent="." index="0"]
+[node name="b" type="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 6 )
 animation = "explode"
 frame = 1
 flip_h = true
 
-[node name="Light2D" parent="." index="2"]
+[node name="PointLight2D" parent="." index="2"]
 texture_scale = 0.2
 color = Color( 0.898039, 0, 1, 1 )
 energy = 0.8

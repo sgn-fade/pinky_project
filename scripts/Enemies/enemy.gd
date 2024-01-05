@@ -1,16 +1,16 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name Enemies
 var speed
 var hp = 1000000
 var enemy_damage = 1
-onready var damage_label = load("res://scenes/damage_text.tscn")
+@onready var damage_label = load("res://scenes/damage_text.tscn")
 var blood_orb_drop = load("res://scenes/blood_orb.tscn")
 var modules_drop = load("res://scenes/modules_drop.tscn")
 
-onready var hp_bar = $hp_bar
-onready var collision = $collision
-onready var white_animation_bar = $middle_white_bar
-onready var status = $status1
+@onready var hp_bar = $hp_bar
+@onready var collision = $collision
+@onready var white_animation_bar = $middle_white_bar
+@onready var status = $status1
 var white_bar_timer := Timer.new()
 var slowdown_timer := Timer.new()
 var timer := Timer.new()
@@ -23,7 +23,7 @@ func _ready():
 	speed = 55
 	speed = 60
 
-	damage_label_instance = damage_label.instance()
+	damage_label_instance = damage_label.instantiate()
 	add_child(damage_label_instance)
 	add_child(white_bar_timer)
 	add_child(slowdown_timer)
@@ -33,10 +33,10 @@ func _ready():
 	white_bar_timer.one_shot = false
 	slowdown_timer.one_shot = false
 	timer.one_shot = false
-	EventBus.connect("pulls_body", self, "_on_pulls_body")
-	EventBus.connect("player_body_entered", self, "_on_player_body_entered")
-	EventBus.connect("damage_to_enemy", self, "_on_damage_to_enemy")
-	EventBus.connect("push_away_enemy", self, "_on_push_away_enemy")
+	EventBus.connect("pulls_body", Callable(self, "_on_pulls_body"))
+	EventBus.connect("player_body_entered", Callable(self, "_on_player_body_entered"))
+	EventBus.connect("damage_to_enemy", Callable(self, "_on_damage_to_enemy"))
+	EventBus.connect("push_away_enemy", Callable(self, "_on_push_away_enemy"))
 
 
 func _process(delta):
@@ -63,8 +63,8 @@ func enemy_death():
 		queue_free()
 
 func spawn_drop():
-	var blood_orb = blood_orb_drop.instance()
-	GlobalWorldInfo.get_world().add_child(blood_orb)
+	var blood_orb = blood_orb_drop.instantiate()
+	GlobalWorldInfo.get_world_3d().add_child(blood_orb)
 	blood_orb.global_position = self.global_position
 	blood_orb.z_index = self.z_index
 
@@ -74,7 +74,7 @@ func update_hp():
 	while(white_animation_bar.value / 10 > self.hp && hp >= 0):
 		white_animation_bar.value -= 1
 		white_bar_timer.start(0.05)
-		yield(white_bar_timer, "timeout")
+		await white_bar_timer.timeout
 
 
 func slowdown():
@@ -82,7 +82,7 @@ func slowdown():
 	while speed < 60:
 		speed += 1
 		slowdown_timer.start(0.1)
-		yield(slowdown_timer, "timeout")
+		await slowdown_timer.timeout
 
 
 func fire_damage(body):
@@ -90,7 +90,7 @@ func fire_damage(body):
 	$period_dmg_particle.emitting = true
 	for i in 3:
 		fire_damage_timer.start(1)
-		yield(fire_damage_timer, "timeout")
+		await fire_damage_timer.timeout
 		if self.hp > 0:
 			hp -= 1
 		update_hp()
@@ -108,7 +108,8 @@ func _on_damage_to_enemy(body, damage, status):
 		if status == "burn":
 			self.fire_damage(body)
 		EventBus.emit_signal("show_damage_value", damage_label_instance, damage)
-		move_and_slide(-direction.normalized() * speed)
+		set_velocity(-direction.normalized() * speed)
+		move_and_slide()
 		body.hp -= damage
 		slowdown()
 		chasing_player()
@@ -117,7 +118,7 @@ func _on_damage_to_enemy(body, damage, status):
 
 
 func chasing_player():
-	 pass
+	pass
 
 
 func _on_push_away_enemy(body, velocity):
@@ -126,6 +127,7 @@ func _on_push_away_enemy(body, velocity):
 		velocity = velocity.normalized() * distance
 		for i in 20:
 			velocity = velocity.normalized() * distance
-			move_and_slide(velocity)
-			yield(get_tree().create_timer(0.01), "timeout")
+			set_velocity(velocity)
+			move_and_slide()
+			await get_tree().create_timer(0.01).timeout
 			distance += 7

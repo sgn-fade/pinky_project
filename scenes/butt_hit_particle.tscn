@@ -28,15 +28,15 @@ extents = Vector2( 2.25, 4 )
 
 [node name="butt_hit_particle" type="Node2D"]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2( 23, 1 )
 scale = Vector2( 2, 2 )
 z_index = 1
 frames = SubResource( 29 )
 animation = "hit"
 
-[node name="Area2D" type="Area2D" parent="AnimatedSprite"]
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 position = Vector2( 0.75, 0 )
 shape = SubResource( 30 )

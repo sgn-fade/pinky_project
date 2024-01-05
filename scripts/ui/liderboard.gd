@@ -12,6 +12,6 @@ func print_board():
 	
 	for i in range(liders_int_keys.size()):
 		var highest_liders_score = liders_int_keys.pop_at(-1)
-		var highest_liders_name = GlobalWorldInfo.liderboard[String(highest_liders_score)]
+		var highest_liders_name = GlobalWorldInfo.liderboard[str(highest_liders_score)]
 		text += highest_liders_name + " " + str(highest_liders_score) + "\n"
 

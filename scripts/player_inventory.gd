@@ -9,29 +9,29 @@ var empty_cell = load("res://scenes/ui/inventory_module_cell.tscn")
 var cells
 
 func _ready():
-	EventBus.connect("add_module_to_place", self, "add_module_to_place")
-	EventBus.connect("remove_weapon_from_slot", self, "_on_remove_weapon_from_slot")
-	EventBus.connect("add_weapon_to_inventory", self, "add_weapon_to_inventory")
-	EventBus.connect("inventory_cell_choosed", self, "_on_inventory_cell_choosed")
-	EventBus.connect("weapon_in_inventory_choosed", self, "_on_weapon_in_inventory_choosed")
-	EventBus.connect("spell_slot_button_choosed", self, "_on_spell_slot_button_choosed")
-	EventBus.connect("spell_slot_button_unselected", self, "_on_spell_slot_button_unselected")
+	EventBus.connect("add_module_to_place", Callable(self, "add_module_to_place"))
+	EventBus.connect("remove_weapon_from_slot", Callable(self, "_on_remove_weapon_from_slot"))
+	EventBus.connect("add_weapon_to_inventory", Callable(self, "add_weapon_to_inventory"))
+	EventBus.connect("inventory_cell_choosed", Callable(self, "_on_inventory_cell_choosed"))
+	EventBus.connect("weapon_in_inventory_choosed", Callable(self, "_on_weapon_in_inventory_choosed"))
+	EventBus.connect("spell_slot_button_choosed", Callable(self, "_on_spell_slot_button_choosed"))
+	EventBus.connect("spell_slot_button_unselected", Callable(self, "_on_spell_slot_button_unselected"))
 
 
 func _process(detla):
-	$coins_indicator/count.text = String(Player.get_money())
+	$coins_indicator/count.text = str(Player.get_money())
 
 func fill_cells():
 	cells = Player.get_weapon().get_cells()
 	for i in range(cells.size()):
-		var current_cell = empty_cell.instance()
+		var current_cell = empty_cell.instantiate()
 		$cells.add_child(current_cell)
-		current_cell.rect_position = cells[i].position
+		current_cell.position = cells[i].position
 		current_cell.cell_index = i
 		if cells[i].module != null:
-			var slot = spell_slot_button_scene.instance()
+			var slot = spell_slot_button_scene.instantiate()
 			slot.init(cells[i].module, i)
-			slot.rect_position = cells[i].position
+			slot.position = cells[i].position
 			slot.set_equiped(true)
 			$cells.add_child(slot)
 			EventBus.emit_signal("set_spell_icon_to_game", cells[i].module.spell_icon, cells[i].button)
@@ -42,14 +42,14 @@ func remove_all_cells():
 		child.queue_free()
 
 func add_weapon_to_inventory(weapon):
-	var card = weapon_card_scene.instance()
+	var card = weapon_card_scene.instantiate()
 	$weapon_inventory/weapons.add_child(card)
 	card.init(weapon)
 	card.get_node("main_button/weapon_texture").texture = weapon.icon
 
 
 func add_module_to_place(module, is_new, place, cell_index):
-	var slot = spell_slot_button_scene.instance()
+	var slot = spell_slot_button_scene.instantiate()
 	slot.init(module, cell_index)
 	if place == "inventory":
 		$inventory/modules.add_child(slot)
@@ -57,7 +57,7 @@ func add_module_to_place(module, is_new, place, cell_index):
 			slot.set_new_label(true)
 	elif place == "equipment":
 		Player.get_weapon().add_module_to_weapon(module, is_new, place, cell_index)
-		slot.rect_position = cells[cell_index].position
+		slot.position = cells[cell_index].position
 		slot.set_equiped(true)
 		$cells.add_child(slot)
 
@@ -77,7 +77,7 @@ func _on_spell_slot_button_choosed(slot, equiped):
 		slot.queue_free()
 
 func _on_spell_slot_button_unselected():
-	yield(get_tree().create_timer(0.1),"timeout")
+	await get_tree().create_timer(0.1).timeout
 	choosed_slot = null
 	EventBus.emit_signal("spell_cells_light_off")
 

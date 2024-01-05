@@ -1,16 +1,16 @@
 extends Area2D
-onready var sprite = $body/sprite
-onready var body = $body
+@onready var sprite = $body/sprite
+@onready var body = $body
 var module = null
 var module_list = []
-onready var fireball_spell = load("res://scripts/spells/fireball_spell.gd")
-onready var fire_pillar_spell = load("res://scripts/spells/fire_pillar_spell.gd")
-onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
-onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
-onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
+@onready var fireball_spell = load("res://scripts/spells/fireball_spell.gd")
+@onready var fire_pillar_spell = load("res://scripts/spells/fire_pillar_spell.gd")
+@onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
+@onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
+@onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
 
 func _ready():
-	EventBus.connect("go_to_hub", self, "go_to_hub")
+	EventBus.connect("go_to_hub", Callable(self, "go_to_hub"))
 	module_list.append(fire_eye_spell)
 	module_list.append(fire_pillar_spell)
 	module_list.append(fire_teleport_spell)
@@ -24,7 +24,7 @@ func go_to_hub():
 
 func _process(delta):
 	body.z_index = global_position.y / 2
-	body.position.y = sin(OS.get_ticks_msec()  * 0.003) * 2
+	body.position.y = sin(Time.get_ticks_msec()  * 0.003) * 2
 	
 	if overlaps_body(Player.get_body()): 
 		
@@ -41,7 +41,7 @@ func _process(delta):
 			$end_particles.emitting = true
 			EventBus.emit_signal("add_module_to_place", module, true, "inventory", -1)
 			EventBus.emit_signal("hide_module_stats_on_game_screen")
-			yield(get_tree().create_timer(0.3), "timeout")
+			await get_tree().create_timer(0.3).timeout
 			Player.set_closest_object(null)
 			queue_free()
 	elif sprite.frame == 1:

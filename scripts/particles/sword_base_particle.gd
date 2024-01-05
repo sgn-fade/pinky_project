@@ -3,8 +3,8 @@ extends Node2D
 func _ready():
 	look_at(get_global_mouse_position())
 	$anim.play("default")
-	$sprite.frame = 0
-	yield($sprite, "animation_finished")
+	$sprite.play("hit")
+	await $sprite.animation_finished
 	queue_free()
 
 

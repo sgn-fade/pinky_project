@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 var direction = Vector2.ZERO
 enum States{
 	IDLE,
@@ -22,7 +22,8 @@ func idle_state():
 		offcet_sign = -1
 	elif y_offcet <= 0:
 		offcet_sign = 1
-	move_and_slide(Vector2(0, offcet_sign))
+	set_velocity(Vector2(0, offcet_sign))
+	move_and_slide()
 	y_offcet += offcet_sign
 	if $area.overlaps_body(Player):
 		current_state = States.MOVE
@@ -30,6 +31,7 @@ func idle_state():
 
 func move_state():
 	direction = Player.global_position - self.global_position
-	move_and_slide(direction.normalized() * 100)
+	set_velocity(direction.normalized() * 100)
+	move_and_slide()
 	if (Player.global_position - self.global_position).length() < 7:
 		self.queue_free()

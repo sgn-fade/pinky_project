@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/altar_ui.gd" type="Script" id=1]
-[ext_resource path="res://sprites/ui/blood_altar_ui_bar_under.png" type="Texture" id=2]
-[ext_resource path="res://sprites/ui/label.png" type="Texture" id=3]
-[ext_resource path="res://fonts/pixel_font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://sprites/ui/blood_altar_ui_bar_progress.png" type="Texture" id=6]
+[ext_resource path="res://sprites/ui/blood_altar_ui_bar_under.png" type="Texture2D" id=2]
+[ext_resource path="res://sprites/ui/label.png" type="Texture2D" id=3]
+[ext_resource path="res://fonts/pixel_font.tres" type="FontFile" id=5]
+[ext_resource path="res://sprites/ui/blood_altar_ui_bar_progress.png" type="Texture2D" id=6]
 
 [node name="altar_ui" type="Control"]
 anchor_right = 1.0
@@ -16,11 +16,11 @@ anchor_left = 0.857
 anchor_top = 0.474
 anchor_right = 0.857
 anchor_bottom = 0.474
-margin_left = -110.56
-margin_top = -159.4
-margin_right = 98.4399
-margin_bottom = 174.6
-rect_scale = Vector2( 1, 1.16 )
+offset_left = -110.56
+offset_top = -159.4
+offset_right = 98.4399
+offset_bottom = 174.6
+scale = Vector2( 1, 1.16 )
 color = Color( 0.227451, 0.227451, 0.227451, 0 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -28,24 +28,24 @@ anchor_left = 0.857
 anchor_top = 0.474
 anchor_right = 0.857
 anchor_bottom = 0.474
-margin_left = -110.56
-margin_top = -159.4
-margin_right = 98.4398
-margin_bottom = 174.6
-rect_scale = Vector2( 1, 1.16 )
+offset_left = -110.56
+offset_top = -159.4
+offset_right = 98.4398
+offset_bottom = 174.6
+scale = Vector2( 1, 1.16 )
 color = Color( 0.227451, 0.227451, 0.227451, 0.372549 )
 
-[node name="orb_progress" type="TextureProgress" parent="."]
+[node name="orb_progress" type="TextureProgressBar" parent="."]
 anchor_left = 0.851
 anchor_top = 0.43
 anchor_right = 0.851
 anchor_bottom = 0.432
-margin_left = -68.08
-margin_top = 136.0
-margin_right = -51.08
-margin_bottom = 202.8
-rect_rotation = -90.0
-rect_scale = Vector2( 16, 2 )
+offset_left = -68.08
+offset_top = 136.0
+offset_right = -51.08
+offset_bottom = 202.8
+rotation = -90.0
+scale = Vector2( 16, 2 )
 value = 100.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 6 )
@@ -57,11 +57,11 @@ anchor_left = 0.85
 anchor_top = 0.5
 anchor_right = 0.85
 anchor_bottom = 0.5
-margin_left = -96.0
-margin_top = 96.0
-margin_right = -48.0
-margin_bottom = 112.0
-rect_scale = Vector2( 4, 4 )
+offset_left = -96.0
+offset_top = 96.0
+offset_right = -48.0
+offset_bottom = 112.0
+scale = Vector2( 4, 4 )
 texture_normal = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="sacrifice"]
@@ -69,12 +69,12 @@ anchor_left = 0.505
 anchor_top = 0.5
 anchor_right = 0.505
 anchor_bottom = 0.5
-margin_left = -16.99
-margin_top = -5.0
-margin_right = 323.09
-margin_bottom = 80.2895
-rect_scale = Vector2( 0.1, 0.1 )
-custom_fonts/font = ExtResource( 5 )
+offset_left = -16.99
+offset_top = -5.0
+offset_right = 323.09
+offset_bottom = 80.2895
+scale = Vector2( 0.1, 0.1 )
+theme_override_fonts/font = ExtResource( 5 )
 text = "sacrifice"
 
 [node name="start" type="TextureButton" parent="."]
@@ -83,11 +83,11 @@ anchor_left = 0.85
 anchor_top = 0.5
 anchor_right = 0.85
 anchor_bottom = 0.5
-margin_left = -96.0
-margin_top = 148.0
-margin_right = -48.0
-margin_bottom = 164.0
-rect_scale = Vector2( 4, 4 )
+offset_left = -96.0
+offset_top = 148.0
+offset_right = -48.0
+offset_bottom = 164.0
+scale = Vector2( 4, 4 )
 toggle_mode = true
 texture_normal = ExtResource( 3 )
 
@@ -96,12 +96,12 @@ anchor_left = 0.505
 anchor_top = 0.5
 anchor_right = 0.505
 anchor_bottom = 0.5
-margin_left = -10.74
-margin_top = -4.75
-margin_right = 329.34
-margin_bottom = 80.5395
-rect_scale = Vector2( 0.1, 0.1 )
-custom_fonts/font = ExtResource( 5 )
+offset_left = -10.74
+offset_top = -4.75
+offset_right = 329.34
+offset_bottom = 80.5395
+scale = Vector2( 0.1, 0.1 )
+theme_override_fonts/font = ExtResource( 5 )
 text = "start"
 
 [connection signal="mouse_entered" from="ColorRect" to="." method="_on_ColorRect_mouse_entered"]

@@ -4,9 +4,9 @@ var damage = 0
 var time_to_free = 0.5
 
 func _ready():
-	margin_top -= 10
+	offset_top -= 10
 	visible = false
-	EventBus.connect("show_damage_value", self, "on_enemy_show_damage_value")
+	EventBus.connect("show_damage_value", Callable(self, "on_enemy_show_damage_value"))
 
 
 func _process(delta):

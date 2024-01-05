@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/bullet.gd" type="Script" id=2]
-[ext_resource path="res://sprites/light.png" type="Texture" id=3]
+[ext_resource path="res://sprites/light.png" type="Texture2D" id=3]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 4.6366, 4.5 )
 
-[node name="bullet" type="KinematicBody2D"]
+[node name="bullet" type="CharacterBody2D"]
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 position = Vector2( 3, 0 )
 shape = SubResource( 8 )
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource( 3 )
 offset = Vector2( 0, 4.105 )
 texture_scale = 0.1

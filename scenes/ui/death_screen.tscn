@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://sprites/ui/label.png" type="Texture" id=1]
+[ext_resource path="res://sprites/ui/label.png" type="Texture2D" id=1]
 [ext_resource path="res://scripts/ui/death_screen.gd" type="Script" id=2]
-[ext_resource path="res://fonts/pixel_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/pixel_font.tres" type="FontFile" id=3]
 
 [node name="death_screen" type="Control"]
 anchor_right = 1.0
@@ -10,8 +10,8 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1919.0
-margin_bottom = 1084.0
+offset_right = 1919.0
+offset_bottom = 1084.0
 color = Color( 0.152941, 0.0588235, 0.0588235, 1 )
 
 [node name="score" type="Label" parent="."]
@@ -19,12 +19,12 @@ anchor_left = 0.405
 anchor_top = 0.461
 anchor_right = 0.405
 anchor_bottom = 0.461
-margin_left = -200.6
-margin_top = -51.88
-margin_right = 69.4
-margin_bottom = 33.4095
-rect_scale = Vector2( 2, 2 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = -200.6
+offset_top = -51.88
+offset_right = 69.4
+offset_bottom = 33.4095
+scale = Vector2( 2, 2 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "SCORE: "
 
 [node name="enter_name" type="Label" parent="."]
@@ -32,12 +32,12 @@ anchor_left = 0.405
 anchor_top = 0.461
 anchor_right = 0.405
 anchor_bottom = 0.461
-margin_left = -589.6
-margin_top = 143.12
-margin_right = -144.6
-margin_bottom = 228.409
-rect_scale = Vector2( 2, 2 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = -589.6
+offset_top = 143.12
+offset_right = -144.6
+offset_bottom = 228.409
+scale = Vector2( 2, 2 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "ENTER NAME:"
 
 [node name="label" type="Label" parent="."]
@@ -45,15 +45,15 @@ anchor_left = 0.405
 anchor_top = 0.461
 anchor_right = 0.405
 anchor_bottom = 0.461
-margin_left = -456.6
-margin_top = -495.88
-margin_right = -117.6
-margin_bottom = -410.591
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.811765, 0.654902, 1 )
-custom_colors/font_outline_modulate = Color( 0.670588, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0.996078, 0.0705882, 0.0705882, 1 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = -456.6
+offset_top = -495.88
+offset_right = -117.6
+offset_bottom = -410.591
+scale = Vector2( 4, 4 )
+theme_override_colors/font_color = Color( 1, 0.811765, 0.654902, 1 )
+theme_override_colors/font_outline_color = Color( 0.670588, 0, 0, 1 )
+theme_override_colors/font_shadow_color = Color( 0.996078, 0.0705882, 0.0705882, 1 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "YOU Dead"
 
 [node name="restart" type="TextureButton" parent="."]
@@ -62,11 +62,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -169.0
-margin_top = 134.0
-margin_right = 3.99988
-margin_bottom = 175.0
-rect_scale = Vector2( 5.5, 5.5 )
+offset_left = -169.0
+offset_top = 134.0
+offset_right = 3.99988
+offset_bottom = 175.0
+scale = Vector2( 5.5, 5.5 )
 texture_normal = ExtResource( 1 )
 stretch_mode = 3
 
@@ -75,14 +75,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -77.2375
-margin_top = -17.9545
-margin_right = 268.762
-margin_bottom = 155.624
-rect_scale = Vector2( 0.1, 0.1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = -77.2375
+offset_top = -17.9545
+offset_right = 268.762
+offset_bottom = 155.624
+scale = Vector2( 0.1, 0.1 )
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "restart"
 
 [node name="quit" type="TextureButton" parent="."]
@@ -91,11 +91,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -166.0
-margin_top = 196.0
-margin_right = 7.00024
-margin_bottom = 237.0
-rect_scale = Vector2( 5.5, 5.5 )
+offset_left = -166.0
+offset_top = 196.0
+offset_right = 7.00024
+offset_bottom = 237.0
+scale = Vector2( 5.5, 5.5 )
 texture_normal = ExtResource( 1 )
 stretch_mode = 3
 
@@ -104,23 +104,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -69.9286
-margin_top = -17.6429
-margin_right = 276.071
-margin_bottom = 155.936
-rect_scale = Vector2( 0.1, 0.1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = -69.9286
+offset_top = -17.6429
+offset_right = 276.071
+offset_bottom = 155.936
+scale = Vector2( 0.1, 0.1 )
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "quit"
 
 [node name="name_line" type="LineEdit" parent="."]
-margin_left = 1087.0
-margin_top = 679.0
-margin_right = 1483.0
-margin_bottom = 813.0
-custom_fonts/font = ExtResource( 3 )
+offset_left = 1087.0
+offset_top = 679.0
+offset_right = 1483.0
+offset_bottom = 813.0
+theme_override_fonts/font = ExtResource( 3 )
 
 [connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
-[connection signal="text_entered" from="name_line" to="." method="_on_name_line_text_entered"]
+[connection signal="text_submitted" from="name_line" to="." method="_on_name_line_text_entered"]

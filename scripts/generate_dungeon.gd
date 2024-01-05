@@ -17,16 +17,16 @@ var min_size = 2
 var max_size = 2
 var room_count
 
-export var room_generate_count = 7
+@export var room_generate_count = 7
 
-onready var Map = $TileMap
-onready var Grass = $grass
+@onready var Map = $TileMap
+@onready var Grass = $grass
 var timer := Timer.new()
 
 func _ready():
 	Player.set_position(Vector2.ZERO)
-	EventBus.connect("survive_event_started", self, "_on_survive_event_started")
-	EventBus.connect("enemy_killed", self, "_on_enemy_killed")
+	EventBus.connect("survive_event_started", Callable(self, "_on_survive_event_started"))
+	EventBus.connect("enemy_killed", Callable(self, "_on_enemy_killed"))
 	add_child(timer)
 	timer.one_shot = false
 	randomize()
@@ -37,7 +37,7 @@ func _on_enemy_killed():
 
 
 func spawn_portal():
-	var object = portal.instance()
+	var object = portal.instantiate()
 	add_child(object)
 	object.global_position = Player.get_position() + Vector2(randi()%20, randi()%20)
 	
@@ -47,9 +47,9 @@ func generate_dungeon():
 func create_empty_space(height, width, center):
 	for x in range(center.x - width - 5, center.x + width + 5):
 		for y in range(center.y - height - 5, center.y + height + 5):
-			if Map.get_cell(x, y) == -1:
+			if Map.get_cell_atlas_coords(Vector2(x, y)) == -1:
 				Map.set_cell(x, y, 0)
-				Map.tile_set.autotile_set_bitmask(1, Vector2(x, y), TileSet.BIND_CENTER)
+				Map.tile_set.terrain_set_bitmask(1, Vector2(x, y))
 
 
 func generate(height, width, center):
@@ -61,13 +61,13 @@ func generate(height, width, center):
 	for x in range(center.x - width, center.x + width):
 		for y in range(center.y - height, center.y + height):
 			Map.set_cell(x, y, 1)
-			Map.tile_set.autotile_set_bitmask(1, Vector2(x, y), TileSet.BIND_CENTER)
+			Map.tile_set.terrain_set_bitmask(1, Vector2(x, y))
 	Map.update_bitmask_region()
 	return Vector2(width, height)
 
 
 func spawn_module(center,height, width):
-	var modules_drop1 = modules_drop.instance()
+	var modules_drop1 = modules_drop.instantiate()
 	add_child(modules_drop1)
 	modules_drop1.global_position = (center + Vector2(randi()%50, randi()%50)) 
 
@@ -83,7 +83,7 @@ func spawn_grass(center, height, width):
 func spawn_light(center, height, width):
 	for x in range(-width/2, width/2, width):
 		for y in range(-height/2, height/2, width/2):
-			var light1 = light.instance()
+			var light1 = light.instantiate()
 			add_child(light1)
 			light1.global_position = (center + Vector2(x, y)) * tile_size
 			light1.z_index = light1.global_position.y / 2
@@ -92,7 +92,7 @@ func spawn_light(center, height, width):
 func spawn_fog(center, height, width):
 	for x in range(-width * tile_size + 20, width * tile_size,  (randi()%70 + 50)):
 		for y in range(-height  * tile_size + 20, height * tile_size, (randi()%70 + 50)):
-			var fog = fog_particles.instance()
+			var fog = fog_particles.instantiate()
 			add_child(fog)
 			fog.global_position = (center * tile_size + Vector2(x, y))
 			fog.z_index = 1024
@@ -104,7 +104,7 @@ func spawn_goblin(coord, height, width):
 		return
 	for i in 8:
 		random_mob_instance(coord, height, width)
-		yield(get_tree().create_timer(0.1), "timeout")
+		await get_tree().create_timer(0.1).timeout
 
 
 func random_mob_instance(coord, height, width):
@@ -112,11 +112,11 @@ func random_mob_instance(coord, height, width):
 	var mob
 	match 1:#randi() % 3 + 1:
 		1:
-			mob = goblin.instance()
+			mob = goblin.instantiate()
 		2:
-			mob = goblin_mage.instance()
+			mob = goblin_mage.instantiate()
 		3:
-			mob = skeleton.instance()
+			mob = skeleton.instantiate()
 	$mobs.add_child(mob)
 	mob.global_position = coord
 	mob.move_and_slide( (randi()%10) * Vector2(coord.x + (randi() % int(width) * 2 - int(width)) * (tile_size / 2.0) , 
@@ -142,7 +142,7 @@ func create_center_room():
 func _on_survive_event_started(room_size, room_center, survive_time):
 	for i in survive_time / 10:
 		timer.start(1)
-		yield(timer, "timeout")
+		await timer.timeout
 		spawn_goblin(room_center, room_size.y, room_size.x)
 
 
@@ -159,7 +159,7 @@ func create_room(room_size, room_center, room_direction):
 	for i in range(0, tonel_size):
 		Map.set_cell(room_center.x + (room_size.x + i) * room_direction.x ,
 					room_center.y + (room_size.y + i) * room_direction.y, 1)
-		Map.tile_set.autotile_set_bitmask(1, Vector2(room_size.x, room_size.y), TileSet.BIND_CENTER)
+		Map.tile_set.terrain_set_bitmask(1, Vector2(room_size.x, room_size.y))
 	current_room_center = Vector2(room_center.x + (room_size.x + tonel_size + room_width) * room_direction.x, #еще раз пересмотреть позже)
 								room_center.y + (room_size.y + tonel_size + room_height) * room_direction.y)
 	Map.update_bitmask_region()

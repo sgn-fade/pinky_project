@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/firepillar_cast_sound.wav-b1aaecfe63b0be90b121e9f55062472a.sample"
+type="AudioStreamWAV"
+uid="uid://dcjcwkamww17v"
+path="res://.godot/imported/firepillar_cast_sound.wav-b1aaecfe63b0be90b121e9f55062472a.sample"
 
 [deps]
 
 source_file="res://sounds/spell_sounds/firepillar_cast_sound.wav"
-dest_files=[ "res://.import/firepillar_cast_sound.wav-b1aaecfe63b0be90b121e9f55062472a.sample" ]
+dest_files=["res://.godot/imported/firepillar_cast_sound.wav-b1aaecfe63b0be90b121e9f55062472a.sample"]
 
 [params]
 

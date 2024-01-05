@@ -1,118 +1,154 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://dl514sg5qlh5w"]
 
-[ext_resource path="res://sprites/ui/label.png" type="Texture" id=1]
-[ext_resource path="res://fonts/pixel_font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://scripts/ui/main_menu.gd" type="Script" id=3]
-[ext_resource path="res://scripts/ui/liderboard.gd" type="Script" id=4]
-[ext_resource path="res://sprites/backgrounds/planet.png" type="Texture" id=5]
+[ext_resource type="Texture2D" uid="uid://cb4673josyno8" path="res://sprites/ui/label.png" id="1"]
+[ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/ui/liderboard.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://dmdfi7vaf011" path="res://sprites/backgrounds/planet.png" id="5"]
 
 [node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
-texture = ExtResource( 5 )
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1922.0
-margin_bottom = 1084.0
-color = Color( 0, 0, 0, 0.407843 )
+visible = false
+layout_mode = 0
+offset_right = 1922.0
+offset_bottom = 1084.0
+color = Color(0, 0, 0, 0.407843)
 
 [node name="play" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -126.943
-margin_top = -86.0
-margin_right = 46.057
-margin_bottom = -45.0
-rect_scale = Vector2( 5.5, 5.5 )
-texture_normal = ExtResource( 1 )
+offset_left = -158.0
+offset_top = -117.0
+offset_right = -110.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("1")
 stretch_mode = 3
 
 [node name="play" type="Label" parent="play"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -79.6012
-margin_top = -17.9546
-margin_right = 266.398
-margin_bottom = 155.624
-rect_scale = Vector2( 0.1, 0.1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 2 )
+offset_left = -21.9649
+offset_top = -6.68182
+offset_right = 324.034
+offset_bottom = 166.897
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2")
 text = "   play
 "
 
 [node name="option" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -126.943
-margin_top = -21.0
-margin_right = 46.057
-margin_bottom = 20.0
-rect_scale = Vector2( 5.5, 5.5 )
-texture_normal = ExtResource( 1 )
+offset_left = -157.0
+offset_top = -50.9999
+offset_right = -109.0
+offset_bottom = -34.9999
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("1")
 stretch_mode = 3
 
 [node name="Label2" type="Label" parent="option"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -77.2375
-margin_top = -17.9545
-margin_right = 268.762
-margin_bottom = 155.624
-rect_scale = Vector2( 0.1, 0.1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 2 )
+offset_left = -20.5104
+offset_top = -6.5
+offset_right = 325.489
+offset_bottom = 167.078
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2")
 text = "settings"
 
 [node name="quit" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -127.0
-margin_top = 44.0
-margin_right = 46.0
-margin_bottom = 85.0
-rect_scale = Vector2( 5.5, 5.5 )
-texture_normal = ExtResource( 1 )
+offset_left = -157.0
+offset_top = 25.0001
+offset_right = -109.0
+offset_bottom = 41.0001
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("1")
 stretch_mode = 3
 
 [node name="Label2" type="Label" parent="quit"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -69.9286
-margin_top = -17.6429
-margin_right = 276.071
-margin_bottom = 155.936
-rect_scale = Vector2( 0.1, 0.1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 2 )
+offset_left = -9.59091
+offset_top = -6.68182
+offset_right = 336.409
+offset_bottom = 166.897
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2")
 text = "quit"
 
 [node name="liderboard" type="Label" parent="."]
-margin_left = 37.0
-margin_top = 32.0
-margin_right = 736.0
-margin_bottom = 890.0
-custom_fonts/font = ExtResource( 2 )
-script = ExtResource( 4 )
+visible = false
+layout_mode = 0
+offset_left = 53.0
+offset_top = 29.0
+offset_right = 752.0
+offset_bottom = 887.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 15
+text = "dwadwdwdawd"
+script = ExtResource("4")
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="option" to="." method="_on_option_pressed"]

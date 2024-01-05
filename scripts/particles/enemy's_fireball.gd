@@ -1,18 +1,18 @@
 extends "res://scripts/bullet.gd"
 var direction = Vector2.ZERO
-onready var area = $Area2D
+@onready var area = $Area2D
 
 var timer := Timer.new()
 
 func _ready():
 	
-	area.connect("body_entered", self, "_on_body_entered")
+	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	speed = 50
 	timer.one_shot = false
 	add_child(timer)
-	$Sprite.play("shoot")
+	$Sprite2D.play("shoot")
 	timer.start(0.1)
-	yield(timer, "timeout")
+	await timer.timeout
 	$particles.emitting = true
 	mouse_pos = Player.get_position()
 	character_pos = global_position
@@ -20,7 +20,9 @@ func _ready():
 func _process(delta):
 	velocity = (mouse_pos - character_pos).normalized() * speed 
 	if (global_position - character_pos).length() < max_distance: 
-		velocity = move_and_slide(velocity) 
+		set_velocity(velocity)
+		move_and_slide()
+		velocity = velocity 
 	else:
 		delete()
 

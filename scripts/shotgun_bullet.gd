@@ -1,6 +1,6 @@
 extends "res://scripts/bullet.gd"
 
-onready var barrel = Player.get_node("hands/shotgun/pos")
+@onready var barrel = Player.get_node("hands/shotgun/pos")
 
 func _ready():
 	global_position = barrel.global_position 

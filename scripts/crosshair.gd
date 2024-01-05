@@ -1,7 +1,7 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 func _ready():
-	EventBus.connect("crosshair_switch", self, "_on_crosshair_switch")
+	EventBus.connect("crosshair_switch", Callable(self, "_on_crosshair_switch"))
 
 func _process(delta):
 	global_position = get_global_mouse_position()
@@ -12,4 +12,4 @@ func _on_crosshair_switch(type):
 	else:
 		$part.emitting = false
 		
-	$Sprite.play(type)
+	$Sprite2D.play(type)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://sprites/light3.png" type="Texture" id=1]
-[ext_resource path="res://sprites/shadow_under.png" type="Texture" id=2]
+[ext_resource path="res://sprites/light3.png" type="Texture2D" id=1]
+[ext_resource path="res://sprites/shadow_under.png" type="Texture2D" id=2]
 [ext_resource path="res://scripts/Lights.gd" type="Script" id=3]
-[ext_resource path="res://sprites/fire_pylon.png" type="Texture" id=5]
+[ext_resource path="res://sprites/fire_pylon.png" type="Texture2D" id=5]
 
 [sub_resource type="RectangleShape2D" id=35]
 extents = Vector2( 5.33334, 3.34072 )
@@ -14,13 +14,13 @@ extents = Vector2( 5.33334, 3.34072 )
 collision_layer = 3
 collision_mask = 3
 
-[node name="Pylon" type="Sprite" parent="StaticBody2D_1"]
+[node name="Pylon" type="Sprite2D" parent="StaticBody2D_1"]
 light_mask = 2
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 3 )
 
-[node name="Light2D" type="Light2D" parent="StaticBody2D_1/Pylon"]
+[node name="PointLight2D" type="PointLight2D" parent="StaticBody2D_1/Pylon"]
 modulate = Color( 0, 0, 0, 1 )
 light_mask = 3
 position = Vector2( 0, -9.33333 )
@@ -75,7 +75,7 @@ radial_accel = 3.67
 radial_accel_random = 0.06
 color = Color( 0.858824, 0.596078, 0.415686, 1 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D_1/Pylon"]
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D_1/Pylon"]
 modulate = Color( 1, 1, 1, 0.45098 )
 position = Vector2( 0, 10 )
 scale = Vector2( 0.666667, 0.954 )

@@ -1,5 +1,5 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 func _ready():
-	yield(get_tree().create_timer(10), "timeout")
+	await get_tree().create_timer(10).timeout
 	self.queue_free()

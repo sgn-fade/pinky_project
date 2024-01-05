@@ -1,12 +1,12 @@
-extends TextureProgress
+extends TextureProgressBar
 
 var cooldown = 4
-var ready = true
+var is_ready = true
 
 
 func _ready():
 	set_process(false)
-	EventBus.connect("dash_cooldown", self, "_on_main_character_dash")
+	EventBus.connect("dash_cooldown", Callable(self, "_on_main_character_dash"))
 
 
 func _process(delta):
@@ -14,13 +14,13 @@ func _process(delta):
 		value += delta * 1000
 		return
 		
-	ready = true
+	is_ready = true
 	set_process(false)
 
 
 func _on_main_character_dash():
 	value = 0
-	ready = false
+	is_ready = false
 	set_process(true)
 
 

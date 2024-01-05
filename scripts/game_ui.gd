@@ -1,16 +1,16 @@
 extends Control
-onready var orb_label = get_node("blood_orb_count/Label")
+@onready var orb_label = get_node("blood_orb_count/Label")
 
 func _ready():
-	EventBus.connect("set_spell_icon_to_game", self, "_on_set_spell_icon_to_game")
-	EventBus.connect("start_spell_cooldown", self, "_on_start_spell_cooldown")
-	EventBus.connect("remove_spell_icon_from_game", self, "_on_remove_spell_icon_from_game_ui")
-	EventBus.connect("clear_spell_icons", self, "clear_spell_icons")
+	EventBus.connect("set_spell_icon_to_game", Callable(self, "_on_set_spell_icon_to_game"))
+	EventBus.connect("start_spell_cooldown", Callable(self, "_on_start_spell_cooldown"))
+	EventBus.connect("remove_spell_icon_from_game", Callable(self, "_on_remove_spell_icon_from_game_ui"))
+	EventBus.connect("clear_spell_icons", Callable(self, "clear_spell_icons"))
 	
-	EventBus.connect("show_module_stats_on_game_screen", self, "_on_show_module_stats_on_game_screen")
-	EventBus.connect("hide_module_stats_on_game_screen", self, "_on_hide_module_stats_on_game_screen")
-	EventBus.connect("show_weapon_stats_on_game_screen", self, "_on_show_weapon_stats_on_game_screen")
-	EventBus.connect("hide_weapon_stats_on_game_screen", self, "_on_hide_weapon_stats_on_game_screen")
+	EventBus.connect("show_module_stats_on_game_screen", Callable(self, "_on_show_module_stats_on_game_screen"))
+	EventBus.connect("hide_module_stats_on_game_screen", Callable(self, "_on_hide_module_stats_on_game_screen"))
+	EventBus.connect("show_weapon_stats_on_game_screen", Callable(self, "_on_show_weapon_stats_on_game_screen"))
+	EventBus.connect("hide_weapon_stats_on_game_screen", Callable(self, "_on_hide_weapon_stats_on_game_screen"))
 	
 
 func _process(delta):
@@ -51,5 +51,5 @@ func _on_start_spell_cooldown(time, button):
 	for i in bar.max_value:
 		bar.value += 1
 		timer.start(0.016)
-		yield(timer, 'timeout')
+		await timer.timeout
 	timer.queue_free()

@@ -1,8 +1,9 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 func _process(delta):
 	update_camera()
-	move_and_slide((Player.get_position() - global_position) * 4)
+	set_velocity((Player.get_position() - global_position) * 4)
+	move_and_slide()
 
 func update_camera():
 	if Input.is_action_just_released("wheel_up"):

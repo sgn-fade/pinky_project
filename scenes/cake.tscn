@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://sprites/cake.png" type="Texture" id=1]
+[ext_resource path="res://sprites/cake.png" type="Texture2D" id=1]
 [ext_resource path="res://scripts/cake.gd" type="Script" id=2]
-[ext_resource path="res://sprites/light.png" type="Texture" id=3]
-[ext_resource path="res://sprites/particles/gold_coin.png" type="Texture" id=4]
-[ext_resource path="res://fonts/pixel_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://sprites/light.png" type="Texture2D" id=3]
+[ext_resource path="res://sprites/particles/gold_coin.png" type="Texture2D" id=4]
+[ext_resource path="res://fonts/pixel_font.tres" type="FontFile" id=5]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 19.0
@@ -47,13 +47,13 @@ tangential_accel = 24.33
 tangential_accel_random = 0.45
 color = Color( 0.996078, 0.984314, 1, 1 )
 
-[node name="kinematic" type="KinematicBody2D" parent="Area2D"]
+[node name="kinematic" type="CharacterBody2D" parent="Area2D"]
 
-[node name="cake" type="AnimatedSprite" parent="Area2D/kinematic"]
+[node name="cake" type="AnimatedSprite2D" parent="Area2D/kinematic"]
 z_as_relative = false
 frames = SubResource( 4 )
 
-[node name="Light2D" type="Light2D" parent="Area2D"]
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
 position = Vector2( 0, 7.5 )
 scale = Vector2( 0.923, 0.787 )
 texture = ExtResource( 3 )
@@ -67,16 +67,16 @@ shadow_filter_smooth = 2.8
 [node name="price" type="Node2D" parent="Area2D"]
 scale = Vector2( 1.25, 1.25 )
 
-[node name="Sprite" type="Sprite" parent="Area2D/price"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/price"]
 position = Vector2( 2, -12.8 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="Area2D/price"]
-margin_left = -7.0
-margin_top = -23.0
-margin_right = 33.0
-margin_bottom = 62.2895
-rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = ExtResource( 5 )
+offset_left = -7.0
+offset_top = -23.0
+offset_right = 33.0
+offset_bottom = 62.2895
+scale = Vector2( 0.2, 0.2 )
+theme_override_fonts/font = ExtResource( 5 )
 text = "5"

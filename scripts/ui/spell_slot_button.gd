@@ -1,8 +1,8 @@
 extends Control
 var module = null
 var modules_drop = load("res://scenes/modules_drop.tscn")
-onready var new = get_node("button/new_label")
-onready var main_button = get_node("button")
+@onready var new = get_node("button/new_label")
+@onready var main_button = get_node("button")
 var equiped = false
 var index = null
 
@@ -38,24 +38,24 @@ func _input(event):
 	if (
 		(Input.is_action_just_pressed("mouse_left_button") 
 			or Input.is_action_just_pressed("mouse_right_button"))
-		and not Rect2(Vector2(), main_button.rect_size).has_point(get_local_mouse_position())
-		and $menu.playing
+		and not Rect2(Vector2(), main_button.size).has_point(get_local_mouse_position())
+		#and $menu.playing
 		):
 		
 		EventBus.emit_signal("spell_slot_button_unselected")
-		if rect_scale.x > 1:
-			rect_scale.x -= 0.1
-			rect_scale.y -= 0.1
+		if scale.x > 1:
+			scale.x -= 0.1
+			scale.y -= 0.1
 		$light.visible = false
-		$menu.playing = false
+		#$menu.playing = false
 		$menu.play("close")
 
 
 func _on_drop_button_pressed():
 	if equiped:
 		return
-	var modules_drops = modules_drop.instance()
-	GlobalWorldInfo.get_world().add_child(modules_drops)
+	var modules_drops = modules_drop.instantiate()
+	GlobalWorldInfo.get_world_3d().add_child(modules_drops)
 	modules_drops.global_position = Player.get_position()
 	modules_drops.module = module
 	modules_drops.z_index = Player.get_z_index()
@@ -68,13 +68,13 @@ func _on_main_button_pressed():
 			$menu.play("close")
 		else:
 			$menu.play("open")
-			yield(get_tree().create_timer(0.3), "timeout")
+			await get_tree().create_timer(0.3).timeout
 			
 
 
 func _on_main_button_mouse_entered():
 	new.visible = false
-	$button.disconnect("mouse_entered", self, "_on_main_button_mouse_entered")
+	$button.disconnect("mouse_entered", Callable(self, "_on_main_button_mouse_entered"))
 
 
 func set_button_texture():
@@ -88,7 +88,7 @@ func set_button_texture():
 
 func _on_equip_button_pressed():
 	$menu.play("close")
-	rect_scale.x += 0.1
-	rect_scale.y += 0.1
+	scale.x += 0.1
+	scale.y += 0.1
 	$light.visible = true
 	EventBus.emit_signal("spell_slot_button_choosed", self, equiped)

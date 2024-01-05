@@ -1,17 +1,17 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://sprites/blood_ord.png" type="Texture" id=1]
+[ext_resource path="res://sprites/blood_ord.png" type="Texture2D" id=1]
 
 [node name="Control" type="Control"]
-margin_right = 200.0
-margin_bottom = 200.0
+offset_right = 200.0
+offset_bottom = 200.0
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-margin_right = 200.0
-margin_bottom = 200.0
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 200.0
+offset_bottom = 200.0
 
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 size = Vector2( 200, 200 )
 
-[node name="Sprite" type="Sprite" parent="ViewportContainer/Viewport"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
 texture = ExtResource( 1 )

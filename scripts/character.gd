@@ -1,5 +1,5 @@
 
-extends KinematicBody2D
+extends CharacterBody2D
 var acceleration = 20
 var dash_cooldown = 0
 
@@ -8,8 +8,7 @@ var speed = 20
 var magic_damage = 1
 
 
-var velocity = Vector2.ZERO
-onready var _animated_sprite = get_node("aSprite")
+@onready var _animated_sprite = get_node("aSprite")
 
 var input = Vector2.ZERO
 
@@ -28,6 +27,7 @@ enum States{
 	BUTT_HIT_DASH,
 	SPELL,
 	DEAD,
+	INVENTORY
 }
 func _process(delta):
 	z_index = global_position.y / 2
@@ -65,10 +65,10 @@ func _ready():
 	set_hide_state(true)
 	EventBus.emit_signal("hands_play_animation",0, "idle")
 	#$teleport_ray.add_exception($player_area)
-	EventBus.connect("player_take_damage", self, "_on_player_take_damage")
-	EventBus.connect("player_teleport", self, "teleport")
-	EventBus.connect("load_game", self, "load_game")
-	EventBus.connect("player_cast_spell", self, "set_cast_state")
+	EventBus.connect("player_take_damage", Callable(self, "_on_player_take_damage"))
+	EventBus.connect("player_teleport", Callable(self, "teleport"))
+	EventBus.connect("load_game", Callable(self, "load_game"))
+	EventBus.connect("player_cast_spell", Callable(self, "set_cast_state"))
 	timer.one_shot = false
 	add_child(timer)
 	Input.set_mouse_mode(1)
@@ -103,8 +103,9 @@ func move():
 		speed += 5
 	input = input.normalized()
 
-	velocity = velocity.linear_interpolate(input * speed, acceleration * 0.016)
-	move_and_slide(velocity)
+	velocity = velocity.lerp(input * speed, acceleration * 0.016)
+	set_velocity(velocity)
+	move_and_slide()
 
 
 
@@ -115,10 +116,11 @@ func play_animation(animation):
 
 func move_player(delta):
 	var t = 0.05
-	velocity = velocity.linear_interpolate(move_position, 0.016 / t)
+	velocity = velocity.lerp(move_position, 0.016 / t)
 	if velocity.length() >= move_position.length() - 1:
 		current_state = States.IDLE
-	move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
 	dash_speed_const += 1
 	
 
@@ -160,17 +162,17 @@ func character_slowdown():
 	while speed < 20:
 		speed += 5
 		timer.start(0.05)
-		yield(timer, "timeout")
+		await timer.timeout
 
 
 func disable_collision():
-	set_collision_mask_bit(2, false)
-	$player_area.set_collision_mask_bit(2, false)
+	set_collision_mask_value(2, false)
+	$player_area.set_collision_mask_value(2, false)
 
 
 func enable_collision():
-	$player_area.set_collision_mask_bit(2, true)
-	set_collision_mask_bit(2, true)
+	$player_area.set_collision_mask_value(2, true)
+	set_collision_mask_value(2, true)
 
 
 func _on_player_take_damage(player_offcet_dir, enemy_damage):
@@ -179,8 +181,9 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 	var max_hp = Player.get_max_hp() 
 	EventBus.emit_signal("update_character_hp_bar_value", hp, max_hp)
 	disable_collision()
-	velocity = velocity.linear_interpolate(player_offcet_dir * 1000, 0.40)
-	move_and_slide(velocity)
+	velocity = velocity.lerp(player_offcet_dir * 1000, 0.40)
+	set_velocity(velocity)
+	move_and_slide()
 	print(Player.get_hp())
 	if Player.get_hp() <= 0:
 		die()
@@ -188,45 +191,47 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 		for i in 3:
 			modulate = "49ffffff"
 			timer.start(0.07)
-			yield(timer, "timeout")
+			await timer.timeout
 			modulate = "ffffff"
 			timer.start(0.07)
-			yield(timer, "timeout")
+			await timer.timeout
 	enable_collision()
 
 
 func c_shotgun_recoil():
 	var player_offcet_dir = (-(get_global_mouse_position() - global_position).normalized())
 	for i in 8:
-			velocity = velocity.linear_interpolate(player_offcet_dir * 20, 0.40)
-			move_and_slide(velocity)
+			velocity = velocity.lerp(player_offcet_dir * 20, 0.40)
+			set_velocity(velocity)
+			move_and_slide()
 			timer.start(0.005)
-			yield(timer, "timeout")
+			await timer.timeout
 
 func push_body():
 	_animated_sprite.play("idle")
 	var player_offcet_dir = (get_global_mouse_position() - global_position).normalized()
 	for i in 8:
-			velocity = velocity.linear_interpolate(player_offcet_dir * 50, 0.40)
-			move_and_slide(velocity)
+			velocity = velocity.lerp(player_offcet_dir * 50, 0.40)
+			set_velocity(velocity)
+			move_and_slide()
 			timer.start(0.005)
-			yield(timer, "timeout")
+			await timer.timeout
 
 
 func set_cast_state(animation_time, animation_name):
 	current_state = States.SPELL
 	_animated_sprite.play(animation_name)
 	timer.start(animation_time)
-	yield(timer, "timeout")
+	await timer.timeout
 	current_state = States.IDLE
 
 
 func teleport(pos):
 	current_state = States.SPELL
-	$teleport_ray.cast_to = pos
+	$teleport_ray.target_position = pos
 	var global_mouse_pos = get_global_mouse_position()
 	_animated_sprite.play("teleport_start")
-	yield(_animated_sprite, "animation_finished")
+	await _animated_sprite.animation_finished
 	
 	disable_collision()
 	if $teleport_ray.is_colliding():
@@ -236,7 +241,7 @@ func teleport(pos):
 		global_position = global_mouse_pos
 	enable_collision()
 	_animated_sprite.play("teleport_end")
-	yield(_animated_sprite, "animation_finished")
+	await _animated_sprite.animation_finished
 	current_state = States.IDLE
 	
 func set_inventory_state():

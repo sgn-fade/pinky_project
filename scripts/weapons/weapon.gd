@@ -96,7 +96,7 @@ class cell:
 	var button
 	var position
 	var cell_index
-	var module setget set_module, get_module
+	var module : get = get_module, set = set_module
 	var link
 	func _init(pos):
 		module = null

@@ -1,7 +1,7 @@
 extends StaticBody2D
 var player_near
-onready var ui = get_node("/root/World/Ui")
-onready var world = get_node("/root")
+@onready var ui = get_node("/root/World/Ui")
+@onready var world = get_node("/root")
 var room_center
 var room_height
 var room_width
@@ -9,7 +9,7 @@ var current_altar
 
 
 func _ready():
-	EventBus.connect("spheres_donated", self, "_on_spheres_donated")
+	EventBus.connect("spheres_donated", Callable(self, "_on_spheres_donated"))
 
 
 func _on_area_area_exited(area):

@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://sprites/light.png" type="Texture" id=1]
-[ext_resource path="res://sprites/fireball.png" type="Texture" id=2]
+[ext_resource path="res://sprites/light.png" type="Texture2D" id=1]
+[ext_resource path="res://sprites/fireball.png" type="Texture2D" id=2]
 [ext_resource path="res://scripts/fireball.gd" type="Script" id=3]
-[ext_resource path="res://sprites/particles/dash_particles.png" type="Texture" id=4]
+[ext_resource path="res://sprites/particles/dash_particles.png" type="Texture2D" id=4]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
@@ -55,7 +55,7 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="fireball" type="KinematicBody2D"]
+[node name="fireball" type="CharacterBody2D"]
 scale = Vector2( 0.4, 0.4 )
 z_index = 9
 collision_layer = 3
@@ -86,12 +86,12 @@ scale_amount = 0.8
 scale_amount_random = 0.3
 color = Color( 0.921569, 0.305882, 0, 1 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2( 1.56944, 1.56944 )
 frames = SubResource( 12 )
 animation = "shoot"
 
-[node name="light" type="Light2D" parent="."]
+[node name="light" type="PointLight2D" parent="."]
 position = Vector2( 2.5, 2.5 )
 scale = Vector2( 0.923, 0.787 )
 texture = ExtResource( 1 )

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 var direction = Vector2.ZERO
 enum States{
 	IDLE,
@@ -24,7 +24,8 @@ func idle_state():
 
 func move_state():
 	direction = Player.get_position() - self.global_position
-	move_and_slide(direction.normalized() * 100)
+	set_velocity(direction.normalized() * 100)
+	move_and_slide()
 	if (Player.get_position() - self.global_position).length() < 7:
 		Player.set_money(1)
 		self.queue_free()

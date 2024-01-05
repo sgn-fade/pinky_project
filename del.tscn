@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgg3usiff8lce"]
+
+[ext_resource type="Script" path="res://delete.gd" id="1_jw15v"]
+[ext_resource type="Texture2D" uid="uid://cb4673josyno8" path="res://sprites/ui/label.png" id="2_av2jy"]
+[ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="3_1rnip"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jw15v")
+
+[node name="play" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -499.943
+offset_top = -176.0
+offset_right = -326.943
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("2_av2jy")
+stretch_mode = 3
+
+[node name="play" type="Label" parent="play"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.9649
+offset_top = -6.68182
+offset_right = 324.034
+offset_bottom = 166.897
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_1rnip")
+text = "   play
+"
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]

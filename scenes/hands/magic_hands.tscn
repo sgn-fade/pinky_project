@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/hands/clear_hands.tscn" type="PackedScene" id=1]
-[ext_resource path="res://sprites/particles/dash_particles.png" type="Texture" id=2]
+[ext_resource path="res://sprites/particles/dash_particles.png" type="Texture2D" id=2]
 [ext_resource path="res://scripts/hands/magic_stance.gd" type="Script" id=3]
 
 [node name="clear_hands" instance=ExtResource( 1 )]

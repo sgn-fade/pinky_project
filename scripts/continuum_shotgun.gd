@@ -1,7 +1,7 @@
 extends "res://scripts/gun.gd"
 
-onready var bullet = preload("res://scenes/continuum_shotgun_bullet.tscn")
-onready var orb = preload("res://scenes/c_shotgun_orb.tscn")
+@onready var bullet = preload("res://scenes/continuum_shotgun_bullet.tscn")
+@onready var orb = preload("res://scenes/c_shotgun_orb.tscn")
 
 var ammo = 6
 
@@ -71,7 +71,7 @@ func shoot_stage_1():
 			world.add_child(bullets_instance)
 	shoot_charge = 0
 	timer.start(0.583)
-	yield(timer, "timeout")
+	await timer.timeout
 	set_idle_state()
 
 
@@ -86,7 +86,7 @@ func shoot_stage_3():
 	world.add_child(orb_instance)
 	shoot_charge = 0
 	timer.start(0.583)
-	yield(timer, "timeout")
+	await timer.timeout
 	set_idle_state()
 
 

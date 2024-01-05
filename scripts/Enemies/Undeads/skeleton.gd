@@ -5,7 +5,7 @@ func _process(delta):
 	pass
 	
 func _ready():
-	sprite = $body/Sprite
+	sprite = $body/Sprite2D
 	body = $body
 	hp = 15
 	self.hp_bar.max_value = hp * 10
@@ -14,7 +14,7 @@ func _ready():
 	self.white_animation_bar.value = hp * 10
 	speed = 35
 	enemy_damage = 4
-	$body.connect("body_entered", self, "skeleton_attack")
+	$body.connect("body_entered", Callable(self, "skeleton_attack"))
 	
 	
 	
@@ -25,13 +25,13 @@ func skeleton_attack():
 
 func spawn_drop():
 	randomize()
-	var modules_drops = modules_drop.instance()
-	GlobalWorldInfo.get_world().add_child(modules_drops)
+	var modules_drops = modules_drop.instantiate()
+	GlobalWorldInfo.get_world_3d().add_child(modules_drops)
 	modules_drops.global_position = self.global_position
 	modules_drops.z_index = self.z_index
 	for i in randi() % 4 + 1:
-		var bones = skelet_drop.instance()
-		GlobalWorldInfo.get_world().add_child(bones)
+		var bones = skelet_drop.instantiate()
+		GlobalWorldInfo.get_world_3d().add_child(bones)
 		bones.rotation_degrees = randi() % 180
 		bones.global_position = self.global_position + Vector2(randi()%11 - 5, randi()%11 - 5)
 		bones.z_index = self.z_index

@@ -2,8 +2,8 @@ extends Node
 var spell_icon = load("res://sprites/spell_icons/fire_eye_spell_icon.png")
 var rarity = "bronze"
 var fire_eye
-var ready = true
-var cooldown = 3
+var is_ready = true
+var cooldown_time = 3
 var animation_name = "pillar_cast"
 
 func _init():
@@ -11,14 +11,14 @@ func _init():
 	
 func cast():
 	cooldown()
-	GlobalWorldInfo.get_world().add_child(fire_eye.instance())
+	GlobalWorldInfo.get_world_3d().add_child(fire_eye.instantiate())
 	EventBus.emit_signal("hands_play_animation", 1.5, animation_name)
 	
 func cooldown():
-	ready = false
-	yield(GlobalWorldInfo.get_world().get_tree().create_timer(cooldown), "timeout")
-	ready = true
+	is_ready = false
+	await GlobalWorldInfo.get_world_3d().get_tree().create_timer(cooldown).timeout
+	is_ready = true
 
 
 func get_ready():
-	return ready
+	return is_ready

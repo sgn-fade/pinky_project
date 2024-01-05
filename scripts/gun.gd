@@ -1,8 +1,8 @@
 extends StaticBody2D
 
-onready var world = get_node("/root/World")
-onready var player_sprite = get_node("/root/World/main_character/AnimatedSprite")
-onready var sprite = $sprite
+@onready var world = get_node("/root/World")
+@onready var player_sprite = get_node("/root/World/main_character/AnimatedSprite2D")
+@onready var sprite = $sprite
 var shoot_cooldown = 0
 var timer := Timer.new()
 var preparation_animation_time = 0
