@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://scripts/ui/hp_bar.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/spell_module_game_discription.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/ui/weapon_discription.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://e54psqwy45xn" path="res://scenes/ui/weapon_discription.tscn" id="5"]
 [ext_resource type="Script" path="res://scripts/dash_indicator.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://dww12tk5tyxfd" path="res://sprites/ui/spell_game_colldown_icon_background.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://2lj20o8vssmt" path="res://sprites/ui/health_bar_progress.png" id="8"]
 [ext_resource type="Script" path="res://scripts/survive_timer.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://d2w1882udcmvp" path="res://sprites/blood_ord.png" id="11"]
-[ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="12"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12"]
 [ext_resource type="Texture2D" uid="uid://bj1emqivewhnn" path="res://sprites/ui/dash_progress_bar_under.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://dfvw2pdfwsbsm" path="res://sprites/ui/dash_progress_bar_progress.png" id="14"]
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="15"]
@@ -392,7 +392,8 @@ pivot_offset = Vector2(0, 0)
 
 [node name="weapon_discription" parent="." instance=ExtResource("5")]
 visible = false
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.885
 anchor_top = 0.5
 anchor_right = 0.885

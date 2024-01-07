@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource path="res://fonts/pixel_font.tres" type="FontFile" id=1]
-[ext_resource path="res://scripts/damage_text.gd" type="Script" id=2]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="1"]
+[ext_resource type="Script" path="res://scripts/damage_text.gd" id="2"]
 
 [node name="value" type="Label"]
 offset_left = -10.0

@@ -1,11 +1,9 @@
-
 [gd_scene load_steps=4 format=3 uid="uid://bpjqtcit8p7yr"]
 
-
-
 [ext_resource type="Texture2D" uid="uid://2pjq3knexr2h" path="res://sprites/ui/square_label.png" id="1"]
-[ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="2"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="2"]
 [ext_resource type="Script" path="res://scripts/Button_picture.gd" id="3"]
+
 
 [node name="Button_picture" type="Sprite2D"]
 texture = ExtResource("1")

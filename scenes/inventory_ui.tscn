@@ -2,11 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
 [ext_resource type="Script" path="res://scripts/player_inventory.gd" id="2"]
-
 [ext_resource type="PackedScene" uid="uid://d00qmrac5adv2" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
-
 [ext_resource type="Texture2D" uid="uid://cga6t3mmn3pv8" path="res://sprites/ui/buttons/ui_button_2.png" id="4"]
-[ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="5"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="5"]
 [ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://bw3nmduc5c7or" path="res://sprites/particles/gold_coin.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dralb4a7o1bva" path="res://sprites/ui/item_panel/empty_weapon_slot.png" id="8"]

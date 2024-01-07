@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0qh8ovknc8hq" path="res://sprites/ui/empty_module_button.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dxdyk0vs0pnqp" path="res://sprites/ui/empty_module_button_hover.png" id="3"]
 [ext_resource type="Script" path="res://scripts/ui/spell_slot_button.gd" id="4"]
-[ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="5"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="5"]
 [ext_resource type="Texture2D" uid="uid://badw3ebeicdkx" path="res://sprites/ui/module_options_menu_buttons/drop_hover.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://d3gm265rry5kk" path="res://sprites/ui/module_options_menu_buttons/info_default.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://y0reglt80236" path="res://sprites/ui/module_options_menu_buttons/info_pressed.png" id="8"]
@@ -240,7 +240,6 @@ animation = &"close"
 frame = 9
 
 [node name="options_with_module" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_left = 3.0
 offset_top = 2.25
@@ -267,6 +266,7 @@ scale = Vector2(0.1, 0.1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 101
 text = "equip"
 
 [node name="info_button" type="TextureButton" parent="options_with_module"]
@@ -288,6 +288,7 @@ scale = Vector2(0.1, 0.1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 101
 text = "info"
 
 [node name="drop_button" type="TextureButton" parent="options_with_module"]
@@ -309,6 +310,7 @@ scale = Vector2(0.1, 0.1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 101
 text = "drop"
 
 [connection signal="mouse_entered" from="button" to="." method="_on_main_button_mouse_entered"]

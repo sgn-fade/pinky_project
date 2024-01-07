@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://dl514sg5qlh5w"]
 
 [ext_resource type="Texture2D" uid="uid://cb4673josyno8" path="res://sprites/ui/label.png" id="1"]
-[ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="2"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="2"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="3"]
 [ext_resource type="Script" path="res://scripts/ui/liderboard.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://dmdfi7vaf011" path="res://sprites/backgrounds/planet.png" id="5"]
+
 
 [node name="main_menu" type="Control"]
 layout_mode = 3

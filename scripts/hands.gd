@@ -29,7 +29,7 @@ func _on_switch_hands_stance(weapon):
 
 
 func switch_hands(type):
-	if get_child(0) != null:
+	if get_child_count() > 0:
 		get_child(0).queue_free()
 	
 	add_child(type.instantiate())

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dj6oh3jrbiaa" path="res://sprites/ui/module_options_menu_buttons/drop_default.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dtjrl4fpmdnbw" path="res://sprites/ui/module_options_menu_buttons/equip_hover.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://cna0j4fimnqew" path="res://sprites/ui/module_options_menu_buttons/equip_default.png" id="5"]
-[ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="6"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="6"]
 [ext_resource type="Texture2D" uid="uid://vvvtiu5yp1gr" path="res://sprites/ui/module_options_menu_buttons/equip_pressed.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://badw3ebeicdkx" path="res://sprites/ui/module_options_menu_buttons/drop_hover.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://d3gm265rry5kk" path="res://sprites/ui/module_options_menu_buttons/info_default.png" id="9"]
