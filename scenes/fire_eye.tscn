@@ -1,179 +1,235 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=29 format=3 uid="uid://f82vj35t2bq3"]
 
-[ext_resource path="res://sprites/light.png" type="Texture2D" id=1]
-[ext_resource path="res://scripts/fire_eye.gd" type="Script" id=2]
-[ext_resource path="res://sprites/particles/explode_particle_ord.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/spells/fire/fire_eye_space.png" type="Texture2D" id=5]
+[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
+[ext_resource type="Script" path="res://scripts/fire_eye.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cpe65h3c6l5xl" path="res://sprites/particles/explode_particle_ord.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cr7udiipo1ilt" path="res://sprites/spells/fire/fire_eye_space.png" id="5"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 radius = 55.9017
 
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 5 )
-region = Rect2( 855, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("5")
+region = Rect2(855, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 5 )
-region = Rect2( 900, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource("5")
+region = Rect2(900, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 5 )
-region = Rect2( 945, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource("5")
+region = Rect2(945, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 5 )
-region = Rect2( 990, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource("5")
+region = Rect2(990, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 5 )
-region = Rect2( 1035, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource("5")
+region = Rect2(1035, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 5 )
-region = Rect2( 45, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource("5")
+region = Rect2(45, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 5 )
-region = Rect2( 90, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="22"]
+atlas = ExtResource("5")
+region = Rect2(90, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 5 )
-region = Rect2( 135, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="23"]
+atlas = ExtResource("5")
+region = Rect2(135, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 5 )
-region = Rect2( 180, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="24"]
+atlas = ExtResource("5")
+region = Rect2(180, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 5 )
-region = Rect2( 225, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="25"]
+atlas = ExtResource("5")
+region = Rect2(225, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 5 )
-region = Rect2( 315, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="26"]
+atlas = ExtResource("5")
+region = Rect2(315, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 5 )
-region = Rect2( 360, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="27"]
+atlas = ExtResource("5")
+region = Rect2(360, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 5 )
-region = Rect2( 450, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="28"]
+atlas = ExtResource("5")
+region = Rect2(450, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 5 )
-region = Rect2( 495, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="29"]
+atlas = ExtResource("5")
+region = Rect2(495, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 5 )
-region = Rect2( 540, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="30"]
+atlas = ExtResource("5")
+region = Rect2(540, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 5 )
-region = Rect2( 585, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="31"]
+atlas = ExtResource("5")
+region = Rect2(585, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 5 )
-region = Rect2( 630, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="32"]
+atlas = ExtResource("5")
+region = Rect2(630, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 5 )
-region = Rect2( 675, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="33"]
+atlas = ExtResource("5")
+region = Rect2(675, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 5 )
-region = Rect2( 720, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="34"]
+atlas = ExtResource("5")
+region = Rect2(720, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 5 )
-region = Rect2( 765, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="35"]
+atlas = ExtResource("5")
+region = Rect2(765, 0, 45, 48)
 
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 5 )
-region = Rect2( 810, 0, 45, 48 )
+[sub_resource type="AtlasTexture" id="36"]
+atlas = ExtResource("5")
+region = Rect2(810, 0, 45, 48)
 
-[sub_resource type="SpriteFrames" id=14]
-animations = [ {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+[sub_resource type="SpriteFrames" id="14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("15")
+}, {
+"duration": 1.0,
+"texture": SubResource("16")
+}, {
+"duration": 1.0,
+"texture": SubResource("17")
+}, {
+"duration": 1.0,
+"texture": SubResource("18")
+}, {
+"duration": 1.0,
+"texture": SubResource("19")
+}],
 "loop": false,
-"name": "closing",
+"name": &"closing",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("20")
+}, {
+"duration": 1.0,
+"texture": SubResource("21")
+}, {
+"duration": 1.0,
+"texture": SubResource("22")
+}, {
+"duration": 1.0,
+"texture": SubResource("23")
+}, {
+"duration": 1.0,
+"texture": SubResource("24")
+}, {
+"duration": 1.0,
+"texture": SubResource("25")
+}],
 "loop": false,
-"name": "opening",
+"name": &"opening",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("26")
+}, {
+"duration": 1.0,
+"texture": SubResource("27")
+}, {
+"duration": 1.0,
+"texture": SubResource("28")
+}, {
+"duration": 1.0,
+"texture": SubResource("29")
+}, {
+"duration": 1.0,
+"texture": SubResource("30")
+}, {
+"duration": 1.0,
+"texture": SubResource("31")
+}, {
+"duration": 1.0,
+"texture": SubResource("32")
+}, {
+"duration": 1.0,
+"texture": SubResource("33")
+}, {
+"duration": 1.0,
+"texture": SubResource("34")
+}, {
+"duration": 1.0,
+"texture": SubResource("35")
+}, {
+"duration": 1.0,
+"texture": SubResource("36")
+}],
 "loop": true,
-"name": "searching",
+"name": &"searching",
 "speed": 7.0
-} ]
+}]
 
 [node name="fire_eye" type="CharacterBody2D"]
 z_index = 10
 collision_layer = 5
 collision_mask = 5
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="damage_area" type="Area2D" parent="."]
-position = Vector2( 0, 6 )
-scale = Vector2( 0.7, 0.7 )
+position = Vector2(0, 6)
+scale = Vector2(0.7, 0.7)
 collision_layer = 5
 collision_mask = 5
 monitorable = false
 
 [node name="collision" type="CollisionShape2D" parent="damage_area"]
-position = Vector2( 0, -1 )
+position = Vector2(0, -1)
 rotation = 1.5708
-scale = Vector2( 1, 2 )
-shape = SubResource( 1 )
+scale = Vector2(1, 2)
+shape = SubResource("1")
 
 [node name="fire_particles" type="CPUParticles2D" parent="."]
 lifetime = 0.9
 speed_scale = 0.5
 lifetime_randomness = 0.13
 emission_shape = 2
-emission_rect_extents = Vector2( 17, 3.5 )
+emission_sphere_radius = 1.0
 spread = 50.0
-gravity = Vector2( 0, -98 )
-initial_velocity = 0.5
-radial_accel = 11.0
-color = Color( 0.607843, 0.0313726, 0.0313726, 1 )
-
-[node name="sprite" type="AnimatedSprite2D" parent="."]
-light_mask = 2
-scale = Vector2( 0.7, 0.7 )
-frames = SubResource( 14 )
-animation = "closing"
-frame = 4
-playing = true
+gravity = Vector2(0, -98)
+color = Color(0.607843, 0.0313726, 0.0313726, 1)
 
 [node name="light" type="PointLight2D" parent="."]
-scale = Vector2( 2, 1 )
-texture = ExtResource( 1 )
-texture_scale = 0.5
-color = Color( 0.47451, 0.0627451, 0.0627451, 1 )
+scale = Vector2(2, 1)
+color = Color(0.47451, 0.0627451, 0.0627451, 1)
 energy = 1.5
+texture = ExtResource("1")
+texture_scale = 0.5
 
 [node name="light2" type="PointLight2D" parent="."]
 light_mask = 0
-scale = Vector2( 2, 1 )
-texture = ExtResource( 1 )
-texture_scale = 0.5
-color = Color( 1, 0.968627, 0.968627, 0.372549 )
+scale = Vector2(2, 1)
+color = Color(1, 0.968627, 0.968627, 0.372549)
 energy = 2.0
 range_item_cull_mask = 2
+texture = ExtResource("1")
+texture_scale = 0.5
 
 [node name="area_paricles" type="CPUParticles2D" parent="."]
-position = Vector2( 0, 7 )
-scale = Vector2( 1.4, 0.7 )
 z_index = -999
 z_as_relative = false
+position = Vector2(0, 7)
+scale = Vector2(1.4, 0.7)
 emitting = false
 amount = 300
 lifetime = 2.0
@@ -181,15 +237,17 @@ one_shot = true
 speed_scale = 0.3
 randomness = 0.5
 lifetime_randomness = 0.64
-texture = ExtResource( 4 )
+texture = ExtResource("4")
 emission_shape = 1
 emission_sphere_radius = 53.0
-direction = Vector2( 0, 0 )
+direction = Vector2(0, 0)
 spread = 0.0
-gravity = Vector2( 0, 0 )
-orbit_velocity = 0.5
-damping = 66.97
-angle = 52.8
-scale_amount = 0.2
-scale_amount_random = 0.5
-color = Color( 0.611765, 0, 0, 0.447059 )
+gravity = Vector2(0, 0)
+color = Color(0.611765, 0, 0, 0.447059)
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("14")
+animation = &"closing"
+frame = 4

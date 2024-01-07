@@ -5,7 +5,7 @@ func _ready():
 	EventBus.connect("player_dead", Callable(self, "_on_player_dead"))
 
 func _on_player_dead():
-	$score.text = "SCORE: " + String(Player.get_score())
+	$score.text = "SCORE: " + str(Player.get_score())
 
 func _on_name_line_text_entered(text):
 	$enter_name.visible = false

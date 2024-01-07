@@ -1,8 +1,7 @@
 extends Undeads
 class_name Skelet
 var skelet_drop = load("res://scenes/drops/skeleton_drop.tscn")
-func _process(delta):
-	pass
+
 	
 func _ready():
 	sprite = $body/Sprite2D
@@ -16,7 +15,13 @@ func _ready():
 	enemy_damage = 4
 	$body.connect("body_entered", Callable(self, "skeleton_attack"))
 	
-	
+func _process(delta):
+	if global_position.distance_to(Player.get_position()) < 100:
+		set_direction(Player.get_position() - global_position)
+		move()
+		sprite.play("idle")
+	else:
+		sprite.play("idle")
 	
 func skeleton_attack():
 	if global_position.distance_to(Player.get_position()) < 10:

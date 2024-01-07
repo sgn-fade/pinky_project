@@ -9,7 +9,7 @@ var type = "goblin"
 
 
 func _ready():
-	pass
+	super._ready()
 
 func spawn_drop():
 	randomize()

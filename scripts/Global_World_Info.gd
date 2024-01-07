@@ -12,7 +12,7 @@ func _ready():
 	load_board()
 func add_player_to_board(name):
 	var score = Player.get_score()
-	liderboard[String(score)] = name
+	liderboard[str(score)] = name
 	
 	save_board()
 

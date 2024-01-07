@@ -9,13 +9,7 @@ var type = "undead"
 func _ready():
 	pass 
 
-func _process(delta):
-	if global_position.distance_to(Player.get_position()) < 100:
-		set_direction(Player.get_position() - global_position)
-		move()
-		sprite.play("idle")
-	else:
-		sprite.play("idle")
+
 
 
 func move():

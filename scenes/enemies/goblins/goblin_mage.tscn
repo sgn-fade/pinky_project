@@ -1,36 +1,39 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://0le0ptgshp5t"]
 
-[ext_resource path="res://scenes/enemies/goblins/goblin.tscn" type="PackedScene" id=1]
-[ext_resource path="res://sprites/goblin_mage.png" type="Texture2D" id=5]
-[ext_resource path="res://scripts/Enemies/Goblins/goblin_mage.gd" type="Script" id=6]
+[ext_resource type="PackedScene" uid="uid://deowfgi6dwaji" path="res://scenes/enemies/goblins/goblin.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://br5j5nv5jewta" path="res://sprites/goblin_mage.png" id="5"]
+[ext_resource type="Script" path="res://scripts/Enemies/Goblins/goblin_mage.gd" id="6"]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 27, 30 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 27, 30)
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ SubResource( 1 ) ],
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}],
 "loop": true,
-"name": "attack",
+"name": &"attack",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id="3"]
 radius = 4.0
 height = 10.0
 
-[node name="goblin_mage" instance=ExtResource( 1 )]
-script = ExtResource( 6 )
+[node name="goblin_mage" instance=ExtResource("1")]
+script = ExtResource("6")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-scale = Vector2( 0.9, 0.9 )
-frames = SubResource( 2 )
-animation = "attack"
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("2")
+animation = &"attack"
 
 [node name="shadow_under" parent="." index="1"]
-modulate = Color( 1, 1, 1, 0.729412 )
-position = Vector2( -78, -24 )
+modulate = Color(1, 1, 1, 0.729412)
+position = Vector2(-78, -24)
 
 [node name="middle_white_bar" parent="." index="2"]
 offset_left = -8.0
@@ -45,6 +48,6 @@ offset_right = 29.0
 offset_bottom = 2.00002
 
 [node name="collision" type="CollisionShape2D" parent="." index="10"]
-position = Vector2( 1, 7 )
+position = Vector2(1, 7)
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource("3")
