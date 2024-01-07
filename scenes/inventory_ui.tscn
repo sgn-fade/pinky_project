@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://pe7wisviq3yk"]
+[gd_scene load_steps=12 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
 [ext_resource type="Script" path="res://scripts/player_inventory.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b01gf2unl5ssx" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cga6t3mmn3pv8" path="res://sprites/ui/buttons/ui_button_2.png" id="4"]
 [ext_resource type="FontFile" uid="uid://mml1qqhs132p" path="res://fonts/pixel_font.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://bw3nmduc5c7or" path="res://sprites/particles/gold_coin.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dralb4a7o1bva" path="res://sprites/ui/item_panel/empty_weapon_slot.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://2pjq3knexr2h" path="res://sprites/ui/square_label.png" id="9_7lgq8"]
 
 [sub_resource type="StyleBoxTexture" id="1"]
 region_rect = Rect2(1020, 262, 4, 1)
@@ -21,6 +22,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(-760, -177)
 script = ExtResource("2")
 
@@ -97,7 +100,6 @@ texture_normal = ExtResource("8")
 
 [node name="weapon_rarity_bg" parent="." instance=ExtResource("3")]
 visible = false
-anchors_preset = 0
 offset_left = 261.0
 offset_top = 236.0
 offset_right = 463.0
@@ -204,5 +206,61 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="weapon_slot_swap" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="TextureButton" parent="weapon_slot_swap"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.475
+anchor_top = 24.1
+anchor_right = 9.475
+anchor_bottom = 24.1
+offset_left = -48.0
+offset_top = -48.0
+offset_right = -32.0
+offset_bottom = -32.0
+scale = Vector2(6, 6)
+texture_normal = ExtResource("9_7lgq8")
+
+[node name="Label" type="Label" parent="weapon_slot_swap/1"]
+layout_mode = 0
+offset_left = 4.66667
+offset_top = -9.0
+offset_right = 13.6667
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="2" type="TextureButton" parent="weapon_slot_swap"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.475
+anchor_top = 24.1
+anchor_right = 9.475
+anchor_bottom = 24.1
+offset_left = 90.0
+offset_top = -48.0
+offset_right = 106.0
+offset_bottom = -32.0
+scale = Vector2(6, 6)
+texture_normal = ExtResource("9_7lgq8")
+
+[node name="Label" type="Label" parent="weapon_slot_swap/2"]
+layout_mode = 0
+offset_left = 4.33333
+offset_top = -9.0
+offset_right = 15.3333
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 30
+text = "2
+"
+
 [connection signal="pressed" from="weapons" to="." method="_on_weapons_pressed"]
 [connection signal="pressed" from="modules" to="." method="_on_modules_pressed"]
+[connection signal="pressed" from="weapon_slot_swap/1" to="." method="_on_slot_1_weapon_pressed"]
+[connection signal="pressed" from="weapon_slot_swap/2" to="." method="_on_slot_2_weapon_pressed"]

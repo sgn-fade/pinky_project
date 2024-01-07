@@ -6,7 +6,11 @@ var coins = 0
 @onready var player_scene = load("res://scenes/main_character.tscn")
 @onready var player = null
 var score = 0
-var weapon = null
+
+var weapon_slot_1 = null
+var weapon_slot_2 = null
+var weapon_current_slot = 1
+
 var closest_interactive_object = null
 var magic_damage = 1
 func _ready():
@@ -24,7 +28,7 @@ func get_max_hp():
 func update_hp(value):
 	hp += value
 
-
+#PlAYER POSITION
 func get_position():
 	return player.global_position
 func set_position(position):
@@ -42,13 +46,25 @@ func get_body():
 func get_z_index():
 	return player.z_index
 
-
+#WEAPON
 func get_weapon():
-	return weapon
-func set_weapon(new_weapon):
-	weapon = new_weapon
+	if weapon_slot_1 == null and weapon_slot_2 == null:
+		return null
+	match get_weapon_current_slot():
+		1:return weapon_slot_1
+		2:return weapon_slot_2
 
+func set_weapon(weapon):
+	match get_weapon_current_slot():
+		1:weapon_slot_1 = weapon
+		2:weapon_slot_2 = weapon
 
+func set_weapon_current_slot(value):
+	weapon_current_slot = value
+func get_weapon_current_slot():
+	return weapon_current_slot
+
+#MAGIC DAMAGE
 func set_magic_damage(new_magic_damage):
 	magic_damage = new_magic_damage
 func get_magic_damage():

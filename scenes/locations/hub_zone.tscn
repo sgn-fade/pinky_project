@@ -1,126 +1,106 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://ctd2ks1dvo01"]
 
-[ext_resource path="res://sprites/locations/hub_zone/hub_zone.png" type="Texture2D" id=1]
-[ext_resource path="res://scenes/world_env/map_terminal.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/locations/hub_zone.gd" type="Script" id=3]
-[ext_resource path="res://sprites/particles/hub_particles/blue_particle_2.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/particles/hub_particles/blue_particle.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/particles/explode_particle_ord.png" type="Texture2D" id=6]
-[ext_resource path="res://scenes/cake.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/enemies/enemy.tscn" type="PackedScene" id=8]
+[ext_resource type="Texture2D" uid="uid://cu23cwynpxasr" path="res://sprites/locations/hub_zone/hub_zone.png" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/world_env/map_terminal.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/locations/hub_zone.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://c7gc2jtp61y8g" path="res://sprites/particles/hub_particles/blue_particle_2.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://8svau47rj2e8" path="res://sprites/particles/hub_particles/blue_particle.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cpe65h3c6l5xl" path="res://sprites/particles/explode_particle_ord.png" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="8"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 142, 25 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(284, 50)
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 22.0
+[sub_resource type="CapsuleShape2D" id="2"]
+radius = 7.0
 height = 14.0
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id="3"]
 min_value = -200.0
 max_value = 200.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.485148, 116.818 ), 0.0, 0.0, 0, 0, Vector2( 0.995049, -126.364 ), -1402.32, 0.0, 0, 0 ]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.485148, 116.818), 0.0, 0.0, 0, 0, Vector2(0.995049, -126.364), -1402.32, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id="4"]
 min_value = -360.0
 max_value = 360.0
-_data = [ Vector2( 0, -156.273 ), 0.0, 0.0, 0, 0, Vector2( 1, 360 ), 583.316, 0.0, 0, 0 ]
+_data = [Vector2(0, -156.273), 0.0, 0.0, 0, 0, Vector2(1, 360), 583.316, 0.0, 0, 0]
+point_count = 2
 
 [node name="hub_zone" type="StaticBody2D"]
 z_index = -1491
 collision_layer = 4294967295
 collision_mask = 4294967295
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -793.0
 offset_top = -442.0
 offset_right = 834.0
 offset_bottom = 449.0
-color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, 19 )
-shape = SubResource( 1 )
+position = Vector2(1, 19)
+shape = SubResource("1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2( -145, 27 )
-shape = SubResource( 2 )
+position = Vector2(-145, 27)
+shape = SubResource("2")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2( 144, 26 )
-shape = SubResource( 2 )
+position = Vector2(144, 26)
+shape = SubResource("2")
 
-[node name="map_terminal" parent="." instance=ExtResource( 2 )]
+[node name="map_terminal" parent="." instance=ExtResource("2")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array( 148, 85, 175, 73, 191, 55, 199, 32, 196, 7, 183, -9, 200, -10, 199, 170, -201, 171, -199, -13, -185, -9, -194, 7, -199, 18, -198, 30, -195, 46, -191, 58, -185, 68, -175, 76, -157, 84, -143, 87, -135, 87, -135, 151, 134, 153, 136, 86 )
+polygon = PackedVector2Array(148, 85, 175, 73, 191, 55, 199, 32, 196, 7, 183, -9, 200, -10, 199, 170, -201, 171, -199, -13, -185, -9, -194, 7, -199, 18, -198, 30, -195, 46, -191, 58, -185, 68, -175, 76, -157, 84, -143, 87, -135, 87, -135, 151, 134, 153, 136, 86)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array( 187, -12, 187, -124, -186, -122, -188, -11, -201, -13, -199, -169, 199, -169, 200, -11 )
+polygon = PackedVector2Array(187, -12, 187, -124, -186, -122, -188, -11, -201, -13, -199, -169, 199, -169, 200, -11)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false
-position = Vector2( -552, -159 )
+position = Vector2(-552, -159)
 amount = 20
 lifetime = 8.0
-texture = ExtResource( 4 )
+texture = ExtResource("4")
 emission_shape = 2
-emission_rect_extents = Vector2( 10, 200 )
-gravity = Vector2( 80, 20 )
-initial_velocity = 4.0
-linear_accel = -6.03
-linear_accel_curve = SubResource( 3 )
-angle = -52.8
-angle_random = 0.48
-angle_curve = SubResource( 4 )
-scale_amount = 0.5
-scale_amount_random = 0.63
+emission_sphere_radius = 1.0
+gravity = Vector2(80, 20)
+linear_accel_curve = SubResource("3")
+angle_curve = SubResource("4")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 visible = false
-position = Vector2( -552, -159 )
+position = Vector2(-552, -159)
 amount = 20
 lifetime = 8.0
 speed_scale = 0.5
-texture = ExtResource( 6 )
+texture = ExtResource("6")
 emission_shape = 2
-emission_rect_extents = Vector2( 10, 200 )
-gravity = Vector2( 80, 20 )
-initial_velocity = 1.0
-linear_accel = -64.75
-linear_accel_curve = SubResource( 3 )
-angle = -52.8
-angle_random = 0.48
-angle_curve = SubResource( 4 )
-scale_amount = 0.8
-scale_amount_random = 0.63
-color = Color( 0.411765, 0.898039, 0.796078, 1 )
+emission_sphere_radius = 1.0
+gravity = Vector2(80, 20)
+linear_accel_curve = SubResource("3")
+angle_curve = SubResource("4")
+color = Color(0.411765, 0.898039, 0.796078, 1)
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
 visible = false
-position = Vector2( -552, -159 )
+position = Vector2(-552, -159)
 amount = 20
 lifetime = 8.0
 speed_scale = 0.5
-texture = ExtResource( 5 )
+texture = ExtResource("5")
 emission_shape = 2
-emission_rect_extents = Vector2( 10, 200 )
-gravity = Vector2( 80, 20 )
-initial_velocity = 1.0
-linear_accel = -64.75
-linear_accel_curve = SubResource( 3 )
-angle = -52.8
-angle_random = 0.48
-angle_curve = SubResource( 4 )
-scale_amount = 0.8
-scale_amount_random = 0.63
+emission_sphere_radius = 1.0
+gravity = Vector2(80, 20)
+linear_accel_curve = SubResource("3")
+angle_curve = SubResource("4")
 
-[node name="Cake" parent="." instance=ExtResource( 7 )]
-position = Vector2( -142, -39 )
-
-[node name="enemy" parent="." instance=ExtResource( 8 )]
-position = Vector2( -110, 133 )
+[node name="enemy" parent="." instance=ExtResource("8")]
+position = Vector2(-110, 133)

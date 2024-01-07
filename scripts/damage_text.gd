@@ -21,4 +21,4 @@ func on_enemy_show_damage_value(damage_label_instance, player_damage):
 		self.time_to_free = 0.5
 		self.visible = true
 		damage += player_damage
-		text = String(-damage)
+		text = str(-damage)

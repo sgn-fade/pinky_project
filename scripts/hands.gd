@@ -13,7 +13,6 @@ var current_state = States.GUN
 
 func _ready():
 	switch_hands(clear)
-	
 	EventBus.connect("switch_hands_stance", Callable(self, "_on_switch_hands_stance"))
 
 func _on_switch_hands_stance(weapon):
@@ -24,7 +23,6 @@ func _on_switch_hands_stance(weapon):
 		"magic":
 			current_state = States.MAGIC
 			switch_hands(magic)
-
 		"melee":
 			current_state = States.MELEE
 			switch_hands(melee)

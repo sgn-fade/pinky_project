@@ -77,7 +77,7 @@ func _on_spell_slot_button_choosed(slot, equiped):
 		slot.queue_free()
 
 func _on_spell_slot_button_unselected():
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(1).timeout
 	choosed_slot = null
 	EventBus.emit_signal("spell_cells_light_off")
 
@@ -99,9 +99,34 @@ func _on_remove_weapon_from_slot():
 
 func _on_weapon_in_inventory_choosed(weapon):
 	if Player.get_weapon() != null:
-		_on_remove_weapon_from_slot()
+		EventBus.emit_signal("add_weapon_to_inventory", Player.get_weapon())
+		EventBus.emit_signal("clear_spell_icons")
+		remove_all_cells()
 	Player.set_weapon(weapon)
 	EventBus.emit_signal("switch_hands_stance", weapon)
 	fill_cells()
 	$weapon_slot.visible = false
 	$weapon_rarity_bg.show_weapon(weapon)
+
+
+
+func _on_slot_1_weapon_pressed():
+	swap_weapon_slot(1)
+
+
+func _on_slot_2_weapon_pressed():
+	swap_weapon_slot(2)
+
+
+func swap_weapon_slot(slot):
+	Player.set_weapon_current_slot(slot)
+	EventBus.emit_signal("clear_spell_icons")
+	EventBus.emit_signal("switch_hands_stance", Player.get_weapon())
+	remove_all_cells()
+	$weapon_rarity_bg.visible = false
+	$weapon_slot.visible = true
+	
+	if Player.get_weapon() != null:
+		fill_cells()
+		$weapon_slot.visible = false
+		$weapon_rarity_bg.show_weapon(Player.get_weapon())

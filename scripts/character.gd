@@ -74,7 +74,6 @@ func _ready():
 	Input.set_mouse_mode(1)
 
 func _input(event):
-	
 	if Player.get_weapon() != null:
 		Player.get_weapon().input(event)
 

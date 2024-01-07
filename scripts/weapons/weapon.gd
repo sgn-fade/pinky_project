@@ -67,7 +67,7 @@ func input(event):
 	if input_key != null and Spells_buttons[Buttons_binds[input_key]] != null and Spells_buttons[Buttons_binds[input_key]].get_ready():
 	
 		Spells_buttons[Buttons_binds[input_key]].cast()
-		EventBus.emit_signal("start_spell_cooldown", Spells_buttons[Buttons_binds[input_key]].cooldown, input_key)
+		EventBus.emit_signal("start_spell_cooldown", Spells_buttons[Buttons_binds[input_key]].cooldown_time, input_key)
 
 
 func add_module_to_weapon(module, new, place, cell_index):

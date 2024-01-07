@@ -51,8 +51,6 @@ offset_top = 0.0
 
 [node name="inventory_ui" parent="." instance=ExtResource("4")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="load_ui" parent="." instance=ExtResource("5")]
 visible = false

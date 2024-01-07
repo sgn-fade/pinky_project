@@ -5,7 +5,7 @@ var modules_drop = load("res://scenes/modules_drop.tscn")
 @onready var main_button = get_node("button")
 var equiped = false
 var index = null
-
+var is_menu_opened = false
 
 func init(module_new, cell_index):
 	self.module = module_new
@@ -40,6 +40,7 @@ func _input(event):
 			or Input.is_action_just_pressed("mouse_right_button"))
 		and not Rect2(Vector2(), main_button.size).has_point(get_local_mouse_position())
 		#and $menu.playing
+		and is_menu_opened
 		):
 		
 		EventBus.emit_signal("spell_slot_button_unselected")
@@ -64,10 +65,12 @@ func _on_drop_button_pressed():
 
 func _on_main_button_pressed():
 	if Input.is_action_just_released("mouse_right_button"):
-		if $menu.animation == "open":
+		if is_menu_opened:
 			$menu.play("close")
+			is_menu_opened = false
 		else:
 			$menu.play("open")
+			is_menu_opened = true
 			await get_tree().create_timer(0.3).timeout
 			
 

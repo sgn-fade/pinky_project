@@ -11,4 +11,5 @@ process_mode = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 process_priority = -71
+visible = false
 color = Color(0.313726, 0.313726, 0.313726, 1)

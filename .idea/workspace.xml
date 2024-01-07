@@ -3,35 +3,50 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/export.rar" beforeDir="false" afterPath="$PROJECT_DIR$/export.rar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/my_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/pixel_font.tres" beforeDir="false" afterPath="$PROJECT_DIR$/fonts/pixel_font.tres" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/Button_picture.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Button_picture.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/Control.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Control.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/Ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Ui.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/World.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/World.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/enemies/elementals/fire_elemental.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/elementals/fire_elemental.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/fire_eye.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/fire_eye.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/fireball.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/fireball.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/grass.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/grass.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/heands_continuum_shotgun.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/heands_continuum_shotgun.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/inventory_ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/inventory_ui.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/locations/dungeon.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/locations/dungeon.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/locations/hub_zone.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/locations/hub_zone.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/main_character.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main_character.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/weapon_drop.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/weapon_drop.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Enemies/Goblins/goblin_mage.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Enemies/Goblins/goblin_mage.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Global_World_Info.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Global_World_Info.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/ui/weapon_rarity_bg.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/weapon_rarity_bg.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Player_Data.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Player_Data.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Ui.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/World.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/World.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/character.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/character.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/drops/weapon_drop.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/drops/weapon_drop.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/game_ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/game_ui.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ui/liderboard.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/liderboard.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/weapon.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/weapons/magic_weapon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/weapons/magic_weapon.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/generate_dungeon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_dungeon.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/hands.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/hands.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/player_inventory.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player_inventory.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_eye_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_eye_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_spear_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_spear_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_teleport_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_teleport_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ui/spell_slot_button.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/spell_slot_button.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/weapons/weapon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/weapons/weapon.gd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,8 +78,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
     "git-widget-placeholder": "Version__0.0.1",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -75,35 +95,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701449172621</updated>
+      <workItem from="1704618958758" duration="33000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/Version-_0.0.1_m" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State>
-              <option name="COLUMN_ID_WIDTH">
-                <map>
-                  <entry key="Table.Default.Date.ColumnIdWidth" value="115" />
-                </map>
-              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -123,7 +127,27 @@
                   </entry>
                 </map>
               </option>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="115" />
+                </map>
+              </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/Version-_0.0.1_m" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>

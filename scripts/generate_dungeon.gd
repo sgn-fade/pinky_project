@@ -98,7 +98,6 @@ func spawn_fog(center, height, width):
 			fog.z_index = 1024
 
 
-
 func spawn_goblin(coord, height, width):
 	if coord == Vector2.ZERO:
 		return
