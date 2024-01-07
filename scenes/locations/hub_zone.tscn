@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctd2ks1dvo01"]
+
+[gd_scene load_steps=14 format=3 uid="uid://bx1mxg4kipto5"]
+
 
 [ext_resource type="Texture2D" uid="uid://cu23cwynpxasr" path="res://sprites/locations/hub_zone/hub_zone.png" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/world_env/map_terminal.tscn" id="2"]
@@ -6,7 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://c7gc2jtp61y8g" path="res://sprites/particles/hub_particles/blue_particle_2.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://8svau47rj2e8" path="res://sprites/particles/hub_particles/blue_particle.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cpe65h3c6l5xl" path="res://sprites/particles/explode_particle_ord.png" id="6"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="8"]
+
+[ext_resource type="PackedScene" path="res://scenes/cake.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://dirai0rxl701a" path="res://scenes/enemies/enemy.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dca0g5c0huvv3" path="res://scenes/Lights.tscn" id="8_lrqqk"]
+
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(284, 50)
@@ -28,12 +34,17 @@ _data = [Vector2(0, -156.273), 0.0, 0.0, 0, 0, Vector2(1, 360), 583.316, 0.0, 0,
 point_count = 2
 
 [node name="hub_zone" type="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
 z_index = -1491
 collision_layer = 4294967295
 collision_mask = 4294967295
 script = ExtResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+light_mask = 3
+visibility_layer = 3
 offset_left = -793.0
 offset_top = -442.0
 offset_right = 834.0
@@ -101,6 +112,10 @@ emission_sphere_radius = 1.0
 gravity = Vector2(80, 20)
 linear_accel_curve = SubResource("3")
 angle_curve = SubResource("4")
+
+
+[node name="lights" parent="." instance=ExtResource("8_lrqqk")]
+position = Vector2(-5, 88)
 
 [node name="enemy" parent="." instance=ExtResource("8")]
 position = Vector2(-110, 133)

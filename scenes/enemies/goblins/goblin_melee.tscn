@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/goblin_melee.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://dsbsqyn2if0do" path="res://sprites/goblin/sword_goblin_idle.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://eea73k3xl6yy" path="res://sprites/goblin/sword_goblin_attak.png" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/goblins/goblin.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://deowfgi6dwaji" path="res://scenes/enemies/goblins/goblin.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://bg15f0751fj4a" path="res://sprites/goblin/goblin_spawn.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://fk1ulw6x3f7j" path="res://sprites/goblin/sword_goblin_move.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="11"]
@@ -393,9 +393,6 @@ script = ExtResource("2")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 visible = false
-
-[node name="period_dmg_particle" parent="." index="4"]
-emission_sphere_radius = 1.0
 
 [node name="body" type="Area2D" parent="." index="10"]
 position = Vector2(-0.999999, 0.00114101)

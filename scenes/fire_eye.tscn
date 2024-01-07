@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=29 format=3 uid="uid://jkixgcns5qlc"]
+
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Script" path="res://scripts/fire_eye.gd" id="2"]
@@ -216,6 +218,7 @@ sprite_frames = SubResource("14")
 animation = &"closing"
 frame = 4
 
+
 [node name="light" type="PointLight2D" parent="."]
 scale = Vector2(2, 1)
 color = Color(0.47451, 0.0627451, 0.0627451, 1)
@@ -251,3 +254,11 @@ direction = Vector2(0, 0)
 spread = 0.0
 gravity = Vector2(0, 0)
 color = Color(0.611765, 0, 0, 0.447059)
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("14")
+animation = &"closing"
+frame = 4
+

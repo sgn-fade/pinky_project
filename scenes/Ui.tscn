@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/Ui.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://pe7wisviq3yk" path="res://scenes/inventory_ui.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/loadscreen.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/pause_ui.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://ch3v7s5mc557f" path="res://scenes/pause_ui.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/altar_ui.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://bxk32ptautip2" path="res://sprites/ui/ui_crosshair.png" id="8"]
 [ext_resource type="Script" path="res://scripts/crosshair.gd" id="9"]
@@ -61,12 +61,8 @@ grow_vertical = 2
 
 [node name="pause_ui" parent="." instance=ExtResource("6")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
 offset_right = 0.0
 offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="altar_ui" parent="." instance=ExtResource("7")]
 visible = false

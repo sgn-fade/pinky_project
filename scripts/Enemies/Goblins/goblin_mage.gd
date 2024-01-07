@@ -57,7 +57,7 @@ func searching_player(delta):
 			velocity = velocity
 			if global_position.distance_to(Player.get_position()) < 300 and fireball_cast_cooldown <= 0:
 					cast_fireball()
-					summon_elemental()
+					#summon_elemental()
 			await get_tree().create_timer(delta).timeout
 		await idle()
 		current_state = States.IDLE

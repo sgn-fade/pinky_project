@@ -1,88 +1,88 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://deowfgi6dwaji"]
 
-[ext_resource path="res://sprites/enemy_health/enemy_health_under.png" type="Texture2D" id=1]
-[ext_resource path="res://sprites/enemy_health/enemy_health_middle.png" type="Texture2D" id=2]
-[ext_resource path="res://scripts/Enemies/Goblins/Goblins.gd" type="Script" id=3]
-[ext_resource path="res://sprites/shadow_under.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/light.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/ui/icon_status/fire_status_icon.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/enemy_health/enemy_health_progress.png" type="Texture2D" id=7]
+[ext_resource type="Texture2D" uid="uid://eewxah76kn5m" path="res://sprites/enemy_health/enemy_health_under.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="2"]
+[ext_resource type="Script" path="res://scripts/Enemies/Goblins/Goblins.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://kvptr2dd5csm" path="res://sprites/ui/icon_status/fire_status_icon.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dcyqfis8vyewu" path="res://sprites/enemy_health/enemy_health_progress.png" id="7"]
 
 [node name="goblin" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="shadow_under" type="Sprite2D" parent="."]
-position = Vector2( -79, -28 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
-offset = Vector2( 158.021, 74 )
+position = Vector2(-79, -28)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4")
+offset = Vector2(158.021, 74)
 
 [node name="middle_white_bar" type="TextureProgressBar" parent="."]
 offset_left = -10.0228
 offset_top = -19.9886
 offset_right = 26.9772
 offset_bottom = 0.0114212
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2(0.5, 0.5)
 value = 100.0
-texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 2 )
-texture_progress_offset = Vector2( 0, 1 )
+texture_under = ExtResource("1")
+texture_progress = ExtResource("2")
+texture_progress_offset = Vector2(0, 1)
 
 [node name="hp_bar" type="TextureProgressBar" parent="."]
 offset_left = -10.0228
 offset_top = -19.9886
 offset_right = 26.9772
 offset_bottom = 0.0114212
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2(0.5, 0.5)
 value = 100.0
-texture_progress = ExtResource( 7 )
-texture_progress_offset = Vector2( 0, 1 )
+texture_progress = ExtResource("7")
+texture_progress_offset = Vector2(0, 1)
 
 [node name="period_dmg_particle" type="CPUParticles2D" parent="."]
-position = Vector2( -0.999999, 0.00114101 )
 z_index = 1
+position = Vector2(-0.999999, 0.00114101)
 emitting = false
 amount = 10
 lifetime = 0.5
 speed_scale = 0.3
 lifetime_randomness = 0.14
 emission_shape = 2
-emission_rect_extents = Vector2( 6, 5 )
-gravity = Vector2( 0, -98 )
-color = Color( 0.796078, 0.333333, 0.027451, 1 )
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -98)
+color = Color(0.796078, 0.333333, 0.027451, 1)
 
 [node name="status1" type="Sprite2D" parent="."]
 visible = false
-position = Vector2( -7.0251, -21.992 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+position = Vector2(-7.0251, -21.992)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6")
 
 [node name="status2" type="Sprite2D" parent="."]
 visible = false
-position = Vector2( -2.0251, -21.9977 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+position = Vector2(-2.0251, -21.9977)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6")
 
 [node name="status3" type="Sprite2D" parent="."]
 visible = false
-position = Vector2( 2.9749, -22.0034 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+position = Vector2(2.9749, -22.0034)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6")
 
 [node name="status4" type="Sprite2D" parent="."]
 visible = false
-position = Vector2( 7.97489, -22.0091 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+position = Vector2(7.97489, -22.0091)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2( -1.0057, -4.99886 )
-scale = Vector2( 1.5, 1.5 )
 z_index = 13
-texture = ExtResource( 5 )
-offset = Vector2( 0, 4.105 )
+position = Vector2(-1.0057, -4.99886)
+scale = Vector2(1.5, 1.5)
+color = Color(0.141176, 0.431373, 0.0745098, 0.686275)
+texture = ExtResource("5")
+offset = Vector2(0, 4.105)
 texture_scale = 0.1
-color = Color( 0.141176, 0.431373, 0.0745098, 0.686275 )

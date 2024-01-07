@@ -25,6 +25,7 @@ enum States {
 
 
 func _ready():
+	super._ready()
 	hp = 20
 	speed = 60
 	enemy_damage = 10

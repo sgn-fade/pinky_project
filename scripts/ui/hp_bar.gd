@@ -7,5 +7,5 @@ func _ready():
 
 func _update_character_hp_bar_value(hp, max_hp):
 	$hp_bar.material.set_shader_parameter("fV", float(hp) / max_hp)
-	$current_hp.text = String(hp)
-	$max_hp.text = String(max_hp)
+	$current_hp.text = str(hp)
+	$max_hp.text = str(max_hp)

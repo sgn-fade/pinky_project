@@ -16,6 +16,7 @@ func _process(delta):
 		States.MOVE:
 			move_state()
 
+
 func idle_state():
 	if $detection_area.overlaps_body(Player.get_body()):
 		$collision.disabled = true
