@@ -30,8 +30,6 @@ enum States{
 	INVENTORY
 }
 func _process(delta):
-	z_index = global_position.y / 2
-
 	match current_state:
 		States.NONE:
 			pass
@@ -178,7 +176,6 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 	Player.update_hp(-enemy_damage)
 	var hp = Player.get_hp() 
 	var max_hp = Player.get_max_hp() 
-	EventBus.emit_signal("update_character_hp_bar_value", hp, max_hp)
 	disable_collision()
 	velocity = velocity.lerp(player_offcet_dir * 1000, 0.40)
 	set_velocity(velocity)

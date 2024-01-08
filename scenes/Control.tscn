@@ -1,7 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bk34c60sqf56k"]
 
 [ext_resource type="Texture2D" uid="uid://cr72ukl4w861a" path="res://sprites/ui/main_game_ui_panel.png" id="1"]
-[ext_resource type="Script" path="res://scripts/ui/hp_bar.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/spell_module_game_discription.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://e54psqwy45xn" path="res://scenes/ui/weapon_discription.tscn" id="5"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://2lj20o8vssmt" path="res://sprites/ui/health_bar_progress.png" id="8"]
 [ext_resource type="Script" path="res://scripts/survive_timer.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://d2w1882udcmvp" path="res://sprites/blood_ord.png" id="11"]
+[ext_resource type="Script" path="res://scripts/ui/player_bars.gd" id="11_m6abd"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12"]
 [ext_resource type="Texture2D" uid="uid://bj1emqivewhnn" path="res://sprites/ui/dash_progress_bar_under.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://dfvw2pdfwsbsm" path="res://sprites/ui/dash_progress_bar_progress.png" id="14"]
@@ -57,7 +57,7 @@ void fragment() {
 resource_local_to_scene = true
 shader = SubResource("1")
 shader_parameter/amount = 300
-shader_parameter/fV = 0.42
+shader_parameter/fV = 1.0
 shader_parameter/color = Vector4(0, 0.5, 1, 1)
 
 [sub_resource type="Shader" id="3"]
@@ -98,7 +98,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="4"]
 shader = SubResource("3")
 shader_parameter/amount = 300
-shader_parameter/fV = 0.36
+shader_parameter/fV = 1.0
 shader_parameter/color = Vector4(1, 0, 0, 1)
 
 [node name="game_ui" type="Control"]
@@ -314,7 +314,7 @@ pivot_offset = Vector2(65, 0)
 theme_override_fonts/font = ExtResource("12")
 script = ExtResource("10")
 
-[node name="player_hp" type="Control" parent="."]
+[node name="player_bars" type="Control" parent="."]
 anchors_preset = 0
 anchor_left = 0.5
 anchor_top = 0.884
@@ -324,9 +324,9 @@ offset_left = -954.54
 offset_top = -939.869
 offset_right = -914.54
 offset_bottom = -899.869
-script = ExtResource("2")
+script = ExtResource("11_m6abd")
 
-[node name="hp_bar" type="TextureRect" parent="player_hp"]
+[node name="hp_bar" type="TextureRect" parent="player_bars"]
 modulate = Color(0.929412, 0.152941, 0.152941, 1)
 material = SubResource("2")
 layout_mode = 0
@@ -338,7 +338,7 @@ scale = Vector2(18, 18)
 texture = ExtResource("8")
 stretch_mode = 3
 
-[node name="mana_bar" type="TextureRect" parent="player_hp"]
+[node name="mana_bar" type="TextureRect" parent="player_bars"]
 modulate = Color(0.231373, 0.239216, 0.811765, 1)
 material = SubResource("4")
 layout_mode = 0
@@ -350,7 +350,7 @@ scale = Vector2(-18, 18)
 texture = ExtResource("8")
 stretch_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="player_hp"]
+[node name="ColorRect" type="ColorRect" parent="player_bars"]
 layout_mode = 0
 offset_left = 952.08
 offset_top = 837.2
@@ -358,23 +358,46 @@ offset_right = 957.08
 offset_bottom = 1032.2
 color = Color(0, 0, 0, 1)
 
-[node name="current_hp" type="Label" parent="player_hp"]
+[node name="current_hp" type="Label" parent="player_bars"]
 layout_mode = 0
-offset_left = 930.08
-offset_top = 962.2
-offset_right = 1142.08
-offset_bottom = 1047.49
+offset_left = 890.08
+offset_top = 970.2
+offset_right = 1102.08
+offset_bottom = 1055.49
 theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 80
 text = "50"
 
-[node name="max_hp" type="Label" parent="player_hp"]
-modulate = Color(1, 0, 0, 0.541176)
+[node name="current_mana" type="Label" parent="player_bars"]
 layout_mode = 0
-offset_left = 970.08
-offset_top = 985.2
-offset_right = 1182.08
-offset_bottom = 1070.49
+offset_left = 969.08
+offset_top = 970.2
+offset_right = 1181.08
+offset_bottom = 1055.49
 theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 80
+text = "50"
+
+[node name="max_hp" type="Label" parent="player_bars"]
+modulate = Color(0.647059, 0.470588, 0.129412, 1)
+layout_mode = 0
+offset_left = 890.08
+offset_top = 994.2
+offset_right = 1102.08
+offset_bottom = 1079.49
+theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 80
+text = "50"
+
+[node name="max_mana" type="Label" parent="player_bars"]
+modulate = Color(0.172549, 0.572549, 0.552941, 1)
+layout_mode = 0
+offset_left = 969.08
+offset_top = 995.2
+offset_right = 1181.08
+offset_bottom = 1080.49
+theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 80
 text = "50"
 
 [node name="module_discription" parent="." instance=ExtResource("3")]
@@ -405,10 +428,10 @@ offset_bottom = 68.1201
 
 [node name="weapon_display" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 1554.3
-offset_top = 675.3
-offset_right = 1594.3
-offset_bottom = 715.3
+offset_left = 1506.08
+offset_top = 728.2
+offset_right = 1546.08
+offset_bottom = 768.2
 script = ExtResource("15_tgfus")
 
 [node name="slot1" type="Control" parent="weapon_display"]

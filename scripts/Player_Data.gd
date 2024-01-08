@@ -1,6 +1,8 @@
 extends Node
 var hp = 50
+var mana = 30
 var max_hp = 50
+var max_mana = 30
 var coins = 0
 @onready var ui = get_node("/root/World/Ui")
 @onready var player_scene = load("res://scenes/main_character.tscn")
@@ -15,6 +17,7 @@ var closest_interactive_object = null
 var magic_damage = 1
 func _ready():
 	EventBus.emit_signal("update_character_hp_bar_value", hp, max_hp)
+	EventBus.emit_signal("update_character_mana_bar_value", mana, max_mana)
 
 
 func set_state(state):
@@ -27,12 +30,33 @@ func get_max_hp():
 	return max_hp
 func update_hp(value):
 	hp += value
+	EventBus.emit_signal("update_character_hp_bar_value", hp, max_hp)
+
+#PLAYER MANA
+func get_mana():
+	return mana
+func change_mana(value):
+	mana += value
+	EventBus.emit_signal("update_character_mana_bar_value", mana, max_mana)
+func get_max_mana():
+	return max_mana
+func set_max_mana(value):
+	max_mana += value
+	EventBus.emit_signal("update_character_mana_bar_value", mana, max_mana)
+##
+#MAGIC DAMAGE
+func set_magic_damage(new_magic_damage):
+	magic_damage = new_magic_damage
+func get_magic_damage():
+	return magic_damage
+##
 
 #PlAYER POSITION
 func get_position():
 	return player.global_position
 func set_position(position):
 	player.global_position = position
+##
 
 func ready():
 	if player != null:
@@ -64,11 +88,6 @@ func set_weapon_current_slot(value):
 func get_weapon_current_slot():
 	return weapon_current_slot
 
-#MAGIC DAMAGE
-func set_magic_damage(new_magic_damage):
-	magic_damage = new_magic_damage
-func get_magic_damage():
-	return magic_damage
 
 
 func get_closest_object():
@@ -110,5 +129,5 @@ func restart():
 
 func spawn():
 	player = player_scene.instantiate()
-	GlobalWorldInfo.get_world_3d().add_child(player)
+	GlobalWorldInfo.get_world().add_child(player)
 	

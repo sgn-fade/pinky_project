@@ -16,7 +16,7 @@ func cast():
 
 func cooldown():
 	is_ready = false
-	await GlobalWorldInfo.get_world_3d().get_tree().create_timer(cooldown_time).timeout
+	await GlobalWorldInfo.get_world().get_tree().create_timer(cooldown_time).timeout
 	is_ready = true
 
 

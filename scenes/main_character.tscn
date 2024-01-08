@@ -526,23 +526,26 @@ collision_mask = 5
 script = ExtResource("4")
 
 [node name="shadow_under" type="Sprite2D" parent="."]
-position = Vector2(0, 6.5)
+z_as_relative = false
 scale = Vector2(0.5, 0.388)
 texture = ExtResource("11")
 
 [node name="aSprite" type="AnimatedSprite2D" parent="."]
+z_as_relative = false
 position = Vector2(-1, 0)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("16")
 animation = &"idle"
+offset = Vector2(0, -7.39)
 flip_h = true
 
 [node name="Collision_character" type="CollisionShape2D" parent="."]
-position = Vector2(2.38419e-07, 3.5)
+position = Vector2(0, -3.5)
 scale = Vector2(1.3, -0.775)
 shape = SubResource("107")
 
 [node name="player_area" type="Area2D" parent="."]
+position = Vector2(0, -7)
 collision_layer = 2147483648
 collision_mask = 2147483648
 
@@ -675,7 +678,7 @@ gravity = Vector2(50, 98)
 color = Color(0.278431, 0.290196, 0.537255, 1)
 
 [node name="hands" type="Node2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-1, -8)
 script = ExtResource("5")
 
 [node name="teleport_ray" type="RayCast2D" parent="."]

@@ -56,7 +56,6 @@ func spawn_goblin():
 
 func _process(delta):
 	cd -= delta
-	z_index = global_position.y / 2
 	self.attack_cooldown -= delta
 	self.throw_cooldown -= delta
 	

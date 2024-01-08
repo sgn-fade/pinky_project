@@ -1,13 +1,13 @@
 extends Node
-@onready var world = get_node("/root")
+@onready var world = get_node("/root/World")
 var liderboard = {
 	22032005:"XXXivanmigunXXX",
 	215463: "PRO100_lika",
 	12415: "SEMYX",
 	7475: "DIMCHICK",
 }
-func get_world_3d():
-	return world
+func get_world():
+	return world.get_node("location")
 func _ready():
 	load_board()
 func add_player_to_board(name):

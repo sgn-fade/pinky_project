@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource path="res://sprites/light.png" type="Texture2D" id=1]
-[ext_resource path="res://sprites/particles/dash_particles.png" type="Texture2D" id=2]
-[ext_resource path="res://sprites/particles/spells_particles/fire_spear_particle.png" type="Texture2D" id=3]
-[ext_resource path="res://scripts/particles/fire_spear_spell.gd" type="Script" id=4]
+[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b10ywdoqyyw1x" path="res://sprites/particles/spells_particles/fire_spear_particle.png" id="3"]
+[ext_resource type="Script" path="res://scripts/particles/fire_spear_particle.gd" id="4"]
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )

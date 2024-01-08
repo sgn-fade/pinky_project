@@ -59,6 +59,7 @@ signal damage_to_enemy(body, damage, status)
 
 
 signal update_character_hp_bar_value(hp, max_hp)
+signal update_character_mana_bar_value(mana, max_mana)
 
 
 signal generate_dungeon()

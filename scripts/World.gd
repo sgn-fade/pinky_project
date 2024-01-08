@@ -27,7 +27,7 @@ func _process(delta):
 
 func generate_dungeon():
 	location = dungeon.instantiate()
-	add_child(location)
+	$location.add_child(location)
 	location.generate_dungeon()
 
 
@@ -35,7 +35,7 @@ func go_to_hub():
 	if location != null:
 		location.queue_free()
 	location = hub_zone.instantiate()
-	add_child(location)
+	$location.add_child(location)
 	Player.set_position(Vector2.ZERO)
 
 func load_game():

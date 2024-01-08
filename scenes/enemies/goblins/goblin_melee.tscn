@@ -389,10 +389,12 @@ animations = [{
 size = Vector2(17, 8.5)
 
 [node name="goblin_melee" instance=ExtResource("5")]
+z_as_relative = false
 script = ExtResource("2")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 visible = false
+z_as_relative = false
 
 [node name="body" type="Area2D" parent="." index="10"]
 position = Vector2(-0.999999, 0.00114101)

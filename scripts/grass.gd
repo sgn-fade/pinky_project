@@ -16,4 +16,8 @@ func _on_visible_screen_exited():
 
 func _on_Area2D_body_entered(body):
 	if body.name != "grass":
-		$anim.play("entity_entered")
+		if Player.get_position().x - global_position.x > 0:
+			$anim.play("left")
+		else:
+			$anim.play("right")
+			

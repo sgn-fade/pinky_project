@@ -14,6 +14,7 @@ func _ready():
 	$Sprite2D.play("shoot")
 	var end_position = get_global_mouse_position()
 	self.global_position = Player.get_position()
+	self.global_position.y -= 5
 	velocity = (end_position - Player.get_position()).normalized() * speed
 	look_at(end_position) 
 

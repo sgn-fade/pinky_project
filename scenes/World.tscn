@@ -1,15 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://xbjxamyvlgcc"]
+[gd_scene load_steps=4 format=3 uid="uid://xbjxamyvlgcc"]
 
 [ext_resource type="PackedScene" uid="uid://qbrrhv0xfcu7" path="res://scenes/Ui.tscn" id="5"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="7"]
 
+[sub_resource type="Environment" id="Environment_blhyc"]
+background_energy_multiplier = 9.25
+background_canvas_max_layer = 1
+ambient_light_energy = 1.34
+glow_enabled = true
+glow_levels/1 = 1.98
+glow_intensity = 2.74
+glow_strength = 0.7
+glow_bloom = 0.09
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+adjustment_enabled = true
+adjustment_brightness = 1.2
+adjustment_contrast = 1.4
+adjustment_saturation = 1.8
+
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("7")
 
 [node name="Ui" parent="." instance=ExtResource("5")]
 process_mode = 3
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="World_Embient" type="CanvasModulate" parent="."]
 process_priority = -71
 visible = false
 color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_blhyc")
+
+[node name="location" type="Node2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
