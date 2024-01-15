@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://xhtvd35b7d8y"]
+
+[ext_resource type="Texture2D" uid="uid://eytpcmh7m1m7" path="res://sprites/spell_icons/fireball_icon.png" id="1_tfiwq"]
+
+[node name="drag_and_drop_object" type="TextureButton"]
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+scale = Vector2(4, 4)
+pivot_offset = Vector2(14, 14)
+texture_normal = ExtResource("1_tfiwq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

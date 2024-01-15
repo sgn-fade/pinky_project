@@ -20,6 +20,7 @@ enum States {
 	DEALS_DAMAGE,
 	THROWING_STONE,
 	SEARCHING,
+	NONE
 }
 
 
@@ -90,7 +91,6 @@ func chasing_player():
 	current_state = States.MOVE
 	
 func searching_players(delta):
-	
 	if current_state != States.SEARCHING:
 		sprite.play("move")
 		current_state = States.SEARCHING
@@ -146,22 +146,6 @@ func idle(State):
 	current_state = State
 
 
-func throw_stone():
-	if(
-			#randi()%2 == 1 and 
-			self.throw_cooldown <= 0 and
-			self.current_state != States.THROWING_STONE and
-			direction.length() > 50
-	):
-		self.throw_cooldown = 3
-		self.current_state = States.THROWING_STONE
-		var current_goblins_stone = throwing_stone.instantiate()
-		current_goblins_stone.global_position = global_position
-		GlobalWorldInfo.get_world_3d().add_child(current_goblins_stone)
-		timer.start(0.5)
-		await timer.timeout
-		self.current_state = States.IDLE
-
 
 func attack():
 	if direction.length() < 30 and current_state != States.ATTACK and attack_cooldown <= 0:
@@ -186,7 +170,6 @@ func attack():
 
 
 func _on_melee_goblin_attack_area_entered(body):
-	
 	if body == Player.get_body() and current_state != States.DEALS_DAMAGE:
 		current_state = States.DEALS_DAMAGE
 		var player_offcet_dir = (-(self.global_position - Player.get_position()).normalized())
@@ -198,3 +181,13 @@ func _on_pulls_body(body, pos):
 		pull_source = pos
 		current_state = States.PULLS
 	
+func _on_damage_to_enemy(body, damage, status):
+	super._on_damage_to_enemy(body, damage, status)
+	if self == body:
+		current_state = States.NONE
+		$body/end_partcl.emitting = true
+		sprite.play("take_damage")
+		$anim_player.play("take_damage")
+		await sprite.animation_finished
+		current_state = States.IDLE
+		

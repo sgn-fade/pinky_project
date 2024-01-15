@@ -272,22 +272,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GoblinSword:position")
+tracks/1/path = NodePath("sprite2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-8, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprite2:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -394,7 +382,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="37"]
-length = 0.416667
+length = 0.416675
 loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
@@ -448,7 +436,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-8, 1), Vector2(-8, -3.57628e-07), Vector2(-8, -3.57628e-07), Vector2(-8, -3.57628e-07), Vector2(-8, 1), Vector2(-8, -3.57628e-07), Vector2(-8, -3.57628e-07), Vector2(-8, -3.57628e-07), Vector2(-8, 1)]
+"values": [Vector2(-8, 2), Vector2(-8, 1), Vector2(-8, 1), Vector2(-8, 1), Vector2(-8, 2), Vector2(-8, 1), Vector2(-8, 1), Vector2(-8, 1), Vector2(-8, 2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k8ng4"]
@@ -465,7 +453,7 @@ _data = {
 show_behind_parent = true
 
 [node name="GoblinSword" type="Sprite2D" parent="."]
-position = Vector2(-8, 0)
+position = Vector2(-8, -3.57628e-07)
 rotation = 1.13446
 texture = ExtResource("1")
 
@@ -473,7 +461,7 @@ texture = ExtResource("1")
 visible = false
 position = Vector2(7, -1)
 sprite_frames = SubResource("53")
-animation = &"base_sword_combo_first"
+animation = &"move"
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

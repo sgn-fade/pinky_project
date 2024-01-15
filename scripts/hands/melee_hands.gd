@@ -6,13 +6,16 @@ var sword_obj
 var combo_timer = Timer.new()
 
 func _ready():
+	EventBus.connect("hands_play_animation", Callable(self, "play_animation"))
 	add_child(combo_timer)
 	combo_timer.one_shot = true
 	sword_obj = sword.instantiate()
 	add_child(sword_obj)
 	sword_obj.position = $sword_pos.position
+	
 
 func play_animation(animation_time, animation_name):
+	
 	super.play_animation(0, animation_name)
 	sword_obj.get_node("anim").play(animation_name)
 

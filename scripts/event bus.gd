@@ -19,7 +19,6 @@ signal switch_hands_stance(weapon)
 signal spell_animation_ended()
 
 
-signal player_body_entered(body)
 signal dash_cooldown()
 signal player_teleport(position)
 signal player_dead()

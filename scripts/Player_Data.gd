@@ -13,6 +13,8 @@ var weapon_slot_1 = null
 var weapon_slot_2 = null
 var weapon_current_slot = 1
 
+var can_smite = false
+
 var closest_interactive_object = null
 var magic_damage = 1
 func _ready():
@@ -130,4 +132,15 @@ func restart():
 func spawn():
 	player = player_scene.instantiate()
 	GlobalWorldInfo.get_world().add_child(player)
-	
+
+
+#passive spells
+
+func set_smite(state):
+	can_smite = state
+
+func get_smite(enemy):
+	if can_smite:
+		if enemy.hp <= 0 and enemy.global_position.distance_to(get_position()):
+			return true
+	return false

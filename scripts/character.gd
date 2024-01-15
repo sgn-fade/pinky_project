@@ -99,7 +99,8 @@ func move():
 	elif speed < 80:
 		speed += 5
 	input = input.normalized()
-
+	EventBus.emit_signal("hands_play_animation",0, animation)
+	
 	velocity = velocity.lerp(input * speed, acceleration * 0.016)
 	set_velocity(velocity)
 	move_and_slide()

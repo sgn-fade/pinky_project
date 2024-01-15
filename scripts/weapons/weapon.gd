@@ -1,9 +1,7 @@
 extends Node
 
-var equiped
 var icon
 var rarity
-var modules = []
 var Buttons_binds = Options.Buttons_binds
 var type = "none"
 var damage
@@ -45,9 +43,8 @@ func _ready():
 
 func _init():
 	randomize()
-	if self.get_type() != "melee":
-		for i in 4:
-			cells.append(cell.new(positions.pop_at(randi()%positions.size())))
+	for i in 4:
+		cells.append(cell.new(positions.pop_at(randi()%positions.size())))
 
 
 func input(event):
@@ -64,8 +61,8 @@ func input(event):
 		input_key = "slot5"
 	if Input.is_action_just_pressed(Buttons_binds["slot6"]):
 		input_key = "slot6"
+
 	if input_key != null and Spells_buttons[Buttons_binds[input_key]] != null and Spells_buttons[Buttons_binds[input_key]].get_ready():
-	
 		Spells_buttons[Buttons_binds[input_key]].cast()
 		EventBus.emit_signal("start_spell_cooldown", Spells_buttons[Buttons_binds[input_key]].cooldown_time, input_key)
 
@@ -76,8 +73,7 @@ func add_module_to_weapon(module, new, place, cell_index):
 		cells[cell_index].button = buttons.pop_at(0)
 		Spells_buttons[Buttons_binds[cells[cell_index].button]] = module
 		EventBus.emit_signal("set_spell_icon_to_game", module.spell_icon, cells[cell_index].button)
-	
-		
+
 
 func remove_module_from_weapon(module, cell_index):
 	if not module.is_new():
@@ -88,6 +84,13 @@ func remove_module_from_weapon(module, cell_index):
 		Spells_buttons[cells[cell_index].button] = null
 
 
+func add_base_spell(module):
+	var cell = cells.pick_random()
+	cell.module = module
+	cell.button = buttons.pop_at(2)
+	Spells_buttons[Buttons_binds[cell.button]] = module
+	EventBus.emit_signal("set_spell_icon_to_game", module.spell_icon, cell.button)
+	
 func get_spell_from_button(button):
 	return Spells_buttons[button]
 

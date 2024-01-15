@@ -15,7 +15,8 @@ func _process(delta):
 		delete()
 	
 func _on_body_entered(body):
-	EventBus.emit_signal("damage_to_enemy", body, 1, null)
+	if body.name == "Enemies":
+		EventBus.emit_signal("damage_to_enemy", body, 1, null)
 	delete()
 	
 

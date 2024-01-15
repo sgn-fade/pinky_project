@@ -34,37 +34,30 @@ func _ready():
 	slowdown_timer.one_shot = false
 	timer.one_shot = false
 	EventBus.connect("pulls_body", Callable(self, "_on_pulls_body"))
-	EventBus.connect("player_body_entered", Callable(self, "_on_player_body_entered"))
 	EventBus.connect("damage_to_enemy", Callable(self, "_on_damage_to_enemy"))
 	EventBus.connect("push_away_enemy", Callable(self, "_on_push_away_enemy"))
 
 
-func _process(delta):
-	self.z_index = self.global_position.y / 2
-	
 func set_direction(dir):
 	direction = dir
 	
 func get_direction():
 	return direction
 	
-func _on_player_body_entered(body):
-	if self == body && body.hp > 0 && Player.get_hp() > 0:
-		var player_offcet_dir = (-(self.global_position - Player.global_position).normalized())
-		#player.take_damage(player_offcet_dir, enemy_damage)
-		if Player.get_hp() <= 0:
+func _input(event):
+	if Input.is_action_just_pressed("E"):
+		if Player.get_smite(self):
 			queue_free()
-
-	
 func enemy_death():
 	if self.hp <= 0:
-		EventBus.emit_signal("enemy_killed")
-		spawn_drop()
-		queue_free()
+		$dead.visible = true
+		#EventBus.emit_signal("enemy_killed")
+		#spawn_drop()
+		#queue_free()
 
 func spawn_drop():
 	var blood_orb = blood_orb_drop.instantiate()
-	GlobalWorldInfo.get_world_3d().add_child(blood_orb)
+	GlobalWorldInfo.get_world().add_child(blood_orb)
 	blood_orb.global_position = self.global_position
 	blood_orb.z_index = self.z_index
 

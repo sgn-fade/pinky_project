@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://15vutrjv1g2g"]
+[gd_scene load_steps=84 format=3 uid="uid://15vutrjv1g2g"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/spell_character_animation/body/clear_player.png" id="2"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dmcrgv2sfcch8" path="res://sprites/particles/heal_particle.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://ii2pspfnq311" path="res://sprites/particles/player_dash_particle.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://tks8mnv85ym7" path="res://sprites/particles/blood_rain_particle.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://degpsr0dla7po" path="res://sprites/particles/dead_particles.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://ckguhk15kqtjp" path="res://sprites/character_pillon_cast.png" id="13"]
@@ -639,29 +638,6 @@ emission_shape = 2
 emission_sphere_radius = 1.0
 spread = 62.03
 gravity = Vector2(0, -20)
-
-[node name="dead_layer" type="CanvasLayer" parent="."]
-layer = 100
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
-
-[node name="dead" type="CPUParticles2D" parent="dead_layer"]
-light_mask = 2
-z_index = 7
-position = Vector2(168.667, 99.3333)
-emitting = false
-amount = 250
-lifetime = 10.0
-speed_scale = 0.7
-randomness = 0.74
-lifetime_randomness = 0.8
-texture = ExtResource("10")
-emission_shape = 2
-emission_sphere_radius = 1.0
-direction = Vector2(0, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-color = Color(0.803922, 0.137255, 0.152941, 1)
 
 [node name="rain" type="CPUParticles2D" parent="."]
 visible = false

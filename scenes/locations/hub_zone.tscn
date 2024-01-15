@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bx1mxg4kipto5"]
+[gd_scene load_steps=16 format=3 uid="uid://bx1mxg4kipto5"]
 
 [ext_resource type="Texture2D" uid="uid://cu23cwynpxasr" path="res://sprites/locations/hub_zone/hub_zone.png" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/world_env/map_terminal.tscn" id="2"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dirai0rxl701a" path="res://scenes/enemies/enemy.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dca0g5c0huvv3" path="res://scenes/Lights.tscn" id="8_lrqqk"]
 [ext_resource type="PackedScene" uid="uid://b0c6sthqnjd75" path="res://scenes/enemies/goblins/goblin_melee.tscn" id="10_70wah"]
+[ext_resource type="PackedScene" uid="uid://cgxdpd8dj60sb" path="res://scenes/world_env/puddle.tscn" id="10_h46ya"]
+[ext_resource type="PackedScene" uid="uid://53wgvunkk2pv" path="res://scenes/grass.tscn" id="11_rdiwx"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(284, 50)
@@ -35,6 +37,7 @@ visibility_layer = 3
 z_index = -1000
 z_as_relative = false
 y_sort_enabled = true
+position = Vector2(0, 1)
 collision_layer = 4294967295
 collision_mask = 4294967295
 script = ExtResource("3")
@@ -119,10 +122,30 @@ z_index = -1
 z_as_relative = false
 position = Vector2(-112, 129)
 
-[node name="goblin_melee" parent="." instance=ExtResource("10_70wah")]
-z_index = -1
-y_sort_enabled = true
-position = Vector2(-364, 268)
-
 [node name="goblin_melee2" parent="." instance=ExtResource("10_70wah")]
-position = Vector2(-338, 291)
+visible = false
+position = Vector2(-414, 31)
+
+[node name="puddle" parent="." instance=ExtResource("10_h46ya")]
+position = Vector2(50, 85)
+
+[node name="grass" parent="." instance=ExtResource("11_rdiwx")]
+position = Vector2(-127, -23)
+
+[node name="grass2" parent="." instance=ExtResource("11_rdiwx")]
+position = Vector2(-135, -26)
+
+[node name="grass3" parent="." instance=ExtResource("11_rdiwx")]
+position = Vector2(-122, -36)
+
+[node name="grass4" parent="." instance=ExtResource("11_rdiwx")]
+position = Vector2(-143, -42)
+
+[node name="grass5" parent="." instance=ExtResource("11_rdiwx")]
+position = Vector2(-153, -25)
+
+[node name="grass6" parent="." instance=ExtResource("11_rdiwx")]
+position = Vector2(-155, -43)
+
+[node name="grass7" parent="." instance=ExtResource("11_rdiwx")]
+position = Vector2(-172, -28)

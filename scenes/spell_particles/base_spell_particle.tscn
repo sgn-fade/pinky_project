@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://fk4l0t501g3s"]
+
+[ext_resource type="Script" path="res://scripts/particles/base_spell_particle.gd" id="1_3084n"]
+[ext_resource type="Texture2D" uid="uid://c85f574dj0xhg" path="res://sprites/particles/spells_particles/base_spell.png" id="2_16368"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rceck"]
+radius = 4.0
+height = 24.0
+
+[node name="body" type="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_3084n")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rceck")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_16368")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(-7, 0)
+amount = 60
+preprocess = 0.2
+randomness = 0.42
+lifetime_randomness = 0.41
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(-1, 0)
+spread = 6.82
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(0.694118, 1, 1, 1)
+position = Vector2(12, 0)
+amount = 20
+lifetime = 0.5
+local_coords = true
+direction = Vector2(-2, 0)
+spread = 66.36
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+angle_min = 116.4
+angle_max = 116.4
+scale_amount_min = 0.5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

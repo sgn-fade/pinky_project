@@ -5,6 +5,9 @@ extends Node2D
 @onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
 @onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
 @onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
+@onready var smite = load("res://scripts/spells/melee_spells/smite.gd")
+
+
 @onready var dungeon = load("res://scenes/locations/dungeon.tscn")
 @onready var hub_zone = load("res://scenes/locations/hub_zone.tscn")
 @onready var weapon_drop = load("res://scenes/weapon_drop.tscn")
@@ -28,7 +31,7 @@ func _process(delta):
 func generate_dungeon():
 	location = dungeon.instantiate()
 	$location.add_child(location)
-	location.generate_dungeon()
+	#location.generate_dungeon()
 
 
 func go_to_hub():
@@ -52,6 +55,7 @@ func load_game():
 	EventBus.emit_signal("add_module_to_place", fire_teleport_spell.new(), true, "inventory", -1)
 	EventBus.emit_signal("add_module_to_place", fire_eye_spell.new(), true, "inventory", -1)
 	EventBus.emit_signal("add_module_to_place", fire_spear_spell.new(), true, "inventory", -1)
+	EventBus.emit_signal("add_module_to_place", smite.new(), true, "inventory", -1)
 
 
 func spawn_player():

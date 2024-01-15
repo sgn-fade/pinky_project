@@ -23,13 +23,13 @@ var room_count
 @onready var Grass = $grass
 var timer := Timer.new()
 
-func _ready():
-	Player.set_position(Vector2.ZERO)
-	EventBus.connect("survive_event_started", Callable(self, "_on_survive_event_started"))
-	EventBus.connect("enemy_killed", Callable(self, "_on_enemy_killed"))
-	add_child(timer)
-	timer.one_shot = false
-	randomize()
+#func _ready():
+	#Player.set_position(Vector2.ZERO)
+	#EventBus.connect("survive_event_started", Callable(self, "_on_survive_event_started"))
+	#EventBus.connect("enemy_killed", Callable(self, "_on_enemy_killed"))
+	#add_child(timer)
+	#timer.one_shot = false
+	#randomize()
 
 func _on_enemy_killed():
 	if $mobs.get_children().size() == 1:
