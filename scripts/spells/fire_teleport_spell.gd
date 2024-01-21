@@ -1,8 +1,5 @@
-extends Node
-var spell_icon = load("res://sprites/spell_icons/fire_teleport_icon.png")
-var rarity = "bronze"
-var is_ready = true
-var cooldown_time = 8 #8
+extends "res://scripts/spells/base_spell.gd"
+
 
 func cast():
 	cooldown()
@@ -12,13 +9,13 @@ func cast():
 	
 	EventBus.emit_signal("hands_play_animation", 0.833, "teleport_end")
 	
-	
+func _init():
+	rarity = "bronze"
+	animation_name = null
+	cooldown_time = 8
+	time_spend = 8
+	mana_cost = 20
+	particle = null
+	spell_icon = load("res://sprites/spell_icons/fire_teleport_icon.png")
 
-func cooldown():
-	is_ready = false
-	await GlobalWorldInfo.get_world().get_tree().create_timer(cooldown_time).timeout
-	is_ready = true
 
-
-func get_ready():
-	return is_ready

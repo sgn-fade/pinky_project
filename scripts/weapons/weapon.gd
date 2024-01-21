@@ -17,7 +17,6 @@ var Spells_buttons = {
 	Buttons_binds["slot5"] : null,
 	Buttons_binds["slot6"] : null,
 }
-var buttons = Buttons_binds.keys()
 
 var module_position_list = [
 	Vector2(418, 123),
@@ -63,33 +62,56 @@ func input(event):
 		input_key = "slot6"
 
 	if input_key != null and Spells_buttons[Buttons_binds[input_key]] != null and Spells_buttons[Buttons_binds[input_key]].get_ready():
-		Spells_buttons[Buttons_binds[input_key]].cast()
-		EventBus.emit_signal("start_spell_cooldown", Spells_buttons[Buttons_binds[input_key]].cooldown_time, input_key)
+		await Spells_buttons[Buttons_binds[input_key]].cast()
+		EventBus.emit_signal("start_spell_cooldown", input_key)
 
 
 func add_module_to_weapon(module, new, place, cell_index):
 	if place == "equipment":
 		cells[cell_index].module = module
-		cells[cell_index].button = buttons.pop_at(0)
+		
+		var buttons = Buttons_binds.keys()
+		var key_button
+		while buttons.size() > 0:
+			key_button = buttons.pop_at(0)
+			if Spells_buttons[Buttons_binds[key_button]] != null:
+				continue
+			else:
+				break
+		
+		cells[cell_index].button = key_button
 		Spells_buttons[Buttons_binds[cells[cell_index].button]] = module
-		EventBus.emit_signal("set_spell_icon_to_game", module.spell_icon, cells[cell_index].button)
+		EventBus.emit_signal("set_spell_icon_to_game", module, cells[cell_index].button)
 
 
 func remove_module_from_weapon(module, cell_index):
 	if not module.is_new():
 		EventBus.emit_signal("remove_spell_icon_from_game", cells[cell_index].button)
-		buttons.append(cells[cell_index].button)
 		cells[cell_index].button = null
 		cells[cell_index].module = null
 		Spells_buttons[cells[cell_index].button] = null
 
-
+func swap_modules(first_slot : String, second_slot : String):
+	var temp = Spells_buttons[Buttons_binds[first_slot]]
+	Spells_buttons[Buttons_binds[first_slot]] = Spells_buttons[Buttons_binds[second_slot]]
+	Spells_buttons[Buttons_binds[second_slot]] = temp
+	
+	if Spells_buttons[Buttons_binds[first_slot]] != null:
+		EventBus.emit_signal("set_spell_icon_to_game", Spells_buttons[Buttons_binds[first_slot]], first_slot)
+	else:
+		EventBus.emit_signal("remove_spell_icon_from_game", first_slot)
+	if Spells_buttons[Buttons_binds[second_slot]] != null:
+		EventBus.emit_signal("set_spell_icon_to_game", Spells_buttons[Buttons_binds[second_slot]], second_slot)
+	else:
+		EventBus.emit_signal("remove_spell_icon_from_game", second_slot)
+		
+	
 func add_base_spell(module):
 	var cell = cells.pick_random()
 	cell.module = module
-	cell.button = buttons.pop_at(2)
+	cell.button = "slot3"
 	Spells_buttons[Buttons_binds[cell.button]] = module
-	EventBus.emit_signal("set_spell_icon_to_game", module.spell_icon, cell.button)
+	EventBus.emit_signal("set_spell_icon_to_game", module, cell.button)
 	
 func get_spell_from_button(button):
 	return Spells_buttons[button]

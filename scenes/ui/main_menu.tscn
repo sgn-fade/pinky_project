@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://scripts/ui/liderboard.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://dmdfi7vaf011" path="res://sprites/backgrounds/planet.png" id="5"]
 
-
 [node name="main_menu" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,25 +46,25 @@ scale = Vector2(5.5, 5.5)
 texture_normal = ExtResource("1")
 stretch_mode = 3
 
-[node name="play" type="Label" parent="play"]
+[node name="Label3" type="Label" parent="play"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.9649
-offset_top = -6.68182
-offset_right = 324.034
-offset_bottom = 166.897
+offset_left = -8.54546
+offset_top = -5.09091
+offset_right = 645.455
+offset_bottom = 168.487
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.05, 0.05)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")
-text = "   play
-"
+theme_override_font_sizes/font_size = 200
+text = "play"
 
 [node name="option" type="TextureButton" parent="."]
 layout_mode = 1
@@ -90,16 +90,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.5104
-offset_top = -6.5
-offset_right = 325.489
-offset_bottom = 167.078
+offset_left = -15.8182
+offset_top = -5.27274
+offset_right = 638.182
+offset_bottom = 168.305
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.05, 0.05)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 200
 text = "settings"
 
 [node name="quit" type="TextureButton" parent="."]
@@ -119,23 +120,24 @@ scale = Vector2(5.5, 5.5)
 texture_normal = ExtResource("1")
 stretch_mode = 3
 
-[node name="Label2" type="Label" parent="quit"]
+[node name="Label3" type="Label" parent="quit"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -9.59091
-offset_top = -6.68182
-offset_right = 336.409
-offset_bottom = 166.897
+offset_left = -6.90909
+offset_top = -4.7273
+offset_right = 647.091
+offset_bottom = 168.851
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.05, 0.05)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 200
 text = "quit"
 
 [node name="liderboard" type="Label" parent="."]

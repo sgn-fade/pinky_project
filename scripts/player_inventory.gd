@@ -34,7 +34,7 @@ func fill_cells():
 			slot.position = cells[i].position
 			slot.set_equiped(true)
 			$weapon/cells.add_child(slot)
-			EventBus.emit_signal("set_spell_icon_to_game", cells[i].module.spell_icon, cells[i].button)
+			EventBus.emit_signal("set_spell_icon_to_game", cells[i].module, cells[i].button)
 
 func remove_all_cells():
 	$weapon/weapon_slot.visible = true

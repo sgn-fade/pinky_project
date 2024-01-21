@@ -4,6 +4,7 @@ func _init():
 	rarity = "bronze"
 	animation_name = "spear_throw"
 	cooldown_time = 4
+	time_spend = 4
 	mana_cost = 7
 	particle = load("res://scenes/spell_particles/fire_spear_particle.tscn")
 	spell_icon = load("res://sprites/spell_icons/fire_spear_spell_icon.png")

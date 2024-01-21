@@ -42,6 +42,7 @@ signal inventory_cell_choosed(cell)
 
 signal set_spell_icon_to_game(module_icon, button)
 signal remove_spell_icon_from_game(button)
+
 signal clear_spell_icons()
 
 signal add_weapon_to_inventory(weapon)

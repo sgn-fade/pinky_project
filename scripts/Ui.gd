@@ -9,11 +9,10 @@ extends CanvasLayer
 @onready var death_ui = $death_screen
 @onready var current_ui = menu_ui
 
-#TODO: add new melee weapon
 func _ready():
 	EventBus.connect("load_game", Callable(self, "load_animation"))
 	EventBus.connect("player_dead", Callable(self, "_on_player_dead"))
-	switch_ui(menu_ui, "ui", false)
+	switch_ui(game_ui, "game", false)
 
 func load_animation():
 	load_ui.visible = true

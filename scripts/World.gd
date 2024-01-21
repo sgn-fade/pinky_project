@@ -22,6 +22,7 @@ func _ready():
 	EventBus.connect("generate_dungeon", Callable(self, "generate_dungeon"))
 	EventBus.connect("load_game", Callable(self, "load_game"))
 	EventBus.connect("go_to_hub", Callable(self, "go_to_hub"))
+	EventBus.emit_signal("load_game")
 
 
 func _process(delta):

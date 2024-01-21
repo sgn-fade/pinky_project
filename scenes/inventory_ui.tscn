@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
 [ext_resource type="Script" path="res://scripts/ui/module_layout.gd" id="6_v8rr4"]
 [ext_resource type="Texture2D" uid="uid://bw3nmduc5c7or" path="res://sprites/particles/gold_coin.png" id="7"]
-[ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="7_i3b06"]
+[ext_resource type="PackedScene" uid="uid://xhtvd35b7d8y" path="res://scenes/ui/drag_and_drop_system/drag_and_drop_object.tscn" id="7_uquc5"]
 [ext_resource type="Texture2D" uid="uid://dralb4a7o1bva" path="res://sprites/ui/item_panel/empty_weapon_slot.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://2pjq3knexr2h" path="res://sprites/ui/square_label.png" id="9_7lgq8"]
 
@@ -32,7 +32,10 @@ script = ExtResource("2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1")
+stretch_mode = 5
 
 [node name="inventory" type="ScrollContainer" parent="."]
 clip_contents = false
@@ -182,119 +185,55 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1063.0
-offset_bottom = -12.0
+offset_left = 5.0
+offset_top = -2.0
+offset_right = -1058.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_v8rr4")
 
-[node name="slot1" type="TextureButton" parent="module_layout"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.196
-anchor_top = 0.638
-anchor_right = 0.196
-anchor_bottom = 0.638
-offset_left = 99.5681
-offset_top = -202.184
-offset_right = 132.568
-offset_bottom = -169.184
-scale = Vector2(4, 4)
-pivot_offset = Vector2(25.8467, 16.4)
+[node name="slot1" parent="module_layout" instance=ExtResource("7_uquc5")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 883.0
+offset_right = 91.0
+offset_bottom = 911.0
 
-[node name="Button_picture" parent="module_layout/slot1" instance=ExtResource("7_i3b06")]
-position = Vector2(29, 28)
-scale = Vector2(0.8, 0.8)
+[node name="slot2" parent="module_layout" instance=ExtResource("7_uquc5")]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 911.0
+offset_right = 208.0
+offset_bottom = 939.0
 
-[node name="slot2" type="TextureButton" parent="module_layout"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.196
-anchor_top = 0.638
-anchor_right = 0.196
-anchor_bottom = 0.638
-offset_left = 263.568
-offset_top = -205.184
-offset_right = 296.568
-offset_bottom = -172.184
-scale = Vector2(4, 4)
-pivot_offset = Vector2(25.8467, 16.4)
+[node name="slot3" parent="module_layout" instance=ExtResource("7_uquc5")]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 936.0
+offset_right = 324.0
+offset_bottom = 964.0
 
-[node name="Button_picture" parent="module_layout/slot2" instance=ExtResource("7_i3b06")]
-position = Vector2(29, 28)
-scale = Vector2(0.8, 0.8)
+[node name="slot4" parent="module_layout" instance=ExtResource("7_uquc5")]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 940.0
+offset_right = 549.0
+offset_bottom = 968.0
 
-[node name="slot3" type="TextureButton" parent="module_layout"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.196
-anchor_top = 0.638
-anchor_right = 0.196
-anchor_bottom = 0.638
-offset_left = 435.568
-offset_top = -207.184
-offset_right = 468.568
-offset_bottom = -174.184
-scale = Vector2(4, 4)
-pivot_offset = Vector2(25.8467, 16.4)
+[node name="slot5" parent="module_layout" instance=ExtResource("7_uquc5")]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 905.0
+offset_right = 662.0
+offset_bottom = 933.0
 
-[node name="Button_picture" parent="module_layout/slot3" instance=ExtResource("7_i3b06")]
-position = Vector2(29, 28)
-scale = Vector2(0.8, 0.8)
-
-[node name="slot4" type="TextureButton" parent="module_layout"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.196
-anchor_top = 0.638
-anchor_right = 0.196
-anchor_bottom = 0.638
-offset_left = 104.568
-offset_top = -36.184
-offset_right = 137.568
-offset_bottom = -3.18402
-scale = Vector2(4, 4)
-pivot_offset = Vector2(25.8467, 16.4)
-
-[node name="Button_picture" parent="module_layout/slot4" instance=ExtResource("7_i3b06")]
-position = Vector2(29, 28)
-scale = Vector2(0.8, 0.8)
-
-[node name="slot5" type="TextureButton" parent="module_layout"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.196
-anchor_top = 0.638
-anchor_right = 0.196
-anchor_bottom = 0.638
-offset_left = 282.568
-offset_top = -39.184
-offset_right = 315.568
-offset_bottom = -6.18402
-scale = Vector2(4, 4)
-pivot_offset = Vector2(25.8467, 16.4)
-
-[node name="Button_picture" parent="module_layout/slot5" instance=ExtResource("7_i3b06")]
-position = Vector2(29, 28)
-scale = Vector2(0.8, 0.8)
-
-[node name="slot6" type="TextureButton" parent="module_layout"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.196
-anchor_top = 0.638
-anchor_right = 0.196
-anchor_bottom = 0.638
-offset_left = 459.568
-offset_top = -41.184
-offset_right = 492.568
-offset_bottom = -8.18402
-scale = Vector2(4, 4)
-pivot_offset = Vector2(25.8467, 16.4)
-
-[node name="Button_picture" parent="module_layout/slot6" instance=ExtResource("7_i3b06")]
-position = Vector2(29, 28)
-scale = Vector2(0.8, 0.8)
+[node name="slot6" parent="module_layout" instance=ExtResource("7_uquc5")]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 874.0
+offset_right = 777.0
+offset_bottom = 902.0
 
 [node name="weapon" type="Control" parent="."]
 visible = false
@@ -393,5 +332,23 @@ text = "2
 [connection signal="pressed" from="weapons" to="." method="_on_weapons_pressed"]
 [connection signal="pressed" from="modules" to="." method="_on_modules_pressed"]
 [connection signal="pressed" from="layout" to="." method="_on_layout_pressed"]
+[connection signal="button_selected" from="module_layout/slot1" to="module_layout" method="_on_button_selected"]
+[connection signal="mouse_entered_to_destionation" from="module_layout/slot1" to="module_layout" method="_on_mouse_entered_to_destionation"]
+[connection signal="mouse_exit_from_destionation" from="module_layout/slot1" to="module_layout" method="_on_mouse_exit_from_destionation"]
+[connection signal="button_selected" from="module_layout/slot2" to="module_layout" method="_on_button_selected"]
+[connection signal="mouse_entered_to_destionation" from="module_layout/slot2" to="module_layout" method="_on_mouse_entered_to_destionation"]
+[connection signal="mouse_exit_from_destionation" from="module_layout/slot2" to="module_layout" method="_on_mouse_exit_from_destionation"]
+[connection signal="button_selected" from="module_layout/slot3" to="module_layout" method="_on_button_selected"]
+[connection signal="mouse_entered_to_destionation" from="module_layout/slot3" to="module_layout" method="_on_mouse_entered_to_destionation"]
+[connection signal="mouse_exit_from_destionation" from="module_layout/slot3" to="module_layout" method="_on_mouse_exit_from_destionation"]
+[connection signal="button_selected" from="module_layout/slot4" to="module_layout" method="_on_button_selected"]
+[connection signal="mouse_entered_to_destionation" from="module_layout/slot4" to="module_layout" method="_on_mouse_entered_to_destionation"]
+[connection signal="mouse_exit_from_destionation" from="module_layout/slot4" to="module_layout" method="_on_mouse_exit_from_destionation"]
+[connection signal="button_selected" from="module_layout/slot5" to="module_layout" method="_on_button_selected"]
+[connection signal="mouse_entered_to_destionation" from="module_layout/slot5" to="module_layout" method="_on_mouse_entered_to_destionation"]
+[connection signal="mouse_exit_from_destionation" from="module_layout/slot5" to="module_layout" method="_on_mouse_exit_from_destionation"]
+[connection signal="button_selected" from="module_layout/slot6" to="module_layout" method="_on_button_selected"]
+[connection signal="mouse_entered_to_destionation" from="module_layout/slot6" to="module_layout" method="_on_mouse_entered_to_destionation"]
+[connection signal="mouse_exit_from_destionation" from="module_layout/slot6" to="module_layout" method="_on_mouse_exit_from_destionation"]
 [connection signal="pressed" from="weapon/weapon_slot_swap/1" to="." method="_on_slot_1_weapon_pressed"]
 [connection signal="pressed" from="weapon/weapon_slot_swap/2" to="." method="_on_slot_2_weapon_pressed"]
