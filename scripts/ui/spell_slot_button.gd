@@ -56,7 +56,7 @@ func _on_drop_button_pressed():
 	if equiped:
 		return
 	var modules_drops = modules_drop.instantiate()
-	GlobalWorldInfo.get_world_3d().add_child(modules_drops)
+	GlobalWorldInfo.get_world().add_child(modules_drops)
 	modules_drops.global_position = Player.get_position()
 	modules_drops.module = module
 	modules_drops.z_index = Player.get_z_index()

@@ -23,14 +23,6 @@ var room_count
 @onready var Grass = $grass
 var timer := Timer.new()
 
-#func _ready():
-	#Player.set_position(Vector2.ZERO)
-	#EventBus.connect("survive_event_started", Callable(self, "_on_survive_event_started"))
-	#EventBus.connect("enemy_killed", Callable(self, "_on_enemy_killed"))
-	#add_child(timer)
-	#timer.one_shot = false
-	#randomize()
-
 func _on_enemy_killed():
 	if $mobs.get_children().size() == 1:
 		spawn_portal()
@@ -41,29 +33,6 @@ func spawn_portal():
 	add_child(object)
 	object.global_position = Player.get_position() + Vector2(randi()%20, randi()%20)
 	
-func generate_dungeon():
-	create_center_room()
-	Player.set_position(Vector2.ZERO)
-func create_empty_space(height, width, center):
-	for x in range(center.x - width - 5, center.x + width + 5):
-		for y in range(center.y - height - 5, center.y + height + 5):
-			if Map.get_cell_atlas_coords(Vector2(x, y)) == -1:
-				Map.set_cell(x, y, 0)
-				Map.tile_set.terrain_set_bitmask(1, Vector2(x, y))
-
-
-func generate(height, width, center):
-	#spawn_fog(center, height, width)
-	spawn_goblin(center * tile_size, height, width)
-	create_empty_space(height, width, center)
-	spawn_light(center, height, width)
-	spawn_grass(center * tile_size, height * tile_size, width * tile_size)
-	for x in range(center.x - width, center.x + width):
-		for y in range(center.y - height, center.y + height):
-			Map.set_cell(x, y, 1)
-			Map.tile_set.terrain_set_bitmask(1, Vector2(x, y))
-	Map.update_bitmask_region()
-	return Vector2(width, height)
 
 
 func spawn_module(center,height, width):
@@ -122,53 +91,6 @@ func random_mob_instance(coord, height, width):
 												  coord.y + (randi() % int(height) * 2 - int(height)) * (tile_size / 2.0)))
 
 
-func create_center_room():
-	room_count = room_generate_count
-	room_count -= 1
-	var room_direction
-	var room_width = randi() % max_size + min_size
-	var room_height = randi() % (max_size) + min_size
-	var room_size = generate(room_height, room_width, Vector2(0, 0))
-	var room_center = Vector2(0, 0)
-	match randi()%4 + 1:
-		1:room_direction = Vector2(-1, 0)
-		2:room_direction = Vector2(1, 0)
-		3:room_direction = Vector2(0, -1)
-		4:room_direction = Vector2(0, 1)
-	create_room(room_size, room_center, room_direction)
-
-
-func _on_survive_event_started(room_size, room_center, survive_time):
-	for i in survive_time / 10:
-		timer.start(1)
-		await timer.timeout
-		spawn_goblin(room_center, room_size.y, room_size.x)
-
-
-func create_room(room_size, room_center, room_direction):
-	room_count -= 1
-	if room_count < 0:
-		return
-	var tonel_size = randi()% 2 + 2
-	var room_width = randi() % max_size + min_size
-	var room_height = randi() % (max_size) + min_size
-	var current_room_center = room_center
-	var tonel_offset = randi() % 7 - 3
-	
-	for i in range(0, tonel_size):
-		Map.set_cell(room_center.x + (room_size.x + i) * room_direction.x ,
-					room_center.y + (room_size.y + i) * room_direction.y, 1)
-		Map.tile_set.terrain_set_bitmask(1, Vector2(room_size.x, room_size.y))
-	current_room_center = Vector2(room_center.x + (room_size.x + tonel_size + room_width) * room_direction.x, #еще раз пересмотреть позже)
-								room_center.y + (room_size.y + tonel_size + room_height) * room_direction.y)
-	Map.update_bitmask_region()
-	if Map.get_cell(current_room_center.x, current_room_center.y) == 1:
-		room_direction = generate_direction(room_direction)
-		create_room(room_size, room_center, room_direction)
-		return
-	room_size = generate(room_height, room_width, current_room_center)
-	room_direction = generate_direction(room_direction)
-	create_room(room_size, current_room_center, room_direction)
 
 
 func generate_direction(previous_direction):

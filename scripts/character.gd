@@ -39,9 +39,9 @@ func _process(delta):
 		States.MOVE:
 			play_animation("move")
 			move()
-			dash(delta)
 		States.DASH:
-			move_player(delta)
+			dash(delta)
+			#move_player(delta)
 		States.BUTT_HIT_DASH:
 			pass
 		States.SPELL:
@@ -77,6 +77,20 @@ func _input(event):
 
 
 func move():
+	var dash = get_node("/root/World/Ui/game_ui/dash_indicator")
+	if Input.is_action_just_pressed("Shift") && dash.ready:
+		disable_collision()
+		$dash_particles1.emitting = true
+		$dash_particles2.emitting = true
+		EventBus.emit_signal("dash_cooldown")
+		set_velocity(velocity * 5)
+		current_state = States.DASH
+		await get_tree().create_timer(0.09).timeout
+		current_state = States.IDLE
+		set_velocity(velocity / 5)
+		character_slowdown()
+		
+	
 	input = Vector2.ZERO
 	var animation = "move"
 	current_state = States.MOVE
@@ -120,20 +134,10 @@ func move_player(delta):
 	set_velocity(velocity)
 	move_and_slide()
 	dash_speed_const += 1
-	
+
 
 func dash(delta):
-	var dash = get_node("/root/World/Ui/game_ui/dash_indicator")
-	if Input.is_action_just_pressed("Shift") && dash.ready && current_state != States.DASH:
-		move_position = input * 200
-		
-		current_state = States.DASH
-		$dash_particles1.emitting = true
-		$dash_particles2.emitting = true
-		disable_collision()
-		EventBus.emit_signal("dash_cooldown")
-		character_slowdown()
-		
+	move_and_slide()
 
 
 func change_state(state):
@@ -184,14 +188,7 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 	print(Player.get_hp())
 	if Player.get_hp() <= 0:
 		die()
-	if hp >= 5:
-		for i in 3:
-			modulate = "49ffffff"
-			timer.start(0.07)
-			await timer.timeout
-			modulate = "ffffff"
-			timer.start(0.07)
-			await timer.timeout
+
 	enable_collision()
 
 
