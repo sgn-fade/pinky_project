@@ -123,6 +123,8 @@ func _ready():
 			#rooms.append(b_room)
 			direction = await place_room(b_room, direction, distance)
 			distance = b_room.global_position
+	BetterTerrain.update_terrain_area(tile_map, 0, tile_map.get_used_rect())
+
 
 func center_room():
 	var center_room = room.instantiate()
@@ -133,7 +135,7 @@ func center_room():
 
 func place_room(room, prev_direction, prev_distance):
 	var direction = generate_direction(prev_direction)
-	var distance = prev_distance + direction * 1000
+	var distance = prev_distance + direction * 700
 	room.global_position = distance 
 	await get_tree().create_timer(0.1).timeout
 	if room.get_node("room_area").has_overlapping_areas():
@@ -146,7 +148,7 @@ func place_room(room, prev_direction, prev_distance):
 
 func create_tonel(direction, room):
 	fill_array(direction, room)
-	tile_map.set_cells_terrain_connect(0, array, 0, 1)
+	BetterTerrain.set_cells(tile_map, 0, array, 1)
 	array.clear()
 
 var array : Array[Vector2i] = []
@@ -161,8 +163,8 @@ func fill_array(direction, room):
 	if direction.y != 0:
 		y_direction = direction.y
 		x_direction = 1
-	for y in 1 + abs(direction.y) * 15:
-		for x in 1 + abs(direction.x) * 15:
+	for y in 1 + abs(direction.y) * 10:
+		for x in 1 + abs(direction.x) * 10:
 			array.append(Vector2i(room.global_position / 64) + Vector2i((x) * sign(x_direction), (y) * sign(y_direction)))
 
 func _input(event):

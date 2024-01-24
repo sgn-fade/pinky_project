@@ -23,6 +23,7 @@ EventBus="*res://scripts/event bus.gd"
 Player="*res://scripts/Player_Data.gd"
 Options="*res://scripts/Options.gd"
 GlobalWorldInfo="*res://scripts/Global_World_Info.gd"
+BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [debug]
 
@@ -39,7 +40,7 @@ window/vsync/vsync_mode=false
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 [global]
 
