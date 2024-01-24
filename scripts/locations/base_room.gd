@@ -1,4 +1,10 @@
 extends Node2D
 
-func _ready():
-	print($room_size/size_rect.shape.get_rect())
+
+
+
+func get_size():
+	return $room_area/size_rect.shape.get_rect().size
+
+func get_center():
+	return global_position

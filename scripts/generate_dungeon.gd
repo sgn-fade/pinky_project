@@ -12,6 +12,8 @@ var fire_elemental = load("res://scenes/enemies/elementals/fire_elemental.tscn")
 var portal = load("res://scenes/world_env/portal.tscn")
 var fog_particles = load("res://scenes/particles/fog.tscn")
 
+var room = load("res://scenes/locations/base_room.tscn")
+var rooms = []
 var tile_size = 64
 var min_size = 2
 var max_size = 2
@@ -104,7 +106,38 @@ func generate_direction(previous_direction):
 		return generate_direction(previous_direction)
 	return room_direction
 
-
-
-
-
+#----------------------------------------------------------------
+func _process(delta):
+	$c.set_velocity(get_global_mouse_position() - $c.global_position)
+	$c.move_and_slide()
+	
+func _ready():
+	center_room()
+	for i in 3:
+		var distance = Vector2.ZERO
+		var direction = Vector2.ZERO
+		for j in 5:
+			var b_room = room.instantiate()
+			add_child(b_room)
+			#rooms.append(b_room)
+			direction = place_room(b_room, direction, distance)
+			distance = b_room.global_position
+			b_room.get_node("Control/Label").text = str(i*j+j+1)
+			
+			print(direction)
+			await get_tree().create_timer(2).timeout
+			
+func center_room():
+	var distance = Vector2.ZERO
+	var center_room = room.instantiate()
+	add_child(center_room)
+	center_room.global_position = distance
+	center_room.modulate = "0000ff"
+	#center_room.get_node("Label").text = "0"
+func place_room(room, prev_direction, prev_distance):
+	var direction = generate_direction(prev_direction)
+	var distance = prev_distance + direction * 1000
+	room.global_position = distance 
+	if room.get_node("room_area").has_overlapping_areas():
+		return place_room(room, prev_direction, prev_distance)
+	return direction
