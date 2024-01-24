@@ -19,10 +19,10 @@ var min_size = 2
 var max_size = 2
 var room_count
 
+@onready var tile_map = $tileset2
 @export var room_generate_count = 7
 
-@onready var Map = $TileMap
-@onready var Grass = $grass
+
 var timer := Timer.new()
 
 func _on_enemy_killed():
@@ -94,7 +94,7 @@ func random_mob_instance(coord, height, width):
 
 
 
-
+#----------------------------------------------------------------
 func generate_direction(previous_direction):
 	var room_direction
 	match randi()%4 + 1:
@@ -102,42 +102,69 @@ func generate_direction(previous_direction):
 		2:room_direction = Vector2(1, 0)
 		3:room_direction = Vector2(0, -1)
 		4:room_direction = Vector2(0, 1)
-	if previous_direction + room_direction == Vector2.ZERO:
+	if previous_direction + room_direction == Vector2.ZERO or previous_direction == room_direction:
 		return generate_direction(previous_direction)
 	return room_direction
 
-#----------------------------------------------------------------
+
 func _process(delta):
 	$c.set_velocity(get_global_mouse_position() - $c.global_position)
 	$c.move_and_slide()
-	
+
+
 func _ready():
 	center_room()
 	for i in 3:
 		var distance = Vector2.ZERO
 		var direction = Vector2.ZERO
-		for j in 5:
+		for j in 3:
 			var b_room = room.instantiate()
 			add_child(b_room)
 			#rooms.append(b_room)
-			direction = place_room(b_room, direction, distance)
+			direction = await place_room(b_room, direction, distance)
 			distance = b_room.global_position
-			b_room.get_node("Control/Label").text = str(i*j+j+1)
-			
-			print(direction)
-			await get_tree().create_timer(2).timeout
-			
+
 func center_room():
-	var distance = Vector2.ZERO
 	var center_room = room.instantiate()
 	add_child(center_room)
-	center_room.global_position = distance
-	center_room.modulate = "0000ff"
-	#center_room.get_node("Label").text = "0"
+	center_room.global_position = Vector2.ZERO
+	var pattern = tile_map.tile_set.get_pattern(0)
+	tile_map.set_pattern(0, Vector2i.ZERO - pattern.get_size() / 2, pattern)
+
 func place_room(room, prev_direction, prev_distance):
 	var direction = generate_direction(prev_direction)
 	var distance = prev_distance + direction * 1000
 	room.global_position = distance 
+	await get_tree().create_timer(0.1).timeout
 	if room.get_node("room_area").has_overlapping_areas():
-		return place_room(room, prev_direction, prev_distance)
+		return await place_room(room, prev_direction, distance)
+	var pattern = tile_map.tile_set.get_pattern(0)
+	tile_map.set_pattern(0, Vector2i(distance / 64) - pattern.get_size() / 2, pattern)
+	create_tonel(-direction, room)
+	
 	return direction
+
+func create_tonel(direction, room):
+	fill_array(direction, room)
+	tile_map.set_cells_terrain_connect(0, array, 0, 1)
+	array.clear()
+
+var array : Array[Vector2i] = []
+
+func fill_array(direction, room):
+	var y_direction = 0
+	var x_direction = 0
+	
+	if direction.x != 0:
+		x_direction = direction.x
+		y_direction = 1
+	if direction.y != 0:
+		y_direction = direction.y
+		x_direction = 1
+	for y in 1 + abs(direction.y) * 15:
+		for x in 1 + abs(direction.x) * 15:
+			array.append(Vector2i(room.global_position / 64) + Vector2i((x) * sign(x_direction), (y) * sign(y_direction)))
+
+func _input(event):
+	if Input.is_action_just_pressed("Space"):
+		get_tree().reload_current_scene()
