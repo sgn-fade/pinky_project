@@ -25,6 +25,7 @@ script = ExtResource("7")
 
 [node name="Ui" parent="." instance=ExtResource("5")]
 process_mode = 3
+visible = true
 
 [node name="World_Embient" type="CanvasModulate" parent="."]
 process_priority = -71

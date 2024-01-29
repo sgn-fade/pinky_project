@@ -185,7 +185,6 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 	velocity = velocity.lerp(player_offcet_dir * 1000, 0.40)
 	set_velocity(velocity)
 	move_and_slide()
-	print(Player.get_hp())
 	if Player.get_hp() <= 0:
 		die()
 

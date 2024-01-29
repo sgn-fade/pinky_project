@@ -453,7 +453,7 @@ _data = {
 show_behind_parent = true
 
 [node name="GoblinSword" type="Sprite2D" parent="."]
-position = Vector2(-8, -3.57628e-07)
+position = Vector2(7, 3)
 rotation = 1.13446
 texture = ExtResource("1")
 

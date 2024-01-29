@@ -4,7 +4,6 @@
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="2"]
 [ext_resource type="Texture2D" uid="uid://cb4673josyno8" path="res://sprites/ui/label.png" id="3"]
 
-
 [node name="pause_ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15

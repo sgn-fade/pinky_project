@@ -69,17 +69,20 @@ func spawn_fog(center, height, width):
 			fog.z_index = 1024
 
 
-func spawn_goblin(coord, height, width):
-	if coord == Vector2.ZERO:
-		return
+func spawn_goblin(room, room_position):
 	for i in 8:
-		random_mob_instance(coord, height, width)
+		random_mob_instance(room, room_position)
 		await get_tree().create_timer(0.1).timeout
 
 
-func random_mob_instance(coord, height, width):
+func random_mob_instance(room, room_position):
 	randomize()
 	var mob
+	var local_coord = Vector2i(randi()%room.get_size().x * 64, randi()%room.get_size().y * 64)
+	var global_coord = room_position * 64 + local_coord
+	
+	if BetterTerrain.get_cell(tile_map, 0, global_coord / 64) != 1:
+		return
 	match 1:#randi() % 3 + 1:
 		1:
 			mob = goblin.instantiate()
@@ -87,10 +90,9 @@ func random_mob_instance(coord, height, width):
 			mob = goblin_mage.instantiate()
 		3:
 			mob = skeleton.instantiate()
-	$mobs.add_child(mob)
-	mob.global_position = coord
-	mob.move_and_slide( (randi()%10) * Vector2(coord.x + (randi() % int(width) * 2 - int(width)) * (tile_size / 2.0) , 
-												  coord.y + (randi() % int(height) * 2 - int(height)) * (tile_size / 2.0)))
+	add_child(mob)
+	mob.global_position = global_coord
+
 
 
 
@@ -107,9 +109,6 @@ func generate_direction(previous_direction):
 	return room_direction
 
 
-func _process(delta):
-	$c.set_velocity(get_global_mouse_position() - $c.global_position)
-	$c.move_and_slide()
 
 
 func _ready():
@@ -123,15 +122,15 @@ func _ready():
 			#rooms.append(b_room)
 			direction = await place_room(b_room, direction, distance)
 			distance = b_room.global_position
-	BetterTerrain.update_terrain_area(tile_map, 0, tile_map.get_used_rect())
-
+	BetterTerrain.update_terrain_area(tile_map, 1, tile_map.get_used_rect())
 
 func center_room():
 	var center_room = room.instantiate()
 	add_child(center_room)
 	center_room.global_position = Vector2.ZERO
 	var pattern = tile_map.tile_set.get_pattern(0)
-	tile_map.set_pattern(0, Vector2i.ZERO - pattern.get_size() / 2, pattern)
+	tile_map.set_pattern(1, Vector2i.ZERO - pattern.get_size() / 2, pattern)
+
 
 func place_room(room, prev_direction, prev_distance):
 	var direction = generate_direction(prev_direction)
@@ -140,15 +139,16 @@ func place_room(room, prev_direction, prev_distance):
 	await get_tree().create_timer(0.1).timeout
 	if room.get_node("room_area").has_overlapping_areas():
 		return await place_room(room, prev_direction, distance)
-	var pattern = tile_map.tile_set.get_pattern(0)
-	tile_map.set_pattern(0, Vector2i(distance / 64) - pattern.get_size() / 2, pattern)
+	var pattern = tile_map.tile_set.get_pattern(randi()%7)
+	var pattern_position = Vector2i(distance / 64) - pattern.get_size() / 2
+	tile_map.set_pattern(1, pattern_position, pattern)
 	create_tonel(-direction, room)
-	
+	spawn_goblin(pattern, pattern_position)
 	return direction
 
 func create_tonel(direction, room):
 	fill_array(direction, room)
-	BetterTerrain.set_cells(tile_map, 0, array, 1)
+	BetterTerrain.set_cells(tile_map, 1, array, 1)
 	array.clear()
 
 var array : Array[Vector2i] = []
