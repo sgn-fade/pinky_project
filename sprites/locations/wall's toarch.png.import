@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjlm4fem44uln"
-path="res://.godot/imported/icon.png-82ea131e750a89467e27b5ff9b11ce77.ctex"
+uid="uid://dwuete70cit4f"
+path="res://.godot/imported/wall's toarch.png-5587fe4aaa22fd4a166ba612bd62ba92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/icon.png"
-dest_files=["res://.godot/imported/icon.png-82ea131e750a89467e27b5ff9b11ce77.ctex"]
+source_file="res://sprites/locations/wall's toarch.png"
+dest_files=["res://.godot/imported/wall's toarch.png-5587fe4aaa22fd4a166ba612bd62ba92.ctex"]
 
 [params]
 

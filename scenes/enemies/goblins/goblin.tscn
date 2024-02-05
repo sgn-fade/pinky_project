@@ -1,12 +1,62 @@
-[gd_scene load_steps=8 format=3 uid="uid://deowfgi6dwaji"]
+[gd_scene load_steps=15 format=3 uid="uid://deowfgi6dwaji"]
 
 [ext_resource type="Texture2D" uid="uid://eewxah76kn5m" path="res://sprites/enemy_health/enemy_health_under.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="2"]
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/Goblins.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://kvptr2dd5csm" path="res://sprites/ui/icon_status/fire_status_icon.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dcyqfis8vyewu" path="res://sprites/enemy_health/enemy_health_progress.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="8_p5dbp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7x7m"]
+atlas = ExtResource("8_p5dbp")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccjl5"]
+atlas = ExtResource("8_p5dbp")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm5p7"]
+atlas = ExtResource("8_p5dbp")
+region = Rect2(14, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y61fu"]
+atlas = ExtResource("8_p5dbp")
+region = Rect2(21, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vbsn"]
+atlas = ExtResource("8_p5dbp")
+region = Rect2(28, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hstvu"]
+atlas = ExtResource("8_p5dbp")
+region = Rect2(35, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mt1a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7x7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccjl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm5p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y61fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vbsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hstvu")
+}],
+"loop": true,
+"name": &"main",
+"speed": 12.0
+}]
 
 [node name="goblin" type="CharacterBody2D"]
 collision_layer = 4
@@ -76,11 +126,9 @@ position = Vector2(7.97489, -22.0091)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-z_index = 13
-position = Vector2(-1.0057, -4.99886)
-scale = Vector2(1.5, 1.5)
-color = Color(0.141176, 0.431373, 0.0745098, 0.686275)
-texture = ExtResource("5")
-offset = Vector2(0, 4.105)
-texture_scale = 0.1
+[node name="focus" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_mt1a6")
+animation = &"main"
+autoplay = "main"

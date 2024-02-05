@@ -13,7 +13,8 @@ func _ready():
 	add_child(sword_obj)
 	sword_obj.position = $sword_pos.position
 	
-
+func _process(delta):
+	look_at(get_global_mouse_position())
 func play_animation(animation_time, animation_name):
 	
 	super.play_animation(0, animation_name)

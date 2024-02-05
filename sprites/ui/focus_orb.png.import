@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cia2vidhkkqa3"
-path="res://.godot/imported/move.png-ad219c3979c53b802d8f1633a0383a61.ctex"
+uid="uid://bt500pvhsl81p"
+path="res://.godot/imported/focus_orb.png-3183931c2816f744f7c60bf4c1201af9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/move.png"
-dest_files=["res://.godot/imported/move.png-ad219c3979c53b802d8f1633a0383a61.ctex"]
+source_file="res://sprites/ui/focus_orb.png"
+dest_files=["res://.godot/imported/focus_orb.png-3183931c2816f744f7c60bf4c1201af9.ctex"]
 
 [params]
 

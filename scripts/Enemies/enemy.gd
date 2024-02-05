@@ -22,7 +22,7 @@ var damage_to_enemy = null
 func _ready():
 	speed = 55
 	speed = 60
-
+	GlobalWorldInfo.add_enemy(self)
 	damage_label_instance = damage_label.instantiate()
 	add_child(damage_label_instance)
 	add_child(white_bar_timer)
@@ -124,3 +124,7 @@ func _on_push_away_enemy(body, velocity):
 			move_and_slide()
 			await get_tree().create_timer(0.01).timeout
 			distance += 7
+
+func set_focused(state):
+	$focus.visible = state
+	

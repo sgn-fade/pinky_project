@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bphhkoit26c70"
-path="res://.godot/imported/death_ghost.png-1eda9db895982202de1f64bb2352dbda.ctex"
+uid="uid://bfgakh6blse83"
+path="res://.godot/imported/barrel.png-771abd01162d098fc8eae359470fa3d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/death_ghost.png"
-dest_files=["res://.godot/imported/death_ghost.png-1eda9db895982202de1f64bb2352dbda.ctex"]
+source_file="res://sprites/locations/barrel/barrel.png"
+dest_files=["res://.godot/imported/barrel.png-771abd01162d098fc8eae359470fa3d3.ctex"]
 
 [params]
 

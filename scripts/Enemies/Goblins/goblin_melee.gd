@@ -1,9 +1,7 @@
 extends Goblins
 class_name Goblin_melee
-@onready var throwing_stone = preload("res://scenes/throwing_stone.tscn")
 @onready var attack_area = $body
 @onready var sprite = $body/sprite
-@onready var shadow_under = $body/shadow_under
 var throw_cooldown = 0
 var attack_cooldown = 0
 var acceleration = 40
@@ -46,12 +44,10 @@ func spawn_goblin():
 	sprite.play("idle")
 	$middle_white_bar.visible = true
 	$hp_bar.visible = true
-	shadow_under.visible = true
-	$PointLight2D.visible = true
 	$collision.set_deferred("disabled", false)
 	timer.start(0.5)
 	await timer.timeout
-	current_state = States.IDLE
+	current_state = States.NONE
 	
 
 

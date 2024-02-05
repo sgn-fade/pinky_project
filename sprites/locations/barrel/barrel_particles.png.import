@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj1srujya4bkg"
-path="res://.godot/imported/puddle.png-e4326e0e22baad53c736cf15806da2ae.ctex"
+uid="uid://dxnwtesle3wes"
+path="res://.godot/imported/barrel_particles.png-b84cc60db80dbbacc6880ccfd332afe8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/puddle.png"
-dest_files=["res://.godot/imported/puddle.png-e4326e0e22baad53c736cf15806da2ae.ctex"]
+source_file="res://sprites/locations/barrel/barrel_particles.png"
+dest_files=["res://.godot/imported/barrel_particles.png-b84cc60db80dbbacc6880ccfd332afe8.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dirai0rxl701a"]
+[gd_scene load_steps=18 format=3 uid="uid://dirai0rxl701a"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/enemy.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bw6bjgajmxt3k" path="res://sprites/enemies/training_stand.png" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://eewxah76kn5m" path="res://sprites/enemy_health/enemy_health_under.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://kvptr2dd5csm" path="res://sprites/ui/icon_status/fire_status_icon.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="7_eqekk"]
 
 [sub_resource type="RectangleShape2D" id="6"]
 size = Vector2(22, 41.5)
@@ -23,6 +24,56 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7x7m"]
+atlas = ExtResource("7_eqekk")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccjl5"]
+atlas = ExtResource("7_eqekk")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm5p7"]
+atlas = ExtResource("7_eqekk")
+region = Rect2(14, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y61fu"]
+atlas = ExtResource("7_eqekk")
+region = Rect2(21, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vbsn"]
+atlas = ExtResource("7_eqekk")
+region = Rect2(28, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hstvu"]
+atlas = ExtResource("7_eqekk")
+region = Rect2(35, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcq86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7x7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccjl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm5p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y61fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vbsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hstvu")
+}],
+"loop": true,
+"name": &"main",
+"speed": 12.0
 }]
 
 [node name="enemy" type="Node2D"]
@@ -59,7 +110,8 @@ value = 60.0
 texture_progress = ExtResource("3")
 texture_progress_offset = Vector2(0, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+[node name="focus" type="AnimatedSprite2D" parent="enemy"]
+visible = false
 position = Vector2(-1, -24)
 sprite_frames = SubResource("8")
 
@@ -100,3 +152,10 @@ emission_shape = 2
 emission_sphere_radius = 1.0
 gravity = Vector2(0, -98)
 color = Color(0.796078, 0.333333, 0.027451, 1)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="enemy"]
+position = Vector2(0, -22)
+sprite_frames = SubResource("SpriteFrames_vcq86")
+animation = &"main"
+frame = 1
+frame_progress = 0.0598561

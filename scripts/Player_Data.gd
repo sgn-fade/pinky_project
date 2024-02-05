@@ -55,6 +55,8 @@ func get_magic_damage():
 
 #PlAYER POSITION
 func get_position():
+	if player == null:
+		return Vector2.ZERO
 	return player.global_position
 func set_position(position):
 	player.global_position = position
@@ -133,7 +135,6 @@ func spawn():
 	player = player_scene.instantiate()
 	GlobalWorldInfo.get_world().add_child(player)
 
-
 #passive spells
 
 func set_smite(state):
@@ -144,3 +145,4 @@ func get_smite(enemy):
 		if enemy.hp <= 0 and enemy.global_position.distance_to(get_position()):
 			return true
 	return false
+

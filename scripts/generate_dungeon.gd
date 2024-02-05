@@ -112,6 +112,7 @@ func generate_direction(previous_direction):
 
 
 func _ready():
+	return
 	center_room()
 	for i in 3:
 		var distance = Vector2.ZERO
@@ -122,7 +123,12 @@ func _ready():
 			#rooms.append(b_room)
 			direction = await place_room(b_room, direction, distance)
 			distance = b_room.global_position
-	BetterTerrain.update_terrain_area(tile_map, 1, tile_map.get_used_rect())
+	var size = tile_map.get_used_rect().size
+	for x in size.x:
+		for y in size.y:
+			if tile_map.get_cell_source_id(1, Vector2i(x * 64, y * 64)) == 3:
+				BetterTerrain.update_terrain_cell(tile_map, 1, Vector2i(x * 64, y * 64), false) 
+	#BetterTerrain.update_terrain_area(tile_map, 1, , false)
 
 func center_room():
 	var center_room = room.instantiate()
@@ -139,11 +145,11 @@ func place_room(room, prev_direction, prev_distance):
 	await get_tree().create_timer(0.1).timeout
 	if room.get_node("room_area").has_overlapping_areas():
 		return await place_room(room, prev_direction, distance)
-	var pattern = tile_map.tile_set.get_pattern(randi()%7)
+	var pattern = tile_map.tile_set.get_pattern(7)
 	var pattern_position = Vector2i(distance / 64) - pattern.get_size() / 2
 	tile_map.set_pattern(1, pattern_position, pattern)
 	create_tonel(-direction, room)
-	spawn_goblin(pattern, pattern_position)
+	#spawn_goblin(pattern, pattern_position)
 	return direction
 
 func create_tonel(direction, room):

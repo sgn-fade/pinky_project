@@ -36,7 +36,9 @@ func _process(delta):
 		States.IDLE:
 			play_animation("idle")
 			move()
+			rotating()
 		States.MOVE:
+			rotating()
 			play_animation("move")
 			move()
 		States.DASH:
@@ -72,6 +74,8 @@ func _ready():
 	Input.set_mouse_mode(1)
 
 func _input(event):
+	if Input.is_action_just_pressed("F"):
+		GlobalWorldInfo.focus_camera()
 	if Player.get_weapon() != null:
 		Player.get_weapon().input(event)
 
