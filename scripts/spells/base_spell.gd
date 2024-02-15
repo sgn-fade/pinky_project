@@ -13,7 +13,6 @@ func cast():
 	Player.change_mana(-mana_cost)
 	if particle != null:
 		GlobalWorldInfo.get_world().add_child(particle.instantiate())
-	Player.set_state(Player.get_body().States.SPELL)
 	EventBus.emit_signal("hands_play_animation", 0.2, animation_name)
 	cooldown()
 

@@ -11,5 +11,4 @@ func play_animation(animation_time, animation_name):
 		return
 	sprite.play(animation_name)
 	await sprite.animation_finished
-	Player.set_state(Player.get_body().States.IDLE)
 

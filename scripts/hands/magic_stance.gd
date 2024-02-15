@@ -20,7 +20,7 @@ func _process(delta):
 	else:
 		$particles.position.y = 1
 		$particles2.position.y = 1
-
+#ПЕРЕДЕЛАТЬ НАХУЙ ПОД ANIMATION PLAYER ТУТ ДОЛЖНО БЫТЬ 0 КОДА
 #
 #func _ready():
 #	EventBus.connect("hands_play_animation", self, "play_animation")

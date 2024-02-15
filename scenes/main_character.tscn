@@ -1,6 +1,5 @@
 [gd_scene load_steps=84 format=3 uid="uid://15vutrjv1g2g"]
 
-[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/spell_character_animation/body/clear_player.png" id="2"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="4"]
 [ext_resource type="Script" path="res://scripts/hands.gd" id="5"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://ckguhk15kqtjp" path="res://sprites/character_pillon_cast.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://cr3d0twg7nxse" path="res://sprites/character_fire_teleport_start_player.png" id="14"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="14_exr6n"]
 [ext_resource type="Texture2D" uid="uid://b1im72qaw3tu3" path="res://sprites/character_fire_teleport_end_player.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://dpiwmmentj23y" path="res://sprites/spell_character_animation/body/spear_throw.png" id="16"]
 
@@ -553,17 +553,6 @@ position = Vector2(-0.488153, 1.40656)
 scale = Vector2(1.40094, -0.81829)
 shape = SubResource("6")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-0.108994, 0.342203)
-scale = Vector2(0.923, 0.787)
-color = Color(0.203922, 0.0117647, 0.219608, 1)
-energy = 1.5
-shadow_color = Color(0, 0, 0, 1)
-shadow_filter_smooth = 2.8
-texture = ExtResource("1")
-offset = Vector2(0, 4.689)
-texture_scale = 0.15
-
 [node name="blood" type="CPUParticles2D" parent="."]
 position = Vector2(-0.109024, 0.342194)
 emitting = false
@@ -664,9 +653,16 @@ gravity = Vector2(50, 98)
 color = Color(0.278431, 0.290196, 0.537255, 1)
 
 [node name="hands" type="Node2D" parent="."]
-position = Vector2(-1, -8)
+position = Vector2(0, -5)
 script = ExtResource("5")
 
 [node name="teleport_ray" type="RayCast2D" parent="."]
 target_position = Vector2(1, 1)
 collision_mask = 2147483648
+
+[node name="Label" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -41.0
+offset_right = 19.0
+offset_bottom = -18.0
+theme_override_fonts/font = ExtResource("14_exr6n")

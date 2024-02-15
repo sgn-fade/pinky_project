@@ -181,7 +181,7 @@ func _on_damage_to_enemy(body, damage, status):
 	super._on_damage_to_enemy(body, damage, status)
 	if self == body:
 		current_state = States.NONE
-		$body/end_partcl.emitting = true
+		#$body/end_partcl.emitting = true
 		sprite.play("take_damage")
 		$anim_player.play("take_damage")
 		await sprite.animation_finished

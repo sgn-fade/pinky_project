@@ -5,6 +5,7 @@ var dash_cooldown = 0
 
 #stats
 var speed = 20
+var max_speed = 80
 var magic_damage = 1
 
 
@@ -30,6 +31,7 @@ enum States{
 	INVENTORY
 }
 func _process(delta):
+	$Label.text = str(current_state)
 	match current_state:
 		States.NONE:
 			pass
@@ -100,35 +102,36 @@ func move():
 	current_state = States.MOVE
 	if Input.is_action_pressed("ui_right"):
 		input.x += 1
-		transform.x.x = 1
 	if Input.is_action_pressed("ui_left"):
 		input.x += -1
-		transform.x.x = -1
 	if Input.is_action_pressed("ui_up"):
 		input.y += -1
 	if Input.is_action_pressed("ui_down"):
 		input.y += 1
 	
+	
 	if input.length() == 0:
-		if speed >30:
-			speed = 30
+		speed = 30
 		animation = "idle"
 		current_state = States.IDLE
-	elif speed < 80:
+	elif speed < max_speed:
 		speed += 5
+	if speed > max_speed:
+		speed = max_speed
 	input = input.normalized()
-	EventBus.emit_signal("hands_play_animation",0, animation)
 	
 	velocity = velocity.lerp(input * speed, acceleration * 0.016)
 	set_velocity(velocity)
 	move_and_slide()
 
 
+func set_speed(new_speed):
+	max_speed = new_speed
+
 
 func play_animation(animation):
-
 	_animated_sprite.play(animation)
-	EventBus.emit_signal("hands_play_animation",0, animation)
+	#EventBus.emit_signal("hands_play_animation",0, animation)
 
 func move_player(delta):
 	var t = 0.05

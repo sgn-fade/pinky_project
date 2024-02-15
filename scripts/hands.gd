@@ -3,6 +3,7 @@ extends Node2D
 @onready var magic = preload("res://scenes/hands/magic_hands.tscn")
 @onready var clear = preload("res://scenes/hands/clear_hands.tscn")
 @onready var melee = preload("res://scenes/hands/melee_hands.tscn")
+@onready var sword = preload("res://scenes/hands/sword_hands.tscn")
 enum States{
 	EMPTY,
 	MAGIC,
@@ -12,7 +13,7 @@ enum States{
 var current_state = States.GUN
 
 func _ready():
-	switch_hands(clear)
+	switch_hands(sword)
 	EventBus.connect("switch_hands_stance", Callable(self, "_on_switch_hands_stance"))
 
 func _on_switch_hands_stance(weapon):
@@ -25,7 +26,7 @@ func _on_switch_hands_stance(weapon):
 			switch_hands(magic)
 		"melee":
 			current_state = States.MELEE
-			switch_hands(melee)
+			switch_hands(sword)
 
 
 func switch_hands(type):

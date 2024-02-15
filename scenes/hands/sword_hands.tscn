@@ -1,0 +1,209 @@
+[gd_scene load_steps=9 format=3 uid="uid://c44vmspqdwaev"]
+
+[ext_resource type="PackedScene" uid="uid://mv3dsr8tvo8v" path="res://scenes/hands/melee_hands.tscn" id="1_eajru"]
+[ext_resource type="Script" path="res://scripts/hands/sword_hands.gd" id="2_6k4i5"]
+[ext_resource type="Texture2D" uid="uid://cg3d2gmhtn8xy" path="res://sprites/weapons/melee/goblin_sword.png" id="3_gvgvo"]
+
+[sub_resource type="Animation" id="Animation_a6y6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hands/sword/area:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hands:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hands:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.89661]
+}
+
+[sub_resource type="Animation" id="Animation_b1w60"]
+resource_name = "hit_1"
+length = 0.666675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hands:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.25, 0.333333, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0865004, -0.965773, 0.669084, 0.897087, 0.474577, 0.0865004]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hands:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.25, 0.333333, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 2), Vector2(2, -2), Vector2(2, -2), Vector2(2, 3), Vector2(-2, 1), Vector2(0, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hands/sword/area:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166667, 0.416667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_tvbon"]
+resource_name = "hit_2"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hands:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0865003, -5.18932, -5.89661, -6.67309, -7.50043, -7.52465, -6.35987, 0.0865003]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hands:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 2), Vector2(-2, 1), Vector2(1, 1), Vector2(0, 1), Vector2(0, 1), Vector2(-2, 1), Vector2(0, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hands/sword/area:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0833333, 0.416667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_p1ctk"]
+resource_name = "hit_3"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hands:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0865003, 0.0261383]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hands:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 2), Vector2(-4, 2), Vector2(2, 2), Vector2(5, 2), Vector2(3, 2), Vector2(0, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hands/sword/area:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n38yi"]
+_data = {
+"RESET": SubResource("Animation_a6y6i"),
+"hit_1": SubResource("Animation_b1w60"),
+"hit_2": SubResource("Animation_tvbon"),
+"hit_3": SubResource("Animation_p1ctk")
+}
+
+[node name="melee_hands" instance=ExtResource("1_eajru")]
+script = ExtResource("2_6k4i5")
+
+[node name="hands" parent="." index="1"]
+position = Vector2(-1, 1)
+rotation = -5.89661
+
+[node name="sword" type="StaticBody2D" parent="hands" index="0"]
+
+[node name="sprite" type="Sprite2D" parent="hands/sword" index="0"]
+position = Vector2(4.11601, -1.74885)
+rotation = 0.723425
+texture = ExtResource("3_gvgvo")
+offset = Vector2(4.785, -4.775)
+
+[node name="area" type="Area2D" parent="hands/sword" index="1"]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hands/sword/area" index="0"]
+visible = false
+position = Vector2(9.87622, -1.86019)
+rotation = -0.0133168
+polygon = PackedVector2Array(-3.5449, -3.98212, 13.5413, -4.22961, 19.0891, -1.03248, 13.8669, 2.08656, -2.85465, 3.2652)
+
+[node name="anim" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_n38yi")
+}
+
+[connection signal="area_entered" from="hands/sword/area" to="." method="_on_area_area_entered"]
+[connection signal="body_entered" from="hands/sword/area" to="." method="_on_area_body_entered"]
