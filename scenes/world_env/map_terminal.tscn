@@ -79,6 +79,7 @@ script = ExtResource("3")
 light_mask = 2
 position = Vector2(2, -82)
 sprite_frames = SubResource("13")
+autoplay = "default"
 frame = 1
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="."]

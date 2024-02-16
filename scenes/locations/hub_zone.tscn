@@ -140,7 +140,7 @@ angle_curve = SubResource("4")
 scale_amount_curve = SubResource("Curve_4pqod")
 color = Color(0.45098, 0.45098, 0.45098, 1)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="wall" type="Sprite2D" parent="."]
 light_mask = 0
 z_as_relative = false
 position = Vector2(-1, 38)

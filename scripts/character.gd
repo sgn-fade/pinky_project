@@ -31,17 +31,15 @@ enum States{
 	INVENTORY
 }
 func _process(delta):
-	$Label.text = str(current_state)
+	$Label.text = str(direction) + " " + str(input.x)
 	match current_state:
 		States.NONE:
 			pass
 		States.IDLE:
-			play_animation("idle")
 			move()
 			rotating()
 		States.MOVE:
 			rotating()
-			play_animation("move")
 			move()
 		States.DASH:
 			dash(delta)
@@ -98,7 +96,8 @@ func move():
 		
 	
 	input = Vector2.ZERO
-	var animation = "move"
+	
+	
 	current_state = States.MOVE
 	if Input.is_action_pressed("ui_right"):
 		input.x += 1
@@ -109,6 +108,13 @@ func move():
 	if Input.is_action_pressed("ui_down"):
 		input.y += 1
 	
+	var animation
+	if input.x == -direction:
+		animation = "move_back"
+		max_speed = 60
+	else:
+		animation = "move"
+		max_speed = 80
 	
 	if input.length() == 0:
 		speed = 30
@@ -119,7 +125,7 @@ func move():
 	if speed > max_speed:
 		speed = max_speed
 	input = input.normalized()
-	
+	_animated_sprite.play(animation)
 	velocity = velocity.lerp(input * speed, acceleration * 0.016)
 	set_velocity(velocity)
 	move_and_slide()
@@ -129,9 +135,6 @@ func set_speed(new_speed):
 	max_speed = new_speed
 
 
-func play_animation(animation):
-	_animated_sprite.play(animation)
-	#EventBus.emit_signal("hands_play_animation",0, animation)
 
 func move_player(delta):
 	var t = 0.05
