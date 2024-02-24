@@ -63,16 +63,16 @@ collision_layer = 4
 script = ExtResource("3")
 
 [node name="shadow_under" type="Sprite2D" parent="."]
-position = Vector2(-79, -28)
+position = Vector2(-79, -37)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4")
 offset = Vector2(158.021, 74)
 
 [node name="middle_white_bar" type="TextureProgressBar" parent="."]
-offset_left = -10.0228
-offset_top = -19.9886
-offset_right = 26.9772
-offset_bottom = 0.0114212
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 27.0
+offset_bottom = -7.99998
 scale = Vector2(0.5, 0.5)
 value = 100.0
 texture_under = ExtResource("1")
@@ -80,10 +80,10 @@ texture_progress = ExtResource("2")
 texture_progress_offset = Vector2(0, 1)
 
 [node name="hp_bar" type="TextureProgressBar" parent="."]
-offset_left = -10.0228
-offset_top = -19.9886
-offset_right = 26.9772
-offset_bottom = 0.0114212
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 27.0
+offset_bottom = -7.99998
 scale = Vector2(0.5, 0.5)
 value = 100.0
 texture_progress = ExtResource("7")
@@ -103,32 +103,27 @@ gravity = Vector2(0, -98)
 color = Color(0.796078, 0.333333, 0.027451, 1)
 
 [node name="status1" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-7.0251, -21.992)
+position = Vector2(-7.6, -30.5829)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6")
 
 [node name="status2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-2.0251, -21.9977)
+position = Vector2(-2.6, -30.5886)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6")
 
 [node name="status3" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(2.9749, -22.0034)
+position = Vector2(2.4, -30.5943)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6")
 
 [node name="status4" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(7.97489, -22.0091)
+position = Vector2(7.39999, -30.6)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6")
 
 [node name="focus" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(0, -2)
+position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_mt1a6")
 animation = &"main"
 autoplay = "main"

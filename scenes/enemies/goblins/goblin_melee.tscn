@@ -449,7 +449,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.0501, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-11, -20), Vector2(-7, -19), Vector2(-9, -21), Vector2(-13, -20), Vector2(-7, -21), Vector2(-10, -20)]
+"values": [Vector2(-11, -28), Vector2(-7, -27), Vector2(-9, -29), Vector2(-13, -28), Vector2(-7, -29), Vector2(-10, -28)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -461,7 +461,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-11, -20), Vector2(-7, -19), Vector2(-13, -20), Vector2(-7, -21), Vector2(-10.0228, -19.9886)]
+"values": [Vector2(-11, -28), Vector2(-7, -27), Vector2(-13, -28), Vector2(-7, -29), Vector2(-10.023, -28)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_731ps"]
@@ -474,7 +474,7 @@ z_as_relative = false
 script = ExtResource("2")
 
 [node name="body" type="Area2D" parent="." index="0"]
-position = Vector2(-0.999999, 0.00114101)
+position = Vector2(-1, -9)
 collision_layer = 4
 collision_mask = 11
 monitoring = false
@@ -503,25 +503,31 @@ theme_override_font_sizes/font_size = 25
 text = "
 "
 
-[node name="middle_white_bar" parent="." index="3"]
-offset_left = -11.0
-offset_top = -20.0
-offset_right = 26.0
-offset_bottom = 2.09808e-05
+[node name="shadow_under" parent="." index="2"]
+position = Vector2(-80, -36)
 
 [node name="hp_bar" parent="." index="4"]
-offset_left = -11.0
-offset_top = -20.0
-offset_right = 26.0
-offset_bottom = 2.09808e-05
+offset_left = -10.023
+offset_right = 26.977
+
+[node name="status1" parent="." index="6"]
+position = Vector2(-8.6, -30.5829)
+
+[node name="status2" parent="." index="7"]
+position = Vector2(-3.6, -30.5886)
+
+[node name="status3" parent="." index="8"]
+position = Vector2(1.4, -30.5943)
+
+[node name="status4" parent="." index="9"]
+position = Vector2(6.39999, -30.6)
 
 [node name="focus" parent="." index="10"]
-position = Vector2(-2, -2)
+position = Vector2(-2, -10)
 
 [node name="collision" type="CollisionShape2D" parent="." index="11"]
-position = Vector2(-0.993153, 6.00114)
+position = Vector2(-1, -4)
 shape = SubResource("57")
-disabled = true
 
 [node name="anim_player" type="AnimationPlayer" parent="." index="12"]
 libraries = {

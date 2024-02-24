@@ -581,6 +581,7 @@ target_position = Vector2(1, 1)
 collision_mask = 2147483648
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -21.0
 offset_top = -41.0
 offset_right = 19.0

@@ -43,7 +43,7 @@ func idle():
 	await get_tree().create_timer(randf()).timeout
 	current_state = States.IDLE
 func searching_player(delta):
-	
+	$sprite.play("move")
 	if current_state != States.SEARCH:
 		current_state = States.SEARCH
 		direction = randomize_direction().normalized() * (randi() % 10)
@@ -71,8 +71,10 @@ func cast_fireball():
 	if fireball_cast_cooldown <= 0 && current_state != States.CASTING:
 		current_state = States.CASTING
 		var fireball_particle = fireball.instantiate()
-		GlobalWorldInfo.get_world_3d().add_child(fireball_particle)
-		fireball_particle.global_position = self.global_position
+		fireball_particle.global_position = $fireball_pos.global_position
+		GlobalWorldInfo.get_world().add_child(fireball_particle)
+		$anim.play("attack")
+		await $sprite.animation_finished
 		fireball_cast_cooldown = 2
 		idle()
 

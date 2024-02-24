@@ -31,7 +31,6 @@ enum States{
 	INVENTORY
 }
 func _process(delta):
-	$Label.text = str(direction) + " " + str(input.x)
 	match current_state:
 		States.NONE:
 			pass

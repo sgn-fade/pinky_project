@@ -1,53 +1,292 @@
-[gd_scene load_steps=7 format=3 uid="uid://0le0ptgshp5t"]
+[gd_scene load_steps=30 format=3 uid="uid://0le0ptgshp5t"]
 
 [ext_resource type="PackedScene" uid="uid://deowfgi6dwaji" path="res://scenes/enemies/goblins/goblin.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://br5j5nv5jewta" path="res://sprites/goblin_mage.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cdjxocxmr5k1a" path="res://sprites/goblin/goblin_mage.png" id="3_edkef"]
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/goblin_mage.gd" id="6"]
 
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("5")
-region = Rect2(0, 0, 27, 30)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehu6j"]
+atlas = ExtResource("3_edkef")
+region = Rect2(440, 0, 40, 38)
 
-[sub_resource type="SpriteFrames" id="2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7kmq"]
+atlas = ExtResource("3_edkef")
+region = Rect2(480, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwjx6"]
+atlas = ExtResource("3_edkef")
+region = Rect2(520, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqdvp"]
+atlas = ExtResource("3_edkef")
+region = Rect2(560, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn5dv"]
+atlas = ExtResource("3_edkef")
+region = Rect2(600, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mehs"]
+atlas = ExtResource("3_edkef")
+region = Rect2(640, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnhpb"]
+atlas = ExtResource("3_edkef")
+region = Rect2(680, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8pi0"]
+atlas = ExtResource("3_edkef")
+region = Rect2(720, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osevg"]
+atlas = ExtResource("3_edkef")
+region = Rect2(760, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar7o7"]
+atlas = ExtResource("3_edkef")
+region = Rect2(800, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbktn"]
+atlas = ExtResource("3_edkef")
+region = Rect2(0, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0yc8"]
+atlas = ExtResource("3_edkef")
+region = Rect2(40, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2dmv"]
+atlas = ExtResource("3_edkef")
+region = Rect2(80, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8x4b"]
+atlas = ExtResource("3_edkef")
+region = Rect2(120, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt5ym"]
+atlas = ExtResource("3_edkef")
+region = Rect2(160, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3tuk"]
+atlas = ExtResource("3_edkef")
+region = Rect2(200, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nptcs"]
+atlas = ExtResource("3_edkef")
+region = Rect2(240, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq6ce"]
+atlas = ExtResource("3_edkef")
+region = Rect2(280, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv5oh"]
+atlas = ExtResource("3_edkef")
+region = Rect2(320, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx4t6"]
+atlas = ExtResource("3_edkef")
+region = Rect2(360, 0, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4re1r"]
+atlas = ExtResource("3_edkef")
+region = Rect2(400, 0, 40, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slyms"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("1")
+"texture": SubResource("AtlasTexture_ehu6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7kmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwjx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqdvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn5dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mehs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnhpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8pi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osevg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar7o7")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbktn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0yc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2dmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8x4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt5ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3tuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nptcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq6ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv5oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx4t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4re1r")
 }],
 "loop": true,
-"name": &"attack",
-"speed": 5.0
+"name": &"move",
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="3"]
 radius = 4.0
-height = 10.0
+height = 12.0
+
+[sub_resource type="Animation" id="Animation_xt1f8"]
+resource_name = "attack"
+length = 0.833342
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0761702, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1hxqd"]
+_data = {
+"attack": SubResource("Animation_xt1f8")
+}
+
+[sub_resource type="Gradient" id="Gradient_lov45"]
+offsets = PackedFloat32Array(0, 0.547312, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.753378, 0.398662, 0.0421557, 1, 1, 1, 1, 1)
 
 [node name="goblin_mage" instance=ExtResource("1")]
 script = ExtResource("6")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
-scale = Vector2(0.9, 0.9)
-sprite_frames = SubResource("2")
+[node name="shadow_under" parent="." index="0"]
+modulate = Color(1, 1, 1, 0.729412)
+
+[node name="middle_white_bar" parent="." index="1"]
+offset_top = -34.0
+offset_bottom = -14.0
+
+[node name="hp_bar" parent="." index="2"]
+offset_top = -34.0
+offset_bottom = -14.0
+
+[node name="status1" parent="." index="4"]
+visible = false
+position = Vector2(-7.6, -36.5829)
+
+[node name="status2" parent="." index="5"]
+visible = false
+position = Vector2(-2.6, -36.5886)
+
+[node name="status3" parent="." index="6"]
+visible = false
+position = Vector2(2.4, -36.5943)
+
+[node name="status4" parent="." index="7"]
+visible = false
+position = Vector2(7.39999, -36.6)
+
+[node name="focus" parent="." index="8"]
+visible = false
+
+[node name="sprite" type="AnimatedSprite2D" parent="." index="9"]
+position = Vector2(-2, -19)
+sprite_frames = SubResource("SpriteFrames_slyms")
 animation = &"attack"
 
-[node name="shadow_under" parent="." index="1"]
-modulate = Color(1, 1, 1, 0.729412)
-position = Vector2(-78, -24)
-
-[node name="middle_white_bar" parent="." index="2"]
-offset_left = -8.0
-offset_top = -18.0
-offset_right = 29.0
-offset_bottom = 2.00002
-
-[node name="hp_bar" parent="." index="3"]
-offset_left = -8.0
-offset_top = -18.0
-offset_right = 29.0
-offset_bottom = 2.00002
-
 [node name="collision" type="CollisionShape2D" parent="." index="10"]
-position = Vector2(1, 7)
+position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("3")
+
+[node name="anim" type="AnimationPlayer" parent="." index="11"]
+libraries = {
+"": SubResource("AnimationLibrary_1hxqd")
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="12"]
+visible = false
+position = Vector2(-2, -22)
+amount = 50
+lifetime = 1.8
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.8
+lifetime_randomness = 0.38
+fract_delta = false
+emission_shape = 1
+emission_sphere_radius = 4.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+orbit_velocity_min = 1.2
+orbit_velocity_max = 1.2
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+color = Color(1, 0.705882, 0.258824, 1)
+color_ramp = SubResource("Gradient_lov45")
+
+[node name="fireball_pos" type="Marker2D" parent="." index="13"]
+position = Vector2(-2, -21)

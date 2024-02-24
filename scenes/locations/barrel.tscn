@@ -1,25 +1,71 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwso1qh1gqcu8"]
+[gd_scene load_steps=11 format=3 uid="uid://bwso1qh1gqcu8"]
 
+[ext_resource type="Script" path="res://scripts/locations/barrel.gd" id="1_hx4so"]
 [ext_resource type="Texture2D" uid="uid://bfgakh6blse83" path="res://sprites/locations/barrel/barrel.png" id="1_tqhwy"]
+[ext_resource type="Texture2D" uid="uid://cyag3faquul13" path="res://sprites/locations/barrel/barrel_destroy.png" id="2_rt5hg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyage"]
+atlas = ExtResource("2_rt5hg")
+region = Rect2(0, 0, 31, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d08ny"]
+atlas = ExtResource("2_rt5hg")
+region = Rect2(31, 0, 31, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8vj7"]
+atlas = ExtResource("2_rt5hg")
+region = Rect2(62, 0, 31, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8lcf"]
+atlas = ExtResource("2_rt5hg")
+region = Rect2(93, 0, 31, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r0ex"]
+atlas = ExtResource("1_tqhwy")
+region = Rect2(0, 0, 15, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwoks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyage")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d08ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8vj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8lcf")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r0ex")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7ki5"]
 radius = 5.0
 height = 16.0
 
 [node name="barrel" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_hx4so")
 
-[node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_tqhwy")
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dwoks")
+animation = &"destroy"
 offset = Vector2(0, -9)
 
 [node name="coll" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_t7ki5")
-
-[node name="area" type="Area2D" parent="."]
-
-[node name="coll" type="CollisionShape2D" parent="area"]
 position = Vector2(0, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_t7ki5")

@@ -64,6 +64,13 @@ polygon = PackedVector2Array(182, -1, 182, -102, -183, -102, -183, -2, -211, -8,
 [node name="lights" parent="." instance=ExtResource("4_dxkyd")]
 position = Vector2(-133, -35)
 
+[node name="wall" type="Sprite2D" parent="."]
+light_mask = 0
+z_as_relative = false
+position = Vector2(-1, 38)
+texture = ExtResource("6_sog8n")
+offset = Vector2(0, -10.015)
+
 [node name="up_background" type="CPUParticles2D" parent="."]
 position = Vector2(1, -151)
 amount = 100
@@ -123,8 +130,7 @@ color = Color(0.45098, 0.45098, 0.45098, 1)
 [node name="down_background3" type="CPUParticles2D" parent="."]
 z_index = -1
 position = Vector2(-170, 10)
-rotation = -0.261799
-scale = Vector2(-1, -1)
+rotation = 2.87979
 amount = 100
 lifetime = 14.0
 speed_scale = 10.0
@@ -139,10 +145,3 @@ linear_accel_curve = SubResource("3")
 angle_curve = SubResource("4")
 scale_amount_curve = SubResource("Curve_4pqod")
 color = Color(0.45098, 0.45098, 0.45098, 1)
-
-[node name="wall" type="Sprite2D" parent="."]
-light_mask = 0
-z_as_relative = false
-position = Vector2(-1, 38)
-texture = ExtResource("6_sog8n")
-offset = Vector2(0, -10.015)
