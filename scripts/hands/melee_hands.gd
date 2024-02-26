@@ -9,7 +9,8 @@ func _ready():
 
 
 func _process(delta):
-	look_at(get_global_mouse_position())
+	if $anim.current_animation == "":
+		look_at(get_global_mouse_position())
 
 
 func play_animation(animation_time, animation_name):

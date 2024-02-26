@@ -320,7 +320,7 @@ offset_right = -914.54
 offset_bottom = -899.869
 script = ExtResource("11_m6abd")
 
-[node name="hp_bar" type="TextureRect" parent="player_bars"]
+[node name="mana_bar" type="TextureRect" parent="player_bars"]
 modulate = Color(0.929412, 0.152941, 0.152941, 1)
 material = SubResource("2")
 layout_mode = 0
@@ -332,7 +332,7 @@ scale = Vector2(18, 18)
 texture = ExtResource("8")
 stretch_mode = 3
 
-[node name="mana_bar" type="TextureRect" parent="player_bars"]
+[node name="hp_bar" type="TextureRect" parent="player_bars"]
 modulate = Color(0.231373, 0.239216, 0.811765, 1)
 material = SubResource("4")
 layout_mode = 0

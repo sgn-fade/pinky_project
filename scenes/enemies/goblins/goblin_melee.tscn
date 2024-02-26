@@ -12,6 +12,43 @@
 [sub_resource type="CircleShape2D" id="55"]
 radius = 33.9179
 
+[sub_resource type="RectangleShape2D" id="57"]
+size = Vector2(17, 8.5)
+
+[sub_resource type="Animation" id="Animation_hjgef"]
+resource_name = "take_damage"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("middle_white_bar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.0501, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-11, -28), Vector2(-7, -27), Vector2(-9, -29), Vector2(-13, -28), Vector2(-7, -29), Vector2(-10, -28)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hp_bar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-11, -28), Vector2(-7, -27), Vector2(-13, -28), Vector2(-7, -29), Vector2(-10.023, -28)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_731ps"]
+_data = {
+"take_damage": SubResource("Animation_hjgef")
+}
+
 [sub_resource type="AtlasTexture" id="11"]
 atlas = ExtResource("4")
 region = Rect2(0, 0, 35, 54)
@@ -432,65 +469,21 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="57"]
-size = Vector2(17, 8.5)
-
-[sub_resource type="Animation" id="Animation_hjgef"]
-resource_name = "take_damage"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("middle_white_bar:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.0501, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-11, -28), Vector2(-7, -27), Vector2(-9, -29), Vector2(-13, -28), Vector2(-7, -29), Vector2(-10, -28)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("hp_bar:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-11, -28), Vector2(-7, -27), Vector2(-13, -28), Vector2(-7, -29), Vector2(-10.023, -28)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_731ps"]
-_data = {
-"take_damage": SubResource("Animation_hjgef")
-}
-
 [node name="goblin_melee" instance=ExtResource("5")]
 z_as_relative = false
 script = ExtResource("2")
 
-[node name="body" type="Area2D" parent="." index="0"]
+[node name="attack_area" type="Area2D" parent="." index="0"]
 position = Vector2(-1, -9)
 collision_layer = 4
 collision_mask = 11
 monitoring = false
 
-[node name="attack_collision" type="CollisionShape2D" parent="body" index="0"]
+[node name="attack_collision" type="CollisionShape2D" parent="attack_area" index="0"]
 position = Vector2(12.9987, -1.0151)
 rotation = 1.5708
 scale = Vector2(0.7, 0.65)
 shape = SubResource("55")
-
-[node name="sprite" type="AnimatedSprite2D" parent="body" index="1"]
-position = Vector2(3.99657, -3.00456)
-sprite_frames = SubResource("56")
-animation = &"take_damage"
-frame_progress = 0.0815902
-flip_h = true
 
 [node name="dead" type="Label" parent="." index="1"]
 visible = false
@@ -533,3 +526,10 @@ shape = SubResource("57")
 libraries = {
 "": SubResource("AnimationLibrary_731ps")
 }
+
+[node name="sprite" type="AnimatedSprite2D" parent="." index="13"]
+position = Vector2(2.99657, -12.0046)
+sprite_frames = SubResource("56")
+animation = &"take_damage"
+frame_progress = 0.0815902
+flip_h = true
