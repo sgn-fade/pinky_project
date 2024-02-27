@@ -5,6 +5,10 @@
 [ext_resource type="Script" path="res://scripts/particles/enemy's_fireball.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="4"]
 
+[sub_resource type="Curve" id="13"]
+_data = [Vector2(0, 0.872727), 0.0, 0.0, 0, 0, Vector2(1, 0.109091), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="AtlasTexture" id="2"]
 atlas = ExtResource("2")
 region = Rect2(0, 0, 18, 18)
@@ -78,16 +82,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("11")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
 "speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="1"]
-
-[sub_resource type="Curve" id="13"]
-_data = [Vector2(0, 0.872727), 0.0, 0.0, 0, 0, Vector2(1, 0.109091), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [node name="fireball" type="CharacterBody2D"]
 z_index = 9
@@ -96,11 +96,28 @@ collision_layer = 5
 collision_mask = 5
 script = ExtResource("3")
 
+[node name="particles" type="CPUParticles2D" parent="."]
+modulate = Color(0.764706, 0, 0.898039, 1)
+show_behind_parent = true
+amount = 40
+lifetime = 0.05
+speed_scale = 0.1
+randomness = 0.67
+lifetime_randomness = 0.67
+texture = ExtResource("4")
+emission_shape = 2
+emission_sphere_radius = 8.0
+spread = 62.03
+gravity = Vector2(0, -20)
+scale_amount_curve = SubResource("13")
+color = Color(0.921569, 0.305882, 0, 1)
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.56944, 1.56944)
 sprite_frames = SubResource("12")
 animation = &"shoot"
-frame = 5
+frame = 9
+frame_progress = 1.0
 
 [node name="light" type="PointLight2D" parent="."]
 position = Vector2(2.5, 2.5)
@@ -137,22 +154,3 @@ direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
 color = Color(0.803922, 0.137255, 0, 1)
-
-[node name="particles" type="CPUParticles2D" parent="."]
-modulate = Color(0.764706, 0, 0.898039, 1)
-show_behind_parent = true
-z_index = 5
-position = Vector2(9.53675e-06, 2.38418e-06)
-emitting = false
-amount = 40
-lifetime = 0.05
-speed_scale = 0.1
-randomness = 0.67
-lifetime_randomness = 0.67
-texture = ExtResource("4")
-emission_shape = 2
-emission_sphere_radius = 1.0
-spread = 62.03
-gravity = Vector2(0, -20)
-scale_amount_curve = SubResource("13")
-color = Color(0.921569, 0.305882, 0, 1)

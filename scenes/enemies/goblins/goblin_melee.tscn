@@ -504,15 +504,19 @@ offset_left = -10.023
 offset_right = 26.977
 
 [node name="status1" parent="." index="6"]
+visible = false
 position = Vector2(-8.6, -30.5829)
 
 [node name="status2" parent="." index="7"]
+visible = false
 position = Vector2(-3.6, -30.5886)
 
 [node name="status3" parent="." index="8"]
+visible = false
 position = Vector2(1.4, -30.5943)
 
 [node name="status4" parent="." index="9"]
+visible = false
 position = Vector2(6.39999, -30.6)
 
 [node name="focus" parent="." index="10"]

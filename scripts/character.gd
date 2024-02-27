@@ -62,7 +62,7 @@ func _ready():
 	#stats
 	current_state = States.IDLE
 	set_hide_state(true)
-	EventBus.emit_signal("hands_play_animation",0, "idle")
+	EventBus.emit_signal("hands_play_animation","idle")
 	#$teleport_ray.add_exception($player_area)
 	EventBus.connect("player_take_damage", Callable(self, "_on_player_take_damage"))
 	EventBus.connect("player_teleport", Callable(self, "teleport"))

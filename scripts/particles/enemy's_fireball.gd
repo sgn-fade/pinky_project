@@ -7,7 +7,7 @@ var timer := Timer.new()
 func _ready():
 	
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
-	speed = 50
+	speed = 200
 	timer.one_shot = false
 	add_child(timer)
 	$Sprite2D.play("shoot")

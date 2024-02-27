@@ -13,8 +13,9 @@ func _process(delta):
 		look_at(get_global_mouse_position())
 
 
-func play_animation(animation_time, animation_name):
-	super.play_animation(0, animation_name)
+func play_animation(animation_name):
+	if animation_name == "null":
+		return
 	get_node("anim").play(animation_name)
 
 
@@ -29,9 +30,9 @@ func _input(event):
 
 func hit(hit_count):
 	Player.get_body().set_speed(20)
-	play_animation(0, hit_count)
+	play_animation(hit_count)
 	await get_node("anim").animation_finished
 	combo_timer.start(1)
 	Player.get_body().set_speed(80)
-	play_animation(0, "idle")
+	play_animation("idle")
 

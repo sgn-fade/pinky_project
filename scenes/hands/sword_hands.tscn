@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c44vmspqdwaev"]
+[gd_scene load_steps=10 format=3 uid="uid://c44vmspqdwaev"]
 
 [ext_resource type="PackedScene" uid="uid://mv3dsr8tvo8v" path="res://scenes/hands/melee_hands.tscn" id="1_eajru"]
 [ext_resource type="Script" path="res://scripts/hands/sword_hands.gd" id="2_6k4i5"]
@@ -166,12 +166,16 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_e2ted"]
+resource_name = "idle"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n38yi"]
 _data = {
 "RESET": SubResource("Animation_a6y6i"),
 "hit_1": SubResource("Animation_b1w60"),
 "hit_2": SubResource("Animation_tvbon"),
-"hit_3": SubResource("Animation_p1ctk")
+"hit_3": SubResource("Animation_p1ctk"),
+"idle": SubResource("Animation_e2ted")
 }
 
 [node name="melee_hands" instance=ExtResource("1_eajru")]

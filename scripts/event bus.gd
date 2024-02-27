@@ -14,7 +14,7 @@ signal crosshair_switch(type)
 
 
 signal player_cast_spell(animation_time, animation_name)
-signal hands_play_animation(animation_time, animation_name)
+signal hands_play_animation(animation_name)
 signal switch_hands_stance(weapon)
 signal spell_animation_ended()
 
