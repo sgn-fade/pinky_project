@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" uid="uid://d208w184ryp8x" path="res://sprites/cake.png" id="1"]
+[ext_resource type="Script" path="res://scripts/cake.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bw3nmduc5c7or" path="res://sprites/particles/gold_coin.png" id="4"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="5"]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 19.0
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 1, 0, 17, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 18, 0, 17, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Cake" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 1, -6 )
+scale = Vector2( 0.8, 0.8 )
+z_as_relative = false
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 5 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Area2D"]
+position = Vector2( 0, 6 )
+emission_shape = 2
+emission_rect_extents = Vector2( 8, 0.5 )
+gravity = Vector2( 0, 0 )
+angular_velocity = 4.71
+orbit_velocity = 0.5
+tangential_accel = 24.33
+tangential_accel_random = 0.45
+color = Color( 0.996078, 0.984314, 1, 1 )
+
+[node name="kinematic" type="CharacterBody2D" parent="Area2D"]
+
+[node name="cake" type="AnimatedSprite2D" parent="Area2D/kinematic"]
+z_as_relative = false
+frames = SubResource( 4 )
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+position = Vector2( 0, 7.5 )
+scale = Vector2( 0.923, 0.787 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, 4.689 )
+texture_scale = 0.15
+color = Color( 0.639216, 0.32549, 0.662745, 1 )
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_filter_smooth = 2.8
+
+[node name="price" type="Node2D" parent="Area2D"]
+scale = Vector2( 1.25, 1.25 )
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/price"]
+position = Vector2( 2, -12.8 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Area2D/price"]
+offset_left = -7.0
+offset_top = -23.0
+offset_right = 33.0
+offset_bottom = 62.2895
+scale = Vector2( 0.2, 0.2 )
+theme_override_fonts/font = ExtResource( 5 )
+text = "5"

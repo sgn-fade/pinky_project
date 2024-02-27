@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://s82nqm4pe46v"]
+
+[ext_resource type="Texture2D" uid="uid://dwuete70cit4f" path="res://sprites/locations/wall's toarch.png" id="1_m4vc2"]
+[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="2_6sov3"]
+
+[sub_resource type="Curve" id="Curve_b3jih"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.681319), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_l3we1"]
+offsets = PackedFloat32Array(0, 0.32, 1)
+colors = PackedColorArray(0.780414, 0.300333, 4.81307e-07, 1, 1, 0.733333, 0, 1, 1, 0.133333, 0, 1)
+
+[node name="wall\'s toarch" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m4vc2")
+
+[node name="fire_particles_1" type="CPUParticles2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+position = Vector2(0, -5)
+scale = Vector2(2.379, 1.5)
+amount = 100
+lifetime = 0.5
+speed_scale = 0.5
+randomness = 0.55
+lifetime_randomness = 0.84
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -98)
+scale_amount_curve = SubResource("Curve_b3jih")
+color_ramp = SubResource("Gradient_l3we1")
+
+[node name="fire_particles_2" type="CPUParticles2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+position = Vector2(0, -5)
+scale = Vector2(1.5, 0.9)
+amount = 45
+lifetime = 0.35
+explosiveness = 0.15
+randomness = 0.56
+lifetime_randomness = 0.84
+emission_shape = 1
+emission_sphere_radius = 0.6
+spread = 59.86
+gravity = Vector2(0, -98)
+color = Color(0.94902, 0.827451, 0.713726, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, -5)
+scale = Vector2(1.3455, 0.6)
+color = Color(0.917647, 0.643137, 0.0666667, 0.615686)
+energy = 0.7
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter_smooth = 64.0
+texture = ExtResource("2_6sov3")
+texture_scale = 0.7

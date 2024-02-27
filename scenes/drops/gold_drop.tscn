@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctnc3ky8migv"]
+
+[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bw3nmduc5c7or" path="res://sprites/particles/gold_coin.png" id="2"]
+[ext_resource type="Script" path="res://scripts/drops/coin.gd" id="3"]
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 12.9999
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="4"]
+radius = 1.0
+height = 2.0
+
+[node name="coin" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("3")
+
+[node name="particles" type="CPUParticles2D" parent="."]
+lifetime = 0.6
+randomness = 0.5
+lifetime_randomness = 0.5
+direction = Vector2(0, -5)
+spread = 129.97
+gravity = Vector2(0, 0)
+color = Color(0.960784, 0.878431, 0, 1)
+
+[node name="light2" type="PointLight2D" parent="."]
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.5, 0.5)
+color = Color(0.882353, 0.831373, 0.0745098, 1)
+energy = 0.77
+texture = ExtResource("1")
+texture_scale = 0.06
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("3")
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="area" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("1")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("4")

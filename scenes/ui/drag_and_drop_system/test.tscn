@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw8jst1881kdv"]
+
+[ext_resource type="PackedScene" uid="uid://7e2db4knofe" path="res://scenes/ui/drag_and_drop_system/drag_and_drop_shape.tscn" id="1_s30is"]
+[ext_resource type="Texture2D" uid="uid://eytpcmh7m1m7" path="res://sprites/spell_icons/fireball_icon.png" id="2_vueg3"]
+
+[node name="test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="drag_and_drop_shape" parent="." instance=ExtResource("1_s30is")]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 79.0
+offset_right = 130.0
+offset_bottom = 119.0
+texture = ExtResource("2_vueg3")
+
+[node name="drag_and_drop_shape2" parent="." instance=ExtResource("1_s30is")]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 76.0
+offset_right = 296.0
+offset_bottom = 116.0

@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://dai8f5grr0xq"]
+
+[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cl6qvtqrodqft" path="res://sprites/particles/bronze_weapon_drop.png" id="2"]
+[ext_resource type="Script" path="res://scripts/drops/weapon_drop.gd" id="3"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 9, 11)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("2")
+region = Rect2(9, 0, 9, 11)
+
+[sub_resource type="SpriteFrames" id="4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="5"]
+max_value = 5.0
+_data = [Vector2(0.00757575, 1.60227), 0.0, -1.39726, 0, 0, Vector2(1, 0.056818), -0.06, 0.0, 0, 0]
+point_count = 2
+
+[node name="weapon_drop" type="Area2D"]
+script = ExtResource("3")
+
+[node name="detection_area" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("1")
+
+[node name="light" type="PointLight2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(1.5, 1)
+color = Color(0.4, 0.203922, 0.14902, 1)
+energy = 1.2
+texture = ExtResource("1")
+texture_scale = 0.07
+
+[node name="body" type="CharacterBody2D" parent="."]
+
+[node name="light2" type="PointLight2D" parent="body"]
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.5, 0.5)
+color = Color(0.6, 0.360784, 0.294118, 1)
+energy = 1.3
+texture = ExtResource("1")
+texture_scale = 0.06
+
+[node name="particles" type="CPUParticles2D" parent="body"]
+position = Vector2(0, 5)
+lifetime = 0.6
+speed_scale = 0.2
+randomness = 0.5
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -98)
+color = Color(0.454902, 0.223529, 0.160784, 1)
+
+[node name="sprite" type="AnimatedSprite2D" parent="body"]
+position = Vector2(0, 1)
+sprite_frames = SubResource("4")
+
+[node name="end_particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 70
+lifetime = 0.3
+explosiveness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("5")
+color = Color(0.858824, 0.682353, 0.603922, 1)

@@ -1,0 +1,250 @@
+[gd_scene load_steps=28 format=3 uid="uid://x0gtv75l0igh"]
+
+[ext_resource type="Script" path="res://scripts/shotgun.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cdctkl6avqvp5" path="res://sprites/shotgun_shoot_animation.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://d4c5i3dd4ms8m" path="res://sprites/reload_shotgun.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bnpe3fbww0qxn" path="res://sprites/shogunt_butt_hit.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bd7gun8782bag" path="res://sprites/shotgun_one_ammo.png" id="5"]
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 26, 16)
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("4")
+region = Rect2(0, 16, 26, 16)
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("4")
+region = Rect2(0, 32, 26, 16)
+
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource("4")
+region = Rect2(0, 96, 26, 16)
+
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource("4")
+region = Rect2(0, 80, 26, 16)
+
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource("4")
+region = Rect2(0, 112, 26, 16)
+
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource("4")
+region = Rect2(0, 128, 26, 16)
+
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource("4")
+region = Rect2(0, 144, 26, 16)
+
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource("4")
+region = Rect2(0, 160, 26, 16)
+
+[sub_resource type="AtlasTexture" id="22"]
+atlas = ExtResource("4")
+region = Rect2(0, 176, 26, 16)
+
+[sub_resource type="AtlasTexture" id="23"]
+atlas = ExtResource("4")
+region = Rect2(0, 192, 26, 16)
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 24, 10)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("3")
+region = Rect2(0, 10, 24, 10)
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 30, 16)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(0, 16, 30, 16)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("2")
+region = Rect2(0, 48, 30, 16)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("2")
+region = Rect2(0, 64, 30, 16)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("2")
+region = Rect2(0, 80, 30, 16)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("2")
+region = Rect2(0, 96, 30, 16)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("2")
+region = Rect2(0, 112, 30, 16)
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("2")
+region = Rect2(0, 128, 30, 16)
+
+[sub_resource type="SpriteFrames" id="10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}, {
+"duration": 1.0,
+"texture": SubResource("15")
+}, {
+"duration": 1.0,
+"texture": SubResource("16")
+}, {
+"duration": 1.0,
+"texture": SubResource("17")
+}, {
+"duration": 1.0,
+"texture": SubResource("16")
+}, {
+"duration": 1.0,
+"texture": SubResource("18")
+}, {
+"duration": 1.0,
+"texture": SubResource("19")
+}, {
+"duration": 1.0,
+"texture": SubResource("20")
+}, {
+"duration": 1.0,
+"texture": SubResource("21")
+}, {
+"duration": 1.0,
+"texture": SubResource("22")
+}, {
+"duration": 1.0,
+"texture": SubResource("23")
+}],
+"loop": false,
+"name": &"butt_hit",
+"speed": 18.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}],
+"loop": true,
+"name": &"reload",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}, {
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("9")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 18.0
+}]
+
+[node name="shotgun" type="CharacterBody2D"]
+script = ExtResource("1")
+
+[node name="s" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, 0)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("10")
+animation = &"butt_hit"
+frame = 11
+flip_h = true
+
+[node name="sleeve_particle" type="CPUParticles2D" parent="."]
+position = Vector2(0, -2)
+emitting = false
+amount = 1
+lifetime = 0.8
+one_shot = true
+texture = ExtResource("5")
+emission_shape = 2
+emission_sphere_radius = 1.0
+color = Color(0.992157, 0.52549, 0.0823529, 0.360784)
+
+[node name="pos" type="Marker2D" parent="."]
+position = Vector2(14, 0)
+
+[node name="particles" type="CPUParticles2D" parent="pos"]
+modulate = Color(0.588235, 0.298039, 0, 1)
+emitting = false
+lifetime = 0.7
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.69
+lifetime_randomness = 0.61
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(1, 1)
+spread = 93.65
+gravity = Vector2(20, 0)

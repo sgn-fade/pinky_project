@@ -1,0 +1,511 @@
+[gd_scene load_steps=22 format=3 uid="uid://bk34c60sqf56k"]
+
+[ext_resource type="Texture2D" uid="uid://cr72ukl4w861a" path="res://sprites/ui/main_game_ui_panel.png" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/spell_module_game_discription.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://e54psqwy45xn" path="res://scenes/ui/weapon_discription.tscn" id="5"]
+[ext_resource type="Script" path="res://scripts/dash_indicator.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://dww12tk5tyxfd" path="res://sprites/ui/spell_game_colldown_icon_background.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://2lj20o8vssmt" path="res://sprites/ui/health_bar_progress.png" id="8"]
+[ext_resource type="Script" path="res://scripts/survive_timer.gd" id="10"]
+[ext_resource type="Texture2D" uid="uid://d2w1882udcmvp" path="res://sprites/blood_ord.png" id="11"]
+[ext_resource type="Script" path="res://scripts/ui/player_bars.gd" id="11_m6abd"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12"]
+[ext_resource type="Texture2D" uid="uid://bj1emqivewhnn" path="res://sprites/ui/dash_progress_bar_under.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://dfvw2pdfwsbsm" path="res://sprites/ui/dash_progress_bar_progress.png" id="14"]
+[ext_resource type="Script" path="res://scripts/game_ui.gd" id="15"]
+[ext_resource type="Script" path="res://scripts/ui/weapon_display.gd" id="15_tgfus"]
+[ext_resource type="Texture2D" uid="uid://da0ya1wdnxj7x" path="res://sprites/ui/weapon_card/weapon_temporary_card.png" id="15_vr4t0"]
+[ext_resource type="Texture2D" uid="uid://deqpjja6gbtfe" path="res://sprites/weapons/magic_weapons/old_goblins_magic_wand.png" id="16_p26xw"]
+
+[sub_resource type="Shader" id="1"]
+code = "shader_type canvas_item;
+uniform int amount = 300;
+// fV = fill value
+uniform float fV;
+uniform vec4 color = vec4(1.0, 0.0, 0.0, 1.0); // Red color
+void fragment() {
+	vec2 grid_uv = round(UV * float(amount)) / float(amount);
+    vec2 uv = ((grid_uv / -0.1)) + vec2(1.25,1.25);
+
+
+    float
+		sdf=length(uv),c=step(sdf,0.85) * step(uv.x, 0),
+		
+        vB=smoothstep(.1,.9,sin(uv.x+(PI*.5))-.3),
+		vBA=vB*sin((TIME - 2000.0)*4.)*.07,
+        
+        fW=(sin(((TIME*1.)+uv.x)*2.)*.05)+vBA,
+		bW=(sin(((TIME*-1.)+uv.x)*2.+PI)*.05)-vBA,
+		
+        fA=(sin(TIME*4.)*.05)*vB,
+        
+        fP=fV * 2.4 +(sin((TIME)*PI)*.1) - 1.1,
+		
+        fF=step(uv.y,(fA+fW)+fP)*c,
+		bF=step(uv.y,(-fA+bW)+fP) * c;
+
+    COLOR = color * 
+		vec4(
+		(fF+(clamp(bF-fF,0.,1.)*.8))+
+		clamp(pow((sdf+.01)*
+		((1.-(fF+bF))*c),5.),0.,1.));
+		
+}"
+
+[sub_resource type="ShaderMaterial" id="2"]
+resource_local_to_scene = true
+shader = SubResource("1")
+shader_parameter/amount = 300
+shader_parameter/fV = 1.0
+shader_parameter/color = Vector4(0, 0.5, 1, 1)
+
+[sub_resource type="Shader" id="3"]
+code = "shader_type canvas_item;
+uniform int amount = 300;
+// fV = fill value
+uniform float fV;
+uniform vec4 color = vec4(0.0, 0.5, 1.0, 1.0); // Red color
+void fragment() {
+	vec2 grid_uv = round(UV * float(amount)) / float(amount);
+    vec2 uv = ((grid_uv / -0.1)) + vec2(1.25,1.25);
+
+
+    float
+		sdf=length(uv),c=step(sdf,0.85) * step(uv.x, 0),
+		
+        vB=smoothstep(.1,.9,sin(uv.x+(PI*.5))-.3),
+		vBA=vB*sin((TIME - 20040.0)*4.)*.07,
+        
+        fW=(sin(((TIME*1.)+uv.x)*2.)*.05)+vBA,
+		bW=(sin(((TIME*-1.)+uv.x)*2.+PI)*.05)-vBA,
+		
+        fA=(sin(TIME*4.)*.05)*vB,
+        
+        fP=fV * 2.4 +(sin((TIME)*PI)*.1) - 1.1,
+		
+        fF=step(uv.y,(fA+fW)+fP)*c,
+		bF=step(uv.y,(-fA+bW)+fP) * c;
+
+    COLOR = color * 
+		vec4(
+		(fF+(clamp(bF-fF,0.,1.)*.8))+
+		clamp(pow((sdf+.01)*
+		((1.-(fF+bF))*c),5.),0.,1.));
+		
+}"
+
+[sub_resource type="ShaderMaterial" id="4"]
+shader = SubResource("3")
+shader_parameter/amount = 300
+shader_parameter/fV = 1.0
+shader_parameter/color = Vector4(1, 0, 0, 1)
+
+[node name="game_ui" type="Control"]
+process_mode = 1
+layout_mode = 3
+anchor_left = 0.013
+anchor_top = 0.035
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.04
+offset_top = -21.0
+pivot_offset = Vector2(-210, 188)
+script = ExtResource("15")
+
+[node name="spell_slot_panel" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -77.0
+offset_right = 147.0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(147, 77)
+texture = ExtResource("1")
+
+[node name="slot1" type="TextureProgressBar" parent="spell_slot_panel"]
+layout_mode = 0
+anchor_left = 0.196
+anchor_top = 0.638
+anchor_right = 0.196
+anchor_bottom = 0.638
+offset_left = -52.7773
+offset_top = -23.126
+offset_right = -19.7773
+offset_bottom = 9.874
+pivot_offset = Vector2(25.8467, 16.4)
+max_value = 60.0
+fill_mode = 3
+texture_under = ExtResource("7")
+texture_progress_offset = Vector2(2, 2)
+radial_initial_angle = 360.0
+
+[node name="Button_picture" parent="spell_slot_panel/slot1" instance=ExtResource("4")]
+position = Vector2(29, 28)
+scale = Vector2(0.8, 0.8)
+
+[node name="slot2" type="TextureProgressBar" parent="spell_slot_panel"]
+layout_mode = 0
+anchor_left = 0.196
+anchor_top = 0.638
+anchor_right = 0.196
+anchor_bottom = 0.638
+offset_left = -16.1106
+offset_top = -16.7926
+offset_right = 16.8894
+offset_bottom = 16.2074
+pivot_offset = Vector2(25.8467, 16.4)
+max_value = 60.0
+fill_mode = 3
+texture_under = ExtResource("7")
+texture_progress_offset = Vector2(2, 2)
+radial_initial_angle = 360.0
+
+[node name="Button_picture" parent="spell_slot_panel/slot2" instance=ExtResource("4")]
+position = Vector2(29, 28)
+scale = Vector2(0.8, 0.8)
+
+[node name="slot3" type="TextureProgressBar" parent="spell_slot_panel"]
+layout_mode = 0
+anchor_left = 0.319
+anchor_top = 0.622
+anchor_right = 0.319
+anchor_bottom = 0.622
+offset_left = -16.2727
+offset_top = -15.894
+offset_right = 16.7273
+offset_bottom = 17.106
+max_value = 60.0
+fill_mode = 3
+texture_under = ExtResource("7")
+texture_progress_offset = Vector2(2, 2)
+radial_initial_angle = 360.0
+
+[node name="Button_picture" parent="spell_slot_panel/slot3" instance=ExtResource("4")]
+position = Vector2(29, 28)
+scale = Vector2(0.8, 0.8)
+
+[node name="slot4" type="TextureProgressBar" parent="spell_slot_panel"]
+layout_mode = 0
+anchor_left = 0.685
+anchor_top = 0.632
+anchor_right = 0.685
+anchor_bottom = 0.632
+offset_left = -16.39
+offset_top = -16.464
+offset_right = 16.61
+offset_bottom = 16.536
+pivot_offset = Vector2(9.51331, 4.79999)
+max_value = 60.0
+fill_mode = 3
+texture_under = ExtResource("7")
+texture_progress_offset = Vector2(2, 2)
+
+[node name="Button_picture" parent="spell_slot_panel/slot4" instance=ExtResource("4")]
+position = Vector2(29, 28)
+scale = Vector2(0.8, 0.8)
+
+[node name="slot5" type="TextureProgressBar" parent="spell_slot_panel"]
+layout_mode = 0
+anchor_left = 0.805
+anchor_top = 0.632
+anchor_right = 0.805
+anchor_bottom = 0.632
+offset_left = -16.1567
+offset_top = -16.664
+offset_right = 16.8433
+offset_bottom = 16.336
+max_value = 60.0
+fill_mode = 3
+texture_under = ExtResource("7")
+texture_progress_offset = Vector2(2, 2)
+radial_initial_angle = 360.0
+
+[node name="Button_picture" parent="spell_slot_panel/slot5" instance=ExtResource("4")]
+position = Vector2(29, 28)
+scale = Vector2(0.8, 0.8)
+
+[node name="slot6" type="TextureProgressBar" parent="spell_slot_panel"]
+layout_mode = 0
+anchor_left = 0.196
+anchor_top = 0.638
+anchor_right = 0.196
+anchor_bottom = 0.638
+offset_left = 199.556
+offset_top = -22.4593
+offset_right = 232.556
+offset_bottom = 10.5407
+pivot_offset = Vector2(25.8467, 16.4)
+max_value = 60.0
+fill_mode = 3
+texture_under = ExtResource("7")
+texture_progress_offset = Vector2(2, 2)
+radial_initial_angle = 360.0
+
+[node name="Button_picture" parent="spell_slot_panel/slot6" instance=ExtResource("4")]
+position = Vector2(29, 28)
+scale = Vector2(0.8, 0.8)
+
+[node name="dash_indicator" type="TextureProgressBar" parent="."]
+process_mode = 1
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.827
+anchor_right = 0.5
+anchor_bottom = 0.827
+offset_left = -21.4599
+offset_top = -65.0663
+offset_right = 22.5401
+offset_bottom = -22.0663
+scale = Vector2(3, 3)
+pivot_offset = Vector2(22, 0)
+max_value = 4000.0
+value = 4000.0
+fill_mode = 4
+texture_under = ExtResource("13")
+texture_progress = ExtResource("14")
+radial_initial_angle = 301.6
+radial_fill_degrees = 111.9
+radial_center_offset = Vector2(0, 7.606)
+script = ExtResource("6")
+
+[node name="blood_orb_count" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.5598
+offset_top = 25.0
+offset_right = -26.5598
+offset_bottom = 72.0
+texture = ExtResource("11")
+
+[node name="Label" type="Label" parent="blood_orb_count"]
+layout_mode = 0
+anchor_left = -0.888
+anchor_top = 0.5
+anchor_right = -0.888
+anchor_bottom = 0.567
+offset_left = -38.488
+offset_top = -39.5
+offset_right = 38.512
+offset_bottom = 42.6405
+theme_override_fonts/font = ExtResource("12")
+
+[node name="survive_timer" type="Label" parent="."]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = -9.0
+offset_right = 65.0
+offset_bottom = 81.0
+pivot_offset = Vector2(65, 0)
+theme_override_fonts/font = ExtResource("12")
+script = ExtResource("10")
+
+[node name="player_bars" type="Control" parent="."]
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 0.884
+anchor_right = 0.5
+anchor_bottom = 0.884
+offset_left = -954.54
+offset_top = -939.869
+offset_right = -914.54
+offset_bottom = -899.869
+script = ExtResource("11_m6abd")
+
+[node name="mana_bar" type="TextureRect" parent="player_bars"]
+modulate = Color(0.929412, 0.152941, 0.152941, 1)
+material = SubResource("2")
+layout_mode = 0
+offset_left = -520.92
+offset_top = -954.8
+offset_right = -308.92
+offset_bottom = -696.8
+scale = Vector2(18, 18)
+texture = ExtResource("8")
+stretch_mode = 3
+
+[node name="hp_bar" type="TextureRect" parent="player_bars"]
+modulate = Color(0.231373, 0.239216, 0.811765, 1)
+material = SubResource("4")
+layout_mode = 0
+offset_left = 1095.69
+offset_top = 787.484
+offset_right = 1159.69
+offset_bottom = 851.484
+scale = Vector2(-18, 18)
+texture = ExtResource("8")
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="player_bars"]
+layout_mode = 0
+offset_left = 952.08
+offset_top = 837.2
+offset_right = 957.08
+offset_bottom = 1032.2
+color = Color(0, 0, 0, 1)
+
+[node name="current_hp" type="Label" parent="player_bars"]
+layout_mode = 0
+offset_left = 890.08
+offset_top = 970.2
+offset_right = 1102.08
+offset_bottom = 1055.49
+theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 80
+text = "50"
+
+[node name="current_mana" type="Label" parent="player_bars"]
+layout_mode = 0
+offset_left = 969.08
+offset_top = 970.2
+offset_right = 1181.08
+offset_bottom = 1055.49
+theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 80
+text = "50"
+
+[node name="max_hp" type="Label" parent="player_bars"]
+modulate = Color(0.647059, 0.470588, 0.129412, 1)
+layout_mode = 0
+offset_left = 890.08
+offset_top = 994.2
+offset_right = 1102.08
+offset_bottom = 1079.49
+theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 80
+text = "50"
+
+[node name="max_mana" type="Label" parent="player_bars"]
+modulate = Color(0.172549, 0.572549, 0.552941, 1)
+layout_mode = 0
+offset_left = 969.08
+offset_top = 995.2
+offset_right = 1181.08
+offset_bottom = 1080.49
+theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 80
+text = "50"
+
+[node name="module_discription" parent="." instance=ExtResource("3")]
+visible = false
+anchors_preset = 0
+anchor_left = 0.882
+anchor_top = 0.483
+anchor_right = 0.884
+anchor_bottom = 0.483
+offset_left = -222.809
+offset_top = -242.526
+offset_right = 226.373
+offset_bottom = 243.474
+pivot_offset = Vector2(0, 0)
+
+[node name="weapon_discription" parent="." instance=ExtResource("5")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.885
+anchor_top = 0.5
+anchor_right = 0.885
+anchor_bottom = 0.5
+offset_left = -101.456
+offset_top = -124.4
+offset_right = 102.544
+offset_bottom = 68.1201
+
+[node name="weapon_display" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1506.08
+offset_top = 728.2
+offset_right = 1546.08
+offset_bottom = 768.2
+script = ExtResource("15_tgfus")
+
+[node name="slot1" type="Control" parent="weapon_display"]
+layout_mode = 1
+anchor_left = 1.887
+anchor_top = 2.25
+anchor_right = 1.887
+anchor_bottom = 2.25
+offset_left = -75.48
+offset_top = -90.0
+offset_right = 75.52
+offset_bottom = 90.0
+rotation = -0.51354
+
+[node name="TextureRect" type="TextureRect" parent="weapon_display/slot1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.544
+offset_left = -9.42141
+offset_top = 45.2022
+offset_right = 66.0786
+offset_bottom = 180.282
+rotation = 0.261779
+texture = ExtResource("15_vr4t0")
+
+[node name="weapon_texture" type="TextureRect" parent="weapon_display/slot1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0938
+offset_top = -27.2902
+offset_right = 44.9062
+offset_bottom = 177.71
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.226027
+texture = ExtResource("16_p26xw")
+stretch_mode = 4
+
+[node name="slot2" type="Control" parent="weapon_display"]
+layout_mode = 1
+anchor_left = 1.887
+anchor_top = 2.25
+anchor_right = 1.887
+anchor_bottom = 2.25
+offset_left = 63.52
+offset_top = -155.0
+offset_right = 214.52
+offset_bottom = 25.0
+rotation = -0.115593
+
+[node name="TextureRect" type="TextureRect" parent="weapon_display/slot2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.544
+offset_left = -9.42141
+offset_top = 45.2022
+offset_right = 66.0786
+offset_bottom = 180.282
+rotation = 0.261779
+texture = ExtResource("15_vr4t0")
+
+[node name="weapon_texture" type="TextureRect" parent="weapon_display/slot2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0817
+offset_top = -22.967
+offset_right = 32.9183
+offset_bottom = 185.033
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.27707
+texture = ExtResource("16_p26xw")
+stretch_mode = 4

@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://dca0g5c0huvv3"]
+
+[ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2"]
+[ext_resource type="Script" path="res://scripts/Lights.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="4_whwce"]
+[ext_resource type="Texture2D" uid="uid://cpabeo40tt08d" path="res://sprites/fire_pylon.png" id="5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etbdn"]
+radius = 2.0
+height = 13.3333
+
+[sub_resource type="Curve" id="Curve_hxyx5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.681319), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_syxcm"]
+offsets = PackedFloat32Array(0, 0.32, 1)
+colors = PackedColorArray(0.780414, 0.300333, 4.81307e-07, 1, 1, 0.733333, 0, 1, 1, 0.133333, 0, 1)
+
+[node name="toarch" type="StaticBody2D"]
+z_as_relative = false
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_etbdn")
+
+[node name="Pylon" type="Sprite2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+light_mask = 2
+z_as_relative = false
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+offset = Vector2(0, -7.075)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, -8)
+scale = Vector2(1.3455, 0.6)
+color = Color(0.917647, 0.643137, 0.0666667, 0.615686)
+energy = 0.7
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter_smooth = 64.0
+texture = ExtResource("4_whwce")
+texture_scale = 0.7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.45098)
+z_index = -170
+position = Vector2(-1.78813e-07, 4.00001)
+scale = Vector2(0.8125, 1.431)
+texture = ExtResource("2")
+
+[node name="fire_particles_1" type="CPUParticles2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+position = Vector2(0, -25)
+scale = Vector2(2.379, 1.5)
+amount = 300
+lifetime = 0.6
+speed_scale = 0.5
+randomness = 0.55
+lifetime_randomness = 0.84
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2(0, -98)
+scale_amount_curve = SubResource("Curve_hxyx5")
+color_ramp = SubResource("Gradient_syxcm")
+
+[node name="fire_particles_2" type="CPUParticles2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+position = Vector2(0, -25)
+scale = Vector2(1.5, 0.9)
+amount = 45
+lifetime = 0.35
+explosiveness = 0.15
+randomness = 0.56
+lifetime_randomness = 0.84
+emission_shape = 1
+emission_sphere_radius = 1.4
+spread = 59.86
+gravity = Vector2(0, -98)
+color = Color(0.94902, 0.827451, 0.713726, 1)

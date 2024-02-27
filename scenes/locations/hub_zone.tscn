@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=3 uid="uid://bx1mxg4kipto5"]
+
+[ext_resource type="Texture2D" uid="uid://cu23cwynpxasr" path="res://sprites/locations/hub_zone/hub_zone.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://csjtnwd75pjh7" path="res://scenes/world_env/map_terminal.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/locations/hub_zone.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://dca0g5c0huvv3" path="res://scenes/Lights.tscn" id="4_dxkyd"]
+[ext_resource type="Texture2D" uid="uid://bs2xj4hkrvp3r" path="res://sprites/particles/particle-1.png" id="5_ro3ai"]
+[ext_resource type="Texture2D" uid="uid://o1f736csxs8c" path="res://sprites/locations/hub_zone/side.png" id="6_sog8n"]
+
+[sub_resource type="Curve" id="3"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.485148, 116.818), 0.0, 0.0, 0, 0, Vector2(0.995049, -126.364), -1402.32, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="4"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, -156.273), 0.0, 0.0, 0, 0, Vector2(1, 360), 583.316, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4pqod"]
+max_value = 3.0
+_data = [Vector2(0.00852308, 2.25424), 0.0, 0.0, 0, 0, Vector2(1, 0.0734462), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="hub_zone" type="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
+z_index = -1000
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 1)
+collision_layer = 4294967295
+collision_mask = 4294967295
+script = ExtResource("3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 3
+visibility_layer = 3
+z_index = -5
+offset_left = -793.0
+offset_top = -442.0
+offset_right = 834.0
+offset_bottom = 449.0
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+
+[node name="map_terminal" parent="." instance=ExtResource("2")]
+position = Vector2(-2, 9)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(149, 94, 173, 83, 193, 65, 198, 47, 198, 19, 182, -1, 205, -6, 199, 170, -201, 171, -211, -8, -183, -2, -191, 7, -199, 18, -199, 55, -194, 64, -179, 79, -156, 92, -138, 98, -136, 160, 135, 160, 136, 98)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+position = Vector2(11, -172)
+polygon = PackedVector2Array(-172, 178, -147, 170, -130, 168, 102, 168, 126, 170, 149, 178, 153, 192, 156, 206, 150, 218, 138, 228, 123, 233, 122, 223, 100, 221, -132, 223, -144, 224, -148, 233, -164, 226, -174, 215, -181, 202, -177, 189)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(182, -1, 182, -102, -183, -102, -183, -2, -211, -8, -182, -149, 181, -147, 205, 0)
+
+[node name="lights" parent="." instance=ExtResource("4_dxkyd")]
+position = Vector2(-133, -35)
+
+[node name="wall" type="Sprite2D" parent="."]
+light_mask = 0
+z_as_relative = false
+position = Vector2(-1, 38)
+texture = ExtResource("6_sog8n")
+offset = Vector2(0, -10.015)
+
+[node name="up_background" type="CPUParticles2D" parent="."]
+position = Vector2(1, -151)
+amount = 100
+lifetime = 14.0
+speed_scale = 10.0
+texture = ExtResource("5_ro3ai")
+emission_shape = 3
+emission_rect_extents = Vector2(197.985, 3.17)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+linear_accel_curve = SubResource("3")
+angle_curve = SubResource("4")
+scale_amount_curve = SubResource("Curve_4pqod")
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="down_background" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(1, 166)
+amount = 100
+lifetime = 14.0
+speed_scale = 10.0
+texture = ExtResource("5_ro3ai")
+emission_shape = 3
+emission_rect_extents = Vector2(153.675, 3.17)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+linear_accel_curve = SubResource("3")
+angle_curve = SubResource("4")
+scale_amount_curve = SubResource("Curve_4pqod")
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="down_background2" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(175, 8)
+rotation = 0.261799
+amount = 100
+lifetime = 14.0
+speed_scale = 10.0
+texture = ExtResource("5_ro3ai")
+emission_shape = 3
+emission_rect_extents = Vector2(14.905, 150)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+linear_accel_curve = SubResource("3")
+angle_curve = SubResource("4")
+scale_amount_curve = SubResource("Curve_4pqod")
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="down_background3" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-170, 10)
+rotation = 2.87979
+amount = 100
+lifetime = 14.0
+speed_scale = 10.0
+texture = ExtResource("5_ro3ai")
+emission_shape = 3
+emission_rect_extents = Vector2(14.905, 150)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+linear_accel_curve = SubResource("3")
+angle_curve = SubResource("4")
+scale_amount_curve = SubResource("Curve_4pqod")
+color = Color(0.45098, 0.45098, 0.45098, 1)

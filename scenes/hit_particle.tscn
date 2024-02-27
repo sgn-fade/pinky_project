@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6hemv87vxb17"]
+
+[ext_resource type="Texture2D" uid="uid://bxlmngctlu77t" path="res://sprites/particles/weapon_particles/hit_particle1.png" id="1"]
+[ext_resource type="Script" path="res://scripts/particles/sword_base_particle.gd" id="2"]
+
+[sub_resource type="AtlasTexture" id="30"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="31"]
+atlas = ExtResource("1")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="32"]
+atlas = ExtResource("1")
+region = Rect2(22, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="33"]
+atlas = ExtResource("1")
+region = Rect2(33, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="34"]
+atlas = ExtResource("1")
+region = Rect2(44, 0, 11, 11)
+
+[sub_resource type="SpriteFrames" id="29"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("30")
+}, {
+"duration": 1.0,
+"texture": SubResource("31")
+}, {
+"duration": 1.0,
+"texture": SubResource("32")
+}, {
+"duration": 1.0,
+"texture": SubResource("33")
+}, {
+"duration": 1.0,
+"texture": SubResource("34")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="35"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 0)]
+}
+
+[sub_resource type="Animation" id="36"]
+resource_name = "default"
+length = 0.333333
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(9, 0), Vector2(14, 0), Vector2(22, 0), Vector2(22, 0), Vector2(22, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ha4ij"]
+_data = {
+"RESET": SubResource("35"),
+"default": SubResource("36")
+}
+
+[node name="hit_particle" type="Node2D"]
+script = ExtResource("2")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(14, 0)
+rotation = 1.5708
+sprite_frames = SubResource("29")
+animation = &"hit"
+frame = 2
+offset = Vector2(0.5, -0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = 1.5708
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0, -15)
+scale = Vector2(1, 1.52)
+polygon = PackedVector2Array(0, 9.86843, -4, 8.55264, -4, -1.97368, 0, -6.57895, 5, -1.97368, 5, 8.55264)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_ha4ij")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
