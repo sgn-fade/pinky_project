@@ -35,7 +35,6 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1")
-stretch_mode = 5
 
 [node name="inventory" type="ScrollContainer" parent="."]
 clip_contents = false

@@ -42,10 +42,10 @@ animations = [{
 [node name="Ui" type="CanvasLayer"]
 process_mode = 1
 layer = 100
-visible = false
 script = ExtResource("3")
 
 [node name="game_ui" parent="." instance=ExtResource("1")]
+visible = false
 offset_left = 0.0
 offset_top = 0.0
 

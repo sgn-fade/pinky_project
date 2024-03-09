@@ -29,10 +29,12 @@ func _input(event):
 
 
 func hit(hit_count):
+	Player.set_state(Player.get_body().States.ATTACK)
 	Player.get_body().set_speed(20)
 	play_animation(hit_count)
 	await get_node("anim").animation_finished
 	combo_timer.start(1)
 	Player.get_body().set_speed(80)
-	play_animation("idle")
+	Player.set_state(Player.get_body().States.IDLE)
+	play_animation("null")
 

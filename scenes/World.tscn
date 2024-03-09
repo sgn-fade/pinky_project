@@ -28,6 +28,7 @@ process_mode = 3
 
 [node name="World_Embient" type="CanvasModulate" parent="."]
 process_priority = -71
+visible = false
 color = Color(0.313726, 0.313726, 0.313726, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

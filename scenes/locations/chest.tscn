@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://p8o4jym53ha4"]
+
+[ext_resource type="Script" path="res://chest.gd" id="1_1ma7r"]
+[ext_resource type="Texture2D" uid="uid://fdyyxsifo13e" path="res://sprites/locations/chest.png" id="2_yrmi0"]
+[ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="3_b15rc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yexbw"]
+atlas = ExtResource("2_yrmi0")
+region = Rect2(0, 0, 27, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvwh6"]
+atlas = ExtResource("2_yrmi0")
+region = Rect2(27, 0, 27, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vrcf"]
+atlas = ExtResource("2_yrmi0")
+region = Rect2(54, 0, 27, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smgwl"]
+atlas = ExtResource("2_yrmi0")
+region = Rect2(81, 0, 27, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe6r4"]
+atlas = ExtResource("2_yrmi0")
+region = Rect2(108, 0, 27, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gk8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yexbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvwh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vrcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smgwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe6r4")
+}],
+"loop": false,
+"name": &"open",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlkyb"]
+size = Vector2(18, 6)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0um6b"]
+radius = 9.0
+height = 40.0
+
+[node name="chest" type="StaticBody2D"]
+z_as_relative = false
+script = ExtResource("1_1ma7r")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_2gk8l")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_nlkyb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0um6b")
+
+[node name="shadow_under" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(2, 4)
+scale = Vector2(0.6875, 0.388)
+texture = ExtResource("3_b15rc")
