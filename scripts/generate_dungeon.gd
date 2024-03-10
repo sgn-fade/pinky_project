@@ -144,7 +144,7 @@ func place_room(room, prev_direction, prev_distance):
 	await get_tree().create_timer(0.1).timeout
 	if room.get_node("room_area").has_overlapping_areas():
 		return await place_room(room, prev_direction, distance)
-	var pattern = tile_map.tile_set.get_pattern(7)
+	var pattern = tile_map.tile_set.get_pattern(randi()%8)
 	var pattern_position = Vector2i(distance / 64) - pattern.get_size() / 2
 	tile_map.set_pattern(1, pattern_position, pattern)
 	create_tonel(-direction, room)
