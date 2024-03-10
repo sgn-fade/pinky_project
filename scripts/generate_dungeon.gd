@@ -112,7 +112,6 @@ func generate_direction(previous_direction):
 
 
 func _ready():
-	return
 	center_room()
 	for i in 3:
 		var distance = Vector2.ZERO
@@ -124,10 +123,10 @@ func _ready():
 			direction = await place_room(b_room, direction, distance)
 			distance = b_room.global_position
 	var size = tile_map.get_used_rect().size
-	for x in size.x:
-		for y in size.y:
-			if tile_map.get_cell_source_id(1, Vector2i(x * 64, y * 64)) == 3:
-				BetterTerrain.update_terrain_cell(tile_map, 1, Vector2i(x * 64, y * 64), false) 
+	for x in range(-size.x/2, size.x / 2):
+		for y in range(-size.y/2, size.y / 2):
+			if tile_map.get_cell_source_id(1, Vector2i(x, y)) == 3:
+				BetterTerrain.update_terrain_cell(tile_map, 1, Vector2i(x, y), false) 
 	#BetterTerrain.update_terrain_area(tile_map, 1, , false)
 
 func center_room():
