@@ -207,4 +207,8 @@ func set_inventory_state():
 	_animated_sprite.play("idle")
 	current_state = States.INVENTORY
 
+func throw_not_enough_mana_massage():
+	var massage = load("res://scenes/ui/Player_massages/not_enough_mana_label.tscn").instantiate()
+	massage.global_position = global_position
+	GlobalWorldInfo.get_world().add_child(massage)
 
