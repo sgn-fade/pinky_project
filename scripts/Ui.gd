@@ -6,12 +6,11 @@ extends CanvasLayer
 @onready var pause_ui = $pause_ui
 @onready var altar_ui = $altar_ui
 @onready var menu_ui = $menu_ui
-@onready var death_ui = $death_screen
 @onready var current_ui = menu_ui
 
 func _ready():
 	EventBus.connect("load_game", Callable(self, "load_animation"))
-	EventBus.connect("player_dead", Callable(self, "_on_player_dead"))
+
 	switch_ui(game_ui, "game", false)
 
 func load_animation():
@@ -51,5 +50,3 @@ func switch_ui(ui_type, crosshair_type, paused):
 	current_ui = ui_type
 
 
-func _on_player_dead():
-	switch_ui(death_ui, "ui", true)

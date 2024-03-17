@@ -18,9 +18,6 @@ func _ready():
 	EventBus.connect("spell_slot_button_unselected", Callable(self, "_on_spell_slot_button_unselected"))
 
 
-func _process(detla):
-	$coins_indicator/count.text = str(Player.get_money())
-
 func fill_cells():
 	cells = Player.get_weapon().get_cells()
 	for i in range(cells.size()):
@@ -49,17 +46,13 @@ func add_weapon_to_inventory(weapon):
 
 
 func add_module_to_place(module, is_new, place, cell_index):
-	var slot = spell_slot_button_scene.instantiate()
-	slot.init(module, cell_index)
 	if place == "inventory":
-		$inventory/modules.add_child(slot)
-		if is_new:
-			slot.set_new_label(true)
-	elif place == "equipment":
-		Player.get_weapon().add_module_to_weapon(module, is_new, place, cell_index)
-		slot.position = cells[cell_index].position
-		slot.set_equiped(true)
-		$weapon/cells.add_child(slot)
+		for child in $item_grid/GridContainer.get_children():
+			if child.get_data() == null:
+				var background_texture = load("res://sprites/ui/%s_module_button_state.png" % module.rarity)
+				child.set_data(module, "module", module.spell_icon, background_texture)
+				return
+
 
 
 func _on_inventory_cell_choosed(cell):
@@ -80,24 +73,6 @@ func _on_spell_slot_button_unselected():
 	await get_tree().create_timer(1).timeout
 	choosed_slot = null
 	EventBus.emit_signal("spell_cells_light_off")
-
-
-func _on_weapons_pressed():
-	$inventory.visible = false
-	$weapon_inventory.visible = true
-	$module_layout.visible = false
-	$weapon.visible = true
-func _on_modules_pressed():
-	$inventory.visible = true
-	$weapon_inventory.visible = false
-	$module_layout.visible = false
-	$weapon.visible = true
-	
-func _on_layout_pressed():
-	$inventory.visible = false
-	$weapon_inventory.visible = false
-	$module_layout.visible = true
-	$weapon.visible = false
 
 
 func _on_remove_weapon_from_slot():
@@ -121,12 +96,6 @@ func _on_weapon_in_inventory_choosed(weapon):
 
 
 
-func _on_slot_1_weapon_pressed():
-	swap_weapon_slot(1)
-
-
-func _on_slot_2_weapon_pressed():
-	swap_weapon_slot(2)
 
 
 func swap_weapon_slot(slot):

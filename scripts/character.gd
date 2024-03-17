@@ -62,7 +62,7 @@ func _ready():
 	EventBus.connect("player_cast_spell", Callable(self, "set_cast_state"))
 	timer.one_shot = false
 	add_child(timer)
-	Input.set_mouse_mode(1)
+	#Input.set_mouse_mode(1)
 
 func _input(event):
 	if Input.is_action_just_pressed("F"):

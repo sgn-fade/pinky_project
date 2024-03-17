@@ -21,7 +21,6 @@ signal spell_animation_ended()
 
 signal dash_cooldown()
 signal player_teleport(position)
-signal player_dead()
 
 signal show_module_stats_on_game_screen(module)
 signal hide_module_stats_on_game_screen()
@@ -67,6 +66,5 @@ signal go_to_hub()
 signal load_game() #loaded start hub after press button in main menu
 
 signal enemy_killed()
-
 
 signal add_player_to_board(player_name)

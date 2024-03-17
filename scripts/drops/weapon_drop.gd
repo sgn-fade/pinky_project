@@ -17,10 +17,6 @@ func _ready():
 	EventBus.connect("go_to_hub", Callable(self, "go_to_hub"))
 
 
-func go_to_hub():
-	queue_free()
-
-
 func _process(delta):
 	body.z_index = global_position.y / 2
 	body.position.y = sin(Time.get_ticks_msec()  * 0.003) * 2
