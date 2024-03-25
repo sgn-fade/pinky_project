@@ -39,7 +39,7 @@ animations = [{
 }]
 
 [node name="Ui" type="CanvasLayer"]
-process_mode = 1
+process_mode = 3
 layer = 100
 script = ExtResource("3")
 

@@ -6,9 +6,12 @@ var spell_slot_button_scene = load("res://scenes/ui/spell_slot_button.tscn")
 var weapon_card_scene = load("res://scenes/ui/weapon_card.tscn")
 var choosed_slot = null
 var empty_cell = load("res://scenes/ui/inventory_module_cell.tscn")
+var inventory_object = load("res://scenes/ui/inventory/inventory_slot_object.tscn")
+var inventory_cell = load("res://scenes/ui/inventory/inventory_cell.tscn")
 var cells
 
 func _ready():
+	create_inventory_cells()
 	EventBus.connect("add_module_to_place", Callable(self, "add_module_to_place"))
 	EventBus.connect("remove_weapon_from_slot", Callable(self, "_on_remove_weapon_from_slot"))
 	EventBus.connect("add_weapon_to_inventory", Callable(self, "add_weapon_to_inventory"))
@@ -16,6 +19,17 @@ func _ready():
 	EventBus.connect("weapon_in_inventory_choosed", Callable(self, "_on_weapon_in_inventory_choosed"))
 	EventBus.connect("spell_slot_button_choosed", Callable(self, "_on_spell_slot_button_choosed"))
 	EventBus.connect("spell_slot_button_unselected", Callable(self, "_on_spell_slot_button_unselected"))
+
+
+func create_inventory_cells():
+	for y in range(199.5, 992, 132):
+		for x in range(1042.5, 1900, 132):
+			var cell = inventory_cell.instantiate()
+			$item_grid/cells.add_child(cell)
+			cell.global_position = Vector2(x, y)
+				
+
+
 
 
 func fill_cells():
@@ -47,10 +61,14 @@ func add_weapon_to_inventory(weapon):
 
 func add_module_to_place(module, is_new, place, cell_index):
 	if place == "inventory":
-		for child in $item_grid/GridContainer.get_children():
-			if child.get_data() == null:
+		for child in $item_grid/cells.get_children():
+			if child.is_empty():
+				var object = inventory_object.instantiate()
 				var background_texture = load("res://sprites/ui/%s_module_button_state.png" % module.rarity)
-				child.set_data(module, "module", module.spell_icon, background_texture)
+				object.set_data(module, "module", module.spell_icon, background_texture)
+				$item_grid/items.add_child(object)
+				object.global_position = child.get_pos()
+				object.set_cell_pos(child.get_pos())
 				return
 
 

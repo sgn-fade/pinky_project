@@ -43,7 +43,7 @@ func _process(delta):
 
 
 func switch_ui(ui_type, crosshair_type, paused):
-	get_tree().paused = paused
+	#get_tree().paused = paused
 	EventBus.emit_signal("crosshair_switch", crosshair_type)
 	current_ui.visible = false
 	ui_type.visible = true
