@@ -61,17 +61,18 @@ func add_weapon_to_inventory(weapon):
 
 func add_module_to_place(module, is_new, place, cell_index):
 	if place == "inventory":
-		for child in $item_grid/cells.get_children():
-			if child.is_empty():
+		for cell in $item_grid/cells.get_children():
+			if cell.is_empty():
 				var object = inventory_object.instantiate()
 				var background_texture = load("res://sprites/ui/%s_module_button_state.png" % module.rarity)
 				object.set_data(module, "module", module.spell_icon, background_texture)
 				$item_grid/items.add_child(object)
-				object.global_position = child.get_pos()
-				object.set_cell_pos(child.get_pos())
+				object.global_position = cell.get_pos()
+				object.set_cell_pos(cell.get_pos())
 				return
 
-
+func add_consumable_to_place():
+	pass
 
 func _on_inventory_cell_choosed(cell):
 	if choosed_slot != null:

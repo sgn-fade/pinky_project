@@ -20,4 +20,18 @@ shape = SubResource("RectangleShape2D_jenmm")
 
 [node name="object_pos" type="Marker2D" parent="."]
 
-[connection signal="area_entered" from="cell" to="." method="_on_object_entered"]
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = -4.0
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -45.0
+offset_top = 10.0
+offset_right = -5.0
+offset_bottom = 33.0
+scale = Vector2(1.84259, 1.29633)
+
+[connection signal="area_entered" from="cell" to="." method="_on_cell_area_entered"]
+[connection signal="area_exited" from="cell" to="." method="_on_cell_area_exited"]

@@ -15,7 +15,7 @@ func get_data():
 	return data
 
 func _input(event):
-	if Input.is_action_pressed("mouse_left_button") and mouse_in_area:
+	if Input.is_action_just_pressed("mouse_left_button") and mouse_in_area:
 		set_process(true)
 	if Input.is_action_just_released("mouse_left_button") and mouse_in_area:
 		set_to_cell_position()
@@ -33,6 +33,10 @@ func set_to_cell_position():
 
 func set_cell_pos(pos):
 	cell_pos = pos
+
+func get_cell_pos():
+	return cell_pos
+
 
 func _on_mouse_entered():
 	mouse_in_area = true
