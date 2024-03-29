@@ -52,7 +52,9 @@ func add_module_to_place(module, is_new, place, cell_index):
 				var background_texture = load("res://sprites/ui/%s_module_button_state.png" % module.rarity)
 				child.set_data(module, "module", module.spell_icon, background_texture)
 				return
-
+	elif place == "equipment":
+			Player.get_weapon().add_module_to_weapon(module, is_new, place, cell_index)
+			
 
 
 func _on_inventory_cell_choosed(cell):

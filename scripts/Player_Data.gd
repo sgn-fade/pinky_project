@@ -7,6 +7,8 @@ var coins = 0
 @onready var ui = get_node("/root/World/Ui")
 @onready var player_scene = load("res://scenes/main_character.tscn")
 @onready var player = null
+@onready var book = load("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd")
+
 var score = 0
 
 var weapon_slot_1 = null
@@ -20,7 +22,7 @@ var magic_damage = 1
 func _ready():
 	EventBus.emit_signal("update_character_hp_bar_value", hp, max_hp)
 	EventBus.emit_signal("update_character_mana_bar_value", mana, max_mana)
-
+	set_weapon(book.new())
 
 func set_state(state):
 	player.change_state(state)

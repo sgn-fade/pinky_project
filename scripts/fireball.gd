@@ -43,6 +43,6 @@ func delete_fireball():
 
 func _on_body_entered(body):
 	delete_fireball()
-	EventBus.emit_signal("damage_to_enemy", body, 20, null)
+	EventBus.emit_signal("damage_to_enemy", body, 20, "burn")
 	
 

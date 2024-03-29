@@ -63,7 +63,7 @@ polygon = PackedVector2Array(-172, 178, -147, 170, -130, 168, 102, 168, 126, 170
 polygon = PackedVector2Array(182, -1, 182, -102, -183, -102, -183, -2, -211, -8, -182, -149, 181, -147, 205, 0)
 
 [node name="lights" parent="." instance=ExtResource("4_dxkyd")]
-position = Vector2(-133, -35)
+position = Vector2(-136, -51)
 
 [node name="wall" type="Sprite2D" parent="."]
 light_mask = 0

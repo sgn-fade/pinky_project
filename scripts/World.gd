@@ -35,5 +35,5 @@ func go_to_hub():
 
 
 func load_game():
-	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "inventory", -1)
+	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "equipment", -4)
 	go_to_hub()
