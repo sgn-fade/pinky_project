@@ -16,19 +16,29 @@ func _process(delta):
 
 
 func _on_cell_area_entered(area):
-	print(area.name)
 	if area.name == "object":
-		empty = false
-		if object == null:
-			area.get_parent().set_cell_pos(get_pos())
-			object = area.get_parent()
-			return
-		object.set_cell_pos(area.get_parent().get_cell_pos())
-		area.get_parent().set_cell_pos(get_pos())
+		area.get_parent().set_target_cell(self)
 
+
+func swap_objects(prev_cell, new_object):
+	if object != null:
+		object.set_cell(prev_cell)
+		prev_cell.set_object(object)
+		set_object(new_object)
+		return
+	prev_cell.clear()
+	set_object(new_object)
+
+
+func set_object(new_object):
+	object = new_object
+	empty = false
+	
+
+func clear():
+	empty = true
+	object = null
 
 func _on_cell_area_exited(area):
-	print(area.get_overlapping_areas())
-	if area.name == "object" and $cell.get_overlapping_areas().size() == 0:
-		empty = true
-		object = null
+	if area.name == "object":
+		area.get_parent().set_target_cell(null)

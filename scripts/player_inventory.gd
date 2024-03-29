@@ -67,8 +67,8 @@ func add_module_to_place(module, is_new, place, cell_index):
 				var background_texture = load("res://sprites/ui/%s_module_button_state.png" % module.rarity)
 				object.set_data(module, "module", module.spell_icon, background_texture)
 				$item_grid/items.add_child(object)
-				object.global_position = cell.get_pos()
-				object.set_cell_pos(cell.get_pos())
+				object.set_cell(cell)
+				cell.set_object(object)
 				return
 
 func add_consumable_to_place():

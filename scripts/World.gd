@@ -13,6 +13,10 @@ extends Node2D
 var location
 
 func _ready():
+	#var screen_size = Vector2(1000,600)
+	var screen_size = DisplayServer.screen_get_size()
+	var window = get_window()
+	window.size = screen_size
 	Player.spawn()
 	EventBus.connect("generate_dungeon", Callable(self, "generate_dungeon"))
 	EventBus.connect("load_game", Callable(self, "load_game"))
@@ -35,7 +39,8 @@ func go_to_hub():
 
 
 func load_game():
-	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "inventory", -1)
-	await get_tree().create_timer(0.3).timeout
 	EventBus.emit_signal("add_module_to_place", fire_pillar_spell.new(), true, "inventory", -1)
+	await get_tree().create_timer(0.3).timeout
+	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "inventory", -1)
+	EventBus.emit_signal("add_module_to_place", fire_spear_spell.new(), true, "inventory", -1)
 	go_to_hub()
