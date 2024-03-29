@@ -8,7 +8,6 @@ extends Node2D
 @onready var smite = load("res://scripts/spells/melee_spells/smite.gd")
 @onready var dungeon = load("res://scenes/locations/dungeon.tscn")
 @onready var hub_zone = load("res://scenes/locations/hub_zone.tscn")
-@onready var weapon_drop = load("res://scenes/weapon_drop.tscn")
 @onready var player = load("res://scenes/main_character.tscn")
 
 var location
@@ -36,16 +35,5 @@ func go_to_hub():
 
 
 func load_game():
-	go_to_hub()
-	var drop = weapon_drop.instantiate()
-	add_child(drop)
-	drop.global_position = Vector2(40, -10)
-	drop = weapon_drop.instantiate()
-	add_child(drop)
-	drop.global_position = Vector2(-40, -10)
 	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "inventory", -1)
-	EventBus.emit_signal("add_module_to_place", fire_pillar_spell.new(), true, "inventory", -1)
-	EventBus.emit_signal("add_module_to_place", fire_teleport_spell.new(), true, "inventory", -1)
-	EventBus.emit_signal("add_module_to_place", fire_eye_spell.new(), true, "inventory", -1)
-	EventBus.emit_signal("add_module_to_place", fire_spear_spell.new(), true, "inventory", -1)
-	EventBus.emit_signal("add_module_to_place", smite.new(), true, "inventory", -1)
+	go_to_hub()

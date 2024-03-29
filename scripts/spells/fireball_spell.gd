@@ -8,8 +8,7 @@ func _init():
 	cooldown_time = 1
 	time_spend = 1
 	mana_cost = 3
-	#particle = load("res://scenes/fireball.tscn")
-	particle = load("res://scenes/spell_particles/base_spell_particle.tscn")
+	particle = load("res://scenes/fireball.tscn")
 	spell_icon = load("res://sprites/spell_icons/fireball_icon.png")
 
 

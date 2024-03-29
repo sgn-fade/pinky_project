@@ -1,22 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://pe7wisviq3yk"]
+[gd_scene load_steps=10 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
 [ext_resource type="Script" path="res://scripts/player_inventory.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://d00qmrac5adv2" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
-[ext_resource type="Texture2D" uid="uid://cga6t3mmn3pv8" path="res://sprites/ui/buttons/ui_button_2.png" id="4"]
-[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="5"]
 [ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
 [ext_resource type="Script" path="res://scripts/ui/module_layout.gd" id="6_v8rr4"]
-[ext_resource type="Texture2D" uid="uid://bw3nmduc5c7or" path="res://sprites/particles/gold_coin.png" id="7"]
 [ext_resource type="PackedScene" uid="uid://xhtvd35b7d8y" path="res://scenes/ui/drag_and_drop_system/drag_and_drop_object.tscn" id="7_uquc5"]
 [ext_resource type="Texture2D" uid="uid://dralb4a7o1bva" path="res://sprites/ui/item_panel/empty_weapon_slot.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://2pjq3knexr2h" path="res://sprites/ui/square_label.png" id="9_7lgq8"]
-
-[sub_resource type="StyleBoxTexture" id="1"]
-region_rect = Rect2(1020, 262, 4, 1)
-
-[sub_resource type="Theme" id="2"]
-VScrollBar/styles/scroll = SubResource("1")
+[ext_resource type="PackedScene" uid="uid://btdrg2ytefew2" path="res://scenes/ui/inventory/inventory_slot_object.tscn" id="8_rawr2"]
+[ext_resource type="Texture2D" uid="uid://ctend2wplo4na" path="res://sprites/ui/inventory/inventory_grid.png" id="9_ma0ua"]
 
 [node name="inventory_ui" type="Control"]
 light_mask = 2
@@ -30,157 +22,14 @@ pivot_offset = Vector2(-760, -177)
 tooltip_text = "testtesttesttesttest"
 script = ExtResource("2")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1")
-stretch_mode = 5
-
-[node name="inventory" type="ScrollContainer" parent="."]
-clip_contents = false
-layout_mode = 0
-anchor_left = 0.477
-anchor_top = 0.212
-anchor_right = 0.477
-anchor_bottom = 0.212
-offset_left = -0.839966
-offset_top = 0.0399933
-offset_right = 237.16
-offset_bottom = 209.04
-scale = Vector2(4, 4)
-size_flags_horizontal = 15
-size_flags_vertical = 15
-theme = SubResource("2")
-
-[node name="modules" type="GridContainer" parent="inventory"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-theme_override_constants/h_separation = 50
-theme_override_constants/v_separation = 40
-columns = 5
-
-[node name="weapon_inventory" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.466
-anchor_top = 0.221
-anchor_right = 0.852
-anchor_bottom = 0.243
-offset_left = -6.71997
-offset_top = 19.32
-offset_right = -539.84
-offset_bottom = 150.56
-scale = Vector2(4.8, 4.8)
-size_flags_horizontal = 15
-size_flags_vertical = 15
-horizontal_scroll_mode = 0
-
-[node name="weapons" type="GridContainer" parent="weapon_inventory"]
-custom_minimum_size = Vector2(200, 147.305)
-layout_mode = 2
-theme_override_constants/h_separation = 45
-theme_override_constants/v_separation = 60
-columns = 4
-
-[node name="weapons" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 869.0
-offset_top = 17.0
-offset_right = 983.0
-offset_bottom = 89.0
-scale = Vector2(3, 2.5)
-texture_normal = ExtResource("4")
-
-[node name="Label" type="Label" parent="weapons"]
-layout_mode = 0
-offset_left = 8.66663
-offset_top = 17.6
-offset_right = 315.667
-offset_bottom = 102.89
-scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 110
-text = "weapons"
-
-[node name="modules" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 1220.0
-offset_top = 17.0
-offset_right = 1334.0
-offset_bottom = 89.0
-scale = Vector2(3, 2.5)
-texture_normal = ExtResource("4")
-
-[node name="Label" type="Label" parent="modules"]
-layout_mode = 0
-offset_left = 8.66663
-offset_top = 17.6
-offset_right = 315.667
-offset_bottom = 102.89
-scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 110
-text = "modules"
-
-[node name="layout" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 1562.0
-offset_top = 17.0
-offset_right = 1676.0
-offset_bottom = 89.0
-scale = Vector2(3, 2.5)
-texture_normal = ExtResource("4")
-
-[node name="Label" type="Label" parent="layout"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 19.2
-offset_right = 320.0
-offset_bottom = 114.2
-scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 110
-text = "layout"
-
-[node name="coins_indicator" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 1678.0
-offset_top = 989.0
-offset_right = 1892.0
-offset_bottom = 1051.0
-
-[node name="coin" type="TextureRect" parent="coins_indicator"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.532
-anchor_right = 0.5
-anchor_bottom = 0.532
-offset_left = -110.0
-offset_top = -23.984
-offset_right = -94.0
-offset_bottom = -7.984
-scale = Vector2(3, 3)
-texture = ExtResource("7")
-
-[node name="count" type="Label" parent="coins_indicator"]
-layout_mode = 0
-anchor_left = 0.332
-anchor_top = 0.5
-anchor_right = 0.332
-anchor_bottom = 0.5
-offset_left = -15.048
-offset_top = -48.0
-offset_right = 24.952
-offset_bottom = 37.2895
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(1, 0.968627, 0.2, 1)
-theme_override_colors/font_outline_color = Color(1, 0.866667, 0.258824, 1)
-theme_override_fonts/font = ExtResource("5")
-text = "1"
 
 [node name="module_layout" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -275,63 +124,179 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="weapon_slot_swap" type="Control" parent="weapon"]
+[node name="item_grid" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+mouse_filter = 2
 
-[node name="1" type="TextureButton" parent="weapon/weapon_slot_swap"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 9.475
-anchor_top = 24.1
-anchor_right = 9.475
-anchor_bottom = 24.1
-offset_left = -48.0
-offset_top = -48.0
-offset_right = -32.0
-offset_bottom = -32.0
-scale = Vector2(6, 6)
-texture_normal = ExtResource("9_7lgq8")
-
-[node name="Label" type="Label" parent="weapon/weapon_slot_swap/1"]
+[node name="TextureRect" type="TextureRect" parent="item_grid"]
 layout_mode = 0
-offset_left = 4.66667
-offset_top = -9.0
-offset_right = 13.6667
-offset_bottom = 17.0
-theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 30
-text = "1"
+offset_left = 975.0
+offset_top = 132.0
+offset_right = 1284.0
+offset_bottom = 441.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_ma0ua")
 
-[node name="2" type="TextureButton" parent="weapon/weapon_slot_swap"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 9.475
-anchor_top = 24.1
-anchor_right = 9.475
-anchor_bottom = 24.1
-offset_left = 90.0
-offset_top = -48.0
-offset_right = 106.0
-offset_bottom = -32.0
-scale = Vector2(6, 6)
-texture_normal = ExtResource("9_7lgq8")
-
-[node name="Label" type="Label" parent="weapon/weapon_slot_swap/2"]
+[node name="GridContainer" type="GridContainer" parent="item_grid"]
 layout_mode = 0
-offset_left = 4.33333
-offset_top = -9.0
-offset_right = 15.3333
-offset_bottom = 17.0
-theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 30
-text = "2
-"
+offset_left = 990.0
+offset_top = 147.0
+offset_right = 1296.0
+offset_bottom = 452.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+theme_override_constants/h_separation = 44
+theme_override_constants/v_separation = 44
+columns = 7
 
-[connection signal="pressed" from="weapons" to="." method="_on_weapons_pressed"]
-[connection signal="pressed" from="modules" to="." method="_on_modules_pressed"]
-[connection signal="pressed" from="layout" to="." method="_on_layout_pressed"]
+[node name="inventory_slot_object" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object2" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object9" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object36" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object37" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object38" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object43" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object44" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object45" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object46" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object47" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object48" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object49" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object39" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object40" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object41" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object42" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object10" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object11" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object12" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object13" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object14" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object15" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object16" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object17" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object18" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object19" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object20" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object21" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object22" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object23" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object24" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object25" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object26" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object27" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object28" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object29" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object30" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object31" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object32" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object33" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object34" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object35" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object3" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object4" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object5" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object6" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object7" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
+[node name="inventory_slot_object8" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
+layout_mode = 2
+
 [connection signal="button_selected" from="module_layout/slot1" to="module_layout" method="_on_button_selected"]
 [connection signal="mouse_entered_to_destionation" from="module_layout/slot1" to="module_layout" method="_on_mouse_entered_to_destionation"]
 [connection signal="mouse_exit_from_destionation" from="module_layout/slot1" to="module_layout" method="_on_mouse_exit_from_destionation"]
@@ -350,5 +315,3 @@ text = "2
 [connection signal="button_selected" from="module_layout/slot6" to="module_layout" method="_on_button_selected"]
 [connection signal="mouse_entered_to_destionation" from="module_layout/slot6" to="module_layout" method="_on_mouse_entered_to_destionation"]
 [connection signal="mouse_exit_from_destionation" from="module_layout/slot6" to="module_layout" method="_on_mouse_exit_from_destionation"]
-[connection signal="pressed" from="weapon/weapon_slot_swap/1" to="." method="_on_slot_1_weapon_pressed"]
-[connection signal="pressed" from="weapon/weapon_slot_swap/2" to="." method="_on_slot_2_weapon_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bk34c60sqf56k"]
+[gd_scene load_steps=19 format=3 uid="uid://bk34c60sqf56k"]
 
 [ext_resource type="Texture2D" uid="uid://cr72ukl4w861a" path="res://sprites/ui/main_game_ui_panel.png" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/ui/spell_module_game_discription.tscn" id="3"]
@@ -14,9 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bj1emqivewhnn" path="res://sprites/ui/dash_progress_bar_under.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://dfvw2pdfwsbsm" path="res://sprites/ui/dash_progress_bar_progress.png" id="14"]
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="15"]
-[ext_resource type="Script" path="res://scripts/ui/weapon_display.gd" id="15_tgfus"]
-[ext_resource type="Texture2D" uid="uid://da0ya1wdnxj7x" path="res://sprites/ui/weapon_card/weapon_temporary_card.png" id="15_vr4t0"]
-[ext_resource type="Texture2D" uid="uid://deqpjja6gbtfe" path="res://sprites/weapons/magic_weapons/old_goblins_magic_wand.png" id="16_p26xw"]
 
 [sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
@@ -419,93 +416,3 @@ offset_left = -101.456
 offset_top = -124.4
 offset_right = 102.544
 offset_bottom = 68.1201
-
-[node name="weapon_display" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 1506.08
-offset_top = 728.2
-offset_right = 1546.08
-offset_bottom = 768.2
-script = ExtResource("15_tgfus")
-
-[node name="slot1" type="Control" parent="weapon_display"]
-layout_mode = 1
-anchor_left = 1.887
-anchor_top = 2.25
-anchor_right = 1.887
-anchor_bottom = 2.25
-offset_left = -75.48
-offset_top = -90.0
-offset_right = 75.52
-offset_bottom = 90.0
-rotation = -0.51354
-
-[node name="TextureRect" type="TextureRect" parent="weapon_display/slot1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-anchor_bottom = 0.544
-offset_left = -9.42141
-offset_top = 45.2022
-offset_right = 66.0786
-offset_bottom = 180.282
-rotation = 0.261779
-texture = ExtResource("15_vr4t0")
-
-[node name="weapon_texture" type="TextureRect" parent="weapon_display/slot1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -66.0938
-offset_top = -27.2902
-offset_right = 44.9062
-offset_bottom = 177.71
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.226027
-texture = ExtResource("16_p26xw")
-stretch_mode = 4
-
-[node name="slot2" type="Control" parent="weapon_display"]
-layout_mode = 1
-anchor_left = 1.887
-anchor_top = 2.25
-anchor_right = 1.887
-anchor_bottom = 2.25
-offset_left = 63.52
-offset_top = -155.0
-offset_right = 214.52
-offset_bottom = 25.0
-rotation = -0.115593
-
-[node name="TextureRect" type="TextureRect" parent="weapon_display/slot2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-anchor_bottom = 0.544
-offset_left = -9.42141
-offset_top = 45.2022
-offset_right = 66.0786
-offset_bottom = 180.282
-rotation = 0.261779
-texture = ExtResource("15_vr4t0")
-
-[node name="weapon_texture" type="TextureRect" parent="weapon_display/slot2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -53.0817
-offset_top = -22.967
-offset_right = 32.9183
-offset_bottom = 185.033
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.27707
-texture = ExtResource("16_p26xw")
-stretch_mode = 4

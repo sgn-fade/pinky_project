@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://qbrrhv0xfcu7"]
+[gd_scene load_steps=14 format=3 uid="uid://qbrrhv0xfcu7"]
 
 [ext_resource type="PackedScene" uid="uid://bk34c60sqf56k" path="res://scenes/Control.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dl514sg5qlh5w" path="res://scenes/ui/main_menu.tscn" id="2"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bxk32ptautip2" path="res://sprites/ui/ui_crosshair.png" id="8"]
 [ext_resource type="Script" path="res://scripts/crosshair.gd" id="9"]
 [ext_resource type="Texture2D" uid="uid://dh1yabj18ufsn" path="res://sprites/ui/crosshair_2.png" id="10"]
-[ext_resource type="PackedScene" path="res://scenes/ui/death_screen.tscn" id="11"]
 
 [sub_resource type="AtlasTexture" id="4"]
 atlas = ExtResource("10")
@@ -42,16 +41,17 @@ animations = [{
 [node name="Ui" type="CanvasLayer"]
 process_mode = 1
 layer = 100
-visible = false
 script = ExtResource("3")
 
 [node name="game_ui" parent="." instance=ExtResource("1")]
+visible = false
 offset_left = 0.0
 offset_top = 0.0
 
 [node name="inventory_ui" parent="." instance=ExtResource("4")]
 visible = false
 tooltip_text = ""
+mouse_filter = 2
 
 [node name="load_ui" parent="." instance=ExtResource("5")]
 visible = false
@@ -72,14 +72,8 @@ anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="death_screen" parent="." instance=ExtResource("11")]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="crosshair" type="CharacterBody2D" parent="."]
+visible = false
 z_index = 1000
 z_as_relative = false
 scale = Vector2(4, 4)
@@ -87,13 +81,12 @@ script = ExtResource("9")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="crosshair"]
 sprite_frames = SubResource("3")
-animation = &"ui"
+animation = &"game"
 
 [node name="part" type="CPUParticles2D" parent="crosshair"]
 modulate = Color(1, 1, 1, 0.0196078)
 show_behind_parent = true
 position = Vector2(-0.5, -0.5)
-emitting = false
 amount = 40
 lifetime = 0.1
 speed_scale = 2.0

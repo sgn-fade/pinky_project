@@ -28,27 +28,19 @@ enum States{
 	BUTT_HIT_DASH,
 	SPELL,
 	DEAD,
-	INVENTORY
+	INVENTORY,
+	ATTACK
 }
 func _process(delta):
 	match current_state:
-		States.NONE:
-			pass
 		States.IDLE:
 			move()
 			rotating()
-		States.MOVE:
-			rotating()
-			move()
 		States.DASH:
 			dash(delta)
-			#move_player(delta)
-		States.BUTT_HIT_DASH:
-			pass
-		States.SPELL:
-			pass
-		States.DEAD:
-			pass
+		States.ATTACK:
+			move()
+
 
 func rotating():
 	if get_local_mouse_position().x >= 0:
@@ -70,7 +62,7 @@ func _ready():
 	EventBus.connect("player_cast_spell", Callable(self, "set_cast_state"))
 	timer.one_shot = false
 	add_child(timer)
-	Input.set_mouse_mode(1)
+	#Input.set_mouse_mode(1)
 
 func _input(event):
 	if Input.is_action_just_pressed("F"):
@@ -92,12 +84,7 @@ func move():
 		current_state = States.IDLE
 		set_velocity(velocity / 5)
 		character_slowdown()
-		
-	
 	input = Vector2.ZERO
-	
-	
-	current_state = States.MOVE
 	if Input.is_action_pressed("ui_right"):
 		input.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -114,11 +101,12 @@ func move():
 	else:
 		animation = "move"
 		max_speed = 80
-	
+	if current_state == States.ATTACK:
+		max_speed /= 2
+		animation = "move_back"
 	if input.length() == 0:
 		speed = 30
 		animation = "idle"
-		current_state = States.IDLE
 	elif speed < max_speed:
 		speed += 5
 	if speed > max_speed:
@@ -132,17 +120,6 @@ func move():
 
 func set_speed(new_speed):
 	max_speed = new_speed
-
-
-
-func move_player(delta):
-	var t = 0.05
-	velocity = velocity.lerp(move_position, 0.016 / t)
-	if velocity.length() >= move_position.length() - 1:
-		current_state = States.IDLE
-	set_velocity(velocity)
-	move_and_slide()
-	dash_speed_const += 1
 
 
 func dash(delta):
@@ -172,7 +149,7 @@ func character_slowdown():
 	speed = 0
 	while speed < 20:
 		speed += 5
-		timer.start(0.05)
+		timer.start(get_process_delta_time())
 		await timer.timeout
 
 
@@ -196,28 +173,8 @@ func _on_player_take_damage(player_offcet_dir, enemy_damage):
 	move_and_slide()
 	if Player.get_hp() <= 0:
 		die()
-
 	enable_collision()
 
-
-func c_shotgun_recoil():
-	var player_offcet_dir = (-(get_global_mouse_position() - global_position).normalized())
-	for i in 8:
-			velocity = velocity.lerp(player_offcet_dir * 20, 0.40)
-			set_velocity(velocity)
-			move_and_slide()
-			timer.start(0.005)
-			await timer.timeout
-
-func push_body():
-	_animated_sprite.play("idle")
-	var player_offcet_dir = (get_global_mouse_position() - global_position).normalized()
-	for i in 8:
-			velocity = velocity.lerp(player_offcet_dir * 50, 0.40)
-			set_velocity(velocity)
-			move_and_slide()
-			timer.start(0.005)
-			await timer.timeout
 
 
 func set_cast_state(animation_time, animation_name):
@@ -250,4 +207,8 @@ func set_inventory_state():
 	_animated_sprite.play("idle")
 	current_state = States.INVENTORY
 
+func throw_not_enough_mana_massage():
+	var massage = load("res://scenes/ui/Player_massages/not_enough_mana_label.tscn").instantiate()
+	massage.global_position = global_position
+	GlobalWorldInfo.get_world().add_child(massage)
 

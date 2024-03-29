@@ -26,7 +26,7 @@ func _process(delta):
 	for bar in $spell_slot_panel.get_children():
 		if Bars[bar.name] == null:
 			continue
-		if bar.value < bar.max_value:
+		if bar.value <= bar.max_value:
 			bar.value += delta * 1000
 			Bars[bar.name].set_cooldown_time(delta)
 

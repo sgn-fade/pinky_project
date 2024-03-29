@@ -25,10 +25,7 @@ func go_to_hub():
 func _process(delta):
 	body.z_index = global_position.y / 2
 	body.position.y = sin(Time.get_ticks_msec()  * 0.003) * 2
-	
 	if overlaps_body(Player.get_body()): 
-		
-		
 		if Player.get_closest_object() != self:
 			if !Player.set_closest_object(self):
 				sprite.frame = 0

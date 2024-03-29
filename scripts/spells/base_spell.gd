@@ -10,11 +10,11 @@ var particle
 
 
 func cast():
-	Player.change_mana(-mana_cost)
-	if particle != null:
-		GlobalWorldInfo.get_world().add_child(particle.instantiate())
-	EventBus.emit_signal("hands_play_animation", animation_name)
-	cooldown()
+	if Player.change_mana(-mana_cost):
+		if particle != null:
+			GlobalWorldInfo.get_world().add_child(particle.instantiate())
+		EventBus.emit_signal("hands_play_animation", animation_name)
+		cooldown()
 
 
 func get_ready():

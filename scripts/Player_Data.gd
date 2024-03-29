@@ -37,9 +37,17 @@ func update_hp(value):
 #PLAYER MANA
 func get_mana():
 	return mana
+
+#returns true if mana successfully changed
 func change_mana(value):
+	if get_mana() < abs(value):
+		player.throw_not_enough_mana_massage()
+		return false
 	mana += value
 	EventBus.emit_signal("update_character_mana_bar_value", mana, max_mana)
+	return true
+	
+
 func get_max_mana():
 	return max_mana
 func set_max_mana(value):
