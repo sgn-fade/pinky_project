@@ -4,7 +4,8 @@ var critchance = 24
 
 func _init():
 	super._init()
-	icon = load("res://sprites/weapons/melee/goblin_sword_inventory.png")
+	var icon = load("res://sprites/weapons/melee/goblin_sword_inventory.png")
+	inventory_item = inventory_item_scene.new(self, "weapon", icon)
 	damage = 4
 	combo_count = 2
 	type = "melee"

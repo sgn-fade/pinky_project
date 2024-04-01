@@ -5,6 +5,8 @@ var rarity
 var Buttons_binds = Options.Buttons_binds
 var type = "none"
 var damage
+var inventory_item_scene = load("res://scripts/drops/inventory_item.gd")
+var inventory_item = null
 
 func get_type():
 	return type
@@ -35,9 +37,6 @@ var cells = []
 func get_cells():
 	return cells
 
-
-func _ready():
-	pass
 
 
 func _init():

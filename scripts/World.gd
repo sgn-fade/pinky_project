@@ -13,6 +13,10 @@ extends Node2D
 var location
 
 func _ready():
+	#var screen_size = Vector2(1000,600)
+	var screen_size = DisplayServer.screen_get_size()
+	var window = get_window()
+	window.size = screen_size
 	Player.spawn()
 	EventBus.connect("generate_dungeon", Callable(self, "generate_dungeon"))
 	EventBus.connect("load_game", Callable(self, "load_game"))
@@ -35,5 +39,13 @@ func go_to_hub():
 
 
 func load_game():
-	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "equipment", -4)
+	var wand = load("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd")
+	var potion = load("res://scripts/drops/potion.gd")
+	EventBus.emit_signal("add_item", fire_pillar_spell.new())
+	EventBus.emit_signal("add_item", fireball_spell.new())
+	EventBus.emit_signal("add_item", fire_spear_spell.new())
+	EventBus.emit_signal("add_item", wand.new())
+	EventBus.emit_signal("add_item", potion.new())
+	EventBus.emit_signal("add_item", potion.new())
+	EventBus.emit_signal("add_item", potion.new())
 	go_to_hub()

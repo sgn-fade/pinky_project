@@ -4,13 +4,14 @@
 [ext_resource type="Script" path="res://scripts/player_inventory.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://d00qmrac5adv2" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
-[ext_resource type="Script" path="res://scripts/ui/module_layout.gd" id="6_v8rr4"]
-[ext_resource type="PackedScene" uid="uid://xhtvd35b7d8y" path="res://scenes/ui/drag_and_drop_system/drag_and_drop_object.tscn" id="7_uquc5"]
+[ext_resource type="Texture2D" uid="uid://ukmieltv2tr1" path="res://sprites/ui/circle_label.png" id="7_cwrlk"]
 [ext_resource type="Texture2D" uid="uid://dralb4a7o1bva" path="res://sprites/ui/item_panel/empty_weapon_slot.png" id="8"]
-[ext_resource type="PackedScene" uid="uid://btdrg2ytefew2" path="res://scenes/ui/inventory/inventory_slot_object.tscn" id="8_rawr2"]
+[ext_resource type="PackedScene" uid="uid://d2tomlxjbg3c6" path="res://scenes/ui/Consumables.tscn" id="8_7whhs"]
+[ext_resource type="PackedScene" uid="uid://cwlxebje1ywyi" path="res://scenes/ui/inventory/weapon_cell.tscn" id="9_fud0s"]
 [ext_resource type="Texture2D" uid="uid://ctend2wplo4na" path="res://sprites/ui/inventory/inventory_grid.png" id="9_ma0ua"]
 
 [node name="inventory_ui" type="Control"]
+process_mode = 3
 light_mask = 2
 layout_mode = 3
 anchors_preset = 15
@@ -23,66 +24,11 @@ tooltip_text = "testtesttesttesttest"
 script = ExtResource("2")
 
 [node name="background" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.952941)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1")
-
-[node name="module_layout" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -2.0
-offset_right = -1058.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_v8rr4")
-
-[node name="slot1" parent="module_layout" instance=ExtResource("7_uquc5")]
-layout_mode = 0
-offset_left = 63.0
-offset_top = 883.0
-offset_right = 91.0
-offset_bottom = 911.0
-
-[node name="slot2" parent="module_layout" instance=ExtResource("7_uquc5")]
-layout_mode = 0
-offset_left = 180.0
-offset_top = 911.0
-offset_right = 208.0
-offset_bottom = 939.0
-
-[node name="slot3" parent="module_layout" instance=ExtResource("7_uquc5")]
-layout_mode = 0
-offset_left = 296.0
-offset_top = 936.0
-offset_right = 324.0
-offset_bottom = 964.0
-
-[node name="slot4" parent="module_layout" instance=ExtResource("7_uquc5")]
-layout_mode = 0
-offset_left = 521.0
-offset_top = 940.0
-offset_right = 549.0
-offset_bottom = 968.0
-
-[node name="slot5" parent="module_layout" instance=ExtResource("7_uquc5")]
-layout_mode = 0
-offset_left = 634.0
-offset_top = 905.0
-offset_right = 662.0
-offset_bottom = 933.0
-
-[node name="slot6" parent="module_layout" instance=ExtResource("7_uquc5")]
-layout_mode = 0
-offset_left = 749.0
-offset_top = 874.0
-offset_right = 777.0
-offset_bottom = 902.0
 
 [node name="weapon" type="Control" parent="."]
 visible = false
@@ -129,6 +75,7 @@ anchors_preset = 0
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="item_grid"]
+modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 0
 offset_left = 975.0
 offset_top = 132.0
@@ -138,180 +85,202 @@ scale = Vector2(3, 3)
 mouse_filter = 2
 texture = ExtResource("9_ma0ua")
 
-[node name="GridContainer" type="GridContainer" parent="item_grid"]
-layout_mode = 0
-offset_left = 990.0
-offset_top = 147.0
-offset_right = 1296.0
-offset_bottom = 452.0
-scale = Vector2(3, 3)
+[node name="items" type="Control" parent="item_grid"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
-theme_override_constants/h_separation = 44
-theme_override_constants/v_separation = 44
-columns = 7
 
-[node name="inventory_slot_object" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="cells" type="Control" parent="item_grid"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
 
-[node name="inventory_slot_object2" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control10" parent="." instance=ExtResource("8_7whhs")]
+layout_mode = 1
+offset_left = 72.64
+offset_top = 650.2
+offset_right = 72.64
+offset_bottom = 650.2
+scale = Vector2(2.5, 2.5)
 
-[node name="inventory_slot_object9" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="inventory_slot_object36" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 767.0
+offset_top = 293.0
+offset_right = 807.0
+offset_bottom = 333.0
+scale = Vector2(3, 3)
 
-[node name="inventory_slot_object37" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Control/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
 
-[node name="inventory_slot_object38" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Label" type="Label" parent="Control/Control"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "hand mut"
 
-[node name="inventory_slot_object43" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control2" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 104.0
+offset_top = 296.0
+offset_right = 144.0
+offset_bottom = 336.0
+scale = Vector2(3, 3)
 
-[node name="inventory_slot_object44" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Control/Control2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
 
-[node name="inventory_slot_object45" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Label" type="Label" parent="Control/Control2"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "hand mut"
 
-[node name="inventory_slot_object46" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control3" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 307.0
+offset_top = 181.0
+offset_right = 347.0
+offset_bottom = 221.0
+scale = Vector2(3, 3)
 
-[node name="inventory_slot_object47" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Control/Control3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
 
-[node name="inventory_slot_object48" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Label" type="Label" parent="Control/Control3"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "mana core"
 
-[node name="inventory_slot_object49" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control4" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 542.0
+offset_top = 176.0
+offset_right = 582.0
+offset_bottom = 216.0
+scale = Vector2(3, 3)
 
-[node name="inventory_slot_object39" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Control/Control4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
 
-[node name="inventory_slot_object40" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Label" type="Label" parent="Control/Control4"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "hp core"
 
-[node name="inventory_slot_object41" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control5" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 434.0
+offset_top = 288.0
+offset_right = 474.0
+offset_bottom = 328.0
+scale = Vector2(3, 3)
 
-[node name="inventory_slot_object42" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Control/Control5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
 
-[node name="inventory_slot_object10" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Label" type="Label" parent="Control/Control5"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "ult mut"
 
-[node name="inventory_slot_object11" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control6" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 430.0
+offset_top = 454.0
+offset_right = 470.0
+offset_bottom = 494.0
+scale = Vector2(3, 3)
 
-[node name="inventory_slot_object12" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Control/Control6"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
 
-[node name="inventory_slot_object13" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Label" type="Label" parent="Control/Control6"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "movement 
+mut"
 
-[node name="inventory_slot_object14" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Control7" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 436.0
+offset_top = 75.0
+offset_right = 476.0
+offset_bottom = 115.0
+scale = Vector2(3, 3)
 
-[node name="inventory_slot_object15" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Control/Control7"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
 
-[node name="inventory_slot_object16" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
+[node name="Label" type="Label" parent="Control/Control7"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "hat or 
+brain mut"
 
-[node name="inventory_slot_object17" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object18" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object19" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object20" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object21" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object22" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object23" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object24" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object25" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object26" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object27" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object28" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object29" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object30" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object31" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object32" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object33" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object34" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object35" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object3" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object4" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object5" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object6" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object7" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[node name="inventory_slot_object8" parent="item_grid/GridContainer" instance=ExtResource("8_rawr2")]
-layout_mode = 2
-
-[connection signal="button_selected" from="module_layout/slot1" to="module_layout" method="_on_button_selected"]
-[connection signal="mouse_entered_to_destionation" from="module_layout/slot1" to="module_layout" method="_on_mouse_entered_to_destionation"]
-[connection signal="mouse_exit_from_destionation" from="module_layout/slot1" to="module_layout" method="_on_mouse_exit_from_destionation"]
-[connection signal="button_selected" from="module_layout/slot2" to="module_layout" method="_on_button_selected"]
-[connection signal="mouse_entered_to_destionation" from="module_layout/slot2" to="module_layout" method="_on_mouse_entered_to_destionation"]
-[connection signal="mouse_exit_from_destionation" from="module_layout/slot2" to="module_layout" method="_on_mouse_exit_from_destionation"]
-[connection signal="button_selected" from="module_layout/slot3" to="module_layout" method="_on_button_selected"]
-[connection signal="mouse_entered_to_destionation" from="module_layout/slot3" to="module_layout" method="_on_mouse_entered_to_destionation"]
-[connection signal="mouse_exit_from_destionation" from="module_layout/slot3" to="module_layout" method="_on_mouse_exit_from_destionation"]
-[connection signal="button_selected" from="module_layout/slot4" to="module_layout" method="_on_button_selected"]
-[connection signal="mouse_entered_to_destionation" from="module_layout/slot4" to="module_layout" method="_on_mouse_entered_to_destionation"]
-[connection signal="mouse_exit_from_destionation" from="module_layout/slot4" to="module_layout" method="_on_mouse_exit_from_destionation"]
-[connection signal="button_selected" from="module_layout/slot5" to="module_layout" method="_on_button_selected"]
-[connection signal="mouse_entered_to_destionation" from="module_layout/slot5" to="module_layout" method="_on_mouse_entered_to_destionation"]
-[connection signal="mouse_exit_from_destionation" from="module_layout/slot5" to="module_layout" method="_on_mouse_exit_from_destionation"]
-[connection signal="button_selected" from="module_layout/slot6" to="module_layout" method="_on_button_selected"]
-[connection signal="mouse_entered_to_destionation" from="module_layout/slot6" to="module_layout" method="_on_mouse_entered_to_destionation"]
-[connection signal="mouse_exit_from_destionation" from="module_layout/slot6" to="module_layout" method="_on_mouse_exit_from_destionation"]
+[node name="weapon_cell" parent="." instance=ExtResource("9_fud0s")]
+position = Vector2(724, 875)
+scale = Vector2(4, 4)

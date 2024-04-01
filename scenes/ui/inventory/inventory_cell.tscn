@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://i8y4ob3n3s2y"]
+
+[ext_resource type="Script" path="res://scripts/ui/inventory/inventory_cell.gd" id="1_karfq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jenmm"]
+size = Vector2(79.8581, 78.2695)
+
+[node name="inventory_cell" type="Node2D"]
+script = ExtResource("1_karfq")
+
+[node name="cell" type="Area2D" parent="."]
+z_index = 2
+z_as_relative = false
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cell"]
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.191591, 0.190351)
+shape = SubResource("RectangleShape2D_jenmm")
+
+[node name="object_pos" type="Marker2D" parent="."]
+
+[connection signal="area_entered" from="cell" to="." method="_on_cell_area_entered"]
+[connection signal="area_exited" from="cell" to="." method="_on_cell_area_exited"]

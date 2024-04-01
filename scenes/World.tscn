@@ -24,7 +24,6 @@ y_sort_enabled = true
 script = ExtResource("7")
 
 [node name="Ui" parent="." instance=ExtResource("5")]
-process_mode = 3
 
 [node name="World_Embient" type="CanvasModulate" parent="."]
 process_priority = -71

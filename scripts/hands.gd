@@ -13,7 +13,7 @@ enum States{
 var current_state = States.GUN
 
 func _ready():
-	switch_hands(sword)
+	switch_hands(clear)
 	EventBus.connect("switch_hands_stance", Callable(self, "_on_switch_hands_stance"))
 
 func _on_switch_hands_stance(weapon):
@@ -32,6 +32,5 @@ func _on_switch_hands_stance(weapon):
 func switch_hands(type):
 	if get_child_count() > 0:
 		get_child(0).queue_free()
-	
 	add_child(type.instantiate())
 
