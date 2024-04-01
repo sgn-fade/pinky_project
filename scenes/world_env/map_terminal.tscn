@@ -1,72 +1,104 @@
-[gd_scene load_steps=14 format=3 uid="uid://csjtnwd75pjh7"]
+[gd_scene load_steps=23 format=3 uid="uid://csjtnwd75pjh7"]
 
-[ext_resource type="Texture2D" uid="uid://cni1r7el3wpuc" path="res://sprites/locations/hub_zone/map_choose_table.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cpo7mhc6a0ckb" path="res://sprites/locations/hub_zone/map_core.png" id="2_2dc5w"]
 [ext_resource type="Script" path="res://scripts/map_env/map_terminal.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://cuf02u81468a7" path="res://sprites/locations/hub_zone/black_hole_part_2.png" id="3_6gpws"]
+[ext_resource type="Texture2D" uid="uid://vdwgipaa6nfs" path="res://sprites/locations/hub_zone/black_hole_part_1.png" id="4_3t1k1"]
 
-[sub_resource type="AtlasTexture" id="23"]
-atlas = ExtResource("1")
-region = Rect2(0, 0, 199, 82)
+[sub_resource type="Curve" id="Curve_6eefc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0241441), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="AtlasTexture" id="24"]
-atlas = ExtResource("1")
-region = Rect2(199, 0, 199, 82)
+[sub_resource type="CurveTexture" id="CurveTexture_m0e3d"]
+curve = SubResource("Curve_6eefc")
 
-[sub_resource type="AtlasTexture" id="25"]
-atlas = ExtResource("1")
-region = Rect2(398, 0, 199, 82)
+[sub_resource type="Gradient" id="Gradient_4oig0"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.334988, 0.734491)
+colors = PackedColorArray(0.703808, 0.703808, 0.703808, 1, 0.683758, 0.474177, 0.156813, 1, 0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="26"]
-atlas = ExtResource("1")
-region = Rect2(597, 0, 199, 82)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n5cdw"]
+gradient = SubResource("Gradient_4oig0")
 
-[sub_resource type="AtlasTexture" id="27"]
-atlas = ExtResource("1")
-region = Rect2(796, 0, 199, 82)
+[sub_resource type="Curve" id="Curve_53x7y"]
+min_value = 46.33
+max_value = 192.67
+_data = [Vector2(0.0139211, 84.1035), 0.0, 0.0, 0, 0, Vector2(1, 192.67), 536.638, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="AtlasTexture" id="28"]
-atlas = ExtResource("1")
-region = Rect2(995, 0, 199, 82)
+[sub_resource type="CurveTexture" id="CurveTexture_2yn8a"]
+curve = SubResource("Curve_53x7y")
 
-[sub_resource type="AtlasTexture" id="29"]
-atlas = ExtResource("1")
-region = Rect2(1194, 0, 199, 82)
+[sub_resource type="Curve" id="Curve_as6c8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="AtlasTexture" id="30"]
-atlas = ExtResource("1")
-region = Rect2(1393, 0, 199, 82)
+[sub_resource type="CurveTexture" id="CurveTexture_40d1o"]
+curve = SubResource("Curve_as6c8")
 
-[sub_resource type="SpriteFrames" id="13"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("23")
-}, {
-"duration": 1.0,
-"texture": SubResource("24")
-}, {
-"duration": 1.0,
-"texture": SubResource("25")
-}, {
-"duration": 1.0,
-"texture": SubResource("26")
-}, {
-"duration": 1.0,
-"texture": SubResource("27")
-}, {
-"duration": 1.0,
-"texture": SubResource("28")
-}, {
-"duration": 1.0,
-"texture": SubResource("29")
-}, {
-"duration": 1.0,
-"texture": SubResource("30")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
+[sub_resource type="Curve" id="Curve_e68in"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1.04126), 0.0, 0.0, 0, 0, Vector2(1, -0.00877953), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_amcwt"]
+curve = SubResource("Curve_e68in")
+
+[sub_resource type="Curve" id="Curve_1mc75"]
+min_value = -27.8
+max_value = 38.07
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.99768, -4.40718), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jggw2"]
+curve = SubResource("Curve_1mc75")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7a1rg"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 59.795
+emission_ring_inner_radius = 56.5
+orbit_velocity_min = 0.192
+orbit_velocity_max = 0.279
+radial_velocity_min = -34.94
+gravity = Vector3(-21.625, 41.025, 0)
+radial_accel_curve = SubResource("CurveTexture_amcwt")
+tangential_accel_min = -58.52
+tangential_accel_max = 100.0
+tangential_accel_curve = SubResource("CurveTexture_jggw2")
+damping_curve = SubResource("CurveTexture_2yn8a")
+color_ramp = SubResource("GradientTexture1D_n5cdw")
+alpha_curve = SubResource("CurveTexture_m0e3d")
+emission_curve = SubResource("CurveTexture_40d1o")
+
+[sub_resource type="Gradient" id="Gradient_7wpnb"]
+colors = PackedColorArray(0.607843, 0.552941, 0.788235, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nsvee"]
+gradient = SubResource("Gradient_7wpnb")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ibhip"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_slk2q"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 26.82
+emission_ring_inner_radius = 23.375
+directional_velocity_min = 0.0
+directional_velocity_max = 0.0
+directional_velocity_curve = SubResource("CurveXYZTexture_ibhip")
+orbit_velocity_min = -0.14
+orbit_velocity_max = -0.14
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 5.55
+radial_accel_min = -61.12
+radial_accel_max = -12.22
+color_ramp = SubResource("GradientTexture1D_nsvee")
 
 [sub_resource type="CapsuleShape2D" id="31"]
 radius = 41.0
@@ -75,42 +107,44 @@ height = 258.0
 [node name="map_terminal" type="StaticBody2D"]
 script = ExtResource("3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-light_mask = 2
-position = Vector2(2, -82)
-sprite_frames = SubResource("13")
-autoplay = "default"
-frame = 1
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.100006, -3)
+polygon = PackedVector2Array(-98, 6, -95.1, 12, -85, 20, -42, 26, -0.100006, 30, 46.9, 27, 91, 19, 99, 11, 99, 6, 67.9, -9.00001, -0.100006, -16, -71.1, -9)
 
-[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="."]
-position = Vector2(-6, -52)
-polygon = PackedVector2Array(16, 4, 64, 0, 95, -9, 104, -16, 96, -27, 70, -34, 45, -37, -8, -38, -58, -33, -83, -24, -89, -17, -77, -10, -61, -4, -31, 2, 1, 4)
+[node name="core" type="Sprite2D" parent="."]
+position = Vector2(0.600006, 0)
+texture = ExtResource("2_2dc5w")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-modulate = Color(0.694118, 0.392157, 0.392157, 1)
-position = Vector2(0, -60)
-scale = Vector2(1.858, 1)
-color = Color(0.47451, 0.176471, 0.501961, 1)
-range_z_min = -4096
-range_z_max = 4096
-range_item_cull_mask = 2
-texture = ExtResource("2")
-texture_scale = 0.5
+[node name="black_hole_down" type="Sprite2D" parent="."]
+position = Vector2(0.600006, -45)
+texture = ExtResource("3_6gpws")
 
-[node name="Light2D2" type="PointLight2D" parent="."]
-modulate = Color(0.694118, 0.392157, 0.392157, 1)
-position = Vector2(1, -100)
-scale = Vector2(1.858, 1)
-color = Color(0.47451, 0.176471, 0.501961, 1)
-range_z_min = -4096
-range_z_max = 4096
-range_item_cull_mask = 3
-texture = ExtResource("2")
-texture_scale = 0.2
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0.600006, -44)
+scale = Vector2(1, 0.19)
+amount = 2475
+process_material = SubResource("ParticleProcessMaterial_7a1rg")
+local_coords = true
+trail_enabled = true
+trail_lifetime = 2.27
+trail_sections = 83
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(0.600006, -44)
+scale = Vector2(1, 0.19)
+amount = 600
+process_material = SubResource("ParticleProcessMaterial_slk2q")
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.51
+
+[node name="black_hole_up" type="Sprite2D" parent="."]
+position = Vector2(0.600006, -45)
+texture = ExtResource("4_3t1k1")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0.100006, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(5, -68)
 rotation = 1.5708
 shape = SubResource("31")

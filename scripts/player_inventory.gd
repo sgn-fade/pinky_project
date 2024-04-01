@@ -49,6 +49,7 @@ func remove_all_cells():
 
 
 
+
 func add_item(item):
 	for cell in $item_grid/cells.get_children():
 		if cell.is_empty():

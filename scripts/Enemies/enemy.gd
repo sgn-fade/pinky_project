@@ -20,7 +20,6 @@ var damage_label_instance = null
 var damage_to_enemy = null
 
 func _ready():
-	speed = 55
 	speed = 60
 	GlobalWorldInfo.add_enemy(self)
 	damage_label_instance = damage_label.instantiate()
@@ -50,10 +49,9 @@ func _input(event):
 			queue_free()
 func enemy_death():
 	if self.hp <= 0:
-		$dead.visible = true
-		#EventBus.emit_signal("enemy_killed")
-		#spawn_drop()
-		#queue_free()
+		EventBus.emit_signal("enemy_killed")
+		spawn_drop()
+		queue_free()
 
 func spawn_drop():
 	var blood_orb = blood_orb_drop.instantiate()
