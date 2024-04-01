@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwlxebje1ywyi"]
+
+[ext_resource type="PackedScene" uid="uid://i8y4ob3n3s2y" path="res://scenes/ui/inventory/inventory_cell.tscn" id="1_8dbxa"]
+[ext_resource type="Script" path="res://scripts/ui/inventory/weapon_cell.gd" id="2_hyfua"]
+[ext_resource type="Texture2D" uid="uid://cga6t3mmn3pv8" path="res://sprites/ui/buttons/ui_button_2.png" id="3_plnpe"]
+
+[node name="weapon_cell" instance=ExtResource("1_8dbxa")]
+script = ExtResource("2_hyfua")
+
+[node name="TextureRect" type="TextureRect" parent="." index="2"]
+z_index = -1
+z_as_relative = false
+offset_left = -10.0
+offset_top = -11.0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = ExtResource("3_plnpe")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." index="3"]
+offset_left = -22.0
+offset_top = 11.0
+offset_right = 72.0
+offset_bottom = 34.0
+scale = Vector2(0.5, 0.5)
+text = "weapon slot"

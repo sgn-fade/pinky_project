@@ -33,7 +33,7 @@ func _process(delta):
 
 func _on_show_module_stats_on_game_screen(module):
 	$module_discription.visible = true
-	$module_discription/module_icon.texture = module.spell_icon
+	$module_discription/module_icon.texture = module.inventory_item.icon
 func _on_hide_module_stats_on_game_screen():
 	$module_discription.visible = false
 
@@ -56,7 +56,7 @@ func _on_set_spell_icon_to_game(module, button):
 		bar.value = bar.max_value
 	else:
 		bar.value = module.get_cooldown_time() * 1000
-	bar.texture_progress = module.spell_icon
+	bar.texture_progress = module.inventory_item.icon
 	Bars[button] = module
 
 func clear_spell_icons():

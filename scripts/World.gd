@@ -39,8 +39,13 @@ func go_to_hub():
 
 
 func load_game():
-	EventBus.emit_signal("add_module_to_place", fire_pillar_spell.new(), true, "inventory", -1)
-	await get_tree().create_timer(0.3).timeout
-	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "inventory", -1)
-	EventBus.emit_signal("add_module_to_place", fire_spear_spell.new(), true, "inventory", -1)
+	var wand = load("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd")
+	var potion = load("res://scripts/drops/potion.gd")
+	EventBus.emit_signal("add_item", fire_pillar_spell.new())
+	EventBus.emit_signal("add_item", fireball_spell.new())
+	EventBus.emit_signal("add_item", fire_spear_spell.new())
+	EventBus.emit_signal("add_item", wand.new())
+	EventBus.emit_signal("add_item", potion.new())
+	EventBus.emit_signal("add_item", potion.new())
+	EventBus.emit_signal("add_item", potion.new())
 	go_to_hub()

@@ -15,12 +15,27 @@
     <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/Ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Ui.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/ui/death_screen.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/inventory_ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/inventory_ui.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/ui/Consumables.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/Consumables.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/ui/inventory/inventory_cell.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/inventory/inventory_cell.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/ui/weapon_card.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/weapon_card.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Ui.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/World.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/World.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/event bus.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/event bus.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generate_dungeon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_dungeon.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ui/death_screen.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/game_ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/game_ui.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/player_inventory.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player_inventory.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/base_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/base_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_eye_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_eye_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_pillar_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_pillar_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_spear_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_spear_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_teleport_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_teleport_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/fireball_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fireball_spell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/melee_spells/base_hit.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/melee_spells/base_hit.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spells/melee_spells/smite.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/melee_spells/smite.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ui/inventory/inventory_cell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/inventory/inventory_cell.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ui/inventory/inventory_slot_object.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/inventory/inventory_slot_object.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ui/weapon_card.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/weapon_card.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/ui/inventory_gun_slots_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/ui/inventory_gun_slots_background.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,24 +71,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Version-0.0.4",
-    "last_opened_file_path": "C:/main/media/projects/godot/pinky_project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Version-0.0.4-newinventory&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/main/media/projects/godot/pinky_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -85,6 +100,7 @@
       <workItem from="1704618958758" duration="33000" />
       <workItem from="1704650430155" duration="373000" />
       <workItem from="1708013529745" duration="18000" />
+      <workItem from="1711812809523" duration="118000" />
     </task>
     <servers />
   </component>

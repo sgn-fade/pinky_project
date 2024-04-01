@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://pe7wisviq3yk"]
+[gd_scene load_steps=10 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
 [ext_resource type="Script" path="res://scripts/player_inventory.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://d00qmrac5adv2" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://ukmieltv2tr1" path="res://sprites/ui/circle_label.png" id="7_cwrlk"]
 [ext_resource type="Texture2D" uid="uid://dralb4a7o1bva" path="res://sprites/ui/item_panel/empty_weapon_slot.png" id="8"]
+[ext_resource type="PackedScene" uid="uid://d2tomlxjbg3c6" path="res://scenes/ui/Consumables.tscn" id="8_7whhs"]
+[ext_resource type="PackedScene" uid="uid://cwlxebje1ywyi" path="res://scenes/ui/inventory/weapon_cell.tscn" id="9_fud0s"]
 [ext_resource type="Texture2D" uid="uid://ctend2wplo4na" path="res://sprites/ui/inventory/inventory_grid.png" id="9_ma0ua"]
 
 [node name="inventory_ui" type="Control"]
@@ -21,6 +24,7 @@ tooltip_text = "testtesttesttesttest"
 script = ExtResource("2")
 
 [node name="background" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.952941)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -71,6 +75,7 @@ anchors_preset = 0
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="item_grid"]
+modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 0
 offset_left = 975.0
 offset_top = 132.0
@@ -91,3 +96,191 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+
+[node name="Control10" parent="." instance=ExtResource("8_7whhs")]
+layout_mode = 1
+offset_left = 72.64
+offset_top = 650.2
+offset_right = 72.64
+offset_bottom = 650.2
+scale = Vector2(2.5, 2.5)
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 767.0
+offset_top = 293.0
+offset_right = 807.0
+offset_bottom = 333.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
+
+[node name="Label" type="Label" parent="Control/Control"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "hand mut"
+
+[node name="Control2" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 104.0
+offset_top = 296.0
+offset_right = 144.0
+offset_bottom = 336.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
+
+[node name="Label" type="Label" parent="Control/Control2"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "hand mut"
+
+[node name="Control3" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 307.0
+offset_top = 181.0
+offset_right = 347.0
+offset_bottom = 221.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
+
+[node name="Label" type="Label" parent="Control/Control3"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "mana core"
+
+[node name="Control4" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 542.0
+offset_top = 176.0
+offset_right = 582.0
+offset_bottom = 216.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
+
+[node name="Label" type="Label" parent="Control/Control4"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "hp core"
+
+[node name="Control5" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 434.0
+offset_top = 288.0
+offset_right = 474.0
+offset_bottom = 328.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
+
+[node name="Label" type="Label" parent="Control/Control5"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "ult mut"
+
+[node name="Control6" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 430.0
+offset_top = 454.0
+offset_right = 470.0
+offset_bottom = 494.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control6"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
+
+[node name="Label" type="Label" parent="Control/Control6"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "movement 
+mut"
+
+[node name="Control7" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 436.0
+offset_top = 75.0
+offset_right = 476.0
+offset_bottom = 115.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control7"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_cwrlk")
+
+[node name="Label" type="Label" parent="Control/Control7"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 13.6667
+offset_right = 79.3333
+offset_bottom = 36.6667
+scale = Vector2(0.5, 0.5)
+text = "hat or 
+brain mut"
+
+[node name="weapon_cell" parent="." instance=ExtResource("9_fud0s")]
+position = Vector2(724, 875)
+scale = Vector2(4, 4)

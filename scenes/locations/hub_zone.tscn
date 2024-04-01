@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx1mxg4kipto5"]
+[gd_scene load_steps=13 format=3 uid="uid://bx1mxg4kipto5"]
 
 [ext_resource type="Texture2D" uid="uid://cu23cwynpxasr" path="res://sprites/locations/hub_zone/hub_zone.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://csjtnwd75pjh7" path="res://scenes/world_env/map_terminal.tscn" id="2"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bs2xj4hkrvp3r" path="res://sprites/particles/particle-1.png" id="5_ro3ai"]
 [ext_resource type="Texture2D" uid="uid://o1f736csxs8c" path="res://sprites/locations/hub_zone/side.png" id="6_sog8n"]
 [ext_resource type="PackedScene" uid="uid://p8o4jym53ha4" path="res://scenes/locations/chest.tscn" id="7_3pgew"]
+[ext_resource type="PackedScene" uid="uid://dai8f5grr0xq" path="res://scenes/drops/weapon_drop.tscn" id="8_0os1e"]
+[ext_resource type="PackedScene" uid="uid://ckaqfrcpa55mf" path="res://scenes/drops/modules_drop.tscn" id="9_binvr"]
 
 [sub_resource type="Curve" id="3"]
 min_value = -200.0
@@ -149,3 +151,12 @@ color = Color(0.45098, 0.45098, 0.45098, 1)
 
 [node name="chest" parent="." instance=ExtResource("7_3pgew")]
 position = Vector2(-154, -21)
+
+[node name="weapon_drop" parent="." instance=ExtResource("8_0os1e")]
+position = Vector2(147, -29)
+
+[node name="weapon_drop" parent="weapon_drop" instance=ExtResource("8_0os1e")]
+position = Vector2(4, -28)
+
+[node name="modules_drop" parent="." instance=ExtResource("9_binvr")]
+position = Vector2(169, -9)

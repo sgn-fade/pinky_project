@@ -20,6 +20,7 @@ func play_animation(animation_name):
 
 
 func _input(event):
+	return
 	if Input.is_action_just_pressed("mouse_left_button") and Player.get_state() != Player.get_body().States.SPELL:
 		if combo_timer.time_left <= 0:
 			combo_names = ["hit_1", "hit_2", "hit_3"]

@@ -5,11 +5,11 @@ var current_cell = null
 var target_cell = null
 var mouse_in_area = false
 
-func set_data(new_data, new_data_type, icon, background = null):
-	data = new_data
-	data_type = new_data_type
-	$icon.texture = icon
-	$background.texture = background
+func set_data(new_data):
+	data = new_data.data
+	data_type = new_data.data_type
+	$icon.texture = new_data.icon
+	$background.texture = new_data.background
 
 
 func get_data():

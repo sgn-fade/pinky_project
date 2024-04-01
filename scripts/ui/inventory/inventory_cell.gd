@@ -11,9 +11,6 @@ func get_pos():
 	return $object_pos.global_position
 	
 
-func _process(delta):
-	$Label.text = str(empty)
-
 
 func _on_cell_area_entered(area):
 	if area.name == "object":

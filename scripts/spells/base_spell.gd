@@ -5,8 +5,9 @@ var is_ready = true
 var cooldown_time
 var time_spend = 0
 var mana_cost
-var spell_icon
 var particle
+var inventory_item_scene = load("res://scripts/drops/inventory_item.gd")
+var inventory_item = null
 
 
 func cast():
