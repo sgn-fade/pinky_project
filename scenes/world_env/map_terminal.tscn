@@ -107,16 +107,20 @@ height = 258.0
 [node name="map_terminal" type="StaticBody2D"]
 script = ExtResource("3")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.100006, -3)
+polygon = PackedVector2Array(-98, 6, -95.1, 12, -85, 20, -42, 26, -0.100006, 30, 46.9, 27, 91, 19, 99, 11, 99, 6, 67.9, -9.00001, -0.100006, -16, -71.1, -9)
+
 [node name="core" type="Sprite2D" parent="."]
-position = Vector2(0, -65)
+position = Vector2(0.600006, 0)
 texture = ExtResource("2_2dc5w")
 
 [node name="black_hole_down" type="Sprite2D" parent="."]
-position = Vector2(0, -110)
+position = Vector2(0.600006, -45)
 texture = ExtResource("3_6gpws")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(0, -109)
+position = Vector2(0.600006, -44)
 scale = Vector2(1, 0.19)
 amount = 2475
 process_material = SubResource("ParticleProcessMaterial_7a1rg")
@@ -126,7 +130,7 @@ trail_lifetime = 2.27
 trail_sections = 83
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
-position = Vector2(0, -109)
+position = Vector2(0.600006, -44)
 scale = Vector2(1, 0.19)
 amount = 600
 process_material = SubResource("ParticleProcessMaterial_slk2q")
@@ -135,13 +139,12 @@ trail_enabled = true
 trail_lifetime = 0.51
 
 [node name="black_hole_up" type="Sprite2D" parent="."]
-position = Vector2(0, -110)
+position = Vector2(0.600006, -45)
 texture = ExtResource("4_3t1k1")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0.100006, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(5, -68)
 rotation = 1.5708
 shape = SubResource("31")
