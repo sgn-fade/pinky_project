@@ -41,6 +41,7 @@ func set_to_cell():
 
 func set_cell(cell):
 	current_cell = cell
+	
 	global_position = current_cell.get_pos()
 
 func get_cell():

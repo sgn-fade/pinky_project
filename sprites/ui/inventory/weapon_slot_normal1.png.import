@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0r3vft6oh8g1"
-path="res://.godot/imported/inventory_slot_cell_hover.png-6896e28bf9b0e8521bc4b913fd5c40ad.ctex"
+uid="uid://dyocslded241j"
+path="res://.godot/imported/weapon_slot_normal1.png-82addb778d3a9f10d501f1863c38290f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/inventory_slot_cell_hover.png"
-dest_files=["res://.godot/imported/inventory_slot_cell_hover.png-6896e28bf9b0e8521bc4b913fd5c40ad.ctex"]
+source_file="res://sprites/ui/inventory/weapon_slot_normal1.png"
+dest_files=["res://.godot/imported/weapon_slot_normal1.png-82addb778d3a9f10d501f1863c38290f.ctex"]
 
 [params]
 

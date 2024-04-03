@@ -7,6 +7,7 @@
 radius = 14.8511
 
 [node name="inventory_slot_object" type="CharacterBody2D"]
+z_index = 1
 scale = Vector2(3, 3)
 script = ExtResource("1_70hnn")
 

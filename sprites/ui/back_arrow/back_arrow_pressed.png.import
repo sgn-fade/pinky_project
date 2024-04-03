@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://codx75xhwv8w3"
-path="res://.godot/imported/goblin.png-995be7525690e0000f86c7102d7a2d5c.ctex"
+uid="uid://djo02qi6h04cx"
+path="res://.godot/imported/back_arrow_pressed.png-f76c7de414591c04a2cf38e4a7bd9a49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/goblin.png"
-dest_files=["res://.godot/imported/goblin.png-995be7525690e0000f86c7102d7a2d5c.ctex"]
+source_file="res://sprites/ui/back_arrow/back_arrow_pressed.png"
+dest_files=["res://.godot/imported/back_arrow_pressed.png-f76c7de414591c04a2cf38e4a7bd9a49.ctex"]
 
 [params]
 

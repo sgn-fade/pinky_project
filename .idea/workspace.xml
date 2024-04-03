@@ -12,31 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/inventory_ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/inventory_ui.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/ui/Consumables.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/Consumables.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/ui/inventory/inventory_cell.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/inventory/inventory_cell.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/ui/weapon_card.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/ui/weapon_card.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Ui.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/World.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/World.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/event bus.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/event bus.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/game_ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/game_ui.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/player_inventory.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player_inventory.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spells/base_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/base_spell.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_eye_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_eye_spell.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_pillar_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_pillar_spell.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_spear_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_spear_spell.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spells/fire_teleport_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fire_teleport_spell.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spells/fireball_spell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/fireball_spell.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spells/melee_spells/base_hit.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/melee_spells/base_hit.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spells/melee_spells/smite.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spells/melee_spells/smite.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ui/inventory/inventory_cell.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/inventory/inventory_cell.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ui/inventory/inventory_slot_object.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/inventory/inventory_slot_object.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ui/weapon_card.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/weapon_card.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/ui/inventory_gun_slots_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/ui/inventory_gun_slots_background.png" afterDir="false" />
-    </list>
+    <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

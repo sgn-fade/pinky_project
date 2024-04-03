@@ -1,7 +1,7 @@
 extends Node2D
 var empty = true
 var object = null
-
+var slot_type = "inventory"
 
 func is_empty():
 	return empty

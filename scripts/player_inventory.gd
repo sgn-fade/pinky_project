@@ -1,19 +1,15 @@
 extends Node
-var item_count = 0
-var module_array = []
-var hands
 var spell_slot_button_scene = load("res://scenes/ui/spell_slot_button.tscn")
 var weapon_card_scene = load("res://scenes/ui/weapon_card.tscn")
-var choosed_slot = null
-var empty_cell = load("res://scenes/ui/inventory_module_cell.tscn")
+var empty_cell = load("res://scenes/ui/inventory/module_cell.tscn")
 var inventory_object = load("res://scenes/ui/inventory/inventory_slot_object.tscn")
 var inventory_cell = load("res://scenes/ui/inventory/inventory_cell.tscn")
 var cells
 
+
 func _ready():
 	create_inventory_cells()
 	EventBus.connect("add_item", Callable(self, "add_item"))
-
 
 
 func create_inventory_cells():
@@ -22,9 +18,6 @@ func create_inventory_cells():
 			var cell = inventory_cell.instantiate()
 			$item_grid/cells.add_child(cell)
 			cell.global_position = Vector2(x, y)
-				
-
-
 
 
 func fill_cells():
@@ -35,19 +28,23 @@ func fill_cells():
 		current_cell.position = cells[i].position
 		current_cell.cell_index = i
 		if cells[i].module != null:
-			var slot = spell_slot_button_scene.instantiate()
-			slot.init(cells[i].module, i)
-			slot.position = cells[i].position
-			slot.set_equiped(true)
-			$weapon/cells.add_child(slot)
+			var item = inventory_object.instantiate()
+			item.set_data(cells[i].module.inventory_item)
+			item.position = current_cell.position
+			$item_grid/items.add_child(item)
+			item.set_cell(current_cell)
+			item.visible = false
+			current_cell.restore_object(item)
 			EventBus.emit_signal("set_spell_icon_to_game", cells[i].module, cells[i].button)
 
+
 func remove_all_cells():
-	$weapon/weapon_slot.visible = true
+	EventBus.emit_signal("clear_spell_icons")
 	for child in $weapon/cells.get_children():
 		child.queue_free()
-
-
+	for child in $item_grid/items.get_children():
+		if child.current_cell.slot_type == "spell":
+			child.queue_free()
 
 
 func add_item(item):
@@ -61,3 +58,29 @@ func add_item(item):
 			return
 
 
+func _on_weapon_cell_button_pressed():
+	$default_right_side.visible = false
+	hide_objects("weapon")
+	$weapon.visible = true
+
+
+func _on_weapon_cell_set_weapon_to_ui(weapon):
+	$weapon/weapon_rarity_bg.show_weapon(Player.get_weapon())
+	if weapon == null:
+		remove_all_cells()
+		return
+	fill_cells()
+
+
+func _on_back_arrow_pressed():
+	$weapon.visible = false
+	hide_objects("spell")
+	$default_right_side.visible = true
+
+
+func hide_objects(type):
+	for child in $item_grid/items.get_children():
+		if child.current_cell.slot_type == type:
+			child.visible = false
+		else:
+			child.visible = true

@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwlxebje1ywyi"]
+[gd_scene load_steps=7 format=3 uid="uid://cwlxebje1ywyi"]
 
 [ext_resource type="PackedScene" uid="uid://i8y4ob3n3s2y" path="res://scenes/ui/inventory/inventory_cell.tscn" id="1_8dbxa"]
 [ext_resource type="Script" path="res://scripts/ui/inventory/weapon_cell.gd" id="2_hyfua"]
 [ext_resource type="Texture2D" uid="uid://cga6t3mmn3pv8" path="res://sprites/ui/buttons/ui_button_2.png" id="3_plnpe"]
+[ext_resource type="Texture2D" uid="uid://dyocslded241j" path="res://sprites/ui/inventory/weapon_slot_normal1.png" id="4_5u8cs"]
+[ext_resource type="Texture2D" uid="uid://dgbiv1lrdkm7h" path="res://sprites/ui/inventory/weapon_slot_pressed.png" id="5_mumll"]
+[ext_resource type="Texture2D" uid="uid://kbictqobdwaw" path="res://sprites/ui/inventory/weapon_slot_focus.png" id="6_tfsvu"]
 
 [node name="weapon_cell" instance=ExtResource("1_8dbxa")]
 script = ExtResource("2_hyfua")
 
+[node name="cell" parent="." index="0"]
+z_index = 0
+z_as_relative = true
+
 [node name="TextureRect" type="TextureRect" parent="." index="2"]
-z_index = -1
-z_as_relative = false
 offset_left = -10.0
 offset_top = -11.0
 offset_right = 10.0
@@ -24,3 +29,14 @@ offset_right = 72.0
 offset_bottom = 34.0
 scale = Vector2(0.5, 0.5)
 text = "weapon slot"
+
+[node name="TextureButton" type="TextureButton" parent="." index="4"]
+offset_left = -9.0
+offset_top = -32.0
+offset_right = 9.0
+offset_bottom = -13.0
+texture_normal = ExtResource("4_5u8cs")
+texture_pressed = ExtResource("5_mumll")
+texture_hover = ExtResource("6_tfsvu")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

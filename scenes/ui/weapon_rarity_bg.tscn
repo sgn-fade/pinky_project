@@ -1,16 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://d00qmrac5adv2"]
+[gd_scene load_steps=4 format=3 uid="uid://d00qmrac5adv2"]
 
-[ext_resource type="Texture2D" uid="uid://dj6oh3jrbiaa" path="res://sprites/ui/module_options_menu_buttons/drop_default.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://dtjrl4fpmdnbw" path="res://sprites/ui/module_options_menu_buttons/equip_hover.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://vvvtiu5yp1gr" path="res://sprites/ui/module_options_menu_buttons/equip_pressed.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://badw3ebeicdkx" path="res://sprites/ui/module_options_menu_buttons/drop_hover.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://cna0j4fimnqew" path="res://sprites/ui/module_options_menu_buttons/equip_default.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://t3lkylhxk3pi" path="res://sprites/ui/weapon_rarity_ui_bronze.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://d3gm265rry5kk" path="res://sprites/ui/module_options_menu_buttons/info_default.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://y0reglt80236" path="res://sprites/ui/module_options_menu_buttons/info_pressed.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://dx0bnywr5smfk" path="res://sprites/ui/module_options_menu_buttons/info_hover.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://cm3kfcfm3j8el" path="res://sprites/ui/module_options_menu_buttons/drop_pressed.png" id="10"]
-[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="11"]
 [ext_resource type="Texture2D" uid="uid://deqpjja6gbtfe" path="res://sprites/weapons/magic_weapons/old_goblins_magic_wand.png" id="12"]
 [ext_resource type="Script" path="res://scripts/ui/weapon_rarity_bg.gd" id="13"]
 
@@ -62,80 +52,4 @@ rotation = -0.0648073
 texture = ExtResource("12")
 stretch_mode = 4
 
-[node name="options_with_weapon" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 82.0
-offset_top = 108.0
-offset_right = 110.0
-offset_bottom = 137.0
-scale = Vector2(7, 7)
-
-[node name="unequip_button" type="TextureButton" parent="options_with_weapon"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 27.0
-offset_bottom = 11.0
-texture_normal = ExtResource("5")
-texture_pressed = ExtResource("3")
-texture_hover = ExtResource("2")
-
-[node name="new_label" type="Label" parent="options_with_weapon/unequip_button"]
-layout_mode = 0
-offset_left = 2.85714
-offset_top = 1.85714
-offset_right = 284.857
-offset_bottom = 87.1466
-scale = Vector2(0.1, 0.1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11")
-theme_override_font_sizes/font_size = 75
-text = "unequip"
-
-[node name="info_button" type="TextureButton" parent="options_with_weapon"]
-layout_mode = 0
-offset_top = 10.0
-offset_right = 28.0
-offset_bottom = 20.0
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("8")
-texture_hover = ExtResource("9")
-
-[node name="new_label" type="Label" parent="options_with_weapon/info_button"]
-layout_mode = 0
-offset_left = 6.71429
-offset_top = -1.0
-offset_right = 201.714
-offset_bottom = 86.0
-scale = Vector2(0.1, 0.1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11")
-theme_override_font_sizes/font_size = 101
-text = "info"
-
-[node name="drop_button" type="TextureButton" parent="options_with_weapon"]
-layout_mode = 0
-offset_top = 20.0
-offset_right = 28.0
-offset_bottom = 30.0
-texture_normal = ExtResource("1")
-texture_pressed = ExtResource("10")
-texture_hover = ExtResource("4")
-
-[node name="new_label" type="Label" parent="options_with_weapon/drop_button"]
-layout_mode = 0
-offset_left = 6.14286
-offset_top = -2.14286
-offset_right = 201.143
-offset_bottom = 84.8571
-scale = Vector2(0.1, 0.1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11")
-theme_override_font_sizes/font_size = 101
-text = "drop"
-
 [connection signal="pressed" from="main_button" to="." method="_on_main_button_pressed"]
-[connection signal="pressed" from="options_with_weapon/unequip_button" to="." method="_on_unequip_button_pressed"]
