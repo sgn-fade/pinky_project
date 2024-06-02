@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://qbrrhv0xfcu7"]
 
 [ext_resource type="PackedScene" uid="uid://bk34c60sqf56k" path="res://scenes/Control.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/UiCore.cs" id="1_b73qt"]
 [ext_resource type="PackedScene" uid="uid://dl514sg5qlh5w" path="res://scenes/ui/main_menu.tscn" id="2"]
-[ext_resource type="Script" path="res://scripts/Ui.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://pe7wisviq3yk" path="res://scenes/inventory_ui.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/loadscreen.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://ch3v7s5mc557f" path="res://scenes/pause_ui.tscn" id="6"]
@@ -41,7 +41,7 @@ animations = [{
 [node name="Ui" type="CanvasLayer"]
 process_mode = 3
 layer = 100
-script = ExtResource("3")
+script = ExtResource("1_b73qt")
 
 [node name="game_ui" parent="." instance=ExtResource("1")]
 visible = false

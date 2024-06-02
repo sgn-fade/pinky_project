@@ -4,7 +4,6 @@ namespace projectpinky.scripts.Globals
 {
     public partial class EventBus : Node
     {
-        public static EventBus Instance { get; private set; }
 
         [Signal]
         public delegate void PlayerTakeDamageEventHandler(Vector2 playerOffsetDir, int damage);
@@ -78,11 +77,6 @@ namespace projectpinky.scripts.Globals
         [Signal]
         public delegate void DamageToEnemyEventHandler(Node2D body, int damage, string status);
 
-        [Signal]
-        public delegate void UpdateCharacterHpBarValueEventHandler(int hp, int maxHp);
-
-        [Signal]
-        public delegate void UpdateCharacterManaBarValueEventHandler(int mana, int maxMana);
 
         [Signal]
         public delegate void GenerateDungeonEventHandler();

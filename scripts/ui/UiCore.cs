@@ -49,10 +49,6 @@ public partial class UiCore : Control
         SwitchUi(gameUi, "game");
     }
 
-    public void OnLoadTimerTimeout()
-    {
-        // Handle timer timeout event
-    }
 
     public void _Process(float delta)
     {
@@ -82,5 +78,14 @@ public partial class UiCore : Control
         currentUi.Visible = false;
         uiType.Visible = true;
         currentUi = uiType;
+    }
+
+    public void UpdateHpValue(int hp, int maxHp)
+    {
+        gameUi.
+    }
+    public void UpdateManaValue(int mana, int maxMana)
+    {
+
     }
 }

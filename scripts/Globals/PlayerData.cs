@@ -1,5 +1,6 @@
 using Godot;
 using projectpinky.scripts.player;
+using projectpinky.scripts.ui;
 
 namespace projectpinky.scripts.Globals;
 
@@ -19,7 +20,7 @@ public partial class PlayerData : Node2D
     [Export] private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
     [Export] private PackedScene book = (PackedScene)ResourceLoader.Load("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd");
 
-    private Control ui;
+    private UiCore ui;
     private Player player;
     private Node2D weaponSlot1;
     private Node2D weaponSlot2;
@@ -28,10 +29,7 @@ public partial class PlayerData : Node2D
     public override void _Ready()
     {
         eventBus = GetNode<EventBus>("/root/EventBus");
-        ui = GetNode<Control>("/root/World/Ui");
-
-        eventBus.EmitSignal("update_character_hp_bar_value", hp, maxHp);
-        eventBus.EmitSignal("update_character_mana_bar_value", mana, maxMana);
+        ui = GetNode<UiCore>("/root/World/Ui");
         SetWeapon(book.Instantiate<Node2D>());
     }
 
@@ -53,7 +51,7 @@ public partial class PlayerData : Node2D
     public void UpdateHp(int value)
     {
         hp += value;
-        eventBus.EmitSignal("update_character_hp_bar_value", hp, maxHp);
+        ui.UpdateHpValue(hp, maxHp);
     }
 
 
@@ -66,7 +64,7 @@ public partial class PlayerData : Node2D
             return false;
         }
         mana += value;
-        eventBus.EmitSignal("update_character_mana_bar_value", mana, maxMana);
+        ui.UpdateManaValue(mana, maxMana);
         return true;
     }
 
@@ -75,7 +73,7 @@ public partial class PlayerData : Node2D
     public void SetMaxMana(int value)
     {
         maxMana += value;
-        eventBus.EmitSignal("update_character_mana_bar_value", mana, maxMana);
+        ui.UpdateManaValue(mana, maxMana);
     }
 
     public void SetMagicDamage(int newMagicDamage)
