@@ -5,7 +5,7 @@ namespace projectpinky.scripts.ui;
 
 public partial class UiCore : Control
 {
-    private Control gameUi;
+    private GameUi gameUi;
     private Control inventoryUi;
     private Control loadUi;
     private Control pauseUi;
@@ -21,7 +21,7 @@ public partial class UiCore : Control
     {
         eventBus = GetNode<EventBus>("/root/EventBus");
         player = GetNode<PlayerData>("/root/PlayerData");
-        gameUi = GetNode<Control>("game_ui");
+        gameUi = GetNode<GameUi>("game_ui");
         inventoryUi = GetNode<Control>("inventory_ui");
         loadUi = GetNode<Control>("load_ui");
         loadBar = loadUi.GetNode<TextureProgressBar>("TextureProgressBar");
@@ -82,10 +82,10 @@ public partial class UiCore : Control
 
     public void UpdateHpValue(int hp, int maxHp)
     {
-        gameUi.
+        gameUi.UpdateHpValue(hp, maxHp);
     }
     public void UpdateManaValue(int mana, int maxMana)
     {
-
+        gameUi.UpdateManaValue(mana, maxMana);
     }
 }

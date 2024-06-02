@@ -1,9 +1,6 @@
 extends Control
 
 signal character_dead
-func _ready():
-	EventBus.connect("update_character_hp_bar_value", Callable(self, "_update_character_hp_bar_value"))
-	EventBus.connect("update_character_mana_bar_value", Callable(self, "_update_character_mana_bar_value"))
 
 
 func _update_character_hp_bar_value(hp, max_hp):

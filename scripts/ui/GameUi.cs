@@ -11,6 +11,8 @@ public class GameUi : Control
     private NodePath orbLabelPath;
     private Label orbLabel;
     private EventBus eventBus;
+    private PlayerBars playerBars;
+
     private Dictionary<string, Spell> Bars = new()
     {
         {"slot1", null},
@@ -25,6 +27,7 @@ public class GameUi : Control
     {
         orbLabel = GetNode<Label>(orbLabelPath);
         eventBus = GetNode<EventBus>("/root/EventBus");
+        playerBars = GetNode<PlayerBars>("player_bars");
 
         // EventBus.Connect("set_spell_icon_to_game", this, nameof(OnSetSpellIconToGame));
         // EventBus.Connect("start_spell_cooldown", this, nameof(OnStartSpellCooldown));
@@ -115,5 +118,12 @@ public class GameUi : Control
         var bar = GetNode<TextureProgressBar>($"spell_slot_panel/{button}");
         bar.Value = Bars[button].GetCooldownTime() * 1000;
     }
-
+    public void UpdateHpValue(int hp, int maxHp)
+    {
+        playerBars.UpdateHpValue(hp, maxHp);
+    }
+    public void UpdateManaValue(int mana, int maxMana)
+    {
+        playerBars.UpdateManaValue(mana, maxMana);
+    }
 }
