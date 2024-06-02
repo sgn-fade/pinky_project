@@ -1,5 +1,4 @@
 extends Node2D
-@onready var shotgun = preload("res://scenes/shotgun.tscn")
 @onready var magic = preload("res://scenes/hands/magic_hands.tscn")
 @onready var clear = preload("res://scenes/hands/clear_hands.tscn")
 @onready var melee = preload("res://scenes/hands/melee_hands.tscn")

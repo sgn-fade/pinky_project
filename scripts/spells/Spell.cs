@@ -15,7 +15,13 @@ public abstract partial class Spell : Node
     public PackedScene InventoryItemScene { get; set; } = GD.Load<PackedScene>("res://scripts/drops/inventory_item.gd");
     public Node InventoryItem { get; set; }
 
-    private PlayerData player = GetNode<PlayerData>("/root/PlayerData");
+    private PlayerData player;
+
+    public override void _Ready()
+    {
+        player = GetNode<PlayerData>("/root/PlayerData");
+    }
+
     public void Cast()
     {
         if (player.ChangeMana(-ManaCost))

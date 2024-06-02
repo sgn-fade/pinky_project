@@ -33,14 +33,14 @@ public partial class PlayerData : Node2D
         SetWeapon(book.Instantiate<Node2D>());
     }
 
-    public void SetState(string state)
+    public void SetState(Player.States state)
     {
-        player.Call("change_state", state);
+        player.SetState(state);
     }
 
-    public string GetState()
+    public Player.States GetState()
     {
-        return (string)player.Get("currentState");
+        return player.GetState();
     }
 
     public int GetHp() => hp;

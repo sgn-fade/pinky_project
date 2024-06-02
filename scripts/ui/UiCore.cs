@@ -3,7 +3,7 @@ using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.ui;
 
-public partial class UiCore : Control
+public partial class UiCore : CanvasLayer
 {
     private GameUi gameUi;
     private Control inventoryUi;

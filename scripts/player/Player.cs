@@ -73,6 +73,10 @@ public partial class Player : CharacterBody2D
     {
         return currentState;
     }
+    public void SetState(States state)
+    {
+        currentState = state;
+    }
 
     public override void _Ready()
     {
@@ -172,7 +176,7 @@ public partial class Player : CharacterBody2D
         MoveAndSlide();
     }
 
-    private void SetSpeed(float newSpeed)
+    public void SetSpeed(float newSpeed)
     {
         maxSpeed = newSpeed;
     }
@@ -182,10 +186,7 @@ public partial class Player : CharacterBody2D
         MoveAndSlide();
     }
 
-    private void ChangeState(States state)
-    {
-        currentState = state;
-    }
+
 
     private void Die()
     {

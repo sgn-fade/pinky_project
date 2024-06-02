@@ -1,6 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bk34c60sqf56k"]
 
 [ext_resource type="Texture2D" uid="uid://cr72ukl4w861a" path="res://sprites/ui/main_game_ui_panel.png" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/GameUi.cs" id="1_5yw6d"]
 [ext_resource type="PackedScene" uid="uid://bq3hxmkld5vhh" path="res://scenes/ui/spell_module_game_discription.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://e54psqwy45xn" path="res://scenes/ui/weapon_discription.tscn" id="5"]
@@ -9,11 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://2lj20o8vssmt" path="res://sprites/ui/health_bar_progress.png" id="8"]
 [ext_resource type="Script" path="res://scripts/survive_timer.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://d2w1882udcmvp" path="res://sprites/blood_ord.png" id="11"]
-[ext_resource type="Script" path="res://scripts/ui/player_bars.gd" id="11_m6abd"]
+[ext_resource type="Script" path="res://scripts/ui/PlayerBars.cs" id="11_0ubue"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12"]
 [ext_resource type="Texture2D" uid="uid://bj1emqivewhnn" path="res://sprites/ui/dash_progress_bar_under.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://dfvw2pdfwsbsm" path="res://sprites/ui/dash_progress_bar_progress.png" id="14"]
-[ext_resource type="Script" path="res://scripts/game_ui.gd" id="15"]
 
 [sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
@@ -108,7 +108,7 @@ anchor_bottom = 1.0
 offset_left = -14.04
 offset_top = -21.0
 pivot_offset = Vector2(-210, 188)
-script = ExtResource("15")
+script = ExtResource("1_5yw6d")
 
 [node name="spell_slot_panel" type="TextureRect" parent="."]
 layout_mode = 0
@@ -315,7 +315,7 @@ offset_left = -954.54
 offset_top = -939.869
 offset_right = -914.54
 offset_bottom = -899.869
-script = ExtResource("11_m6abd")
+script = ExtResource("11_0ubue")
 
 [node name="mana_bar" type="TextureRect" parent="player_bars"]
 modulate = Color(0.929412, 0.152941, 0.152941, 1)

@@ -5,7 +5,7 @@ using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.ui;
 
-public class GameUi : Control
+public partial class GameUi : Control
 {
     [Export]
     private NodePath orbLabelPath;
