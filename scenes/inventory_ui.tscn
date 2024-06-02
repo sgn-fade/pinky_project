@@ -296,6 +296,4 @@ scale = Vector2(0.5, 0.5)
 text = "hat or 
 brain mut"
 
-[connection signal="button_pressed" from="default_right_side/weapon_cell" to="." method="_on_weapon_cell_button_pressed"]
-[connection signal="set_weapon_to_ui" from="default_right_side/weapon_cell" to="." method="_on_weapon_cell_set_weapon_to_ui"]
 [connection signal="pressed" from="weapon/back_arrow" to="." method="_on_back_arrow_pressed"]

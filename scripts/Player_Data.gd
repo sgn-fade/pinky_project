@@ -27,7 +27,7 @@ func _ready():
 func set_state(state):
 	player.change_state(state)
 func get_state():
-	return player.current_state
+	return player.currentState
 func get_hp():
 	return hp
 func get_max_hp():

@@ -12,18 +12,18 @@ config_version=5
 
 config/name="project pinky"
 run/main_scene="res://scenes/World.tscn"
-config/features=PackedStringArray("4.2")
+config/features=PackedStringArray("4.2", "C#")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/show_image=false
 config/icon="res://icon.png.jpg"
 
 [autoload]
 
-EventBus="*res://scripts/event bus.gd"
 Player="*res://scripts/Player_Data.gd"
 Options="*res://scripts/Options.gd"
 GlobalWorldInfo="*res://scripts/Global_World_Info.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+EventBus="*res://scripts/Globals/EventBus.cs"
 
 [debug]
 
@@ -38,6 +38,10 @@ window/size/mode=2
 window/size/initial_position_type=0
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=false
+
+[dotnet]
+
+project/assembly_name="project pinky"
 
 [editor_plugins]
 
