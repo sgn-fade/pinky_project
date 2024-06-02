@@ -1,11 +1,5 @@
 extends Node2D
 
-@onready var fireball_spell = load("res://scripts/spells/fireball_spell.gd")
-@onready var fire_pillar_spell = load("res://scripts/spells/fire_pillar_spell.gd")
-@onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
-@onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
-@onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
-@onready var smite = load("res://scripts/spells/melee_spells/smite.gd")
 @onready var dungeon = load("res://scenes/locations/dungeon.tscn")
 @onready var hub_zone = load("res://scenes/locations/hub_zone.tscn")
 @onready var player = load("res://scenes/main_character.tscn")
@@ -39,13 +33,4 @@ func go_to_hub():
 
 
 func load_game():
-	var wand = load("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd")
-	var potion = load("res://scripts/drops/potion.gd")
-	EventBus.emit_signal("add_item", fire_pillar_spell.new())
-	EventBus.emit_signal("add_item", fireball_spell.new())
-	EventBus.emit_signal("add_item", fire_spear_spell.new())
-	EventBus.emit_signal("add_item", wand.new())
-	EventBus.emit_signal("add_item", potion.new())
-	EventBus.emit_signal("add_item", potion.new())
-	EventBus.emit_signal("add_item", potion.new())
 	go_to_hub()

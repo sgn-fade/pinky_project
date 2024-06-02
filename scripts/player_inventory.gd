@@ -1,5 +1,11 @@
 extends Node
 var spell_slot_button_scene = load("res://scenes/ui/spell_slot_button.tscn")
+@onready var fireball_spell = load("res://scripts/spells/fireball_spell.gd")
+@onready var fire_pillar_spell = load("res://scripts/spells/fire_pillar_spell.gd")
+@onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
+@onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
+@onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
+@onready var smite = load("res://scripts/spells/melee_spells/smite.gd")
 var weapon_card_scene = load("res://scenes/ui/weapon_card.tscn")
 var empty_cell = load("res://scenes/ui/inventory/module_cell.tscn")
 var inventory_object = load("res://scenes/ui/inventory/inventory_slot_object.tscn")
@@ -10,6 +16,15 @@ var cells
 func _ready():
 	create_inventory_cells()
 	EventBus.connect("add_item", Callable(self, "add_item"))
+	var wand = load("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd")
+	var potion = load("res://scripts/drops/potion.gd")
+	EventBus.emit_signal("add_item", fire_pillar_spell.new())
+	EventBus.emit_signal("add_item", fireball_spell.new())
+	EventBus.emit_signal("add_item", fire_spear_spell.new())
+	EventBus.emit_signal("add_item", wand.new())
+	EventBus.emit_signal("add_item", potion.new())
+	EventBus.emit_signal("add_item", potion.new())
+	EventBus.emit_signal("add_item", potion.new())
 
 
 func create_inventory_cells():

@@ -1,7 +1,6 @@
 extends Control
 @onready var orb_label = get_node("blood_orb_count/Label")
 
-
 var Bars = {
 	"slot1" = null,
 	"slot2" = null,
