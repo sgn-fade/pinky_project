@@ -6,7 +6,7 @@ var is_ready = true
 
 func _ready():
 	set_process(false)
-	EventBus.connect("dash_cooldown", Callable(self, "_on_main_character_dash"))
+	EventBus.connect("DashCooldownEventHandler ", Callable(self, "_on_main_character_dash"))
 
 
 func _process(delta):

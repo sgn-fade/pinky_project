@@ -36,7 +36,7 @@ func _process(delta):
 			set_process(false)
 			body.queue_free()
 			$end_particles.emitting = true
-			EventBus.emit_signal("add_module_to_place", module, true, "inventory", -1)
+			EventBus.emit_signal("add_item", module)
 			EventBus.emit_signal("hide_module_stats_on_game_screen")
 			await get_tree().create_timer(0.3).timeout
 			Player.set_closest_object(null)

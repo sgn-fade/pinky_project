@@ -1,7 +1,7 @@
 [gd_scene load_steps=73 format=3 uid="uid://15vutrjv1g2g"]
 
+[ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_ijsvk"]
 [ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/spell_character_animation/body/clear_player.png" id="2"]
-[ext_resource type="Script" path="res://scripts/character.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://byjyfa0cd7bnk" path="res://sprites/spell_character_animation/body/player_move_back.png" id="4_c1e3w"]
 [ext_resource type="Script" path="res://scripts/hands.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://dmcrgv2sfcch8" path="res://sprites/particles/heal_particle.png" id="6"]
@@ -442,7 +442,7 @@ light_mode = 2
 z_as_relative = false
 collision_layer = 33
 collision_mask = 5
-script = ExtResource("4")
+script = ExtResource("1_ijsvk")
 
 [node name="shadow_under" type="Sprite2D" parent="."]
 z_as_relative = false

@@ -52,9 +52,6 @@ func move(dir):
 
 func spawn_drop():
 	randomize()
-	var modules_drops = modules_drop.instantiate()
-	GlobalWorldInfo.get_world().add_child(modules_drops)
-	modules_drops.global_position = self.global_position
 	for i in randi() % 6:
 		var coins = gold_drop.instantiate()
 		GlobalWorldInfo.get_world().add_child(coins)

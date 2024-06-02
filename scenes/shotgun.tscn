@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://x0gtv75l0igh"]
+[gd_scene load_steps=28 format=3 uid="uid://dltfuc1qq5unu"]
 
 [ext_resource type="Script" path="res://scripts/shotgun.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdctkl6avqvp5" path="res://sprites/shotgun_shoot_animation.png" id="2"]

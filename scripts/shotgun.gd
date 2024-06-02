@@ -21,7 +21,7 @@ func _process(delta):
 			shoot()
 		Shotgun_States.BUTT_HIT:
 			rotating()
-	global_position = Player.get_body().get_position()
+	global_position = PlayerData.get_body().get_position()
 
 
 func _ready():

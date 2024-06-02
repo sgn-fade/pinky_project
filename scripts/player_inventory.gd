@@ -1,21 +1,38 @@
 extends Node
-var item_count = 0
-var module_array = []
-var hands
 var spell_slot_button_scene = load("res://scenes/ui/spell_slot_button.tscn")
+@onready var fireball_spell = load("res://scripts/spells/fireball_spell.gd")
+@onready var fire_pillar_spell = load("res://scripts/spells/fire_pillar_spell.gd")
+@onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
+@onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
+@onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
+@onready var smite = load("res://scripts/spells/melee_spells/smite.gd")
 var weapon_card_scene = load("res://scenes/ui/weapon_card.tscn")
-var choosed_slot = null
-var empty_cell = load("res://scenes/ui/inventory_module_cell.tscn")
+var empty_cell = load("res://scenes/ui/inventory/module_cell.tscn")
+var inventory_object = load("res://scenes/ui/inventory/inventory_slot_object.tscn")
+var inventory_cell = load("res://scenes/ui/inventory/inventory_cell.tscn")
 var cells
 
+
 func _ready():
-	EventBus.connect("add_module_to_place", Callable(self, "add_module_to_place"))
-	EventBus.connect("remove_weapon_from_slot", Callable(self, "_on_remove_weapon_from_slot"))
-	EventBus.connect("add_weapon_to_inventory", Callable(self, "add_weapon_to_inventory"))
-	EventBus.connect("inventory_cell_choosed", Callable(self, "_on_inventory_cell_choosed"))
-	EventBus.connect("weapon_in_inventory_choosed", Callable(self, "_on_weapon_in_inventory_choosed"))
-	EventBus.connect("spell_slot_button_choosed", Callable(self, "_on_spell_slot_button_choosed"))
-	EventBus.connect("spell_slot_button_unselected", Callable(self, "_on_spell_slot_button_unselected"))
+	create_inventory_cells()
+	EventBus.connect("add_item", Callable(self, "add_item"))
+	var wand = load("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd")
+	var potion = load("res://scripts/drops/potion.gd")
+	EventBus.emit_signal("add_item", fire_pillar_spell.new())
+	EventBus.emit_signal("add_item", fireball_spell.new())
+	EventBus.emit_signal("add_item", fire_spear_spell.new())
+	EventBus.emit_signal("add_item", wand.new())
+	EventBus.emit_signal("add_item", potion.new())
+	EventBus.emit_signal("add_item", potion.new())
+	EventBus.emit_signal("add_item", potion.new())
+
+
+func create_inventory_cells():
+	for y in range(199.5, 992, 132):
+		for x in range(1042.5, 1900, 132):
+			var cell = inventory_cell.instantiate()
+			$item_grid/cells.add_child(cell)
+			cell.global_position = Vector2(x, y)
 
 
 func fill_cells():
@@ -26,87 +43,59 @@ func fill_cells():
 		current_cell.position = cells[i].position
 		current_cell.cell_index = i
 		if cells[i].module != null:
-			var slot = spell_slot_button_scene.instantiate()
-			slot.init(cells[i].module, i)
-			slot.position = cells[i].position
-			slot.set_equiped(true)
-			$weapon/cells.add_child(slot)
+			var item = inventory_object.instantiate()
+			item.set_data(cells[i].module.inventory_item)
+			item.position = current_cell.position
+			$item_grid/items.add_child(item)
+			item.set_cell(current_cell)
+			item.visible = false
+			current_cell.restore_object(item)
 			EventBus.emit_signal("set_spell_icon_to_game", cells[i].module, cells[i].button)
 
+
 func remove_all_cells():
-	$weapon/weapon_slot.visible = true
+	EventBus.emit_signal("clear_spell_icons")
 	for child in $weapon/cells.get_children():
 		child.queue_free()
-
-func add_weapon_to_inventory(weapon):
-	var card = weapon_card_scene.instantiate()
-	$weapon_inventory/weapons.add_child(card)
-	card.init(weapon)
-	card.get_node("main_button/weapon_texture").texture = weapon.icon
+	for child in $item_grid/items.get_children():
+		if child.current_cell.slot_type == "spell":
+			child.queue_free()
 
 
-func add_module_to_place(module, is_new, place, cell_index):
-	if place == "inventory":
-		for child in $item_grid/GridContainer.get_children():
-			if child.get_data() == null:
-				var background_texture = load("res://sprites/ui/%s_module_button_state.png" % module.rarity)
-				child.set_data(module, "module", module.spell_icon, background_texture)
-				return
+func add_item(item):
+	for cell in $item_grid/cells.get_children():
+		if cell.is_empty():
+			var object = inventory_object.instantiate()
+			object.set_data(item.inventory_item)
+			$item_grid/items.add_child(object)
+			object.set_cell(cell)
+			cell.set_object(object)
+			return
 
 
-
-func _on_inventory_cell_choosed(cell):
-	if choosed_slot != null:
-		EventBus.emit_signal("add_module_to_place", choosed_slot.module, false, "equipment", cell.cell_index)
-		choosed_slot.queue_free()
-
-
-func _on_spell_slot_button_choosed(slot, equiped):
-	if !equiped:
-		choosed_slot = slot
-	else:
-		EventBus.emit_signal("add_module_to_place", slot.module, false, "inventory", -1)
-		Player.get_weapon().remove_module_from_weapon(slot.module, slot.index)
-		slot.queue_free()
-
-func _on_spell_slot_button_unselected():
-	await get_tree().create_timer(1).timeout
-	choosed_slot = null
-	EventBus.emit_signal("spell_cells_light_off")
+func _on_weapon_cell_button_pressed():
+	$default_right_side.visible = false
+	hide_objects("weapon")
+	$weapon.visible = true
 
 
-func _on_remove_weapon_from_slot():
-	EventBus.emit_signal("add_weapon_to_inventory", Player.get_weapon())
-	EventBus.emit_signal("clear_spell_icons")
-	EventBus.emit_signal("switch_hands_stance", null)
-	Player.set_weapon(null)
-	remove_all_cells()
-
-
-func _on_weapon_in_inventory_choosed(weapon):
-	if Player.get_weapon() != null:
-		EventBus.emit_signal("add_weapon_to_inventory", Player.get_weapon())
-		EventBus.emit_signal("clear_spell_icons")
+func _on_weapon_cell_set_weapon_to_ui(weapon):
+	$weapon/weapon_rarity_bg.show_weapon(Player.get_weapon())
+	if weapon == null:
 		remove_all_cells()
-	Player.set_weapon(weapon)
-	EventBus.emit_signal("switch_hands_stance", weapon)
+		return
 	fill_cells()
-	$weapon/weapon_slot.visible = false
-	$weapon/weapon_rarity_bg.show_weapon(weapon)
 
 
+func _on_back_arrow_pressed():
+	$weapon.visible = false
+	hide_objects("spell")
+	$default_right_side.visible = true
 
 
-
-func swap_weapon_slot(slot):
-	Player.set_weapon_current_slot(slot)
-	EventBus.emit_signal("clear_spell_icons")
-	EventBus.emit_signal("switch_hands_stance", Player.get_weapon())
-	remove_all_cells()
-	$weapon/weapon_rarity_bg.visible = false
-	$weapon/weapon_slot.visible = true
-	
-	if Player.get_weapon() != null:
-		fill_cells()
-		$weapon/weapon_slot.visible = false
-		$weapon/weapon_rarity_bg.show_weapon(Player.get_weapon())
+func hide_objects(type):
+	for child in $item_grid/items.get_children():
+		if child.current_cell.slot_type == type:
+			child.visible = false
+		else:
+			child.visible = true

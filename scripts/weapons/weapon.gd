@@ -1,10 +1,12 @@
 extends Node
 
-var icon
+var texture
 var rarity
 var Buttons_binds = Options.Buttons_binds
 var type = "none"
 var damage
+var inventory_item_scene = load("res://scripts/drops/inventory_item.gd")
+var inventory_item = null
 
 func get_type():
 	return type
@@ -36,9 +38,6 @@ func get_cells():
 	return cells
 
 
-func _ready():
-	pass
-
 
 func _init():
 	randomize()
@@ -65,30 +64,22 @@ func input(event):
 		EventBus.emit_signal("start_spell_cooldown", input_key)
 
 
-func add_module_to_weapon(module, new, place, cell_index):
-	if place == "equipment":
-		cells[cell_index].module = module
-		
-		var buttons = Buttons_binds.keys()
-		var key_button
-		while buttons.size() > 0:
-			key_button = buttons.pop_at(0)
-			if Spells_buttons[Buttons_binds[key_button]] != null:
-				continue
-			else:
-				break
-		
-		cells[cell_index].button = key_button
-		Spells_buttons[Buttons_binds[cells[cell_index].button]] = module
-		EventBus.emit_signal("set_spell_icon_to_game", module, cells[cell_index].button)
+func add_module_to_weapon(module, cell_index):
+	cells[cell_index].module = module
+	for key in Buttons_binds.keys():
+		if Spells_buttons[Buttons_binds[key]] == null:
+			cells[cell_index].button = key
+			Spells_buttons[Buttons_binds[cells[cell_index].button]] = module
+			EventBus.emit_signal("set_spell_icon_to_game", module, cells[cell_index].button)
+			return
 
 
-func remove_module_from_weapon(module, cell_index):
-	if not module.is_new():
-		EventBus.emit_signal("remove_spell_icon_from_game", cells[cell_index].button)
-		cells[cell_index].button = null
-		cells[cell_index].module = null
-		Spells_buttons[cells[cell_index].button] = null
+func remove_module_from_weapon(cell_index):
+	EventBus.emit_signal("remove_spell_icon_from_game", cells[cell_index].button)
+	Spells_buttons[Buttons_binds[cells[cell_index].button]] = null
+	cells[cell_index].button = null
+	cells[cell_index].module = null
+
 
 func swap_modules(first_slot : String, second_slot : String):
 	var temp = Spells_buttons[Buttons_binds[first_slot]]
@@ -111,7 +102,8 @@ func add_base_spell(module):
 	cell.button = "slot3"
 	Spells_buttons[Buttons_binds[cell.button]] = module
 	EventBus.emit_signal("set_spell_icon_to_game", module, cell.button)
-	
+
+
 func get_spell_from_button(button):
 	return Spells_buttons[button]
 

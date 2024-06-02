@@ -1,11 +1,5 @@
 extends Node2D
 
-@onready var fireball_spell = load("res://scripts/spells/fireball_spell.gd")
-@onready var fire_pillar_spell = load("res://scripts/spells/fire_pillar_spell.gd")
-@onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
-@onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
-@onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
-@onready var smite = load("res://scripts/spells/melee_spells/smite.gd")
 @onready var dungeon = load("res://scenes/locations/dungeon.tscn")
 @onready var hub_zone = load("res://scenes/locations/hub_zone.tscn")
 @onready var player = load("res://scenes/main_character.tscn")
@@ -13,6 +7,10 @@ extends Node2D
 var location
 
 func _ready():
+	#var screen_size = Vector2(1000,600)
+	var screen_size = DisplayServer.screen_get_size()
+	var window = get_window()
+	window.size = screen_size
 	Player.spawn()
 	EventBus.connect("generate_dungeon", Callable(self, "generate_dungeon"))
 	EventBus.connect("load_game", Callable(self, "load_game"))
@@ -35,5 +33,4 @@ func go_to_hub():
 
 
 func load_game():
-	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "inventory", -1)
 	go_to_hub()

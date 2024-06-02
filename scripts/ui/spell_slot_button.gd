@@ -1,6 +1,6 @@
 extends Control
 var module = null
-var modules_drop = load("res://scenes/modules_drop.tscn")
+var modules_drop = load("res://scenes/drops/modules_drop.tscn")
 @onready var new = get_node("button/new_label")
 @onready var main_button = get_node("button")
 var equiped = false

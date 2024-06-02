@@ -12,16 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/Ui.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Ui.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/ui/death_screen.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Ui.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/event bus.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/event bus.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generate_dungeon.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_dungeon.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ui/death_screen.gd" beforeDir="false" />
-    </list>
+    <list default="true" id="de5f30fb-ff58-46d9-895d-96f9d0e7fa88" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,8 +55,8 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Version-0.0.4",
-    "last_opened_file_path": "C:/main/media/projects/godot/pinky_project",
+    "git-widget-placeholder": "Version-0.0.4-newinventory",
+    "last_opened_file_path": "C:/main/media/stud/crossplatformprogramming/lab3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,6 +76,7 @@
       <workItem from="1704618958758" duration="33000" />
       <workItem from="1704650430155" duration="373000" />
       <workItem from="1708013529745" duration="18000" />
+      <workItem from="1711812809523" duration="118000" />
     </task>
     <servers />
   </component>

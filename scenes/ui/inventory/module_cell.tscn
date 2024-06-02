@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsq4kktf65hd3"]
+
+[ext_resource type="PackedScene" uid="uid://i8y4ob3n3s2y" path="res://scenes/ui/inventory/inventory_cell.tscn" id="1_ftufs"]
+[ext_resource type="Texture2D" uid="uid://d1qjn23wypgdl" path="res://sprites/ui/inventory_slot_cellt.png" id="2_p4uhi"]
+[ext_resource type="Script" path="res://scripts/ui/inventory/module_cell.gd" id="2_pirx0"]
+
+[node name="spell_cell" instance=ExtResource("1_ftufs")]
+scale = Vector2(5, 5)
+script = ExtResource("2_pirx0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_p4uhi")

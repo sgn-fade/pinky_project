@@ -28,7 +28,7 @@ func _process(delta):
 			set_process(false)
 			body.queue_free()
 			$end_particles.emitting = true
-			EventBus.emit_signal("add_weapon_to_inventory", weapon)
+			EventBus.emit_signal("add_item", weapon)
 			EventBus.emit_signal("hide_weapon_stats_on_game_screen")
 			await get_tree().create_timer(0.3).timeout
 			queue_free()
