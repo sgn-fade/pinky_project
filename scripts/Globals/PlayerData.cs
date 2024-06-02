@@ -1,4 +1,5 @@
 using Godot;
+using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.Globals;
 
@@ -18,19 +19,20 @@ public partial class PlayerData : Node2D
     [Export] private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
     [Export] private PackedScene book = (PackedScene)ResourceLoader.Load("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd");
 
-    private Node ui;
-    private Node2D player;
-    private Node weaponSlot1;
-    private Node weaponSlot2;
+    private Control ui;
+    private Player player;
+    private Node2D weaponSlot1;
+    private Node2D weaponSlot2;
     private EventBus eventBus;
 
     public override void _Ready()
     {
         eventBus = GetNode<EventBus>("/root/EventBus");
-        ui = GetNode("/root/World/Ui");
+        ui = GetNode<Control>("/root/World/Ui");
+
         eventBus.EmitSignal("update_character_hp_bar_value", hp, maxHp);
         eventBus.EmitSignal("update_character_mana_bar_value", mana, maxMana);
-        SetWeapon(book.Instantiate());
+        SetWeapon(book.Instantiate<Node2D>());
     }
 
     public void SetState(string state)
@@ -43,15 +45,10 @@ public partial class PlayerData : Node2D
         return (string)player.Get("currentState");
     }
 
-    public int GetHp()
-    {
-        return hp;
-    }
-
-    public int GetMaxHp()
-    {
-        return maxHp;
-    }
+    public int GetHp() => hp;
+    public int GetMaxHp() => maxHp;
+    public int GetMana() => mana;
+    public int GetMaxMana() => maxMana;
 
     public void UpdateHp(int value)
     {
@@ -59,10 +56,7 @@ public partial class PlayerData : Node2D
         eventBus.EmitSignal("update_character_hp_bar_value", hp, maxHp);
     }
 
-    public int GetMana()
-    {
-        return mana;
-    }
+
 
     public bool ChangeMana(int value)
     {
@@ -76,10 +70,7 @@ public partial class PlayerData : Node2D
         return true;
     }
 
-    public int GetMaxMana()
-    {
-        return maxMana;
-    }
+
 
     public void SetMaxMana(int value)
     {
@@ -116,7 +107,7 @@ public partial class PlayerData : Node2D
         return player != null;
     }
 
-    public Node GetBody()
+    public Player GetBody()
     {
         return player;
     }
@@ -126,7 +117,7 @@ public partial class PlayerData : Node2D
         return player.ZIndex;
     }
 
-    public Node GetWeapon()
+    public Node2D GetWeapon()
     {
         if (weaponSlot1 == null && weaponSlot2 == null)
         {
@@ -140,7 +131,7 @@ public partial class PlayerData : Node2D
         }
     }
 
-    public void SetWeapon(Node weapon)
+    public void SetWeapon(Node2D weapon)
     {
         switch (GetWeaponCurrentSlot())
         {
@@ -215,14 +206,14 @@ public partial class PlayerData : Node2D
     {
         player.QueueFree();
         hp = maxHp;
-        player = playerScene.Instantiate<Node2D>();
+        player = playerScene.Instantiate<Player>();
         Spawn();
         player.GlobalPosition = Vector2.Zero;
     }
 
     public void Spawn()
     {
-        player = playerScene.Instantiate<Node2D>();
+        player = playerScene.Instantiate<Player>();
         //GlobalWorldInfo.GetWorld().AddChild(player);
     }
 

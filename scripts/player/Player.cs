@@ -73,6 +73,7 @@ public partial class Player : CharacterBody2D
     {
         return currentState;
     }
+
     public override void _Ready()
     {
         eventBus = GetNode<EventBus>("/root/EventBus");
@@ -192,7 +193,7 @@ public partial class Player : CharacterBody2D
         eventBus.EmitSignal("player_dead");
     }
 
-    private void SetIdleState()
+    public void SetIdleState()
     {
         Visible = true;
         currentState = States.Idle;
