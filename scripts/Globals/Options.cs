@@ -3,7 +3,7 @@ using Godot;
 
 namespace projectpinky.scripts.Globals;
 
-public class Options : Node
+public partial class Options : Node
 {
     public static Dictionary<string, string> ButtonsBinds = new()
     {

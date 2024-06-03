@@ -1,20 +1,22 @@
 using System.Threading.Tasks;
 using Godot;
+using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.spells;
 
-public abstract partial class Spell : Node
+public partial class Spell : Node2D
 {
+    [Export] private Texture spellIcon;
     public string AnimationName { get; set; }
-    public int Rarity { get; set; }
+    public string Rarity { get; set; }
     public bool IsReady { get; set; } = true;
     public float CooldownTime { get; set; }
     public float TimeSpend { get; set; }
     public int ManaCost { get; set; }
     public PackedScene Particle { get; set; }
     public PackedScene InventoryItemScene { get; set; } = GD.Load<PackedScene>("res://scripts/drops/inventory_item.gd");
-    public Node InventoryItem { get; set; }
+    public InventoryItem InvItem { get; set; }
 
     private PlayerData player;
 

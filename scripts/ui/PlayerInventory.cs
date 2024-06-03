@@ -1,7 +1,8 @@
 using Godot;
-using System.Collections.Generic;
 
-public class InventoryManager : Node
+namespace projectpinky.scripts.ui;
+
+public partial class PlayerInventory : Node
 {
     private PackedScene spellSlotButtonScene = GD.Load<PackedScene>("res://scenes/ui/spell_slot_button.tscn");
     private PackedScene weaponCardScene = GD.Load<PackedScene>("res://scenes/ui/weapon_card.tscn");

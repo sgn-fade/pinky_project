@@ -1,7 +1,5 @@
 extends "res://scripts/spells/base_spell.gd"
 
-
-
 func _init():
 	rarity = "bronze"
 	var spell_icon = load("res://sprites/spell_icons/fireball_icon.png")

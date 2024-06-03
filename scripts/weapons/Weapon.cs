@@ -5,7 +5,7 @@ using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.weapons;
 
-public class Weapon : Node
+public partial class Weapon : Node
 {
     private Texture texture;
     private string rarity;
