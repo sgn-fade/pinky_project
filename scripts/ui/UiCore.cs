@@ -16,6 +16,7 @@ public partial class UiCore : CanvasLayer
     private TextureProgressBar loadBar;
     private EventBus eventBus = Global.EventBus;
     private PlayerData player = Global.Player;
+    private Crosshair crosshair;
 
     public override void _Ready()
     {
@@ -26,6 +27,7 @@ public partial class UiCore : CanvasLayer
         pauseUi = GetNode<Control>("pause_ui");
         altarUi = GetNode<Control>("altar_ui");
         menuUi = GetNode<Control>("menu_ui");
+        crosshair = GetNode<Crosshair>("crosshair");
         currentUi = menuUi;
 
         eventBus.Connect("load_game", new Callable(this, nameof(LoadAnimation)));
@@ -48,7 +50,7 @@ public partial class UiCore : CanvasLayer
     }
 
 
-    public void _Process(float delta)
+    public override void _Process(double delta)
     {
         if (!player.IsReady())
             return;
@@ -72,7 +74,7 @@ public partial class UiCore : CanvasLayer
 
     public void SwitchUi(Control uiType, string crosshairType)
     {
-        eventBus.EmitSignal("crosshair_switch", crosshairType);
+        crosshair.ChangeCrosshair(crosshairType);
         currentUi.Visible = false;
         uiType.Visible = true;
         currentUi = uiType;

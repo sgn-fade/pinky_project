@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" path="res://scenes/loadscreen.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://ch3v7s5mc557f" path="res://scenes/pause_ui.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/altar_ui.tscn" id="7"]
+[ext_resource type="Script" path="res://scripts/ui/Crosshair.cs" id="7_rskyq"]
 [ext_resource type="Texture2D" uid="uid://bxk32ptautip2" path="res://sprites/ui/ui_crosshair.png" id="8"]
-[ext_resource type="Script" path="res://scripts/crosshair.gd" id="9"]
 [ext_resource type="Texture2D" uid="uid://dh1yabj18ufsn" path="res://sprites/ui/crosshair_2.png" id="10"]
 
 [sub_resource type="AtlasTexture" id="4"]
@@ -77,7 +77,7 @@ visible = false
 z_index = 1000
 z_as_relative = false
 scale = Vector2(4, 4)
-script = ExtResource("9")
+script = ExtResource("7_rskyq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="crosshair"]
 sprite_frames = SubResource("3")
@@ -98,3 +98,4 @@ spread = 0.0
 gravity = Vector2(0, 0)
 
 [node name="menu_ui" parent="." instance=ExtResource("2")]
+script = null

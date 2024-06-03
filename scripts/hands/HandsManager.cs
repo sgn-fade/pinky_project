@@ -18,17 +18,16 @@ public partial class HandsManager : Node2D
         Melee
     }
 
-    private EventBus eventBus;
+    private EventBus eventBus = Global.EventBus;
     private States currentState = States.Gun;
 
     public override void _Ready()
     {
-        eventBus = GetNode<EventBus>("/root/EventBus");
         SwitchHands(clear);
         //eventBus.Connect("switch_hands_stance", this, "_OnSwitchHandsStance");
     }
 
-    public void _OnSwitchHandsStance(object weapon)
+    public void SwitchHandsStance(object weapon)
     {
         if (weapon == null)
         {
@@ -49,7 +48,7 @@ public partial class HandsManager : Node2D
         }
     }
 
-    public void SwitchHands(PackedScene type)
+    private void SwitchHands(PackedScene type)
     {
         if (GetChildCount() > 0)
         {

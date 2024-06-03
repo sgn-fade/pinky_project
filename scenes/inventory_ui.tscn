@@ -24,12 +24,6 @@ grow_vertical = 2
 pivot_offset = Vector2(-760, -177)
 tooltip_text = "testtesttesttesttest"
 script = ExtResource("1_tlr2l")
-fireballSpell = null
-firePillarSpell = null
-fireTeleportSpell = null
-fireEyeSpell = null
-fireSpearSpell = null
-smite = null
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.952941)

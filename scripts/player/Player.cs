@@ -37,7 +37,7 @@ public partial class Player : CharacterBody2D
         Attack
     }
 
-    private void _Process(float delta)
+    public override void _Process(double delta)
     {
         switch (currentState)
         {
@@ -83,11 +83,9 @@ public partial class Player : CharacterBody2D
         eventBus = GetNode<EventBus>("/root/EventBus");
         animatedSprite = GetNode<AnimatedSprite2D>("aSprite");
         currentState = States.Idle;
-        SetHideState(true);
         eventBus.EmitSignal("hands_play_animation", "idle");
         eventBus.Connect("player_cast_spell", new Callable(this, nameof(SetCastState)));
         eventBus.Connect("player_teleport", new Callable(this, nameof(Teleport)));
-        eventBus.Connect("load_game", new Callable(this, nameof(LoadGame)));
         eventBus.Connect("player_take_damage", new Callable(this, nameof(SetCastState)));
         //eventBus.Connect("player_cast_spell", new Callable(this, nameof(_OnPlayerTakeDamage)));
         timer.OneShot = false;
@@ -200,19 +198,6 @@ public partial class Player : CharacterBody2D
         currentState = States.Idle;
     }
 
-    private void SetHideState(bool state)
-    {
-        Visible = !state;
-        if (state)
-        {
-            currentState = States.None;
-        }
-    }
-
-    private void LoadGame()
-    {
-        SetHideState(false);
-    }
 
     private async void CharacterSlowdown()
     {

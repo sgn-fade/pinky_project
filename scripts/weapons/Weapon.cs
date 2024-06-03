@@ -132,7 +132,7 @@ public partial class Weapon : Node
         //EventBus.EmitSignal("set_spell_icon_to_game", module, cell.button);
     }
 
-    public Node GetSpellFromButton(string button)
+    public Spell GetSpellFromButton(string button)
     {
         return spellsButtons[button];
     }
@@ -142,12 +142,12 @@ public partial class Weapon : Node
         private string button;
         private Vector2 position;
         private int cellIndex;
-        public Node module
+        public Spell module
         {
             get => _module;
             set => _module = value;
         }
-        private Node _module;
+        private Spell _module;
         public Node link;
 
         public Cell(Vector2 pos)
@@ -160,13 +160,13 @@ public partial class Weapon : Node
         public Vector2 GetPosition() => position;
 
 
-        public Node GetModule() => module;
+        public Spell GetModule() => module;
 
         public void SetButton(string newButton)
         {
             button = newButton;
         }
-        public void SetModule(Node newModule)
+        public void SetModule(Spell newModule)
         {
             module = newModule;
         }

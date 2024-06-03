@@ -24,9 +24,6 @@ namespace projectpinky.scripts.Globals
         public delegate void PushAwayEnemyEventHandler(Node2D body, Vector2 velocity);
 
         [Signal]
-        public delegate void CrosshairSwitchEventHandler(string type);
-
-        [Signal]
         public delegate void PlayerCastSpellEventHandler(float animationTime, string animationName);
 
         [Signal]
@@ -81,16 +78,6 @@ namespace projectpinky.scripts.Globals
         [Signal]
         public delegate void GenerateDungeonEventHandler();
 
-        [Signal]
-        public delegate void GoToHubEventHandler();
 
-        [Signal]
-        public delegate void LoadGameEventHandler();
-
-        [Signal]
-        public delegate void EnemyKilledEventHandler();
-
-        [Signal]
-        public delegate void AddPlayerToBoardEventHandler(string playerName);
     }
 }

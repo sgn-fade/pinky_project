@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ocdj161rlapt" path="res://scenes/hands/clear_hands.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="2"]
-[ext_resource type="Script" path="res://scripts/hands/magic_stance.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/hands/clear_hands.gd" id="3"]
 
 [node name="clear_hands" instance=ExtResource("1")]
 script = ExtResource("3")
