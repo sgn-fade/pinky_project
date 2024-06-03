@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c44vmspqdwaev"]
 
 [ext_resource type="PackedScene" uid="uid://mv3dsr8tvo8v" path="res://scenes/hands/melee_hands.tscn" id="1_eajru"]
-[ext_resource type="Script" path="res://scripts/hands/sword_hands.gd" id="2_6k4i5"]
+[ext_resource type="Script" path="res://scripts/hands/SwordHands.cs" id="2_c7jsx"]
 [ext_resource type="Texture2D" uid="uid://cg3d2gmhtn8xy" path="res://sprites/weapons/melee/goblin_sword.png" id="3_gvgvo"]
 
 [sub_resource type="Animation" id="Animation_a6y6i"]
@@ -179,7 +179,7 @@ _data = {
 }
 
 [node name="melee_hands" instance=ExtResource("1_eajru")]
-script = ExtResource("2_6k4i5")
+script = ExtResource("2_c7jsx")
 
 [node name="hands" parent="." index="1"]
 position = Vector2(-1, 1)
