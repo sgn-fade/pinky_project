@@ -7,7 +7,6 @@ namespace projectpinky.scripts.spells;
 
 public partial class Spell : Node2D
 {
-    [Export] private Texture spellIcon;
     public string AnimationName { get; set; }
     public string Rarity { get; set; }
     public bool IsReady { get; set; } = true;
@@ -15,7 +14,6 @@ public partial class Spell : Node2D
     public float TimeSpend { get; set; }
     public int ManaCost { get; set; }
     public PackedScene Particle { get; set; }
-    public PackedScene InventoryItemScene { get; set; } = GD.Load<PackedScene>("res://scripts/drops/inventory_item.gd");
     public InventoryItem InvItem { get; set; }
 
     private PlayerData player;
