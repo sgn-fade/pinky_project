@@ -28,6 +28,7 @@ public partial class World : Node2D
 
     private void GenerateDungeon()
     {
+        location?.QueueFree();
         location = dungeon.Instantiate();
         AddChild(location);
         // location.Call("generate_dungeon");

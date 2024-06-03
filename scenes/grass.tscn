@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://53wgvunkk2pv"]
 
-[ext_resource type="Script" path="res://scripts/grass.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/map_env/Grass.cs" id="1"]
 [ext_resource type="Texture2D" uid="uid://bhvbro4cqyote" path="res://sprites/grass.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="3"]
 

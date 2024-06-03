@@ -47,6 +47,18 @@ project/assembly_name="project pinky"
 
 enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://scripts/Enemies/": "red",
+"res://scripts/Globals/": "blue",
+"res://scripts/map_env/": "green",
+"res://scripts/player/": "purple",
+"res://scripts/spells/": "red",
+"res://scripts/ui/": "green",
+"res://scripts/weapons/": "teal"
+}
+
 [global]
 
 "vertical synhronithation"=false
