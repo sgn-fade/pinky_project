@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 using projectpinky.scripts.Globals;
 
@@ -22,7 +23,7 @@ public abstract partial class Spell : Node
         player = GetNode<PlayerData>("/root/PlayerData");
     }
 
-    public void Cast()
+    public Task Cast()
     {
         if (player.ChangeMana(-ManaCost))
         {
@@ -33,6 +34,8 @@ public abstract partial class Spell : Node
             //EventBus.Instance.EmitSignal("hands_play_animation", AnimationName);
             Cooldown();
         }
+
+        return Task.CompletedTask;
     }
 
     public bool GetReady()

@@ -19,11 +19,11 @@ config/icon="res://icon.png.jpg"
 
 [autoload]
 
-Options="*res://scripts/Options.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 EventBus="*res://scripts/Globals/EventBus.cs"
 PlayerData="*res://scripts/Globals/PlayerData.cs"
 GlobalWorldInfo="*res://scripts/Globals/GlobalWorldInfo.cs"
+Options="*res://scripts/Globals/Options.cs"
 
 [debug]
 
