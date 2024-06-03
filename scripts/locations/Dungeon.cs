@@ -6,7 +6,7 @@ using Godot.Collections;
 
 namespace projectpinky.scripts.locations;
 
-public class Dungeon : Node2D
+public partial class Dungeon : Node2D
 {
     private PackedScene light = GD.Load<PackedScene>("res://scenes/Lights.tscn");
     private PackedScene goblin = GD.Load<PackedScene>("res://scenes/enemies/goblins/goblin_melee.tscn");
@@ -30,7 +30,7 @@ public class Dungeon : Node2D
     private int roomCount;
     private TileMap tileMap;
     private BetterTerrain terrain;
-    private Timer timer = new Timer();
+    private Timer timer = new();
 
     public override void _Ready()
     {

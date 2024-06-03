@@ -10,10 +10,9 @@ public partial class World : Node2D
 
     private Node location;
 
-    private PlayerData player;
+    private PlayerData player = Global.Player;
     public override void _Ready()
     {
-        player = GetNode<PlayerData>("/root/PlayerData");
         // Vector2 screenSize = new Vector2(1000, 600);
         Vector2I screenSize = DisplayServer.ScreenGetSize();
         var window = GetViewport().GetWindow();
@@ -29,7 +28,7 @@ public partial class World : Node2D
     private void GenerateDungeon()
     {
         location?.QueueFree();
-        location = dungeon.Instantiate();
+        location = dungeon.Instantiate  ();
         AddChild(location);
         // location.Call("generate_dungeon");
     }

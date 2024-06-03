@@ -4,12 +4,11 @@ using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.map_env;
 
-public class Grass : StaticBody2D
+public partial class Grass : StaticBody2D
 {
-    private PlayerData player;
+    private PlayerData player = Global.Player;
     public override void _Ready()
     {
-        player = GetNode<PlayerData>("/root/PlayerData");
         GetNode<Sprite2D>("Sprite").Frame = (int)(GD.Randi() % 6);
     }
 

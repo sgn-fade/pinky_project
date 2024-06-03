@@ -5,7 +5,7 @@ using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.spells;
 
-public partial class Spell : Node2D
+public class Spell
 {
     public string AnimationName { get; set; }
     public string Rarity { get; set; }
@@ -16,12 +16,8 @@ public partial class Spell : Node2D
     public PackedScene Particle { get; set; }
     public InventoryItem InvItem { get; set; }
 
-    private PlayerData player;
+    private PlayerData player = Global.Player;
 
-    public override void _Ready()
-    {
-        player = GetNode<PlayerData>("/root/PlayerData");
-    }
 
     public Task Cast()
     {

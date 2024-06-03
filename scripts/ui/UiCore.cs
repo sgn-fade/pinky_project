@@ -14,13 +14,11 @@ public partial class UiCore : CanvasLayer
     private Control currentUi;
 
     private TextureProgressBar loadBar;
-    private EventBus eventBus;
-    private PlayerData player;
+    private EventBus eventBus = Global.EventBus;
+    private PlayerData player = Global.Player;
 
     public override void _Ready()
     {
-        eventBus = GetNode<EventBus>("/root/EventBus");
-        player = GetNode<PlayerData>("/root/PlayerData");
         gameUi = GetNode<GameUi>("game_ui");
         inventoryUi = GetNode<Control>("inventory_ui");
         loadUi = GetNode<Control>("load_ui");

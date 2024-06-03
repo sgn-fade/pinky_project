@@ -8,10 +8,9 @@ public partial class MeleeHands : Node2D
 {
     private Timer comboTimer = new Timer();
     private List<string> comboNames = new List<string> { "hit_1", "hit_2", "hit_3" };
-    private PlayerData player;
+    private PlayerData player = Global.Player;
     public override void _Ready()
     {
-        player = GetNode<PlayerData>("/root/PlayerData");
         //EventBus.Connect("hands_play_animation", this, "PlayAnimation");
         AddChild(comboTimer);
         comboTimer.OneShot = true;
