@@ -1,5 +1,6 @@
 using Godot;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.hands;
 
 namespace projectpinky.scripts.player;
 
@@ -24,6 +25,8 @@ public partial class Player : CharacterBody2D
     private int direction = 1;
     private States currentState = States.Idle;
     private EventBus eventBus;
+    private HandsManager hands;
+    public HandsManager GetHands() => hands;
     public enum States
     {
         None,
@@ -80,10 +83,10 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
+        hands = GetNode<HandsManager>("hands");
         eventBus = GetNode<EventBus>("/root/EventBus");
         animatedSprite = GetNode<AnimatedSprite2D>("aSprite");
         currentState = States.Idle;
-        eventBus.EmitSignal("hands_play_animation", "idle");
         eventBus.Connect("player_cast_spell", new Callable(this, nameof(SetCastState)));
         eventBus.Connect("player_teleport", new Callable(this, nameof(Teleport)));
         eventBus.Connect("player_take_damage", new Callable(this, nameof(SetCastState)));

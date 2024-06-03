@@ -46,7 +46,10 @@ public partial class PlayerData : Node2D
     public int GetMaxMana() => maxMana;
     public int GetMoney() => coins;
     public int GetMagicDamage() => magicDamage;
-
+    public bool IsReady() => player != null;
+    public Player GetBody() => player;
+    public int GetZIndex() => player.ZIndex;
+    public Weapon GetWeapon() => weapon;
 
     public void UpdateHp(int value)
     {
@@ -95,16 +98,6 @@ public partial class PlayerData : Node2D
         player.GlobalPosition = position;
     }
 
-    public bool IsReady() => player != null;
-
-    public Player GetBody() => player;
-
-
-    public int GetZIndex() => player.ZIndex;
-
-    public Weapon GetWeapon() => weapon;
-
-
     public void SetWeapon(Weapon newWeapon)
     {
         weapon = newWeapon;
@@ -135,7 +128,10 @@ public partial class PlayerData : Node2D
     }
 
 
-
+    public void PlayAnimation(string animationName)
+    {
+        player.GetHands().PlayAnimation(animationName);
+    }
 
     public void SetMoney(int value)
     {

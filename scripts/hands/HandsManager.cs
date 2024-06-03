@@ -20,6 +20,7 @@ public partial class HandsManager : Node2D
 
     private EventBus eventBus = Global.EventBus;
     private States currentState = States.Gun;
+    private Hands currentHands;
 
     public override void _Ready()
     {
@@ -54,6 +55,13 @@ public partial class HandsManager : Node2D
         {
             GetChild(0).QueueFree();
         }
-        AddChild(type.Instantiate());
+
+        currentHands = (Hands)type.Instantiate();
+        AddChild(currentHands);
+    }
+
+    public void PlayAnimation(string animationName)
+    {
+        currentHands.PlayAnimation(animationName);
     }
 }
