@@ -1,8 +1,8 @@
 using Godot;
 using System.Threading.Tasks;
 using projectpinky.scripts.Globals;
-
-public partial class Fireball : CharacterBody2D
+namespace projectpinky.scripts.particles;
+public partial class FirePillar : CharacterBody2D
 {
     private Timer _timer = new Timer();
     private Timer _lightTimer = new Timer();
