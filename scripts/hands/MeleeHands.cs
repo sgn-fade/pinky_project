@@ -2,17 +2,16 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.hands;
 using projectpinky.scripts.player;
 
-public class MeleeHands : Node2D
+public partial class MeleeHands : Hands
 {
     private Timer comboTimer = new Timer();
     private List<string> comboNames = new List<string> { "hit_1", "hit_2", "hit_3" };
-    private PlayerData player;
+    private PlayerData player = Global.Player;
     public override void _Ready()
     {
-        player = GetNode<PlayerData>("/root/PlayerData");
-        //EventBus.Connect("hands_play_animation", this, "PlayAnimation");
         AddChild(comboTimer);
         comboTimer.OneShot = true;
     }
@@ -25,7 +24,7 @@ public class MeleeHands : Node2D
         }
     }
 
-    public void PlayAnimation(string animationName)
+    public override void PlayAnimation(string animationName)
     {
         if (animationName == "null")
         {
@@ -38,7 +37,7 @@ public class MeleeHands : Node2D
     {
         if (@event is InputEventMouseButton eventMouseButton &&
             eventMouseButton.Pressed &&
-            eventMouseButton.ButtonIndex == (int)ButtonList.Left &&
+            //eventMouseButton.ButtonIndex == (int)ButtonList.Left &&
             player.GetState() != Player.States.Spell)
         {
             if (comboTimer.TimeLeft <= 0)

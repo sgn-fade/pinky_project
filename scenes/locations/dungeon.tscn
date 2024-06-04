@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://dmbbj7fd6gu5j"]
 
-[ext_resource type="Script" path="res://scripts/generate_dungeon.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/locations/Dungeon.cs" id="1_fjb5u"]
 [ext_resource type="PackedScene" uid="uid://dca0g5c0huvv3" path="res://scenes/Lights.tscn" id="2_hsqkk"]
 [ext_resource type="PackedScene" uid="uid://b0c6sthqnjd75" path="res://scenes/enemies/goblins/goblin_melee.tscn" id="3_gucqy"]
 [ext_resource type="Texture2D" uid="uid://bi4fm5u7m0us5" path="res://sprites/tileset_3x3.png" id="3_q5dyw"]
@@ -665,9 +665,9 @@ metadata/_better_terrain = {
 z_index = -20
 z_as_relative = false
 y_sort_enabled = true
-script = ExtResource("1")
+script = ExtResource("1_fjb5u")
 
-[node name="tileset2" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="."]
 z_as_relative = false
 y_sort_enabled = true
 tile_set = SubResource("TileSet_qk601")

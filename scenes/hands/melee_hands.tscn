@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://mv3dsr8tvo8v"]
 
-[ext_resource type="Script" path="res://scripts/hands/melee_hands.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ocdj161rlapt" path="res://scenes/hands/clear_hands.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/hands/MeleeHands.cs" id="2_kqhu4"]
 [ext_resource type="Texture2D" uid="uid://bfs7ebjdubjnx" path="res://sprites/spell_character_animation/hands/one_player_hand.png" id="4_iralk"]
 
 [node name="melee_hands" instance=ExtResource("2")]
-script = ExtResource("1")
+script = ExtResource("2_kqhu4")
 
 [node name="sprite" parent="." index="0"]
 visible = false

@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://4er1x00b7crc"]
+[gd_scene load_steps=3 format=3 uid="uid://4er1x00b7crc"]
 
 [ext_resource type="PackedScene" uid="uid://ocdj161rlapt" path="res://scenes/hands/clear_hands.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="2"]
-[ext_resource type="Script" path="res://scripts/hands/magic_stance.gd" id="3"]
 
 [node name="clear_hands" instance=ExtResource("1")]
-script = ExtResource("3")
+script = null
 
 [node name="particles" type="CPUParticles2D" parent="." index="1"]
 modulate = Color(1, 0.447059, 0, 0.235294)

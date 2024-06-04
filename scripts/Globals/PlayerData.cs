@@ -1,6 +1,7 @@
 using Godot;
 using projectpinky.scripts.player;
 using projectpinky.scripts.ui;
+using projectpinky.scripts.weapons;
 
 namespace projectpinky.scripts.Globals;
 
@@ -11,8 +12,6 @@ public partial class PlayerData : Node2D
     private int maxHp = 50;
     private int maxMana = 30;
     private int coins;
-    private int score;
-    private int weaponCurrentSlot = 1;
     private bool canSmite;
     private Node2D closestInteractiveObject;
     private int magicDamage = 1;
@@ -22,15 +21,13 @@ public partial class PlayerData : Node2D
 
     private UiCore ui;
     private Player player;
-    private Node2D weaponSlot1;
-    private Node2D weaponSlot2;
-    private EventBus eventBus;
+    private Weapon weapon;
+    private EventBus eventBus = Global.EventBus;
 
     public override void _Ready()
     {
-        eventBus = GetNode<EventBus>("/root/EventBus");
         ui = GetNode<UiCore>("/root/World/Ui");
-        SetWeapon(book.Instantiate<Node2D>());
+        SetWeapon(book.Instantiate<Weapon>());
     }
 
     public void SetState(Player.States state)
@@ -47,6 +44,12 @@ public partial class PlayerData : Node2D
     public int GetMaxHp() => maxHp;
     public int GetMana() => mana;
     public int GetMaxMana() => maxMana;
+    public int GetMoney() => coins;
+    public int GetMagicDamage() => magicDamage;
+    public bool IsReady() => player != null;
+    public Player GetBody() => player;
+    public int GetZIndex() => player.ZIndex;
+    public Weapon GetWeapon() => weapon;
 
     public void UpdateHp(int value)
     {
@@ -68,8 +71,6 @@ public partial class PlayerData : Node2D
         return true;
     }
 
-
-
     public void SetMaxMana(int value)
     {
         maxMana += value;
@@ -81,10 +82,7 @@ public partial class PlayerData : Node2D
         magicDamage = newMagicDamage;
     }
 
-    public int GetMagicDamage()
-    {
-        return magicDamage;
-    }
+
 
     public Vector2 GetPosition()
     {
@@ -100,58 +98,14 @@ public partial class PlayerData : Node2D
         player.GlobalPosition = position;
     }
 
-    public bool IsReady()
+    public void SetWeapon(Weapon newWeapon)
     {
-        return player != null;
+        weapon = newWeapon;
     }
 
-    public Player GetBody()
-    {
-        return player;
-    }
 
-    public int GetZIndex()
-    {
-        return player.ZIndex;
-    }
 
-    public Node2D GetWeapon()
-    {
-        if (weaponSlot1 == null && weaponSlot2 == null)
-        {
-            return null;
-        }
-        switch (GetWeaponCurrentSlot())
-        {
-            case 1: return weaponSlot1;
-            case 2: return weaponSlot2;
-            default: return null;
-        }
-    }
-
-    public void SetWeapon(Node2D weapon)
-    {
-        switch (GetWeaponCurrentSlot())
-        {
-            case 1: weaponSlot1 = weapon; break;
-            case 2: weaponSlot2 = weapon; break;
-        }
-    }
-
-    public void SetWeaponCurrentSlot(int value)
-    {
-        weaponCurrentSlot = value;
-    }
-
-    public int GetWeaponCurrentSlot()
-    {
-        return weaponCurrentSlot;
-    }
-
-    public Node GetClosestObject()
-    {
-        return closestInteractiveObject;
-    }
+    public Node GetClosestObject() => closestInteractiveObject;
 
     public bool SetClosestObject(Node2D obj)
     {
@@ -172,9 +126,11 @@ public partial class PlayerData : Node2D
         }
         return false;
     }
-    public int GetMoney()
+
+
+    public void PlayAnimation(string animationName)
     {
-        return coins;
+        player.GetHands().PlayAnimation(animationName);
     }
 
     public void SetMoney(int value)
@@ -182,29 +138,15 @@ public partial class PlayerData : Node2D
         if (value > 0)
         {
             coins += value;
-            score += value * 10;
         }
     }
 
-    public int GetScore()
-    {
-        return score;
-    }
 
-    public void SetScore(int value)
-    {
-        if (value <= 0)
-        {
-            return;
-        }
-        score += value;
-    }
 
     public void Restart()
     {
         player.QueueFree();
         hp = maxHp;
-        player = playerScene.Instantiate<Player>();
         Spawn();
         player.GlobalPosition = Vector2.Zero;
     }

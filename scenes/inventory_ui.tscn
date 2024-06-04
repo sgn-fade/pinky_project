@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
-[ext_resource type="Script" path="res://scripts/player_inventory.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/ui/PlayerInventory.cs" id="1_tlr2l"]
 [ext_resource type="PackedScene" uid="uid://d00qmrac5adv2" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://p31ii0hg8cjd" path="res://sprites/ui/back_arrow/back_arrow_idle.png" id="5_f11wr"]
 [ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(-760, -177)
 tooltip_text = "testtesttesttesttest"
-script = ExtResource("2")
+script = ExtResource("1_tlr2l")
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.952941)
