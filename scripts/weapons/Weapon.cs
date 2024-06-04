@@ -14,9 +14,12 @@ public partial class Weapon : Node
     private int damage;
     private PackedScene inventoryItemScene = GD.Load<PackedScene>("res://scripts/drops/inventory_item.gd");
     private Node inventoryItem = null;
-
+    private double critChance = 10d;
+    
     public string GetWeaponType() => type;
-
+    public int GetDamage() => damage;
+    public double GetCritChance() => critChance;
+    
     private Dictionary<string, Spell> spellsButtons;
 
     private readonly List<Vector2> modulePositionList = new List<Vector2>
@@ -158,8 +161,6 @@ public partial class Weapon : Node
 
         public string GetButton() => button;
         public Vector2 GetPosition() => position;
-
-
         public Spell GetModule() => module;
 
         public void SetButton(string newButton)
