@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using projectpinky.scripts.Globals;
+namespace projectpinky.scripts.particles;
 
 public partial class BaseSpellParticle : CharacterBody2D
 {
@@ -28,10 +29,11 @@ public partial class BaseSpellParticle : CharacterBody2D
 		MoveAndSlide();
 		Velocity = Velocity;
 	}
-
+	
 	public void OnBodyEntered(Node body)
 	{
 		Delete();
+		//todo eventbus
 		Global.EventBus.EmitSignal("damage_to_enemy", body, 10);
 	}
 
