@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=3 uid="uid://ocdj161rlapt"]
 
 [ext_resource type="Texture2D" uid="uid://dbrrcynmbhc7w" path="res://sprites/spell_character_animation/hands/clear_hands.png" id="1"]
-[ext_resource type="Script" path="res://scripts/hands/clear_hands.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/hands/ClearHands.cs" id="1_oem2y"]
 [ext_resource type="Texture2D" uid="uid://b8vnn303ktr73" path="res://sprites/spell_character_animation/hands/melee_hands_sword_combo.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://b6ugbcvj0bwmr" path="res://sprites/fireball_cast.png" id="3_emmrl"]
 
@@ -305,7 +305,7 @@ animations = [{
 
 [node name="clear_hands" type="Node2D"]
 position = Vector2(-1, -3)
-script = ExtResource("2")
+script = ExtResource("1_oem2y")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("34")

@@ -22,7 +22,6 @@ public partial class PlayerInventory : Node
     public override void _Ready()
     {
         CreateInventoryCells();
-
         var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
         var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
 using projectpinky.scripts.spells;
 
@@ -7,19 +8,18 @@ namespace projectpinky.scripts.weapons;
 
 public partial class Weapon : Node
 {
-    private Texture texture;
-    private string rarity;
+    public Texture Texture { get; set; }
+    public string Rarity { get; set; }
     private readonly Dictionary<string, string> buttonsBinds = Options.ButtonsBinds;
-    private string type = "none";
-    private int damage;
+    public string Type { get; set; } = "none";
+    public int Damage { get; set; }
     private PackedScene inventoryItemScene = GD.Load<PackedScene>("res://scripts/drops/inventory_item.gd");
-    private Node inventoryItem = null;
+    public InventoryItem InvItem { get; set; }
 
-    public string GetWeaponType() => type;
 
     private Dictionary<string, Spell> spellsButtons;
 
-    private readonly List<Vector2> modulePositionList = new List<Vector2>
+    private readonly List<Vector2> modulePositionList = new()
     {
         new Vector2(418, 123),
         new Vector2(649, 209),
