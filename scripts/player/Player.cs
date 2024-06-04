@@ -24,7 +24,7 @@ public partial class Player : CharacterBody2D
     //private Vector2? movePosition = null;
     private int direction = 1;
     private States currentState = States.Idle;
-    private EventBus eventBus;
+    private EventBus eventBus = Global.EventBus;
     private HandsManager hands;
     public HandsManager GetHands() => hands;
     public enum States
@@ -84,7 +84,6 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         hands = GetNode<HandsManager>("hands");
-        eventBus = GetNode<EventBus>("/root/EventBus");
         animatedSprite = GetNode<AnimatedSprite2D>("aSprite");
         currentState = States.Idle;
         eventBus.Connect("player_cast_spell", new Callable(this, nameof(SetCastState)));
@@ -222,7 +221,7 @@ public partial class Player : CharacterBody2D
     private void EnableCollision()
     {
         GetNode<Area2D>("player_area").SetCollisionMaskValue(2, true);
-        SetCollisionMaskValue(2, true);
+        SetCollisionMaskValue(2, true); 
     }
 
     // private void _OnPlayerTakeDamage(Vector2 playerOffsetDir, float enemyDamage)

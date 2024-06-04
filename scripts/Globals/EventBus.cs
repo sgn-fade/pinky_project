@@ -78,6 +78,5 @@ namespace projectpinky.scripts.Globals
         [Signal]
         public delegate void GenerateDungeonEventHandler();
 
-
     }
 }

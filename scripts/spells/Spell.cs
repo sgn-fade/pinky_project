@@ -27,7 +27,7 @@ public class Spell
             {
                 //GlobalWorldInfo.GetWorld().AddChild(Particle.Instantiate());
             }
-            //EventBus.Instance.EmitSignal("hands_play_animation", AnimationName);
+            Global.Player.PlayAnimation(AnimationName);
             Cooldown();
         }
 
