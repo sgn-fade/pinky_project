@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=23 format=3]
 
-[ext_resource path="res://sprites/c_shotgun_explode.png" type="Texture2D" id=1]
-[ext_resource path="res://sprites/c_shotgun_2_stage_shoot_particle.png" type="Texture2D" id=2]
-[ext_resource path="res://scenes/bullet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/c_shotgun_orb.gd" type="Script" id=4]
-[ext_resource path="res://sprites/particles/explode_particle_ord.png" type="Texture2D" id=5]
+[ext_resource type="Texture2D" uid="uid://bqwj28adv7oxa" path="res://sprites/c_shotgun_explode.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cj6brtj7nnmsd" path="res://sprites/c_shotgun_2_stage_shoot_particle.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://1nrffkowg8y0" path="res://scenes/bullet.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/particles/c_shotgun_orb.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://cpe65h3c6l5xl" path="res://sprites/particles/explode_particle_ord.png" id="5"]
+
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )

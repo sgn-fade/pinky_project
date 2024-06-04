@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource path="res://scenes/bullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/continuum_shotgun_bullet.gd" type="Script" id=2]
-[ext_resource path="res://sprites/continuum_shotgun_bullet.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/particles/explode_particle_ord.png" type="Texture2D" id=4]
+[ext_resource type="PackedScene" uid="uid://1nrffkowg8y0" path="res://scenes/bullet.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/particles/continuum_shotgun_bullet.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://7iui4d3v56ot" path="res://sprites/continuum_shotgun_bullet.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cpe65h3c6l5xl" path="res://sprites/particles/explode_particle_ord.png" id="4"]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )

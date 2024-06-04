@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch3v7s5mc557f"]
 
-[ext_resource type="Script" path="res://scripts/pause_ui.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/pause_ui.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="2"]
 [ext_resource type="Texture2D" uid="uid://cb4673josyno8" path="res://sprites/ui/label.png" id="3"]
 

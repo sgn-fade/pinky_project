@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dca0g5c0huvv3"]
+[gd_scene load_steps=7 format=3 uid="uid://dca0g5c0huvv3"]
 
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2"]
-[ext_resource type="Script" path="res://scripts/Lights.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="4_whwce"]
 [ext_resource type="Texture2D" uid="uid://cpabeo40tt08d" path="res://sprites/fire_pylon.png" id="5"]
 
@@ -21,7 +20,6 @@ colors = PackedColorArray(0.780414, 0.300333, 4.81307e-07, 1, 1, 0.733333, 0, 1,
 z_as_relative = false
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

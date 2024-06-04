@@ -1,5 +1,6 @@
 extends CharacterBody2D
 var focused_object = null
+
 func _process(delta):
 	if focused_object != null:
 		set_velocity((Player.get_position() + (focused_object.global_position - Player.get_position()) / 4 - global_position) * 4)

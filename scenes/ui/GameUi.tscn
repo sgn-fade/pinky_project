@@ -1,15 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk34c60sqf56k"]
+[gd_scene load_steps=17 format=3 uid="uid://bk34c60sqf56k"]
 
 [ext_resource type="Texture2D" uid="uid://cr72ukl4w861a" path="res://sprites/ui/main_game_ui_panel.png" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/GameUi.cs" id="1_5yw6d"]
 [ext_resource type="PackedScene" uid="uid://bq3hxmkld5vhh" path="res://scenes/ui/spell_module_game_discription.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://e54psqwy45xn" path="res://scenes/ui/weapon_discription.tscn" id="5"]
-[ext_resource type="Script" path="res://scripts/dash_indicator.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/ui/DashIndicator.cs" id="6"]
 [ext_resource type="Texture2D" uid="uid://dww12tk5tyxfd" path="res://sprites/ui/spell_game_colldown_icon_background.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://2lj20o8vssmt" path="res://sprites/ui/health_bar_progress.png" id="8"]
-[ext_resource type="Script" path="res://scripts/survive_timer.gd" id="10"]
-[ext_resource type="Texture2D" uid="uid://d2w1882udcmvp" path="res://sprites/blood_ord.png" id="11"]
 [ext_resource type="Script" path="res://scripts/ui/PlayerBars.cs" id="11_0ubue"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12"]
 [ext_resource type="Texture2D" uid="uid://bj1emqivewhnn" path="res://sprites/ui/dash_progress_bar_under.png" id="13"]
@@ -268,42 +266,6 @@ radial_initial_angle = 301.6
 radial_fill_degrees = 111.9
 radial_center_offset = Vector2(0, 7.606)
 script = ExtResource("6")
-
-[node name="blood_orb_count" type="NinePatchRect" parent="."]
-visible = false
-layout_mode = 0
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -75.5598
-offset_top = 25.0
-offset_right = -26.5598
-offset_bottom = 72.0
-texture = ExtResource("11")
-
-[node name="Label" type="Label" parent="blood_orb_count"]
-layout_mode = 0
-anchor_left = -0.888
-anchor_top = 0.5
-anchor_right = -0.888
-anchor_bottom = 0.567
-offset_left = -38.488
-offset_top = -39.5
-offset_right = 38.512
-offset_bottom = 42.6405
-theme_override_fonts/font = ExtResource("12")
-
-[node name="survive_timer" type="Label" parent="."]
-visible = false
-layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -65.0
-offset_top = -9.0
-offset_right = 65.0
-offset_bottom = 81.0
-pivot_offset = Vector2(65, 0)
-theme_override_fonts/font = ExtResource("12")
-script = ExtResource("10")
 
 [node name="player_bars" type="Control" parent="."]
 anchors_preset = 0
