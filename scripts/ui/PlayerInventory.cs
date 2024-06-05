@@ -1,5 +1,10 @@
+using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
+using projectpinky.scripts.drops;
+using projectpinky.scripts.spells;
 using projectpinky.scripts.ui.inventory;
+using Control = Godot.Control;
 
 namespace projectpinky.scripts.ui;
 
@@ -10,23 +15,20 @@ public partial class PlayerInventory : Control
     private PackedScene weaponCardScene = GD.Load<PackedScene>("res://scenes/ui/weapon_card.tscn");
     private PackedScene emptyCell = GD.Load<PackedScene>("res://scenes/ui/inventory/module_cell.tscn");
     private PackedScene inventoryObject = GD.Load<PackedScene>("res://scenes/ui/inventory/inventory_slot_object.tscn");
+
     private PackedScene inventoryCell = GD.Load<PackedScene>("res://scenes/ui/inventory/inventory_cell.tscn");
+
     //
     // private Node cells;
     //
-    // [Export] private PackedScene fireballSpell = GD.Load<PackedScene>("res://scripts/spells/fireball_spell.gd");
-    // [Export] private PackedScene firePillarSpell = GD.Load<PackedScene>("res://scripts/spells/fire_pillar_spell.gd");
-    // [Export] private PackedScene fireTeleportSpell = GD.Load<PackedScene>("res://scripts/spells/fire_teleport_spell.gd");
-    // [Export] private PackedScene fireEyeSpell = GD.Load<PackedScene>("res://scripts/spells/fire_eye_spell.gd");
-    // [Export] private PackedScene fireSpearSpell = GD.Load<PackedScene>("res://scripts/spells/fire_spear_spell.gd");
-    // [Export] private PackedScene smite = GD.Load<PackedScene>("res://scripts/spells/melee_spells/smite.gd");
 
     public override void _Ready()
     {
         CreateInventoryCells();
+        InventoryItem item = new FireEyeSpell().InvItem;
+        AddItem(item);
         //var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
         //var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
-
     }
 
     private void CreateInventoryCells()
@@ -69,11 +71,12 @@ public partial class PlayerInventory : Control
     private void RemoveAllCells()
     {
         //EventBus.EmitSignal("clear_spell_icons");
-        foreach (Node child in GetNode<Node>($"/root/Main/$weapon/cells").GetChildren())
+        foreach (Node child in GetNode<Control>($"weapon/cells").GetChildren())
         {
             child.QueueFree();
         }
-        foreach (Node child in GetNode<Node>($"/root/Main/$item_grid/items").GetChildren())
+
+        foreach (Node child in GetNode<Control>($"item_grid/items").GetChildren())
         {
             if ((string)child.Get("current_cell.slot_type") == "spell")
             {
@@ -82,17 +85,18 @@ public partial class PlayerInventory : Control
         }
     }
 
-    private void AddItem(Node item)
+    private void AddItem(InventoryItem item)
     {
-        foreach (Node cell in GetNode<Node>($"/root/Main/$item_grid/cells").GetChildren())
+        foreach (var node in GetNode<Control>($"item_grid/cells").GetChildren())
         {
-            if ((bool)cell.Call("is_empty"))
+            var cell = (InventoryCell)node;
+            if (cell.IsEmpty())
             {
-                var obj = inventoryObject.Instantiate<Node2D>();
-                obj.Call("set_data", item.Get("inventory_item"));
-                GetNode<Node>($"/root/Main/$item_grid/items").AddChild(obj);
-                obj.Call("set_cell", cell);
-                cell.Call("set_object", obj);
+                var obj = inventoryObject.Instantiate<InventoryCellObject>();
+                obj.SetData(item);
+                GetNode<Control>($"item_grid/items").AddChild(obj);
+                obj.SetCell(cell);
+                cell.SetObject(obj);
                 return;
             }
         }

@@ -15,8 +15,8 @@ public partial class InventoryCellObject : CharacterBody2D
     {
         Data = newData.Data;
         DataType = newData.DataType;
-        GetNode<Sprite2D>("icon").Texture = newData.Icon;
-        GetNode<Sprite2D>("background").Texture = newData.Background;
+        GetNode<TextureRect>("icon").Texture = newData.Icon;
+        GetNode<TextureRect>("background").Texture = newData.Background;
     }
 
     public object GetData()
@@ -77,12 +77,12 @@ public partial class InventoryCellObject : CharacterBody2D
         targetCell = cell;
     }
 
-    public void _OnMouseEntered()
+    public void OnMouseEntered()
     {
         mouseInArea = true;
     }
 
-    public void _OnMouseExited()
+    public void OnMouseExited()
     {
         mouseInArea = false;
     }

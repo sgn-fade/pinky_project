@@ -27,6 +27,7 @@ public partial class UiCore : CanvasLayer
 		crosshair = GetNode<Crosshair>("crosshair");
 		//todo event bus
 		//eventBus.Connect("load_game", new Callable(this, nameof(LoadAnimation)));
+		currentUi = gameUi;
 
 		SwitchUi(gameUi, "game");
 	}
@@ -44,7 +45,6 @@ public partial class UiCore : CanvasLayer
 		player.GetBody().SetIdleState();
 		SwitchUi(gameUi, "game");
 	}
-
 
 	public override void _Process(double delta)
 	{
@@ -70,6 +70,7 @@ public partial class UiCore : CanvasLayer
 
 	public void SwitchUi(Control uiType, string crosshairType)
 	{
+		GD.Print(uiType);
 		crosshair.ChangeCrosshair(crosshairType);
 		currentUi.Visible = false;
 		uiType.Visible = true;

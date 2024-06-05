@@ -32,5 +32,5 @@ position = Vector2(-17, -17.6667)
 position = Vector2(17, 17.6667)
 shape = SubResource("CircleShape2D_xtbu8")
 
-[connection signal="mouse_entered" from="object" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="object" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="object" to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="object" to="." method="OnMouseExited"]

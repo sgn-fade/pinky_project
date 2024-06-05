@@ -8,7 +8,6 @@ namespace projectpinky.scripts.ui;
 public partial class GameUi : Control
 {
     [Export]
-    private NodePath orbLabelPath;
     private Label orbLabel;
     private EventBus eventBus;
     private PlayerBars playerBars;
