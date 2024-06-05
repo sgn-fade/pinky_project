@@ -12,8 +12,8 @@ public partial class Sword : MeleeWeapon
     public override void _Ready()
     {
         base._Ready();
-        Texture icon = (Texture)GD.Load("res://sprites/weapons/melee/goblin_sword_inventory.png");
-        InvItem = new InventoryItem("weapon", icon);
+        Texture2D icon = GD.Load<Texture2D>("res://sprites/weapons/melee/goblin_sword_inventory.png");
+        InvItem = new InventoryItem(this, "weapon", icon);
         Damage = 4;
         ComboCount = 2;
         Type = "melee";
@@ -21,10 +21,5 @@ public partial class Sword : MeleeWeapon
     public Texture GetWeaponSpritePath()
     {
         return weaponSpritePath;
-    }
-
-    public int GetCritChance()
-    {
-        return critChance;
     }
 }

@@ -13,11 +13,8 @@ public partial class Weapon : Node
     private readonly Dictionary<string, string> buttonsBinds = Options.ButtonsBinds;
     public string Type { get; set; } = "none";
     public int Damage { get; set; }
-    private PackedScene inventoryItemScene = GD.Load<PackedScene>("res://scripts/drops/inventory_item.gd");
     private double critChance = 10d;
-    
-    public string GetWeaponType() => type;
-    public int GetDamage() => damage;
+
     public double GetCritChance() => critChance;
     
     public InventoryItem InvItem { get; set; }

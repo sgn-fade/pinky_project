@@ -33,12 +33,12 @@ public partial class Fireball : Node2D
 
     private void OnArea2DBodyEntered(Node body)
     {
-        var damage = Global.Player.GetWeapon().GetDamage();
+        var damage = Global.Player.GetWeapon().Damage;
         if (GD.Randf() * 100 < Global.Player.GetWeapon().GetCritChance())
         {
             damage *= 2;
         }
-
+        //todo event bus
         Global.EventBus.EmitSignal("damage_to_enemy", body, damage);
     }
 }

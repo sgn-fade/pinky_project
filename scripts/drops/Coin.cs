@@ -3,7 +3,7 @@ using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.drops;
 
-public class Coin : CharacterBody2D
+public partial class Coin : CharacterBody2D
 {
     private Vector2 direction = Vector2.Zero;
     private CollisionShape2D collision;

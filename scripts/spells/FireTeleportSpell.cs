@@ -20,9 +20,9 @@ public class FireTeleportSpell : Spell
     public FireTeleportSpell()
     {
         Rarity = "bronze";
-        var spellIcon = GD.Load<Texture>("res://sprites/spell_icons/fire_teleport_icon.png");
-        var backgroundTexture = GD.Load<Texture>($"res://sprites/ui/{Rarity}_module_button_state.png");
-        InvItem = new InventoryItem("spell", spellIcon, backgroundTexture);
+        var spellIcon = GD.Load<Texture2D>("res://sprites/spell_icons/fire_teleport_icon.png");
+        var backgroundTexture = GD.Load<Texture2D>($"res://sprites/ui/{Rarity}_module_button_state.png");
+        InvItem = new InventoryItem(this, "spell", spellIcon, backgroundTexture);
         AnimationName = null;
         CooldownTime = 8;
         TimeSpend = 8;
