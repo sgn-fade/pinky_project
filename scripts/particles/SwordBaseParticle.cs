@@ -2,7 +2,7 @@ using Godot;
 using System.Threading.Tasks;
 using projectpinky.scripts.Globals;
 
-public partial class Fireball : Node2D
+public partial class SwordBaseParticle : Node2D
 {
     [Export] public NodePath AnimationPath;
     [Export] public NodePath SpritePath;

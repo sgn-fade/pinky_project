@@ -4,7 +4,7 @@ using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.particles;
 
-public partial class Fireball : CharacterBody2D
+public partial class FireSpearParticle : CharacterBody2D
 {
     [Export] public int Speed = 300;
 
