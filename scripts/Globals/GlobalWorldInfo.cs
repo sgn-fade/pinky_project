@@ -12,6 +12,7 @@ public partial class GlobalWorldInfo : Node
 
     public override void _Ready()
     {
+        GD.Print("ready");
         world = GetNode("/root/World");
         playerCameraScene = (PackedScene)ResourceLoader.Load("res://scenes/ui/camera_movement.tscn");
         cameraScene = playerCameraScene.Instantiate();

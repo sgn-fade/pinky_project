@@ -24,6 +24,7 @@ EventBus="*res://scripts/Globals/EventBus.cs"
 PlayerData="*res://scripts/Globals/PlayerData.cs"
 GlobalWorldInfo="*res://scripts/Globals/GlobalWorldInfo.cs"
 Options="*res://scripts/Globals/Options.cs"
+Global="*res://scripts/Globals/Global.cs"
 
 [debug]
 

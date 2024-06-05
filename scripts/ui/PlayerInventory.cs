@@ -1,29 +1,31 @@
 using Godot;
+using projectpinky.scripts.ui.inventory;
 
 namespace projectpinky.scripts.ui;
 
-public partial class PlayerInventory : Node
+public partial class PlayerInventory : Control
 {
+    //todo update paths
     private PackedScene spellSlotButtonScene = GD.Load<PackedScene>("res://scenes/ui/spell_slot_button.tscn");
     private PackedScene weaponCardScene = GD.Load<PackedScene>("res://scenes/ui/weapon_card.tscn");
     private PackedScene emptyCell = GD.Load<PackedScene>("res://scenes/ui/inventory/module_cell.tscn");
     private PackedScene inventoryObject = GD.Load<PackedScene>("res://scenes/ui/inventory/inventory_slot_object.tscn");
     private PackedScene inventoryCell = GD.Load<PackedScene>("res://scenes/ui/inventory/inventory_cell.tscn");
-
-    private Node cells;
-
-    [Export] private PackedScene fireballSpell = GD.Load<PackedScene>("res://scripts/spells/fireball_spell.gd");
-    [Export] private PackedScene firePillarSpell = GD.Load<PackedScene>("res://scripts/spells/fire_pillar_spell.gd");
-    [Export] private PackedScene fireTeleportSpell = GD.Load<PackedScene>("res://scripts/spells/fire_teleport_spell.gd");
-    [Export] private PackedScene fireEyeSpell = GD.Load<PackedScene>("res://scripts/spells/fire_eye_spell.gd");
-    [Export] private PackedScene fireSpearSpell = GD.Load<PackedScene>("res://scripts/spells/fire_spear_spell.gd");
-    [Export] private PackedScene smite = GD.Load<PackedScene>("res://scripts/spells/melee_spells/smite.gd");
+    //
+    // private Node cells;
+    //
+    // [Export] private PackedScene fireballSpell = GD.Load<PackedScene>("res://scripts/spells/fireball_spell.gd");
+    // [Export] private PackedScene firePillarSpell = GD.Load<PackedScene>("res://scripts/spells/fire_pillar_spell.gd");
+    // [Export] private PackedScene fireTeleportSpell = GD.Load<PackedScene>("res://scripts/spells/fire_teleport_spell.gd");
+    // [Export] private PackedScene fireEyeSpell = GD.Load<PackedScene>("res://scripts/spells/fire_eye_spell.gd");
+    // [Export] private PackedScene fireSpearSpell = GD.Load<PackedScene>("res://scripts/spells/fire_spear_spell.gd");
+    // [Export] private PackedScene smite = GD.Load<PackedScene>("res://scripts/spells/melee_spells/smite.gd");
 
     public override void _Ready()
     {
         CreateInventoryCells();
-        var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
-        var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
+        //var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
+        //var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
 
     }
 
@@ -33,8 +35,8 @@ public partial class PlayerInventory : Node
         {
             for (float x = 1042.5f; x < 1900; x += 132)
             {
-                var cell = inventoryCell.Instantiate<Node2D>();
-                GetNode<Node>($"/root/Main/$item_grid/cells").AddChild(cell);
+                var cell = inventoryCell.Instantiate<InventoryCell>();
+                GetNode<Control>($"item_grid/cells").AddChild(cell);
                 cell.GlobalPosition = new Vector2(x, y);
             }
         }

@@ -61,7 +61,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="crosshair" type="CharacterBody2D" parent="."]
-visible = false
 z_index = 1000
 z_as_relative = false
 scale = Vector2(4, 4)

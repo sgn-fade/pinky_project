@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://btdrg2ytefew2"]
 
-[ext_resource type="Script" path="res://scripts/ui/inventory/inventory_slot_object.gd" id="1_70hnn"]
+[ext_resource type="Script" path="res://scripts/ui/inventory/InventoryCellObject.cs" id="1_reler"]
 [ext_resource type="Texture2D" uid="uid://b72qjfrkdfgr5" path="res://sprites/spell_icons/fire_spear_spell_icon.png" id="2_ogd46"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xtbu8"]
@@ -9,7 +9,7 @@ radius = 14.8511
 [node name="inventory_slot_object" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(3, 3)
-script = ExtResource("1_70hnn")
+script = ExtResource("1_reler")
 
 [node name="background" type="TextureRect" parent="."]
 offset_left = -17.0

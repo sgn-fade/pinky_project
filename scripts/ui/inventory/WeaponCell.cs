@@ -6,9 +6,8 @@ namespace projectpinky.scripts.ui.inventory;
 
 public partial class WeaponCell : InventoryCell
 {
-    // Сигналы
     [Signal]
-    public delegate void ButtonPressed();
+    public delegate void ButtonPressedEventHandler();
 
 
     public override void _Ready()
@@ -20,7 +19,7 @@ public partial class WeaponCell : InventoryCell
     {
         if (newObject.DataType == "weapon")
         {
-            @object = newObject;
+            Object = newObject;
             Empty = false;
             //todo event bus
             //EventBus.EmitSignal("switch_hands_stance", newObject.Data);
@@ -41,7 +40,7 @@ public partial class WeaponCell : InventoryCell
     public new void Clear()
     {
         Empty = true;
-        @object = null;
+        Object = null;
         //todo event bus
         //EventBus.EmitSignal("switch_hands_stance", null);
         Global.Player.SetWeapon(null);

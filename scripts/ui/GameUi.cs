@@ -25,8 +25,7 @@ public partial class GameUi : Control
 
     public override void _Ready()
     {
-        orbLabel = GetNode<Label>(orbLabelPath);
-        eventBus = GetNode<EventBus>("/root/EventBus");
+        eventBus = Global.EventBus;
         playerBars = GetNode<PlayerBars>("player_bars");
 
         // EventBus.Connect("set_spell_icon_to_game", this, nameof(OnSetSpellIconToGame));

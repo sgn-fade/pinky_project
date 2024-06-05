@@ -11,9 +11,10 @@ public partial class Global : Node
 
     public override void _Ready()
     {
+        GlobalWorldInfo = GetNode<GlobalWorldInfo>("/root/GlobalWorldInfo");
         Player = GetNode<PlayerData>("/root/PlayerData");
         EventBus = GetNode<EventBus>("/root/EventBus");
         Options = GetNode<Options>("/root/Options");
-        GlobalWorldInfo = GetNode<GlobalWorldInfo>("/root/GlobalWorldInfo");
+
     }
 }

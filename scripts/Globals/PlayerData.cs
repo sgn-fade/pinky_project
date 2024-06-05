@@ -17,7 +17,8 @@ public partial class PlayerData : Node2D
     private int magicDamage = 1;
 
     [Export] private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
-    [Export] private PackedScene book = (PackedScene)ResourceLoader.Load("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd");
+    //todo update path
+    //[Export] private PackedScene book = (PackedScene)ResourceLoader.Load("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd");
 
     private UiCore ui;
     private Player player;
@@ -27,7 +28,7 @@ public partial class PlayerData : Node2D
     public override void _Ready()
     {
         ui = GetNode<UiCore>("/root/World/Ui");
-        SetWeapon(book.Instantiate<Weapon>());
+        //SetWeapon(book.Instantiate<Weapon>());
     }
 
     public void SetState(Player.States state)
@@ -150,7 +151,7 @@ public partial class PlayerData : Node2D
     public void Spawn()
     {
         player = playerScene.Instantiate<Player>();
-        //GlobalWorldInfo.GetWorld().AddChild(player);
+        Global.GlobalWorldInfo.GetWorld().AddChild(player);
     }
 
     public void SetSmite(bool state)

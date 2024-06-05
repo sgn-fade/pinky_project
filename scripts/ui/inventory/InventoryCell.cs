@@ -6,7 +6,7 @@ public partial class InventoryCell : Node2D
 {
     // Переменные
     public bool Empty { get; set; } = true;
-    public InventoryCellObject @object;
+    public InventoryCellObject Object;
     public string SlotType { get; set; }= "inventory";
 
     public bool IsEmpty() => Empty;
@@ -27,10 +27,10 @@ public partial class InventoryCell : Node2D
 
     public void SwapObjects(InventoryCell prevCell, InventoryCellObject newObject)
     {
-        if (@object != null)
+        if (Object != null)
         {
-            @object.SetCell(prevCell);
-            prevCell.SetObject(@object);
+            Object.SetCell(prevCell);
+            prevCell.SetObject(Object);
             SetObject(newObject);
             return;
         }
@@ -40,14 +40,14 @@ public partial class InventoryCell : Node2D
 
     public void SetObject(InventoryCellObject newObject)
     {
-        @object = newObject;
+        Object = newObject;
         Empty = false;
     }
 
     public void Clear()
     {
         Empty = true;
-        @object = null;
+        Object = null;
     }
 
     public void _OnCellAreaExited(Area2D area)

@@ -13,12 +13,13 @@ public partial class World : Node2D
 	private PlayerData player = Global.Player;
 	public override void _Ready()
 	{
+		player = Global.Player;
 		// Vector2 screenSize = new Vector2(1000, 600);
 		Vector2I screenSize = DisplayServer.ScreenGetSize();
 		var window = GetViewport().GetWindow();
 		window.Size = screenSize;
 		player.Spawn();
-
+		GoToHub();
 		// EventBus.Connect("generate_dungeon", new Callable(this, "GenerateDungeon"));
 		// EventBus.Connect("load_game", new Callable(this, "LoadGame"));
 		// EventBus.Connect("go_to_hub", new Callable(this, "GoToHub"));
