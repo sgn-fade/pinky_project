@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://csjtnwd75pjh7"]
+[gd_scene load_steps=22 format=3 uid="uid://csjtnwd75pjh7"]
 
 [ext_resource type="Texture2D" uid="uid://cpo7mhc6a0ckb" path="res://sprites/locations/hub_zone/map_core.png" id="2_2dc5w"]
-[ext_resource type="Script" path="res://scripts/map_env/map_terminal.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://cuf02u81468a7" path="res://sprites/locations/hub_zone/black_hole_part_2.png" id="3_6gpws"]
 [ext_resource type="Texture2D" uid="uid://vdwgipaa6nfs" path="res://sprites/locations/hub_zone/black_hole_part_1.png" id="4_3t1k1"]
 
@@ -105,7 +104,6 @@ radius = 41.0
 height = 258.0
 
 [node name="map_terminal" type="StaticBody2D"]
-script = ExtResource("3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0.100006, -3)

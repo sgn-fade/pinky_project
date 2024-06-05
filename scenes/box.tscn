@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://6sqbflx5bc1g"]
 
-[ext_resource type="Script" path="res://scripts/box.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/map_env/Box.cs" id="1_w2hou"]
 [ext_resource type="Texture2D" uid="uid://b66knep0wpb7k" path="res://sprites/box.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="4"]
@@ -73,7 +73,7 @@ size = Vector2(20, 6)
 z_as_relative = false
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1")
+script = ExtResource("1_w2hou")
 
 [node name="shadow_under" type="Sprite2D" parent="."]
 position = Vector2(-0.1, 7)
@@ -100,3 +100,5 @@ animation = &"opening"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("16")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]

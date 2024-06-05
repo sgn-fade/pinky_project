@@ -9,14 +9,15 @@ namespace projectpinky.scripts.locations;
 public partial class Dungeon : Node2D
 {
     private PackedScene light = GD.Load<PackedScene>("res://scenes/Lights.tscn");
-    private PackedScene goblin = GD.Load<PackedScene>("res://scenes/enemies/goblins/goblin_melee.tscn");
-    private PackedScene goblinMage = GD.Load<PackedScene>("res://scenes/enemies/goblins/goblin_mage.tscn");
-    private PackedScene skeleton = GD.Load<PackedScene>("res://scenes/enemies/undeads/skeleton.tscn");
+    // private PackedScene goblin = GD.Load<PackedScene>("res://scenes/enemies/goblins/goblin_melee.tscn");
+    // private PackedScene goblinMage = GD.Load<PackedScene>("res://scenes/enemies/goblins/goblin_mage.tscn");
+    // private PackedScene skeleton = GD.Load<PackedScene>("res://scenes/enemies/undeads/skeleton.tscn");
+    //private PackedScene fireElemental = GD.Load<PackedScene>("res://scenes/enemies/elementals/fire_elemental.tscn");
+
     private PackedScene box = GD.Load<PackedScene>("res://scenes/box.tscn");
     private PackedScene altar = GD.Load<PackedScene>("res://scenes/altar.tscn");
     private PackedScene grass = GD.Load<PackedScene>("res://scenes/grass.tscn");
     private PackedScene modulesDrop = GD.Load<PackedScene>("res://scenes/modules_drop.tscn");
-    private PackedScene fireElemental = GD.Load<PackedScene>("res://scenes/enemies/elementals/fire_elemental.tscn");
     private PackedScene portal = GD.Load<PackedScene>("res://scenes/world_env/portal.tscn");
     private PackedScene fogParticles = GD.Load<PackedScene>("res://scenes/particles/fog.tscn");
 

@@ -4,16 +4,18 @@ namespace projectpinky.scripts.drops;
 
 public class InventoryItem
 {
-    private string dataType;
-    private Texture icon;
-    private Texture background;
+    public string DataType { get; set; }
+    public object Data { get; set; }
+    public Texture2D Icon { get; set; }
+    public Texture2D Background { get; set; }
     private bool isStackable = false;
     private object value = null;
 
-    public InventoryItem(string newDataType, Texture newIcon, Texture newBackground)
+    public InventoryItem(object data, string newDataType, Texture2D newIcon, Texture2D newBackground = null)
     {
-        dataType = newDataType;
-        icon = newIcon;
-        background = newBackground;
+        Data = data;
+        DataType = newDataType;
+        Icon = newIcon;
+        Background = newBackground;
     }
 }

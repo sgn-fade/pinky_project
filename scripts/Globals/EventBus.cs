@@ -36,9 +36,6 @@ namespace projectpinky.scripts.Globals
         public delegate void SpellAnimationEndedEventHandler();
 
         [Signal]
-        public delegate void DashCooldownEventHandler();
-
-        [Signal]
         public delegate void PlayerTeleportEventHandler(Vector2 position);
 
         [Signal]
@@ -70,13 +67,6 @@ namespace projectpinky.scripts.Globals
 
         [Signal]
         public delegate void StartSpellCooldownEventHandler(float time, string button);
-
-        [Signal]
-        public delegate void DamageToEnemyEventHandler(Node2D body, int damage, string status);
-
-
-        [Signal]
-        public delegate void GenerateDungeonEventHandler();
 
     }
 }

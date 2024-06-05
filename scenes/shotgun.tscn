@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://dltfuc1qq5unu"]
 
-[ext_resource type="Script" path="res://scripts/shotgun.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/weapons/shotgun.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdctkl6avqvp5" path="res://sprites/shotgun_shoot_animation.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://d4c5i3dd4ms8m" path="res://sprites/reload_shotgun.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://bnpe3fbww0qxn" path="res://sprites/shogunt_butt_hit.png" id="4"]

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using projectpinky.scripts.ui;
 
 namespace projectpinky.scripts.Globals;
 
@@ -13,9 +14,11 @@ public partial class GlobalWorldInfo : Node
     public override void _Ready()
     {
         world = GetNode("/root/World");
+        var ui = GetNode<UiCore>("/root/World/Ui");
         playerCameraScene = (PackedScene)ResourceLoader.Load("res://scenes/ui/camera_movement.tscn");
         cameraScene = playerCameraScene.Instantiate();
         world.AddChild(cameraScene);
+
     }
 
     // public void FocusCamera()

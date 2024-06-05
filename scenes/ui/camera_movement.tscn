@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bymc8p7oa50x2"]
 
-[ext_resource type="Script" path="res://scripts/cam.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/player/Camera.cs" id="1_65mfu"]
 
 [node name="camera_movement" type="CharacterBody2D"]
-script = ExtResource("1")
+script = ExtResource("1_65mfu")
 
 [node name="cam" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
