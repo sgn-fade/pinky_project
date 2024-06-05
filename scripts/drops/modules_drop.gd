@@ -3,23 +3,6 @@ extends Area2D
 @onready var body = $body
 var module = null
 var module_list = []
-@onready var fireball_spell = load("res://scripts/spells/fireball_spell.gd")
-@onready var fire_pillar_spell = load("res://scripts/spells/fire_pillar_spell.gd")
-@onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
-@onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
-@onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
-
-func _ready():
-	EventBus.connect("go_to_hub", Callable(self, "go_to_hub"))
-	module_list.append(fire_eye_spell)
-	module_list.append(fire_pillar_spell)
-	module_list.append(fire_teleport_spell)
-	module_list.append(fire_spear_spell)
-	module_list.append(fireball_spell)
-	module = module_list[randi() % 5].new()
-
-func go_to_hub():
-	queue_free()
 
 
 func _process(delta):

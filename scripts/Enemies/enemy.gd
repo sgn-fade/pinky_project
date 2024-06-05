@@ -98,7 +98,7 @@ func _on_damage_to_enemy(body, damage, status):
 	if self == body && body.hp >= 1:
 		if status == "burn":
 			self.fire_damage(body)
-		EventBus.emit_signal("show_damage_value", damage_label_instance, damage)
+		damage_label_instance.ShowValue(damage)
 		set_velocity(-direction.normalized() * speed)
 		move_and_slide()
 		body.hp -= damage

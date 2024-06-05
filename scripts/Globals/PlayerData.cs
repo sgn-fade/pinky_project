@@ -86,11 +86,7 @@ public partial class PlayerData : Node2D
 
     public Vector2 GetPosition()
     {
-        if (player == null)
-        {
-            return Vector2.Zero;
-        }
-        return player.GlobalPosition;
+        return player?.GlobalPosition ?? Vector2.Zero;
     }
 
     public void SetPosition(Vector2 position)
