@@ -10,7 +10,6 @@ namespace projectpinky.scripts.ui;
 
 public partial class PlayerInventory : Control
 {
-    //todo update paths
     private PackedScene spellSlotButtonScene = GD.Load<PackedScene>("res://scenes/ui/spell_slot_button.tscn");
     private PackedScene weaponCardScene = GD.Load<PackedScene>("res://scenes/ui/weapon_card.tscn");
     private PackedScene emptyCell = GD.Load<PackedScene>("res://scenes/ui/inventory/module_cell.tscn");

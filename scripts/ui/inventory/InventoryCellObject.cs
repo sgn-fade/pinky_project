@@ -77,12 +77,12 @@ public partial class InventoryCellObject : CharacterBody2D
         targetCell = cell;
     }
 
-    public void OnMouseEntered()
+    private void OnMouseEntered()
     {
         mouseInArea = true;
     }
 
-    public void OnMouseExited()
+    private void OnMouseExited()
     {
         mouseInArea = false;
     }

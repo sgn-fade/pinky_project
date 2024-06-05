@@ -45,7 +45,6 @@ script = ExtResource("1_uq54f")
 
 [node name="inventory_ui" parent="." instance=ExtResource("4")]
 visible = false
-tooltip_text = ""
 mouse_filter = 2
 
 [node name="load_ui" parent="." instance=ExtResource("5")]

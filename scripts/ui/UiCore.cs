@@ -25,11 +25,9 @@ public partial class UiCore : CanvasLayer
 		loadBar = loadUi.GetNode<TextureProgressBar>("TextureProgressBar");
 		pauseUi = GetNode<Control>("pause_ui");
 		crosshair = GetNode<Crosshair>("crosshair");
-		//todo event bus
-		//eventBus.Connect("load_game", new Callable(this, nameof(LoadAnimation)));
 		currentUi = gameUi;
 
-		SwitchUi(gameUi, "game");
+		//SwitchUi(gameUi, "game");
 	}
 
 	public async void LoadAnimation()
