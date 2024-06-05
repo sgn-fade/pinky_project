@@ -14,8 +14,13 @@ public partial class Weapon : Node
     public string Type { get; set; } = "none";
     public int Damage { get; set; }
     private PackedScene inventoryItemScene = GD.Load<PackedScene>("res://scripts/drops/inventory_item.gd");
+    private double critChance = 10d;
+    
+    public string GetWeaponType() => type;
+    public int GetDamage() => damage;
+    public double GetCritChance() => critChance;
+    
     public InventoryItem InvItem { get; set; }
-
 
     private Dictionary<string, Spell> spellsButtons;
 
@@ -158,8 +163,6 @@ public partial class Weapon : Node
 
         public string GetButton() => button;
         public Vector2 GetPosition() => position;
-
-
         public Spell GetModule() => module;
 
         public void SetButton(string newButton)
