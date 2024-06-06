@@ -1,9 +1,10 @@
 [gd_scene load_steps=44 format=3 uid="uid://cmpmlarf3e1l2"]
 
 [ext_resource type="Texture2D" uid="uid://dxqsay0yrpu3w" path="res://sprites/c_shotgun_shoot.png" id="1"]
-[ext_resource type="Script" path="res://scripts/particles/ContinuumShotgun.cs" id="2"]
+[ext_resource type="Script" path="res://scripts/hands/ContinuumShotgun.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://xq3cfvs2p0v2" path="res://sprites/continuum_shotgun_shoot_1_stage.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dwnvhsqjakhig" path="res://sprites/c_shotgun_overcharged.png" id="4"]
+
 
 
 

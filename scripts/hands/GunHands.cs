@@ -3,7 +3,7 @@ using Godot;
 
 namespace projectpinky.scripts.hands;
 
-public partial class CustomStaticBody2D : Hands
+public partial class GunHands : Hands
 {
     private Node world;
     private AnimatedSprite2D sprite;

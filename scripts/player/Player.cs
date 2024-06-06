@@ -201,7 +201,7 @@ public partial class Player : CharacterBody2D
     }
 
 
-    private async void CharacterSlowdown()
+    public async void CharacterSlowdown()
     {
         speed = 0;
         while (speed < 20)
