@@ -1,132 +1,74 @@
 using System.Threading.Tasks;
 using Godot;
+using Godot.Collections;
 using projectpinky.scripts.Globals;
 using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.hands;
 
-
 public partial class ShotgunHands : GunHands
 {
-    private int ammo = 4;
+    [Export] private int ammo = 4;
+    [Export] private double shootCooldown = 0.5;
+
     private PackedScene bullet = (PackedScene)ResourceLoader.Load("res://scenes/shotgun_bullet.tscn");
 
-    private enum DefaultStates
-    {
-        Idle,
-        Shoot,
-        Reload
-    }
 
-    private DefaultStates currentState = DefaultStates.Idle;
-    private double shootCooldown;
-    private float preparationAnimationTime = 1.54f;
-    private AnimatedSprite2D sprite;
-    private Timer timer;
-    private Node2D pos;
-    private CpuParticles2D particles;
-    private CpuParticles2D sleeveParticle;
+    private AnimationPlayer animationPlayer;
+    private AnimationTree animationTree;
+    private AnimationNodeStateMachinePlayback stateMachine;
     private Node world;
 
+    private Label label;
     public override void _Ready()
     {
-        sprite = GetNode<AnimatedSprite2D>("sprite");
-        timer = GetNode<Timer>("timer");
-        pos = GetNode<Node2D>("pos");
-        particles = GetNode<CpuParticles2D>("pos/particles");
-        sleeveParticle = GetNode<CpuParticles2D>("sleeve_particle");
+        label = GetNode<Label>("Label");
+        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        animationTree = GetNode<AnimationTree>("AnimationTree");
+        stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
         world = GetNode<Node>("..");
-
-        PreparationAsync().ConfigureAwait(false);
     }
 
     public override void _Process(double delta)
     {
         shootCooldown -= delta;
-
-        switch (currentState)
-        {
-            case DefaultStates.Idle:
-                Rotating();
-                ShootAsync().ConfigureAwait(false);
-                ReloadAsync().ConfigureAwait(false);
-                break;
-            case DefaultStates.Shoot:
-                Rotating();
-                ShootAsync().ConfigureAwait(false);
-                break;
-            case DefaultStates.Reload:
-                ReloadAsync().ConfigureAwait(false);
-                ShootAsync().ConfigureAwait(false);
-                break;
-        }
-
-        GlobalPosition = Global.Player.GetBody().Position;
     }
 
-    private async Task PreparationAsync()
+    public override void _Input(InputEvent @event)
     {
-        sprite.Play("prep");
-        timer.Start(preparationAnimationTime);
-        await ToSignal(timer, "timeout");
-        SetIdleState();
+        GD.Print(animationTree.Get("parameters/playback/IsShoted"));
+        animationTree.Set("parameters/conditions/IsShoted", Input.IsActionJustPressed("mouse_left_button"));
+        animationTree.Set("parameters/conditions/IsReload", Input.IsActionJustPressed("R"));
     }
 
-    private async Task ShootAsync()
+    public void Shoot()
     {
-        if (ammo > 0 && currentState != DefaultStates.Shoot && Input.IsActionPressed("mouse_left_button") && shootCooldown <= 0)
+        if (ammo > 0 && shootCooldown <= 0)
         {
-            currentState = DefaultStates.Shoot;
-            Global.Player.GetBody().CharacterSlowdown();
+            //Global.Player.GetBody().CharacterSlowdown();
             ammo -= 1;
-            sprite.Play("shoot");
-            timer.Start(0.27f);
-            await ToSignal(timer, "timeout");
-            particles.Emitting = true;
-            sleeveParticle.Emitting = true;
-
-            for (int i = 0; i < 6; i++)
-            {
-                var bulletsInstance = bullet.Instantiate<Node2D>();
-                world.AddChild(bulletsInstance);
-            }
-
-            timer.Start(0.27f);
-            await ToSignal(timer, "timeout");
-            SetIdleState();
-            shootCooldown = 0.5f;
+            SpawnBullets();
         }
     }
 
-    private async Task ReloadAsync()
+    private void SpawnBullets()
     {
-        if ((Input.IsActionJustPressed("reload") || ammo == 0) && currentState != DefaultStates.Reload && currentState != DefaultStates.Shoot)
+        for (int i = 0; i < 6; i++)
         {
-            currentState = DefaultStates.Reload;
-
-            while (ammo < 6 && Global.Player.GetHp() > 0 && currentState == DefaultStates.Reload)
-            {
-                sprite.Play("reload");
-                timer.Start(0.4f);
-                await ToSignal(timer, "timeout");
-
-                if (currentState != DefaultStates.Reload)
-                    return;
-
-                ammo += 1;
-            }
-
-            SetIdleState();
+            var bulletsInstance = bullet.Instantiate<Node2D>();
+            world.AddChild(bulletsInstance);
         }
     }
 
-    private void Rotating()
+    public void Reload()
     {
-        // Rotating logic here
+        GD.Print("reload");
+        if (++ammo >= 6) animationTree.Set("parameters/conditions/EndReload", true);
+        else animationTree.Set("parameters/conditions/IsReload", false);
     }
 
-    private void SetIdleState()
+    public void Cooldown()
     {
-        currentState = DefaultStates.Idle;
+        shootCooldown = 0.5;
     }
 }
