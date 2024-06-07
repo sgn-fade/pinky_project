@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bfjn2hayt1tat"
+path="res://.godot/imported/sword hit.aseprite-fa6cf7eb590b4dae2720c258265a7cd4.res"
+
+[deps]
+
+source_file="res://sprites/spell_icons/sword hit.aseprite"
+dest_files=["res://.godot/imported/sword hit.aseprite-fa6cf7eb590b4dae2720c258265a7cd4.res"]
+
+[params]
+

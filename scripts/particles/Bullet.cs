@@ -13,18 +13,18 @@ public partial class Bullet : CharacterBody2D
 
     public override void _Ready()
     {
-        mousePos = Position;
+        Position = Global.Player.GetPosition();
+        mousePos = GetGlobalMousePosition();
+        LookAt(GetGlobalMousePosition());
         characterPos = Position;
     }
 
     public override void _Process(double delta)
     {
-        Vector2 velocity = (mousePos - characterPos).Normalized() * speed;
         if ((GlobalPosition - characterPos).Length() < maxDistance)
         {
-            Velocity = velocity;
+            Velocity = (mousePos - characterPos).Normalized() * speed;
             MoveAndSlide();
-            Velocity = velocity;
         }
         else
         {

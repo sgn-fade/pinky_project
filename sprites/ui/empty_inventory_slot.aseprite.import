@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b7fbpy7xam2r"
+path="res://.godot/imported/empty_inventory_slot.aseprite-f28e95c2c170674c392986521b6b9218.res"
+
+[deps]
+
+source_file="res://sprites/ui/empty_inventory_slot.aseprite"
+dest_files=["res://.godot/imported/empty_inventory_slot.aseprite-f28e95c2c170674c392986521b6b9218.res"]
+
+[params]
+

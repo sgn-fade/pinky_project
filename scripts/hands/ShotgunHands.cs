@@ -26,17 +26,16 @@ public partial class ShotgunHands : GunHands
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         animationTree = GetNode<AnimationTree>("AnimationTree");
         stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-        world = GetNode<Node>("..");
     }
 
     public override void _Process(double delta)
     {
+        LookAt(GetGlobalMousePosition());
         shootCooldown -= delta;
     }
 
     public override void _Input(InputEvent @event)
     {
-        GD.Print(animationTree.Get("parameters/playback/IsShoted"));
         animationTree.Set("parameters/conditions/IsShoted", Input.IsActionJustPressed("mouse_left_button"));
         animationTree.Set("parameters/conditions/IsReload", Input.IsActionJustPressed("R"));
     }
@@ -56,14 +55,16 @@ public partial class ShotgunHands : GunHands
         for (int i = 0; i < 6; i++)
         {
             var bulletsInstance = bullet.Instantiate<Node2D>();
-            world.AddChild(bulletsInstance);
+            Global.GlobalWorldInfo.GetWorld().AddChild(bulletsInstance);
         }
     }
 
     public void Reload()
     {
-        GD.Print("reload");
-        if (++ammo >= 6) animationTree.Set("parameters/conditions/EndReload", true);
+        if (++ammo >= 6)
+        {
+            ((AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback")).Travel("idle");
+        }
         else animationTree.Set("parameters/conditions/IsReload", false);
     }
 

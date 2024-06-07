@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c8p4yxwg0a7ej"
+path="res://.godot/imported/character_fire_teleport_start.aseprite-3b28a6f76801ef23e773437e216df1bc.res"
+
+[deps]
+
+source_file="res://sprites/character_fire_teleport_start.aseprite"
+dest_files=["res://.godot/imported/character_fire_teleport_start.aseprite-3b28a6f76801ef23e773437e216df1bc.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dt3xrrrj475mv"
+path="res://.godot/imported/fire_spells_icons.aseprite-bd5f844726ea53f42a591a5f439bbfd7.res"
+
+[deps]
+
+source_file="res://sprites/spell_icons/fire_spells_icons.aseprite"
+dest_files=["res://.godot/imported/fire_spells_icons.aseprite-bd5f844726ea53f42a591a5f439bbfd7.res"]
+
+[params]
+

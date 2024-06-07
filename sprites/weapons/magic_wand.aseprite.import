@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c31j6tt3exd72"
+path="res://.godot/imported/magic_wand.aseprite-e15f9ebbe88cca499bf1c2a80495ff9c.res"
+
+[deps]
+
+source_file="res://sprites/weapons/magic_wand.aseprite"
+dest_files=["res://.godot/imported/magic_wand.aseprite-e15f9ebbe88cca499bf1c2a80495ff9c.res"]
+
+[params]
+

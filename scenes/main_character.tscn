@@ -591,4 +591,4 @@ offset_bottom = -18.0
 theme_override_fonts/font = ExtResource("14_exr6n")
 
 [node name="shotgun" parent="." instance=ExtResource("14_cherd")]
-position = Vector2(-1, -5)
+position = Vector2(0, -6)
