@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://cn3l0nkgbs6me"]
 
-[ext_resource type="Script" path="res://scripts/particles/fire_pillar.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/particles/FirePillar.cs" id="1"]
 [ext_resource type="Texture2D" uid="uid://bq7ki2gml8q2s" path="res://sprites/fire_pillon.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://dcjcwkamww17v" path="res://sounds/spell_sounds/firepillar_cast_sound.wav" id="4"]
@@ -178,10 +178,13 @@ animations = [{
 radius = 22.0
 height = 44.0
 
-[node name="fire_pillar" type="CharacterBody2D"]
+[node name="fire_pillar" type="CharacterBody2D" node_paths=PackedStringArray("_sprite", "_startParticles1", "_startParticles2")]
 collision_layer = 12
 collision_mask = 12
 script = ExtResource("1")
+_sprite = NodePath("S")
+_startParticles1 = NodePath("start_particles1")
+_startParticles2 = NodePath("start_particles2")
 
 [node name="start_particles3" type="CPUParticles2D" parent="."]
 modulate = Color(1, 1, 1, 0.356863)

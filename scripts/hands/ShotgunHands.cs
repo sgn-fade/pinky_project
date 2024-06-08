@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.particles;
 using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.hands;
@@ -10,33 +11,30 @@ public partial class ShotgunHands : GunHands
 {
     [Export] private int ammo = 4;
     [Export] private double shootCooldown = 0.5;
+    [Export] private Marker2D barrelPosition;
+    [Export] private AnimationPlayer animationPlayer;
+    [Export] private AnimationTree animationTree;
+    [Export] private Node2D body;
 
     private PackedScene bullet = (PackedScene)ResourceLoader.Load("res://scenes/shotgun_bullet.tscn");
 
-
-    private AnimationPlayer animationPlayer;
-    private AnimationTree animationTree;
     private AnimationNodeStateMachinePlayback stateMachine;
-    private Node world;
 
-    private Label label;
     public override void _Ready()
     {
-        label = GetNode<Label>("Label");
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        animationTree = GetNode<AnimationTree>("AnimationTree");
+        GD.Randomize();
         stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
     }
 
     public override void _Process(double delta)
     {
-        LookAt(GetGlobalMousePosition());
+        body.LookAt(GetGlobalMousePosition());
         shootCooldown -= delta;
     }
 
     public override void _Input(InputEvent @event)
     {
-        animationTree.Set("parameters/conditions/IsShoted", Input.IsActionJustPressed("mouse_left_button"));
+        animationTree.Set("parameters/conditions/IsShoted", Input.IsActionPressed("mouse_left_button"));
         animationTree.Set("parameters/conditions/IsReload", Input.IsActionJustPressed("R"));
     }
 
@@ -44,9 +42,13 @@ public partial class ShotgunHands : GunHands
     {
         if (ammo > 0 && shootCooldown <= 0)
         {
-            //Global.Player.GetBody().CharacterSlowdown();
+            Global.Player.GetBody().CharacterSlowdown();
             ammo -= 1;
             SpawnBullets();
+            if (ammo == 0)
+            {
+                stateMachine.Travel("reload");
+            }
         }
     }
 
@@ -54,8 +56,13 @@ public partial class ShotgunHands : GunHands
     {
         for (int i = 0; i < 6; i++)
         {
-            var bulletsInstance = bullet.Instantiate<Node2D>();
-            Global.GlobalWorldInfo.GetWorld().AddChild(bulletsInstance);
+            var bulletInstance = bullet.Instantiate<Bullet>();
+
+            var targetPosition = (GetGlobalMousePosition() - barrelPosition.GlobalPosition).Rotated((float)GD.RandRange(-0.15, 0.15));
+            bulletInstance.Init(barrelPosition.GlobalPosition,
+                targetPosition);
+
+            Global.GlobalWorldInfo.GetWorld().AddChild(bulletInstance);
         }
     }
 

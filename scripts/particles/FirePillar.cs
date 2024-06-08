@@ -8,38 +8,19 @@ public partial class FirePillar : CharacterBody2D
     private Timer _lightTimer = new Timer();
     private Timer _particlesTimer = new Timer();
 
-    [Export] public NodePath DamageAreaPath;
-    [Export] public NodePath PullsTgAreaPath;
-    [Export] public NodePath LightPath;
-    [Export] public NodePath FloorLightPath;
-    [Export] public NodePath SoundPath;
-    [Export] public NodePath SpritePath;
-    [Export] public NodePath StartParticles1Path;
-    [Export] public NodePath StartParticles2Path;
-    [Export] public NodePath StartParticles3Path;
 
-    private Area2D _damageArea;
-    private Area2D _pullsTgArea;
-    private Light2D _light;
-    private Light2D _floorLight;
-    private AudioStreamPlayer _sound;
-    private AnimatedSprite2D _sprite;
-    private CpuParticles2D _startParticles1;
-    private CpuParticles2D _startParticles2;
-    private CpuParticles2D _startParticles3;
+    [Export] private Area2D _damageArea;
+    [Export] private Area2D _pullsTgArea;
+    [Export] private Light2D _light;
+    [Export] private Light2D _floorLight;
+    [Export] private AudioStreamPlayer _sound;
+    [Export] private AnimatedSprite2D _sprite;
+    [Export] private CpuParticles2D _startParticles1;
+    [Export] private CpuParticles2D _startParticles2;
+    [Export] private CpuParticles2D _startParticles3;
 
     public override void _Ready()
-    {   
-        //todo ochen' mnogo tut getNode
-        _damageArea = GetNode<Area2D>(DamageAreaPath);
-        _pullsTgArea = GetNode<Area2D>(PullsTgAreaPath);
-        _light = GetNode<Light2D>(LightPath);
-        _floorLight = GetNode<Light2D>(FloorLightPath);
-        _sound = GetNode<AudioStreamPlayer>(SoundPath);
-        _sprite = GetNode<AnimatedSprite2D>(SpritePath);
-        _startParticles1 = GetNode<CpuParticles2D>(StartParticles1Path);
-        _startParticles2 = GetNode<CpuParticles2D>(StartParticles2Path);
-        _startParticles3 = GetNode<CpuParticles2D>(StartParticles3Path);
+    {
 
         _damageArea.Connect("body_entered", new Callable(this, nameof(OnDamageAreaBodyEntered)));
         _pullsTgArea.Connect("body_entered", new Callable(this, nameof(OnPullsTgAreaBodyEntered)));
@@ -95,6 +76,7 @@ public partial class FirePillar : CharacterBody2D
 
     private async void LightTransform()
     {
+        //todo animation tree
         for (int i = 0; i < 5; i++)
         {
             _floorLight.Energy += 0.2f;
