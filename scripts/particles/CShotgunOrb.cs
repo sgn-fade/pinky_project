@@ -4,6 +4,7 @@ using projectpinky.scripts.Globals;
 namespace projectpinky.scripts.particles;
 public partial class CShotgunOrb : CharacterBody2D
 {
+    //todo animation tree
     private Node2D _barrel;
     private AnimatedSprite2D _bulletSprite;
     private Area2D _area;
