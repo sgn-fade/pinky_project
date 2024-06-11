@@ -33,7 +33,6 @@ public partial class Player : CharacterBody2D
         Idle,
         Move,
         Dash,
-        ButtHitDash,
         Spell,
         Dead,
         Inventory,

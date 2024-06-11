@@ -1,15 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://cn3l0nkgbs6me"]
+[gd_scene load_steps=33 format=3 uid="uid://cn3l0nkgbs6me"]
 
 [ext_resource type="Script" path="res://scripts/particles/FirePillar.cs" id="1"]
 [ext_resource type="Texture2D" uid="uid://bq7ki2gml8q2s" path="res://sprites/fire_pillon.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cpe65h3c6l5xl" path="res://sprites/particles/explode_particle_ord.png" id="3_bi072"]
 [ext_resource type="AudioStream" uid="uid://dcjcwkamww17v" path="res://sounds/spell_sounds/firepillar_cast_sound.wav" id="4"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://dutlgpjg1bw53" path="res://sprites/particles/1.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cu23cwynpxasr" path="res://sprites/locations/hub_zone/hub_zone.png" id="7_ujik0"]
 
 [sub_resource type="Curve" id="45"]
 max_value = 4.0
 _data = [Vector2(0, 1.72727), 0.0, -3.09091, 0, 0, Vector2(0.977273, 0.131818), 0.140496, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_13fsj"]
+_data = [Vector2(0.00396825, 0.366038), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="AtlasTexture" id="1"]
@@ -32,10 +37,6 @@ region = Rect2(153, 0, 51, 125)
 atlas = ExtResource("2")
 region = Rect2(204, 0, 51, 125)
 
-[sub_resource type="AtlasTexture" id="6"]
-atlas = ExtResource("2")
-region = Rect2(255, 0, 51, 125)
-
 [sub_resource type="AtlasTexture" id="7"]
 atlas = ExtResource("2")
 region = Rect2(306, 0, 51, 125)
@@ -44,17 +45,9 @@ region = Rect2(306, 0, 51, 125)
 atlas = ExtResource("2")
 region = Rect2(357, 0, 51, 125)
 
-[sub_resource type="AtlasTexture" id="9"]
-atlas = ExtResource("2")
-region = Rect2(408, 0, 51, 125)
-
 [sub_resource type="AtlasTexture" id="10"]
 atlas = ExtResource("2")
 region = Rect2(459, 0, 51, 125)
-
-[sub_resource type="AtlasTexture" id="11"]
-atlas = ExtResource("2")
-region = Rect2(510, 0, 51, 125)
 
 [sub_resource type="AtlasTexture" id="12"]
 atlas = ExtResource("2")
@@ -119,22 +112,13 @@ animations = [{
 "texture": SubResource("5")
 }, {
 "duration": 1.0,
-"texture": SubResource("6")
-}, {
-"duration": 1.0,
 "texture": SubResource("7")
 }, {
 "duration": 1.0,
 "texture": SubResource("8")
 }, {
 "duration": 1.0,
-"texture": SubResource("9")
-}, {
-"duration": 1.0,
 "texture": SubResource("10")
-}, {
-"duration": 1.0,
-"texture": SubResource("11")
 }, {
 "duration": 1.0,
 "texture": SubResource("12")
@@ -169,76 +153,175 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("22")
 }],
-"loop": true,
+"loop": false,
 "name": &"cast",
-"speed": 14.0
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="24"]
 radius = 22.0
 height = 44.0
 
-[node name="fire_pillar" type="CharacterBody2D" node_paths=PackedStringArray("_sprite", "_startParticles1", "_startParticles2")]
+[sub_resource type="Animation" id="Animation_rlqo2"]
+resource_name = "cast"
+length = 1.75001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("S:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["cast"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("start_particles1:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("start_particles2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-0.166667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("light2:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.16667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("light:energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.75, 1.25, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jf4to"]
+_data = {
+"cast": SubResource("Animation_rlqo2")
+}
+
+[node name="fire_pillar" type="CharacterBody2D"]
 collision_layer = 12
 collision_mask = 12
 script = ExtResource("1")
-_sprite = NodePath("S")
-_startParticles1 = NodePath("start_particles1")
-_startParticles2 = NodePath("start_particles2")
-
-[node name="start_particles3" type="CPUParticles2D" parent="."]
-modulate = Color(1, 1, 1, 0.356863)
-scale = Vector2(1, 0.6)
-emitting = false
-amount = 40
-lifetime = 0.5
-one_shot = true
-speed_scale = 0.55
-explosiveness = 0.71
-randomness = 0.47
-emission_shape = 1
-emission_sphere_radius = 40.0
-spread = 91.45
-gravity = Vector2(0, 0)
-orbit_velocity_curve = SubResource("45")
-color = Color(0.937255, 0.490196, 0.180392, 1)
-
-[node name="start_particles2" type="CPUParticles2D" parent="."]
-modulate = Color(1, 1, 1, 0.454902)
-scale = Vector2(1, 0.6)
-emitting = false
-amount = 20
-lifetime = 0.5
-one_shot = true
-speed_scale = 0.55
-explosiveness = 0.71
-randomness = 0.47
-texture = ExtResource("6")
-emission_shape = 1
-emission_sphere_radius = 20.0
-spread = 91.45
-gravity = Vector2(0, 0)
-orbit_velocity_curve = SubResource("45")
-color = Color(0.937255, 0.490196, 0.180392, 1)
 
 [node name="start_particles1" type="CPUParticles2D" parent="."]
 scale = Vector2(1, 0.6)
 emitting = false
 amount = 100
 one_shot = true
-explosiveness = 0.71
-randomness = 0.47
+speed_scale = 1.5
+explosiveness = 1.0
+local_coords = true
 texture = ExtResource("5")
 emission_shape = 1
 emission_sphere_radius = 40.0
-spread = 91.45
+spread = 0.0
 gravity = Vector2(0, 0)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
 orbit_velocity_curve = SubResource("45")
+radial_accel_min = -77.97
+radial_accel_max = -77.97
+scale_amount_curve = SubResource("Curve_13fsj")
 color = Color(0.937255, 0.490196, 0.180392, 0.52549)
 
-[node name="light2" type="PointLight2D" parent="."]
-position = Vector2(0, -0.9436)
-scale = Vector2(1e-05, 1e-05)
+[node name="start_particles2" type="CPUParticles2D" parent="."]
+scale = Vector2(1, 0.6)
+emitting = false
+amount = 100
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("3_bi072")
+emission_shape = 1
+emission_sphere_radius = 40.0
+spread = 0.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+orbit_velocity_curve = SubResource("45")
+radial_accel_min = -77.97
+radial_accel_max = -77.97
+scale_amount_curve = SubResource("Curve_13fsj")
+color = Color(0.937255, 0.490196, 0.180392, 0.52549)
+
+[node name="S" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -48)
+sprite_frames = SubResource("23")
+animation = &"cast"
+frame = 18
+
+[node name="damage_area" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 12
+monitoring = false
+
+[node name="collision" type="CollisionShape2D" parent="damage_area"]
+visible = false
+rotation = 1.5708
+shape = SubResource("24")
+
+[node name="light" type="PointLight2D" parent="."]
+position = Vector2(0, -61.986)
+scale = Vector2(0.609375, 1.70313)
 color = Color(0.882353, 0.572549, 0.0352941, 1)
 energy = 0.0
 shadow_color = Color(0, 0, 0, 1)
@@ -247,32 +330,10 @@ texture = ExtResource("3")
 offset = Vector2(0, 4.689)
 texture_scale = 0.25
 
-[node name="S" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -48)
-sprite_frames = SubResource("23")
-animation = &"cast"
-frame = 21
-
-[node name="damage_area" type="Area2D" parent="."]
-collision_layer = 12
-collision_mask = 12
-monitoring = false
-
-[node name="collision" type="CollisionShape2D" parent="damage_area"]
-rotation = 1.5708
-shape = SubResource("24")
-
-[node name="pulls_tg" type="Area2D" parent="."]
-collision_layer = 12
-collision_mask = 12
-
-[node name="collision" type="CollisionShape2D" parent="pulls_tg"]
-rotation = 1.5708
-shape = SubResource("24")
-
-[node name="light" type="PointLight2D" parent="."]
-position = Vector2(-1, -58.0313)
-scale = Vector2(0.071, 1.29771)
+[node name="light2" type="PointLight2D" parent="."]
+position = Vector2(4.76837e-07, 2.38419e-07)
+rotation = 1.57079
+scale = Vector2(0.609375, 0.904638)
 color = Color(0.882353, 0.572549, 0.0352941, 1)
 energy = 0.0
 shadow_color = Color(0, 0, 0, 1)
@@ -285,3 +346,16 @@ texture_scale = 0.25
 stream = ExtResource("4")
 volume_db = -11.361
 attenuation = 0.00108356
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jf4to")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("7_ujik0")
+
+[node name="World_Embient" type="CanvasModulate" parent="."]
+process_priority = -71
+color = Color(0.313726, 0.313726, 0.313726, 1)
