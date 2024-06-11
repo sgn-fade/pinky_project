@@ -15,10 +15,9 @@ public partial class PlayerData : Node2D
     private bool canSmite;
     private Node2D closestInteractiveObject;
     private int magicDamage = 1;
+    public float DashCooldown { get; set; } = 4f;
 
-    [Export] private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
-    //todo update path
-    //[Export] private PackedScene book = (PackedScene)ResourceLoader.Load("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd");
+    private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
 
     private UiCore ui;
     private Player player;
@@ -28,7 +27,6 @@ public partial class PlayerData : Node2D
     public override void _Ready()
     {
         ui = GetNode<UiCore>("/root/World/Ui");
-        //SetWeapon(book.Instantiate<Weapon>());
     }
 
     public void SetState(Player.States state)
@@ -52,15 +50,12 @@ public partial class PlayerData : Node2D
     public int GetZIndex() => player.ZIndex;
     public Weapon GetWeapon() => weapon;
 
-    public void UpdateHp(int value)
+    public void SetHp(int value)
     {
         hp += value;
         ui.UpdateHpValue(hp, maxHp);
     }
-
-
-
-    public bool ChangeMana(int value)
+    public bool SetMana(int value)
     {
         if (GetMana() < Mathf.Abs(value))
         {
@@ -71,39 +66,28 @@ public partial class PlayerData : Node2D
         ui.UpdateManaValue(mana, maxMana);
         return true;
     }
-
     public void SetMaxMana(int value)
     {
         maxMana += value;
         ui.UpdateManaValue(mana, maxMana);
     }
-
     public void SetMagicDamage(int newMagicDamage)
     {
         magicDamage = newMagicDamage;
     }
-
-
-
     public Vector2 GetPosition()
     {
         return player?.GlobalPosition ?? Vector2.Zero;
     }
-
     public void SetPosition(Vector2 position)
     {
         player.GlobalPosition = position;
     }
-
     public void SetWeapon(Weapon newWeapon)
     {
         weapon = newWeapon;
     }
-
-
-
     public Node GetClosestObject() => closestInteractiveObject;
-
     public bool SetClosestObject(Node2D obj)
     {
         if (obj == null)
@@ -123,13 +107,10 @@ public partial class PlayerData : Node2D
         }
         return false;
     }
-
-
     public void PlayAnimation(string animationName)
     {
         player.GetHands().PlayAnimation(animationName);
     }
-
     public void SetMoney(int value)
     {
         if (value > 0)
@@ -137,9 +118,6 @@ public partial class PlayerData : Node2D
             coins += value;
         }
     }
-
-
-
     public void Restart()
     {
         player.QueueFree();
@@ -147,18 +125,15 @@ public partial class PlayerData : Node2D
         Spawn();
         player.GlobalPosition = Vector2.Zero;
     }
-
     public void Spawn()
     {
         player = playerScene.Instantiate<Player>();
         Global.GlobalWorldInfo.GetWorld().AddChild(player);
     }
-
     public void SetSmite(bool state)
     {
         canSmite = state;
     }
-
     public bool GetSmite(Node2D enemy)
     {
         if (canSmite)
@@ -169,5 +144,10 @@ public partial class PlayerData : Node2D
             }
         }
         return false;
+    }
+
+    public void OnPlayerDash()
+    {
+        ui.StartDashCooldown();
     }
 }

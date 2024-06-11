@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dll025g0jnxsf"
+path="res://.godot/imported/dungeong stuff.aseprite-a9dc7c839b99270176662ff9e84f90cd.res"
+
+[deps]
+
+source_file="res://sprites/locations/dungeong stuff.aseprite"
+dest_files=["res://.godot/imported/dungeong stuff.aseprite-a9dc7c839b99270176662ff9e84f90cd.res"]
+
+[params]
+

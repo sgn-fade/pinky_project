@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d0svcqi4huwsh"
+path="res://.godot/imported/fire_eye_space.aseprite-f34efd6c8a8d50fdfcc5256e53035623.res"
+
+[deps]
+
+source_file="res://sprites/spells/fire/fire_eye_space.aseprite"
+dest_files=["res://.godot/imported/fire_eye_space.aseprite-f34efd6c8a8d50fdfcc5256e53035623.res"]
+
+[params]
+

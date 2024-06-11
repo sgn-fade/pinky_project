@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bc0niubmn8cao"
+path="res://.godot/imported/sword_unnnamed.aseprite-37061298c7eea621bcc4dd97b9993127.res"
+
+[deps]
+
+source_file="res://sprites/spell_icons/sword_unnnamed.aseprite"
+dest_files=["res://.godot/imported/sword_unnnamed.aseprite-37061298c7eea621bcc4dd97b9993127.res"]
+
+[params]
+

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="3"]
 
 [sub_resource type="RectangleShape2D" id="8"]
-size = Vector2(9.2732, 9)
+size = Vector2(6, 2)
 
 [node name="bullet" type="CharacterBody2D"]
 script = ExtResource("1_t3fth")

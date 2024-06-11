@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dv5pfuqldpdd1"
+path="res://.godot/imported/fire_pillar_icon.aseprite-4d35ce564316dee47a6d0ea7e49cfc8d.res"
+
+[deps]
+
+source_file="res://sprites/spell_icons/fire_pillar_icon.aseprite"
+dest_files=["res://.godot/imported/fire_pillar_icon.aseprite-4d35ce564316dee47a6d0ea7e49cfc8d.res"]
+
+[params]
+

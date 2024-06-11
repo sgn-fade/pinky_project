@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cffu15non1w3w"
+path="res://.godot/imported/weapon_discription_in_game.aseprite-7f603ab51864779945720afeb4d33e77.res"
+
+[deps]
+
+source_file="res://sprites/ui/spell_module_description/weapon_discription_in_game.aseprite"
+dest_files=["res://.godot/imported/weapon_discription_in_game.aseprite-7f603ab51864779945720afeb4d33e77.res"]
+
+[params]
+

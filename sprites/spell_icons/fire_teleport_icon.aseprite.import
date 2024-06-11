@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bg3jy3sdd2pnj"
+path="res://.godot/imported/fire_teleport_icon.aseprite-599cb2baa03c689893d2b747730f6c37.res"
+
+[deps]
+
+source_file="res://sprites/spell_icons/fire_teleport_icon.aseprite"
+dest_files=["res://.godot/imported/fire_teleport_icon.aseprite-599cb2baa03c689893d2b747730f6c37.res"]
+
+[params]
+

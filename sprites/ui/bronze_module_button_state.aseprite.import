@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://br0km20wsb02i"
+path="res://.godot/imported/bronze_module_button_state.aseprite-07b32640d4b1628630bb2e226dd227a5.res"
+
+[deps]
+
+source_file="res://sprites/ui/bronze_module_button_state.aseprite"
+dest_files=["res://.godot/imported/bronze_module_button_state.aseprite-07b32640d4b1628630bb2e226dd227a5.res"]
+
+[params]
+

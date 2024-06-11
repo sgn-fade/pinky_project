@@ -34,6 +34,7 @@ public partial class FireSpearParticle : CharacterBody2D
 
     private void OnBodyEntered(Node body)
     {
+        //todo event bus
         Global.EventBus.EmitSignal("damage_to_enemy", body, 10);
         Global.EventBus.EmitSignal("push_away_enemy", body, _velocity);
         Delete();

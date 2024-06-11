@@ -9,5 +9,6 @@ public partial class ShotgunBullet : Bullet
     
     public override void _Ready()
     {
+
     }
 }

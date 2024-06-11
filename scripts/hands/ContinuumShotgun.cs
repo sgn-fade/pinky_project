@@ -1,15 +1,10 @@
-using Godot;
-using System;
-using projectpinky.scripts.Globals;
-using projectpinky.scripts.player;
 using projectpinky.scripts.weapons;
 
-namespace projectpinky.scripts.particles;
+namespace projectpinky.scripts.hands;
 
 public partial class ContinuumShotgun : Weapon
 {
     
-    // YA PEREVEL NO TUT KOD STARSHE MENYA 
     // [Export] public PackedScene Bullet = GD.Load<PackedScene>("res://scenes/continuum_shotgun_bullet.tscn");
     // [Export] public PackedScene Orb = GD.Load<PackedScene>("res://scenes/c_shotgun_orb.tscn");
     //
@@ -139,7 +134,7 @@ public partial class ContinuumShotgun : Weapon
     //     timer.Start();
     //     await ToSignal(timer, "timeout");
     //     SetIdleState();
-    //     timer.QueueFree();
+    //     timer.QueueFree();ч
     // }
     //
     //

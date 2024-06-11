@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://yjatm0w1p5nq"
+path="res://.godot/imported/fireball_icon.aseprite-8e1e631d9ecaab972cf3d95f8e2e37c4.res"
+
+[deps]
+
+source_file="res://sprites/spell_icons/fireball_icon.aseprite"
+dest_files=["res://.godot/imported/fireball_icon.aseprite-8e1e631d9ecaab972cf3d95f8e2e37c4.res"]
+
+[params]
+

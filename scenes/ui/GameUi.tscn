@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk34c60sqf56k"]
+[gd_scene load_steps=17 format=3 uid="uid://dyofqdtl577wh"]
 
 [ext_resource type="Texture2D" uid="uid://cr72ukl4w861a" path="res://sprites/ui/main_game_ui_panel.png" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/GameUi.cs" id="1_5yw6d"]
@@ -96,7 +96,7 @@ shader_parameter/amount = 300
 shader_parameter/fV = 1.0
 shader_parameter/color = Vector4(1, 0, 0, 1)
 
-[node name="game_ui" type="Control"]
+[node name="game_ui" type="Control" node_paths=PackedStringArray("playerBars", "dashIndicator")]
 process_mode = 1
 layout_mode = 3
 anchor_left = 0.013
@@ -107,6 +107,8 @@ offset_left = -14.04
 offset_top = -21.0
 pivot_offset = Vector2(-210, 188)
 script = ExtResource("1_5yw6d")
+playerBars = NodePath("player_bars")
+dashIndicator = NodePath("dash_indicator")
 
 [node name="spell_slot_panel" type="TextureRect" parent="."]
 layout_mode = 0

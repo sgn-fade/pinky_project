@@ -24,10 +24,9 @@ public partial class Box : StaticBody2D
             box.Play("opening");
         }
     }
-    //todo change to public if didnt work
     private void OnBodyEntered(Node2D body)
     {
-        ChangeState(false, body);
+        ChangeState(true, body);
     }
     private void OnBodyExited(Node2D body)
     {

@@ -7,10 +7,10 @@ namespace projectpinky.scripts.ui;
 
 public partial class GameUi : Control
 {
-    [Export]
-    private Label orbLabel;
+
     private EventBus eventBus;
-    private PlayerBars playerBars;
+    [Export] private PlayerBars playerBars;
+    [Export] private DashIndicator dashIndicator;
 
     private Dictionary<string, Spell> Bars = new()
     {
@@ -25,7 +25,6 @@ public partial class GameUi : Control
     public override void _Ready()
     {
         eventBus = Global.EventBus;
-        playerBars = GetNode<PlayerBars>("player_bars");
 
         // EventBus.Connect("set_spell_icon_to_game", this, nameof(OnSetSpellIconToGame));
         // EventBus.Connect("start_spell_cooldown", this, nameof(OnStartSpellCooldown));
@@ -54,6 +53,10 @@ public partial class GameUi : Control
         }
     }
 
+    public void StartDashCooldown()
+    {
+        dashIndicator.StartCooldown();
+    }
     private void OnShowModuleStatsOnGameScreen(Spell module)
     {
         GetNode<Control>("module_discription").Visible = true;

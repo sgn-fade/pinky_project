@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://mh7bf5qot5j1"
+path="res://.godot/imported/base_skeleton.aseprite-2a8f48337382a0242907baccfa65720c.res"
+
+[deps]
+
+source_file="res://sprites/enemies/base_skeleton.aseprite"
+dest_files=["res://.godot/imported/base_skeleton.aseprite-2a8f48337382a0242907baccfa65720c.res"]
+
+[params]
+

@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://2pjq3knexr2h" path="res://sprites/ui/square_label.png" id="1"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="2"]
-[ext_resource type="Script" path="res://scripts/ui/Button_picture.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/ui/Button_picture.gd" id="2_trijp"]
 
 [node name="Button_picture" type="Sprite2D"]
 texture = ExtResource("1")
-script = ExtResource("3")
+script = ExtResource("2_trijp")
 
 [node name="Button_text" type="Label" parent="."]
 offset_left = -4.0
