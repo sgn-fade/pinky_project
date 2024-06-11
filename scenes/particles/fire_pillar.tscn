@@ -359,3 +359,5 @@ texture = ExtResource("7_ujik0")
 [node name="World_Embient" type="CanvasModulate" parent="."]
 process_priority = -71
 color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[connection signal="body_entered" from="damage_area" to="." method="OnDamageAreaBodyEntered"]
