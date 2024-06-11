@@ -439,11 +439,13 @@ blend_mode = 1
 blend_mode = 1
 light_mode = 2
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("hands", "animatedSprite")]
 z_as_relative = false
 collision_layer = 33
 collision_mask = 5
 script = ExtResource("1_ijsvk")
+hands = NodePath("hands")
+animatedSprite = NodePath("aSprite")
 
 [node name="shadow_under" type="Sprite2D" parent="."]
 z_as_relative = false

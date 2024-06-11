@@ -14,19 +14,24 @@ public partial class Player : CharacterBody2D
     private float maxSpeed = 80;
     private float magicDamage = 1;
 
-    private AnimatedSprite2D animatedSprite;
 
     private Vector2 input = Vector2.Zero;
 
     private Timer timer = new();
 
-    private float dashSpeedConst = 1;
+    private float dashSpeedConst = 5;
+
+    private bool dashReady = true;
+
     //private Vector2? movePosition = null;
     private int direction = 1;
     private States currentState = States.Idle;
     private EventBus eventBus = Global.EventBus;
-    private HandsManager hands;
+    [Export] private HandsManager hands;
+    [Export] private AnimatedSprite2D animatedSprite;
+
     public HandsManager GetHands() => hands;
+
     public enum States
     {
         None,
@@ -75,6 +80,7 @@ public partial class Player : CharacterBody2D
     {
         return currentState;
     }
+
     public void SetState(States state)
     {
         currentState = state;
@@ -82,9 +88,8 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
-        hands = GetNode<HandsManager>("hands");
-        animatedSprite = GetNode<AnimatedSprite2D>("aSprite");
         currentState = States.Idle;
+        //todo event bus
         eventBus.Connect("player_cast_spell", new Callable(this, nameof(SetCastState)));
         eventBus.Connect("player_teleport", new Callable(this, nameof(Teleport)));
         eventBus.Connect("player_take_damage", new Callable(this, nameof(SetCastState)));
@@ -93,48 +98,53 @@ public partial class Player : CharacterBody2D
         AddChild(timer);
     }
 
-    // public override void _Input(InputEvent @event)
-    // {
-    //     if (Input.IsActionJustPressed("F"))
-    //     {
-    //         GlobalWorldInfo.FocusCamera();
-    //     }
-    //     if (Player.GetWeapon() != null)
-    //     {
-    //         Player.GetWeapon().Input(@event);
-    //     }
-    // }
+    public override void _Input(InputEvent @event)
+    {
+        //todo focus camera
+        // if (Input.IsActionJustPressed("F"))
+        // {
+        //     GlobalWorldInfo.FocusCamera();
+        // }
+        //todo weapon input
+        // if (Player.GetWeapon() != null)
+        // {
+        //     Player.GetWeapon().Input(@event);
+        // }
+    }
 
     private void Move()
     {
-        //var dash = GetNode("/root/World/Ui/game_ui/dash_indicator");
-        if (Input.IsActionJustPressed("Shift")/* && dash.Ready*/)
+        if (Input.IsActionJustPressed("Shift") && dashReady)
         {
-            DisableCollision();
-            GetNode<CpuParticles2D>("dash_particles1").Emitting = true;
-            GetNode<CpuParticles2D>("dash_particles2").Emitting = true;
-            eventBus.EmitSignal("dash_cooldown");
-            Velocity *= 5f;
+            dashReady = false;
+            GetTree().CreateTimer(Global.Player.DashCooldown).Timeout += () => { dashReady = true; };
+
+            Velocity *= dashSpeedConst;
             currentState = States.Dash;
-            GetTree().CreateTimer(0.09f).Timeout += () => {
+            GetTree().CreateTimer(0.09f).Timeout += () =>
+            {
                 currentState = States.Idle;
-                Velocity /= 5f;
+                Velocity /= dashSpeedConst;
                 CharacterSlowdown();
             };
         }
+
         input = Vector2.Zero;
         if (Input.IsActionPressed("ui_right"))
         {
             input.X += 1;
         }
+
         if (Input.IsActionPressed("ui_left"))
         {
             input.X += -1;
         }
+
         if (Input.IsActionPressed("ui_up"))
         {
             input.Y += -1;
         }
+
         if (Input.IsActionPressed("ui_down"))
         {
             input.Y += 1;
@@ -151,11 +161,13 @@ public partial class Player : CharacterBody2D
             animation = "move";
             maxSpeed = 80;
         }
+
         if (currentState == States.Attack)
         {
             maxSpeed /= 2;
             animation = "move_back";
         }
+
         if (input.Length() == 0)
         {
             speed = 30;
@@ -165,10 +177,12 @@ public partial class Player : CharacterBody2D
         {
             speed += 5;
         }
+
         if (speed > maxSpeed)
         {
             speed = maxSpeed;
         }
+
         input = input.Normalized();
         animatedSprite.Play(animation);
         Velocity = Velocity.Lerp(input * speed, acceleration * 0.016f);
@@ -182,14 +196,15 @@ public partial class Player : CharacterBody2D
 
     private void Dash()
     {
+        Global.Player.OnPlayerDash();
         MoveAndSlide();
     }
-
 
 
     private void Die()
     {
         currentState = States.Dead;
+        // todo event bus (maybe useful)
         eventBus.EmitSignal("player_dead");
     }
 
@@ -220,9 +235,9 @@ public partial class Player : CharacterBody2D
     private void EnableCollision()
     {
         GetNode<Area2D>("player_area").SetCollisionMaskValue(2, true);
-        SetCollisionMaskValue(2, true); 
+        SetCollisionMaskValue(2, true);
     }
-
+    //todo player take damage method
     // private void _OnPlayerTakeDamage(Vector2 playerOffsetDir, float enemyDamage)
     // {
     //     Player.UpdateHp(-enemyDamage);
@@ -243,6 +258,7 @@ public partial class Player : CharacterBody2D
     {
         currentState = States.Spell;
         animatedSprite.Play(animationName);
+        //todo animation ended signal
         timer.Start(animationTime);
         await ToSignal(timer, "timeout");
         currentState = States.Idle;
@@ -266,6 +282,7 @@ public partial class Player : CharacterBody2D
         {
             GlobalPosition = globalMousePos;
         }
+
         EnableCollision();
         animatedSprite.Play("teleport_end");
         await ToSignal(animatedSprite, "animation_finished");
@@ -277,7 +294,7 @@ public partial class Player : CharacterBody2D
         animatedSprite.Play("idle");
         currentState = States.Inventory;
     }
-
+    //todo mana massage
     // private void ThrowNotEnoughManaMessage()
     // {
     //     var message = (Node2D)GD.Load<PackedScene>("res://scenes/ui/Player_massages/not_enough_mana_label.tscn").Instance();

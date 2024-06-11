@@ -511,7 +511,7 @@ body = NodePath("Body")
 [node name="s" type="AnimatedSprite2D" parent="Body"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_v83sy")
-animation = &"idle"
+animation = &"butt_hit"
 offset = Vector2(4.29, -6.955)
 flip_h = true
 metadata/_aseprite_wizard_config_ = {

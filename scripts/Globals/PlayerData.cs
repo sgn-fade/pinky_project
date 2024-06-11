@@ -17,7 +17,7 @@ public partial class PlayerData : Node2D
     private int magicDamage = 1;
     public float DashCooldown { get; set; } = 4f;
 
-    [Export] private PackedScene playerScene;
+    private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
 
     private UiCore ui;
     private Player player;
