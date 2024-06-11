@@ -5,43 +5,22 @@ namespace projectpinky.scripts.ui;
 
 public partial class UiCore : CanvasLayer
 {
-	private GameUi gameUi;
-	private Control inventoryUi;
-	private Control loadUi;
-	private Control pauseUi;
-	private Control currentUi;
+	[Export] private GameUi gameUi;
+	[Export] private Control inventoryUi;
+	[Export] private Control loadUi;
+	[Export] private Control pauseUi;
+	[Export] private TextureProgressBar loadBar;
+	[Export] private Crosshair crosshair;
 
-	private TextureProgressBar loadBar;
+	private Control currentUi;
 	private EventBus eventBus = Global.EventBus;
 	private PlayerData player;
-	private Crosshair crosshair;
 
 	public override void _Ready()
 	{
 		player = Global.Player;
-		gameUi = GetNode<GameUi>("game_ui");
-		inventoryUi = GetNode<Control>("inventory_ui");
-		loadUi = GetNode<Control>("load_ui");
-		loadBar = loadUi.GetNode<TextureProgressBar>("TextureProgressBar");
-		pauseUi = GetNode<Control>("pause_ui");
-		crosshair = GetNode<Crosshair>("crosshair");
 		currentUi = gameUi;
-
 		//SwitchUi(gameUi, "game");
-	}
-
-	public async void LoadAnimation()
-	{
-		loadUi.Visible = true;
-		for (int i = 1; i <= 100; i++)
-		{
-			loadBar.Value = i;
-			await ToSignal(GetTree().CreateTimer(1f), "timeout");
-
-		}
-		currentUi = loadUi;
-		player.GetBody().SetIdleState();
-		SwitchUi(gameUi, "game");
 	}
 
 	public override void _Process(double delta)
@@ -68,7 +47,6 @@ public partial class UiCore : CanvasLayer
 
 	public void SwitchUi(Control uiType, string crosshairType)
 	{
-		GD.Print(uiType);
 		crosshair.ChangeCrosshair(crosshairType);
 		currentUi.Visible = false;
 		uiType.Visible = true;
@@ -82,5 +60,10 @@ public partial class UiCore : CanvasLayer
 	public void UpdateManaValue(int mana, int maxMana)
 	{
 		gameUi.UpdateManaValue(mana, maxMana);
+	}
+
+	public void StartDashCooldown()
+	{
+		gameUi.StartDashCooldown();
 	}
 }

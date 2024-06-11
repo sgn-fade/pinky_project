@@ -11,6 +11,7 @@ public partial class GameUi : Control
     private Label orbLabel;
     private EventBus eventBus;
     private PlayerBars playerBars;
+    private DashIndicator dashIndicator;
 
     private Dictionary<string, Spell> Bars = new()
     {
@@ -54,6 +55,10 @@ public partial class GameUi : Control
         }
     }
 
+    public void StartDashCooldown()
+    {
+        dashIndicator.StartCooldown();
+    }
     private void OnShowModuleStatsOnGameScreen(Spell module)
     {
         GetNode<Control>("module_discription").Visible = true;

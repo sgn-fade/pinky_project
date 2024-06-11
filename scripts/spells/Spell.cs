@@ -21,7 +21,7 @@ public class Spell
 
     public Task Cast()
     {
-        if (player.ChangeMana(-ManaCost))
+        if (player.SetMana(-ManaCost))
         {
             if (Particle != null)
             {
