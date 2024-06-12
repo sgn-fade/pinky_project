@@ -512,6 +512,7 @@ body = NodePath("Body")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_v83sy")
 animation = &"butt_hit"
+frame = 11
 offset = Vector2(4.29, -6.955)
 flip_h = true
 metadata/_aseprite_wizard_config_ = {

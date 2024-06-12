@@ -12,9 +12,6 @@ namespace projectpinky.scripts.Globals
         public delegate void ShowDamageValueEventHandler(Node2D damageLabelInstance, int damage);
 
         [Signal]
-        public delegate void SpheresDonatedEventHandler(float time);
-
-        [Signal]
         public delegate void SurviveEventStartedEventHandler(Vector2 roomSize, Vector2 roomCenter, float time);
 
         [Signal]
@@ -38,29 +35,10 @@ namespace projectpinky.scripts.Globals
         [Signal]
         public delegate void PlayerTeleportEventHandler(Vector2 position);
 
-        [Signal]
-        public delegate void ShowModuleStatsOnGameScreenEventHandler(Node module);
-
-        [Signal]
-        public delegate void HideModuleStatsOnGameScreenEventHandler();
-
-        [Signal]
-        public delegate void ShowWeaponStatsOnGameScreenEventHandler(Node weapon);
-
-        [Signal]
-        public delegate void HideWeaponStatsOnGameScreenEventHandler();
 
         [Signal]
         public delegate void WeaponInInventoryChoosedEventHandler(Node weapon);
 
-        [Signal]
-        public delegate void SetSpellIconToGameEventHandler(Node moduleIcon, string button);
-
-        [Signal]
-        public delegate void RemoveSpellIconFromGameEventHandler(string button);
-
-        [Signal]
-        public delegate void ClearSpellIconsEventHandler();
 
         [Signal]
         public delegate void AddItemEventHandler(Node item);

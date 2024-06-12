@@ -8,7 +8,7 @@ namespace projectpinky.scripts.weapons;
 
 public partial class Weapon : Node
 {
-    public Texture Texture { get; set; }
+    public Texture2D Texture { get; set; }
     public string Rarity { get; set; }
     private readonly Dictionary<string, string> buttonsBinds = Options.ButtonsBinds;
     public string Type { get; set; } = "none";
@@ -21,6 +21,7 @@ public partial class Weapon : Node
 
     private Dictionary<string, Spell> spellsButtons;
 
+    //todo made it with nodes in ui
     private readonly List<Vector2> modulePositionList = new()
     {
         new Vector2(418, 123),
