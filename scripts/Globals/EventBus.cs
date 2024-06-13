@@ -6,22 +6,9 @@ namespace projectpinky.scripts.Globals
     {
 
         [Signal]
-        public delegate void PlayerTakeDamageEventHandler(Vector2 playerOffsetDir, int damage);
-
-        [Signal]
-        public delegate void ShowDamageValueEventHandler(Node2D damageLabelInstance, int damage);
-
-        [Signal]
-        public delegate void SurviveEventStartedEventHandler(Vector2 roomSize, Vector2 roomCenter, float time);
-
-        [Signal]
-        public delegate void PullsBodyEventHandler(Node2D body, Vector2 position);
-
-        [Signal]
-        public delegate void PushAwayEnemyEventHandler(Node2D body, Vector2 velocity);
-
-        [Signal]
         public delegate void PlayerCastSpellEventHandler(float animationTime, string animationName);
+        [Signal]
+        public delegate void PlayerDeadEventHandler();
 
         [Signal]
         public delegate void HandsPlayAnimationEventHandler(string animationName);

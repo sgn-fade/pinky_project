@@ -50,10 +50,13 @@ public partial class PlayerData : Node2D
     public int GetZIndex() => player.ZIndex;
     public Weapon GetWeapon() => weapon;
 
-    public void SetHp(int value)
+    /// returns true if hp is greater than 0
+    public bool SetHp(int value)
     {
-        hp += value;
+        if ((hp += value) <= 0) return false;
         ui.UpdateHpValue(hp, maxHp);
+        return true;
+
     }
     public bool SetMana(int value)
     {

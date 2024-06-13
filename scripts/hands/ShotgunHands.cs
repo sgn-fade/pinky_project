@@ -42,7 +42,6 @@ public partial class ShotgunHands : GunHands
     {
         if (ammo > 0 && shootCooldown <= 0)
         {
-            Global.Player.GetBody().CharacterSlowdown();
             ammo -= 1;
             SpawnBullets();
             if (ammo == 0)
