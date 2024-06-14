@@ -6,28 +6,20 @@ namespace projectpinky.scripts.player;
 
 public partial class Player : CharacterBody2D
 {
-    private double acceleration = 20;
-    private float dashCooldown;
-
+    [Export] private HandsManager hands;
+    [Export] private AnimatedSprite2D animatedSprite;
     // Stats
-    [Export] private float speed = 20;
-    [Export] private float maxSpeed = 80;
-    [Export] private float magicDamage = 1;
+    [Export] private float speed = 80;
+    [Export] private double acceleration = 20;
 
     private Vector2 input = Vector2.Zero;
-
-    private Timer timer = new();
 
     private float dashSpeedConst = 5;
 
     private bool dashReady = true;
 
-    private int direction = 1;
     private States currentState = States.Active;
-    private EventBus eventBus = Global.EventBus;
     private PlayerData player = Global.Player;
-    [Export] private HandsManager hands;
-    [Export] private AnimatedSprite2D animatedSprite;
 
     public HandsManager GetHands() => hands;
 
@@ -62,15 +54,7 @@ public partial class Player : CharacterBody2D
 
     private void Rotating()
     {
-        if (GetLocalMousePosition().X >= 0)
-        {
-            Scale = new Vector2(1, Scale.Y);
-        }
-        else
-        {
-            direction *= -1;
-            Scale = new Vector2(-1, Scale.Y);
-        }
+        Scale =  new Vector2(GetLocalMousePosition().X >= 0 ? 1 : -1, Scale.Y);
     }
 
     public States GetState()
@@ -91,8 +75,6 @@ public partial class Player : CharacterBody2D
         //eventBus.Connect("player_teleport", new Callable(this, nameof(Teleport)));
         //eventBus.Connect("player_take_damage", new Callable(this, nameof(SetCastState)));
         //eventBus.Connect("player_cast_spell", new Callable(this, nameof(_OnPlayerTakeDamage)));
-        timer.OneShot = false;
-        AddChild(timer);
     }
 
     public override void _Input(InputEvent @event)
@@ -128,12 +110,7 @@ public partial class Player : CharacterBody2D
         input.X = Input.GetAxis("ui_left", "ui_right");
         input.Y = Input.GetAxis("ui_up", "ui_down");
 
-        var animation = "move";
-
-        if (input.Length() == 0)
-        {
-            animation = "idle";
-        }
+        var animation = input.Length() == 0 ? "idle" : "move";
 
         input = input.Normalized();
         animatedSprite.Play(animation);
@@ -141,10 +118,6 @@ public partial class Player : CharacterBody2D
         MoveAndSlide();
     }
 
-    public void SetMaxSpeed(float newSpeed)
-    {
-        maxSpeed = newSpeed;
-    }
 
     private void Dash()
     {
@@ -169,6 +142,7 @@ public partial class Player : CharacterBody2D
         GetNode<Area2D>("player_area").SetCollisionMaskValue(2, state);
         SetCollisionMaskValue(2, state);
     }
+
     private void TakeDamage(Vector2 playerOffsetDir, int enemyDamage)
     {
         if (!player.SetHp(enemyDamage))
@@ -179,21 +153,17 @@ public partial class Player : CharacterBody2D
         Velocity = Velocity.Lerp(playerOffsetDir * 1000, 0.40f);
         MoveAndSlide();
     }
-    private async void SetCastState(float animationTime, string animationName)
+
+    private void SetCastState(float animationTime, string animationName)
     {
         currentState = States.Spell;
         animatedSprite.Play(animationName);
-        //todo animation ended signal
-        timer.Start(animationTime);
-        await ToSignal(timer, "timeout");
-        currentState = States.Active;
+        GetTree().CreateTimer(animationTime).Timeout += () => { currentState = States.Active; };
     }
 
     private void Teleport(Vector2 pos)
     {
-        currentState = States.Spell;
         Velocity = pos;
         MoveAndSlide();
-        currentState = States.Active;
     }
 }

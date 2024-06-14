@@ -54,10 +54,8 @@ public partial class MeleeHands : Hands
     private void Hit(string hitCount)
     {
         player.SetState(Player.States.Attack);
-        player.GetBody().SetMaxSpeed(20);
         PlayAnimation(hitCount);
         comboTimer.Start(1);
-        player.GetBody().SetMaxSpeed(80);
         player.SetState(Player.States.Active);
         PlayAnimation("null");
     }
