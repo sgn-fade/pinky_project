@@ -12,7 +12,7 @@ public partial class MeleeWeapon : Weapon
     public override void _Ready()
     {
         base._Ready();
-        Type = "melee";
+        Type = Types.Melee;
         AddBaseSpell(new SwordHitBase());
     }
 }

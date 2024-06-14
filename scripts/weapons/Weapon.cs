@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 using projectpinky.scripts.drops;
@@ -10,16 +11,23 @@ public partial class Weapon : Node
 {
     [Export] public Texture2D Texture { get; set; }
     [Export] public string Rarity { get; set; }
-    public string Type { get; set; } = "none";
+    public Types Type { get; set; }
     public int Damage { get; set; }
     private double criticalChance = 10d;
-
+    public PackedScene HandsScene;
     public double GetCriticalChance() => criticalChance;
     
     public InventoryItem InvItem { get; set; }
 
     private readonly Dictionary<int, string> buttonsBinds = Options.ButtonsBinds;
     private Dictionary<string, Spell> spellsButtons;
+
+    public enum Types
+    {
+        Melee,
+        Range,
+        Magic
+    }
 
     //todo made it with nodes in ui
     private readonly List<Vector2> modulePositionList = new()

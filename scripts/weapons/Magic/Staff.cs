@@ -3,7 +3,7 @@ using projectpinky.scripts.drops;
 
 namespace projectpinky.scripts.weapons.Magic;
 
-public partial class GoblinWand : MagicWeapon
+public partial class Staff : MagicWeapon
 {
     public override void _Ready()
     {

@@ -16,7 +16,6 @@ public partial class Sword : MeleeWeapon
         InvItem = new InventoryItem(this, "weapon", icon);
         Damage = 4;
         ComboCount = 2;
-        Type = "melee";
     }
     public Texture GetWeaponSpritePath()
     {

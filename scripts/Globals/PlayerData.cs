@@ -19,14 +19,14 @@ public partial class PlayerData : Node2D
 
     private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
 
-    private UiCore ui;
+    public UiCore View;
     private Player player;
     private Weapon weapon;
     private EventBus eventBus = Global.EventBus;
 
     public override void _Ready()
     {
-        ui = GetNode<UiCore>("/root/World/Ui");
+        View = GetNode<UiCore>("/root/World/Ui");
     }
 
     public void SetState(Player.States state)
@@ -54,7 +54,7 @@ public partial class PlayerData : Node2D
     public bool SetHp(int value)
     {
         if ((hp += value) <= 0) return false;
-        ui.UpdateHpValue(hp, maxHp);
+        View.UpdateHpValue(hp, maxHp);
         return true;
 
     }
@@ -66,13 +66,13 @@ public partial class PlayerData : Node2D
             return false;
         }
         mana += value;
-        ui.UpdateManaValue(mana, maxMana);
+        View.UpdateManaValue(mana, maxMana);
         return true;
     }
     public void SetMaxMana(int value)
     {
         maxMana += value;
-        ui.UpdateManaValue(mana, maxMana);
+        View.UpdateManaValue(mana, maxMana);
     }
     public void SetMagicDamage(int newMagicDamage)
     {
@@ -151,6 +151,6 @@ public partial class PlayerData : Node2D
 
     public void OnPlayerDash()
     {
-        ui.StartDashCooldown();
+        View.StartDashCooldown();
     }
 }
