@@ -8,9 +8,8 @@ namespace projectpinky.scripts.weapons;
 
 public partial class Weapon : Node
 {
-    public Texture2D Texture { get; set; }
-    public string Rarity { get; set; }
-    private readonly Dictionary<string, string> buttonsBinds = Options.ButtonsBinds;
+    [Export] public Texture2D Texture { get; set; }
+    [Export] public string Rarity { get; set; }
     public string Type { get; set; } = "none";
     public int Damage { get; set; }
     private double critChance = 10d;
@@ -19,6 +18,7 @@ public partial class Weapon : Node
     
     public InventoryItem InvItem { get; set; }
 
+    private readonly Dictionary<string, string> buttonsBinds = Options.ButtonsBinds;
     private Dictionary<string, Spell> spellsButtons;
 
     //todo made it with nodes in ui
@@ -65,18 +65,13 @@ public partial class Weapon : Node
 
     public override async void _Input(InputEvent @event)
     {
-        string inputKey = null;
-        if (Input.IsActionJustPressed(buttonsBinds["slot1"])) inputKey = "slot1";
-        if (Input.IsActionJustPressed(buttonsBinds["slot2"])) inputKey = "slot2";
-        if (Input.IsActionJustPressed(buttonsBinds["slot3"])) inputKey = "slot3";
-        if (Input.IsActionJustPressed(buttonsBinds["slot4"])) inputKey = "slot4";
-        if (Input.IsActionJustPressed(buttonsBinds["slot5"])) inputKey = "slot5";
-        if (Input.IsActionJustPressed(buttonsBinds["slot6"])) inputKey = "slot6";
-
-        if (inputKey != null && spellsButtons[buttonsBinds[inputKey]] != null && spellsButtons[buttonsBinds[inputKey]].GetReady())
+        foreach (var kvp in buttonsBinds)
         {
-            await spellsButtons[buttonsBinds[inputKey]].Cast();
-            //EventBus.EmitSignal("start_spell_cooldown", inputKey);
+            if (!Input.IsActionJustPressed(kvp.Value)) continue;
+
+            var action = spellsButtons[kvp.Value];
+            if (action.GetReady()) await action.Cast();
+            return;
         }
     }
 
