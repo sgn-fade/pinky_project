@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dltfuc1qq5unu"]
+[gd_scene load_steps=51 format=3 uid="uid://dltfuc1qq5unu"]
 
 [ext_resource type="Script" path="res://scripts/hands/ShotgunHands.cs" id="1_xxrtd"]
 [ext_resource type="Texture2D" uid="uid://dtgtopwekt2i5" path="res://scenes/hands/shotgun_animations.png" id="2_mul3i"]
@@ -476,10 +476,6 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"IsReload"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gg58q"]
-advance_mode = 2
-advance_condition = &"EndReload"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4okbp"]
 advance_mode = 2
 advance_condition = &"IsReload"
@@ -495,7 +491,7 @@ states/reload/node = SubResource("AnimationNodeAnimation_3msk8")
 states/reload/position = Vector2(488, 189.336)
 states/shoot/node = SubResource("AnimationNodeAnimation_ihqxn")
 states/shoot/position = Vector2(494.667, 24.003)
-transitions = ["Start", "preparation", SubResource("AnimationNodeStateMachineTransition_dc1u2"), "preparation", "idle", SubResource("AnimationNodeStateMachineTransition_1udov"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_fmird"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_l10ho"), "shoot", "reload", SubResource("AnimationNodeStateMachineTransition_vkxmn"), "reload", "idle", SubResource("AnimationNodeStateMachineTransition_gg58q"), "idle", "reload", SubResource("AnimationNodeStateMachineTransition_4okbp")]
+transitions = ["Start", "preparation", SubResource("AnimationNodeStateMachineTransition_dc1u2"), "preparation", "idle", SubResource("AnimationNodeStateMachineTransition_1udov"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_fmird"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_l10ho"), "shoot", "reload", SubResource("AnimationNodeStateMachineTransition_vkxmn"), "idle", "reload", SubResource("AnimationNodeStateMachineTransition_4okbp")]
 graph_offset = Vector2(0, -109.997)
 
 [node name="shotgun" type="CharacterBody2D" node_paths=PackedStringArray("barrelPosition", "animationPlayer", "animationTree", "body")]
@@ -512,6 +508,7 @@ body = NodePath("Body")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_v83sy")
 animation = &"idle"
+frame = 2
 offset = Vector2(4.29, -6.955)
 flip_h = true
 metadata/_aseprite_wizard_config_ = {
@@ -561,6 +558,5 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_kt4yd")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/EndReload = false
 parameters/conditions/IsReload = false
 parameters/conditions/IsShoted = false

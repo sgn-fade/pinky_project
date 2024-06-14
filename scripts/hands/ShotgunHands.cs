@@ -70,8 +70,9 @@ public partial class ShotgunHands : GunHands
         if (++ammo >= 6)
         {
             ((AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback")).Travel("idle");
+            animationTree.Set("parameters/conditions/IsReload", false);
+
         }
-        else animationTree.Set("parameters/conditions/IsReload", false);
     }
 
     public void Cooldown()
