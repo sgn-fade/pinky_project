@@ -34,7 +34,7 @@ public partial class SwordBaseParticle : Node2D
     private void OnArea2DBodyEntered(Node body)
     {
         var damage = Global.Player.GetWeapon().Damage;
-        if (GD.Randf() * 100 < Global.Player.GetWeapon().GetCritChance())
+        if (GD.Randf() * 100 < Global.Player.GetWeapon().GetCriticalChance())
         {
             damage *= 2;
         }

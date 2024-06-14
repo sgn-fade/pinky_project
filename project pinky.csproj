@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>projectpinky</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="scripts\weapons\Range\" />
+  </ItemGroup>
 </Project>

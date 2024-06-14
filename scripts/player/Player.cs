@@ -11,13 +11,10 @@ public partial class Player : CharacterBody2D
     // Stats
     [Export] private float speed = 80;
     [Export] private double acceleration = 20;
+    [Export] private float dashSpeedConst = 5;
 
     private Vector2 input = Vector2.Zero;
-
-    private float dashSpeedConst = 5;
-
     private bool dashReady = true;
-
     private States currentState = States.Active;
     private PlayerData player = Global.Player;
 

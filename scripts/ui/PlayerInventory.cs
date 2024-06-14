@@ -130,15 +130,7 @@ public partial class PlayerInventory : Control
     {
         foreach (var node in GetNode<Node2D>("/root/Main/$item_grid/items").GetChildren())
         {
-            var child = (Node2D)node;
-            if ((string)child.Get("current_cell.slot_type") == type)
-            {
-                child.Visible = false;
-            }
-            else
-            {
-                child.Visible = true;
-            }
+            ((Node2D)node).Visible = (string)node.Get("current_cell.slot_type") != type;
         }
     }
 }

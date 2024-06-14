@@ -1,4 +1,4 @@
-namespace projectpinky.scripts.weapons.magic_weapons;
+namespace projectpinky.scripts.weapons.Magic;
 
 public partial class MagicWeapon : Weapon
 {
