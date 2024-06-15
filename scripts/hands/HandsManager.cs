@@ -5,10 +5,7 @@ namespace projectpinky.scripts.hands;
 
 public partial class HandsManager : Node2D
 {
-    private readonly PackedScene magic = GD.Load<PackedScene>("res://scenes/hands/magic_hands.tscn");
     private readonly PackedScene clear = GD.Load<PackedScene>("res://scenes/hands/clear_hands.tscn");
-    private readonly PackedScene melee = GD.Load<PackedScene>("res://scenes/hands/melee_hands.tscn");
-    private readonly PackedScene sword = GD.Load<PackedScene>("res://scenes/hands/sword_hands.tscn");
 
     private Hands currentHands;
 

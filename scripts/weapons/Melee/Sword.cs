@@ -5,20 +5,14 @@ namespace projectpinky.scripts.weapons.melee;
 
 public partial class Sword : MeleeWeapon
 {
-    private Texture weaponSpritePath = (Texture)GD.Load("res://sprites/weapons/melee/goblin_sword.png");
-
-    private int critChance = 24;
-
     public override void _Ready()
     {
         base._Ready();
-        Texture2D icon = GD.Load<Texture2D>("res://sprites/weapons/melee/goblin_sword_inventory.png");
+        var icon = GD.Load<Texture2D>("res://sprites/weapons/melee/goblin_sword_inventory.png");
+        HandsScene = GD.Load<PackedScene>("res://scenes/hands/sword_hands.tscn");
+        Texture = GD.Load<Texture2D>("res://sprites/weapons/melee/goblin_sword.png");
         InvItem = new InventoryItem(this, "weapon", icon);
         Damage = 4;
         ComboCount = 2;
-    }
-    public Texture GetWeaponSpritePath()
-    {
-        return weaponSpritePath;
     }
 }
