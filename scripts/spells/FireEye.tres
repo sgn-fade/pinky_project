@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=4 format=3 uid="uid://bh388vueeuqtq"]
+
+[ext_resource type="Texture2D" uid="uid://blu30o6tp1m66" path="res://sprites/spell_icons/fire_eye_spell_icon.png" id="1_gxdln"]
+[ext_resource type="Script" path="res://scripts/spells/Spell.cs" id="1_x78rm"]
+[ext_resource type="PackedScene" uid="uid://jkixgcns5qlc" path="res://scenes/fire_eye.tscn" id="2_5vd07"]
+
+[resource]
+script = ExtResource("1_x78rm")
+Icon = ExtResource("1_gxdln")
+AnimationName = ""
+Rarity = 0
+CooldownTime = 5.0
+ManaCost = 10
+Particle = ExtResource("2_5vd07")

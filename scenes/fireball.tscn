@@ -2,8 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://sctficm8del" path="res://sprites/fireball.png" id="2"]
-[ext_resource type="Script" path="res://scripts/particles/fireball.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/particles/Fireball.cs" id="3"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="4"]
+
 
 [sub_resource type="Gradient" id="Gradient_4rsi4"]
 offsets = PackedFloat32Array(0, 0.88, 1)

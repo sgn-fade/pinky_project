@@ -2,7 +2,7 @@ using Godot;
 
 namespace projectpinky.scripts.weapons.Range;
 
-public class Shotgun : RangeWeapon
+public partial class Shotgun : RangeWeapon
 {
     public override void _Ready()
     {
