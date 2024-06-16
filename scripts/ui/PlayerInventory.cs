@@ -23,9 +23,9 @@ public partial class PlayerInventory : Control
 
     public override void _Ready()
     {
-        CreateInventoryCells();
-        InventoryItem item = new FireEyeSpell().InvItem;
-        AddItem(item);
+        // CreateInventoryCells();
+        // InventoryItem item = new FireEyeSpell().InvItem;
+        // AddItem(item);
         //var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
         //var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
     }

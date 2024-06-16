@@ -77,7 +77,7 @@ public partial class Weapon : Node
             if (!Input.IsActionJustPressed(kvp.Value)) continue;
 
             var action = spellsButtons[kvp.Value];
-            if (action.GetReady()) await action.Cast();
+            if (action.GetReady()) action.Cast();
             return;
         }
     }
