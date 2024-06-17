@@ -7,7 +7,7 @@ using projectpinky.scripts.Globals;
 namespace projectpinky.scripts.spells;
 
 [GlobalClass]
-public abstract partial class Spell : Resource
+public partial class Spell : Resource
 {
     [Export] public Texture2D Icon { get; set; }
     [Export] public string AnimationName { get; set; }
