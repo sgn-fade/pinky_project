@@ -4,6 +4,8 @@ namespace projectpinky.scripts.weapons.Range;
 
 public partial class Shotgun : RangeWeapon
 {
+    [Export] public int ShootRate;
+    [Export] public int ShootRate;
     public override void _Ready()
     {
         base._Ready();

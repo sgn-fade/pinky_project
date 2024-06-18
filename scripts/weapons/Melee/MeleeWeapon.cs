@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using projectpinky.scripts.spells;
-using projectpinky.scripts.spells.melee_spells;
 
 namespace projectpinky.scripts.weapons.melee;
 
@@ -13,6 +12,5 @@ public partial class MeleeWeapon : Weapon
     {
         base._Ready();
         Type = Types.Melee;
-        AddBaseSpell(new SwordHitBase());
     }
 }

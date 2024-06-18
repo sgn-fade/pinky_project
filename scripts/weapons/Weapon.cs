@@ -70,7 +70,7 @@ public partial class Weapon : Node
         }
     }
 
-    public override async void _Input(InputEvent @event)
+    public override void _Input(InputEvent @event)
     {
         foreach (var kvp in buttonsBinds)
         {
@@ -109,7 +109,6 @@ public partial class Weapon : Node
     {
         var firstModule = spellsButtons[buttonsBinds[firstSlot]];
         var secondModule = spellsButtons[buttonsBinds[secondSlot]];
-
         spellsButtons[buttonsBinds[firstSlot]] = secondModule;
         spellsButtons[buttonsBinds[secondSlot]] = firstModule;
 
