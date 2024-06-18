@@ -1,6 +1,6 @@
 [gd_scene load_steps=70 format=3 uid="uid://b0c6sthqnjd75"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/Goblins/goblin_melee.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://dsbsqyn2if0do" path="res://sprites/goblin/sword_goblin_idle.png" id="3"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="3_3cof1"]
 [ext_resource type="Texture2D" uid="uid://eea73k3xl6yy" path="res://sprites/goblin/sword_goblin_attak.png" id="4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bg15f0751fj4a" path="res://sprites/goblin/goblin_spawn.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://fk1ulw6x3f7j" path="res://sprites/goblin/sword_goblin_move.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b2mlck2d6uoqk" path="res://sprites/goblin/sword_goblin_take_damage.png" id="7_yd27f"]
+
 
 [sub_resource type="CircleShape2D" id="55"]
 radius = 33.9179

@@ -15,6 +15,5 @@ public partial class Global : Node
         Player = GetNode<PlayerData>("/root/PlayerData");
         EventBus = GetNode<EventBus>("/root/EventBus");
         Options = GetNode<Options>("/root/Options");
-
     }
 }
