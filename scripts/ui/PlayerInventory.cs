@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
 using projectpinky.scripts.drops;
-using projectpinky.scripts.spells;
 using projectpinky.scripts.ui.inventory;
 using Control = Godot.Control;
 
@@ -14,8 +11,6 @@ public partial class PlayerInventory : Control
     private PackedScene weaponCardScene = GD.Load<PackedScene>("res://scenes/ui/weapon_card.tscn");
     private PackedScene emptyCell = GD.Load<PackedScene>("res://scenes/ui/inventory/module_cell.tscn");
     private PackedScene inventoryObject = GD.Load<PackedScene>("res://scenes/ui/inventory/inventory_slot_object.tscn");
-
-    private PackedScene inventoryCell = GD.Load<PackedScene>("res://scenes/ui/inventory/inventory_cell.tscn");
 
     //
     // private Node cells;
@@ -30,18 +25,7 @@ public partial class PlayerInventory : Control
         //var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
     }
 
-    private void CreateInventoryCells()
-    {
-        for (float y = 199.5f; y < 992; y += 132)
-        {
-            for (float x = 1042.5f; x < 1900; x += 132)
-            {
-                var cell = inventoryCell.Instantiate<InventoryCell>();
-                GetNode<Control>($"item_grid/cells").AddChild(cell);
-                cell.GlobalPosition = new Vector2(x, y);
-            }
-        }
-    }
+
 
     // private void FillCells()
     // {
@@ -70,12 +54,12 @@ public partial class PlayerInventory : Control
     private void RemoveAllCells()
     {
         //EventBus.EmitSignal("clear_spell_icons");
-        foreach (Node child in GetNode<Control>($"weapon/cells").GetChildren())
+        foreach (var child in GetNode<Control>($"weapon/cells").GetChildren())
         {
             child.QueueFree();
         }
 
-        foreach (Node child in GetNode<Control>($"item_grid/items").GetChildren())
+        foreach (var child in GetNode<Control>($"item_grid/items").GetChildren())
         {
             if ((string)child.Get("current_cell.slot_type") == "spell")
             {
@@ -89,9 +73,9 @@ public partial class PlayerInventory : Control
         foreach (var node in GetNode<Control>($"item_grid/cells").GetChildren())
         {
             var cell = (InventoryCell)node;
-            if (cell.IsEmpty())
+            if (cell.Empty)
             {
-                var obj = inventoryObject.Instantiate<InventoryCellObject>();
+                var obj = inventoryObject.Instantiate<InventorySlotObject>();
                 obj.SetData(item);
                 GetNode<Control>($"item_grid/items").AddChild(obj);
                 obj.SetCell(cell);

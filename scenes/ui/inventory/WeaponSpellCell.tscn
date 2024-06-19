@@ -8,5 +8,8 @@
 scale = Vector2(5, 5)
 script = ExtResource("2_5dqee")
 
+[node name="CollisionShape2D" parent="cell" index="0"]
+visible = false
+
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_p4uhi")

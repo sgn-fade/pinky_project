@@ -17,13 +17,13 @@ public partial class ModuleCell : InventoryCell
 
     public new void _OnCellAreaEntered(Area2D area)
     {
-        if (area.Name == "object" && area.GetParent<InventoryCellObject>().DataType == "spell")
+        if (area.Name == "object" && area.GetParent<InventorySlotObject>().DataType == "spell")
         {
-            area.GetParent<InventoryCellObject>().SetTargetCell(this);
+            area.GetParent<InventorySlotObject>().SetTargetCell(this);
         }
     }
 
-    public new void SetObject(InventoryCellObject newObject)
+    public new void SetObject(InventorySlotObject newObject)
     {
         if (newObject.DataType == "spell")
         {
@@ -33,7 +33,7 @@ public partial class ModuleCell : InventoryCell
         }
     }
 
-    public void RestoreObject(InventoryCellObject oldObject)
+    public void RestoreObject(InventorySlotObject oldObject)
     {
         Object = oldObject;
         Empty = false;

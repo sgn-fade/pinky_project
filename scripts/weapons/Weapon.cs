@@ -29,19 +29,6 @@ public partial class Weapon : Node
         Magic
     }
 
-    //todo made it with nodes in ui
-    private readonly List<Vector2> modulePositionList = new()
-    {
-        new Vector2(418, 123),
-        new Vector2(649, 209),
-        new Vector2(733, 446),
-        new Vector2(649, 685),
-        new Vector2(418, 767),
-        new Vector2(187, 684),
-        new Vector2(103, 446),
-        new Vector2(188, 208)
-    };
-
     private List<Cell> cells = new();
 
     public List<Cell> GetCells()
@@ -60,13 +47,9 @@ public partial class Weapon : Node
             {buttonsBinds[4], null},
             {buttonsBinds[5], null}
         };
-        var positions = new List<Vector2>(modulePositionList);
         for (int i = 0; i < 4; i++)
         {
-            int index = (int)(GD.Randi() % positions.Count);
-            Vector2 pos = positions[index];
-            positions.RemoveAt(index);
-            cells.Add(new Cell(pos));
+            cells.Add(new Cell());
         }
     }
 
@@ -144,7 +127,6 @@ public partial class Weapon : Node
     public class Cell
     {
         public int Button { get; set; }
-        public Vector2 Position { get; set; }
         private int cellIndex;
         private Spell _module;
 
@@ -155,10 +137,9 @@ public partial class Weapon : Node
         }
         public Node Link { get; set; }
 
-        public Cell(Vector2 pos)
+        public Cell()
         {
             Module = null;
-            Position = pos;
         }
     }
 }

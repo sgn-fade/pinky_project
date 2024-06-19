@@ -3,7 +3,7 @@ using projectpinky.scripts.drops;
 
 namespace projectpinky.scripts.ui.inventory;
 
-public partial class InventoryCellObject : CharacterBody2D
+public partial class InventorySlotObject : CharacterBody2D
 {
     public object Data { get; set; }
     public string DataType { get; set; }
@@ -17,11 +17,6 @@ public partial class InventoryCellObject : CharacterBody2D
         DataType = newData.DataType;
         GetNode<TextureRect>("icon").Texture = newData.Icon;
         GetNode<TextureRect>("background").Texture = newData.Background;
-    }
-
-    public object GetData()
-    {
-        return Data;
     }
 
     public override void _Input(InputEvent @event)
@@ -53,7 +48,7 @@ public partial class InventoryCellObject : CharacterBody2D
     {
         if (targetCell == null)
         {
-            GlobalPosition = currentCell.GetPos();
+            GlobalPosition = currentCell.GlobalPosition;
             return;
         }
         targetCell.SwapObjects(currentCell, this);
@@ -64,7 +59,7 @@ public partial class InventoryCellObject : CharacterBody2D
     public void SetCell(InventoryCell cell)
     {
         currentCell = cell;
-        GlobalPosition = currentCell.GetPos();
+        GlobalPosition = currentCell.GlobalPosition;
     }
 
     public InventoryCell GetCell()
