@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Godot;
+using projectpinky.scripts.drops;
 using projectpinky.scripts.player;
 using projectpinky.scripts.ui;
 using projectpinky.scripts.weapons;
@@ -18,7 +20,7 @@ public partial class PlayerData : Node2D
     public float DashCooldown { get; set; } = 4f;
 
     private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
-
+    private List<InventoryItem> playerInventory = new();
     public UiCore View;
     private Player player;
     private Weapon weapon;
@@ -133,24 +135,19 @@ public partial class PlayerData : Node2D
         player = playerScene.Instantiate<Player>();
         Global.GlobalWorldInfo.GetWorld().AddChild(player);
     }
-    public void SetSmite(bool state)
-    {
-        canSmite = state;
-    }
-    public bool GetSmite(Node2D enemy)
-    {
-        if (canSmite)
-        {
-            if ((int)enemy.Get("hp") <= 0 && enemy.GlobalPosition.DistanceTo(GetPosition()) < 0)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void OnPlayerDash()
     {
         View.StartDashCooldown();
+    }
+
+    public void AddItemToPlayer(InventoryItem item)
+    {
+        playerInventory.Add(item);
+    }
+
+    public void RemoveItemFromPlayer(InventoryItem item)
+    {
+        playerInventory.Remove(item);
     }
 }

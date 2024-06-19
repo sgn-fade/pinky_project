@@ -25,8 +25,6 @@ public partial class PlayerInventory : Control
         //var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
     }
 
-
-
     private void FillCells()
     {
         cells = Global.Player.GetWeapon().GetCells();
