@@ -67,35 +67,35 @@ public partial class Weapon : Node
         }
     }
 
-    public void AddModuleToWeapon(Spell module, int cellIndex)
+    public void AddSpell(Spell spell, int cellIndex)
     {
-        cells[cellIndex].Module = module;
+        cells[cellIndex].Spell = spell;
         foreach (var key in buttonsBinds.Keys)
         {
             if (spellsButtons[buttonsBinds[key]] == null)
             {
                 cells[cellIndex].Button = key;
-                spellsButtons[buttonsBinds[key]] = module;
+                spellsButtons[buttonsBinds[key]] = spell;
                 //EventBus.EmitSignal("set_spell_icon_to_game", module, cells[cellIndex].button);
                 return;
             }
         }
     }
 
-    public void RemoveModuleFromWeapon(int cellIndex)
+    public void RemoveSpell(int cellIndex)
     {
         //EventBus.EmitSignal("remove_spell_icon_from_game", cells[cellIndex].button);
         spellsButtons[buttonsBinds[cells[cellIndex].Button]] = null;
         cells[cellIndex].Button = -1;
-        cells[cellIndex].Module = null;
+        cells[cellIndex].Spell = null;
     }
 
-    private void SwapModules(int firstSlot, int secondSlot)
+    private void SwapSpells(int firstSlot, int secondSlot)
     {
-        var firstModule = spellsButtons[buttonsBinds[firstSlot]];
-        var secondModule = spellsButtons[buttonsBinds[secondSlot]];
-        spellsButtons[buttonsBinds[firstSlot]] = secondModule;
-        spellsButtons[buttonsBinds[secondSlot]] = firstModule;
+        var firstSpell = spellsButtons[buttonsBinds[firstSlot]];
+        var secondSpell = spellsButtons[buttonsBinds[secondSlot]];
+        spellsButtons[buttonsBinds[firstSlot]] = secondSpell;
+        spellsButtons[buttonsBinds[secondSlot]] = firstSpell;
 
         if (spellsButtons[buttonsBinds[firstSlot]] != null)
         {
@@ -116,12 +116,12 @@ public partial class Weapon : Node
         }
     }
 
-    protected void AddBaseSpell(Spell module)
+    protected void AddBaseSpell(Spell spell)
     {
         var cell = cells[(int)(GD.Randi() % cells.Length)];
-        cell.Module = module;
+        cell.Spell = spell;
         cell.Button = 0;
-        spellsButtons[buttonsBinds[cell.Button]] = module;
+        spellsButtons[buttonsBinds[cell.Button]] = spell;
         //EventBus.EmitSignal("set_spell_icon_to_game", module, cell.button);
     }
 
@@ -130,18 +130,7 @@ public partial class Weapon : Node
     {
         public int Button { get; set; }
         public int Index { get; set; }
-        private Spell _module;
+        public Spell Spell { get; set; }
 
-        public Spell Module
-        {
-            get => _module;
-            set => _module = value;
-        }
-        public Node Link { get; set; }
-
-        public Cell()
-        {
-            Module = null;
-        }
     }
 }

@@ -29,7 +29,7 @@ public partial class SpellCell : InventoryCell
         {
             Object = newObject;
             Empty = false;
-            Global.Player.GetWeapon().AddModuleToWeapon((Spell)newObject.Data, cellIndex);
+            Global.Player.GetWeapon().AddSpell((Spell)newObject.Data, cellIndex);
         }
     }
 
@@ -42,6 +42,6 @@ public partial class SpellCell : InventoryCell
     public new void Clear()
     {
         base.Clear();
-        Global.Player.GetWeapon().RemoveModuleFromWeapon(cellIndex);
+        Global.Player.GetWeapon().RemoveSpell(cellIndex);
     }
 }
