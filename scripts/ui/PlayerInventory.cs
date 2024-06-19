@@ -1,24 +1,24 @@
+using System.Collections.Generic;
 using Godot;
 using projectpinky.scripts.drops;
+using projectpinky.scripts.Globals;
 using projectpinky.scripts.ui.inventory;
+using projectpinky.scripts.weapons;
 using Control = Godot.Control;
 
 namespace projectpinky.scripts.ui;
 
 public partial class PlayerInventory : Control
 {
-    private PackedScene spellSlotButtonScene = GD.Load<PackedScene>("res://scenes/ui/spell_slot_button.tscn");
-    private PackedScene weaponCardScene = GD.Load<PackedScene>("res://scenes/ui/weapon_card.tscn");
-    private PackedScene emptyCell = GD.Load<PackedScene>("res://scenes/ui/inventory/module_cell.tscn");
-    private PackedScene inventoryObject = GD.Load<PackedScene>("res://scenes/ui/inventory/inventory_slot_object.tscn");
+    [Export] PackedScene weaponCardScene = GD.Load<PackedScene>("res://scenes/ui/weapon_card.tscn");
+    [Export] private PackedScene spellCell;
+    [Export] private PackedScene inventoryObject;
 
-    //
-    // private Node cells;
-    //
+    private Weapon.Cell[] cells;
+
 
     public override void _Ready()
     {
-        // CreateInventoryCells();
         // InventoryItem item = new FireEyeSpell().InvItem;
         // AddItem(item);
         //var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
@@ -27,29 +27,29 @@ public partial class PlayerInventory : Control
 
 
 
-    // private void FillCells()
-    // {
-    //     cells = Player.GetWeapon().GetCells();
-    //     for (int i = 0; i < cells.Count; i++)
-    //     {
-    //         var currentCell = (Node2D)emptyCell.Instance();
-    //         GetNode<Node>($"/root/Main/$weapon/cells").AddChild(currentCell);
-    //         currentCell.Position = cells[i].Position;
-    //         currentCell.Set("cell_index", i);
-    //
-    //         if (cells[i].Module != null)
-    //         {
-    //             var item = inventoryObject.Instantiate<Node2D>();
-    //             item.Call("set_data", cells[i].Module.InventoryItem);
-    //             item.Position = currentCell.Position;
-    //             GetNode<Node>($"/root/Main/$item_grid/items").AddChild(item);
-    //             item.Call("set_cell", currentCell);
-    //             item.Visible = false;
-    //             currentCell.Call("restore_object", item);
-    //             //EventBus.EmitSignal("set_spell_icon_to_game", cells[i].Module, cells[i].Button);
-    //         }
-    //     }
-    // }
+    private void FillCells()
+    {
+        cells = Global.Player.GetWeapon().GetCells();
+        var childrenCells = GetNode("weapon/cell").GetChildren();
+
+        foreach (var cell in cells)
+        {
+            var childrenCell = (SpellCell)childrenCells[cell.Index];
+            childrenCell.Visible = true;
+
+            if (cell.Module != null)
+            {
+                var item = inventoryObject.Instantiate<InventorySlotObject>();
+                item.SetData(cell.Module.InvItem);
+                item.Position = childrenCell.Position;
+                GetNode<Node>($"/root/Main/$item_grid/items").AddChild(item);
+                item.SetCell(childrenCell);
+                item.Visible = false;
+                childrenCell.RestoreObject(item);
+                //EventBus.EmitSignal("set_spell_icon_to_game", cells[i].Module, cells[i].Button);
+            }
+        }
+    }
 
     private void RemoveAllCells()
     {

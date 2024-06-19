@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Godot;
 using projectpinky.scripts.drops;
@@ -29,9 +30,9 @@ public partial class Weapon : Node
         Magic
     }
 
-    private List<Cell> cells = new();
+    private Cell[] cells = new Cell[8];
 
-    public List<Cell> GetCells()
+    public Cell[] GetCells()
     {
         return cells;
     }
@@ -49,7 +50,8 @@ public partial class Weapon : Node
         };
         for (int i = 0; i < 4; i++)
         {
-            cells.Add(new Cell());
+            var index = GD.Randi() % cells.Length;
+            cells[index] ??= new Cell();
         }
     }
 
@@ -116,7 +118,7 @@ public partial class Weapon : Node
 
     protected void AddBaseSpell(Spell module)
     {
-        var cell = cells[(int)(GD.Randi() % cells.Count)];
+        var cell = cells[(int)(GD.Randi() % cells.Length)];
         cell.Module = module;
         cell.Button = 0;
         spellsButtons[buttonsBinds[cell.Button]] = module;
@@ -127,7 +129,7 @@ public partial class Weapon : Node
     public class Cell
     {
         public int Button { get; set; }
-        private int cellIndex;
+        public int Index { get; set; }
         private Spell _module;
 
         public Spell Module
