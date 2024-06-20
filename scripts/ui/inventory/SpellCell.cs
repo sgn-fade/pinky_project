@@ -6,7 +6,7 @@ using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.ui.inventory;
 
-public partial class ModuleCell : InventoryCell
+public partial class SpellCell : InventoryCell
 {
     private int cellIndex;
 
@@ -15,25 +15,25 @@ public partial class ModuleCell : InventoryCell
         SlotType = "spell";
     }
 
-    public new void _OnCellAreaEntered(Area2D area)
+    public void OnCellAreaEntered(Area2D area)
     {
-        if (area.Name == "object" && area.GetParent<InventoryCellObject>().DataType == "spell")
+        if (area.Name == "object" && area.GetParent<InventorySlotObject>().DataType == "spell")
         {
-            area.GetParent<InventoryCellObject>().SetTargetCell(this);
+            area.GetParent<InventorySlotObject>().SetTargetCell(this);
         }
     }
 
-    public new void SetObject(InventoryCellObject newObject)
+    public new void SetObject(InventorySlotObject newObject)
     {
         if (newObject.DataType == "spell")
         {
             Object = newObject;
             Empty = false;
-            Global.Player.GetWeapon().AddModuleToWeapon((Spell)newObject.Data, cellIndex);
+            Global.Player.GetWeapon().AddSpell((Spell)newObject.Data, cellIndex);
         }
     }
 
-    public void RestoreObject(InventoryCellObject oldObject)
+    public void RestoreObject(InventorySlotObject oldObject)
     {
         Object = oldObject;
         Empty = false;
@@ -42,6 +42,6 @@ public partial class ModuleCell : InventoryCell
     public new void Clear()
     {
         base.Clear();
-        Global.Player.GetWeapon().RemoveModuleFromWeapon(cellIndex);
+        Global.Player.GetWeapon().RemoveSpell(cellIndex);
     }
 }

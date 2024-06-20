@@ -5,7 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jenmm"]
 size = Vector2(79.8581, 78.2695)
 
-[node name="inventory_cell" type="Node2D"]
+[node name="inventory_cell" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_xgx75")
 
 [node name="cell" type="Area2D" parent="."]

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Godot;
+using projectpinky.scripts.drops;
 using projectpinky.scripts.player;
 using projectpinky.scripts.ui;
 using projectpinky.scripts.weapons;
@@ -18,15 +20,15 @@ public partial class PlayerData : Node2D
     public float DashCooldown { get; set; } = 4f;
 
     private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
-
-    private UiCore ui;
+    private List<InventoryItem> playerInventory = new();
+    public UiCore View;
     private Player player;
     private Weapon weapon;
     private EventBus eventBus = Global.EventBus;
 
     public override void _Ready()
     {
-        ui = GetNode<UiCore>("/root/World/Ui");
+        View = GetNode<UiCore>("/root/World/Ui");
     }
 
     public void SetState(Player.States state)
@@ -50,10 +52,13 @@ public partial class PlayerData : Node2D
     public int GetZIndex() => player.ZIndex;
     public Weapon GetWeapon() => weapon;
 
-    public void SetHp(int value)
+    /// returns true if hp is greater than 0
+    public bool SetHp(int value)
     {
-        hp += value;
-        ui.UpdateHpValue(hp, maxHp);
+        if ((hp += value) <= 0) return false;
+        View.UpdateHpValue(hp, maxHp);
+        return true;
+
     }
     public bool SetMana(int value)
     {
@@ -63,13 +68,13 @@ public partial class PlayerData : Node2D
             return false;
         }
         mana += value;
-        ui.UpdateManaValue(mana, maxMana);
+        View.UpdateManaValue(mana, maxMana);
         return true;
     }
     public void SetMaxMana(int value)
     {
         maxMana += value;
-        ui.UpdateManaValue(mana, maxMana);
+        View.UpdateManaValue(mana, maxMana);
     }
     public void SetMagicDamage(int newMagicDamage)
     {
@@ -130,24 +135,19 @@ public partial class PlayerData : Node2D
         player = playerScene.Instantiate<Player>();
         Global.GlobalWorldInfo.GetWorld().AddChild(player);
     }
-    public void SetSmite(bool state)
-    {
-        canSmite = state;
-    }
-    public bool GetSmite(Node2D enemy)
-    {
-        if (canSmite)
-        {
-            if ((int)enemy.Get("hp") <= 0 && enemy.GlobalPosition.DistanceTo(GetPosition()) < 0)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void OnPlayerDash()
     {
-        ui.StartDashCooldown();
+        View.StartDashCooldown();
+    }
+
+    public void AddItemToPlayer(InventoryItem item)
+    {
+        playerInventory.Add(item);
+    }
+
+    public void RemoveItemFromPlayer(InventoryItem item)
+    {
+        playerInventory.Remove(item);
     }
 }

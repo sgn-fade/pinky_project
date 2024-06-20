@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pe7wisviq3yk"]
+[gd_scene load_steps=14 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/PlayerInventory.cs" id="1_tlr2l"]
@@ -8,9 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://djo02qi6h04cx" path="res://sprites/ui/back_arrow/back_arrow_pressed.png" id="6_t07cs"]
 [ext_resource type="Texture2D" uid="uid://cgv24tfyks8io" path="res://sprites/ui/back_arrow/back_arrow_hover.png" id="7_1f8wp"]
 [ext_resource type="Texture2D" uid="uid://ukmieltv2tr1" path="res://sprites/ui/circle_label.png" id="7_cwrlk"]
+[ext_resource type="PackedScene" uid="uid://dsq4kktf65hd3" path="res://scenes/ui/inventory/WeaponSpellCell.tscn" id="7_sciju"]
 [ext_resource type="PackedScene" uid="uid://d2tomlxjbg3c6" path="res://scenes/ui/Consumables.tscn" id="8_7whhs"]
 [ext_resource type="PackedScene" uid="uid://cwlxebje1ywyi" path="res://scenes/ui/inventory/weapon_cell.tscn" id="9_fud0s"]
 [ext_resource type="Texture2D" uid="uid://ctend2wplo4na" path="res://sprites/ui/inventory/inventory_grid.png" id="9_ma0ua"]
+[ext_resource type="PackedScene" uid="uid://i8y4ob3n3s2y" path="res://scenes/ui/inventory/inventory_cell.tscn" id="12_nakoi"]
 
 [node name="inventory_ui" type="Control"]
 process_mode = 3
@@ -46,7 +48,10 @@ offset_bottom = 712.6
 scale = Vector2(2.5, 2.5)
 
 [node name="weapon_cell" parent="default_right_side" instance=ExtResource("9_fud0s")]
-position = Vector2(720, 858)
+offset_left = 720.0
+offset_top = 858.0
+offset_right = 720.0
+offset_bottom = 858.0
 scale = Vector2(4, 4)
 
 [node name="weapon" type="Control" parent="."]
@@ -81,6 +86,54 @@ offset_bottom = 474.0
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="spell_cell" parent="weapon/cells" instance=ExtResource("7_sciju")]
+offset_left = 435.0
+offset_top = 141.25
+offset_right = 435.0
+offset_bottom = 141.25
+
+[node name="spell_cell2" parent="weapon/cells" instance=ExtResource("7_sciju")]
+offset_left = 666.25
+offset_top = 225.0
+offset_right = 666.25
+offset_bottom = 225.0
+
+[node name="spell_cell3" parent="weapon/cells" instance=ExtResource("7_sciju")]
+offset_left = 751.25
+offset_top = 463.75
+offset_right = 751.25
+offset_bottom = 463.75
+
+[node name="spell_cell4" parent="weapon/cells" instance=ExtResource("7_sciju")]
+offset_left = 666.25
+offset_top = 701.25
+offset_right = 666.25
+offset_bottom = 701.25
+
+[node name="spell_cell5" parent="weapon/cells" instance=ExtResource("7_sciju")]
+offset_left = 435.0
+offset_top = 785.0
+offset_right = 435.0
+offset_bottom = 785.0
+
+[node name="spell_cell6" parent="weapon/cells" instance=ExtResource("7_sciju")]
+offset_left = 203.75
+offset_top = 701.25
+offset_right = 203.75
+offset_bottom = 701.25
+
+[node name="spell_cell7" parent="weapon/cells" instance=ExtResource("7_sciju")]
+offset_left = 120.0
+offset_top = 462.5
+offset_right = 120.0
+offset_bottom = 462.5
+
+[node name="spell_cell8" parent="weapon/cells" instance=ExtResource("7_sciju")]
+offset_left = 205.0
+offset_top = 226.25
+offset_right = 205.0
+offset_bottom = 226.25
 
 [node name="back_arrow" type="TextureButton" parent="weapon"]
 layout_mode = 0
@@ -119,6 +172,163 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="item_grid/cells"]
+layout_mode = 0
+offset_left = 1042.5
+offset_top = 199.5
+offset_right = 1082.5
+offset_bottom = 239.5
+theme_override_constants/h_separation = 132
+theme_override_constants/v_separation = 132
+columns = 7
+
+[node name="inventory_cell" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell2" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell3" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell4" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell5" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell6" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell7" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell8" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell9" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell10" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell11" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell12" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell13" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell14" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell15" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell16" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell17" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell18" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell19" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell20" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell21" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell22" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell23" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell24" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell25" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell26" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell27" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell28" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell29" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell30" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell31" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell32" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell33" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell34" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell35" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell36" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell37" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell38" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell39" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell40" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell41" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell42" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell43" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell44" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell45" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell46" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell47" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell48" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
+
+[node name="inventory_cell49" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+layout_mode = 2
 
 [node name="Control" type="Control" parent="."]
 visible = false

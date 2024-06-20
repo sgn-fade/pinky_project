@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Godot;
 using projectpinky.scripts.Globals;
 using projectpinky.scripts.spells;
+using projectpinky.scripts.weapons;
 
 namespace projectpinky.scripts.ui;
 
@@ -25,16 +26,12 @@ public partial class GameUi : Control
     public override void _Ready()
     {
         eventBus = Global.EventBus;
-
+        //todo event bus
         // EventBus.Connect("set_spell_icon_to_game", this, nameof(OnSetSpellIconToGame));
         // EventBus.Connect("start_spell_cooldown", this, nameof(OnStartSpellCooldown));
         // EventBus.Connect("remove_spell_icon_from_game", this, nameof(OnRemoveSpellIconFromGame));
         // EventBus.Connect("clear_spell_icons", this, nameof(ClearSpellIcons));
-        //
-        // EventBus.Connect("show_module_stats_on_game_screen", this, nameof(OnShowModuleStatsOnGameScreen));
-        // EventBus.Connect("hide_module_stats_on_game_screen", this, nameof(OnHideModuleStatsOnGameScreen));
-        // EventBus.Connect("show_weapon_stats_on_game_screen", this, nameof(OnShowWeaponStatsOnGameScreen));
-        // EventBus.Connect("hide_weapon_stats_on_game_screen", this, nameof(OnHideWeaponStatsOnGameScreen));
+
     }
 
     public override void _Process(double delta)
@@ -57,26 +54,17 @@ public partial class GameUi : Control
     {
         dashIndicator.StartCooldown();
     }
-    private void OnShowModuleStatsOnGameScreen(Spell module)
+    //todo connect to player
+    private void ChangeModuleCardVisible(bool state, Texture2D texture = null)
     {
-        GetNode<Control>("module_discription").Visible = true;
-        //GetNode<TextureRect>("module_discription/module_icon").Texture = module.InventoryItem.Icon;
+        GetNode<Control>("module_discription").Visible = state;
+        GetNode<TextureRect>("module_discription/module_icon").Texture = texture;
     }
 
-    private void OnHideModuleStatsOnGameScreen()
+    private void ChangeWeaponCardVisible(bool state, Texture2D texture = null)
     {
-        GetNode<Control>("module_discription").Visible = false;
-    }
-
-    private void OnShowWeaponStatsOnGameScreen(Node2D weapon)
-    {
-        GetNode<Control>("weapon_discription").Visible = true;
-        //GetNode<TextureRect>("weapon_discription/weapon_texture").Texture = weapon.Icon;
-    }
-
-    private void OnHideWeaponStatsOnGameScreen()
-    {
-        GetNode<Control>("weapon_discription").Visible = false;
+        GetNode<Control>("weapon_discription").Visible = state;
+        GetNode<TextureRect>("weapon_discription/weapon_texture").Texture = texture;
     }
 
     private void OnRemoveSpellIconFromGame(string button)

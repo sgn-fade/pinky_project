@@ -5,13 +5,13 @@ namespace projectpinky.scripts.Globals;
 
 public partial class Options : Node
 {
-    public static Dictionary<string, string> ButtonsBinds = new()
+    public static readonly Dictionary<int, string> ButtonsBinds = new()
     {
-        { "slot1", "X" },
-        { "slot2", "Q" },
-        { "slot3", "mouse_left_button" },
-        { "slot4", "mouse_right_button" },
-        { "slot5", "R" },
-        { "slot6", "C" }
+        { 0, "X" },
+        { 1, "Q" },
+        { 2, "LMB" },
+        { 3, "RMB" },
+        { 4, "R" },
+        { 5, "C" }
     };
 }

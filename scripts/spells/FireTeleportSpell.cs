@@ -6,9 +6,9 @@ using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.spells;
 
-public class FireTeleportSpell : Spell
+public partial class FireTeleportSpell : Spell
 {
-    // public override async Task Cast()
+    // public new void Cast()
     // {
     //     Cooldown();
     //     EventBus.EmitSignal("player_teleport", Player.GetBody().GetLocalMousePosition());
@@ -19,7 +19,6 @@ public class FireTeleportSpell : Spell
 
     public FireTeleportSpell()
     {
-        Rarity = "bronze";
         var spellIcon = GD.Load<Texture2D>("res://sprites/spell_icons/fire_teleport_icon.png");
         var backgroundTexture = GD.Load<Texture2D>($"res://sprites/ui/{Rarity}_module_button_state.png");
         InvItem = new InventoryItem(this, "spell", spellIcon, backgroundTexture);

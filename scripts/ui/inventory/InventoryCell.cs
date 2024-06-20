@@ -2,30 +2,13 @@ using Godot;
 
 namespace projectpinky.scripts.ui.inventory;
 
-public partial class InventoryCell : Node2D
+public partial class InventoryCell : Control
 {
-	// Переменные
 	public bool Empty { get; set; } = true;
-	public InventoryCellObject Object;
+	public InventorySlotObject Object;
 	public string SlotType { get; set; }= "inventory";
 
-	public bool IsEmpty() => Empty;
-
-
-	public Vector2 GetPos()
-	{
-		return GetNode<Node2D>("object_pos").GlobalPosition;
-	}
-
-	public void OnCellAreaEntered(Area2D area)
-	{
-		if (area.Name == "object")
-		{
-			area.GetParent<InventoryCellObject>().SetTargetCell(this);
-		}
-	}
-
-	public void SwapObjects(InventoryCell prevCell, InventoryCellObject newObject)
+	public void SwapObjects(InventoryCell prevCell, InventorySlotObject newObject)
 	{
 		if (Object != null)
 		{
@@ -38,7 +21,7 @@ public partial class InventoryCell : Node2D
 		SetObject(newObject);
 	}
 
-	public void SetObject(InventoryCellObject newObject)
+	public void SetObject(InventorySlotObject newObject)
 	{
 		Object = newObject;
 		Empty = false;
@@ -50,11 +33,19 @@ public partial class InventoryCell : Node2D
 		Object = null;
 	}
 
-	public void OnCellAreaExited(Area2D area)
+	private void OnCellAreaEntered(Area2D area)
 	{
-		if (area.Name == "object")
+		if (area.GetParent() is InventorySlotObject slotObject)
 		{
-			area.GetParent<InventoryCellObject>().SetTargetCell(null);
+			slotObject.SetTargetCell(this);
+		}
+	}
+
+	private void OnCellAreaExited(Area2D area)
+	{
+		if (area.GetParent() is InventorySlotObject slotObject)
+		{
+			slotObject.SetTargetCell(null);
 		}
 	}
 }

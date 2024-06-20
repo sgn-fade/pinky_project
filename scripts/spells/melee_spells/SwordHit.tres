@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://cfukm7ru4fpmm"]
+
+[ext_resource type="Script" path="res://scripts/spells/Spell.cs" id="1_5tovk"]
+[ext_resource type="Texture2D" uid="uid://dvd4t7s5ihqxt" path="res://sprites/spell_icons/sword_hit.png" id="1_6joao"]
+
+[resource]
+script = ExtResource("1_5tovk")
+Icon = ExtResource("1_6joao")
+AnimationName = ""
+Rarity = 0
+CooldownTime = 0.5
+ManaCost = 0

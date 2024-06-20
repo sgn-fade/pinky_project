@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Godot;
 using projectpinky.scripts.drops;
@@ -5,33 +6,58 @@ using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.spells;
 
-public class Spell
+[GlobalClass]
+public partial class Spell : Resource
 {
-    public string AnimationName { get; set; }
-    public string Rarity { get; set; }
-    public bool IsReady { get; set; } = true;
-    public float CooldownTime { get; set; }
-    public float TimeSpend { get; set; }
-    public int ManaCost { get; set; }
-    public PackedScene Particle { get; set; }
+    [Export] public Texture2D Icon { get; set; }
+    [Export] public string AnimationName { get; set; }
+    [Export] public Rarities Rarity { get; set; }
+    [Export] public float CooldownTime { get; set; }
+    [Export] public int ManaCost { get; set; }
+    [Export] public PackedScene Particle { get; set; }
     public InventoryItem InvItem { get; set; }
 
     private PlayerData player = Global.Player;
+    public bool IsReady { get; set; } = true;
+    public float TimeSpend { get; set; }
 
 
-    public Task Cast()
+    public Spell() : this(null, null, Rarities.Bronze, 0, 0, null)
+    {
+    }
+
+    public enum Rarities
+    {
+        Bronze,
+        Silver,
+        Gold,
+    }
+    public Spell(Texture2D icon, string animationName, Rarities rarity, float cooldownTime, int manaCost,
+        PackedScene particle)
+    {
+        Icon = icon;
+        AnimationName = animationName;
+        Rarity = rarity;
+        CooldownTime = cooldownTime;
+        ManaCost = manaCost;
+        Particle = particle;
+        TimeSpend = CooldownTime;
+        var backgroundTexture = GD.Load<Texture2D>($"res://sprites/ui/{Rarity}_module_button_state.png");
+        InvItem = new InventoryItem(this, "spell", icon, backgroundTexture);
+    }
+
+    public void Cast()
     {
         if (player.SetMana(-ManaCost))
         {
             if (Particle != null)
             {
-                //GlobalWorldInfo.GetWorld().AddChild(Particle.Instantiate());
+                Global.GlobalWorldInfo.GetWorld().AddChild(Particle.Instantiate());
             }
+
             Global.Player.PlayAnimation(AnimationName);
             Cooldown();
         }
-
-        return Task.CompletedTask;
     }
 
     public bool GetReady()

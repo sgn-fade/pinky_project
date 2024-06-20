@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://15vutrjv1g2g"]
+[gd_scene load_steps=73 format=3 uid="uid://15vutrjv1g2g"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_ijsvk"]
 [ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/spell_character_animation/body/clear_player.png" id="2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://scripts/hands/HandsManager.cs" id="12_q5bt1"]
 [ext_resource type="Texture2D" uid="uid://cr3d0twg7nxse" path="res://sprites/character_fire_teleport_start_player.png" id="14"]
 [ext_resource type="PackedScene" uid="uid://dltfuc1qq5unu" path="res://scenes/hands/shotgun_hands.tscn" id="14_cherd"]
-[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="14_exr6n"]
 [ext_resource type="Texture2D" uid="uid://b1im72qaw3tu3" path="res://sprites/character_fire_teleport_end_player.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://dpiwmmentj23y" path="res://sprites/spell_character_animation/body/spear_throw.png" id="16"]
 
@@ -583,14 +582,6 @@ script = ExtResource("12_q5bt1")
 [node name="teleport_ray" type="RayCast2D" parent="."]
 target_position = Vector2(1, 1)
 collision_mask = 2147483648
-
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -21.0
-offset_top = -41.0
-offset_right = 19.0
-offset_bottom = -18.0
-theme_override_fonts/font = ExtResource("14_exr6n")
 
 [node name="shotgun" parent="." instance=ExtResource("14_cherd")]
 position = Vector2(0, -6)

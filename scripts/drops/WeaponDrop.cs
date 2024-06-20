@@ -8,9 +8,9 @@ namespace projectpinky.scripts.drops;
 public partial class WeaponDrop : Area2D
 {
     //todo update paths
-    // [Export] private PackedScene OldGoblinsMagicWand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
-    // [Export] private PackedScene FireBookTome1 = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd");
-    // [Export] private PackedScene GoblinSword = GD.Load<PackedScene>("res://scripts/weapons/melee/sword.gd");
+    [Export] private PackedScene OldGoblinsMagicWand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
+    [Export] private PackedScene FireBookTome1 = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/fire_book_tome_1.gd");
+    [Export] private PackedScene GoblinSword = GD.Load<PackedScene>("res://scripts/weapons/melee/sword.gd");
 
     private List<PackedScene> weaponList = new List<PackedScene>();
     private PackedScene weapon = null;

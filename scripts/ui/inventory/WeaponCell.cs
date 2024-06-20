@@ -15,7 +15,7 @@ public partial class WeaponCell : InventoryCell
         SlotType = "weapon";
     }
 
-    public new void SetObject(InventoryCellObject newObject)
+    public new void SetObject(InventorySlotObject newObject)
     {
         if (newObject.DataType == "weapon")
         {
@@ -31,9 +31,9 @@ public partial class WeaponCell : InventoryCell
 
     public new void _OnCellAreaEntered(Area2D area)
     {
-        if (area.Name == "object" && area.GetParent<InventoryCellObject>().DataType == "weapon")
+        if (area.Name == "object" && area.GetParent<InventorySlotObject>().DataType == "weapon")
         {
-            area.GetParent<InventoryCellObject>().SetTargetCell(this);
+            area.GetParent<InventorySlotObject>().SetTargetCell(this);
         }
     }
 
