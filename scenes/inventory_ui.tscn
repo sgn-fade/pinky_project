@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://pe7wisviq3yk"]
+[gd_scene load_steps=15 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/PlayerInventory.cs" id="1_tlr2l"]
 [ext_resource type="PackedScene" uid="uid://d00qmrac5adv2" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://btdrg2ytefew2" path="res://scenes/ui/inventory/inventory_slot_object.tscn" id="3_nhbeo"]
 [ext_resource type="Texture2D" uid="uid://p31ii0hg8cjd" path="res://sprites/ui/back_arrow/back_arrow_idle.png" id="5_f11wr"]
 [ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://djo02qi6h04cx" path="res://sprites/ui/back_arrow/back_arrow_pressed.png" id="6_t07cs"]
@@ -26,6 +27,8 @@ grow_vertical = 2
 pivot_offset = Vector2(-760, -177)
 tooltip_text = "testtesttesttesttest"
 script = ExtResource("1_tlr2l")
+spellCell = ExtResource("7_sciju")
+inventoryObject = ExtResource("3_nhbeo")
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.952941)
@@ -146,6 +149,11 @@ texture_normal = ExtResource("5_f11wr")
 texture_pressed = ExtResource("6_t07cs")
 texture_hover = ExtResource("7_1f8wp")
 
+[node name="spells" type="Control" parent="weapon"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="item_grid" type="Control" parent="."]
 anchors_preset = 0
 mouse_filter = 2
@@ -173,7 +181,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="GridContainer" type="GridContainer" parent="item_grid/cells"]
+[node name="Grid" type="GridContainer" parent="item_grid/cells"]
 layout_mode = 0
 offset_left = 1042.5
 offset_top = 199.5
@@ -183,151 +191,151 @@ theme_override_constants/h_separation = 132
 theme_override_constants/v_separation = 132
 columns = 7
 
-[node name="inventory_cell" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell2" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell2" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell3" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell3" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell4" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell4" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell5" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell5" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell6" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell6" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell7" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell7" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell8" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell8" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell9" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell9" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell10" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell10" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell11" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell11" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell12" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell12" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell13" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell13" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell14" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell14" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell15" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell15" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell16" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell16" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell17" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell17" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell18" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell18" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell19" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell19" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell20" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell20" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell21" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell21" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell22" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell22" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell23" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell23" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell24" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell24" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell25" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell25" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell26" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell26" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell27" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell27" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell28" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell28" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell29" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell29" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell30" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell30" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell31" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell31" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell32" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell32" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell33" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell33" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell34" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell34" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell35" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell35" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell36" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell36" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell37" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell37" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell38" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell38" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell39" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell39" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell40" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell40" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell41" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell41" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell42" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell42" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell43" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell43" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell44" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell44" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell45" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell45" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell46" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell46" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell47" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell47" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell48" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell48" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell49" parent="item_grid/cells/GridContainer" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell49" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
 [node name="Control" type="Control" parent="."]

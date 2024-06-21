@@ -141,9 +141,10 @@ public partial class PlayerData : Node2D
         View.StartDashCooldown();
     }
 
-    public void AddItemToPlayer(InventoryItem item)
+    public void AddItem(InventoryItem item)
     {
         playerInventory.Add(item);
+        View.AddItemToInventory(item);
     }
 
     public void RemoveItemFromPlayer(InventoryItem item)

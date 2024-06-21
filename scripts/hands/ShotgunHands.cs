@@ -34,7 +34,7 @@ public partial class ShotgunHands : GunHands
 
     public override void _Input(InputEvent @event)
     {
-        animationTree.Set("parameters/conditions/IsShoted", Input.IsActionPressed("mouse_left_button"));
+        animationTree.Set("parameters/conditions/IsShoted", Input.IsActionPressed("LMB"));
         animationTree.Set("parameters/conditions/IsReload", Input.IsActionJustPressed("R"));
     }
 

@@ -36,7 +36,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ui" type="CanvasLayer" node_paths=PackedStringArray("gameUi", "inventoryUi", "loadUi", "pauseUi")]
+[node name="Ui" type="CanvasLayer" node_paths=PackedStringArray("gameUi", "inventoryUi", "loadUi", "pauseUi", "crosshair")]
 process_mode = 3
 layer = 100
 script = ExtResource("1_uq54f")
@@ -44,6 +44,7 @@ gameUi = NodePath("game_ui")
 inventoryUi = NodePath("inventory_ui")
 loadUi = NodePath("load_ui")
 pauseUi = NodePath("pause_ui")
+crosshair = NodePath("crosshair")
 
 [node name="inventory_ui" parent="." instance=ExtResource("4")]
 visible = false

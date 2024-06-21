@@ -8,7 +8,7 @@
 script = ExtResource("1_td0ux")
 Icon = ExtResource("1_p6f6i")
 AnimationName = "z"
-Rarity = 0
+Rarity = 1
 CooldownTime = 1.0
 ManaCost = 1
 Particle = ExtResource("2_po6pb")

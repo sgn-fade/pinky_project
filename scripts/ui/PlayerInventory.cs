@@ -19,8 +19,6 @@ public partial class PlayerInventory : Control
 
     public override void _Ready()
     {
-        // InventoryItem item = new FireEyeSpell().InvItem;
-        // AddItem(item);
         //var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
         //var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
     }
@@ -66,16 +64,18 @@ public partial class PlayerInventory : Control
         }
     }
 
-    private void AddItem(InventoryItem item)
+    public void AddItem(InventoryItem item)
     {
-        foreach (var node in GetNode<Control>($"item_grid/cells").GetChildren())
+        var cellsParent = GetNode($"item_grid/cells/Grid");
+        for (int i = 0; i < GetChildCount(); i++)
         {
-            var cell = (InventoryCell)node;
+            var cell = cellsParent.GetChild<InventoryCell>(i);
+
             if (cell.Empty)
             {
                 var obj = inventoryObject.Instantiate<InventorySlotObject>();
                 obj.SetData(item);
-                GetNode<Control>($"item_grid/items").AddChild(obj);
+                cellsParent.AddChild(obj);
                 obj.SetCell(cell);
                 cell.SetObject(obj);
                 return;

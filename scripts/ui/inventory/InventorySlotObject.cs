@@ -21,12 +21,12 @@ public partial class InventorySlotObject : CharacterBody2D
 
     public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionJustPressed("mouse_left_button") && mouseInArea)
+        if (Input.IsActionJustPressed("LMB") && mouseInArea)
         {
             ZIndex = 10;
             SetProcess(true);
         }
-        if (Input.IsActionJustReleased("mouse_left_button") && mouseInArea)
+        if (Input.IsActionJustReleased("LMB") && mouseInArea)
         {
             ZIndex = 0;
             SetToCell();
