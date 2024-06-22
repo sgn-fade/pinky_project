@@ -130,7 +130,7 @@ public partial class Weapon : Node
     {
         public int Button { get; set; }
         public int Index { get; set; }
-        public Spell Spell { get; set; }
+        public Spell Spell{ get; set; }
 
     }
 }

@@ -73,22 +73,22 @@ public partial class GameUi : Control
         Bars[button] = null;
     }
 
-    private void OnSetSpellIconToGame(Spell module, string button)
+    private void OnSetSpellIconToGame(Spell spell, string button)
     {
         var bar = GetNode<TextureProgressBar>($"spell_slot_panel/{button}");
-        bar.MaxValue = module.GetMaxCooldownTime() * 1000;
+        bar.MaxValue = spell.GetMaxCooldownTime() * 1000;
 
-        if (module.GetReady())
+        if (spell.GetReady())
         {
             bar.Value = bar.MaxValue;
         }
         else
         {
-            bar.Value = module.GetCooldownTime() * 1000;
+            bar.Value = spell.GetCooldownTime() * 1000;
         }
 
         //bar.TextureProgress = module.InventoryItem.Icon;
-        Bars[button] = module;
+        Bars[button] = spell;
     }
 
     private void ClearSpellIcons()
