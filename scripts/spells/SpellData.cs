@@ -17,9 +17,6 @@ public partial class SpellData : Resource
     [Export] public PackedScene Particle { get; set; }
     public Texture2D BackgroundTexture { get; set; }
 
-    public float TimeSpend { get; set; }
-
-
     public SpellData()
     {
         Rarity = Rarities.Bronze;
@@ -34,6 +31,4 @@ public partial class SpellData : Resource
         Silver,
         Gold,
     }
-
-
 }

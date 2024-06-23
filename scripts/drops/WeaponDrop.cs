@@ -32,7 +32,7 @@ public partial class WeaponDrop : Area2D
                 SetProcess(false);
                 body.QueueFree();
                 GetNode<CpuParticles2D>("end_particles").Emitting = true;
-                Global.Player.AddItem((new Spell(dropList[0])).InvItem);
+                Global.Player.AddItem((new Spell(dropList[GD.Randi() % dropList.Length])).InvItem);
                 GetTree().CreateTimer(0.3f).Timeout += QueueFree;
             }
         }

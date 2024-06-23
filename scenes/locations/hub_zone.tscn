@@ -148,3 +148,15 @@ color = Color(0.45098, 0.45098, 0.45098, 1)
 
 [node name="weapon_drop" parent="." instance=ExtResource("6_jvikc")]
 position = Vector2(120, -18)
+
+[node name="weapon_drop2" parent="." instance=ExtResource("6_jvikc")]
+position = Vector2(120, -18)
+
+[node name="weapon_drop4" parent="." instance=ExtResource("6_jvikc")]
+position = Vector2(141, -29)
+
+[node name="weapon_drop5" parent="." instance=ExtResource("6_jvikc")]
+position = Vector2(121, -17)
+
+[node name="weapon_drop6" parent="." instance=ExtResource("6_jvikc")]
+position = Vector2(119, -36)

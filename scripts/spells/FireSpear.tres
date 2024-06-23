@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://iudko4u3wygw"]
+
+[ext_resource type="Texture2D" uid="uid://b72qjfrkdfgr5" path="res://sprites/spell_icons/fire_spear_spell_icon.png" id="1_cepc7"]
+[ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="1_o0hmf"]
+[ext_resource type="PackedScene" uid="uid://cu8g81pla64ql" path="res://scenes/particles/fire_spear_particle.tscn" id="2_yqwxo"]
+
+[resource]
+script = ExtResource("1_o0hmf")
+Icon = ExtResource("1_cepc7")
+AnimationName = ""
+Rarity = 0
+CooldownTime = 2.0
+ManaCost = 2
+Particle = ExtResource("2_yqwxo")

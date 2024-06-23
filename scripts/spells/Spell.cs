@@ -6,9 +6,9 @@ namespace projectpinky.scripts.spells;
 public class Spell
 {
     public SpellData Data { get; set; }
-
     public InventoryItem InvItem { get; set; }
     private PlayerData player;
+    public float TimeSpend { get; set; }
 
 
     public Spell(SpellData data)
@@ -33,17 +33,17 @@ public class Spell
 
     public bool GetReady()
     {
-        return !(Data.TimeSpend < Data.CooldownTime);
+        return !(TimeSpend < Data.CooldownTime);
     }
 
     public void Cooldown()
     {
-        Data.TimeSpend = 0;
+        TimeSpend = 0;
     }
 
     public float GetCooldownTime()
     {
-        return Data.TimeSpend;
+        return TimeSpend;
     }
 
     public float GetMaxCooldownTime()
@@ -53,6 +53,6 @@ public class Spell
 
     public void SetCooldownTime(float value)
     {
-        Data.TimeSpend += value;
+        TimeSpend += value;
     }
 }

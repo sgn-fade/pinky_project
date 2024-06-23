@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dai8f5grr0xq"]
+[gd_scene load_steps=16 format=3 uid="uid://dai8f5grr0xq"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://cl6qvtqrodqft" path="res://sprites/particles/bronze_weapon_drop.png" id="2"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://scripts/drops/WeaponDrop.cs" id="3"]
 [ext_resource type="PackedScene" uid="uid://uaai0aurtcg1" path="res://scenes/fireball.tscn" id="3_1vi8s"]
 [ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="4_hhflq"]
+[ext_resource type="Resource" uid="uid://5mcx1iyr6t5j" path="res://scripts/spells/FireEye.tres" id="5_mc5fx"]
+[ext_resource type="Resource" uid="uid://hsk8wfqmbamn" path="res://scripts/spells/FirePillar.tres" id="6_67erw"]
+[ext_resource type="Resource" uid="uid://iudko4u3wygw" path="res://scripts/spells/FireSpear.tres" id="7_x3x84"]
 
 [sub_resource type="Resource" id="Resource_xbibe"]
 script = ExtResource("4_hhflq")
@@ -49,7 +52,7 @@ point_count = 2
 
 [node name="weapon_drop" type="Area2D"]
 script = ExtResource("3")
-dropList = [SubResource("Resource_xbibe"), null, null, null, null]
+dropList = [SubResource("Resource_xbibe"), ExtResource("5_mc5fx"), ExtResource("6_67erw"), ExtResource("7_x3x84")]
 
 [node name="detection_area" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
