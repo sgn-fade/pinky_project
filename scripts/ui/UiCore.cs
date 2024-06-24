@@ -66,9 +66,4 @@ public partial class UiCore : CanvasLayer
 	{
 		gameUi.StartDashCooldown();
 	}
-
-	public void AddItemToInventory(InventoryItem item)
-	{
-		inventoryUi.AddItem(item);
-	}
 }

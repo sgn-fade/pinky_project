@@ -47,6 +47,7 @@ pauseUi = NodePath("pause_ui")
 crosshair = NodePath("crosshair")
 
 [node name="inventory_ui" parent="." instance=ExtResource("4")]
+visible = false
 mouse_filter = 2
 
 [node name="load_ui" parent="." instance=ExtResource("5")]

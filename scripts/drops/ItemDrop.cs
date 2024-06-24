@@ -6,7 +6,7 @@ using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.drops;
 
-public partial class WeaponDrop : Area2D
+public partial class ItemDrop : Area2D
 {
 
     [Export] private SpellData[] dropList = new SpellData[1];

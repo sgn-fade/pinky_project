@@ -59,7 +59,6 @@ public partial class InventorySlotObject : CharacterBody2D
     public void SetCell(InventoryCell cell)
     {
         currentCell = cell;
-        GlobalPosition = currentCell.GlobalPosition;
     }
 
     public InventoryCell GetCell()

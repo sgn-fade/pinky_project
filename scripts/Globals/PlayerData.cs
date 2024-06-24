@@ -20,7 +20,7 @@ public partial class PlayerData : Node2D
     public float DashCooldown { get; set; } = 4f;
 
     private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
-    private List<InventoryItem> playerInventory = new();
+    public List<InventoryItem> playerInventory = new();
     public UiCore View;
     private Player player;
     private Weapon weapon;
@@ -144,7 +144,6 @@ public partial class PlayerData : Node2D
     public void AddItem(InventoryItem item)
     {
         playerInventory.Add(item);
-        View.AddItemToInventory(item);
     }
 
     public void RemoveItemFromPlayer(InventoryItem item)

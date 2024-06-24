@@ -15,22 +15,36 @@ public partial class PlayerInventory : Control
     [Export] private PackedScene inventoryObject;
 
     private Weapon.Cell[] cells;
-    private Queue<InventoryItem> itemQueue;
 
     public override void _Ready()
     {
-        Visible = false;
-        itemQueue = new Queue<InventoryItem>();
+        VisibilityChanged += FillCells;
         //var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
         //var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
     }
 
-    public override void _Process(double delta)
+    private void FillCells()
     {
-        AddItemSync();
+        var playerInventory = Global.Player.playerInventory;
+        var cellsParent = GetNode<GridContainer>($"item_grid/cells/Grid");
+
+        for (int i = 0; i < playerInventory.Count; i++)
+        {
+            var cell = cellsParent.GetChild<InventoryCell>(i);
+
+            if (cell.Empty)
+            {
+                var obj = inventoryObject.Instantiate<InventorySlotObject>();
+                var item = playerInventory[i];
+                obj.SetData(item);
+                cell.AddChild(obj);
+                obj.SetCell(cell);
+                cell.SetObject(obj);
+            }
+        }
     }
 
-    private void FillCells()
+    private void FIllSpellCells()
     {
         cells = Global.Player.GetWeapon().GetCells();
         var childrenCells = GetNode("weapon/cell").GetChildren();
@@ -53,7 +67,6 @@ public partial class PlayerInventory : Control
             }
         }
     }
-
     private void RemoveAllCells()
     {
         //EventBus.EmitSignal("clear_spell_icons");
@@ -71,32 +84,6 @@ public partial class PlayerInventory : Control
         }
     }
 
-    public void AddItem(InventoryItem item)
-    {
-        itemQueue.Enqueue(item);
-    }
-
-    private void AddItemSync()
-    {
-        if (itemQueue.Count == 0) return;
-        var cellsParent = GetNode<GridContainer>($"item_grid/cells/Grid");
-        cellsParent.PropagateNotification((int)NotificationVisibilityChanged);
-        for (int i = 0; i < GetChildCount(); i++)
-        {
-            var cell = cellsParent.GetChild<InventoryCell>(i);
-
-            if (cell.Empty)
-            {
-                var obj = inventoryObject.Instantiate<InventorySlotObject>();
-                obj.SetData(itemQueue.Dequeue());
-                GetNode($"item_grid/items").AddChild(obj);
-                obj.SetCell(cell);
-                cell.SetObject(obj);
-
-                return;
-            }
-        }
-    }
     private void _OnWeaponCellButtonPressed()
     {
         GetNode<Node2D>("/root/Main/$default_right_side").Visible = false;
