@@ -15,7 +15,7 @@ public partial class PlayerData : Node2D
     private int maxMana = 30;
     private int coins;
     private bool canSmite;
-    private Node2D closestInteractiveObject;
+    private Node2D closestObject;
     private int magicDamage = 1;
     public float DashCooldown { get; set; } = 4f;
 
@@ -92,22 +92,16 @@ public partial class PlayerData : Node2D
     {
         weapon = newWeapon;
     }
-    public Node GetClosestObject() => closestInteractiveObject;
+    public Node GetClosestObject() => closestObject;
     public bool SetClosestObject(Node2D obj)
     {
-        if (obj == null)
+        if (
+            obj == null
+            || closestObject == null
+            || obj.GlobalPosition - GetPosition() < closestObject.GlobalPosition - GetPosition()
+            )
         {
-            closestInteractiveObject = null;
-            return true;
-        }
-        if (closestInteractiveObject == null)
-        {
-            closestInteractiveObject = obj;
-            return true;
-        }
-        if ((obj.GlobalPosition - GetPosition()).Length() < (closestInteractiveObject.GlobalPosition - GetPosition()).Length())
-        {
-            closestInteractiveObject = obj;
+            closestObject = obj;
             return true;
         }
         return false;
