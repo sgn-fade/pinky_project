@@ -8,7 +8,7 @@ using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.weapons;
 
-public partial class Weapon : Node
+public partial class Weapon
 {
     [Export] public Texture2D Texture { get; set; }
     [Export] public string Rarity { get; set; }
@@ -21,7 +21,7 @@ public partial class Weapon : Node
     public InventoryItem InvItem { get; set; }
 
     private readonly Dictionary<int, string> buttonsBinds = Options.ButtonsBinds;
-    private Dictionary<string, Spell> spellsButtons;
+    public Dictionary<string, Spell> spellsButtons;
 
     public enum Types
     {
@@ -37,17 +37,14 @@ public partial class Weapon : Node
         return cells;
     }
 
-    public override void _Ready()
+    public Weapon()
     {
-        spellsButtons = new Dictionary<string, Spell>
+        spellsButtons = new Dictionary<string, Spell>();
+        foreach (var button in buttonsBinds)
         {
-            {buttonsBinds[0], null},
-            {buttonsBinds[1], null},
-            {buttonsBinds[2], null},
-            {buttonsBinds[3], null},
-            {buttonsBinds[4], null},
-            {buttonsBinds[5], null}
-        };
+            spellsButtons.Add(button.Value, null);
+        }
+
         for (int i = 0; i < 4; i++)
         {
             var index = GD.Randi() % cells.Length;
@@ -55,17 +52,6 @@ public partial class Weapon : Node
         }
     }
 
-    public override void _Input(InputEvent @event)
-    {
-        foreach (var kvp in buttonsBinds)
-        {
-            if (!Input.IsActionJustPressed(kvp.Value)) continue;
-
-            var action = spellsButtons[kvp.Value];
-            if (action.GetReady()) action.Cast();
-            return;
-        }
-    }
 
     public void AddSpell(Spell spell, int cellIndex)
     {

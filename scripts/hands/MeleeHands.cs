@@ -12,6 +12,7 @@ public partial class MeleeHands : Hands
     private PlayerData player = Global.Player;
     public override void _Ready()
     {
+        base._Ready();
         AddChild(comboTimer);
         comboTimer.OneShot = true;
     }

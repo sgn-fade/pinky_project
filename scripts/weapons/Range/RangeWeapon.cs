@@ -1,11 +1,9 @@
 namespace projectpinky.scripts.weapons.Range;
 
-public partial class RangeWeapon : Weapon
+public class RangeWeapon : Weapon
 {
-    public override void _Ready()
+    public RangeWeapon() : base()
     {
-        base._Ready();
         Type = Types.Range;
-
     }
 }
