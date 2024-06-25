@@ -45,7 +45,7 @@ public partial class GameUi : Control
             if (bar.Value <= bar.MaxValue)
             {
                 bar.Value += delta * 1000;
-                //Bars[bar.Name].SetCooldownTime(delta);
+                Bars[bar.Name].AddSpendTime(delta);
             }
         }
     }

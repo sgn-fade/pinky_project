@@ -8,8 +8,7 @@ public class Spell
     public SpellData Data { get; set; }
     public InventoryItem InvItem { get; set; }
     private PlayerData player;
-    public float TimeSpend { get; set; }
-
+    public double TimeSpend { get; set; }
 
     public Spell(SpellData data)
     {
@@ -25,7 +24,6 @@ public class Spell
             {
                 Global.GlobalWorldInfo.GetWorld().AddChild(Data.Particle.Instantiate());
             }
-
             Global.Player.PlayAnimation(Data.AnimationName);
             Cooldown();
         }
@@ -41,7 +39,7 @@ public class Spell
         TimeSpend = 0;
     }
 
-    public float GetCooldownTime()
+    public double GetCooldownTime()
     {
         return TimeSpend;
     }
@@ -51,7 +49,7 @@ public class Spell
         return Data.CooldownTime;
     }
 
-    public void SetCooldownTime(float value)
+    public void AddSpendTime(double value)
     {
         TimeSpend += value;
     }

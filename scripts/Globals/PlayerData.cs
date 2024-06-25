@@ -122,7 +122,7 @@ public partial class PlayerData : Node2D
         player.QueueFree();
         hp = maxHp;
         Spawn();
-        player.GlobalPosition = Vector2.Zero;
+       SetPosition(Vector2.Zero);
     }
     public void Spawn()
     {
