@@ -122,9 +122,9 @@ public partial class Enemy : CharacterBody2D
         //TODO Implement logic for pulls_body event
     }
 
-    private void OnDamageToEnemy(Node body, int damage, string status)
+    public void TakeDamage(int damage, string status = null)
     {
-        if (this == body && hp >= 1)
+        if (hp >= 1)
         {
             if (status == "burn")
             {
