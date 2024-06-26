@@ -1,8 +1,8 @@
 using Godot;
 
 namespace projectpinky.scripts.weapons;
-
-public class WeaponData : Resource
+[GlobalClass]
+public partial class WeaponData : Resource
 {
     public enum Types
     {
@@ -12,8 +12,7 @@ public class WeaponData : Resource
     }
     [Export] public Texture2D Texture { get; set; }
     [Export] public Texture2D InventoryIcon { get; set; }
-    [Export] public Types Type { get; set; }
+    [Export] public Types Type { get; set; } = Types.Melee;
     [Export] public PackedScene HandsScene { get; set; }
     [Export] public int Damage { get; set; }
-
 }

@@ -1,5 +1,8 @@
-namespace projectpinky.scripts.weapons.Range;
+using Godot;
 
-public class RangeWeaponData : WeaponData
+namespace projectpinky.scripts.weapons.Range;
+[GlobalClass]
+
+public partial class RangeWeaponData : WeaponData
 {
 }

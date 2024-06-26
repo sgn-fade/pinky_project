@@ -3,7 +3,8 @@ using Godot;
 using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.weapons.melee;
+[GlobalClass]
 
-public class MeleeWeaponData : WeaponData
+public partial class MeleeWeaponData : WeaponData
 {
 }

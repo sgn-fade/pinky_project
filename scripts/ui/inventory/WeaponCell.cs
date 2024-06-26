@@ -29,7 +29,7 @@ public partial class WeaponCell : InventoryCell
         }
     }
 
-    public new void _OnCellAreaEntered(Area2D area)
+    public void _OnCellAreaEntered(Area2D area)
     {
         if (area.Name == "object" && area.GetParent<InventorySlotObject>().DataType == "weapon")
         {

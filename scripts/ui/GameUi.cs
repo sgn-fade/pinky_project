@@ -87,7 +87,7 @@ public partial class GameUi : Control
             bar.Value = spell.GetCooldownTime() * 1000;
         }
 
-        //bar.TextureProgress = module.InventoryItem.Icon;
+        bar.TextureProgress = spell.InvItem.Icon;
         Bars[button] = spell;
     }
 

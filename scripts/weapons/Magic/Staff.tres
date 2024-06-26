@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MagicWeaponData" load_steps=2 format=3 uid="uid://bocm6m1v8loes"]
+
+[ext_resource type="Script" path="res://scripts/weapons/Magic/MagicWeaponData.cs" id="1_cltl7"]
+
+[resource]
+script = ExtResource("1_cltl7")
+Mana = 0
+Type = 0
+Damage = 0
