@@ -26,7 +26,7 @@ public partial class Enemy : CharacterBody2D
     public override void _Ready()
     {
         speed = 60;
-        Global.GlobalWorldInfo.AddEnemy(this);
+        Global.World.AddEnemy(this);
 
         damageLabelInstance = damageLabel.Instantiate();
         AddChild(damageLabelInstance);
@@ -69,7 +69,7 @@ public partial class Enemy : CharacterBody2D
     private void SpawnDrop()
     {
         Node2D moduleDrop = modulesDrop.Instantiate<Node2D>();
-        Global.GlobalWorldInfo.GetWorld().AddChild(moduleDrop);
+        Global.World.GetWorld().AddChild(moduleDrop);
         moduleDrop.GlobalPosition = GlobalPosition;
         moduleDrop.ZIndex = ZIndex;
     }

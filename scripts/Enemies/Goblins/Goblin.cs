@@ -83,7 +83,7 @@ public partial class Goblin : Enemy
         for (int i = 0; i < random.Next(6); i++)
         {
             Node2D coins = goldDrop.Instantiate<Node2D>();
-            Global.GlobalWorldInfo.GetWorld().AddChild(coins);
+            Global.World.GetWorld().AddChild(coins);
             coins.GlobalPosition = GlobalPosition + new Vector2(random.Next(11) - 5, random.Next(11) - 5);
         }
     }

@@ -4,7 +4,7 @@ using projectpinky.scripts.ui;
 
 namespace projectpinky.scripts.Globals;
 
-public partial class GlobalWorldInfo : Node
+public partial class World : Node
 {
     private Node world;
     private PackedScene playerCameraScene;
@@ -36,6 +36,10 @@ public partial class GlobalWorldInfo : Node
         enemies.Add(scene);
     }
 
+    public void AddEntity(PackedScene entity)
+    {
+        world.AddChild(entity.Instantiate());
+    }
     // private Node GetCloserEnemy()
     // {
     //     Node closerEnemy = null;

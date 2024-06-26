@@ -22,7 +22,7 @@ public class Spell
         {
             if (Data.Particle != null)
             {
-                Global.GlobalWorldInfo.GetWorld().AddChild(Data.Particle.Instantiate());
+                Global.World.AddEntity(Data.Particle);
             }
             Global.Player.PlayAnimation(Data.AnimationName);
             Cooldown();

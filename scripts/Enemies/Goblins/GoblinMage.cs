@@ -81,7 +81,7 @@ public partial class GoblinMage : Goblin
             await PlayAnimation("attack_before");
             Node2D fireballParticle = fireball.Instantiate<Node2D>();
             fireballParticle.GlobalPosition = GetNode<Marker2D>("fireball_pos").GlobalPosition;
-            Global.GlobalWorldInfo.GetWorld().AddChild(fireballParticle);
+            Global.World.GetWorld().AddChild(fireballParticle);
             GetNode<CpuParticles2D>("fireball_cast_particles").Emitting = true;
             await PlayAnimation("attack_after");
             currentState = States.MOVE;
@@ -95,7 +95,7 @@ public partial class GoblinMage : Goblin
         {
             currentState = States.ATTACK;
             Node2D summon = fireElemental.Instantiate<Node2D>();
-            Global.GlobalWorldInfo.GetWorld().AddChild(summon);
+            Global.World.GetWorld().AddChild(summon);
             summon.GlobalPosition = GlobalPosition + new Vector2(10, 0);
             elementalCooldown = new Random().Next(10, 40);
             await Idle();

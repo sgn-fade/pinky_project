@@ -61,7 +61,7 @@ public partial class ShotgunHands : GunHands
             bulletInstance.Init(barrelPosition.GlobalPosition,
                 targetPosition);
 
-            Global.GlobalWorldInfo.GetWorld().AddChild(bulletInstance);
+            Global.World.GetWorld().AddChild(bulletInstance);
         }
     }
 

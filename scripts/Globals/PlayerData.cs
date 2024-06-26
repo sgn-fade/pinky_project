@@ -127,7 +127,7 @@ public partial class PlayerData : Node2D
     public void Spawn()
     {
         player = playerScene.Instantiate<Player>();
-        Global.GlobalWorldInfo.GetWorld().AddChild(player);
+        Global.World.GetWorld().AddChild(player);
     }
 
     public void OnPlayerDash()
