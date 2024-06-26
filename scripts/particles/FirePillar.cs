@@ -12,7 +12,7 @@ public partial class FirePillar : CharacterBody2D
 
     private void OnDamageAreaBodyEntered(Node body)
     {
-        if (body is Enemy enemy)
+        if (body is Enemies.Enemy enemy)
         {
             //todo enemy take damage
         }

@@ -36,7 +36,7 @@ public partial class Bullet : CharacterBody2D
 
     private void OnBodyEntered(Node2D body)
     {
-        if (body is Enemy enemy)
+        if (body is Enemies.Enemy enemy)
         {
             //todo enemy take damage
         }
