@@ -8,28 +8,12 @@ using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.weapons;
 
-public partial class Weapon
+public class Weapon
 {
-    [Export] public Texture2D Texture { get; set; }
-    [Export] public string Rarity { get; set; }
-    public Types Type { get; set; }
-    public int Damage { get; set; }
-    private double criticalChance = 10d;
-    public PackedScene HandsScene;
-    public double GetCriticalChance() => criticalChance;
-    
+    public WeaponData WeaponData { get; set; }
     public InventoryItem InvItem { get; set; }
-
     private readonly Dictionary<int, string> buttonsBinds = Options.ButtonsBinds;
     public Dictionary<string, Spell> spellsButtons;
-
-    public enum Types
-    {
-        Melee,
-        Range,
-        Magic
-    }
-
     private Cell[] cells = new Cell[8];
 
     public Cell[] GetCells()
@@ -37,21 +21,22 @@ public partial class Weapon
         return cells;
     }
 
-    public Weapon()
+    public Weapon(WeaponData data)
     {
+        WeaponData = data;
+        InvItem = new InventoryItem(this, "weapon", WeaponData.InventoryIcon);
         spellsButtons = new Dictionary<string, Spell>();
         foreach (var button in buttonsBinds)
         {
             spellsButtons.Add(button.Value, null);
         }
 
-        for (int i = 0; i < 4; i++)
+        for (var i = 0; i < 4; i++)
         {
             var index = GD.Randi() % cells.Length;
             cells[index] ??= new Cell();
         }
     }
-
 
     public void AddSpell(Spell spell, int cellIndex)
     {

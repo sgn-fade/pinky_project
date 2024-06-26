@@ -1,101 +1,7 @@
-[gd_scene load_steps=43 format=3 uid="uid://ocdj161rlapt"]
+[gd_scene load_steps=18 format=3 uid="uid://ocdj161rlapt"]
 
 [ext_resource type="Texture2D" uid="uid://dbrrcynmbhc7w" path="res://sprites/spell_character_animation/hands/clear_hands.png" id="1"]
 [ext_resource type="Script" path="res://scripts/hands/ClearHands.cs" id="1_oem2y"]
-[ext_resource type="Texture2D" uid="uid://b8vnn303ktr73" path="res://sprites/spell_character_animation/hands/melee_hands_sword_combo.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://b6ugbcvj0bwmr" path="res://sprites/fireball_cast.png" id="3_emmrl"]
-
-[sub_resource type="AtlasTexture" id="21"]
-atlas = ExtResource("3")
-region = Rect2(114, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="22"]
-atlas = ExtResource("3")
-region = Rect2(133, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="23"]
-atlas = ExtResource("3")
-region = Rect2(152, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="24"]
-atlas = ExtResource("3")
-region = Rect2(171, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="25"]
-atlas = ExtResource("3")
-region = Rect2(190, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="15"]
-atlas = ExtResource("3")
-region = Rect2(0, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="16"]
-atlas = ExtResource("3")
-region = Rect2(19, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="17"]
-atlas = ExtResource("3")
-region = Rect2(38, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="18"]
-atlas = ExtResource("3")
-region = Rect2(57, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="19"]
-atlas = ExtResource("3")
-region = Rect2(76, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="50"]
-atlas = ExtResource("3")
-region = Rect2(0, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="51"]
-atlas = ExtResource("3")
-region = Rect2(19, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="52"]
-atlas = ExtResource("3")
-region = Rect2(38, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="42"]
-atlas = ExtResource("3")
-region = Rect2(266, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="44"]
-atlas = ExtResource("3")
-region = Rect2(304, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="45"]
-atlas = ExtResource("3")
-region = Rect2(323, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="46"]
-atlas = ExtResource("3")
-region = Rect2(342, 0, 19, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wbp1t"]
-atlas = ExtResource("3_emmrl")
-region = Rect2(168, 0, 24, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4bev"]
-atlas = ExtResource("3_emmrl")
-region = Rect2(192, 0, 24, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jp57l"]
-atlas = ExtResource("3_emmrl")
-region = Rect2(216, 0, 24, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqyvf"]
-atlas = ExtResource("3_emmrl")
-region = Rect2(240, 0, 24, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6edu"]
-atlas = ExtResource("3_emmrl")
-region = Rect2(264, 0, 24, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwqpb"]
-atlas = ExtResource("3_emmrl")
-region = Rect2(288, 0, 24, 25)
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -157,101 +63,6 @@ region = Rect2(247, 0, 19, 19)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("21")
-}, {
-"duration": 1.0,
-"texture": SubResource("22")
-}, {
-"duration": 1.0,
-"texture": SubResource("23")
-}, {
-"duration": 1.0,
-"texture": SubResource("24")
-}, {
-"duration": 1.0,
-"texture": SubResource("25")
-}],
-"loop": false,
-"name": &"base_sword_combo_first",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("15")
-}, {
-"duration": 1.0,
-"texture": SubResource("16")
-}, {
-"duration": 1.0,
-"texture": SubResource("17")
-}, {
-"duration": 1.0,
-"texture": SubResource("18")
-}, {
-"duration": 1.0,
-"texture": SubResource("19")
-}],
-"loop": false,
-"name": &"base_sword_combo_second",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("50")
-}, {
-"duration": 1.0,
-"texture": SubResource("51")
-}, {
-"duration": 1.0,
-"texture": SubResource("52")
-}, {
-"duration": 1.0,
-"texture": SubResource("42")
-}, {
-"duration": 1.0,
-"texture": SubResource("42")
-}, {
-"duration": 1.0,
-"texture": SubResource("42")
-}, {
-"duration": 1.0,
-"texture": SubResource("44")
-}, {
-"duration": 1.0,
-"texture": SubResource("45")
-}, {
-"duration": 1.0,
-"texture": SubResource("46")
-}],
-"loop": false,
-"name": &"base_sword_combo_third",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wbp1t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n4bev")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jp57l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqyvf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6edu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uwqpb")
-}],
-"loop": false,
-"name": &"fireball_cast",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("1")
 }, {
 "duration": 1.0,
@@ -310,3 +121,6 @@ script = ExtResource("1_oem2y")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("34")
 animation = &"idle"
+metadata/_aseprite_wizard_interface_config_ = {
+"slice_section": false
+}
