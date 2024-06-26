@@ -81,11 +81,6 @@ public partial class Player : CharacterBody2D
         // {
         //     GlobalWorldInfo.FocusCamera();
         // }
-        //todo weapon input
-        // if (Player.GetWeapon() != null)
-        // {
-        //     Player.GetWeapon().Input(@event);
-        // }
     }
 
     private void Move()
