@@ -130,11 +130,6 @@ public partial class PlayerData : Node2D
         Global.World.GetWorld().AddChild(player);
     }
 
-    public void OnPlayerDash()
-    {
-        View.StartDashCooldown();
-    }
-
     public void AddItem(InventoryItem item)
     {
         playerInventory.Add(item);

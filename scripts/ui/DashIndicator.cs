@@ -1,5 +1,6 @@
 using Godot;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.ui;
 
@@ -7,6 +8,7 @@ public partial class DashIndicator : TextureProgressBar
 {
     public override void _Ready()
     {
+        Player.playerDashEventHandler += StartCooldown;
         SetProcess(false);
     }
 

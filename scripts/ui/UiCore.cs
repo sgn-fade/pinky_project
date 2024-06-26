@@ -61,9 +61,4 @@ public partial class UiCore : CanvasLayer
 	{
 		gameUi.UpdateManaValue(mana, maxMana);
 	}
-
-	public void StartDashCooldown()
-	{
-		gameUi.StartDashCooldown();
-	}
 }

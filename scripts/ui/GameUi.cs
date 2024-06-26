@@ -36,10 +36,6 @@ public partial class GameUi : Control
         }
     }
 
-    public void StartDashCooldown()
-    {
-        dashIndicator.StartCooldown();
-    }
 
     //todo connect to player
     private void ChangeModuleCardVisible(bool state, Texture2D texture = null)
