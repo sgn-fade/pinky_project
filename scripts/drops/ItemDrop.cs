@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.player;
 using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.drops;
@@ -10,32 +11,38 @@ public partial class ItemDrop : Area2D
 {
 
     [Export] private SpellData[] dropList = new SpellData[1];
-    private PackedScene weapon;
+    [Export] private AnimationPlayer animator;
 
-    private Sprite2D sprite;
-    private Node2D body;
+    private bool _playerInArea;
 
-    private PlayerData player = Global.Player;
-    private EventBus eventBus = Global.EventBus;
-
-    public override void _Ready()
+    public override void _Input(InputEvent @event)
     {
-        body = GetNode<Node2D>("body");
-    }
-    public override void _Process(double delta)
-    {
-
-        if (OverlapsBody(player.GetBody()))
+        if (Input.IsActionJustPressed("E"))
         {
-            if (Input.IsActionJustPressed("E"))
-            {
-                SetProcess(false);
-                body.QueueFree();
-                GetNode<CpuParticles2D>("end_particles").Emitting = true;
-                Global.Player.AddItem((new Spell(dropList[GD.Randi() % dropList.Length])).InvItem);
-                GetTree().CreateTimer(0.3f).Timeout += QueueFree;
-            }
+            animator.Play("delete");
         }
-
     }
+
+    public void AddItem()
+    {
+        Global.Player.AddItem((new Spell(dropList[GD.Randi() % dropList.Length])).InvItem);
+    }
+
+    public void OnBodyEntered(Node2D body)
+    {
+        TryChangePlayerState(true, body);
+    }
+    public void OnBodyExited(Node2D body)
+    {
+        TryChangePlayerState(false, body);
+    }
+
+    public void TryChangePlayerState(bool state, Node2D body)
+    {
+        if (body == Global.Player.GetBody())
+        {
+            _playerInArea = state;
+        }
+    }
+
 }

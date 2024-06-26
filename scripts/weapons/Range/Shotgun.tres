@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_0dbbp")
 Type = 0
-Damage = 0
+Damage = 1

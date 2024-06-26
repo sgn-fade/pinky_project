@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dai8f5grr0xq"]
+[gd_scene load_steps=16 format=3 uid="uid://dai8f5grr0xq"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Script" path="res://scripts/drops/ItemDrop.cs" id="1_wbltj"]
@@ -39,7 +39,44 @@ max_value = 5.0
 _data = [Vector2(0.00757575, 1.60227), 0.0, -1.39726, 0, 0, Vector2(1, 0.056818), -0.06, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Animation" id="Animation_f3eq8"]
+resource_name = "delete"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_2ngjr"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.659754, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cqg53"]
+_data = {
+"delete": SubResource("Animation_f3eq8"),
+"idle": SubResource("Animation_2ngjr")
+}
+
 [node name="weapon_drop" type="Area2D"]
+monitorable = false
 script = ExtResource("1_wbltj")
 dropList = [ExtResource("2_u4r3v"), ExtResource("5_mc5fx"), ExtResource("6_67erw"), ExtResource("7_x3x84")]
 
@@ -78,7 +115,7 @@ gravity = Vector2(0, -98)
 color = Color(0.454902, 0.223529, 0.160784, 1)
 
 [node name="sprite" type="AnimatedSprite2D" parent="body"]
-position = Vector2(0, 1)
+position = Vector2(0, -1)
 sprite_frames = SubResource("4")
 
 [node name="end_particles" type="CPUParticles2D" parent="."]
@@ -94,3 +131,12 @@ spread = 180.0
 gravity = Vector2(0, 0)
 scale_amount_curve = SubResource("5")
 color = Color(0.858824, 0.682353, 0.603922, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cqg53")
+}
+autoplay = "idle"
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]
