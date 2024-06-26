@@ -1,8 +1,8 @@
 [gd_scene load_steps=28 format=3 uid="uid://0le0ptgshp5t"]
 
 [ext_resource type="PackedScene" uid="uid://deowfgi6dwaji" path="res://scenes/enemies/goblins/goblin.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMage.cs" id="2_xc4tv"]
 [ext_resource type="Texture2D" uid="uid://cdjxocxmr5k1a" path="res://sprites/goblin/goblin_mage.png" id="3_edkef"]
-[ext_resource type="Script" path="res://scripts/Enemies/Goblins/goblin_mage.gd" id="6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0uiq1"]
 atlas = ExtResource("3_edkef")
@@ -192,7 +192,7 @@ offsets = PackedFloat32Array(0, 0.547312, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.753378, 0.398662, 0.0421557, 1, 1, 1, 1, 1)
 
 [node name="goblin_mage" instance=ExtResource("1")]
-script = ExtResource("6")
+script = ExtResource("2_xc4tv")
 
 [node name="shadow_under" parent="." index="0"]
 modulate = Color(1, 1, 1, 0.729412)
