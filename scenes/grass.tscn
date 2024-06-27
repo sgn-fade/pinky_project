@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://53wgvunkk2pv"]
+[gd_scene load_steps=14 format=3 uid="uid://53wgvunkk2pv"]
 
 [ext_resource type="Script" path="res://scripts/map_env/Grass.cs" id="1"]
 [ext_resource type="Texture2D" uid="uid://bhvbro4cqyote" path="res://sprites/grass.png" id="2"]
@@ -54,33 +54,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="9"]
-radius = 4.0
-height = 10.0
-
 [sub_resource type="Animation" id="10"]
 length = 0.001
 
-[sub_resource type="Animation" id="Animation_eaybe"]
-resource_name = "left"
-length = 0.6
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:skew")
-tracks/0/interp = 3
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833, 0.3332, 0.4165),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.342085, 0.0349066, 0.0]
-}
-
 [sub_resource type="Animation" id="11"]
 resource_name = "right"
-length = 0.6
+length = 1.66667
+loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -89,16 +69,15 @@ tracks/0/path = NodePath("sprite:skew")
 tracks/0/interp = 3
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833, 0.3332, 0.4165),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.416667, 0.833333, 1.25, 1.66667),
+"transitions": PackedFloat32Array(0.637281, 2.73208, 0.378929, 2.07053, 1),
 "update": 0,
-"values": [0.0, 0.342085, -0.0349066, 0.0]
+"values": [0.0, 0.0349066, 0.0, -0.0349066, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0tatf"]
 _data = {
 "RESET": SubResource("10"),
-"left": SubResource("Animation_eaybe"),
 "right": SubResource("11")
 }
 
@@ -114,19 +93,13 @@ texture = ExtResource("3")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.45058e-09, -4.76837e-07)
+skew = 6.24828
 sprite_frames = SubResource("8")
 animation = &"main"
 offset = Vector2(0, -5)
 
 [node name="visible" type="VisibleOnScreenNotifier2D" parent="."]
 visible = false
-
-[node name="Area2D" type="Area2D" parent="."]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-rotation = 1.5708
-shape = SubResource("9")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -135,4 +108,3 @@ libraries = {
 
 [connection signal="screen_entered" from="visible" to="." method="_on_visible_screen_entered"]
 [connection signal="screen_exited" from="visible" to="." method="_on_visible_screen_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
