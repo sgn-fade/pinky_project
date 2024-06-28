@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://blu30o6tp1m66" path="res://sprites/spell_icons/fire_eye_spell_icon.png" id="1_3ck5k"]
 [ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="1_cevqb"]
-[ext_resource type="PackedScene" uid="uid://jkixgcns5qlc" path="res://scenes/fire_eye.tscn" id="2_imcf8"]
+[ext_resource type="PackedScene" uid="uid://jkixgcns5qlc" path="res://scenes/spell_particles/fire_eye.tscn" id="2_imcf8"]
 
 [resource]
 script = ExtResource("1_cevqb")

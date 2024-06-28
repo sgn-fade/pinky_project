@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://qbrrhv0xfcu7"]
 
 [ext_resource type="Script" path="res://scripts/ui/UiCore.cs" id="1_uq54f"]
-[ext_resource type="PackedScene" uid="uid://pe7wisviq3yk" path="res://scenes/inventory_ui.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/loadscreen.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://ch3v7s5mc557f" path="res://scenes/pause_ui.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://pe7wisviq3yk" path="res://scenes/ui/inventory_ui.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/ui/loadscreen.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://ch3v7s5mc557f" path="res://scenes/ui/pause_ui.tscn" id="6"]
 [ext_resource type="Script" path="res://scripts/ui/Crosshair.cs" id="7_rskyq"]
 [ext_resource type="Texture2D" uid="uid://bxk32ptautip2" path="res://sprites/ui/ui_crosshair.png" id="8"]
 [ext_resource type="PackedScene" uid="uid://dyofqdtl577wh" path="res://scenes/ui/GameUi.tscn" id="8_pdxxg"]

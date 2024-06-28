@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="1_f5pje"]
 [ext_resource type="Texture2D" uid="uid://dagynu58cir4g" path="res://sprites/spell_icons/fire_pillar_icon.png" id="1_mohb5"]
-[ext_resource type="PackedScene" uid="uid://cn3l0nkgbs6me" path="res://scenes/particles/fire_pillar.tscn" id="2_apx6h"]
+[ext_resource type="PackedScene" uid="uid://cn3l0nkgbs6me" path="res://scenes/spell_particles/fire_pillar.tscn" id="2_apx6h"]
 
 [resource]
 script = ExtResource("1_f5pje")

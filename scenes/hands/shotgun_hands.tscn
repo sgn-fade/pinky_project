@@ -508,7 +508,7 @@ body = NodePath("Body")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_v83sy")
 animation = &"idle"
-frame = 4
+frame = 1
 offset = Vector2(4.29, -6.955)
 flip_h = true
 metadata/_aseprite_wizard_config_ = {
@@ -553,9 +553,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_np0x5")
-}
 tree_root = SubResource("AnimationNodeStateMachine_kt4yd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/IsReload = false

@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/map_env/Box.cs" id="1_w2hou"]
 [ext_resource type="Texture2D" uid="uid://b66knep0wpb7k" path="res://sprites/box.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="3"]
-[ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/ui/Button_picture.tscn" id="4"]
+
 
 [sub_resource type="CapsuleShape2D" id="17"]
 radius = 8.0

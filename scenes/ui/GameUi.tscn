@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cr72ukl4w861a" path="res://sprites/ui/main_game_ui_panel.png" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/GameUi.cs" id="1_5yw6d"]
 [ext_resource type="PackedScene" uid="uid://bq3hxmkld5vhh" path="res://scenes/ui/spell_module_game_discription.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/Button_picture.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/ui/Button_picture.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://e54psqwy45xn" path="res://scenes/ui/weapon_discription.tscn" id="5"]
 [ext_resource type="Script" path="res://scripts/ui/DashIndicator.cs" id="6"]
 [ext_resource type="Texture2D" uid="uid://dww12tk5tyxfd" path="res://sprites/ui/spell_game_colldown_icon_background.png" id="7"]

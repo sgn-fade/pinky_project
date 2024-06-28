@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://bg84pk4wkvlgl"]
 
 [ext_resource type="Texture2D" uid="uid://eytpcmh7m1m7" path="res://sprites/spell_icons/fireball_icon.png" id="1_p6f6i"]
-[ext_resource type="PackedScene" uid="uid://uaai0aurtcg1" path="res://scenes/fireball.tscn" id="2_po6pb"]
+[ext_resource type="PackedScene" uid="uid://uaai0aurtcg1" path="res://scenes/spell_particles/fireball.tscn" id="2_po6pb"]
 [ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="3_g0lai"]
 
 [resource]
