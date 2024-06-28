@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4c5i3dd4ms8m"
-path="res://.godot/imported/reload_shotgun.png-cf00354b7268ce449f34054365c8152f.ctex"
+uid="uid://dbrrcynmbhc7w"
+path="res://.godot/imported/clear_hands.png-09bff7da4dbacf2b28f6dc984192fe7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/reload_shotgun.png"
-dest_files=["res://.godot/imported/reload_shotgun.png-cf00354b7268ce449f34054365c8152f.ctex"]
+source_file="res://sprites/Player_animation/hands/clear_hands.png"
+dest_files=["res://.godot/imported/clear_hands.png-09bff7da4dbacf2b28f6dc984192fe7a.ctex"]
 
 [params]
 

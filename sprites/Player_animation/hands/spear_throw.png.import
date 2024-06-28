@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdctkl6avqvp5"
-path="res://.godot/imported/shotgun_shoot_animation.png-ff1c7b6e5c9e8caf4ca953bc8bac2d9e.ctex"
+uid="uid://h40g14lgmpf"
+path="res://.godot/imported/spear_throw.png-51001b3000e63b6a11f7443b7f74a5f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/shotgun_shoot_animation.png"
-dest_files=["res://.godot/imported/shotgun_shoot_animation.png-ff1c7b6e5c9e8caf4ca953bc8bac2d9e.ctex"]
+source_file="res://sprites/Player_animation/hands/spear_throw.png"
+dest_files=["res://.godot/imported/spear_throw.png-51001b3000e63b6a11f7443b7f74a5f4.ctex"]
 
 [params]
 

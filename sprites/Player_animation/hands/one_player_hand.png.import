@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byjyfa0cd7bnk"
-path="res://.godot/imported/player_move_back.png-77488237d8e398c1b89dc5d2bc9c166a.ctex"
+uid="uid://bfs7ebjdubjnx"
+path="res://.godot/imported/one_player_hand.png-91c58fc4367e8be0dfe7af8ceb2208f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/spell_character_animation/body/player_move_back.png"
-dest_files=["res://.godot/imported/player_move_back.png-77488237d8e398c1b89dc5d2bc9c166a.ctex"]
+source_file="res://sprites/Player_animation/hands/one_player_hand.png"
+dest_files=["res://.godot/imported/one_player_hand.png-91c58fc4367e8be0dfe7af8ceb2208f9.ctex"]
 
 [params]
 

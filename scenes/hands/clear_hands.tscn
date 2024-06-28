@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://ocdj161rlapt"]
 
-[ext_resource type="Texture2D" uid="uid://dbrrcynmbhc7w" path="res://sprites/spell_character_animation/hands/clear_hands.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dbrrcynmbhc7w" path="res://sprites/Player_animation/hands/clear_hands.png" id="1"]
 [ext_resource type="Script" path="res://scripts/hands/ClearHands.cs" id="1_oem2y"]
 
 [sub_resource type="AtlasTexture" id="1"]

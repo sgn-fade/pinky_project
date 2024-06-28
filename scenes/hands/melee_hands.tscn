@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://ocdj161rlapt" path="res://scenes/hands/clear_hands.tscn" id="2"]
 [ext_resource type="Script" path="res://scripts/hands/MeleeHands.cs" id="2_kqhu4"]
-[ext_resource type="Texture2D" uid="uid://bfs7ebjdubjnx" path="res://sprites/spell_character_animation/hands/one_player_hand.png" id="4_iralk"]
+[ext_resource type="Texture2D" uid="uid://bfs7ebjdubjnx" path="res://sprites/Player_animation/hands/one_player_hand.png" id="4_iralk"]
+
 
 [node name="melee_hands" instance=ExtResource("2")]
 script = ExtResource("2_kqhu4")

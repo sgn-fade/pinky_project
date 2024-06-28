@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dho37aojphkwi"
-path="res://.godot/imported/inventory_gun_slots_background.png-293c79931cceab790a09b3b63026fc22.ctex"
+uid="uid://b8vnn303ktr73"
+path="res://.godot/imported/melee_hands_sword_combo.png-2120a88db4bf20f12ef653d9cb979f35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/inventory_gun_slots_background.png"
-dest_files=["res://.godot/imported/inventory_gun_slots_background.png-293c79931cceab790a09b3b63026fc22.ctex"]
+source_file="res://sprites/Player_animation/hands/melee_hands_sword_combo.png"
+dest_files=["res://.godot/imported/melee_hands_sword_combo.png-2120a88db4bf20f12ef653d9cb979f35.ctex"]
 
 [params]
 

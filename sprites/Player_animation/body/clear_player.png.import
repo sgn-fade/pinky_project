@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vahd3qg1k6rx"
-path="res://.godot/imported/shotgun_shoot_animation.png-fde457d97a740f97654a9d669ccf7536.ctex"
+uid="uid://ryb6h77beeqc"
+path="res://.godot/imported/clear_player.png-a9aa9b7276e3f42abfff858d1999074c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/shotgun/shotgun_shoot_animation.png"
-dest_files=["res://.godot/imported/shotgun_shoot_animation.png-fde457d97a740f97654a9d669ccf7536.ctex"]
+source_file="res://sprites/Player_animation/body/clear_player.png"
+dest_files=["res://.godot/imported/clear_player.png-a9aa9b7276e3f42abfff858d1999074c.ctex"]
 
 [params]
 
