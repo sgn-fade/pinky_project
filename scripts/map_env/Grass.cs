@@ -13,7 +13,6 @@ public partial class Grass : StaticBody2D
 
     public void _OnVisibleScreenEntered()
     {
-        ZIndex = (int)GlobalPosition.Y;
         Visible = true;
     }
 
