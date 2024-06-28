@@ -12,7 +12,7 @@ public partial class GameUi : Control
     [Export] private PlayerBars playerBars;
     [Export] private DashIndicator dashIndicator;
 
-    [Export] public Dictionary<TextureProgressBar, Spell> Bars = new();
+    public Dictionary<TextureProgressBar, Spell> Bars = new();
 
     [Export] public Control barsParent;
 
@@ -58,7 +58,7 @@ public partial class GameUi : Control
 
         bar.Value = spell.GetCooldownTime() * 1000;
 
-        bar.TextureProgress = spell.InvItem.Icon;
+        bar.TextureProgress = spell.Data.Icon;
         Bars[bar] = spell;
     }
 

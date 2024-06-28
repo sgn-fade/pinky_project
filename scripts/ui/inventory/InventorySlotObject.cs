@@ -5,16 +5,14 @@ namespace projectpinky.scripts.ui.inventory;
 
 public partial class InventorySlotObject : CharacterBody2D
 {
-    public object Data { get; set; }
-    public string DataType { get; set; }
+    public InventoryItem Data { get; set; }
     private InventoryCell currentCell;
     private InventoryCell targetCell;
     private bool mouseInArea;
 
     public void SetData(InventoryItem newData)
     {
-        Data = newData.Data;
-        DataType = newData.DataType;
+        Data = newData;
         GetNode<TextureRect>("icon").Texture = newData.Icon;
         GetNode<TextureRect>("background").Texture = newData.Background;
     }

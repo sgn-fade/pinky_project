@@ -15,27 +15,27 @@ public partial class WeaponCell : InventoryCell
         SlotType = "weapon";
     }
 
-    public new void SetObject(InventorySlotObject newObject)
-    {
-        if (newObject.DataType == "weapon")
-        {
-            Object = newObject;
-            Empty = false;
-            //todo event bus
-            //EventBus.EmitSignal("switch_hands_stance", newObject.Data);
-            Global.Player.SetWeapon((Weapon)newObject.Data);
-            //todo event bus
-            //EmitSignal("SetWeaponToUI", newObject.Data);
-        }
-    }
+    // public new void SetObject(InventorySlotObject newObject)
+    // {
+    //     if (newObject.DataType == "weapon")
+    //     {
+    //         Object = newObject;
+    //         Empty = false;
+    //         //todo event bus
+    //         //EventBus.EmitSignal("switch_hands_stance", newObject.Data);
+    //         Global.Player.SetWeapon((Weapon)newObject.Data);
+    //         //todo event bus
+    //         //EmitSignal("SetWeaponToUI", newObject.Data);
+    //     }
+    // }
 
-    public void _OnCellAreaEntered(Area2D area)
-    {
-        if (area.Name == "object" && area.GetParent<InventorySlotObject>().DataType == "weapon")
-        {
-            area.GetParent<InventorySlotObject>().SetTargetCell(this);
-        }
-    }
+    // public void _OnCellAreaEntered(Area2D area)
+    // {
+    //     if (area.Name == "object" && area.GetParent<InventorySlotObject>().DataType == "weapon")
+    //     {
+    //         area.GetParent<InventorySlotObject>().SetTargetCell(this);
+    //     }
+    // }
 
     public new void Clear()
     {

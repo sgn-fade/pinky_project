@@ -1,21 +1,24 @@
+using System;
 using Godot;
 
 namespace projectpinky.scripts.drops;
-
-public class InventoryItem
+[GlobalClass]
+public partial class InventoryItem : Resource
 {
-    public string DataType { get; set; }
-    public object Data { get; set; }
-    public Texture2D Icon { get; set; }
-    public Texture2D Background { get; set; }
-    private bool isStackable = false;
-    private object value = null;
-
-    public InventoryItem(object data, string newDataType, Texture2D newIcon, Texture2D newBackground = null)
+    public enum DataTypes
     {
-        Data = data;
-        DataType = newDataType;
-        Icon = newIcon;
-        Background = newBackground;
+        Weapon,
+        Spell,
+        Consumable,
+        Resource,
+    }
+    [Export] public DataTypes DataType { get; set; }
+    [Export] public Texture2D Icon { get; set; }
+    [Export] public Texture2D Background { get; set; }
+    [Export] public bool IsStackable;
+    [Export] public int Value;
+
+    public InventoryItem()
+    {
     }
 }

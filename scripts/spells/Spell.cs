@@ -1,3 +1,4 @@
+using Godot;
 using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
 
@@ -6,14 +7,12 @@ namespace projectpinky.scripts.spells;
 public class Spell
 {
     public SpellData Data { get; set; }
-    public InventoryItem InvItem { get; set; }
     private PlayerData player;
     public double TimeSpend { get; set; }
 
     public Spell(SpellData data)
     {
         Data = data;
-        InvItem = new InventoryItem(this, "spell", data.Icon, data.BackgroundTexture);
         player = Global.Player;
     }
     public void Cast()

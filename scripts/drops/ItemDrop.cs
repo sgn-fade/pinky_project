@@ -25,7 +25,7 @@ public partial class ItemDrop : Area2D
 
     public void AddItem()
     {
-        Global.Player.AddItem((new Spell(dropList[GD.Randi() % dropList.Length])).InvItem);
+        Global.Player.AddItem((new Spell(dropList[GD.Randi() % dropList.Length])).Data);
     }
 
     public void OnBodyEntered(Node2D body)

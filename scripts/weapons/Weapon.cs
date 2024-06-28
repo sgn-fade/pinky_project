@@ -9,7 +9,7 @@ namespace projectpinky.scripts.weapons;
 public class Weapon
 {
     public WeaponData WeaponData { get; set; }
-    public InventoryItem InvItem { get; set; }
+    [Export] public InventoryItem InvItem { get; set; }
     private readonly Dictionary<int, string> buttonsBinds = Options.ButtonsBinds;
     public Dictionary<string, Spell> spellsButtons;
     private Cell[] cells = new Cell[8];
@@ -22,7 +22,6 @@ public class Weapon
     public Weapon(WeaponData data)
     {
         WeaponData = data;
-        InvItem = new InventoryItem(this, "weapon", WeaponData.InventoryIcon);
         spellsButtons = new Dictionary<string, Spell>();
         foreach (var button in buttonsBinds)
         {
