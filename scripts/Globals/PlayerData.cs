@@ -70,7 +70,6 @@ public partial class PlayerData : Node2D
     {
         if (GetMana() < Mathf.Abs(value))
         {
-            player.Call("throw_not_enough_mana_massage");
             return false;
         }
         mana += value;

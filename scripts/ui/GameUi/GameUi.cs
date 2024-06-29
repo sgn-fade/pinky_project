@@ -12,7 +12,7 @@ public partial class GameUi : Control
     [Export] private PlayerBars playerBars;
     [Export] private DashIndicator dashIndicator;
 
-    public Dictionary<TextureProgressBar, Spell> Bars = new();
+    public List<SpellCooldownBar> Bars = new();
 
     [Export] public Control barsParent;
 
@@ -20,41 +20,14 @@ public partial class GameUi : Control
     {
         for (var i = 0; i < barsParent.GetChildCount(); i++)
         {
-            Bars.Add(barsParent.GetChild<TextureProgressBar>(i), null);
+            Bars.Add(barsParent.GetChild<SpellCooldownBar>(i));
         }
     }
-
-    public override void _Process(double delta)
+    private void ClearSpellIcons()
     {
         foreach (var bar in Bars)
         {
-            if (bar.Value == null || bar.Value.GetReady())
-                continue;
-
-            bar.Value.AddSpendTime(delta);
-            bar.Key.Value = bar.Value.TimeSpend * 1000;
-        }
-    }
-
-    private void SetSpellIconToGame(Spell spell, int index)
-    {
-        var bar = barsParent.GetChild<TextureProgressBar>(index);
-        bar.MaxValue = spell.GetMaxCooldownTime() * 1000;
-
-        bar.Value = spell.GetCooldownTime() * 1000;
-
-        bar.TextureProgress = spell.Data.Icon;
-        Bars[bar] = spell;
-    }
-
-    private void ClearSpellIcons()
-    {
-        foreach (var node in barsParent.GetChildren())
-        {
-            if (node is TextureProgressBar textureProgress)
-            {
-                textureProgress.TextureProgress = null;
-            }
+            bar.UnlinkSpell();
         }
     }
 }
