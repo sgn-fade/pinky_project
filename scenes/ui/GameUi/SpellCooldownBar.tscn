@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsmby4psa7wqh"]
+
+[ext_resource type="Script" path="res://scripts/ui/GameUi/SpellCooldownBar.cs" id="1_2us7s"]
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2us7s")

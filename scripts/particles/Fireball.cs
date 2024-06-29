@@ -1,39 +1,34 @@
 using Godot;
+using projectpinky.scripts.Enemies;
 using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.particles;
 
-public partial class Fireball : CharacterBody2D
+public partial class Fireball : SpellController
 {
     [Export] public float Speed = 200f;
 
     public override void _Ready()
     {
-        GetNode<AnimatedSprite2D>("Sprite2D").Play("shoot");
-
         Vector2 endPosition = GetGlobalMousePosition();
-        GlobalPosition = Global.Player.GetPosition();
-        GlobalPosition -= new Vector2(0, 5);
+        GlobalPosition = Global.Player.GetPosition() - new Vector2(0, 5);
         Velocity = (endPosition - Global.Player.GetPosition()).Normalized() * Speed;
         LookAt(endPosition);
     }
 
     public override void _Process(double delta)
     {
-        Velocity = Velocity.Normalized() * Speed;
         MoveAndSlide();
     }
-    private void DeleteFireball()
+
+    private void OnBodyEntered(Node2D body)
     {
-       //GetNode("Sprite2D").Play("shoot");
-        SetProcess(false);
-        QueueFree();
+        if (body is Enemy enemy)
+        {
+            enemy.TakeDamage(10);
+        }
+        Delete();
     }
 
-    private void OnBodyEntered(Node body)
-    {
-        DeleteFireball();
-        //todo event bus
-        Global.EventBus.EmitSignal("damage_to_enemy", body, 20, "burn");
-    }
+    protected override void Delete() => QueueFree();
 }
