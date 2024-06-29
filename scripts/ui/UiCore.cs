@@ -52,13 +52,4 @@ public partial class UiCore : CanvasLayer
 		uiType.Visible = true;
 		currentUi = uiType;
 	}
-
-	public void UpdateHpValue(int hp, int maxHp)
-	{
-		gameUi.UpdateHpValue(hp, maxHp);
-	}
-	public void UpdateManaValue(int mana, int maxMana)
-	{
-		gameUi.UpdateManaValue(mana, maxMana);
-	}
 }

@@ -12,6 +12,11 @@ public partial class DashIndicator : TextureProgressBar
         SetProcess(false);
     }
 
+    public override void _ExitTree()
+    {
+        Player.playerDashEventHandler -= StartCooldown;
+    }
+
     public override void _Process(double delta)
     {
         if (Value < MaxValue)

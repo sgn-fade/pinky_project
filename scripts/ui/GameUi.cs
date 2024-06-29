@@ -57,15 +57,4 @@ public partial class GameUi : Control
             }
         }
     }
-
-
-    public void UpdateHpValue(int hp, int maxHp)
-    {
-        playerBars.UpdateHpValue(hp, maxHp);
-    }
-
-    public void UpdateManaValue(int mana, int maxMana)
-    {
-        playerBars.UpdateManaValue(mana, maxMana);
-    }
 }

@@ -26,6 +26,12 @@ public partial class PlayerData : Node2D
     private Weapon weapon;
     private EventBus eventBus = Global.EventBus;
 
+    public delegate void PlayerHpChanged(int hp, int maxHp);
+    public static event PlayerHpChanged playerHpChanged;
+
+    public delegate void PlayerManaChanged(int mana, int maxMana);
+    public static event PlayerManaChanged playerManaChanged;
+
     public override void _Ready()
     {
         View = GetNode<UiCore>("/root/World/Ui");
@@ -56,7 +62,7 @@ public partial class PlayerData : Node2D
     public bool SetHp(int value)
     {
         if ((hp += value) <= 0) return false;
-        View.UpdateHpValue(hp, maxHp);
+        playerHpChanged?.Invoke(mana, maxMana);
         return true;
 
     }
@@ -68,13 +74,13 @@ public partial class PlayerData : Node2D
             return false;
         }
         mana += value;
-        View.UpdateManaValue(mana, maxMana);
+        playerManaChanged?.Invoke(mana, maxMana);
         return true;
     }
     public void SetMaxMana(int value)
     {
-        maxMana += value;
-        View.UpdateManaValue(mana, maxMana);
+        maxMana = value;
+        playerManaChanged?.Invoke(mana, maxMana);
     }
     public void SetMagicDamage(int newMagicDamage)
     {
