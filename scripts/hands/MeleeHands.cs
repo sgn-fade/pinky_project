@@ -14,7 +14,7 @@ public partial class MeleeHands : Hands
     {
         base._Ready();
         AddChild(comboTimer);
-        comboTimer.OneShot = true;
+        comboTimer.OneShot = false;
     }
 
     public override void _Process(double delta)
@@ -36,6 +36,7 @@ public partial class MeleeHands : Hands
 
     public override void _Input(InputEvent @event)
     {
+        //todo move to skill
         if (@event is InputEventMouseButton eventMouseButton &&
             eventMouseButton.Pressed &&
             //eventMouseButton.ButtonIndex == (int)ButtonList.Left &&
