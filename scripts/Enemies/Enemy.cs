@@ -1,12 +1,13 @@
 using Godot;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.ui;
 
 namespace projectpinky.scripts.Enemies;
 
-public partial class Enemy : CharacterBody2D
+public abstract partial class Enemy : CharacterBody2D
 {
-    protected int hp = 1000000;
-    protected int enemyDamage = 1;
+    [Export] protected int hp;
+    [Export] protected int damage;
     [Export] private PackedScene damageLabel;
     [Export] private PackedScene modulesDrop;
 
@@ -20,15 +21,19 @@ public partial class Enemy : CharacterBody2D
     private Timer timer = new Timer();
     private Timer fireDamageTimer = new Timer();
     private Vector2 direction = Vector2.Zero;
-    private Node damageLabelInstance;
-    private int damageToEnemy;
+    private DamageLabel damageLabelInstance;
 
+    public enum Statuses
+    {
+        None,
+        Burning,
+        
+    }
     public override void _Ready()
     {
-        speed = 60;
-        Global.World.AddEnemy(this);
+        Global.GlobalWorldInfo.AddEnemy(this);
 
-        damageLabelInstance = damageLabel.Instantiate();
+        damageLabelInstance = damageLabel.Instantiate<DamageLabel>();
         AddChild(damageLabelInstance);
         AddChild(whiteBarTimer);
         AddChild(slowdownTimer);
@@ -38,11 +43,6 @@ public partial class Enemy : CharacterBody2D
         whiteBarTimer.OneShot = false;
         slowdownTimer.OneShot = false;
         timer.OneShot = false;
-
-        //EventBus.Connect("pulls_body", this, nameof(OnPullsBody));
-        //EventBus.Connect("damage_to_enemy", this, nameof(OnDamageToEnemy));
-        //EventBus.Connect("push_away_enemy", this, nameof(OnPushAwayEnemy));
-        //TODO eventbus
     }
 
     public void SetDirection(Vector2 dir)
@@ -59,20 +59,12 @@ public partial class Enemy : CharacterBody2D
     {
         if (hp <= 0)
         {
-            //EventBus.EmitSignal("enemy_killed");
-            //TODO eventbus
             SpawnDrop();
             QueueFree();
         }
     }
 
-    private void SpawnDrop()
-    {
-        Node2D moduleDrop = modulesDrop.Instantiate<Node2D>();
-        Global.World.GetWorld().AddChild(moduleDrop);
-        moduleDrop.GlobalPosition = GlobalPosition;
-        moduleDrop.ZIndex = ZIndex;
-    }
+    public abstract void SpawnDrop();
 
     private async void UpdateHp()
     {
@@ -82,17 +74,6 @@ public partial class Enemy : CharacterBody2D
             whiteAnimationBar.Value -= 1;
             whiteBarTimer.Start(0.05f);
             await ToSignal(whiteBarTimer, "timeout");
-        }
-    }
-
-    private async void Slowdown()
-    {
-        speed = 10;
-        while (speed < 60)
-        {
-            speed += 1;
-            slowdownTimer.Start(0.1f);
-            await ToSignal(slowdownTimer, "timeout");
         }
     }
 
@@ -117,25 +98,19 @@ public partial class Enemy : CharacterBody2D
         status.Visible = false;
     }
 
-    private void OnPullsBody(Node body, Vector2 position)
-    {
-        //TODO Implement logic for pulls_body event
-    }
-
-    public void TakeDamage(int damage, string status = null)
+    public void TakeDamage(int damage, Statuses status = Statuses.None)
     {
         if (hp >= 1)
         {
-            if (status == "burn")
+            if (status == Statuses.Burning)
             {
                 FireDamage();
             }
 
-            damageLabelInstance.Call("ShowValue", damage);
+            damageLabelInstance.ShowValue(damage);
             Velocity = (-direction.Normalized() * speed);
             MoveAndSlide();
             hp -= damage;
-            Slowdown();
             ChasingPlayer();
             UpdateHp();
             EnemyDeath();
@@ -146,23 +121,7 @@ public partial class Enemy : CharacterBody2D
     {
         //TODO Implement logic for chasing the player
     }
-
-    private async void OnPushAwayEnemy(Node body, Vector2 dir)
-    {
-        if (this == body && hp >= 1)
-        {
-            float distance = 7;
-            Velocity = dir.Normalized() * distance;
-            for (int i = 0; i < 20; i++)
-            {
-                Velocity = dir.Normalized() * distance;
-                MoveAndSlide();
-                await ToSignal(GetTree().CreateTimer(0.01f), "timeout");
-                distance += 7;
-            }
-        }
-    }
-
+    
     public void SetFocused(bool state)
     {
         GetNode<Sprite2D>("focus").Visible = state;

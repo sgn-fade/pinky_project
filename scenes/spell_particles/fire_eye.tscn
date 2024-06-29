@@ -449,18 +449,18 @@ states/searching/node = SubResource("AnimationNodeAnimation_5w0ah")
 states/searching/position = Vector2(579, 80)
 transitions = ["Start", "opening", SubResource("AnimationNodeStateMachineTransition_jbqyj"), "opening", "searching", SubResource("AnimationNodeStateMachineTransition_ndxw1"), "closing", "End", SubResource("AnimationNodeStateMachineTransition_2tyvn")]
 
-[node name="fire_eye" type="CharacterBody2D"]
+[node name="fire_eye" type="CharacterBody2D" node_paths=PackedStringArray("animationTree")]
 z_as_relative = false
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("2")
+animationTree = NodePath("AnimationTree")
 
 [node name="damage_area" type="Area2D" parent="."]
 position = Vector2(0, 6)
 scale = Vector2(0.7, 0.7)
 collision_layer = 5
 collision_mask = 5
-monitoring = false
 monitorable = false
 
 [node name="collision" type="CollisionShape2D" parent="damage_area"]
@@ -490,7 +490,6 @@ texture_scale = 0.5
 z_as_relative = false
 position = Vector2(0, 11.9)
 scale = Vector2(1.96, 0.49)
-emitting = false
 amount = 150
 lifetime = 0.8
 speed_scale = 0.5
@@ -508,7 +507,6 @@ color_ramp = SubResource("Gradient_743te")
 z_as_relative = false
 position = Vector2(0, 7)
 scale = Vector2(1.4, 0.7)
-emitting = false
 amount = 200
 lifetime = 0.8
 speed_scale = 0.5
@@ -526,7 +524,7 @@ color_ramp = SubResource("Gradient_743te")
 light_mask = 3
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("14")
-animation = &"closing"
+animation = &"searching"
 frame = 4
 offset = Vector2(0, -15)
 
