@@ -9,7 +9,10 @@
 script = ExtResource("1_cltl7")
 Mana = 40
 Texture = ExtResource("3_c2wh6")
-InventoryIcon = ExtResource("2_ds6yi")
 Type = 2
 HandsScene = ExtResource("1_bhx7v")
 Damage = 2
+DataType = 0
+Icon = ExtResource("2_ds6yi")
+IsStackable = false
+Value = 0

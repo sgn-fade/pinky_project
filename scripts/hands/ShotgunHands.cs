@@ -16,7 +16,7 @@ public partial class ShotgunHands : GunHands
     [Export] private AnimationTree animationTree;
     [Export] private Node2D body;
 
-    private PackedScene bullet = (PackedScene)ResourceLoader.Load("res://scenes/shotgun_bullet.tscn");
+    [Export] private PackedScene bullet;
 
     private AnimationNodeStateMachinePlayback stateMachine;
 

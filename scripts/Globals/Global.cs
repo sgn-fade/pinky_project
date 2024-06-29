@@ -11,7 +11,7 @@ public partial class Global : Node
 
     public override void _Ready()
     {
-        World = GetNode<World>("/root/World");
+        World = GetNode<World>("/root/WorldInfo");
         Player = GetNode<PlayerData>("/root/PlayerData");
         EventBus = GetNode<EventBus>("/root/EventBus");
         Options = GetNode<Options>("/root/Options");

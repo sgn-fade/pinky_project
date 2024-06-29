@@ -1,10 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyofqdtl577wh"]
+[gd_scene load_steps=15 format=3 uid="uid://dyofqdtl577wh"]
 
 [ext_resource type="Texture2D" uid="uid://cr72ukl4w861a" path="res://sprites/ui/main_game_ui_panel.png" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/GameUi.cs" id="1_5yw6d"]
-[ext_resource type="PackedScene" uid="uid://bq3hxmkld5vhh" path="res://scenes/ui/spell_module_game_discription.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/ui/Button_picture.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://e54psqwy45xn" path="res://scenes/ui/weapon_discription.tscn" id="5"]
 [ext_resource type="Script" path="res://scripts/ui/DashIndicator.cs" id="6"]
 [ext_resource type="Texture2D" uid="uid://dww12tk5tyxfd" path="res://sprites/ui/spell_game_colldown_icon_background.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://2lj20o8vssmt" path="res://sprites/ui/health_bar_progress.png" id="8"]
@@ -96,7 +94,7 @@ shader_parameter/amount = 300
 shader_parameter/fV = 1.0
 shader_parameter/color = Vector4(1, 0, 0, 1)
 
-[node name="game_ui" type="Control" node_paths=PackedStringArray("playerBars", "dashIndicator")]
+[node name="game_ui" type="Control" node_paths=PackedStringArray("playerBars", "dashIndicator", "barsParent")]
 process_mode = 1
 layout_mode = 3
 anchor_left = 0.013
@@ -109,6 +107,7 @@ pivot_offset = Vector2(-210, 188)
 script = ExtResource("1_5yw6d")
 playerBars = NodePath("player_bars")
 dashIndicator = NodePath("dash_indicator")
+barsParent = NodePath("spell_slot_panel")
 
 [node name="spell_slot_panel" type="TextureRect" parent="."]
 layout_mode = 0
@@ -355,30 +354,3 @@ offset_bottom = 1080.49
 theme_override_fonts/font = ExtResource("12")
 theme_override_font_sizes/font_size = 80
 text = "50"
-
-[node name="module_discription" parent="." instance=ExtResource("3")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.882
-anchor_top = 0.483
-anchor_right = 0.884
-anchor_bottom = 0.483
-offset_left = -222.809
-offset_top = -242.526
-offset_right = 226.373
-offset_bottom = 243.474
-pivot_offset = Vector2(0, 0)
-
-[node name="weapon_discription" parent="." instance=ExtResource("5")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.885
-anchor_top = 0.5
-anchor_right = 0.885
-anchor_bottom = 0.5
-offset_left = -101.456
-offset_top = -124.4
-offset_right = 102.544
-offset_bottom = 68.1201

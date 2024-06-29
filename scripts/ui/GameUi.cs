@@ -36,21 +36,6 @@ public partial class GameUi : Control
         }
     }
 
-
-    //todo connect to player
-    private void ChangeModuleCardVisible(bool state, Texture2D texture = null)
-    {
-        GetNode<Control>("module_discription").Visible = state;
-        GetNode<TextureRect>("module_discription/module_icon").Texture = texture;
-    }
-
-    private void ChangeWeaponCardVisible(bool state, Texture2D texture = null)
-    {
-        GetNode<Control>("weapon_discription").Visible = state;
-        GetNode<TextureRect>("weapon_discription/weapon_texture").Texture = texture;
-    }
-
-
     private void SetSpellIconToGame(Spell spell, int index)
     {
         var bar = barsParent.GetChild<TextureProgressBar>(index);
@@ -64,7 +49,7 @@ public partial class GameUi : Control
 
     private void ClearSpellIcons()
     {
-        foreach (var node in GetNode("spell_slot_panel").GetChildren())
+        foreach (var node in barsParent.GetChildren())
         {
             if (node is TextureProgressBar textureProgress)
             {

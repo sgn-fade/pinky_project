@@ -14,7 +14,6 @@ public partial class World : Node
     public override void _Ready()
     {
         world = GetNode("/root/World");
-        var ui = GetNode<UiCore>("/root/World/Ui");
         playerCameraScene = (PackedScene)ResourceLoader.Load("res://scenes/ui/camera_movement.tscn");
         cameraScene = playerCameraScene.Instantiate();
         world.AddChild(cameraScene);
@@ -38,7 +37,7 @@ public partial class World : Node
 
     public void AddEntity(PackedScene entity)
     {
-        world.AddChild(entity.Instantiate());
+        GetWorld().AddChild(entity.Instantiate());
     }
     // private Node GetCloserEnemy()
     // {

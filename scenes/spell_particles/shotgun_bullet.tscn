@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://1nrffkowg8y0" path="res://scenes/spell_particles/bullet.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwre4dutpe25o" path="res://sprites/bullets.png" id="2_3vq4j"]
 
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8fgu"]
 atlas = ExtResource("2_3vq4j")
 region = Rect2(0, 0, 5, 1)
