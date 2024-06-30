@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6hemv87vxb17"]
+[gd_scene load_steps=12 format=3 uid="uid://c6hemv87vxb17"]
 
+[ext_resource type="Script" path="res://scripts/particles/SwordBaseParticle.cs" id="1_huunm"]
 [ext_resource type="Texture2D" uid="uid://bxlmngctlu77t" path="res://sprites/particles/weapon_particles/hit_particle1.png" id="1_ir3xd"]
 
 [sub_resource type="AtlasTexture" id="30"]
@@ -122,6 +123,7 @@ _data = {
 }
 
 [node name="hit_particle" type="Node2D"]
+script = ExtResource("1_huunm")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -146,5 +148,6 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_ha4ij")
 }
+autoplay = "default"
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="OnArea2DBodyEntered"]

@@ -19,7 +19,6 @@ public  abstract partial class SpellController : CharacterBody2D
 		{
 			enemy.TakeDamage(Damage);
 		}
-		Delete();
 	}
 
 	protected abstract void Delete();
