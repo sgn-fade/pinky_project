@@ -8,25 +8,30 @@ namespace projectpinky.scripts.weapons;
 
 public class Weapon
 {
+ cells = new Cell[8];
     public WeaponData WeaponData { get; set; }
     [Export] public InventoryItem InvItem { get; set; }
     private Cell[] cells = new Cell[8];
 
-    public Cell[] GetCells()
-    {
-        return cells;
-    }
+
+	public Cell[] GetCells()
+	{
+		return cells;
+	}
+
 
     public Weapon(WeaponData data)
     {
         WeaponData = data;
 
-        for (var i = 0; i < 4; i++)
-        {
-            var index = GD.Randi() % cells.Length;
-            cells[index] ??= new Cell();
-        }
-    }
+
+		for (var i = 0; i < 4; i++)
+		{
+			var index = GD.Randi() % cells.Length;
+			cells[index] ??= new Cell();
+		}
+	}
+
 
     public void AddSpell(Spell spell, int cellIndex)
     {
