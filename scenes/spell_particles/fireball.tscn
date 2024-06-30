@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://uaai0aurtcg1"]
+[gd_scene load_steps=24 format=3 uid="uid://uaai0aurtcg1"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://sctficm8del" path="res://sprites/fireball.png" id="2"]
 [ext_resource type="Script" path="res://scripts/spells/SpellControllers/Fireball.cs" id="3"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://bs6klrlw501am" path="res://scenes/Components/MoveComponent.tscn" id="5_4oked"]
+[ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="6_i5q4g"]
 
 [sub_resource type="Gradient" id="Gradient_4rsi4"]
 offsets = PackedFloat32Array(0, 0.88, 1)
@@ -88,8 +89,6 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="RectangleShape2D" id="1"]
-
 [sub_resource type="Curve" id="Curve_emuad"]
 max_value = 100.0
 _data = [Vector2(0.017, 100), 0.0, -246.509, 0, 0, Vector2(0.132597, 2.19781), 0.0, 0.0, 0, 0]
@@ -155,6 +154,9 @@ _data = {
 "Delete": SubResource("Animation_ub5a8")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_apfqv"]
+radius = 15.0
+
 [node name="fireball" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent")]
 z_index = 9
 scale = Vector2(0.4, 0.4)
@@ -199,14 +201,6 @@ texture = ExtResource("1")
 offset = Vector2(0, 4.689)
 texture_scale = 0.25
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.04308e-06, 1.49012e-07)
-shape = SubResource("1")
-
 [node name="end_partcl" type="CPUParticles2D" parent="."]
 scale = Vector2(2.5, 2.5)
 emitting = false
@@ -239,3 +233,10 @@ libraries = {
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("5_4oked")]
 MoveTarget = NodePath("..")
 Speed = 20
+
+[node name="Hitbox" parent="." instance=ExtResource("6_i5q4g")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_apfqv")
+
+[connection signal="EntityEntered" from="Hitbox" to="." method="OnEntityEntered"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://waoyc4x7f58p"]
+
+[ext_resource type="Script" path="res://scripts/DamageHpSystem/Hurtbox.cs" id="1_8hsqc"]
+
+[node name="Hurtbox" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+input_pickable = false
+monitoring = false
+script = ExtResource("1_8hsqc")

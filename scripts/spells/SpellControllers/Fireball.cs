@@ -13,14 +13,7 @@ public partial class Fireball : SpellController
         moveComponent.Init(GetGlobalMousePosition(), Global.Player.GetPosition());
     }
 
-    private void OnBodyEntered(Node2D body)
-    {
-        if (body is Enemy enemy)
-        {
-            enemy.TakeDamage(10);
-        }
-        Delete();
-    }
-
     protected override void Delete() => QueueFree();
+
+    private void OnEntityEntered() => QueueFree();
 }

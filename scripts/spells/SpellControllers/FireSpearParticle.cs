@@ -16,12 +16,6 @@ public partial class FireSpearParticle : SpellController
 
     protected override void Delete() => QueueFree();
 
-    private void OnBodyEntered(Node2D body)
-    {
-        if (body is Enemy enemy)
-        {
-            enemy.TakeDamage(Damage);
-        }
-        Delete();
-    }
+    private void OnEntityEntered() => QueueFree();
+
 }
