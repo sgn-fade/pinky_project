@@ -7,22 +7,11 @@ namespace projectpinky.scripts.particles;
 
 public partial class FireSpearParticle : SpellController
 {
-    [Export] public int Speed = 300;
-
+    [Export] public MoveComponent moveComponent;
 
     public override void _Ready()
     {
-
-        Vector2 endPosition = GetGlobalMousePosition();
-        GlobalPosition = Global.Player.GetPosition();
-        Velocity = (endPosition - GlobalPosition).Normalized() * Speed;
-
-        LookAt(GetGlobalMousePosition());
-    }
-    
-    public override void _Process(double delta)
-    {
-        MoveAndSlide();
+        moveComponent.Init(GetGlobalMousePosition(), Global.Player.GetPosition());
     }
 
     protected override void Delete() => QueueFree();

@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://uaai0aurtcg1"]
+[gd_scene load_steps=23 format=3 uid="uid://uaai0aurtcg1"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://sctficm8del" path="res://sprites/fireball.png" id="2"]
-[ext_resource type="Script" path="res://scripts/particles/Fireball.cs" id="3"]
+[ext_resource type="Script" path="res://scripts/spells/SpellControllers/Fireball.cs" id="3"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="4"]
+[ext_resource type="PackedScene" uid="uid://bs6klrlw501am" path="res://scenes/Components/MoveComponent.tscn" id="5_4oked"]
 
 [sub_resource type="Gradient" id="Gradient_4rsi4"]
 offsets = PackedFloat32Array(0, 0.88, 1)
@@ -154,12 +155,13 @@ _data = {
 "Delete": SubResource("Animation_ub5a8")
 }
 
-[node name="fireball" type="CharacterBody2D"]
+[node name="fireball" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent")]
 z_index = 9
 scale = Vector2(0.4, 0.4)
 collision_layer = 3
 collision_mask = 5
 script = ExtResource("3")
+moveComponent = NodePath("MoveComponent")
 
 [node name="particles" type="CPUParticles2D" parent="."]
 modulate = Color(1, 0.309804, 0.105882, 1)
@@ -233,3 +235,7 @@ color_ramp = SubResource("Gradient_iicuw")
 libraries = {
 "": SubResource("AnimationLibrary_71b60")
 }
+
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("5_4oked")]
+MoveTarget = NodePath("..")
+Speed = 20

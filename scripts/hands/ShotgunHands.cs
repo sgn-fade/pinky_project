@@ -50,15 +50,12 @@ public partial class ShotgunHands : GunHands
             }
         }
     }
-    //todo ne shotgun
+    //todo move to skill
     private void SpawnBullets()
     {
         for (int i = 0; i < 6; i++)
         {
             var bulletInstance = bullet.Instantiate<Bullet>();
-
-            var targetPosition = (GetGlobalMousePosition() - barrelPosition.GlobalPosition).Rotated((float)GD.RandRange(-0.15, 0.15));
-
             Global.World.GetWorld().AddChild(bulletInstance);
         }
     }

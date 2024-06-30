@@ -1,13 +1,9 @@
-[gd_scene load_steps=73 format=3 uid="uid://15vutrjv1g2g"]
+[gd_scene load_steps=67 format=3 uid="uid://15vutrjv1g2g"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_ijsvk"]
 [ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/Player_animation/body/clear_player.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://byjyfa0cd7bnk" path="res://sprites/Player_animation/body/player_move_back.png" id="4_c1e3w"]
-[ext_resource type="Texture2D" uid="uid://dmcrgv2sfcch8" path="res://sprites/particles/heal_particle.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://ii2pspfnq311" path="res://sprites/particles/player_dash_particle.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://tks8mnv85ym7" path="res://sprites/particles/blood_rain_particle.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="12"]
 [ext_resource type="Script" path="res://scripts/hands/HandsManager.cs" id="12_q5bt1"]
 [ext_resource type="Texture2D" uid="uid://cr3d0twg7nxse" path="res://sprites/character_fire_teleport_start_player.png" id="14"]
 [ext_resource type="PackedScene" uid="uid://dltfuc1qq5unu" path="res://scenes/hands/shotgun_hands.tscn" id="14_cherd"]
@@ -431,13 +427,6 @@ size = Vector2(11.5384, 14.1935)
 [sub_resource type="RectangleShape2D" id="6"]
 size = Vector2(10.724, 13.2143)
 
-[sub_resource type="CanvasItemMaterial" id="43"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="42"]
-blend_mode = 1
-light_mode = 2
-
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("hands", "animatedSprite")]
 z_as_relative = false
 collision_layer = 33
@@ -474,105 +463,6 @@ collision_mask = 2147483648
 position = Vector2(-0.488153, 1.40656)
 scale = Vector2(1.40094, -0.81829)
 shape = SubResource("6")
-
-[node name="blood" type="CPUParticles2D" parent="."]
-position = Vector2(-0.109024, 0.342194)
-emitting = false
-lifetime = 0.5
-one_shot = true
-speed_scale = 2.0
-randomness = 0.15
-lifetime_randomness = 0.8
-emission_shape = 1
-emission_sphere_radius = 6.0
-direction = Vector2(5, 6.875)
-spread = 63.24
-color = Color(0.803922, 0.137255, 0.152941, 1)
-
-[node name="heal2" type="CPUParticles2D" parent="."]
-modulate = Color(1, 1, 1, 0.380392)
-light_mask = 524288
-material = SubResource("43")
-scale = Vector2(1, 4)
-emitting = false
-amount = 3
-lifetime = 0.5
-one_shot = true
-speed_scale = 1.5
-explosiveness = 0.5
-emission_shape = 2
-emission_sphere_radius = 1.0
-gravity = Vector2(0, -20)
-
-[node name="dash_particles2" type="CPUParticles2D" parent="."]
-modulate = Color(1, 1, 1, 0.380392)
-light_mask = 524288
-material = SubResource("43")
-position = Vector2(-1, -7)
-scale = Vector2(1, 4)
-emitting = false
-amount = 10
-lifetime = 0.4
-one_shot = true
-fract_delta = false
-texture = ExtResource("7")
-direction = Vector2(0, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-color = Color(0.862745, 0.0784314, 1, 0.321569)
-
-[node name="heal" type="CPUParticles2D" parent="."]
-light_mask = 524288
-material = SubResource("42")
-emitting = false
-amount = 3
-one_shot = true
-speed_scale = 1.5
-explosiveness = 0.5
-texture = ExtResource("6")
-emission_shape = 2
-emission_sphere_radius = 1.0
-gravity = Vector2(0, -20)
-
-[node name="dash_particles1" type="CPUParticles2D" parent="."]
-modulate = Color(0.764706, 0, 0.898039, 1)
-show_behind_parent = true
-position = Vector2(0, -7)
-emitting = false
-amount = 40
-lifetime = 0.1
-one_shot = true
-preprocess = 0.03
-speed_scale = 0.2
-explosiveness = 0.7
-lifetime_randomness = 1.0
-texture = ExtResource("12")
-emission_shape = 2
-emission_sphere_radius = 5.0
-spread = 62.03
-gravity = Vector2(0, -20)
-initial_velocity_min = 4.0
-initial_velocity_max = 4.0
-angular_velocity_min = 400.0
-angular_velocity_max = 400.0
-radial_accel_min = 1.0
-radial_accel_max = 1.0
-scale_amount_min = 0.4
-scale_amount_max = 0.4
-
-[node name="rain" type="CPUParticles2D" parent="."]
-visible = false
-position = Vector2(-72.109, -104.658)
-amount = 200
-lifetime = 4.0
-preprocess = 5.0
-speed_scale = 2.0
-lifetime_randomness = 0.8
-texture = ExtResource("8")
-emission_shape = 2
-emission_sphere_radius = 1.0
-gravity = Vector2(50, 98)
-color = Color(0.278431, 0.290196, 0.537255, 1)
 
 [node name="hands" type="Node2D" parent="."]
 visible = false
