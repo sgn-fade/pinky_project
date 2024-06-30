@@ -31,7 +31,7 @@ public partial class FireEye : SpellController
     {
         while (_enemyInside.Contains(enemy))
         {
-            enemy.TakeDamage(Damage);
+            enemy.TakeDamage(0);
             _damageTimer.Start(_tickTime);
             await ToSignal(_damageTimer, "timeout");
         }
@@ -51,7 +51,7 @@ public partial class FireEye : SpellController
         if (body is Enemy enemy)
         {
             _enemyInside.Remove(enemy);
-            enemy.TakeDamage(Damage, "burn");
+            enemy.TakeDamage(0, "burn");
         }
     }
 }

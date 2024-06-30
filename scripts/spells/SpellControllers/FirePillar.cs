@@ -16,11 +16,6 @@ public partial class FirePillar : SpellController
     protected override void Delete() => QueueFree();
 
 
-    private void OnDamageAreaBodyEntered(Node body)
-    {
-        if (body is Enemy enemy)
-        {
-            enemy.TakeDamage(Damage);
-        }
-    }
+    private void OnEntityEntered() => QueueFree();
+
 }

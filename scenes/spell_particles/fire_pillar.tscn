@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cu23cwynpxasr" path="res://sprites/locations/hub_zone/hub_zone.png" id="7_ujik0"]
 
-
 [sub_resource type="Curve" id="45"]
 max_value = 4.0
 _data = [Vector2(0, 1.72727), 0.0, -3.09091, 0, 0, Vector2(0.977273, 0.131818), 0.140496, 0.0, 0, 0]
@@ -354,11 +353,13 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 texture = ExtResource("7_ujik0")
 
 [node name="World_Embient" type="CanvasModulate" parent="."]
 process_priority = -71
+visible = false
 color = Color(0.313726, 0.313726, 0.313726, 1)
 
 [connection signal="body_entered" from="damage_area" to="." method="OnDamageAreaBodyEntered"]
