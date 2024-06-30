@@ -51,7 +51,7 @@ public partial class FireEye : SpellController
         if (body is Enemy enemy)
         {
             _enemyInside.Remove(enemy);
-            enemy.TakeDamage(0, "burn");
+            enemy.TakeDamage(0);
         }
     }
 }

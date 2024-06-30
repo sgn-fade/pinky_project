@@ -49,9 +49,6 @@ public partial class GoblinMage : Goblin
                 Move(Global.Player.GetPosition() - GlobalPosition);
                 CastFireball();
                 break;
-            case States.PULLS:
-                Attract(delta);
-                break;
         }
     }
 

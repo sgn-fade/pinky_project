@@ -31,7 +31,7 @@ public abstract partial class Enemy : CharacterBody2D
     }
     public override void _Ready()
     {
-        Global.GlobalWorldInfo.AddEnemy(this);
+        Global.World.AddEnemy(this);
 
         damageLabelInstance = damageLabel.Instantiate<DamageLabel>();
         AddChild(damageLabelInstance);
