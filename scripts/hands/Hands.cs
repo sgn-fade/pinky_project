@@ -29,8 +29,7 @@ public abstract partial class Hands : Node2D
         {
             if (!Input.IsActionJustPressed(kvp.Key)) continue;
 
-			var action = kvp.Value;
-			if (action.GetReady()) action.Cast();
+            kvp.Value.Cast();
 			return;
 		}
 	}

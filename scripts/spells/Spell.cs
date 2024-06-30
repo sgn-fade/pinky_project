@@ -17,13 +17,12 @@ public class Spell
     }
     public void Cast()
     {
-        if (player.SetMana(-Data.ManaCost))
+        if (player.SetMana(-Data.ManaCost) && GetReady())
         {
             if (Data.Particle != null)
             {
                 Global.World.AddEntity(Data.Particle);
             }
-            Global.Player.PlayAnimation(Data.AnimationName);
             Cooldown();
         }
     }

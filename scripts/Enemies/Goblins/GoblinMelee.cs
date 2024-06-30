@@ -116,7 +116,7 @@ public partial class GoblinMelee : Goblin
             currentState = States.DEALS_DAMAGE;
             Vector2 playerOffsetDir = -(GlobalPosition - Global.Player.GetPosition()).Normalized();
             //EventBus.EmitSignal("player_take_damage", playerOffsetDir, 10);
-            //TODO event bus
+            //TODO hurt box
         }
     }
 

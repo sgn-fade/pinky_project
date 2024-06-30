@@ -111,15 +111,9 @@ public abstract partial class Enemy : CharacterBody2D
             Velocity = (-direction.Normalized() * speed);
             MoveAndSlide();
             hp -= damage;
-            ChasingPlayer();
             UpdateHp();
             EnemyDeath();
         }
-    }
-
-    private void ChasingPlayer()
-    {
-        //TODO Implement logic for chasing the player
     }
     
     public void SetFocused(bool state)

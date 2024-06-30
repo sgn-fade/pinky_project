@@ -7,15 +7,6 @@ using projectpinky.scripts.player;
 
 public partial class MeleeHands : Hands
 {
-    private Timer comboTimer = new Timer();
-    private List<string> comboNames = new List<string> { "hit_1", "hit_2", "hit_3" };
-    private PlayerData player = Global.Player;
-    public override void _Ready()
-    {
-        base._Ready();
-        AddChild(comboTimer);
-        comboTimer.OneShot = false;
-    }
 
     public override void _Process(double delta)
     {
@@ -32,33 +23,5 @@ public partial class MeleeHands : Hands
             return;
         }
         GetNode<AnimationPlayer>("anim").Play(animationName);
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        //todo move to skill
-        if (@event is InputEventMouseButton eventMouseButton &&
-            eventMouseButton.Pressed &&
-            //eventMouseButton.ButtonIndex == (int)ButtonList.Left &&
-            player.GetState() != Player.States.Spell)
-        {
-            if (comboTimer.TimeLeft <= 0)
-            {
-                comboNames = new List<string> { "hit_1", "hit_2", "hit_3" };
-            }
-            string hitName = comboNames[0];
-            comboNames.RemoveAt(0);
-            comboNames.Add(hitName);
-            Hit(hitName);
-        }
-    }
-
-    private void Hit(string hitCount)
-    {
-        player.SetState(Player.States.Attack);
-        PlayAnimation(hitCount);
-        comboTimer.Start(1);
-        player.SetState(Player.States.Active);
-        PlayAnimation("null");
     }
 }
