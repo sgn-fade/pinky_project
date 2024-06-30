@@ -50,7 +50,7 @@ public partial class ShotgunHands : GunHands
             }
         }
     }
-
+    //todo ne shotgun
     private void SpawnBullets()
     {
         for (int i = 0; i < 6; i++)
@@ -58,8 +58,6 @@ public partial class ShotgunHands : GunHands
             var bulletInstance = bullet.Instantiate<Bullet>();
 
             var targetPosition = (GetGlobalMousePosition() - barrelPosition.GlobalPosition).Rotated((float)GD.RandRange(-0.15, 0.15));
-            bulletInstance.Init(barrelPosition.GlobalPosition,
-                targetPosition);
 
             Global.World.GetWorld().AddChild(bulletInstance);
         }

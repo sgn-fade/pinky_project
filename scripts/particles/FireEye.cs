@@ -5,12 +5,9 @@ using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.particles;
 
-public partial class FireEye : CharacterBody2D
+public partial class FireEye : SpellController
 {
-    private Timer _timer = new Timer();
-    private Timer _damageTimer = new Timer();
-    private AnimatedSprite2D _eyeAnimation;
-    private float _spellDuration = 9f;
+    private Timer _damageTimer = new ();
     private float _tickTime = 1f;
     private List<Enemy> _enemyInside = new();
     [Export] private AnimationTree animationTree;
@@ -20,17 +17,21 @@ public partial class FireEye : CharacterBody2D
     public override void _Ready()
     {
         stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-        GetTree().CreateTimer(_spellDuration).Timeout += () => { stateMachine.Travel("closing"); };
 
         _damageTimer.OneShot = false;
         AddChild(_damageTimer);
+    }
+
+    protected override void Delete()
+    {
+        stateMachine.Travel("closing");
     }
 
     private async void DealDamage(Enemy enemy)
     {
         while (_enemyInside.Contains(enemy))
         {
-            enemy.TakeDamage(2);
+            enemy.TakeDamage(Damage);
             _damageTimer.Start(_tickTime);
             await ToSignal(_damageTimer, "timeout");
         }
@@ -50,7 +51,7 @@ public partial class FireEye : CharacterBody2D
         if (body is Enemy enemy)
         {
             _enemyInside.Remove(enemy);
-            enemy.TakeDamage(2, "burn");
+            enemy.TakeDamage(Damage, "burn");
         }
     }
 }

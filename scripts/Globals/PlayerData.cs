@@ -65,75 +65,74 @@ public partial class PlayerData : Node2D
 		playerHpChanged?.Invoke(mana, maxMana);
 		return true;
 
-	}
-	public bool SetMana(int value)
-	{
-		if (GetMana() < Mathf.Abs(value))
-		{
-			player.Call("throw_not_enough_mana_massage");
-			return false;
-		}
-		mana += value;
-		playerManaChanged?.Invoke(mana, maxMana);
-		return true;
-	}
-	public void SetMaxMana(int value)
-	{
-		maxMana = value;
-		playerManaChanged?.Invoke(mana, maxMana);
-	}
-	public void SetMagicDamage(int newMagicDamage)
-	{
-		magicDamage = newMagicDamage;
-	}
-	public Vector2 GetPosition()
-	{
-		return player?.GlobalPosition ?? Vector2.Zero;
-	}
-	public void SetPosition(Vector2 position)
-	{
-		player.GlobalPosition = position;
-	}
-	public void SetWeapon(Weapon newWeapon)
-	{
-		weapon = newWeapon;
-	}
-	public Node GetClosestObject() => closestObject;
-	public bool SetClosestObject(Node2D obj)
-	{
-		if (
-			obj == null
-			|| closestObject == null
-			|| obj.GlobalPosition - GetPosition() < closestObject.GlobalPosition - GetPosition()
-			)
-		{
-			closestObject = obj;
-			return true;
-		}
-		return false;
-	}
-	public void PlayAnimation(string animationName)
-	{
-		player.GetHands().PlayAnimation(animationName);
-	}
-	public void SetMoney(int value)
-	{
-		if (value > 0)
-		{
-			coins += value;
-		}
-	}
-	public void Restart()
-	{
-		player.QueueFree();
-		hp = maxHp;
-		Spawn();
-	   SetPosition(Vector2.Zero);
-	}
-	public void Spawn()
-	{
-		Global.World.AddEntity(playerScene);
-	}
+    }
+    public bool SetMana(int value)
+    {
+        if (GetMana() < Mathf.Abs(value))
+        {
+            return false;
+        }
+        mana += value;
+        playerManaChanged?.Invoke(mana, maxMana);
+        return true;
+    }
+    public void SetMaxMana(int value)
+    {
+        maxMana = value;
+        playerManaChanged?.Invoke(mana, maxMana);
+    }
+    public void SetMagicDamage(int newMagicDamage)
+    {
+        magicDamage = newMagicDamage;
+    }
+    public Vector2 GetPosition()
+    {
+        return player?.GlobalPosition ?? Vector2.Zero;
+    }
+    public void SetPosition(Vector2 position)
+    {
+        player.GlobalPosition = position;
+    }
+    public void SetWeapon(Weapon newWeapon)
+    {
+        weapon = newWeapon;
+    }
+    public Node GetClosestObject() => closestObject;
+    public bool SetClosestObject(Node2D obj)
+    {
+        if (
+            obj == null
+            || closestObject == null
+            || obj.GlobalPosition - GetPosition() < closestObject.GlobalPosition - GetPosition()
+            )
+        {
+            closestObject = obj;
+            return true;
+        }
+        return false;
+    }
+    public void PlayAnimation(string animationName)
+    {
+        player.GetHands().PlayAnimation(animationName);
+    }
+    public void SetMoney(int value)
+    {
+        if (value > 0)
+        {
+            coins += value;
+        }
+    }
+    public void Restart()
+    {
+        player.QueueFree();
+        hp = maxHp;
+        Spawn();
+       SetPosition(Vector2.Zero);
+    }
+    public void Spawn()
+    {
+        Global.World.AddEntity(playerScene);
+    }
 
 	public void AddItem(InventoryItem item)
 	{

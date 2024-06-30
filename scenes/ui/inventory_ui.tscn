@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
-[ext_resource type="Script" path="res://scripts/ui/PlayerInventory.cs" id="1_tlr2l"]
+[ext_resource type="Script" path="res://scripts/ui/inventory/PlayerInventory.cs" id="1_tlr2l"]
 [ext_resource type="PackedScene" uid="uid://d00qmrac5adv2" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://btdrg2ytefew2" path="res://scenes/ui/inventory/inventory_slot_object.tscn" id="3_nhbeo"]
 [ext_resource type="Texture2D" uid="uid://p31ii0hg8cjd" path="res://sprites/ui/back_arrow/back_arrow_idle.png" id="5_f11wr"]

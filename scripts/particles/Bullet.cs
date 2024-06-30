@@ -6,39 +6,25 @@ namespace projectpinky.scripts.particles;
 
 public partial class Bullet : CharacterBody2D
 {
-    private float speed = 300;
-    private Vector2 startPosition;
-    private Vector2 targetPosition;
-    private float maxDistance = 10000;
+    private float Speed = 300;
 
-
-    public void Init(Vector2 startPos, Vector2 targetPos)
+    public override void _Ready()
     {
-        GlobalPosition = startPos;
-        LookAt(targetPos * 10000);
-
-        startPosition = startPos;
-        targetPosition = targetPos;
-
+        Vector2 endPosition = GetGlobalMousePosition();
+        GlobalPosition = Global.Player.GetPosition() - new Vector2(0, 5);
+        Velocity = (endPosition - Global.Player.GetPosition()).Normalized() * Speed;
+        LookAt(endPosition);
     }
+
     public override void _Process(double delta)
     {
-        if ((GlobalPosition - startPosition).Length() < maxDistance)
-        {
-            Velocity = targetPosition.Normalized() * speed;
-            MoveAndSlide();
-        }
-        else
-        {
-            Delete();
-        }
+        MoveAndSlide();
     }
-
     private void OnBodyEntered(Node2D body)
     {
-        if (body is Enemies.Enemy enemy)
+        if (body is Enemy enemy)
         {
-            //todo enemy take damage
+            enemy.TakeDamage(10);
         }
         Delete();
     }

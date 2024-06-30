@@ -1,9 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu8g81pla64ql"]
+[gd_scene load_steps=10 format=3 uid="uid://cu8g81pla64ql"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://b10ywdoqyyw1x" path="res://sprites/particles/spells_particles/fire_spear_particle.png" id="3"]
 [ext_resource type="Script" path="res://scripts/particles/FireSpearParticle.cs" id="4"]
+
+[sub_resource type="Curve" id="Curve_gn1fu"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 316.746), 0.0, 0.0, 0, 0, Vector2(1, -88.7607), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lnbel"]
+_data = [Vector2(0.00279862, 0.714644), 0.0, 0.0, 0, 0, Vector2(1, 0.0763457), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="AtlasTexture" id="4"]
 atlas = ExtResource("3")
@@ -31,7 +41,7 @@ script = ExtResource("4")
 [node name="particles" type="CPUParticles2D" parent="."]
 modulate = Color(0.764706, 0, 0.898039, 1)
 show_behind_parent = true
-position = Vector2(14, 0)
+position = Vector2(-23, 9.53674e-07)
 scale = Vector2(0.4, 0.4)
 amount = 40
 lifetime = 0.05
@@ -40,9 +50,15 @@ randomness = 0.67
 lifetime_randomness = 0.67
 texture = ExtResource("2")
 emission_shape = 2
-emission_sphere_radius = 1.0
+emission_sphere_radius = 0.6
 spread = 62.03
 gravity = Vector2(0, -20)
+angle_min = -256.3
+angle_max = 122.0
+angle_curve = SubResource("Curve_gn1fu")
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_lnbel")
 color = Color(0.921569, 0.305882, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
