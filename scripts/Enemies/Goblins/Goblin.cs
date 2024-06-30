@@ -77,7 +77,7 @@ public partial class Goblin : Enemy
         }
     }
 
-    private void SpawnDrop()
+    public override void SpawnDrop()
     {
         Random random = new Random();
         for (int i = 0; i < random.Next(6); i++)
@@ -85,41 +85,6 @@ public partial class Goblin : Enemy
             Node2D coins = goldDrop.Instantiate<Node2D>();
             Global.World.GetWorld().AddChild(coins);
             coins.GlobalPosition = GlobalPosition + new Vector2(random.Next(11) - 5, random.Next(11) - 5);
-        }
-    }
-
-    private void OnDamageToEnemy(Node body, int damage, string status)
-    {
-        // Implement super._on_damage_to_enemy logic if any
-    }
-
-    protected void Attract(double delta)
-    {
-        Velocity = Velocity.Lerp((pullSource - GlobalPosition).Normalized() * 50, (float)(delta / 0.1));
-        MoveAndSlide();
-        if ((pullSource - GlobalPosition).Length() <= 3)
-        {
-            Slowdown();
-            currentState = States.MOVE;
-        }
-    }
-
-    private void OnPullsBody(Node body, Vector2 pos)
-    {
-        if (body == this)
-        {
-            pullSource = pos;
-            currentState = States.PULLS;
-        }
-    }
-
-    private async void Slowdown()
-    {
-        float initialSpeed = 10.0f;
-        while (initialSpeed < speed)
-        {
-            initialSpeed += 1.0f;
-            await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
         }
     }
 }
