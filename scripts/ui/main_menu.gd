@@ -1,10 +1,7 @@
 extends Control
 
 
-func _ready():
-	$liderboard.print_board()
-	EventBus.connect("add_player_to_board", Callable(self, "_on_add_player"))
-	
+
 
 
 func _on_add_player(text):

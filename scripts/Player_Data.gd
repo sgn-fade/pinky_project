@@ -80,7 +80,8 @@ func ready():
 func get_body():
 	return player
 
-
+func set_z_index(value):
+	player.z_index = value
 func get_z_index():
 	return player.z_index
 

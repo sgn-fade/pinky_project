@@ -5,6 +5,7 @@ extends Node2D
 @onready var fire_teleport_spell = load("res://scripts/spells/fire_teleport_spell.gd")
 @onready var fire_eye_spell = load("res://scripts/spells/fire_eye_spell.gd")
 @onready var fire_spear_spell = load("res://scripts/spells/fire_spear_spell.gd")
+@onready var ultimate_stun = load("res://scripts/spells/ultimate_stun.gd")
 @onready var smite = load("res://scripts/spells/melee_spells/smite.gd")
 @onready var dungeon = load("res://scenes/locations/dungeon.tscn")
 @onready var hub_zone = load("res://scenes/locations/hub_zone.tscn")
@@ -35,5 +36,5 @@ func go_to_hub():
 
 
 func load_game():
-	EventBus.emit_signal("add_module_to_place", fireball_spell.new(), true, "equipment", -4)
+	EventBus.emit_signal("add_module_to_place", ultimate_stun.new(), true, "equipment", -4)
 	go_to_hub()
