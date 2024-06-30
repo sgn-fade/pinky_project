@@ -39,12 +39,12 @@ public partial class GoblinMage : Goblin
 
         switch (currentState)
         {
-            case States.SEARCHING:
+            case States.Searching:
                 SwapSpriteDirection();
                 break;
-            case States.IDLE:
+            case States.Idle:
                 break;
-            case States.MOVE:
+            case States.Move:
                 SwapSpriteDirection();
                 Move(Global.Player.GetPosition() - GlobalPosition);
                 CastFireball();
@@ -70,27 +70,27 @@ public partial class GoblinMage : Goblin
 
     private async void CastFireball()
     {
-        if (attackCooldown <= 0 && currentState != States.ATTACK)
+        if (attackCooldown <= 0 && currentState != States.Attack)
         {
             Scale = new Vector2(-Scale.X, Scale.Y);
             attackCooldown = 2;
-            currentState = States.ATTACK;
+            currentState = States.Attack;
             await PlayAnimation("attack_before");
             Node2D fireballParticle = fireball.Instantiate<Node2D>();
             fireballParticle.GlobalPosition = GetNode<Marker2D>("fireball_pos").GlobalPosition;
             Global.World.GetWorld().AddChild(fireballParticle);
             GetNode<CpuParticles2D>("fireball_cast_particles").Emitting = true;
             await PlayAnimation("attack_after");
-            currentState = States.MOVE;
+            currentState = States.Move;
             PlayAnimation("move");
         }
     }
 
     private async void SummonElemental()
     {
-        if (elementalCooldown <= 0 && currentState != States.ATTACK)
+        if (elementalCooldown <= 0 && currentState != States.Attack)
         {
-            currentState = States.ATTACK;
+            currentState = States.Attack;
             Node2D summon = fireElemental.Instantiate<Node2D>();
             Global.World.GetWorld().AddChild(summon);
             summon.GlobalPosition = GlobalPosition + new Vector2(10, 0);
@@ -109,6 +109,6 @@ public partial class GoblinMage : Goblin
     {
         sprite.Play("idle");
         await ToSignal(GetTree().CreateTimer((float)GD.RandRange(0, 1)), "timeout");
-        currentState = States.IDLE;
+        currentState = States.Idle;
     }
 }

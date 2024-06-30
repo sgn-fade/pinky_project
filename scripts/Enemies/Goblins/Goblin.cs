@@ -6,27 +6,24 @@ namespace projectpinky.scripts.Enemies.Goblins;
 
 public partial class Goblin : Enemy
 {
-    private AnimatedSprite2D sprite;
-    protected Vector2 pullSource = Vector2.Zero;
+    [Export] private AnimatedSprite2D sprite;
 
     protected enum States
     {
-        IDLE,
-        MOVE,
-        PULLS,
-        ATTACK,
-        DEALS_DAMAGE,
-        SEARCHING,
-        NONE
+        Idle,
+        Move,
+        Pulls,
+        Attack,
+        DealsDamage,
+        Searching,
+        None
     }
 
-    protected States currentState = States.IDLE;
-    private PackedScene goldDrop = (PackedScene)ResourceLoader.Load("res://scenes/drops/gold_drop.tscn");
+    protected States currentState = States.Idle;
+    [Export] private PackedScene goldDrop;
 
-    private string type = "goblin";
     private Vector2 direction = Vector2.Zero;
     protected float speed = 100.0f;
-    private Vector2 velocity = Vector2.Zero;
 
     private Vector2 RandomizeDirection()
     {
@@ -40,12 +37,6 @@ public partial class Goblin : Enemy
             case 4: return new Vector2(0, 1);
             default: return Vector2.Zero;
         }
-    }
-
-    public override void _Ready()
-    {
-        base._Ready();
-        sprite = GetNode<AnimatedSprite2D>("sprite");
     }
 
     protected async void PlayAnimation(string name)
@@ -73,7 +64,7 @@ public partial class Goblin : Enemy
         MoveAndSlide();
         if (direction.Length() >= 1000)
         {
-            currentState = States.IDLE;
+            currentState = States.Idle;
         }
     }
 

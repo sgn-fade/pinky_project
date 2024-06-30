@@ -6,8 +6,4 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>projectpinky</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="scripts\Enemies\Elementals\" />
-    <Folder Include="scripts\Enemies\Undeads\" />
-  </ItemGroup>
 </Project>

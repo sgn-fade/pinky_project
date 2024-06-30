@@ -49,7 +49,7 @@ public partial class GoblinMelee : Goblin
         collision.SetDeferred("disabled", false);
         timer.Start(0.5f);
         await ToSignal(timer, "timeout");
-        currentState = States.IDLE;
+        currentState = States.Idle;
     }
 
     public override void _Process(double delta)
@@ -57,20 +57,14 @@ public partial class GoblinMelee : Goblin
         attackCooldown -= delta;
         switch (currentState)
         {
-            case States.SEARCHING:
+            case States.Searching:
                 SwapSpriteDirection();
                 break;
-            case States.IDLE:
-                SearchingPlayer(delta);
-                break;
-            case States.MOVE:
+            case States.Move:
                 SwapSpriteDirection();
                 Move(Global.Player.GetPosition() - GlobalPosition);
                 PlayAnimation("move");
                 Attack();
-                break;
-            case States.PULLS:
-                Attract(delta);
                 break;
         }
     }
@@ -85,10 +79,10 @@ public partial class GoblinMelee : Goblin
 
     private async void Attack()
     {
-        if (direction.Length() < 30 && currentState != States.ATTACK && attackCooldown <= 0)
+        if (direction.Length() < 30 && currentState != States.Attack && attackCooldown <= 0)
         {
             attackCooldown = 4;
-            currentState = States.ATTACK;
+            currentState = States.Attack;
             sprite.Play("attack");
             timer.Start(0.8f);
             await ToSignal(timer, "timeout");
@@ -104,16 +98,16 @@ public partial class GoblinMelee : Goblin
 
             timer.Start(0.386f);
             await ToSignal(timer, "timeout");
-            Idle(States.MOVE);
+            Idle(States.Move);
             attackArea.Monitoring = false;
         }
     }
 
     private void OnMeleeGoblinAttackAreaEntered(Node body)
     {
-        if (body == Global.Player.GetBody() && currentState != States.DEALS_DAMAGE)
+        if (body == Global.Player.GetBody() && currentState != States.DealsDamage)
         {
-            currentState = States.DEALS_DAMAGE;
+            currentState = States.DealsDamage;
             Vector2 playerOffsetDir = -(GlobalPosition - Global.Player.GetPosition()).Normalized();
             //EventBus.EmitSignal("player_take_damage", playerOffsetDir, 10);
             //TODO hurt box
@@ -122,53 +116,13 @@ public partial class GoblinMelee : Goblin
 
     private async void OnDamageToEnemy(Node body, int damage, string status)
     {
-        // Implement super._on_damage_to_enemy logic if any
         if (this == body)
         {
-            currentState = States.NONE;
+            currentState = States.None;
             sprite.Play("take_damage");
             GetNode<AnimationPlayer>("anim_player").Play("take_damage");
             await ToSignal(sprite, "animation_finished");
-            currentState = States.IDLE;
-        }
-    }
-
-    private void SwapSpriteDirection()
-    {
-        if (direction.X <= 0)
-        {
-            Scale = new Vector2(-1, Scale.Y);
-        }
-        else if (direction.X > 0)
-        {
-            Scale = new Vector2(1, Scale.Y);
-        }
-    }
-
-    private void Move(Vector2 dir)
-    {
-        direction = dir;
-        Velocity = direction.Normalized() * speed;
-        MoveAndSlide();
-        if (direction.Length() >= 1000)
-        {
-            currentState = States.IDLE;
-        }
-    }
-
-    private void SearchingPlayer(double delta)
-    {
-        // Implement searching player logic
-    }
-
-    private void Attract(double delta)
-    {
-        Velocity = Velocity.Lerp((pullSource - GlobalPosition).Normalized() * 50, (float)(delta / 0.1));
-        MoveAndSlide();
-        if ((pullSource - GlobalPosition).Length() <= 3)
-        {
-            Slowdown();
-            currentState = States.MOVE;
+            currentState = States.Idle;
         }
     }
 
