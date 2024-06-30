@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dai8f5grr0xq"]
+[gd_scene load_steps=16 format=3 uid="uid://dai8f5grr0xq"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
+[ext_resource type="Script" path="res://scripts/drops/ItemDrop.cs" id="1_wbltj"]
 [ext_resource type="Texture2D" uid="uid://cl6qvtqrodqft" path="res://sprites/particles/bronze_weapon_drop.png" id="2"]
-[ext_resource type="Script" path="res://scripts/drops/WeaponDrop.cs" id="3"]
+[ext_resource type="Resource" uid="uid://bg84pk4wkvlgl" path="res://scripts/spells/Fireball.tres" id="2_u4r3v"]
+[ext_resource type="Resource" uid="uid://5mcx1iyr6t5j" path="res://scripts/spells/FireEye.tres" id="5_mc5fx"]
+[ext_resource type="Resource" uid="uid://hsk8wfqmbamn" path="res://scripts/spells/FirePillar.tres" id="6_67erw"]
+[ext_resource type="Resource" uid="uid://iudko4u3wygw" path="res://scripts/spells/FireSpear.tres" id="7_x3x84"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 6.0
@@ -35,8 +39,78 @@ max_value = 5.0
 _data = [Vector2(0.00757575, 1.60227), 0.0, -1.39726, 0, 0, Vector2(1, 0.056818), -0.06, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Animation" id="Animation_f3eq8"]
+resource_name = "delete"
+length = 0.3525
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"AddItem"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("end_particles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2ngjr"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.659754, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cqg53"]
+_data = {
+"delete": SubResource("Animation_f3eq8"),
+"idle": SubResource("Animation_2ngjr")
+}
+
 [node name="weapon_drop" type="Area2D"]
-script = ExtResource("3")
+monitorable = false
+script = ExtResource("1_wbltj")
+dropList = [ExtResource("2_u4r3v"), ExtResource("5_mc5fx"), ExtResource("6_67erw"), ExtResource("7_x3x84")]
 
 [node name="detection_area" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -80,6 +154,7 @@ sprite_frames = SubResource("4")
 emitting = false
 amount = 70
 lifetime = 0.3
+one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.5
 emission_shape = 1
@@ -89,3 +164,12 @@ spread = 180.0
 gravity = Vector2(0, 0)
 scale_amount_curve = SubResource("5")
 color = Color(0.858824, 0.682353, 0.603922, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cqg53")
+}
+autoplay = "idle"
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

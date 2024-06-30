@@ -1,87 +1,54 @@
-using System;
-using System.Threading.Tasks;
 using Godot;
 using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.spells;
 
-[GlobalClass]
-public partial class Spell : Resource
+public class Spell
 {
-    [Export] public Texture2D Icon { get; set; }
-    [Export] public string AnimationName { get; set; }
-    [Export] public Rarities Rarity { get; set; }
-    [Export] public float CooldownTime { get; set; }
-    [Export] public int ManaCost { get; set; }
-    [Export] public PackedScene Particle { get; set; }
-    public InventoryItem InvItem { get; set; }
+    public SpellData Data { get; set; }
+    private PlayerData player;
+    public double TimeSpend { get; set; }
 
-    private PlayerData player = Global.Player;
-    public bool IsReady { get; set; } = true;
-    public float TimeSpend { get; set; }
-
-
-    public Spell() : this(null, null, Rarities.Bronze, 0, 0, null)
+    public Spell(SpellData data)
     {
+        Data = data;
+        player = Global.Player;
     }
-
-    public enum Rarities
-    {
-        Bronze,
-        Silver,
-        Gold,
-    }
-    public Spell(Texture2D icon, string animationName, Rarities rarity, float cooldownTime, int manaCost,
-        PackedScene particle)
-    {
-        Icon = icon;
-        AnimationName = animationName;
-        Rarity = rarity;
-        CooldownTime = cooldownTime;
-        ManaCost = manaCost;
-        Particle = particle;
-        TimeSpend = CooldownTime;
-        var backgroundTexture = GD.Load<Texture2D>($"res://sprites/ui/{Rarity}_module_button_state.png");
-        InvItem = new InventoryItem(this, "spell", icon, backgroundTexture);
-    }
-
     public void Cast()
     {
-        if (player.SetMana(-ManaCost))
+        if (player.SetMana(-Data.ManaCost))
         {
-            if (Particle != null)
+            if (Data.Particle != null)
             {
-                Global.GlobalWorldInfo.GetWorld().AddChild(Particle.Instantiate());
+                Global.World.AddEntity(Data.Particle);
             }
-
-            Global.Player.PlayAnimation(AnimationName);
+            Global.Player.PlayAnimation(Data.AnimationName);
             Cooldown();
         }
     }
 
     public bool GetReady()
     {
-        return !(TimeSpend < CooldownTime);
+        return !(TimeSpend < Data.CooldownTime);
     }
 
     public void Cooldown()
     {
         TimeSpend = 0;
-        IsReady = false;
     }
 
-    public float GetCooldownTime()
+    public double GetCooldownTime()
     {
         return TimeSpend;
     }
 
     public float GetMaxCooldownTime()
     {
-        return CooldownTime;
+        return Data.CooldownTime;
     }
 
-    public void SetCooldownTime(float value)
+    public void AddSpendTime(double value)
     {
         TimeSpend += value;
     }

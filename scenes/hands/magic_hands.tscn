@@ -1,12 +1,130 @@
-[gd_scene load_steps=3 format=3 uid="uid://4er1x00b7crc"]
+[gd_scene load_steps=18 format=3 uid="uid://4er1x00b7crc"]
 
-[ext_resource type="PackedScene" uid="uid://ocdj161rlapt" path="res://scenes/hands/clear_hands.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://dbrrcynmbhc7w" path="res://sprites/Player_animation/hands/clear_hands.png" id="1_fgg1g"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="2"]
 
-[node name="clear_hands" instance=ExtResource("1")]
-script = null
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(0, 0, 19, 19)
 
-[node name="particles" type="CPUParticles2D" parent="." index="1"]
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(19, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(38, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(57, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(76, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(95, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(114, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(133, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(152, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(171, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(190, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(209, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(228, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("1_fgg1g")
+region = Rect2(247, 0, 19, 19)
+
+[sub_resource type="SpriteFrames" id="34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}, {
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("10")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}],
+"loop": true,
+"name": &"move",
+"speed": 12.0
+}]
+
+[node name="magic_hands" type="Node2D"]
+position = Vector2(-1, -3)
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("34")
+animation = &"idle"
+metadata/_aseprite_wizard_interface_config_ = {
+"slice_section": false
+}
+
+[node name="particles" type="CPUParticles2D" parent="."]
 modulate = Color(1, 0.447059, 0, 0.235294)
 show_behind_parent = true
 z_index = -1
@@ -20,7 +138,7 @@ spread = 0.0
 gravity = Vector2(0, 0)
 color = Color(1, 1, 1, 0.635294)
 
-[node name="particles2" type="CPUParticles2D" parent="." index="2"]
+[node name="particles2" type="CPUParticles2D" parent="."]
 modulate = Color(1, 0.447059, 0, 0.235294)
 position = Vector2(-7, 1)
 amount = 40

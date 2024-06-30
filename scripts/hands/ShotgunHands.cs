@@ -16,7 +16,7 @@ public partial class ShotgunHands : GunHands
     [Export] private AnimationTree animationTree;
     [Export] private Node2D body;
 
-    private PackedScene bullet = (PackedScene)ResourceLoader.Load("res://scenes/shotgun_bullet.tscn");
+    [Export] private PackedScene bullet;
 
     private AnimationNodeStateMachinePlayback stateMachine;
 
@@ -34,7 +34,7 @@ public partial class ShotgunHands : GunHands
 
     public override void _Input(InputEvent @event)
     {
-        animationTree.Set("parameters/conditions/IsShoted", Input.IsActionPressed("mouse_left_button"));
+        animationTree.Set("parameters/conditions/IsShoted", Input.IsActionPressed("LMB"));
         animationTree.Set("parameters/conditions/IsReload", Input.IsActionJustPressed("R"));
     }
 
@@ -50,7 +50,7 @@ public partial class ShotgunHands : GunHands
             }
         }
     }
-
+    //todo ne shotgun
     private void SpawnBullets()
     {
         for (int i = 0; i < 6; i++)
@@ -58,10 +58,8 @@ public partial class ShotgunHands : GunHands
             var bulletInstance = bullet.Instantiate<Bullet>();
 
             var targetPosition = (GetGlobalMousePosition() - barrelPosition.GlobalPosition).Rotated((float)GD.RandRange(-0.15, 0.15));
-            bulletInstance.Init(barrelPosition.GlobalPosition,
-                targetPosition);
 
-            Global.GlobalWorldInfo.GetWorld().AddChild(bulletInstance);
+            Global.World.GetWorld().AddChild(bulletInstance);
         }
     }
 

@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=3 uid="uid://6sqbflx5bc1g"]
+
+[ext_resource type="Script" path="res://scripts/map_env/Box.cs" id="1_w2hou"]
+[ext_resource type="Texture2D" uid="uid://b66knep0wpb7k" path="res://sprites/box.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://bpjqtcit8p7yr" path="res://scenes/ui/Button_picture.tscn" id="4"]
+
+
+[sub_resource type="CapsuleShape2D" id="17"]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 35, 21)
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("2")
+region = Rect2(35, 0, 35, 21)
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("2")
+region = Rect2(70, 0, 35, 21)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("2")
+region = Rect2(105, 0, 35, 21)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("2")
+region = Rect2(140, 0, 35, 21)
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("2")
+region = Rect2(175, 0, 35, 21)
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("2")
+region = Rect2(210, 0, 35, 21)
+
+[sub_resource type="SpriteFrames" id="8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("10")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}, {
+"duration": 1.0,
+"texture": SubResource("15")
+}],
+"loop": false,
+"name": &"opening",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="16"]
+size = Vector2(20, 6)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+z_as_relative = false
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_w2hou")
+
+[node name="shadow_under" type="Sprite2D" parent="."]
+position = Vector2(-0.1, 7)
+scale = Vector2(0.76375, 1.194)
+texture = ExtResource("3")
+
+[node name="Button_picture" parent="." instance=ExtResource("4")]
+visible = false
+position = Vector2(0, -17)
+scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionInterraction" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("17")
+
+[node name="box" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("8")
+animation = &"opening"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("16")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]

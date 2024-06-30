@@ -1,8 +1,8 @@
 [gd_scene load_steps=73 format=3 uid="uid://15vutrjv1g2g"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_ijsvk"]
-[ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/spell_character_animation/body/clear_player.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://byjyfa0cd7bnk" path="res://sprites/spell_character_animation/body/player_move_back.png" id="4_c1e3w"]
+[ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/Player_animation/body/clear_player.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://byjyfa0cd7bnk" path="res://sprites/Player_animation/body/player_move_back.png" id="4_c1e3w"]
 [ext_resource type="Texture2D" uid="uid://dmcrgv2sfcch8" path="res://sprites/particles/heal_particle.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://ii2pspfnq311" path="res://sprites/particles/player_dash_particle.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://tks8mnv85ym7" path="res://sprites/particles/blood_rain_particle.png" id="8"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cr3d0twg7nxse" path="res://sprites/character_fire_teleport_start_player.png" id="14"]
 [ext_resource type="PackedScene" uid="uid://dltfuc1qq5unu" path="res://scenes/hands/shotgun_hands.tscn" id="14_cherd"]
 [ext_resource type="Texture2D" uid="uid://b1im72qaw3tu3" path="res://sprites/character_fire_teleport_end_player.png" id="15"]
-[ext_resource type="Texture2D" uid="uid://dpiwmmentj23y" path="res://sprites/spell_character_animation/body/spear_throw.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://dpiwmmentj23y" path="res://sprites/Player_animation/body/spear_throw.png" id="16"]
 
 [sub_resource type="AtlasTexture" id="108"]
 atlas = ExtResource("2")

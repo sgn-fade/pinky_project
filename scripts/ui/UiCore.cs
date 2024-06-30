@@ -1,4 +1,5 @@
 using Godot;
+using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.ui;
@@ -6,10 +7,9 @@ namespace projectpinky.scripts.ui;
 public partial class UiCore : CanvasLayer
 {
 	[Export] private GameUi gameUi;
-	[Export] private Control inventoryUi;
+	[Export] private PlayerInventory inventoryUi;
 	[Export] private Control loadUi;
 	[Export] private Control pauseUi;
-	[Export] private TextureProgressBar loadBar;
 	[Export] private Crosshair crosshair;
 
 	private Control currentUi;
@@ -28,7 +28,7 @@ public partial class UiCore : CanvasLayer
 		if (!player.IsReady())
 			return;
 
-		if (Input.IsActionJustPressed("open_inventory"))
+		if (Input.IsActionJustPressed("I"))
 		{
 			if (currentUi != inventoryUi)
 				SwitchUi(inventoryUi, "ui");
@@ -51,19 +51,5 @@ public partial class UiCore : CanvasLayer
 		currentUi.Visible = false;
 		uiType.Visible = true;
 		currentUi = uiType;
-	}
-
-	public void UpdateHpValue(int hp, int maxHp)
-	{
-		gameUi.UpdateHpValue(hp, maxHp);
-	}
-	public void UpdateManaValue(int mana, int maxMana)
-	{
-		gameUi.UpdateManaValue(mana, maxMana);
-	}
-
-	public void StartDashCooldown()
-	{
-		gameUi.StartDashCooldown();
 	}
 }

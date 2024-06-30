@@ -7,13 +7,19 @@ public partial class InventoryCell : Control
 	public bool Empty { get; set; } = true;
 	public InventorySlotObject Object;
 	public string SlotType { get; set; }= "inventory";
-
+	//TODO refactor this later (кусается)
 	public void SwapObjects(InventoryCell prevCell, InventorySlotObject newObject)
 	{
+		prevCell.RemoveChild(newObject);
+		AddChild(newObject);
+		newObject.GlobalPosition = GlobalPosition;
 		if (Object != null)
 		{
 			Object.SetCell(prevCell);
+			RemoveChild(Object);
+			prevCell.AddChild(Object);
 			prevCell.SetObject(Object);
+
 			SetObject(newObject);
 			return;
 		}

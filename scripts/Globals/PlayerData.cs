@@ -9,72 +9,77 @@ namespace projectpinky.scripts.Globals;
 
 public partial class PlayerData : Node2D
 {
-    private int hp = 50;
-    private int mana = 30;
-    private int maxHp = 50;
-    private int maxMana = 30;
-    private int coins;
-    private bool canSmite;
-    private Node2D closestInteractiveObject;
-    private int magicDamage = 1;
-    public float DashCooldown { get; set; } = 4f;
+	private int hp = 50;
+	private int mana = 30;
+	private int maxHp = 50;
+	private int maxMana = 30;
+	private int coins;
+	private bool canSmite;
+	private Node2D closestObject;
+	private int magicDamage = 1;
+	public float DashCooldown { get; set; } = 4f;
 
-    private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
-    private List<InventoryItem> playerInventory = new();
-    public UiCore View;
-    private Player player;
-    private Weapon weapon;
-    private EventBus eventBus = Global.EventBus;
+	private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
+	public List<InventoryItem> playerInventory = new();
+	public UiCore View;
+	private Player player;
+	private Weapon weapon;
+	private EventBus eventBus = Global.EventBus;
 
-    public override void _Ready()
-    {
-        View = GetNode<UiCore>("/root/World/Ui");
-    }
+	public delegate void PlayerHpChanged(int hp, int maxHp);
+	public static event PlayerHpChanged playerHpChanged;
 
-    public void SetState(Player.States state)
-    {
-        player.SetState(state);
-    }
+	public delegate void PlayerManaChanged(int mana, int maxMana);
+	public static event PlayerManaChanged playerManaChanged;
 
-    public Player.States GetState()
-    {
-        return player.GetState();
-    }
+	public override void _Ready()
+	{
+		View = GetNode<UiCore>("/root/World/Ui");
+	}
 
-    public int GetHp() => hp;
-    public int GetMaxHp() => maxHp;
-    public int GetMana() => mana;
-    public int GetMaxMana() => maxMana;
-    public int GetMoney() => coins;
-    public int GetMagicDamage() => magicDamage;
-    public bool IsReady() => player != null;
-    public Player GetBody() => player;
-    public int GetZIndex() => player.ZIndex;
-    public Weapon GetWeapon() => weapon;
+	public void SetState(Player.States state)
+	{
+		player.SetState(state);
+	}
 
-    /// returns true if hp is greater than 0
-    public bool SetHp(int value)
-    {
-        if ((hp += value) <= 0) return false;
-        View.UpdateHpValue(hp, maxHp);
-        return true;
+	public Player.States GetState()
+	{
+		return player.GetState();
+	}
+
+	public int GetHp() => hp;
+	public int GetMaxHp() => maxHp;
+	public int GetMana() => mana;
+	public int GetMaxMana() => maxMana;
+	public int GetMoney() => coins;
+	public int GetMagicDamage() => magicDamage;
+	public bool IsReady() => player != null;
+	public Player GetBody() => player;
+	public int GetZIndex() => player.ZIndex;
+	public Weapon GetWeapon() => weapon;
+
+	/// returns true if hp is greater than 0
+	public bool SetHp(int value)
+	{
+		if ((hp += value) <= 0) return false;
+		playerHpChanged?.Invoke(mana, maxMana);
+		return true;
 
     }
     public bool SetMana(int value)
     {
         if (GetMana() < Mathf.Abs(value))
         {
-            player.Call("throw_not_enough_mana_massage");
             return false;
         }
         mana += value;
-        View.UpdateManaValue(mana, maxMana);
+        playerManaChanged?.Invoke(mana, maxMana);
         return true;
     }
     public void SetMaxMana(int value)
     {
-        maxMana += value;
-        View.UpdateManaValue(mana, maxMana);
+        maxMana = value;
+        playerManaChanged?.Invoke(mana, maxMana);
     }
     public void SetMagicDamage(int newMagicDamage)
     {
@@ -92,22 +97,16 @@ public partial class PlayerData : Node2D
     {
         weapon = newWeapon;
     }
-    public Node GetClosestObject() => closestInteractiveObject;
+    public Node GetClosestObject() => closestObject;
     public bool SetClosestObject(Node2D obj)
     {
-        if (obj == null)
+        if (
+            obj == null
+            || closestObject == null
+            || obj.GlobalPosition - GetPosition() < closestObject.GlobalPosition - GetPosition()
+            )
         {
-            closestInteractiveObject = null;
-            return true;
-        }
-        if (closestInteractiveObject == null)
-        {
-            closestInteractiveObject = obj;
-            return true;
-        }
-        if ((obj.GlobalPosition - GetPosition()).Length() < (closestInteractiveObject.GlobalPosition - GetPosition()).Length())
-        {
-            closestInteractiveObject = obj;
+            closestObject = obj;
             return true;
         }
         return false;
@@ -128,26 +127,20 @@ public partial class PlayerData : Node2D
         player.QueueFree();
         hp = maxHp;
         Spawn();
-        player.GlobalPosition = Vector2.Zero;
+       SetPosition(Vector2.Zero);
     }
     public void Spawn()
     {
-        player = playerScene.Instantiate<Player>();
-        Global.GlobalWorldInfo.GetWorld().AddChild(player);
+        Global.World.AddEntity(playerScene);
     }
 
-    public void OnPlayerDash()
-    {
-        View.StartDashCooldown();
-    }
+	public void AddItem(InventoryItem item)
+	{
+		playerInventory.Add(item);
+	}
 
-    public void AddItemToPlayer(InventoryItem item)
-    {
-        playerInventory.Add(item);
-    }
-
-    public void RemoveItemFromPlayer(InventoryItem item)
-    {
-        playerInventory.Remove(item);
-    }
+	public void RemoveItemFromPlayer(InventoryItem item)
+	{
+		playerInventory.Remove(item);
+	}
 }

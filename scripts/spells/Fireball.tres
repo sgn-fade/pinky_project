@@ -1,14 +1,19 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=4 format=3 uid="uid://i43wjk1luby0"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=5 format=3 uid="uid://bg84pk4wkvlgl"]
 
 [ext_resource type="Texture2D" uid="uid://eytpcmh7m1m7" path="res://sprites/spell_icons/fireball_icon.png" id="1_p6f6i"]
-[ext_resource type="Script" path="res://scripts/spells/Spell.cs" id="1_td0ux"]
-[ext_resource type="PackedScene" uid="uid://uaai0aurtcg1" path="res://scenes/fireball.tscn" id="2_po6pb"]
+[ext_resource type="Texture2D" uid="uid://dleqsphm1bu88" path="res://sprites/ui/Bronze_module_button_state.png" id="1_ppq8m"]
+[ext_resource type="PackedScene" uid="uid://uaai0aurtcg1" path="res://scenes/spell_particles/fireball.tscn" id="2_po6pb"]
+[ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="3_g0lai"]
 
 [resource]
-script = ExtResource("1_td0ux")
-Icon = ExtResource("1_p6f6i")
-AnimationName = "z"
+script = ExtResource("3_g0lai")
+AnimationName = ""
 Rarity = 0
 CooldownTime = 1.0
-ManaCost = 1
+ManaCost = 3
 Particle = ExtResource("2_po6pb")
+DataType = 1
+Icon = ExtResource("1_p6f6i")
+Background = ExtResource("1_ppq8m")
+IsStackable = false
+Value = 0

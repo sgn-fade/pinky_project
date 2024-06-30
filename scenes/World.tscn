@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://xbjxamyvlgcc"]
 
 [ext_resource type="Script" path="res://scripts/locations/World.cs" id="1_nrd8g"]
-[ext_resource type="PackedScene" uid="uid://qbrrhv0xfcu7" path="res://scenes/Ui.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://qbrrhv0xfcu7" path="res://scenes/ui/Ui.tscn" id="5"]
 
 [sub_resource type="Environment" id="Environment_blhyc"]
 background_energy_multiplier = 9.25

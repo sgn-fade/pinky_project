@@ -1,7 +1,7 @@
 [remap]
 
-importer="aseprite_wizard.plugin.noop"
-type="PackedDataContainer"
+importer="aseprite_wizard.plugin"
+type="SpriteFrames"
 uid="uid://8fpl448yrf61"
 path="res://.godot/imported/box-Sheet.aseprite-e82f560357d9b645123e30be07518f2d.res"
 
@@ -12,3 +12,7 @@ dest_files=["res://.godot/imported/box-Sheet.aseprite-e82f560357d9b645123e30be07
 
 [params]
 
+split_layers=false
+exclude_layers_pattern=""
+only_visible_layers=false
+sheet_type="Packed"

@@ -5,28 +5,26 @@ namespace projectpinky.scripts.ui.inventory;
 
 public partial class InventorySlotObject : CharacterBody2D
 {
-    public object Data { get; set; }
-    public string DataType { get; set; }
+    public InventoryItem Data { get; set; }
     private InventoryCell currentCell;
     private InventoryCell targetCell;
     private bool mouseInArea;
 
     public void SetData(InventoryItem newData)
     {
-        Data = newData.Data;
-        DataType = newData.DataType;
+        Data = newData;
         GetNode<TextureRect>("icon").Texture = newData.Icon;
         GetNode<TextureRect>("background").Texture = newData.Background;
     }
 
     public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionJustPressed("mouse_left_button") && mouseInArea)
+        if (Input.IsActionJustPressed("LMB") && mouseInArea)
         {
             ZIndex = 10;
             SetProcess(true);
         }
-        if (Input.IsActionJustReleased("mouse_left_button") && mouseInArea)
+        if (Input.IsActionJustReleased("LMB") && mouseInArea)
         {
             ZIndex = 0;
             SetToCell();
@@ -59,7 +57,6 @@ public partial class InventorySlotObject : CharacterBody2D
     public void SetCell(InventoryCell cell)
     {
         currentCell = cell;
-        GlobalPosition = currentCell.GlobalPosition;
     }
 
     public InventoryCell GetCell()

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RangeWeaponData" load_steps=2 format=3 uid="uid://cpgqu8s7sjgk0"]
+
+[ext_resource type="Script" path="res://scripts/weapons/Range/RangeWeaponData.cs" id="1_0dbbp"]
+
+[resource]
+script = ExtResource("1_0dbbp")
+Type = 0
+Damage = 1

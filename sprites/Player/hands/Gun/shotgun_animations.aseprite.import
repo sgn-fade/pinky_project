@@ -1,7 +1,7 @@
 [remap]
 
-importer="aseprite_wizard.plugin.noop"
-type="PackedDataContainer"
+importer="aseprite_wizard.plugin"
+type="SpriteFrames"
 uid="uid://bgjlkn6ga4e7r"
 path="res://.godot/imported/shotgun_animations.aseprite-546796b4fcca42465f2b892d67e8e701.res"
 
@@ -12,3 +12,7 @@ dest_files=["res://.godot/imported/shotgun_animations.aseprite-546796b4fcca42465
 
 [params]
 
+split_layers=false
+exclude_layers_pattern=""
+only_visible_layers=false
+sheet_type="Packed"

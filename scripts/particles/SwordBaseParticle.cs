@@ -1,5 +1,6 @@
 using Godot;
 using System.Threading.Tasks;
+using projectpinky.scripts.Enemies;
 using projectpinky.scripts.Globals;
 
 public partial class SwordBaseParticle : Node2D
@@ -31,14 +32,11 @@ public partial class SwordBaseParticle : Node2D
         await ToSignal(_sprite, "animation_finished");
     }
 
-    private void OnArea2DBodyEntered(Node body)
+    private void OnArea2DBodyEntered(Node2D body)
     {
-        var damage = Global.Player.GetWeapon().Damage;
-        if (GD.Randf() * 100 < Global.Player.GetWeapon().GetCriticalChance())
+        if (body is Enemy enemy)
         {
-            damage *= 2;
+            enemy.TakeDamage(10);
         }
-        //todo event bus
-        Global.EventBus.EmitSignal("damage_to_enemy", body, damage);
     }
 }

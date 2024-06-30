@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MagicWeaponData" load_steps=5 format=3 uid="uid://bocm6m1v8loes"]
+
+[ext_resource type="PackedScene" uid="uid://4er1x00b7crc" path="res://scenes/hands/magic_hands.tscn" id="1_bhx7v"]
+[ext_resource type="Script" path="res://scripts/weapons/Magic/MagicWeaponData.cs" id="1_cltl7"]
+[ext_resource type="Texture2D" uid="uid://byjhginn7pw8a" path="res://sprites/ui/inventory/item_icons/item_icon_goblin's_wand.png" id="2_ds6yi"]
+[ext_resource type="Texture2D" uid="uid://deqpjja6gbtfe" path="res://sprites/weapons/magic_weapons/old_goblins_magic_wand.png" id="3_c2wh6"]
+
+[resource]
+script = ExtResource("1_cltl7")
+Mana = 40
+Texture = ExtResource("3_c2wh6")
+Type = 2
+HandsScene = ExtResource("1_bhx7v")
+Damage = 2
+DataType = 0
+Icon = ExtResource("2_ds6yi")
+IsStackable = false
+Value = 0

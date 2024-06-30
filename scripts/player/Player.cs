@@ -18,6 +18,9 @@ public partial class Player : CharacterBody2D
     private States currentState = States.Active;
     private PlayerData player = Global.Player;
 
+
+    public delegate void PlayerDashEventHandler();
+    public static event PlayerDashEventHandler playerDashEventHandler;
     public HandsManager GetHands() => hands;
 
     public enum States
@@ -81,11 +84,6 @@ public partial class Player : CharacterBody2D
         // {
         //     GlobalWorldInfo.FocusCamera();
         // }
-        //todo weapon input
-        // if (Player.GetWeapon() != null)
-        // {
-        //     Player.GetWeapon().Input(@event);
-        // }
     }
 
     private void Move()
@@ -118,7 +116,7 @@ public partial class Player : CharacterBody2D
 
     private void Dash()
     {
-        Global.Player.OnPlayerDash();
+        playerDashEventHandler?.Invoke();
         MoveAndSlide();
     }
 

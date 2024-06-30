@@ -20,11 +20,6 @@ public partial class World : Node2D
 		window.Size = screenSize;
 		player.Spawn();
 		GoToHub();
-		//todo event bus
-		// EventBus.Connect("generate_dungeon", new Callable(this, "GenerateDungeon"));
-		// EventBus.Connect("load_game", new Callable(this, "LoadGame"));
-		// EventBus.Connect("go_to_hub", new Callable(this, "GoToHub"));
-		// EventBus.EmitSignal("load_game");
 	}
 
 	private void GenerateDungeon()
