@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://fk4l0t501g3s"]
 
-[ext_resource type="Script" path="res://scripts/particles/base_spell_particle.gd" id="1_3084n"]
+[ext_resource type="Script" path="res://scripts/spells/SpellControllers/SpellController.cs" id="1_3084n"]
 [ext_resource type="Texture2D" uid="uid://c85f574dj0xhg" path="res://sprites/particles/spells_particles/base_spell.png" id="2_16368"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rceck"]

@@ -1,12 +1,13 @@
 [gd_scene load_steps=33 format=3 uid="uid://cn3l0nkgbs6me"]
 
-[ext_resource type="Script" path="res://scripts/particles/FirePillar.cs" id="1"]
+[ext_resource type="Script" path="res://scripts/spells/SpellControllers/FirePillar.cs" id="1"]
 [ext_resource type="Texture2D" uid="uid://bq7ki2gml8q2s" path="res://sprites/fire_pillon.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cpe65h3c6l5xl" path="res://sprites/particles/explode_particle_ord.png" id="3_bi072"]
 [ext_resource type="AudioStream" uid="uid://dcjcwkamww17v" path="res://sounds/spell_sounds/firepillar_cast_sound.wav" id="4"]
 [ext_resource type="Texture2D" uid="uid://chlek61gisipt" path="res://sprites/particles/dash_particles.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cu23cwynpxasr" path="res://sprites/locations/hub_zone/hub_zone.png" id="7_ujik0"]
+
 
 [sub_resource type="Curve" id="45"]
 max_value = 4.0

@@ -1,9 +1,10 @@
 [gd_scene load_steps=45 format=3 uid="uid://jkixgcns5qlc"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
-[ext_resource type="Script" path="res://scripts/particles/FireEye.cs" id="2"]
+[ext_resource type="Script" path="res://scripts/spells/SpellControllers/FireEye.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://dxoen7ruplk54" path="res://sprites/particles/fire2.png" id="4_jck2a"]
 [ext_resource type="Texture2D" uid="uid://cr7udiipo1ilt" path="res://sprites/spells/fire/fire_eye_space.png" id="5"]
+
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 55.9017
