@@ -1,54 +1,72 @@
-[gd_scene load_steps=70 format=3 uid="uid://b0c6sthqnjd75"]
+[gd_scene load_steps=78 format=3 uid="uid://b0c6sthqnjd75"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
+[ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_2jq8s"]
 [ext_resource type="Texture2D" uid="uid://dsbsqyn2if0do" path="res://sprites/goblin/sword_goblin_idle.png" id="3"]
-[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="3_3cof1"]
+[ext_resource type="Texture2D" uid="uid://eewxah76kn5m" path="res://sprites/enemy_health/enemy_health_under.png" id="3_mto6x"]
 [ext_resource type="Texture2D" uid="uid://eea73k3xl6yy" path="res://sprites/goblin/sword_goblin_attak.png" id="4"]
-[ext_resource type="PackedScene" uid="uid://deowfgi6dwaji" path="res://scenes/enemies/goblins/goblin.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="4_lywho"]
+[ext_resource type="Texture2D" uid="uid://dcyqfis8vyewu" path="res://sprites/enemy_health/enemy_health_progress.png" id="5_4beq8"]
 [ext_resource type="Texture2D" uid="uid://bg15f0751fj4a" path="res://sprites/goblin/goblin_spawn.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="6_3lfu6"]
 [ext_resource type="Texture2D" uid="uid://fk1ulw6x3f7j" path="res://sprites/goblin/sword_goblin_move.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b2mlck2d6uoqk" path="res://sprites/goblin/sword_goblin_take_damage.png" id="7_yd27f"]
-
 
 [sub_resource type="CircleShape2D" id="55"]
 radius = 33.9179
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7x7m"]
+atlas = ExtResource("6_3lfu6")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccjl5"]
+atlas = ExtResource("6_3lfu6")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm5p7"]
+atlas = ExtResource("6_3lfu6")
+region = Rect2(14, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y61fu"]
+atlas = ExtResource("6_3lfu6")
+region = Rect2(21, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vbsn"]
+atlas = ExtResource("6_3lfu6")
+region = Rect2(28, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hstvu"]
+atlas = ExtResource("6_3lfu6")
+region = Rect2(35, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mt1a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7x7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccjl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm5p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y61fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vbsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hstvu")
+}],
+"loop": true,
+"name": &"main",
+"speed": 12.0
+}]
+
 [sub_resource type="RectangleShape2D" id="57"]
 size = Vector2(17, 8.5)
-
-[sub_resource type="Animation" id="Animation_hjgef"]
-resource_name = "take_damage"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("middle_white_bar:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.0501, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-11, -28), Vector2(-7, -27), Vector2(-9, -29), Vector2(-13, -28), Vector2(-7, -29), Vector2(-10, -28)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("hp_bar:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-11, -28), Vector2(-7, -27), Vector2(-13, -28), Vector2(-7, -29), Vector2(-10.023, -28)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_731ps"]
-_data = {
-"take_damage": SubResource("Animation_hjgef")
-}
 
 [sub_resource type="AtlasTexture" id="11"]
 atlas = ExtResource("4")
@@ -470,69 +488,61 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="goblin_melee" instance=ExtResource("5")]
+[node name="goblin_melee" type="CharacterBody2D"]
 z_as_relative = false
+collision_layer = 4
 script = ExtResource("2")
 
-[node name="attack_area" type="Area2D" parent="." index="0"]
+[node name="attack_area" type="Area2D" parent="."]
 position = Vector2(-1, -9)
 collision_layer = 4
 collision_mask = 11
 monitoring = false
 
-[node name="attack_collision" type="CollisionShape2D" parent="attack_area" index="0"]
+[node name="attack_collision" type="CollisionShape2D" parent="attack_area"]
 position = Vector2(12.9987, -1.0151)
 rotation = 1.5708
 scale = Vector2(0.7, 0.65)
 shape = SubResource("55")
 
-[node name="dead" type="Label" parent="." index="1"]
-visible = false
-offset_left = -6.0
-offset_top = -43.0
-offset_right = 70.0
-offset_bottom = 1.0
-theme_override_fonts/font = ExtResource("3_3cof1")
-theme_override_font_sizes/font_size = 25
-text = "
-"
-
-[node name="shadow_under" parent="." index="2"]
+[node name="shadow_under" type="Sprite2D" parent="."]
 position = Vector2(-80, -36)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2jq8s")
+offset = Vector2(158.021, 74)
 
-[node name="hp_bar" parent="." index="4"]
-offset_left = -10.023
-offset_right = 26.977
+[node name="middle_white_bar" type="TextureProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = -7.99998
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_under = ExtResource("3_mto6x")
+texture_progress = ExtResource("4_lywho")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="status1" parent="." index="6"]
-visible = false
-position = Vector2(-8.6, -30.5829)
+[node name="hp_bar" type="TextureProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = -7.99998
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_progress = ExtResource("5_4beq8")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="status2" parent="." index="7"]
-visible = false
-position = Vector2(-3.6, -30.5886)
-
-[node name="status3" parent="." index="8"]
-visible = false
-position = Vector2(1.4, -30.5943)
-
-[node name="status4" parent="." index="9"]
-visible = false
-position = Vector2(6.39999, -30.6)
-
-[node name="focus" parent="." index="10"]
+[node name="focus" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -10)
+sprite_frames = SubResource("SpriteFrames_mt1a6")
+animation = &"main"
+autoplay = "main"
 
-[node name="collision" type="CollisionShape2D" parent="." index="11"]
+[node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -4)
 shape = SubResource("57")
 
-[node name="anim_player" type="AnimationPlayer" parent="." index="12"]
-libraries = {
-"": SubResource("AnimationLibrary_731ps")
-}
-
-[node name="sprite" type="AnimatedSprite2D" parent="." index="13"]
+[node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2.99657, -12.0046)
 sprite_frames = SubResource("56")
 animation = &"take_damage"

@@ -1,8 +1,62 @@
-[gd_scene load_steps=28 format=3 uid="uid://0le0ptgshp5t"]
+[gd_scene load_steps=39 format=3 uid="uid://0le0ptgshp5t"]
 
-[ext_resource type="PackedScene" uid="uid://deowfgi6dwaji" path="res://scenes/enemies/goblins/goblin.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_apyim"]
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMage.cs" id="2_xc4tv"]
 [ext_resource type="Texture2D" uid="uid://cdjxocxmr5k1a" path="res://sprites/goblin/goblin_mage.png" id="3_edkef"]
+[ext_resource type="Texture2D" uid="uid://eewxah76kn5m" path="res://sprites/enemy_health/enemy_health_under.png" id="3_irmwv"]
+[ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="4_fmaoh"]
+[ext_resource type="Texture2D" uid="uid://dcyqfis8vyewu" path="res://sprites/enemy_health/enemy_health_progress.png" id="5_em4n1"]
+[ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="6_y50sn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7x7m"]
+atlas = ExtResource("6_y50sn")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccjl5"]
+atlas = ExtResource("6_y50sn")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm5p7"]
+atlas = ExtResource("6_y50sn")
+region = Rect2(14, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y61fu"]
+atlas = ExtResource("6_y50sn")
+region = Rect2(21, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vbsn"]
+atlas = ExtResource("6_y50sn")
+region = Rect2(28, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hstvu"]
+atlas = ExtResource("6_y50sn")
+region = Rect2(35, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mt1a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7x7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccjl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm5p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y61fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vbsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hstvu")
+}],
+"loop": true,
+"name": &"main",
+"speed": 12.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0uiq1"]
 atlas = ExtResource("3_edkef")
@@ -191,52 +245,71 @@ height = 12.0
 offsets = PackedFloat32Array(0, 0.547312, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.753378, 0.398662, 0.0421557, 1, 1, 1, 1, 1)
 
-[node name="goblin_mage" instance=ExtResource("1")]
+[node name="goblin_mage" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("2_xc4tv")
 
-[node name="shadow_under" parent="." index="0"]
+[node name="shadow_under" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.729412)
+position = Vector2(-79, -37)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_apyim")
+offset = Vector2(158.021, 74)
 
-[node name="middle_white_bar" parent="." index="1"]
+[node name="middle_white_bar" type="TextureProgressBar" parent="."]
+offset_left = -10.0
 offset_top = -34.0
+offset_right = 27.0
 offset_bottom = -14.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_under = ExtResource("3_irmwv")
+texture_progress = ExtResource("4_fmaoh")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="hp_bar" parent="." index="2"]
+[node name="hp_bar" type="TextureProgressBar" parent="."]
+offset_left = -10.0
 offset_top = -34.0
+offset_right = 27.0
 offset_bottom = -14.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_progress = ExtResource("5_em4n1")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="status1" parent="." index="4"]
+[node name="period_dmg_particle" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-0.999999, 0.00114101)
+emitting = false
+amount = 10
+lifetime = 0.5
+speed_scale = 0.3
+lifetime_randomness = 0.14
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -98)
+color = Color(0.796078, 0.333333, 0.027451, 1)
+
+[node name="focus" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(-7.6, -36.5829)
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_mt1a6")
+animation = &"main"
+autoplay = "main"
 
-[node name="status2" parent="." index="5"]
-visible = false
-position = Vector2(-2.6, -36.5886)
-
-[node name="status3" parent="." index="6"]
-visible = false
-position = Vector2(2.4, -36.5943)
-
-[node name="status4" parent="." index="7"]
-visible = false
-position = Vector2(7.39999, -36.6)
-
-[node name="focus" parent="." index="8"]
-visible = false
-
-[node name="sprite" type="AnimatedSprite2D" parent="." index="9"]
+[node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -19)
 sprite_frames = SubResource("SpriteFrames_slyms")
 animation = &"idle"
 frame_progress = 0.806197
 flip_h = true
 
-[node name="collision" type="CollisionShape2D" parent="." index="10"]
+[node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("3")
 
-[node name="fireball_cast_particles" type="CPUParticles2D" parent="." index="11"]
+[node name="fireball_cast_particles" type="CPUParticles2D" parent="."]
 position = Vector2(1, -22)
 emitting = false
 amount = 50
@@ -257,5 +330,5 @@ radial_accel_max = 100.0
 color = Color(1, 0.705882, 0.258824, 1)
 color_ramp = SubResource("Gradient_lov45")
 
-[node name="fireball_pos" type="Marker2D" parent="." index="12"]
+[node name="fireball_pos" type="Marker2D" parent="."]
 position = Vector2(-2, -21)

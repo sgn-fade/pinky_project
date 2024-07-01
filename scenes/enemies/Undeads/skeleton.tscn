@@ -1,9 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://gxi8m3pwn611"]
+[gd_scene load_steps=16 format=3 uid="uid://gxi8m3pwn611"]
 
 [ext_resource type="Texture2D" uid="uid://b1er0q4uxlh5j" path="res://sprites/enemies/skeleton_base_idle.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="1_i35mu"]
 [ext_resource type="Texture2D" uid="uid://btgqtp17oj8ae" path="res://sprites/enemies/skeleton_base.png" id="2"]
-[ext_resource type="PackedScene" uid="uid://dkrvcy8u5dbfo" path="res://scenes/enemies/undeads/Undeads.tscn" id="3"]
-[ext_resource type="Script" path="res://scripts/Enemies/Undeads/skeleton.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://eewxah76kn5m" path="res://sprites/enemy_health/enemy_health_under.png" id="2_2e0na"]
+[ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="3_ps6b8"]
+[ext_resource type="Texture2D" uid="uid://e6biicsj5p3r" path="res://sprites/enemy_health/enemy_health_progress_skelet.png" id="4_m8750"]
+[ext_resource type="Texture2D" uid="uid://cwre4dutpe25o" path="res://sprites/bullets.png" id="5_nk5h3"]
 
 [sub_resource type="AtlasTexture" id="2"]
 atlas = ExtResource("1")
@@ -64,50 +67,74 @@ animations = [{
 radius = 7.0
 height = 18.0
 
-[node name="skeleton" instance=ExtResource("3")]
-script = ExtResource("4")
-
-[node name="shadow_under" parent="." index="0"]
-modulate = Color(1, 1, 1, 0.301961)
-position = Vector2(0.5, 14.07)
-scale = Vector2(0.53125, 0.643333)
-
-[node name="middle_white_bar" parent="." index="1"]
-offset_top = -21.0
-offset_bottom = -1.0
-
-[node name="hp_bar" parent="." index="2"]
-offset_top = -21.0
-offset_bottom = -1.0
-
-[node name="PointLight2D" parent="." index="3"]
-scale = Vector2(1, 1.0091)
-texture_scale = 0.4
-
-[node name="body" type="Area2D" parent="." index="4"]
+[node name="skeleton" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="body" index="0"]
+[node name="shadow_under" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(0.5, 14.07)
+scale = Vector2(0.53125, 0.643333)
+texture = ExtResource("1_i35mu")
+
+[node name="middle_white_bar" type="TextureProgressBar" parent="."]
+offset_left = -9.0
+offset_top = -21.0
+offset_right = 28.0
+offset_bottom = -1.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_under = ExtResource("2_2e0na")
+texture_progress = ExtResource("3_ps6b8")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="hp_bar" type="TextureProgressBar" parent="."]
+offset_left = -9.0
+offset_top = -21.0
+offset_right = 28.0
+offset_bottom = -1.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_progress = ExtResource("4_m8750")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1, 1.0091)
+color = Color(0.364706, 0.34902, 0.498039, 1)
+texture = ExtResource("5_nk5h3")
+texture_scale = 0.4
+
+[node name="body" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="body"]
 position = Vector2(-20, 1)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("8")
 animation = &"move"
 offset = Vector2(16, -1)
 
-[node name="collision" type="CollisionShape2D" parent="body" index="1"]
+[node name="collision" type="CollisionShape2D" parent="body"]
 position = Vector2(1, 5)
 rotation = 1.5708
 shape = SubResource("9")
 
-[node name="collision" type="CollisionShape2D" parent="." index="5"]
+[node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(1, 5)
 rotation = 1.5708
 shape = SubResource("9")
 
-[node name="period_dmg_particle" parent="." index="6"]
+[node name="period_dmg_particle" type="CPUParticles2D" parent="."]
 visible = false
-
-[node name="status1" parent="." index="7"]
-position = Vector2(-6, -23)
-scale = Vector2(0.2, 0.2)
+z_index = 1
+position = Vector2(-0.999999, 0.00114101)
+emitting = false
+amount = 10
+lifetime = 0.5
+speed_scale = 0.3
+lifetime_randomness = 0.14
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -98)
+color = Color(0.796078, 0.333333, 0.027451, 1)
