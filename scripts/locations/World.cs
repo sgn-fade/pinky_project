@@ -5,8 +5,8 @@ namespace projectpinky.scripts.locations;
 
 public partial class World : Node2D
 {
-	private PackedScene dungeon = GD.Load<PackedScene>("res://scenes/locations/dungeon.tscn");
-	private PackedScene hubZone = GD.Load<PackedScene>("res://scenes/locations/hub_zone.tscn");
+	[Export] private PackedScene dungeon;
+	[Export] private PackedScene hubZone;
 
 	private Node location;
 
