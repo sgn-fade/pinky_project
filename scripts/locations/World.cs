@@ -7,6 +7,7 @@ public partial class World : Node2D
 {
 	[Export] private PackedScene dungeon;
 	[Export] private PackedScene hubZone;
+	[Export] private PackedScene trainZone;
 
 	private Node location;
 
@@ -19,7 +20,7 @@ public partial class World : Node2D
 		var window = GetViewport().GetWindow();
 		window.Size = screenSize;
 		player.Spawn();
-		GoToHub();
+		GoToTrain();
 	}
 
 	private void GenerateDungeon()
@@ -34,6 +35,13 @@ public partial class World : Node2D
 	{
 		location?.QueueFree();
 		location = hubZone.Instantiate();
+		AddChild(location);
+		player.SetPosition(Vector2.Zero);
+	}
+	private void GoToTrain()
+	{
+		location?.QueueFree();
+		location = trainZone.Instantiate();
 		AddChild(location);
 		player.SetPosition(Vector2.Zero);
 	}

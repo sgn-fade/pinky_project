@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://b3pgs6usfxrt4"
+path="res://.godot/imported/TrainRoom.aseprite-3894fecd21c4d319e2316ebc51919863.res"
+
+[deps]
+
+source_file="res://sprites/locations/TrainRoom.aseprite"
+dest_files=["res://.godot/imported/TrainRoom.aseprite-3894fecd21c4d319e2316ebc51919863.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://b28r3fg3w2gov"]
+
+[ext_resource type="Texture2D" uid="uid://bjmfnd16r85ne" path="res://sprites/locations/TrainRoom.png" id="1_yk0ct"]
+[ext_resource type="PackedScene" uid="uid://b5001tqqps3vi" path="res://scenes/enemies/training_mannequin.tscn" id="2_n6g6e"]
+
+[node name="TrainingZone" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1000
+z_as_relative = false
+texture = ExtResource("1_yk0ct")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://sprites/locations/TrainRoom.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": false
+}
+
+[node name="TrainingMannequin" parent="." instance=ExtResource("2_n6g6e")]
+position = Vector2(-192, -64)
+
+[node name="TrainingMannequin2" parent="." instance=ExtResource("2_n6g6e")]
+position = Vector2(-237, 42)
+
+[node name="TrainingMannequin3" parent="." instance=ExtResource("2_n6g6e")]
+position = Vector2(-154, 151)
