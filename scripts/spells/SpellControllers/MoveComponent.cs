@@ -9,7 +9,7 @@ public partial class MoveComponent : Node2D
     [Export] public int Speed;
     public void Init(Vector2 targetPosition, Vector2 spawnPosition)
     {
-        GlobalPosition = spawnPosition;
+        MoveTarget.GlobalPosition = spawnPosition;
         MoveTarget.Velocity = (targetPosition - GlobalPosition).Normalized() * Speed;
         MoveTarget.LookAt(targetPosition);
     }

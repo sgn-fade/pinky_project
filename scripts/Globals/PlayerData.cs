@@ -131,7 +131,8 @@ public partial class PlayerData : Node2D
     }
     public void Spawn()
     {
-        Global.World.AddEntity(playerScene);
+	    player = playerScene.Instantiate<Player>();
+        Global.World.AddEntity(player);
     }
 
 	public void AddItem(InventoryItem item)

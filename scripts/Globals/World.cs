@@ -35,9 +35,9 @@ public partial class World : Node
 		enemies.Add(scene);
 	}
 
-	public void AddEntity(PackedScene entity)
+	public void AddEntity(Node entity)
 	{
-		GetWorld().AddChild(entity.Instantiate());
+		GetWorld().AddChild(entity);
 	}
 	// private Node GetCloserEnemy()
 	// {

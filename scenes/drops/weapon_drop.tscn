@@ -107,10 +107,11 @@ _data = {
 "idle": SubResource("Animation_2ngjr")
 }
 
-[node name="weapon_drop" type="Area2D"]
+[node name="weapon_drop" type="Area2D" node_paths=PackedStringArray("animator")]
 monitorable = false
 script = ExtResource("1_wbltj")
 dropList = [ExtResource("2_u4r3v"), ExtResource("5_mc5fx"), ExtResource("6_67erw"), ExtResource("7_x3x84")]
+animator = NodePath("AnimationPlayer")
 
 [node name="detection_area" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

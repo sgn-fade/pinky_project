@@ -21,7 +21,7 @@ public class Spell
         {
             if (Data.Particle != null)
             {
-                Global.World.AddEntity(Data.Particle);
+                Global.World.AddEntity(Data.Particle.Instantiate());
             }
             Cooldown();
         }

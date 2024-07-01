@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyofqdtl577wh"]
 
 [ext_resource type="Script" path="res://scripts/ui/GameUi/GameUi.cs" id="1_5yw6d"]
-[ext_resource type="Texture2D" path="res://sprites/ui/HpBar.png" id="3_felqv"]
+[ext_resource type="Texture2D" uid="uid://de622d7hmqi15" path="res://sprites/ui/HpBar.png" id="3_felqv"]
 [ext_resource type="Script" path="res://scripts/ui/GameUi/PlayerBars.cs" id="11_0ubue"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mln08"]
@@ -12,7 +12,7 @@ region = Rect2(0, 0, 527, 67)
 atlas = ExtResource("3_felqv")
 region = Rect2(6, 160, 497, 45)
 
-[node name="game_ui" type="Control" node_paths=PackedStringArray("playerBars")]
+[node name="game_ui" type="Control" node_paths=PackedStringArray("playerBars", "barsParent")]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 15
@@ -22,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5yw6d")
 playerBars = NodePath("player_bars")
+barsParent = NodePath("player_bars")
 
 [node name="player_bars" type="Control" parent="."]
 anchors_preset = 0
