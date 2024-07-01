@@ -8,47 +8,27 @@ namespace projectpinky.scripts.locations;
 
 public partial class Dungeon : Node2D
 {
-    private PackedScene light = GD.Load<PackedScene>("res://scenes/Lights.tscn");
-    // private PackedScene goblin = GD.Load<PackedScene>("res://scenes/enemies/goblins/goblin_melee.tscn");
-    // private PackedScene goblinMage = GD.Load<PackedScene>("res://scenes/enemies/goblins/goblin_mage.tscn");
-    // private PackedScene skeleton = GD.Load<PackedScene>("res://scenes/enemies/undeads/skeleton.tscn");
-    //private PackedScene fireElemental = GD.Load<PackedScene>("res://scenes/enemies/elementals/fire_elemental.tscn");
-
-    private PackedScene box = GD.Load<PackedScene>("res://scenes/box.tscn");
-    private PackedScene altar = GD.Load<PackedScene>("res://scenes/altar.tscn");
-    private PackedScene grass = GD.Load<PackedScene>("res://scenes/grass.tscn");
-    private PackedScene modulesDrop = GD.Load<PackedScene>("res://scenes/modules_drop.tscn");
-    private PackedScene portal = GD.Load<PackedScene>("res://scenes/world_env/portal.tscn");
-    private PackedScene fogParticles = GD.Load<PackedScene>("res://scenes/particles/fog.tscn");
-
-    private PackedScene room = GD.Load<PackedScene>("res://scenes/locations/base_room.tscn");
     private Array<Vector2I> array = new();
 
-    private List<PackedScene> rooms = new();
     private int tileSize = 64;
-    private int minSize = 2;
-    private int maxSize = 2;
-    private int roomCount;
-    private TileMap tileMap;
+    [Export] private TileMap tileMap;
     private BetterTerrain terrain;
-    private Timer timer = new();
 
+    [Export] private int width;
+    [Export] private int height;
+    private bool[,] matrixPath;
     public override void _Ready()
     {
-        tileMap = GetNode<TileMap>("tileMap");
+        matrixPath = new bool[width, height];
+        var currentPositionX = width / 2;
+        var currentPositionY = height / 2;
+        matrixPath[currentPositionX, currentPositionY] = true;
+
         terrain = new BetterTerrain(tileMap);
         CenterRoom();
         for (int i = 0; i < 3; i++)
         {
-            Vector2I distance = Vector2I.Zero;
-            Vector2I direction = Vector2I.Zero;
-            for (int j = 0; j < 3; j++)
-            {
-                Node2D bRoom = room.Instantiate<Node2D>();
-                AddChild(bRoom);
-                direction = (Vector2I)PlaceRoom(bRoom, direction, distance).Result;
-                distance = (Vector2I)bRoom.GlobalPosition;
-            }
+            CreateRooms();
         }
         Vector2 size = tileMap.GetUsedRect().Size;
         for (int x = -(int)size.X / 2; x < size.X / 2; x++)
@@ -63,41 +43,40 @@ public partial class Dungeon : Node2D
         }
     }
 
+    private void CreateRooms()
+    {
+        var position = Vector2I.Zero;
+        var direction = Vector2I.Zero;
+        for (var i = 0; i < 3; i++)
+        {
+            direction = GenerateDirection(direction);
+            position += direction * 700;
+            PlaceRoom(direction, position);
+        }
+    }
     private void CenterRoom()
     {
-        Node2D centerRoom = room.Instantiate<Node2D>();
-        AddChild(centerRoom);
-        centerRoom.GlobalPosition = Vector2.Zero;
-        TileMapPattern pattern = tileMap.TileSet.GetPattern(0);
+        var pattern = tileMap.TileSet.GetPattern(0);
         tileMap.SetPattern(1, Vector2I.Zero - pattern.GetSize() / 2, pattern);
     }
 
-    private async Task<Vector2> PlaceRoom(Node2D newRoom, Vector2I prevDirection, Vector2 prevDistance)
+    private void PlaceRoom(Vector2I direction, Vector2I position)
     {
-        Vector2I direction = GenerateDirection(prevDirection);
-        Vector2I distance = (Vector2I)(prevDistance + direction * 700);
-        newRoom.GlobalPosition = distance;
-        await ToSignal(GetTree().CreateTimer(0.1), "timeout");
-        if (newRoom.GetNode<Area2D>("room_area").HasOverlappingAreas())
-        {
-            return await PlaceRoom(newRoom, prevDirection, distance);
-        }
-        TileMapPattern pattern = tileMap.TileSet.GetPattern((int)(GD.Randi() % 8));
-        Vector2I patternPosition = distance / 64 - pattern.GetSize() / 2;
+        var pattern = tileMap.TileSet.GetPattern((int)(GD.Randi() % 8));
+        var patternPosition = position / 64 - pattern.GetSize() / 2;
         tileMap.SetPattern(1, patternPosition, pattern);
-        CreateTonel(-direction, newRoom);
-        return direction;
+        CreateTunnel(-direction, position);
     }
 
-    private void CreateTonel(Vector2 direction, Node2D newRoom)
+    private void CreateTunnel(Vector2 direction, Vector2I position)
     {
-        FillArray(direction, newRoom);
+        FillArray(direction, position);
         terrain.SetCells(1, array, 1);
         array.Clear();
     }
 
 
-    private void FillArray(Vector2 direction, Node2D newRoom)
+    private void FillArray(Vector2 direction, Vector2I position)
     {
         int yDirection = 0;
         int xDirection = 0;
@@ -116,48 +95,24 @@ public partial class Dungeon : Node2D
         {
             for (int x = 1; x < 1 + Math.Abs(direction.X) * 10; x++)
             {
-                array.Add((Vector2I)newRoom.GlobalPosition / 64 + new Vector2I(x * Math.Sign(xDirection), y * Math.Sign(yDirection)));
+                array.Add(position / 64 + new Vector2I(x * Math.Sign(xDirection), y * Math.Sign(yDirection)));
             }
         }
     }
 
+    private Vector2I[] directions = { new(-1, 0), new(1, 0), new(0, -1), new(0, 1) };
+
     private Vector2I GenerateDirection(Vector2I previousDirection)
     {
-        Vector2I roomDirection;
-        switch (GD.Randi() % 4 + 1)
+        while (true)
         {
-            case 1:
-                roomDirection = new Vector2I(-1, 0);
-                break;
-            case 2:
-                roomDirection = new Vector2I(1, 0);
-                break;
-            case 3:
-                roomDirection = new Vector2I(0, -1);
-                break;
-            case 4:
-                roomDirection = new Vector2I(0, 1);
-                break;
-            default:
-                roomDirection = Vector2I.Zero;
-                break;
-        }
+            var roomDirection = directions[GD.Randi() % 4];
 
-        if (previousDirection + roomDirection == Vector2.Zero || previousDirection == roomDirection)
-        {
-            return GenerateDirection(previousDirection);
-        }
-
-        return roomDirection;
-    }
-
-
-
-    private void _input(InputEvent @event)
-    {
-        if (Input.IsActionJustPressed("Space"))
-        {
-            GetTree().ReloadCurrentScene();
+            if (previousDirection + roomDirection == Vector2.Zero)
+            {
+                continue;
+            }
+            return roomDirection;
         }
     }
 }
