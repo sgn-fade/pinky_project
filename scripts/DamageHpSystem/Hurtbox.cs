@@ -5,17 +5,25 @@ public partial class Hurtbox : Area2D
 {
     [Signal]
     public delegate void EntityBurnEventHandler(double duration);
+
     [Signal]
     public delegate void EntityStunedEventHandler(double duration);
+
     [Signal]
     public delegate void EntityFreezedEventHandler(double duration);
+
     [Signal]
     public delegate void EntitySlowdownEventHandler(double duration);
+
+    [Signal]
+    public delegate void EntityTakeDamageEventHandler(int damage);
+
     [Signal]
     public delegate void EntityDeadEventHandler();
 
     [Export] private int maxHp;
     private int hp;
+
 
     public enum Statuses
     {
@@ -24,31 +32,32 @@ public partial class Hurtbox : Area2D
         Stun,
         Freeze,
         Slowdown,
-
     }
 
     public void SetStatus(Statuses status, double duration)
     {
         switch (status)
         {
-            case Statuses.Burn :
+            case Statuses.Burn:
                 EmitSignal(SignalName.EntityBurn, duration);
                 break;
-            case Statuses.Stun :
+            case Statuses.Stun:
                 EmitSignal(SignalName.EntityStuned, duration);
                 break;
-            case Statuses.Freeze :
+            case Statuses.Freeze:
                 EmitSignal(SignalName.EntityFreezed, duration);
                 break;
-            case Statuses.Slowdown :
+            case Statuses.Slowdown:
                 EmitSignal(SignalName.EntitySlowdown, duration);
                 break;
         }
     }
+
     public void TakeDamage(int damage)
     {
         hp -= damage;
         if (hp <= 0) EmitSignal(SignalName.EntityDead);
+        EmitSignal(SignalName.EntityTakeDamage, damage);
     }
 
     public void Heal(int damage)

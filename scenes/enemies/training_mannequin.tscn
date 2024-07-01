@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5001tqqps3vi"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/TrainingMannequin.cs" id="1_ameij"]
+[ext_resource type="Texture2D" uid="uid://bw6bjgajmxt3k" path="res://sprites/enemies/training_stand.png" id="2_il8wx"]
+[ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="3_mdxci"]
+[ext_resource type="PackedScene" uid="uid://ovg5ppo48c1k" path="res://scenes/ui/damage_text.tscn" id="4_wpo42"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u07fk"]
+
+[node name="TrainingMannequin" type="Node2D" node_paths=PackedStringArray("hurtBox", "damageLabel")]
+script = ExtResource("1_ameij")
+hurtBox = NodePath("Hurtbox")
+damageLabel = NodePath("value")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -22)
+texture = ExtResource("2_il8wx")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_mdxci")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -22)
+shape = SubResource("CapsuleShape2D_u07fk")
+
+[node name="value" parent="." instance=ExtResource("4_wpo42")]
+offset_left = 8.0
+offset_top = -50.0
+offset_right = 21.0
+offset_bottom = -36.0
+
+[connection signal="EntityTakeDamage" from="Hurtbox" to="." method="OnTakeDamage"]

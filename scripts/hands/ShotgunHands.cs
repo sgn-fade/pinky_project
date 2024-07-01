@@ -53,7 +53,7 @@ public partial class ShotgunHands : GunHands
     //todo move to skill
     private void SpawnBullets()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 1; i++)
         {
             var bulletInstance = bullet.Instantiate<Bullet>();
             Global.World.GetWorld().AddChild(bulletInstance);

@@ -56,6 +56,10 @@ position = Vector2(-1.13687e-13, 0)
 scale = Vector2(0.480469, 0.150488)
 energy = 0.1
 
+[node name="Hitbox" parent="." index="1"]
+collision_mask = 4
+Damage = 1
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_wxubl")
 

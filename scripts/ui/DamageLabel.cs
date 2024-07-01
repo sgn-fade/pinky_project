@@ -7,7 +7,6 @@ public partial class DamageLabel : Label
     private int damage;
     private double timeToFree = 0.5;
 
-
     public override void _Process(double delta)
     {
         timeToFree -= delta;
