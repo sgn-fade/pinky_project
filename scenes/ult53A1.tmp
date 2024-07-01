@@ -1,0 +1,187 @@
+[gd_scene load_steps=19 format=3 uid="uid://f70wc1loqvwd"]
+
+[ext_resource type="Script" path="res://scenes/ultimate_stun.gd" id="1_6fdpv"]
+[ext_resource type="Texture2D" uid="uid://dpmu45a8pve1j" path="res://sprites/particles/void__circle_particle.png" id="2_ejabq"]
+[ext_resource type="Texture2D" uid="uid://dii0mgfikvm7j" path="res://sprites/stun_background.png" id="2_vk724"]
+[ext_resource type="AudioStream" uid="uid://q633lwee28pf" path="res://sounds/spell_sounds/last_gojo.mp3" id="4_klwbh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7lrm"]
+radius = 86.9489
+
+[sub_resource type="Gradient" id="Gradient_0po0v"]
+colors = PackedColorArray(0.375951, 0.00089836, 0.536941, 1, 0.273653, 1, 0.927593, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ni5i0"]
+gradient = SubResource("Gradient_0po0v")
+
+[sub_resource type="Curve" id="Curve_b1yja"]
+_data = [Vector2(0, 0.945055), 0.0, 0.233661, 0, 0, Vector2(0.985148, 0), -0.986569, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_610q8"]
+curve = SubResource("Curve_b1yja")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o3nmd"]
+particle_flag_damping_as_friction = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.79
+emission_ring_radius = 40.745
+emission_ring_inner_radius = 71.505
+radial_velocity_max = 121.21
+radial_velocity_curve = SubResource("CurveTexture_610q8")
+gravity = Vector3(0, 0, 0)
+damping_min = 77.778
+damping_max = 77.778
+color_ramp = SubResource("GradientTexture1D_ni5i0")
+turbulence_noise_strength = 18.48
+turbulence_noise_scale = 10.0
+turbulence_noise_speed_random = 1.98
+turbulence_influence_min = 0.281
+turbulence_influence_max = 0.402
+turbulence_initial_displacement_max = 33.3
+
+[sub_resource type="Curve" id="Curve_mybtn"]
+max_value = 49.76
+_data = [Vector2(0.00560224, 16.252), 0.0, -2.53053, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3h57r"]
+curve = SubResource("Curve_mybtn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5j16w"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 33.67
+emission_ring_radius = 120.56
+emission_ring_inner_radius = 109.01
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -5.68
+radial_accel_max = -5.68
+radial_accel_curve = SubResource("CurveTexture_3h57r")
+
+[sub_resource type="Animation" id="Animation_7h23o"]
+resource_name = "backgroung"
+length = 3.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Barier/background:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 0.0412347),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xh1q"]
+_data = {
+"backgroung": SubResource("Animation_7h23o")
+}
+
+[sub_resource type="Animation" id="Animation_6dgwq"]
+resource_name = "background"
+length = 1.242
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Node2D/background/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xetsg"]
+resource_name = "resize"
+length = 3.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 3.7),
+"transitions": PackedFloat32Array(1, 0.116629, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(3, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g4g76"]
+_data = {
+"background": SubResource("Animation_6dgwq"),
+"resize": SubResource("Animation_xetsg")
+}
+
+[node name="UltimateStun" type="Node2D"]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_6fdpv")
+
+[node name="Barier" type="Node2D" parent="."]
+
+[node name="background" type="Node2D" parent="Barier"]
+
+[node name="ColorRect" type="ColorRect" parent="Barier/background"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+scale = Vector2(32.085, 26.6436)
+pivot_offset = Vector2(20, 20)
+color = Color(0, 0, 0, 1)
+
+[node name="Resizeble_Area" type="Node2D" parent="Barier"]
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="Barier/Resizeble_Area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barier/Resizeble_Area/Area2D"]
+rotation = 1.5708
+scale = Vector2(0.3, 1)
+shape = SubResource("CircleShape2D_j7lrm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Barier/Resizeble_Area/Area2D"]
+scale = Vector2(1.195, 0.244)
+amount = 908
+process_material = SubResource("ParticleProcessMaterial_o3nmd")
+texture = ExtResource("2_ejabq")
+lifetime = 1.2
+local_coords = true
+trail_lifetime = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="Barier/Resizeble_Area/Area2D"]
+scale = Vector2(1.335, 0.399)
+texture = ExtResource("2_vk724")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Barier/Resizeble_Area/Area2D"]
+amount = 1358
+process_material = SubResource("ParticleProcessMaterial_5j16w")
+lifetime = 3.0
+trail_enabled = true
+trail_lifetime = 0.19
+
+[node name="Background_resize" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Resize_Animation")
+libraries = {
+"": SubResource("AnimationLibrary_0xh1q")
+}
+autoplay = "backgroung"
+
+[node name="Resize_Animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Barier/Resizeble_Area")
+libraries = {
+"": SubResource("AnimationLibrary_g4g76")
+}
+autoplay = "resize"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_klwbh")
+autoplay = true
