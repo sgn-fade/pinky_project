@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://xbjxamyvlgcc"]
 
-[ext_resource type="Script" path="res://scripts/locations/World.cs" id="1_nrd8g"]
+[ext_resource type="Script" path="res://scripts/locations/LocationManager.cs" id="1_vtusk"]
 [ext_resource type="PackedScene" uid="uid://dmbbj7fd6gu5j" path="res://scenes/locations/dungeon.tscn" id="2_ufpex"]
 [ext_resource type="PackedScene" uid="uid://bx1mxg4kipto5" path="res://scenes/locations/hub_zone.tscn" id="3_g42eq"]
 [ext_resource type="PackedScene" uid="uid://b28r3fg3w2gov" path="res://scenes/locations/training_zone.tscn" id="4_ibunv"]
@@ -24,7 +24,7 @@ adjustment_saturation = 1.8
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_nrd8g")
+script = ExtResource("1_vtusk")
 dungeon = ExtResource("2_ufpex")
 hubZone = ExtResource("3_g42eq")
 trainZone = ExtResource("4_ibunv")

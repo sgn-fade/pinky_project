@@ -3,7 +3,7 @@ using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.locations;
 
-public partial class World : Node2D
+public partial class LocationManager : Node2D
 {
 	[Export] private PackedScene dungeon;
 	[Export] private PackedScene hubZone;
@@ -20,15 +20,14 @@ public partial class World : Node2D
 		var window = GetViewport().GetWindow();
 		window.Size = screenSize;
 		player.Spawn();
-		GoToTrain();
+		GenerateDungeon();
 	}
 
 	private void GenerateDungeon()
 	{
 		location?.QueueFree();
-		location = dungeon.Instantiate  ();
+		location = dungeon.Instantiate();
 		AddChild(location);
-		// location.Call("generate_dungeon");
 	}
 
 	private void GoToHub()
