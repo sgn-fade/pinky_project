@@ -22,9 +22,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5yw6d")
 playerBars = NodePath("player_bars")
-barsParent = NodePath("player_bars")
+barsParent = NodePath("SpellBars")
 
-[node name="player_bars" type="Control" parent="."]
+[node name="player_bars" type="Control" parent="." node_paths=PackedStringArray("hpBar", "manaBar")]
 anchors_preset = 0
 anchor_left = 0.5
 anchor_top = 0.884
@@ -35,6 +35,8 @@ offset_top = -939.869
 offset_right = -914.54
 offset_bottom = -899.869
 script = ExtResource("11_0ubue")
+hpBar = NodePath("HPbar")
+manaBar = NodePath("ManaBar")
 
 [node name="HPbar" type="TextureProgressBar" parent="player_bars"]
 modulate = Color(0.686883, 0, 0.1782, 1)
@@ -60,3 +62,8 @@ value = 100.0
 texture_under = SubResource("AtlasTexture_mln08")
 texture_progress = SubResource("AtlasTexture_lfysl")
 texture_progress_offset = Vector2(13, 8)
+
+[node name="SpellBars" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

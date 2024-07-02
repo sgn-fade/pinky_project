@@ -1,5 +1,6 @@
 using Godot;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.ui;
 
@@ -10,13 +11,13 @@ public partial class PlayerBars : Node
 
     public override void _Ready()
     {
-        PlayerData.playerHpChanged += UpdateHpValue;
+        Player.playerHpChanged += UpdateHpValue;
         PlayerData.playerManaChanged += UpdateManaValue;
     }
 
     public override void _ExitTree()
     {
-        PlayerData.playerHpChanged -= UpdateHpValue;
+        Player.playerHpChanged -= UpdateHpValue;
         PlayerData.playerManaChanged -= UpdateManaValue;
     }
 

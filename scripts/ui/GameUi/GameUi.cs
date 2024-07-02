@@ -10,7 +10,6 @@ public partial class GameUi : Control
 {
     private EventBus eventBus;
     [Export] private PlayerBars playerBars;
-    [Export] private DashIndicator dashIndicator;
 
     public List<SpellCooldownBar> Bars = new();
 

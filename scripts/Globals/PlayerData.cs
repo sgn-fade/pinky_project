@@ -9,9 +9,7 @@ namespace projectpinky.scripts.Globals;
 
 public partial class PlayerData : Node2D
 {
-	private int hp = 50;
 	private int mana = 30;
-	private int maxHp = 50;
 	private int maxMana = 30;
 	private int coins;
 	private bool canSmite;
@@ -26,8 +24,6 @@ public partial class PlayerData : Node2D
 	private Weapon weapon;
 	private EventBus eventBus = Global.EventBus;
 
-	public delegate void PlayerHpChanged(int hp, int maxHp);
-	public static event PlayerHpChanged playerHpChanged;
 
 	public delegate void PlayerManaChanged(int mana, int maxMana);
 	public static event PlayerManaChanged playerManaChanged;
@@ -47,8 +43,6 @@ public partial class PlayerData : Node2D
 		return player.GetState();
 	}
 
-	public int GetHp() => hp;
-	public int GetMaxHp() => maxHp;
 	public int GetMana() => mana;
 	public int GetMaxMana() => maxMana;
 	public int GetMoney() => coins;
@@ -58,14 +52,6 @@ public partial class PlayerData : Node2D
 	public int GetZIndex() => player.ZIndex;
 	public Weapon GetWeapon() => weapon;
 
-	/// returns true if hp is greater than 0
-	public bool SetHp(int value)
-	{
-		if ((hp += value) <= 0) return false;
-		playerHpChanged?.Invoke(mana, maxMana);
-		return true;
-
-    }
     public bool SetMana(int value)
     {
         if (GetMana() < Mathf.Abs(value))
@@ -125,9 +111,8 @@ public partial class PlayerData : Node2D
     public void Restart()
     {
         player.QueueFree();
-        hp = maxHp;
         Spawn();
-       SetPosition(Vector2.Zero);
+		SetPosition(Vector2.Zero);
     }
     public void Spawn()
     {

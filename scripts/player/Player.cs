@@ -17,7 +17,9 @@ public partial class Player : CharacterBody2D
     private States _currentState = States.Active;
     private PlayerData _player = Global.Player;
 
-
+    [Export] private Hurtbox playerHp;
+    public delegate void PlayerHpChanged(int hp, int maxHp);
+    public static event PlayerHpChanged playerHpChanged;
     public delegate void PlayerDashEventHandler();
     public static event PlayerDashEventHandler playerDashEventHandler;
     public HandsManager GetHands() => _hands;
@@ -32,6 +34,11 @@ public partial class Player : CharacterBody2D
     public override void _Process(double delta)
     {
         Move();
+    }
+
+    private void OnTakeDamage(int damage)
+    {
+        playerHpChanged?.Invoke(playerHp.Hp, playerHp.MaxHp);
     }
 
     private void Rotating()
@@ -61,6 +68,7 @@ public partial class Player : CharacterBody2D
             Dash();
         }
 
+        Rotating(); 
         _input.X = Input.GetAxis("ui_left", "ui_right");
         _input.Y = Input.GetAxis("ui_up", "ui_down");
 
@@ -102,14 +110,6 @@ public partial class Player : CharacterBody2D
     {
         GetNode<Area2D>("player_area").SetCollisionMaskValue(2, state);
         SetCollisionMaskValue(2, state);
-    }
-
-    private void TakeDamage(int enemyDamage)
-    {
-        if (!_player.SetHp(enemyDamage))
-        {
-            Die();
-        }
     }
 
     private void SetCastState(float animationTime, string animationName)

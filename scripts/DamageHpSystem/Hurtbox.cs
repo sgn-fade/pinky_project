@@ -21,8 +21,8 @@ public partial class Hurtbox : Area2D
     [Signal]
     public delegate void EntityDeadEventHandler();
 
-    [Export] private int maxHp;
-    private int hp;
+    [Export] public int MaxHp;
+    public int Hp;
 
 
     public enum Statuses
@@ -55,14 +55,14 @@ public partial class Hurtbox : Area2D
 
     public void TakeDamage(int damage)
     {
-        hp -= damage;
-        if (hp <= 0) EmitSignal(SignalName.EntityDead);
+        Hp -= damage;
+        if (Hp <= 0) EmitSignal(SignalName.EntityDead);
         EmitSignal(SignalName.EntityTakeDamage, damage);
     }
 
     public void Heal(int damage)
     {
-        hp += damage;
-        if (hp > maxHp) hp = maxHp;
+        Hp += damage;
+        if (Hp > MaxHp) Hp = MaxHp;
     }
 }

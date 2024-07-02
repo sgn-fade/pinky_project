@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://uaai0aurtcg1" path="res://scenes/spell_particles/fireball.tscn" id="2_po6pb"]
 [ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="3_g0lai"]
 
+
 [resource]
 script = ExtResource("3_g0lai")
 AnimationName = ""
