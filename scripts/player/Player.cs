@@ -6,50 +6,32 @@ namespace projectpinky.scripts.player;
 
 public partial class Player : CharacterBody2D
 {
-    [Export] private HandsManager hands;
-    [Export] private AnimatedSprite2D animatedSprite;
-    // Stats
-    [Export] private float speed = 80;
-    [Export] private double acceleration = 20;
-    [Export] private float dashSpeedConst = 5;
+    [Export] private HandsManager _hands;
+    [Export] private AnimatedSprite2D _animatedSprite;
+    [Export] private float _speed = 80;
+    [Export] private double _acceleration = 20;
+    [Export] private float _dashSpeedConst = 5;
 
-    private Vector2 input = Vector2.Zero;
-    private bool dashReady = true;
-    private States currentState = States.Active;
-    private PlayerData player = Global.Player;
+    private Vector2 _input = Vector2.Zero;
+    private bool _dashReady = true;
+    private States _currentState = States.Active;
+    private PlayerData _player = Global.Player;
 
 
     public delegate void PlayerDashEventHandler();
     public static event PlayerDashEventHandler playerDashEventHandler;
-    public HandsManager GetHands() => hands;
+    public HandsManager GetHands() => _hands;
 
     public enum States
     {
         Active,
-        Move,
-        Dash,
-        Spell,
         Inactive,
         Attack
     }
 
     public override void _Process(double delta)
     {
-        switch (currentState)
-        {
-            case States.Active:
-                Move();
-                Rotating();
-                break;
-            case States.Dash:
-                Dash();
-                break;
-            case States.Attack:
-                Move();
-                break;
-            default:
-                return;
-        }
+        Move();
     }
 
     private void Rotating()
@@ -59,57 +41,34 @@ public partial class Player : CharacterBody2D
 
     public States GetState()
     {
-        return currentState;
+        return _currentState;
     }
 
     public void SetState(States state)
     {
-        currentState = state;
+        _currentState = state;
     }
 
     public override void _Ready()
     {
-        currentState = States.Active;
-        //todo event bus
-        //eventBus.Connect("player_cast_spell", new Callable(this, nameof(SetCastState)));
-        //eventBus.Connect("player_teleport", new Callable(this, nameof(Teleport)));
-        //eventBus.Connect("player_take_damage", new Callable(this, nameof(SetCastState)));
-        //eventBus.Connect("player_cast_spell", new Callable(this, nameof(_OnPlayerTakeDamage)));
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        //todo focus camera
-        // if (Input.IsActionJustPressed("F"))
-        // {
-        //     GlobalWorldInfo.FocusCamera();
-        // }
+        _currentState = States.Active;
     }
 
     private void Move()
     {
-        if (Input.IsActionJustPressed("Shift") && dashReady)
+        if (Input.IsActionJustPressed("Shift") && _dashReady)
         {
-            dashReady = false;
-            GetTree().CreateTimer(Global.Player.DashCooldown).Timeout += () => { dashReady = true; };
-
-            Velocity *= dashSpeedConst;
-            currentState = States.Dash;
-            GetTree().CreateTimer(0.09f).Timeout += () =>
-            {
-                currentState = States.Active;
-                Velocity /= dashSpeedConst;
-            };
+            Dash();
         }
 
-        input.X = Input.GetAxis("ui_left", "ui_right");
-        input.Y = Input.GetAxis("ui_up", "ui_down");
+        _input.X = Input.GetAxis("ui_left", "ui_right");
+        _input.Y = Input.GetAxis("ui_up", "ui_down");
 
-        var animation = input.Length() == 0 ? "idle" : "move";
+        var animation = _input.Length() == 0 ? "idle" : "move";
 
-        input = input.Normalized();
-        animatedSprite.Play(animation);
-        Velocity = Velocity.Lerp(input * speed, (float)(acceleration * GetProcessDeltaTime()));
+        _input = _input.Normalized();
+        _animatedSprite.Play(animation);
+        Velocity = Velocity.Lerp(_input * _speed, (float)(_acceleration * GetProcessDeltaTime()));
         MoveAndSlide();
     }
 
@@ -117,19 +76,26 @@ public partial class Player : CharacterBody2D
     private void Dash()
     {
         playerDashEventHandler?.Invoke();
-        MoveAndSlide();
+        _dashReady = false;
+        GetTree().CreateTimer(Global.Player.DashCooldown).Timeout += () => { _dashReady = true; };
+
+        Velocity *= _dashSpeedConst;
+        GetTree().CreateTimer(0.09f).Timeout += () =>
+        {
+            Velocity /= _dashSpeedConst;
+        };
     }
 
     private void Die()
     {
-        currentState = States.Inactive;
+        _currentState = States.Inactive;
         EmitSignal(nameof(EventBus.PlayerDeadEventHandler));
     }
 
-    public void SetIdleState()
+    public void Activate()
     {
         Visible = true;
-        currentState = States.Active;
+        _currentState = States.Active;
     }
 
     private void SwitchCollision(bool state)
@@ -138,27 +104,23 @@ public partial class Player : CharacterBody2D
         SetCollisionMaskValue(2, state);
     }
 
-    private void TakeDamage(Vector2 playerOffsetDir, int enemyDamage)
+    private void TakeDamage(int enemyDamage)
     {
-        if (!player.SetHp(enemyDamage))
+        if (!_player.SetHp(enemyDamage))
         {
             Die();
-            return;
         }
-        Velocity = Velocity.Lerp(playerOffsetDir * 1000, 0.40f);
-        MoveAndSlide();
     }
 
     private void SetCastState(float animationTime, string animationName)
     {
-        currentState = States.Spell;
-        animatedSprite.Play(animationName);
-        GetTree().CreateTimer(animationTime).Timeout += () => { currentState = States.Active; };
+        _currentState = States.Attack;
+        _animatedSprite.Play(animationName);
+        GetTree().CreateTimer(animationTime).Timeout += () => { _currentState = States.Active; };
     }
 
     private void Teleport(Vector2 pos)
     {
-        Velocity = pos;
-        MoveAndSlide();
+        GlobalPosition = pos;
     }
 }
