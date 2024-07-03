@@ -16,7 +16,7 @@ public partial class Hurtbox : Area2D
     public delegate void EntitySlowdownEventHandler(double duration);
 
     [Signal]
-    public delegate void EntityTakeDamageEventHandler(int damage);
+    public delegate void EntityTakeDamageEventHandler(int damage, int hp, int maxHp);
 
     [Signal]
     public delegate void EntityDeadEventHandler();
@@ -57,7 +57,7 @@ public partial class Hurtbox : Area2D
     {
         Hp -= damage;
         if (Hp <= 0) EmitSignal(SignalName.EntityDead);
-        EmitSignal(SignalName.EntityTakeDamage, damage);
+        EmitSignal(SignalName.EntityTakeDamage, damage, Hp, MaxHp);
     }
 
     public void Heal(int damage)

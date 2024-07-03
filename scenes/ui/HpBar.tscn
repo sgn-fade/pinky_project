@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyi3okrheyjkj"]
+
+[ext_resource type="Texture2D" uid="uid://eewxah76kn5m" path="res://sprites/enemy_health/enemy_health_under.png" id="1_7wou0"]
+[ext_resource type="Script" path="res://scenes/ui/HpBar.cs" id="1_sr3od"]
+[ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="2_fepjp"]
+[ext_resource type="Texture2D" uid="uid://dcyqfis8vyewu" path="res://sprites/enemy_health/enemy_health_progress.png" id="3_50ne5"]
+
+[node name="HpBar" type="Control" node_paths=PackedStringArray("redHpBar", "whiteHpBar", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sr3od")
+redHpBar = NodePath("hp_bar")
+whiteHpBar = NodePath("middle_white_bar")
+timer = NodePath("Timer")
+
+[node name="middle_white_bar" type="TextureProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = -7.99998
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_under = ExtResource("1_7wou0")
+texture_progress = ExtResource("2_fepjp")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="hp_bar" type="TextureProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = -7.99998
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_progress = ExtResource("3_50ne5")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="Timer" type="Timer" parent="."]
