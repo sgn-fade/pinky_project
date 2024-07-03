@@ -9,10 +9,9 @@ public partial class FireEye : SpellController
 {
     private Timer _damageTimer = new ();
     private float _tickTime = 1f;
-    private List<Enemy> _enemyInside = new();
     [Export] private AnimationTree animationTree;
     private AnimationNodeStateMachinePlayback stateMachine;
-
+//Todo add hitbox
 
     public override void _Ready()
     {
@@ -27,7 +26,7 @@ public partial class FireEye : SpellController
         stateMachine.Travel("closing");
     }
 
-    private async void DealDamage(Enemy enemy)
+/*    private async void DealDamage(Enemy enemy)
     {
         while (_enemyInside.Contains(enemy))
         {
@@ -54,4 +53,5 @@ public partial class FireEye : SpellController
             enemy.TakeDamage(0);
         }
     }
+    */
 }

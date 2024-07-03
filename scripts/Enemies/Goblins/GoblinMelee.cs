@@ -7,9 +7,8 @@ public partial class GoblinMelee : Goblin
 {
     [Export] private HpBar _hpBar;
     [Export] private Hurtbox _hurtbox;
-    private Area2D attackArea;
-    private AnimatedSprite2D sprite;
-    private CollisionShape2D collision;
+    [Export] private AnimatedSprite2D _sprite;
+    [Export] private CollisionShape2D _collision;
     private Timer timer = new Timer();
     private double attackCooldown;
     private float acceleration = 40;
@@ -20,16 +19,11 @@ public partial class GoblinMelee : Goblin
     public override void _Ready()
     {
         _hpBar.Init(_hurtbox.MaxHp);
-        attackArea = GetNode<Area2D>("attack_area");
-        sprite = GetNode<AnimatedSprite2D>("sprite");
-        collision = GetNode<CollisionShape2D>("collision");
-
         base._Ready();
 
         speed = 60;
         enemyDamage = 10;
         //Spawn();//Todo animation
-        //attackArea.Connect("body_entered", this, nameof(OnMeleeGoblinAttackAreaEntered));
     }
 
     public override void _Process(double delta)
@@ -51,7 +45,7 @@ public partial class GoblinMelee : Goblin
 
     private async void Idle(States state)
     {
-        sprite.Play("idle");
+        _sprite.Play("idle");
         timer.Start((float)GD.RandRange(0, 1));
         await ToSignal(timer, "timeout");
         currentState = state;
@@ -63,11 +57,11 @@ public partial class GoblinMelee : Goblin
         {
             attackCooldown = 4;
             currentState = States.Attack;
-            sprite.Play("attack");
+            _sprite.Play("attack");
             timer.Start(0.8f);
             await ToSignal(timer, "timeout");
             direction = Global.Player.GetPosition() - GlobalPosition;
-            attackArea.Monitoring = true;
+            //_attackArea.Monitoring = true;
             for (int i = 0; i < 4; i++)
             {
                 Velocity = Velocity.Lerp(direction.Normalized() * 320, 0.016f * acceleration);
@@ -79,24 +73,13 @@ public partial class GoblinMelee : Goblin
             timer.Start(0.386f);
             await ToSignal(timer, "timeout");
             Idle(States.Move);
-            attackArea.Monitoring = false;
-        }
-    }
-
-    private void OnMeleeGoblinAttackAreaEntered(Node body)
-    {
-        if (body == Global.Player.GetBody() && currentState != States.DealsDamage)
-        {
-            currentState = States.DealsDamage;
-            Vector2 playerOffsetDir = -(GlobalPosition - Global.Player.GetPosition()).Normalized();
-            //EventBus.EmitSignal("player_take_damage", playerOffsetDir, 10);
-            //TODO hurt box
+            //_attackArea.Monitoring = false;
         }
     }
 
     private void OnEntityTakeDamage(int damage, int hp, int maxHp)
     {
-        sprite.Play("take_damage");
+        _sprite.Play("take_damage");
         GetNode<AnimationPlayer>("anim_player").Play("take_damage");
         _hpBar.UpdateHp(hp, maxHp);
     }

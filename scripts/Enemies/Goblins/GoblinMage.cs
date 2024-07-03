@@ -23,12 +23,6 @@ public partial class GoblinMage : Goblin
     {
         sprite = GetNode<AnimatedSprite2D>("sprite");
         PlayAnimation("idle");
-
-        hp = 10;
-        hpBar.MaxValue = hp * 10;
-        hpBar.Value = hp * 10;
-        whiteAnimationBar.MaxValue = hp * 10;
-        whiteAnimationBar.Value = hp * 10;
         speed = 40;
     }
 

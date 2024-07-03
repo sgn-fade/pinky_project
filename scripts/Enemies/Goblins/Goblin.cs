@@ -4,7 +4,7 @@ using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.Enemies.Goblins;
 
-public partial class Goblin : Enemy
+public partial class Goblin : CharacterBody2D
 {
     [Export] private AnimatedSprite2D sprite;
 
@@ -68,7 +68,7 @@ public partial class Goblin : Enemy
         }
     }
 
-    public override void SpawnDrop()
+    public void SpawnDrop()
     {
         Random random = new Random();
         for (int i = 0; i < random.Next(6); i++)
