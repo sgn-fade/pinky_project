@@ -1,4 +1,5 @@
 using Godot;
+using projectpinky.scripts.drops;
 
 namespace projectpinky.scripts.ui.inventory;
 
@@ -6,7 +7,7 @@ public partial class InventoryCell : Control
 {
 	public bool Empty { get; set; } = true;
 	public InventorySlotObject Object;
-	public string SlotType { get; set; }= "inventory";
+	public InventoryItem.DataTypes SlotType { get; set; }
 	//TODO refactor this later (кусается)
 	public void SwapObjects(InventoryCell prevCell, InventorySlotObject newObject)
 	{

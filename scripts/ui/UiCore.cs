@@ -13,7 +13,6 @@ public partial class UiCore : CanvasLayer
 	[Export] private Crosshair crosshair;
 
 	private Control currentUi;
-	private EventBus eventBus = Global.EventBus;
 	private PlayerData player;
 
 	public override void _Ready()

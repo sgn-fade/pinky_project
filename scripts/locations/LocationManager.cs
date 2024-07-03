@@ -20,7 +20,7 @@ public partial class LocationManager : Node2D
 		var window = GetViewport().GetWindow();
 		window.Size = screenSize;
 		player.Spawn();
-		GenerateDungeon();
+		GoToTrain();
 	}
 
 	private void GenerateDungeon()

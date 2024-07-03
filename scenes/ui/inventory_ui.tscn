@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://pe7wisviq3yk"]
+[gd_scene load_steps=14 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/inventory/PlayerInventory.cs" id="1_tlr2l"]
 [ext_resource type="PackedScene" uid="uid://d00qmrac5adv2" path="res://scenes/ui/weapon_rarity_bg.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://btdrg2ytefew2" path="res://scenes/ui/inventory/inventory_slot_object.tscn" id="3_nhbeo"]
 [ext_resource type="Texture2D" uid="uid://p31ii0hg8cjd" path="res://sprites/ui/back_arrow/back_arrow_idle.png" id="5_f11wr"]
-[ext_resource type="Texture2D" uid="uid://cuedel2ucbb7l" path="res://sprites/ui/item_panel/item_background.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://djo02qi6h04cx" path="res://sprites/ui/back_arrow/back_arrow_pressed.png" id="6_t07cs"]
 [ext_resource type="Texture2D" uid="uid://cgv24tfyks8io" path="res://sprites/ui/back_arrow/back_arrow_hover.png" id="7_1f8wp"]
 [ext_resource type="Texture2D" uid="uid://ukmieltv2tr1" path="res://sprites/ui/circle_label.png" id="7_cwrlk"]
@@ -37,12 +36,13 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1")
 
-[node name="default_right_side" type="Control" parent="."]
+[node name="default_left_side" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="consumables" parent="default_right_side" instance=ExtResource("8_7whhs")]
+[node name="consumables" parent="default_left_side" instance=ExtResource("8_7whhs")]
+visible = false
 layout_mode = 1
 offset_left = 134.68
 offset_top = 712.6
@@ -50,7 +50,8 @@ offset_right = 134.68
 offset_bottom = 712.6
 scale = Vector2(2.5, 2.5)
 
-[node name="weapon_cell" parent="default_right_side" instance=ExtResource("9_fud0s")]
+[node name="weapon_cell" parent="default_left_side" instance=ExtResource("9_fud0s")]
+visible = false
 offset_left = 720.0
 offset_top = 858.0
 offset_right = 720.0
@@ -66,25 +67,11 @@ offset_right = 164.0
 offset_bottom = 15.0
 scale = Vector2(0.8, 0.8)
 
-[node name="weapon_ring" type="TextureRect" parent="weapon"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.229
-anchor_top = 0.38
-anchor_right = 0.229
-anchor_bottom = 0.38
-offset_left = 75.84
-offset_top = 90.8
-offset_right = 175.84
-offset_bottom = 192.8
-scale = Vector2(7, 7)
-texture = ExtResource("6")
-
 [node name="weapon_rarity_bg" parent="weapon" instance=ExtResource("3")]
-offset_left = 261.0
-offset_top = 236.0
-offset_right = 463.0
-offset_bottom = 474.0
+offset_left = 230.0
+offset_top = 366.25
+offset_right = 541.0
+offset_bottom = 797.25
 
 [node name="cells" type="Control" parent="weapon"]
 anchors_preset = 0
@@ -92,59 +79,51 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="spell_cell" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 435.0
-offset_top = 141.25
-offset_right = 435.0
-offset_bottom = 141.25
+offset_left = 896.25
+offset_top = 1090.0
+offset_right = 896.25
+offset_bottom = 1090.0
+scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="spell_cell2" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 666.25
-offset_top = 225.0
-offset_right = 666.25
-offset_bottom = 225.0
+offset_left = 736.25
+offset_top = 1196.25
+offset_right = 736.25
+offset_bottom = 1196.25
+scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="spell_cell3" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 751.25
-offset_top = 463.75
-offset_right = 751.25
-offset_bottom = 463.75
+offset_left = 562.0
+offset_top = 1266.25
+offset_right = 562.0
+offset_bottom = 1266.25
+scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="spell_cell4" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 666.25
-offset_top = 701.25
-offset_right = 666.25
-offset_bottom = 701.25
+offset_left = 346.25
+offset_top = 1266.25
+offset_right = 346.25
+offset_bottom = 1266.25
+scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="spell_cell5" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 435.0
-offset_top = 785.0
-offset_right = 435.0
-offset_bottom = 785.0
+offset_left = 172.5
+offset_top = 1196.25
+offset_right = 172.5
+offset_bottom = 1196.25
+scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="spell_cell6" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 203.75
-offset_top = 701.25
-offset_right = 203.75
-offset_bottom = 701.25
-mouse_filter = 0
-
-[node name="spell_cell7" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 120.0
-offset_top = 462.5
-offset_right = 120.0
-offset_bottom = 462.5
-mouse_filter = 0
-
-[node name="spell_cell8" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 205.0
-offset_top = 226.25
-offset_right = 205.0
-offset_bottom = 226.25
+offset_left = 17.5
+offset_top = 1090.0
+offset_right = 17.5
+offset_bottom = 1090.0
+scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="back_arrow" type="TextureButton" parent="weapon"]
