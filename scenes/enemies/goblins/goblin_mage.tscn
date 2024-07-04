@@ -1,12 +1,15 @@
-[gd_scene load_steps=39 format=3 uid="uid://0le0ptgshp5t"]
+[gd_scene load_steps=40 format=3 uid="uid://0le0ptgshp5t"]
 
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_apyim"]
+[ext_resource type="PackedScene" uid="uid://cyi3okrheyjkj" path="res://scenes/ui/HpBar.tscn" id="2_jolhh"]
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMage.cs" id="2_xc4tv"]
+[ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="3_0mu3j"]
 [ext_resource type="Texture2D" uid="uid://cdjxocxmr5k1a" path="res://sprites/goblin/goblin_mage.png" id="3_edkef"]
-[ext_resource type="Texture2D" uid="uid://eewxah76kn5m" path="res://sprites/enemy_health/enemy_health_under.png" id="3_irmwv"]
-[ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="4_fmaoh"]
-[ext_resource type="Texture2D" uid="uid://dcyqfis8vyewu" path="res://sprites/enemy_health/enemy_health_progress.png" id="5_em4n1"]
+[ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="4_fagco"]
 [ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="6_y50sn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04xa2"]
+size = Vector2(16, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7x7m"]
 atlas = ExtResource("6_y50sn")
@@ -249,33 +252,25 @@ colors = PackedColorArray(1, 1, 1, 1, 0.753378, 0.398662, 0.0421557, 1, 1, 1, 1,
 collision_layer = 4
 script = ExtResource("2_xc4tv")
 
+[node name="HpBar" parent="." instance=ExtResource("2_jolhh")]
+offset_top = -5.0
+offset_bottom = -5.0
+
+[node name="Hitbox" parent="." instance=ExtResource("3_0mu3j")]
+visible = false
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_fagco")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_04xa2")
+
 [node name="shadow_under" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.729412)
 position = Vector2(-79, -37)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_apyim")
 offset = Vector2(158.021, 74)
-
-[node name="middle_white_bar" type="TextureProgressBar" parent="."]
-offset_left = -10.0
-offset_top = -34.0
-offset_right = 27.0
-offset_bottom = -14.0
-scale = Vector2(0.5, 0.5)
-value = 100.0
-texture_under = ExtResource("3_irmwv")
-texture_progress = ExtResource("4_fmaoh")
-texture_progress_offset = Vector2(0, 1)
-
-[node name="hp_bar" type="TextureProgressBar" parent="."]
-offset_left = -10.0
-offset_top = -34.0
-offset_right = 27.0
-offset_bottom = -14.0
-scale = Vector2(0.5, 0.5)
-value = 100.0
-texture_progress = ExtResource("5_em4n1")
-texture_progress_offset = Vector2(0, 1)
 
 [node name="period_dmg_particle" type="CPUParticles2D" parent="."]
 z_index = 1

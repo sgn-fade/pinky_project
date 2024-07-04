@@ -7,11 +7,13 @@ namespace projectpinky.scripts.particles;
 
 public partial class FireEye : SpellController
 {
-    private Timer _damageTimer = new ();
+    private Timer _damageTimer = new();
     private float _tickTime = 1f;
     [Export] private AnimationTree animationTree;
     private AnimationNodeStateMachinePlayback stateMachine;
-//Todo add hitbox
+
+    private Hitbox _hitbox;
+
 
     public override void _Ready()
     {
@@ -25,33 +27,4 @@ public partial class FireEye : SpellController
     {
         stateMachine.Travel("closing");
     }
-
-/*    private async void DealDamage(Enemy enemy)
-    {
-        while (_enemyInside.Contains(enemy))
-        {
-            enemy.TakeDamage(0);
-            _damageTimer.Start(_tickTime);
-            await ToSignal(_damageTimer, "timeout");
-        }
-    }
-
-    private void OnDamageAreaBodyEntered(Node2D body)
-    {
-        if (body is Enemy enemy)
-        {
-            _enemyInside.Add(enemy);
-            DealDamage(enemy);
-        }
-    }
-
-    private void OnDamageAreaBodyExited(Node2D body)
-    {
-        if (body is Enemy enemy)
-        {
-            _enemyInside.Remove(enemy);
-            enemy.TakeDamage(0);
-        }
-    }
-    */
 }

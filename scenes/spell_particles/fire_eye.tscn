@@ -1,10 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://jkixgcns5qlc"]
+[gd_scene load_steps=46 format=3 uid="uid://dtyqqhe538bmh"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Script" path="res://scripts/spells/SpellControllers/FireEye.cs" id="2"]
+[ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="2_ram1g"]
 [ext_resource type="Texture2D" uid="uid://dxoen7ruplk54" path="res://sprites/particles/fire2.png" id="4_jck2a"]
 [ext_resource type="Texture2D" uid="uid://cr7udiipo1ilt" path="res://sprites/spells/fire/fire_eye_space.png" id="5"]
-
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 55.9017
@@ -245,25 +245,13 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("damage_area:monitoring")
+tracks/4/path = NodePath("AnimationPosition")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationPosition")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -271,19 +259,67 @@ tracks/5/keys = {
 "method": &"stop"
 }]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.416667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hitbox:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Hitbox:status")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Hitbox:Damage")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Hitbox:statusDuration")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
 }
 
 [sub_resource type="Animation" id="Animation_s7tu3"]
@@ -336,31 +372,55 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("damage_area:monitoring")
+tracks/4/path = NodePath("AnimationPosition")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationPosition")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["idle", -1, 1.0, false],
 "method": &"play"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox:status")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hitbox:Damage")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Hitbox:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ascng"]
@@ -389,6 +449,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["searching"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox:Damage")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.3001, 0.4, 0.5, 0.6, 0.6001, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 3, 0, 0, 3, 0, 3, 0, 0, 3, 0, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ai1hb"]
@@ -456,18 +528,16 @@ collision_mask = 5
 script = ExtResource("2")
 animationTree = NodePath("AnimationTree")
 
-[node name="damage_area" type="Area2D" parent="."]
-position = Vector2(0, 6)
-scale = Vector2(0.7, 0.7)
-collision_layer = 5
-collision_mask = 5
-monitorable = false
+[node name="Hitbox" parent="." instance=ExtResource("2_ram1g")]
+visible = false
+monitoring = false
+status = 1
 
-[node name="collision" type="CollisionShape2D" parent="damage_area"]
+[node name="collision" type="CollisionShape2D" parent="Hitbox"]
 z_as_relative = false
-position = Vector2(0, -1)
+position = Vector2(0, 5.3)
 rotation = 1.5708
-scale = Vector2(0.75, 1.5)
+scale = Vector2(0.525, 1.05)
 shape = SubResource("1")
 
 [node name="light" type="PointLight2D" parent="."]
@@ -490,6 +560,7 @@ texture_scale = 0.5
 z_as_relative = false
 position = Vector2(0, 11.9)
 scale = Vector2(1.96, 0.49)
+emitting = false
 amount = 150
 lifetime = 0.8
 speed_scale = 0.5
@@ -507,6 +578,7 @@ color_ramp = SubResource("Gradient_743te")
 z_as_relative = false
 position = Vector2(0, 7)
 scale = Vector2(1.4, 0.7)
+emitting = false
 amount = 200
 lifetime = 0.8
 speed_scale = 0.5
@@ -525,7 +597,7 @@ light_mask = 3
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("14")
 animation = &"searching"
-frame = 4
+frame = 2
 offset = Vector2(0, -15)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -541,6 +613,3 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ils4c")
 anim_player = NodePath("../AnimationPlayer")
-
-[connection signal="body_entered" from="damage_area" to="." method="OnDamageAreaBodyEntered"]
-[connection signal="body_exited" from="damage_area" to="." method="OnDamageAreaBodyExited"]
