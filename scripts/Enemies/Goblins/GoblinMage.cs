@@ -9,14 +9,9 @@ public partial class GoblinMage : Goblin
 {
     private PackedScene fireball = (PackedScene)ResourceLoader.Load("res://scenes/particles/enemy's_fireball.tscn");
 
-    private PackedScene fireElemental =
-        (PackedScene)ResourceLoader.Load("res://scenes/enemies/elementals/fire_elemental.tscn");
-
     private AnimatedSprite2D sprite;
     private Timer attackCooldownTimer = new Timer();
-    private Timer elementalCooldownTimer = new Timer();
     private double attackCooldown = 2;
-    private double elementalCooldown = 10;
     private float acceleration = 1;
 
     public override void _Ready()
@@ -29,7 +24,6 @@ public partial class GoblinMage : Goblin
     public override void _Process(double delta)
     {
         attackCooldown -= delta;
-        elementalCooldown -= delta;
 
         switch (currentState)
         {
@@ -77,19 +71,6 @@ public partial class GoblinMage : Goblin
             await PlayAnimation("attack_after");
             currentState = States.Move;
             PlayAnimation("move");
-        }
-    }
-
-    private async void SummonElemental()
-    {
-        if (elementalCooldown <= 0 && currentState != States.Attack)
-        {
-            currentState = States.Attack;
-            Node2D summon = fireElemental.Instantiate<Node2D>();
-            Global.World.GetWorld().AddChild(summon);
-            summon.GlobalPosition = GlobalPosition + new Vector2(10, 0);
-            elementalCooldown = new Random().Next(10, 40);
-            await Idle();
         }
     }
 
