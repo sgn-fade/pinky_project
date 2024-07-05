@@ -3,61 +3,40 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
+using projectpinky.scripts.Globals;
 
 namespace projectpinky.scripts.locations;
 
 public partial class Dungeon : Node2D
 {
+    private PlayerData _player = Global.Player;
     [Export] private int _width;
-    [Export] private int _height;
     [Export] private PackedScene[] _roomsVariants;
     [Export] private PackedScene _startRoom;
     [Export] private PackedScene _endRoom;
-    private Room[,] _rooms;
+    private Room currentRoom;
 
     public override void _Ready()
     {
-        _rooms = new Room[_width, _height];
-        CreateRooms();
+        CreateStartRoom();
     }
 
-    private void CreateRooms()
+
+    private void RoomOnChangeRoom()
     {
-        var currentPositionX = _width / 2;
-        var currentPositionY = _height / 2;
-        var direction = Vector2I.Zero;
-        for (var i = 0; i < 3; i++)
-        {
-            direction = GenerateDirection(direction);
-            PlaceRoom(currentPositionX, currentPositionY);
-            currentPositionX += direction.X;
-            currentPositionY += direction.Y;
-        }
+        currentRoom.ChangeRoom -= RoomOnChangeRoom;
+        RemoveChild(currentRoom);
+        currentRoom = _roomsVariants[GD.Randi()%_roomsVariants.Length].Instantiate<Room>();
+        _player.SetPosition(currentRoom.GetSpawnPosition());
+        AddChild(currentRoom);
+        currentRoom.ChangeRoom += RoomOnChangeRoom;
     }
 
-    private void PlaceRoom(int currentPositionX, int currentPositionY)
+    private void CreateStartRoom()
     {
-        var room = _roomsVariants[(int)(GD.Randi() % _roomsVariants.Length)].Instantiate<Room>();
-        _rooms[currentPositionX, currentPositionY] = room;
-        AddChild(room);
-
+        currentRoom = _startRoom.Instantiate<Room>();
+        currentRoom.ChangeRoom += RoomOnChangeRoom;
+        AddChild(currentRoom);
     }
 
-
-    private Vector2I[] directions = { new(-1, 0), new(1, 0), new(0, -1), new(0, 1) };
-
-    private Vector2I GenerateDirection(Vector2I previousDirection)
-    {
-        while (true)
-        {
-            var roomDirection = directions[GD.Randi() % 4];
-
-            if (previousDirection + roomDirection == Vector2.Zero)
-            {
-                continue;
-            }
-
-            return roomDirection;
-        }
-    }
 }

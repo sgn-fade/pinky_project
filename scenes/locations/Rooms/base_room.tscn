@@ -620,8 +620,9 @@ metadata/_better_terrain = {
 "version": "0.2"
 }
 
-[node name="BaseRoom" type="Node2D"]
+[node name="BaseRoom" type="Node2D" node_paths=PackedStringArray("_playerSpawnPosition")]
 script = ExtResource("1_22yco")
+_playerSpawnPosition = NodePath("EnterPosition")
 
 [node name="tilemap" type="TileMap" parent="."]
 z_as_relative = false
@@ -634,3 +635,11 @@ layer_1/name = "floor"
 layer_1/y_sort_enabled = true
 layer_1/tile_data = PackedInt32Array(131068, 786435, 1, 196604, 786435, 1, 196605, 786435, 2, 196606, 786435, 3, 196607, 786435, 1, 131072, 786435, 2, 131073, 786435, 3, 131074, 786435, 2, 65538, 786435, 3, 65537, 786435, 0, 65536, 786435, 1, 131071, 786435, 1, 131070, 786435, 3, 131069, 786435, 3, 65532, 786435, 3, 65533, 786435, 3, 65534, 786435, 1, 65535, 786435, 2, 0, 786435, 2, 1, 786435, 3, 2, 786435, 1, -65534, 786435, 1, -65535, 786435, 1, -65536, 786435, 0, -1, 786435, 3, -2, 786435, 3, -3, 786435, 2, -4, 786435, 0, -65540, 786435, 2, -65539, 786435, 3, -65538, 786435, 3, -65537, 786435, 0, -131072, 786435, 2, -131071, 786435, 1, -131070, 786435, 2)
 layer_2/tile_data = PackedInt32Array()
+
+[node name="EnterPosition" type="Marker2D" parent="."]
+position = Vector2(-223, 24)
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(155, 28)
+
+[connection signal="body_entered" from="Exit" to="." method="OnExitEntered"]

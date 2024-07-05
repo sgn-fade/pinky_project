@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmbbj7fd6gu5j"]
+[gd_scene load_steps=4 format=3 uid="uid://dmbbj7fd6gu5j"]
 
 [ext_resource type="Script" path="res://scripts/locations/Dungeon.cs" id="1_fjb5u"]
 [ext_resource type="PackedScene" uid="uid://d4lvpbivayrd4" path="res://scenes/locations/Rooms/Room1.tscn" id="2_qampy"]
+[ext_resource type="PackedScene" uid="uid://dddmgqt5dc0f4" path="res://scenes/locations/Rooms/Room2.tscn" id="3_7wr0c"]
 
 [node name="dungeon" type="Node2D"]
 z_index = -20
@@ -9,5 +10,5 @@ z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_fjb5u")
 _width = 5
-_height = 5
-_roomsVariants = Array[PackedScene]([ExtResource("2_qampy"), ExtResource("2_qampy"), ExtResource("2_qampy")])
+_roomsVariants = Array[PackedScene]([ExtResource("2_qampy"), ExtResource("3_7wr0c")])
+_startRoom = ExtResource("2_qampy")
