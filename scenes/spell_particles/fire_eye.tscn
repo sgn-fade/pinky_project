@@ -297,30 +297,6 @@ tracks/7/keys = {
 "update": 1,
 "values": [1]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Hitbox:Damage")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Hitbox:statusDuration")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.0]
-}
 
 [sub_resource type="Animation" id="Animation_s7tu3"]
 length = 0.5
@@ -453,14 +429,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox:Damage")
+tracks/2/path = NodePath("Hitbox:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.3001, 0.4, 0.5, 0.6, 0.6001, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1001, 0.15, 0.2001, 0.25, 0.3001, 0.35, 0.4001, 0.45, 0.5, 0.55, 0.6001, 0.65, 0.7001, 0.75, 0.8, 0.85, 0.9, 0.9001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 3, 0, 0, 3, 0, 3, 0, 0, 3, 0, 3]
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ai1hb"]
@@ -560,7 +536,6 @@ texture_scale = 0.5
 z_as_relative = false
 position = Vector2(0, 11.9)
 scale = Vector2(1.96, 0.49)
-emitting = false
 amount = 150
 lifetime = 0.8
 speed_scale = 0.5
@@ -578,7 +553,6 @@ color_ramp = SubResource("Gradient_743te")
 z_as_relative = false
 position = Vector2(0, 7)
 scale = Vector2(1.4, 0.7)
-emitting = false
 amount = 200
 lifetime = 0.8
 speed_scale = 0.5
@@ -597,7 +571,7 @@ light_mask = 3
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("14")
 animation = &"searching"
-frame = 2
+frame = 4
 offset = Vector2(0, -15)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
