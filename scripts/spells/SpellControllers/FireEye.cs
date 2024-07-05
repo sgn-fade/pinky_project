@@ -7,8 +7,6 @@ namespace projectpinky.scripts.particles;
 
 public partial class FireEye : SpellController
 {
-    private Timer _damageTimer = new();
-    private float _tickTime = 1f;
     [Export] private AnimationTree animationTree;
     private AnimationNodeStateMachinePlayback stateMachine;
 
@@ -18,9 +16,6 @@ public partial class FireEye : SpellController
     public override void _Ready()
     {
         stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-
-        _damageTimer.OneShot = false;
-        AddChild(_damageTimer);
     }
 
     protected override void Delete()
