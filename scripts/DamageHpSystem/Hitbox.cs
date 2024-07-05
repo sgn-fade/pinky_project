@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[Icon("res://sprites/Editor/Icons/HitBoxIcon.png")]
 public partial class Hitbox : Area2D
 {
     [Signal]
