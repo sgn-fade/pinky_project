@@ -14,6 +14,7 @@ public partial class Dungeon : Node2D
     [Export] private PackedScene[] _roomsVariants;
     [Export] private PackedScene _startRoom;
     [Export] private PackedScene _endRoom;
+    [Export] private AnimationPlayer _transitionPlayer;
     private Room currentRoom;
 
     public override void _Ready()
@@ -21,8 +22,9 @@ public partial class Dungeon : Node2D
         CreateStartRoom();
     }
 
+    private void RoomOnChangeRoom() => _transitionPlayer.Play("Transition");
 
-    private void RoomOnChangeRoom()
+    public void ChangeRoom()
     {
         currentRoom.ChangeRoom -= RoomOnChangeRoom;
         RemoveChild(currentRoom);
@@ -31,7 +33,6 @@ public partial class Dungeon : Node2D
         AddChild(currentRoom);
         currentRoom.ChangeRoom += RoomOnChangeRoom;
     }
-
     private void CreateStartRoom()
     {
         currentRoom = _startRoom.Instantiate<Room>();
