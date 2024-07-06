@@ -10,7 +10,7 @@ namespace projectpinky.scripts.locations;
 public partial class Dungeon : Node2D
 {
     private PlayerData _player = Global.Player;
-    [Export] private int _width;
+    [Export] private int _roomCount;
     [Export] private PackedScene[] _roomsVariants;
     [Export] private PackedScene _startRoom;
     [Export] private PackedScene _endRoom;

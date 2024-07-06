@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://co2fcqj6dvc74"]
+[gd_scene load_steps=6 format=3 uid="uid://co2fcqj6dvc74"]
 
 [ext_resource type="Script" path="res://scripts/locations/Room.cs" id="1_22yco"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="3_1n3xy"]
 [ext_resource type="Texture2D" uid="uid://bi4fm5u7m0us5" path="res://sprites/tileset_3x3.png" id="4_u628j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m7fja"]
@@ -639,7 +640,25 @@ layer_2/tile_data = PackedInt32Array()
 [node name="EnterPosition" type="Marker2D" parent="."]
 position = Vector2(-223, 24)
 
+[node name="Label2" type="Label" parent="EnterPosition"]
+offset_left = -17.0
+offset_top = -8.0
+offset_right = 18.0
+offset_bottom = 7.0
+theme_override_colors/font_color = Color(5.17406e-06, 0.623413, 0.160019, 1)
+theme_override_fonts/font = ExtResource("3_1n3xy")
+text = "ENTER"
+
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2(155, 28)
+
+[node name="Label" type="Label" parent="Exit"]
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 15.0
+offset_bottom = 7.0
+theme_override_colors/font_color = Color(0.97111, 4.06705e-06, 1.92523e-06, 1)
+theme_override_fonts/font = ExtResource("3_1n3xy")
+text = "EXIT"
 
 [connection signal="body_entered" from="Exit" to="." method="OnExitEntered"]
