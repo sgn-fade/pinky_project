@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=3 uid="uid://dltfuc1qq5unu"]
 
 [ext_resource type="Script" path="res://scripts/hands/ShotgunHands.cs" id="1_xxrtd"]
-[ext_resource type="PackedScene" uid="uid://de8o17ggwef0m" path="res://scenes/spell_particles/shotgun_bullet.tscn" id="2_f2o57"]
+[ext_resource type="PackedScene" uid="uid://de8o17ggwef0m" path="res://scenes/spell_particles/bullet.tscn" id="2_f2o57"]
 [ext_resource type="Texture2D" uid="uid://dtgtopwekt2i5" path="res://scenes/hands/shotgun_animations.png" id="2_mul3i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fjs7"]

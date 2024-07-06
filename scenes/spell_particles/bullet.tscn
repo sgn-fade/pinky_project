@@ -1,26 +1,84 @@
-[gd_scene load_steps=5 format=3 uid="uid://1nrffkowg8y0"]
+[gd_scene load_steps=13 format=3 uid="uid://de8o17ggwef0m"]
 
 [ext_resource type="Script" path="res://scripts/spells/SpellControllers/Bullet.cs" id="1_t3fth"]
+[ext_resource type="Texture2D" uid="uid://cwre4dutpe25o" path="res://sprites/bullets.png" id="2_3vq4j"]
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://bs6klrlw501am" path="res://scenes/Components/MoveComponent.tscn" id="3_5t7hx"]
 [ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="3_7t8w7"]
 
 [sub_resource type="RectangleShape2D" id="8"]
 size = Vector2(6, 2)
 
-[node name="bullet" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8fgu"]
+atlas = ExtResource("2_3vq4j")
+region = Rect2(0, 0, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3071"]
+atlas = ExtResource("2_3vq4j")
+region = Rect2(0, 2, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tar7"]
+atlas = ExtResource("2_3vq4j")
+region = Rect2(0, 1, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf6s1"]
+atlas = ExtResource("2_3vq4j")
+region = Rect2(0, 3, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysu63"]
+atlas = ExtResource("2_3vq4j")
+region = Rect2(0, 4, 5, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wxubl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8fgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3071")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tar7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf6s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysu63")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="shotgun_bullet" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent")]
+z_as_relative = false
 script = ExtResource("1_t3fth")
+moveComponent = NodePath("MoveComponent")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.13687e-13, 0)
+scale = Vector2(0.480469, 0.150488)
 color = Color(0.921569, 0.596078, 0.0901961, 0.45098)
-energy = 0.4
+energy = 0.1
 texture = ExtResource("3")
 offset = Vector2(0, 4.105)
 texture_scale = 0.1
 
 [node name="Hitbox" parent="." instance=ExtResource("3_7t8w7")]
+collision_mask = 4
+Damage = 1
 
 [node name="shape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(3, 0)
 shape = SubResource("8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wxubl")
+
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("3_5t7hx")]
+MoveTarget = NodePath("..")
+Speed = 200
 
 [connection signal="EntityEntered" from="Hitbox" to="." method="OnEntityEntered"]
