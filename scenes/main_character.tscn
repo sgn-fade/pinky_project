@@ -1,11 +1,10 @@
-[gd_scene load_steps=69 format=3 uid="uid://15vutrjv1g2g"]
+[gd_scene load_steps=67 format=3 uid="uid://15vutrjv1g2g"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_ijsvk"]
 [ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/Player_animation/body/clear_player.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://byjyfa0cd7bnk" path="res://sprites/Player_animation/body/player_move_back.png" id="4_c1e3w"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="10_n7f1l"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="11"]
-[ext_resource type="PackedScene" uid="uid://c5f2bnxuw7gcg" path="res://scenes/Components/InteractComponent.tscn" id="11_7d76b"]
 [ext_resource type="Script" path="res://scripts/hands/HandsManager.cs" id="12_q5bt1"]
 [ext_resource type="Texture2D" uid="uid://cr3d0twg7nxse" path="res://sprites/character_fire_teleport_start_player.png" id="14"]
 [ext_resource type="PackedScene" uid="uid://dltfuc1qq5unu" path="res://scenes/hands/shotgun_hands.tscn" id="14_cherd"]
@@ -426,17 +425,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="107"]
 size = Vector2(11.5384, 14.1935)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vw4gd"]
-radius = 18.4756
-
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_hands", "_animatedSprite", "playerInteract")]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_hands", "_animatedSprite")]
 z_as_relative = false
 collision_layer = 33
 collision_mask = 5
 script = ExtResource("1_ijsvk")
 _hands = NodePath("hands")
 _animatedSprite = NodePath("aSprite")
-playerInteract = NodePath("InteractComponent")
 
 [node name="aSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
@@ -477,13 +472,4 @@ z_as_relative = false
 scale = Vector2(0.5, 0.388)
 texture = ExtResource("11")
 
-[node name="InteractComponent" parent="." instance=ExtResource("11_7d76b")]
-
-[node name="Collision_character3" type="CollisionShape2D" parent="InteractComponent"]
-position = Vector2(-1.15002, -1.2375)
-scale = Vector2(1.69, 0.600625)
-shape = SubResource("CircleShape2D_vw4gd")
-
 [connection signal="EntityTakeDamage" from="Hurtbox" to="." method="OnTakeDamage"]
-[connection signal="DeleteNearbyObject" from="InteractComponent" to="." method="DeleteFromClosestObjects"]
-[connection signal="NewNearbyObject" from="InteractComponent" to="." method="AddNewClosestObjects"]

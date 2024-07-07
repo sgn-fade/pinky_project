@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5f2bnxuw7gcg"]
+[gd_scene load_steps=2 format=3 uid="uid://bnfswa7ripgmy"]
 
-[ext_resource type="Script" path="res://scripts/utillComponents/InteractComponent.cs" id="1_xppch"]
+[sub_resource type="CSharpScript" id="CSharpScript_n5bep"]
+script/source = "sing Godot;
+using System;
+using projectpinky.scripts.Globals;
+
+namespace projectpinky.scripts.utillComponents;
+
+public partial class InteractComponent : Area2D
+{
+	[Signal]
+	public delegate void NewNearbyObjectEventHandler(InteractableComponent obj);
+
+	[Signal]
+	public delegate void DeleteNearbyObjectEventHandler(InteractableComponent obj);
+
+	public void NewNearbyInteract(InteractableComponent obj)
+	{
+		EmitSignal(SignalName.NewNearbyObject, obj);
+	}
+	public void DeleteNearbyInteract(InteractableComponent obj)
+	{
+		EmitSignal(SignalName.DeleteNearbyObject, obj);
+	}
+}
+"
 
 [node name="InteractComponent" type="Area2D"]
-script = ExtResource("1_xppch")
+script = SubResource("CSharpScript_n5bep")

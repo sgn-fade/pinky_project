@@ -5,5 +5,5 @@
 [node name="InteractableBox" type="Area2D"]
 script = ExtResource("1_8hvkd")
 
-[connection signal="area_entered" from="." to="." method="OnBodyEntered"]
-[connection signal="area_exited" from="." to="." method="OnBodyExited"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

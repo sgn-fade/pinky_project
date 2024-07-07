@@ -21,12 +21,13 @@ public partial class Player : CharacterBody2D
 	private PlayerData _player = Global.Player;
 
 	[Export] private Hurtbox playerHp;
-	[Export] private InteractComponent playerInteract;
 	public delegate void PlayerHpChanged(int hp, int maxHp);
 	public static event PlayerHpChanged playerHpChanged;
 	public delegate void PlayerDashEventHandler();
 	public static event PlayerDashEventHandler playerDashEventHandler;
 	public HandsManager GetHands() => _hands;
+	
+	//todo vot tut sdelai kak pravilno, ya ne ponyal every time error
 	private List<InteractableComponent> _closestObjects = new List<InteractableComponent>();
 
 	public enum States
@@ -74,11 +75,7 @@ public partial class Player : CharacterBody2D
 		}
 		else if (Input.IsActionJustPressed("E"))
 		{
-			if (_closestObjects.Count > 0)
-			{
-				GD.Print(GetClosestObjects());
-				FindClosestObject().Interact();
-			}
+			FindClosestObject()?.Interact();
 		}
 
 		Rotating(); 
@@ -153,7 +150,7 @@ public partial class Player : CharacterBody2D
 				}
 			}
 		}
-
+		
 		return closestObject;
 	}
 	

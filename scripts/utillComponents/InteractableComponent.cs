@@ -9,6 +9,9 @@ public partial class InteractableComponent : Area2D
 {
 	[Signal]
 	public delegate void InteractObjectEventHandler();
+	[Signal]
+	public delegate void EntityEnteredEventHandler();
+	
 	public void Interact()
 	{
 		EmitSignal(SignalName.InteractObject);
@@ -16,16 +19,20 @@ public partial class InteractableComponent : Area2D
 	
 	private void OnBodyEntered(Node2D body)
 	{
-		if (body is InteractComponent component)
+		if (body is Player player)
 		{
-			component.NewNearbyInteract(this);
+			GD.Print("Player in");
+			player.AddNewClosestObjects(this);
 		}
+		EmitSignal(SignalName.EntityEntered);
 	}
 	private void OnBodyExited(Node2D body)
 	{
-		if (body is InteractComponent component)
+		if (body is Player player)
 		{
-			component.DeleteNearbyInteract(this);
+			GD.Print("Player out");
+			player.DeleteFromClosestObjects(this);
 		}
+		EmitSignal(SignalName.EntityEntered);
 	}
 }
