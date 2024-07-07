@@ -14,9 +14,8 @@ public partial class ItemDrop : Area2D
 
 	private void AddItem()
 	{
-		//todo
+		animator.Play("delete");
+		Global.Player.AddItem(dropList[GD.Randi() % dropList.Length]);
 		QueueFree();
-		//animator.Play("delete");
-		Global.Player.AddItem((new Spell(dropList[GD.Randi() % dropList.Length])).Data);
 	}
 }

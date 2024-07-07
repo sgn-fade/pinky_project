@@ -26,9 +26,9 @@ public partial class Player : CharacterBody2D
 	public delegate void PlayerDashEventHandler();
 	public static event PlayerDashEventHandler playerDashEventHandler;
 	public HandsManager GetHands() => _hands;
-	
+
 	//todo vot tut sdelai kak pravilno, ya ne ponyal every time error
-	private List<InteractableComponent> _closestObjects = new List<InteractableComponent>();
+	private List<InteractableComponent> _objectNearby = new List<InteractableComponent>();
 
 	public enum States
 	{
@@ -78,7 +78,7 @@ public partial class Player : CharacterBody2D
 			FindClosestObject()?.Interact();
 		}
 
-		Rotating(); 
+		Rotating();
 		_input.X = Input.GetAxis("ui_left", "ui_right");
 		_input.Y = Input.GetAxis("ui_up", "ui_down");
 
@@ -133,28 +133,25 @@ public partial class Player : CharacterBody2D
 	{
 		GlobalPosition = pos;
 	}
-	
+
 	public InteractableComponent FindClosestObject()
 	{
 		InteractableComponent closestObject = null;
-		float closestDistance = float.MaxValue;
-		foreach (InteractableComponent obj in _closestObjects)
+		var closestDistance = float.MaxValue;
+		foreach (var obj in _objectNearby)
 		{
-			if (obj != null)
-			{
-				float distance = (obj.GlobalPosition - GlobalPosition).Length();
+				var distance = (obj.GlobalPosition - GlobalPosition).Length();
 				if (distance < closestDistance)
 				{
 					closestDistance = distance;
 					closestObject = obj;
 				}
-			}
 		}
-		
+
 		return closestObject;
 	}
-	
-	public List<InteractableComponent> GetClosestObjects() => _closestObjects;
-	public void AddNewClosestObjects(InteractableComponent obj) => _closestObjects.Add(obj);
-	public void DeleteFromClosestObjects(InteractableComponent obj) => _closestObjects.Remove(obj);
+
+	public List<InteractableComponent> GetClosestObjects() => _objectNearby;
+	public void AddNewClosestObjects(InteractableComponent obj) => _objectNearby.Add(obj);
+	public void DeleteFromClosestObjects(InteractableComponent obj) => _objectNearby.Remove(obj);
 }

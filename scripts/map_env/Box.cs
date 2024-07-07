@@ -5,35 +5,22 @@ namespace projectpinky.scripts.map_env;
 
 public partial class Box : StaticBody2D
 {
-    private bool playerInArea;
-
     [Export] private Sprite2D buttonIndicator;
 
-    public override void _Input(InputEvent @event)
+    public void Interact()
     {
-        if (Input.IsActionJustPressed("E") && playerInArea)
-        {
-            SetProcess(false);
-            var box = GetNode<AnimatedSprite2D>("box");
-            box.Frame = 0;
-            box.Play("opening");
-        }
-    }
-    private void OnBodyEntered(Node2D body)
-    {
-        ChangeState(true, body);
-    }
-    private void OnBodyExited(Node2D body)
-    {
-        ChangeState(false, body);
-
+        var box = GetNode<AnimatedSprite2D>("box");
+        box.Frame = 0;
+        box.Play("opening");
     }
 
-    private void ChangeState(bool state, Node2D body)
+    public void PlayerEntered()
     {
-        if (body == Global.Player.GetBody())
-        {
-            buttonIndicator.Visible = playerInArea = state;
-        }
+        buttonIndicator.Visible = true;
+    }
+
+    public void PlayerExit()
+    {
+        buttonIndicator.Visible = false;
     }
 }
