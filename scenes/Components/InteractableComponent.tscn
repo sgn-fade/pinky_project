@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbp5ho3ckqobn"]
+
+[ext_resource type="Script" path="res://scripts/utillComponents/InteractableComponent.cs" id="1_8hvkd"]
+
+[node name="InteractableBox" type="Area2D"]
+script = ExtResource("1_8hvkd")
+
+[connection signal="area_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="area_exited" from="." to="." method="OnBodyExited"]

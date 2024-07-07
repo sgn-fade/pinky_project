@@ -83,20 +83,6 @@ public partial class PlayerData : Node2D
     {
         weapon = newWeapon;
     }
-    public Node GetClosestObject() => closestObject;
-    public bool SetClosestObject(Node2D obj)
-    {
-        if (
-            obj == null
-            || closestObject == null
-            || obj.GlobalPosition - GetPosition() < closestObject.GlobalPosition - GetPosition()
-            )
-        {
-            closestObject = obj;
-            return true;
-        }
-        return false;
-    }
     public void PlayAnimation(string animationName)
     {
         player.GetHands().PlayAnimation(animationName);

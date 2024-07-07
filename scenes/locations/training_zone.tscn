@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b28r3fg3w2gov"]
+[gd_scene load_steps=4 format=3 uid="uid://b28r3fg3w2gov"]
 
 [ext_resource type="Texture2D" uid="uid://bjmfnd16r85ne" path="res://sprites/locations/TrainRoom.png" id="1_yk0ct"]
 [ext_resource type="PackedScene" uid="uid://b5001tqqps3vi" path="res://scenes/enemies/training_mannequin.tscn" id="2_n6g6e"]
+[ext_resource type="PackedScene" uid="uid://dai8f5grr0xq" path="res://scenes/drops/weapon_drop.tscn" id="3_wqbk5"]
 
 [node name="TrainingZone" type="Node2D"]
 
@@ -35,3 +36,14 @@ position = Vector2(-237, 42)
 
 [node name="TrainingMannequin3" parent="." instance=ExtResource("2_n6g6e")]
 position = Vector2(-154, 151)
+
+[node name="weapon_drop" parent="." instance=ExtResource("3_wqbk5")]
+position = Vector2(-46, -14)
+
+[node name="weapon_drop2" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("3_wqbk5")]
+position = Vector2(-18, -39)
+animator = NodePath("../weapon_drop/AnimationPlayer")
+
+[node name="weapon_drop3" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("3_wqbk5")]
+position = Vector2(-59, -39)
+animator = NodePath("../weapon_drop/AnimationPlayer")
