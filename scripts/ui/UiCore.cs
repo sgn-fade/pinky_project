@@ -13,10 +13,11 @@ public partial class UiCore : CanvasLayer
 	[Export] private Crosshair crosshair;
 
 	private Control currentUi;
-	private PlayerData player;
+	private PlayerLoader player;
 
 	public override void _Ready()
 	{
+		SetProcess(false);
 		player = Global.Player;
 		currentUi = gameUi;
 		//SwitchUi(gameUi, "game");
@@ -24,9 +25,6 @@ public partial class UiCore : CanvasLayer
 
 	public override void _Process(double delta)
 	{
-		if (!player.IsReady())
-			return;
-
 		if (Input.IsActionJustPressed("I"))
 		{
 			if (currentUi != inventoryUi)

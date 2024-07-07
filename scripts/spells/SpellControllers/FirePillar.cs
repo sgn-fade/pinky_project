@@ -14,6 +14,10 @@ public partial class FirePillar : SpellController
     }
 
     protected override void Delete() => QueueFree();
+    public override string GetAnim()
+    {
+        throw new System.NotImplementedException();
+    }
 
 
     private void OnEntityEntered() => QueueFree();

@@ -5,13 +5,21 @@ namespace projectpinky.scripts.hands;
 
 using Godot;
 
-public partial class SwordHands : MeleeHands
+public partial class SwordHands : Hands
 {
     private string[] comboNames = { "hit_1", "hit_2", "hit_3" };
     private int comboCount;
     private Timer comboTimer = new();
-    private PlayerData player = Global.Player;
 
+    public override void PlayAnimation(string animationName)
+    {
+
+    }
+
+    public enum Animations
+    {
+        Hit,
+    }
     public override void _Ready()
     {
         base._Ready();
@@ -21,18 +29,15 @@ public partial class SwordHands : MeleeHands
 
     public void Combos()
     {
-        if (comboTimer.TimeLeft <= 0)
-        {
-            comboCount = 0;
-        }
+        if (comboTimer.TimeLeft <= 0)comboCount = 0;
         comboCount++;
         Hit();
     }
     private void Hit()
     {
         PlayAnimation(comboNames[comboCount]);
-        player.SetState(Player.States.Attack);
+        Player.CurrentState = Player.States.Attack;
         comboTimer.Start(1);
-        player.SetState(Player.States.Active);
+        Player.CurrentState = Player.States.Active;
     }
 }

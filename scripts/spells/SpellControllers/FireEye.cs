@@ -27,6 +27,11 @@ public partial class FireEye : SpellController
         stateMachine.Travel("closing");
     }
 
+    public override string GetAnim()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private async void DealDamage(Enemy enemy)
     {
         while (_enemyInside.Contains(enemy))

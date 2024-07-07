@@ -5,7 +5,7 @@ namespace projectpinky.scripts.hands;
 
 public partial class ClearHands : Hands
 {
-    private AnimatedSprite2D sprite;
+    [Export] private AnimatedSprite2D sprite;
 
     public override void _Ready()
     {

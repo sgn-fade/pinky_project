@@ -7,7 +7,7 @@ namespace projectpinky.scripts.spells;
 public class Spell
 {
     public SpellData Data { get; set; }
-    private PlayerData player;
+    private PlayerLoader player;
     public double TimeSpend { get; set; }
 
     public Spell(SpellData data)
@@ -15,17 +15,7 @@ public class Spell
         Data = data;
         player = Global.Player;
     }
-    public void Cast()
-    {
-        if (player.SetMana(-Data.ManaCost) && GetReady())
-        {
-            if (Data.Particle != null)
-            {
-                Global.World.AddEntity(Data.Particle.Instantiate());
-            }
-            Cooldown();
-        }
-    }
+
 
     public bool GetReady()
     {

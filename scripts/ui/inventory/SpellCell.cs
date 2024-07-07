@@ -41,6 +41,6 @@ public partial class SpellCell : InventoryCell
     public new void Clear()
     {
         base.Clear();
-        Global.Player.GetWeapon().RemoveSpell(_cellIndex);
+        //Global.Player.GetWeapon().RemoveSpell(_cellIndex);
     }
 }

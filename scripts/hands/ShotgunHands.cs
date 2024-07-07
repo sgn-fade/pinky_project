@@ -7,7 +7,7 @@ using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.hands;
 
-public partial class ShotgunHands : GunHands
+public partial class ShotgunHands : Hands
 {
     [Export] private int ammo = 4;
     [Export] private double shootCooldown = 0.5;
@@ -19,6 +19,11 @@ public partial class ShotgunHands : GunHands
     [Export] private PackedScene bullet;
 
     private AnimationNodeStateMachinePlayback stateMachine;
+
+    public override void PlayAnimation(string animationName)
+    {
+        animationPlayer.Play(animationName);
+    }
 
     public override void _Ready()
     {
@@ -56,6 +61,7 @@ public partial class ShotgunHands : GunHands
         for (int i = 0; i < 1; i++)
         {
             var bulletInstance = bullet.Instantiate<Bullet>();
+            bulletInstance.Position = Player.GlobalPosition;
             Global.World.GetWorld().AddChild(bulletInstance);
         }
     }

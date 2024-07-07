@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c44vmspqdwaev"]
+[gd_scene load_steps=9 format=3 uid="uid://c44vmspqdwaev"]
 
-[ext_resource type="PackedScene" uid="uid://mv3dsr8tvo8v" path="res://scenes/hands/melee_hands.tscn" id="1_eajru"]
 [ext_resource type="Script" path="res://scripts/hands/SwordHands.cs" id="2_c7jsx"]
 [ext_resource type="Texture2D" uid="uid://cg3d2gmhtn8xy" path="res://sprites/weapons/melee/goblin_sword.png" id="3_gvgvo"]
+[ext_resource type="Texture2D" uid="uid://bfs7ebjdubjnx" path="res://sprites/Player_animation/hands/one_player_hand.png" id="3_h2ark"]
 
 [sub_resource type="Animation" id="Animation_a6y6i"]
 length = 0.001
@@ -166,45 +166,52 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_e2ted"]
-resource_name = "idle"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n38yi"]
 _data = {
 "RESET": SubResource("Animation_a6y6i"),
 "hit_1": SubResource("Animation_b1w60"),
 "hit_2": SubResource("Animation_tvbon"),
-"hit_3": SubResource("Animation_p1ctk"),
-"idle": SubResource("Animation_e2ted")
+"hit_3": SubResource("Animation_p1ctk")
 }
 
-[node name="melee_hands" instance=ExtResource("1_eajru")]
+[node name="melee_hands" type="Node2D"]
+position = Vector2(-1, -3)
 script = ExtResource("2_c7jsx")
 
-[node name="hands" parent="." index="1"]
+[node name="hands" type="Node2D" parent="."]
 position = Vector2(-1, 1)
 rotation = -5.89661
 
-[node name="sword" type="StaticBody2D" parent="hands" index="0"]
+[node name="sword" type="StaticBody2D" parent="hands"]
 
-[node name="sprite" type="Sprite2D" parent="hands/sword" index="0"]
+[node name="sprite" type="Sprite2D" parent="hands/sword"]
 position = Vector2(4.11601, -1.74885)
 rotation = 0.723425
 texture = ExtResource("3_gvgvo")
 offset = Vector2(4.785, -4.775)
 
-[node name="area" type="Area2D" parent="hands/sword" index="1"]
+[node name="area" type="Area2D" parent="hands/sword"]
 collision_layer = 0
 collision_mask = 4
 monitoring = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hands/sword/area" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hands/sword/area"]
 visible = false
 position = Vector2(9.87622, -1.86019)
 rotation = -0.0133168
 polygon = PackedVector2Array(-3.5449, -3.98212, 13.5413, -4.22961, 19.0891, -1.03248, 13.8669, 2.08656, -2.85465, 3.2652)
 
-[node name="anim" parent="." index="2"]
+[node name="hand2" type="Sprite2D" parent="hands"]
+position = Vector2(1.66058, -1.13942)
+rotation = 3.0751
+texture = ExtResource("3_h2ark")
+
+[node name="hand1" type="Sprite2D" parent="hands"]
+position = Vector2(3.86058, -1.33942)
+rotation = 3.0751
+texture = ExtResource("3_h2ark")
+
+[node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_n38yi")
 }

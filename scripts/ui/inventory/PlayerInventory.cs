@@ -46,7 +46,7 @@ public partial class PlayerInventory : Control
 
     private void FIllSpellCells()
     {
-        cells = Global.Player.GetWeapon().GetCells();
+        //cells = Global.Player.GetWeapon().GetCells();
         var childrenCells = GetNode("weapon/cell").GetChildren();
 
         foreach (var cell in cells)

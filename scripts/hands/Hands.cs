@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Godot;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.particles;
+using projectpinky.scripts.player;
 using projectpinky.scripts.spells;
 using projectpinky.scripts.weapons;
 
@@ -8,19 +10,20 @@ namespace projectpinky.scripts.hands;
 
 public abstract partial class Hands : Node2D
 {
-    private Weapon _playerWeapon;
-
+    public Player Player { get; set; }
     public Dictionary<string, Spell> spellsButtons = new();
+    public SpellController ParticleToCast { get; set; }
     public abstract void PlayAnimation(string animationName);
 
     public override void _Ready()
     {
+        var cells = Player.PlayerData.Weapon.GetCells();
+        var index = 0;
         foreach (var button in Options.ButtonsBinds)
         {
-            spellsButtons.Add(button.Value, null);
+            spellsButtons.Add(button.Value, cells[index].Spell);
+            index++;
         }
-
-        _playerWeapon = Global.Player.GetWeapon();
     }
 
     public override void _Input(InputEvent @event)
@@ -29,9 +32,27 @@ public abstract partial class Hands : Node2D
         {
             if (Input.IsActionJustPressed(kvp.Key) && kvp.Value != null)
             {
-                kvp.Value.Cast();
+                CastSpell(kvp.Value);
                 return;
             }
         }
+    }
+    protected void CastSpell(Spell spell)
+    {
+        if (Player.PlayerData.SetMana(-spell.Data.ManaCost) && spell.GetReady())
+        {
+            if (spell.Data.Particle != null)
+            {
+                ParticleToCast = spell.Data.Particle.Instantiate<SpellController>();
+                PlayAnimation(ParticleToCast.GetAnim());
+            }
+            spell.Cooldown();
+        }
+    }
+
+    protected void CreateSpellParticle()
+    {
+        ParticleToCast.GlobalPosition = Player.GlobalPosition;
+        Global.World.AddEntity(ParticleToCast);
     }
 }

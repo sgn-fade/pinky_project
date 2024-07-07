@@ -44,7 +44,7 @@ public partial class WeaponCell : InventoryCell
         Object = null;
         //todo event bus
         //EventBus.EmitSignal("switch_hands_stance", null);
-        Global.Player.SetWeapon(null);
+        //Global.Player.SetWeapon(null);
     }
 
     public void _OnTextureButtonPressed()

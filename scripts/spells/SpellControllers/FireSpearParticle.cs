@@ -15,6 +15,10 @@ public partial class FireSpearParticle : SpellController
     }
 
     protected override void Delete() => QueueFree();
+    public override string GetAnim()
+    {
+        throw new NotImplementedException();
+    }
 
     private void OnEntityEntered() => QueueFree();
 

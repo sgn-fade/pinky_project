@@ -9,7 +9,6 @@ namespace projectpinky.scripts.spells;
 [GlobalClass] [Tool]
 public partial class SpellData : InventoryItem
 {
-    [Export] public string AnimationName { get; set; }
     [Export] public Rarities Rarity { get; set; }
     [Export] public float CooldownTime { get; set; }
     [Export] public int ManaCost { get; set; }

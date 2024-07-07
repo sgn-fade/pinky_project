@@ -10,7 +10,7 @@ public partial class LocationManager : Node2D
 	[Export] private PackedScene trainZone;
 
 	private Node location;
-	private PlayerData player = Global.Player;
+	private PlayerLoader player = Global.Player;
 
 	public enum Locations
 	{

@@ -7,12 +7,10 @@ using projectpinky.scripts.weapons;
 
 namespace projectpinky.scripts.Globals;
 
-public partial class PlayerData : Node2D
+public partial class PlayerLoader : Node2D
 {
-	private int mana = 30;
-	private int maxMana = 30;
+
 	private int coins;
-	private bool canSmite;
 	private Node2D closestObject;
 	private int magicDamage = 1;
 	public float DashCooldown { get; set; } = 4f;
@@ -21,52 +19,22 @@ public partial class PlayerData : Node2D
 	public List<InventoryItem> playerInventory = new();
 	public UiCore View;
 	private Player player;
-	private Weapon weapon;
 	private EventBus eventBus = Global.EventBus;
 
-
-	public delegate void PlayerManaChanged(int mana, int maxMana);
-	public static event PlayerManaChanged playerManaChanged;
 
 	public override void _Ready()
 	{
 		View = GetNode<UiCore>("/root/World/Ui");
 	}
 
-	public void SetState(Player.States state)
-	{
-		player.SetState(state);
-	}
 
-	public Player.States GetState()
-	{
-		return player.GetState();
-	}
 
-	public int GetMana() => mana;
-	public int GetMaxMana() => maxMana;
 	public int GetMoney() => coins;
 	public int GetMagicDamage() => magicDamage;
-	public bool IsReady() => player != null;
 	public Player GetBody() => player;
 	public int GetZIndex() => player.ZIndex;
-	public Weapon GetWeapon() => weapon;
 
-    public bool SetMana(int value)
-    {
-        if (GetMana() < Mathf.Abs(value))
-        {
-            return false;
-        }
-        mana += value;
-        playerManaChanged?.Invoke(mana, maxMana);
-        return true;
-    }
-    public void SetMaxMana(int value)
-    {
-        maxMana = value;
-        playerManaChanged?.Invoke(mana, maxMana);
-    }
+
     public void SetMagicDamage(int newMagicDamage)
     {
         magicDamage = newMagicDamage;
@@ -78,10 +46,6 @@ public partial class PlayerData : Node2D
     public void SetPosition(Vector2 position)
     {
         player.GlobalPosition = position;
-    }
-    public void SetWeapon(Weapon newWeapon)
-    {
-        weapon = newWeapon;
     }
     public Node GetClosestObject() => closestObject;
     public bool SetClosestObject(Node2D obj)
@@ -96,10 +60,6 @@ public partial class PlayerData : Node2D
             return true;
         }
         return false;
-    }
-    public void PlayAnimation(string animationName)
-    {
-        player.GetHands().PlayAnimation(animationName);
     }
     public void SetMoney(int value)
     {
@@ -118,6 +78,7 @@ public partial class PlayerData : Node2D
     {
 	    player = playerScene.Instantiate<Player>();
         Global.World.AddEntity(player);
+        View.SetProcess(true);
     }
 
 	public void AddItem(InventoryItem item)
