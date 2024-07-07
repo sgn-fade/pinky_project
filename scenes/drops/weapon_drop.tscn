@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://5mcx1iyr6t5j" path="res://scripts/spells/SpellData/FireEye.tres" id="5_mc5fx"]
 [ext_resource type="Resource" uid="uid://hsk8wfqmbamn" path="res://scripts/spells/SpellData/FirePillar.tres" id="6_67erw"]
 [ext_resource type="Resource" uid="uid://iudko4u3wygw" path="res://scripts/spells/SpellData/FireSpear.tres" id="7_x3x84"]
-[ext_resource type="PackedScene" uid="uid://cbp5ho3ckqobn" path="res://scenes/Components/InteractableComponent.tscn" id="8_d7lor"]
+[ext_resource type="PackedScene" path="res://scenes/Components/InteractableComponent.tscn" id="8_d7lor"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 6.0
