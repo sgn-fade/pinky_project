@@ -10,7 +10,7 @@ namespace projectpinky.scripts.drops;
 public partial class ItemDrop : Area2D
 {
 
-    [Export] private SpellData[] dropList = new SpellData[1];
+    [Export] private Spell[] dropList = new Spell[1];
     [Export] private AnimationPlayer animator;
 
     private bool _playerInArea;
@@ -25,7 +25,7 @@ public partial class ItemDrop : Area2D
 
     public void AddItem()
     {
-        Global.Player.AddItem((new Spell(dropList[GD.Randi() % dropList.Length])).Data);
+        Global.Player.AddItem(dropList[GD.Randi() % dropList.Length]);
     }
 
     public void OnBodyEntered(Node2D body)

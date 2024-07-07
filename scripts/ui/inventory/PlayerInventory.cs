@@ -57,7 +57,7 @@ public partial class PlayerInventory : Control
             if (cell.Spell != null)
             {
                 var item = inventoryObject.Instantiate<InventorySlotObject>();
-                item.SetData(cell.Spell.Data);
+                item.SetData(cell.Spell);
                 item.Position = childrenCell.Position;
                 GetNode<Node>($"/root/Main/$item_grid/items").AddChild(item);
                 item.SetCell(childrenCell);

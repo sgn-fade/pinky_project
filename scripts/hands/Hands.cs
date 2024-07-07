@@ -39,11 +39,11 @@ public abstract partial class Hands : Node2D
     }
     protected void CastSpell(Spell spell)
     {
-        if (Player.PlayerData.SetMana(-spell.Data.ManaCost) && spell.GetReady())
+        if (Player.PlayerData.SetMana(-spell.ManaCost) && spell.GetReady())
         {
-            if (spell.Data.Particle != null)
+            if (spell.Particle != null)
             {
-                ParticleToCast = spell.Data.Particle.Instantiate<SpellController>();
+                ParticleToCast = spell.Particle.Instantiate<SpellController>();
                 PlayAnimation(ParticleToCast.GetAnim());
             }
             spell.Cooldown();

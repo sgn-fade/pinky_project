@@ -17,9 +17,9 @@ public partial class SpellCooldownBar : TextureProgressBar
 
     public void LinkSpell(Spell newSpell)
     {
-        MaxValue = newSpell.GetMaxCooldownTime() * 1000;
-        Value = newSpell.GetCooldownTime() * 1000;
-        TextureProgress = newSpell.Data.Icon;
+        MaxValue = newSpell.CooldownTime* 1000;
+        Value = newSpell.TimeSpend * 1000;
+        TextureProgress = newSpell.Icon;
     }
 
     public void UnlinkSpell()
