@@ -50,7 +50,7 @@ public partial class Coin : CharacterBody2D
 
         if (!((Global.Player.GetPosition() - GlobalPosition).Length() < 7)) return;
 
-        Global.Player.SetMoney(1);
+        //Global.Player.SetMoney(1);
         QueueFree();
     }
 }

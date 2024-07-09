@@ -27,7 +27,7 @@ public partial class Player : CharacterBody2D
 
     public static event PlayerHpChanged playerHpChanged;
 
-    public delegate void PlayerDashEventHandler();
+    public delegate void PlayerDashEventHandler(float cooldownTime);
 
     public static event PlayerDashEventHandler playerDashEventHandler;
     public PlayerView GetHands() => _hands;
@@ -65,9 +65,9 @@ public partial class Player : CharacterBody2D
 
     private void Dash()
     {
-        playerDashEventHandler?.Invoke();
+        playerDashEventHandler?.Invoke(PlayerData.DashCooldown);
         _dashReady = false;
-        GetTree().CreateTimer(Global.Player.DashCooldown).Timeout += () => { _dashReady = true; };
+        GetTree().CreateTimer(PlayerData.DashCooldown).Timeout += () => { _dashReady = true; };
 
         Velocity *= _dashSpeedConst;
         GetTree().CreateTimer(0.09f).Timeout += () => { Velocity /= _dashSpeedConst; };

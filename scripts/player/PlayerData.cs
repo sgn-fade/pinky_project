@@ -10,6 +10,7 @@ public class PlayerData
     public Weapon Weapon { get; set; }
     private int mana = 30;
     private int maxMana = 30;
+    public float DashCooldown { get; set; } = 4f;
 
     public int GetMana() => mana;
     public int GetMaxMana() => maxMana;

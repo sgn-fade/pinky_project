@@ -27,9 +27,9 @@ public partial class DashIndicator : TextureProgressBar
         SetProcess(false);
     }
 
-    public void StartCooldown()
+    public void StartCooldown(float cooldownTime)
     {
-        MaxValue = Global.Player.DashCooldown * 1000;
+        MaxValue = cooldownTime * 1000;
         Value = 0;
         SetProcess(true);
     }

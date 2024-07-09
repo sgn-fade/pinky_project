@@ -11,7 +11,7 @@ public partial class FireSpearParticle : SpellController
 
     public override void _Ready()
     {
-        moveComponent.Init(GetGlobalMousePosition(), Global.Player.GetPosition());
+        moveComponent.Init(GetGlobalMousePosition(), GlobalPosition);
     }
 
     protected override void Delete() => QueueFree();

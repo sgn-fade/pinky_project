@@ -1,4 +1,5 @@
 using Godot;
+using projectpinky.scripts.player;
 
 namespace projectpinky.scripts.Globals;
 

@@ -10,10 +10,7 @@ namespace projectpinky.scripts.Globals;
 public partial class PlayerLoader : Node2D
 {
 
-	private int coins;
 	private Node2D closestObject;
-	private int magicDamage = 1;
-	public float DashCooldown { get; set; } = 4f;
 
 	private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://scenes/main_character.tscn");
 	public List<InventoryItem> playerInventory = new();
@@ -27,18 +24,9 @@ public partial class PlayerLoader : Node2D
 		View = GetNode<UiCore>("/root/World/Ui");
 	}
 
-
-
-	public int GetMoney() => coins;
-	public int GetMagicDamage() => magicDamage;
 	public Player GetBody() => player;
-	public int GetZIndex() => player.ZIndex;
 
 
-    public void SetMagicDamage(int newMagicDamage)
-    {
-        magicDamage = newMagicDamage;
-    }
     public Vector2 GetPosition()
     {
         return player?.GlobalPosition ?? Vector2.Zero;
@@ -60,13 +48,6 @@ public partial class PlayerLoader : Node2D
             return true;
         }
         return false;
-    }
-    public void SetMoney(int value)
-    {
-        if (value > 0)
-        {
-            coins += value;
-        }
     }
     public void Restart()
     {

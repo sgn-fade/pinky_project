@@ -15,7 +15,6 @@ public partial class Room : Node2D
 
     private void OnExitEntered(Node2D body)
     {
-
         if (body is Player) EmitSignal(SignalName.ChangeRoom);
     }
 }

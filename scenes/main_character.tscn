@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://byjyfa0cd7bnk" path="res://sprites/Player_animation/body/player_move_back.png" id="4_c1e3w"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="10_n7f1l"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="11"]
-[ext_resource type="Script" path="res://scripts/hands/PlayerView.cs" id="12_q5bt1"]
+[ext_resource type="Script" path="res://scripts/player/PlayerView.cs" id="12_q5bt1"]
 [ext_resource type="PackedScene" uid="uid://dltfuc1qq5unu" path="res://scenes/hands/shotgun_hands.tscn" id="14_cherd"]
+
 
 [sub_resource type="AtlasTexture" id="108"]
 atlas = ExtResource("2")
