@@ -13,6 +13,7 @@ public partial class GoblinMage : Goblin
     private Timer attackCooldownTimer = new Timer();
     private double attackCooldown = 2;
     private float acceleration = 1;
+    private ChaseTarget _chaseTarget;
 
     public override void _Ready()
     {
@@ -85,5 +86,9 @@ public partial class GoblinMage : Goblin
         sprite.Play("idle");
         await ToSignal(GetTree().CreateTimer((float)GD.RandRange(0, 1)), "timeout");
         currentState = States.Idle;
+    }
+    private void OnChaseTargetEntered(ChaseTarget chaseTarget)
+    {
+        _chaseTarget = chaseTarget;
     }
 }

@@ -1,9 +1,10 @@
-[gd_scene load_steps=79 format=3 uid="uid://b0c6sthqnjd75"]
+[gd_scene load_steps=81 format=3 uid="uid://b0c6sthqnjd75"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_2jq8s"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="2_5tsbb"]
 [ext_resource type="PackedScene" uid="uid://cyi3okrheyjkj" path="res://scenes/ui/HpBar.tscn" id="2_c6qki"]
+[ext_resource type="PackedScene" uid="uid://cuc320gw43vle" path="res://scenes/Components/chasingComponent.tscn" id="2_m3qem"]
 [ext_resource type="Texture2D" uid="uid://dsbsqyn2if0do" path="res://sprites/goblin/sword_goblin_idle.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://eea73k3xl6yy" path="res://sprites/goblin/sword_goblin_attak.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="4_1ugsf"]
@@ -11,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="6_3lfu6"]
 [ext_resource type="Texture2D" uid="uid://fk1ulw6x3f7j" path="res://sprites/goblin/sword_goblin_move.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b2mlck2d6uoqk" path="res://sprites/goblin/sword_goblin_take_damage.png" id="7_yd27f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0glt"]
+radius = 85.0
+height = 275.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16kco"]
 size = Vector2(17, 25)
@@ -496,6 +501,13 @@ z_as_relative = false
 collision_layer = 4
 script = ExtResource("2")
 
+[node name="ChasingComponent" parent="." instance=ExtResource("2_m3qem")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChasingComponent"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u0glt")
+debug_color = Color(0.810457, 0, 0.15378, 0.42)
+
 [node name="HpBar" parent="." instance=ExtResource("2_c6qki")]
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_5tsbb")]
@@ -537,4 +549,5 @@ animation = &"take_damage"
 frame_progress = 0.0815902
 flip_h = true
 
+[connection signal="TargetEntered" from="ChasingComponent" to="." method="OnChaseTargetEntered"]
 [connection signal="EntityTakeDamage" from="Hurtbox" to="." method="OnEntityTakeDamage"]

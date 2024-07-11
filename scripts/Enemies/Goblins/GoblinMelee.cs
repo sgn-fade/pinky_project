@@ -15,7 +15,7 @@ public partial class GoblinMelee : Goblin
     private float speed = 60;
     private int enemyDamage = 10;
     private Vector2 direction = Vector2.Zero;
-
+    private ChaseTarget _chaseTarget;
     public override void _Ready()
     {
         _hpBar.Init(_hurtbox.MaxHp);
@@ -82,5 +82,10 @@ public partial class GoblinMelee : Goblin
         _sprite.Play("take_damage");
         GetNode<AnimationPlayer>("anim_player").Play("take_damage");
         _hpBar.UpdateHp(hp, maxHp);
+    }
+
+    private void OnChaseTargetEntered(ChaseTarget chaseTarget)
+    {
+        _chaseTarget = chaseTarget;
     }
 }

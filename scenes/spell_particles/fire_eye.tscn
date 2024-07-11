@@ -505,7 +505,6 @@ script = ExtResource("2")
 animationTree = NodePath("AnimationTree")
 
 [node name="Hitbox" parent="." instance=ExtResource("2_ram1g")]
-visible = false
 monitoring = false
 status = 1
 

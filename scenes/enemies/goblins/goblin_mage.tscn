@@ -1,12 +1,17 @@
-[gd_scene load_steps=40 format=3 uid="uid://0le0ptgshp5t"]
+[gd_scene load_steps=42 format=3 uid="uid://0le0ptgshp5t"]
 
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_apyim"]
+[ext_resource type="PackedScene" uid="uid://cuc320gw43vle" path="res://scenes/Components/chasingComponent.tscn" id="2_ft37c"]
 [ext_resource type="PackedScene" uid="uid://cyi3okrheyjkj" path="res://scenes/ui/HpBar.tscn" id="2_jolhh"]
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMage.cs" id="2_xc4tv"]
 [ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="3_0mu3j"]
 [ext_resource type="Texture2D" uid="uid://cdjxocxmr5k1a" path="res://sprites/goblin/goblin_mage.png" id="3_edkef"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="4_fagco"]
 [ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="6_y50sn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xox1y"]
+radius = 79.0
+height = 276.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04xa2"]
 size = Vector2(16, 23)
@@ -252,6 +257,13 @@ colors = PackedColorArray(1, 1, 1, 1, 0.753378, 0.398662, 0.0421557, 1, 1, 1, 1,
 collision_layer = 4
 script = ExtResource("2_xc4tv")
 
+[node name="ChasingComponent" parent="." instance=ExtResource("2_ft37c")]
+
+[node name="Collision" type="CollisionShape2D" parent="ChasingComponent"]
+rotation = 1.57149
+shape = SubResource("CapsuleShape2D_xox1y")
+debug_color = Color(0.922513, 0.190986, 0.509246, 0.42)
+
 [node name="HpBar" parent="." instance=ExtResource("2_jolhh")]
 offset_top = -5.0
 offset_bottom = -5.0
@@ -327,3 +339,5 @@ color_ramp = SubResource("Gradient_lov45")
 
 [node name="fireball_pos" type="Marker2D" parent="."]
 position = Vector2(-2, -21)
+
+[connection signal="TargetEntered" from="ChasingComponent" to="." method="OnChaseTargetEntered"]
