@@ -25,7 +25,7 @@ public partial class ItemDrop : Area2D
 
     public void AddItem()
     {
-        Global.Player.AddItem(dropList[GD.Randi() % dropList.Length]);
+        Global.PlayerLoader.AddItem(dropList[GD.Randi() % dropList.Length]);
     }
 
     public void OnBodyEntered(Node2D body)
@@ -39,7 +39,7 @@ public partial class ItemDrop : Area2D
 
     public void TryChangePlayerState(bool state, Node2D body)
     {
-        if (body == Global.Player.GetBody())
+        if (body == Global.PlayerLoader.GetBody())
         {
             _playerInArea = state;
         }

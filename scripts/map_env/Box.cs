@@ -31,7 +31,7 @@ public partial class Box : StaticBody2D
 
     private void ChangeState(bool state, Node2D body)
     {
-        if (body == Global.Player.GetBody())
+        if (body == Global.PlayerLoader.GetBody())
         {
             buttonIndicator.Visible = playerInArea = state;
         }

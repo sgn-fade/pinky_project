@@ -46,7 +46,7 @@ public partial class GoblinMage : Goblin
                 break;
             case States.Move:
                 SwapSpriteDirection();
-                Move(Global.Player.GetPosition() - GlobalPosition);
+                Move(Global.PlayerLoader.GetPosition() - GlobalPosition);
                 CastFireball();
                 break;
         }

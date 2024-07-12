@@ -18,7 +18,7 @@ public partial class UiCore : CanvasLayer
 	public override void _Ready()
 	{
 		SetProcess(false);
-		player = Global.Player;
+		player = Global.PlayerLoader;
 		currentUi = gameUi;
 		//SwitchUi(gameUi, "game");
 	}

@@ -16,7 +16,7 @@ public partial class Player : CharacterBody2D
     private Vector2 _input = Vector2.Zero;
     private bool _dashReady = true;
     public States CurrentState { get; set; } = States.Active;
-    private PlayerLoader _player = Global.Player;
+    private PlayerLoader _player = Global.PlayerLoader;
 
     [Export] private Hurtbox playerHp;
 

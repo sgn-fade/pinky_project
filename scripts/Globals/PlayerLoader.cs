@@ -7,7 +7,7 @@ using projectpinky.scripts.weapons;
 
 namespace projectpinky.scripts.Globals;
 
-public partial class PlayerLoader : Node2D
+public partial class PlayerLoader : Node
 {
 
 	private Node2D closestObject;

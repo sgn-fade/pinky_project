@@ -36,7 +36,7 @@ public partial class Coin : CharacterBody2D
 
     private void IdleState()
     {
-        if (!area.OverlapsBody(Global.Player.GetBody())) return;
+        if (!area.OverlapsBody(Global.PlayerLoader.GetBody())) return;
 
         collision.Disabled = true;
         currentState = States.Move;
@@ -44,11 +44,11 @@ public partial class Coin : CharacterBody2D
 
     private void MoveState()
     {
-        direction = Global.Player.GetPosition() - GlobalPosition;
+        direction = Global.PlayerLoader.GetPosition() - GlobalPosition;
         Velocity = direction.Normalized() * 100;
         MoveAndSlide();
 
-        if (!((Global.Player.GetPosition() - GlobalPosition).Length() < 7)) return;
+        if (!((Global.PlayerLoader.GetPosition() - GlobalPosition).Length() < 7)) return;
 
         //Global.Player.SetMoney(1);
         QueueFree();

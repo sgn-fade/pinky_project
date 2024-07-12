@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://iudko4u3wygw"]
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://iudko4u3wygw"]
 
-[ext_resource type="Texture2D" uid="uid://b72qjfrkdfgr5" path="res://sprites/spell_icons/fire_spear_spell_icon.png" id="1_cepc7"]
-[ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="1_o0hmf"]
-[ext_resource type="PackedScene" uid="uid://cu8g81pla64ql" path="res://scenes/spell_particles/fire_spear_particle.tscn" id="2_yqwxo"]
+[ext_resource type="Texture2D" uid="uid://cibvsqkq4mevk" path="res://sprites/ui/Bronze_module_button_state.png" id="1_cyh5e"]
+[ext_resource type="Script" path="res://scripts/spells/Spell.cs" id="2_cb1a1"]
 
 [resource]
-script = ExtResource("1_o0hmf")
-Icon = ExtResource("1_cepc7")
-AnimationName = ""
+script = ExtResource("2_cb1a1")
 Rarity = 0
-CooldownTime = 2.0
-ManaCost = 2
-Particle = ExtResource("2_yqwxo")
+CooldownTime = 0.0
+ManaCost = 0
+DataType = 0
+Background = ExtResource("1_cyh5e")
+IsStackable = false
+Value = 0

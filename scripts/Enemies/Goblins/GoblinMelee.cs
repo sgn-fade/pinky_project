@@ -62,7 +62,7 @@ public partial class GoblinMelee : Goblin
                 break;
             case States.Move:
                 SwapSpriteDirection();
-                Move(Global.Player.GetPosition() - GlobalPosition);
+                Move(Global.PlayerLoader.GetPosition() - GlobalPosition);
                 PlayAnimation("move");
                 Attack();
                 break;
@@ -86,7 +86,7 @@ public partial class GoblinMelee : Goblin
             sprite.Play("attack");
             timer.Start(0.8f);
             await ToSignal(timer, "timeout");
-            direction = Global.Player.GetPosition() - GlobalPosition;
+            direction = Global.PlayerLoader.GetPosition() - GlobalPosition;
             attackArea.Monitoring = true;
             for (int i = 0; i < 4; i++)
             {
@@ -105,10 +105,10 @@ public partial class GoblinMelee : Goblin
 
     private void OnMeleeGoblinAttackAreaEntered(Node body)
     {
-        if (body == Global.Player.GetBody() && currentState != States.DealsDamage)
+        if (body == Global.PlayerLoader.GetBody() && currentState != States.DealsDamage)
         {
             currentState = States.DealsDamage;
-            Vector2 playerOffsetDir = -(GlobalPosition - Global.Player.GetPosition()).Normalized();
+            Vector2 playerOffsetDir = -(GlobalPosition - Global.PlayerLoader.GetPosition()).Normalized();
             //EventBus.EmitSignal("player_take_damage", playerOffsetDir, 10);
             //TODO hurt box
         }

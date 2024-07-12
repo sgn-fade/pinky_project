@@ -10,7 +10,7 @@ public partial class Camera : CharacterBody2D
 
     public override void _Ready()
     {
-        player = Global.Player;
+        player = Global.PlayerLoader;
     }
 
     public override void _Process(double delta)

@@ -25,7 +25,7 @@ public partial class PlayerInventory : Control
 
     private void FillCells()
     {
-        var playerInventory = Global.Player.playerInventory;
+        var playerInventory = Global.PlayerLoader.playerInventory;
         var cellsParent = GetNode<GridContainer>($"item_grid/cells/Grid");
 
         for (int i = 0; i < playerInventory.Count; i++)

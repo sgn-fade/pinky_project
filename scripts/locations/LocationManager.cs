@@ -10,7 +10,7 @@ public partial class LocationManager : Node2D
 	[Export] private PackedScene trainZone;
 
 	private Node location;
-	private PlayerLoader player = Global.Player;
+	private PlayerLoader player;
 
 	public enum Locations
 	{
@@ -22,7 +22,7 @@ public partial class LocationManager : Node2D
 	[Export] private Locations currentLocation;
 	public override void _Ready()
 	{
-		player = Global.Player;
+		player= Global.PlayerLoader;
 		// Vector2 screenSize = new Vector2(1000, 600);
 		Vector2I screenSize = DisplayServer.ScreenGetSize();
 		var window = GetViewport().GetWindow();
