@@ -21,7 +21,7 @@ public partial class Player : CharacterBody2D
     [Export] private Hurtbox playerHp;
 
     [Export]public PlayerView PlayerView { get; set; }
-    [Export]public PlayerData PlayerData { get; set; }
+    public PlayerData PlayerData { get; set; }
 
     public delegate void PlayerHpChanged(int hp, int maxHp);
 
@@ -38,7 +38,11 @@ public partial class Player : CharacterBody2D
         Inactive,
         Attack
     }
-    public override void _Ready() => CurrentState = States.Active;
+    public override void _Ready()
+    {
+        PlayerData = new PlayerData();
+        CurrentState = States.Active;
+    }
 
     public override void _Process(double delta) => Move();
 
