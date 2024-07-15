@@ -8,13 +8,14 @@ namespace projectpinky.scripts.spells.SpellControllers.RangeSpells;
 
 public partial class Shoot : SpellController
 {
-    [Export] private PackedScene bullet;
+    [Export] private PackedScene _bullet;
+    [Export] public int NumberOfBullets{ get; set; }
 
     public override void _Ready()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < NumberOfBullets; i++)
         {
-            var bulletInstance = bullet.Instantiate<Bullet>();
+            var bulletInstance = _bullet.Instantiate<Bullet>();
             bulletInstance.GlobalPosition = GlobalPosition;
             Global.World.GetWorld().AddChild(bulletInstance);
         }
