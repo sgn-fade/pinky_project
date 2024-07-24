@@ -11,10 +11,6 @@ public partial class SwordHands : Hands
     private int comboCount;
     private Timer comboTimer = new();
 
-    public override void PlayAnimation(string animationName)
-    {
-
-    }
 
     public enum Animations
     {

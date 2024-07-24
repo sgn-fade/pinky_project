@@ -13,7 +13,12 @@ public abstract partial class Hands : Node2D
     public Player Player { get; set; }
     public Dictionary<string, Spell> spellsButtons = new();
     public SpellController ParticleToCast { get; set; }
-    public abstract void PlayAnimation(string animationName);
+    [Export] protected AnimationPlayer animationPlayer;
+
+    public void PlayAnimation(string animationName)
+    {
+        animationPlayer.Play(animationName);
+    }
 
     public override void _Ready()
     {

@@ -13,13 +13,6 @@ public partial class ShotgunHands : Hands
     {
         Shoot,
     }
-    [Export] private AnimationPlayer animationPlayer;
-
-
-    public override void PlayAnimation(string animationName)
-    {
-        animationPlayer.Play(animationName);
-    }
 
     public override void _Process(double delta)
     {
