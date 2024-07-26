@@ -9,7 +9,7 @@ namespace projectpinky.scripts.weapons;
 public class Weapon
 {
     public WeaponData WeaponData { get; set; }
-    private Cell[] activeCells = new Cell[6];
+    private Cell[] activeCells = new Cell[4];
 
 
 	public Cell[] GetCells()
@@ -29,7 +29,7 @@ public class Weapon
 	}
 
 
-    public void AddSpell(Spell spell, int cellIndex)
+    public void SetSpell(Spell spell, int cellIndex)
     {
         activeCells[cellIndex].Spell = spell;
     }

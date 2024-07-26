@@ -23,12 +23,18 @@ public partial class SwordHands : Hands
         comboTimer.OneShot = false;
     }
 
-    public void Combos()
+    protected override void LeftClickSpell()
     {
         if (comboTimer.TimeLeft <= 0)comboCount = 0;
         comboCount++;
         Hit();
     }
+
+    protected override void RightClickSpell()
+    {
+        //TODO parry logic
+    }
+
     private void Hit()
     {
         PlayAnimation(comboNames[comboCount]);

@@ -174,9 +174,10 @@ _data = {
 "hit_3": SubResource("Animation_p1ctk")
 }
 
-[node name="melee_hands" type="Node2D"]
+[node name="melee_hands" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
 position = Vector2(-1, -3)
 script = ExtResource("2_c7jsx")
+animationPlayer = NodePath("anim")
 
 [node name="hands" type="Node2D" parent="."]
 position = Vector2(-1, 1)

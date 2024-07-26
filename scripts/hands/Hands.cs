@@ -33,6 +33,12 @@ public abstract partial class Hands : Node2D
 
     public override void _Input(InputEvent @event)
     {
+        if (Input.IsActionJustPressed("LMB"))
+            LeftClickSpell();
+
+        if (Input.IsActionJustPressed("RMB"))
+            RightClickSpell();
+
         foreach (var kvp in spellsButtons)
         {
             if (Input.IsActionJustPressed(kvp.Key) && kvp.Value != null)
@@ -42,6 +48,9 @@ public abstract partial class Hands : Node2D
             }
         }
     }
+
+    protected abstract void LeftClickSpell();
+    protected abstract void RightClickSpell();
     protected void CastSpell(Spell spell)
     {
         if (Player.PlayerData.SetMana(-spell.ManaCost) && spell.GetReady())

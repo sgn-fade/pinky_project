@@ -9,6 +9,8 @@ namespace projectpinky.scripts.hands;
 
 public partial class ShotgunHands : Hands
 {
+    [Export] private PackedScene _bullet;
+    [Export] public int NumberOfBullets{ get; set; }
     public enum Animations
     {
         Shoot,
@@ -19,4 +21,18 @@ public partial class ShotgunHands : Hands
         LookAt(GetGlobalMousePosition());
     }
 
+    protected override void LeftClickSpell()
+    {
+        for (int i = 0; i < NumberOfBullets; i++)
+        {
+            var bulletInstance = _bullet.Instantiate<Bullet>();
+            bulletInstance.GlobalPosition = GlobalPosition;
+            Global.World.GetWorld().AddChild(bulletInstance);
+        }
+    }
+
+    protected override void RightClickSpell()
+    {
+        //TODO hook
+    }
 }
