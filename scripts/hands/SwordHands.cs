@@ -21,11 +21,12 @@ public partial class SwordHands : Hands
         base._Ready();
         AddChild(comboTimer);
         comboTimer.OneShot = false;
+
+        comboTimer.Timeout += () => comboCount = 0;
     }
 
     protected override void LeftClickSpell()
     {
-        if (comboTimer.TimeLeft <= 0)comboCount = 0;
         comboCount++;
         Hit();
     }
