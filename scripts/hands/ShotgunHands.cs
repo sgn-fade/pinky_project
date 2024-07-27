@@ -23,6 +23,11 @@ public partial class ShotgunHands : Hands
 
     protected override void LeftClickSpell()
     {
+        PlayAnimation(Animations.Shoot.ToString());
+    }
+
+    public void Shoot()
+    {
         for (int i = 0; i < NumberOfBullets; i++)
         {
             var bulletInstance = _bullet.Instantiate<Bullet>();

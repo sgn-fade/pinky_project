@@ -1,9 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://f70wc1loqvwd"]
+[gd_scene load_steps=18 format=3 uid="uid://f70wc1loqvwd"]
 
 [ext_resource type="Script" path="res://scenes/ultimate_stun.gd" id="1_6fdpv"]
 [ext_resource type="Texture2D" uid="uid://dpmu45a8pve1j" path="res://sprites/particles/void__circle_particle.png" id="2_ejabq"]
-[ext_resource type="Texture2D" uid="uid://dii0mgfikvm7j" path="res://sprites/stun_background.png" id="2_vk724"]
-[ext_resource type="Shader" path="res://scenes/ultimate_stun.gdshader" id="3_n10hj"]
 [ext_resource type="AudioStream" uid="uid://q633lwee28pf" path="res://sounds/spell_sounds/last_gojo.mp3" id="4_klwbh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j7lrm"]
@@ -41,11 +39,6 @@ turbulence_noise_speed_random = 1.98
 turbulence_influence_min = 0.281
 turbulence_influence_max = 0.402
 turbulence_initial_displacement_max = 33.3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifj2a"]
-shader = ExtResource("3_n10hj")
-shader_parameter/size = -1.0
-shader_parameter/source_size = Vector2(2, 2)
 
 [sub_resource type="Curve" id="Curve_mybtn"]
 max_value = 49.76
@@ -198,11 +191,6 @@ texture = ExtResource("2_ejabq")
 lifetime = 1.2
 local_coords = true
 trail_lifetime = 0.1
-
-[node name="Sprite2D" type="Sprite2D" parent="Barier/Resizeble_Area/Area2D"]
-material = SubResource("ShaderMaterial_ifj2a")
-scale = Vector2(1.335, 0.399)
-texture = ExtResource("2_vk724")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="Barier/Resizeble_Area/Area2D"]
 amount = 1358

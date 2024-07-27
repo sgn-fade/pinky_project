@@ -34,10 +34,16 @@ public abstract partial class Hands : Node2D
     public override void _Input(InputEvent @event)
     {
         if (Input.IsActionJustPressed("LMB"))
+        {
             LeftClickSpell();
+            return;
+        }
 
         if (Input.IsActionJustPressed("RMB"))
+        {
             RightClickSpell();
+            return;
+        }
 
         foreach (var kvp in spellsButtons)
         {
