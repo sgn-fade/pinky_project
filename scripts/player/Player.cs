@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using projectpinky.scripts.Globals;
 using projectpinky.scripts.hands;
@@ -8,7 +9,7 @@ using projectpinky.scripts.utillComponents;
 namespace projectpinky.scripts.player;
 
 public partial class Player : CharacterBody2D
-{
+{	
 	[Export] private HandsManager _hands;
 	[Export] private AnimatedSprite2D _animatedSprite;
 	[Export] private float _speed = 80;
@@ -23,13 +24,14 @@ public partial class Player : CharacterBody2D
 	[Export] private Hurtbox playerHp;
 	public delegate void PlayerHpChanged(int hp, int maxHp);
 	public static event PlayerHpChanged playerHpChanged;
+	public delegate void ShowAllInteractableObjects(bool status);
+	public static event ShowAllInteractableObjects showAllInteractableObjects;
 	public delegate void PlayerDashEventHandler();
 	public static event PlayerDashEventHandler playerDashEventHandler;
 	public HandsManager GetHands() => _hands;
 
-	//todo vot tut sdelai kak pravilno, ya ne ponyal every time error
-	private List<InteractableComponent> _objectNearby = new List<InteractableComponent>();
-
+	private List<InteractableComponent> _nearbyObjects = new List<InteractableComponent>();
+	
 	public enum States
 	{
 		Active,
@@ -78,12 +80,28 @@ public partial class Player : CharacterBody2D
 			FindClosestObject()?.Interact();
 		}
 
+		if (Input.IsActionJustPressed("Tilda"))
+		{
+			showAllInteractableObjects?.Invoke(true);
+		}
+		if (Input.IsActionJustReleased("Tilda"))
+		{
+			showAllInteractableObjects?.Invoke(false);
+		}
+		
 		Rotating();
 		_input.X = Input.GetAxis("ui_left", "ui_right");
 		_input.Y = Input.GetAxis("ui_up", "ui_down");
 
 		var animation = _input.Length() == 0 ? "idle" : "move";
-
+		if (_nearbyObjects.Count > 0 && animation == "move")
+		{
+			FindClosestObject();
+		}
+		else if (_nearbyObjects.Count > 1 && animation == "move")
+		{
+			FindClosestObject();
+		}
 		_input = _input.Normalized();
 		_animatedSprite.Play(animation);
 		Velocity = Velocity.Lerp(_input * _speed, (float)(_acceleration * GetProcessDeltaTime()));
@@ -138,7 +156,7 @@ public partial class Player : CharacterBody2D
 	{
 		InteractableComponent closestObject = null;
 		var closestDistance = float.MaxValue;
-		foreach (var obj in _objectNearby)
+		foreach (var obj in _nearbyObjects)
 		{
 				var distance = (obj.GlobalPosition - GlobalPosition).Length();
 				if (distance < closestDistance)
@@ -150,8 +168,9 @@ public partial class Player : CharacterBody2D
 
 		return closestObject;
 	}
-
-	public List<InteractableComponent> GetClosestObjects() => _objectNearby;
-	public void AddNewClosestObjects(InteractableComponent obj) => _objectNearby.Add(obj);
-	public void DeleteFromClosestObjects(InteractableComponent obj) => _objectNearby.Remove(obj);
+	
+	public void AddNewClosestObjects(InteractableComponent obj) => _nearbyObjects.Add(obj);
+	
+	public void DeleteFromClosestObjects(InteractableComponent obj) => _nearbyObjects.Remove(obj);
+	
 }
