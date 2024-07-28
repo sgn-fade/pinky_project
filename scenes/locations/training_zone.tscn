@@ -38,10 +38,10 @@ position = Vector2(-237, 42)
 position = Vector2(-154, 151)
 
 [node name="weapon_drop" parent="." instance=ExtResource("3_wqbk5")]
-position = Vector2(-46, -14)
+position = Vector2(-54, -25)
 
 [node name="weapon_drop2" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("3_wqbk5")]
-position = Vector2(-18, -39)
+position = Vector2(-51, -36)
 animator = NodePath("../weapon_drop/AnimationPlayer")
 
 [node name="weapon_drop3" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("3_wqbk5")]

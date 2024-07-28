@@ -7,7 +7,7 @@ using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.drops;
 
-public partial class ItemDrop : Area2D
+public partial class ItemDrop : CharacterBody2D
 {
 	[Export] private SpellData[] dropList = new SpellData[1];
 	[Export] private AnimationPlayer animator;
@@ -17,5 +17,10 @@ public partial class ItemDrop : Area2D
 		//animator.Play("delete");
 		Global.Player.AddItem(dropList[GD.Randi() % dropList.Length]);
 		QueueFree();
+	}
+	
+	public void BounceAway()
+	{
+		MoveAndSlide();
 	}
 }

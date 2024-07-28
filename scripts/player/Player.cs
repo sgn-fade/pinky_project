@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
 using projectpinky.scripts.hands;
 using projectpinky.scripts.utillComponents;
@@ -16,6 +17,9 @@ public partial class Player : CharacterBody2D
 	[Export] private double _acceleration = 20;
 	[Export] private float _dashSpeedConst = 5;
 
+	//todo
+	[Export] private PackedScene drop;
+	
 	private Vector2 _input = Vector2.Zero;
 	private bool _dashReady = true;
 	private States _currentState = States.Active;
@@ -77,7 +81,11 @@ public partial class Player : CharacterBody2D
 		}
 		else if (Input.IsActionJustPressed("E"))
 		{
-			FindClosestObject()?.Interact();
+			// pomenyat
+			ItemDrop drop1 = (ItemDrop)drop.Instantiate();
+			drop1.GlobalPosition = GetGlobalMousePosition();
+			Global.World.AddChild(drop1);
+			//FindClosestObject()?.Interact();
 		}
 
 		if (Input.IsActionJustPressed("Tilda"))
