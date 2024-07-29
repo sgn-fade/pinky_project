@@ -41,6 +41,7 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         PlayerData = new PlayerData();
+        PlayerView.Init();
         CurrentState = States.Active;
     }
 
@@ -103,7 +104,7 @@ public partial class Player : CharacterBody2D
 
     public void SetWeapon(Weapon weapon)
     {
-        PlayerView.SwitchHandsStance(weapon.WeaponData.HandsScene);
+        PlayerView.SwitchHandsStance(weapon.HandsScene);
         PlayerData.Weapon = weapon;
     }
 }

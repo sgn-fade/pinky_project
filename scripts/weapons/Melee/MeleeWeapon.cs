@@ -5,6 +5,6 @@ using projectpinky.scripts.spells;
 namespace projectpinky.scripts.weapons.melee;
 [GlobalClass]
 
-public partial class MeleeWeaponData : WeaponData
+public partial class MeleeWeapon : Weapon
 {
 }

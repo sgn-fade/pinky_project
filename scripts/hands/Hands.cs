@@ -4,7 +4,6 @@ using projectpinky.scripts.Globals;
 using projectpinky.scripts.particles;
 using projectpinky.scripts.player;
 using projectpinky.scripts.spells;
-using projectpinky.scripts.weapons;
 
 namespace projectpinky.scripts.hands;
 
@@ -22,7 +21,14 @@ public abstract partial class Hands : Node2D
 
     public override void _Ready()
     {
-        var cells = Player.PlayerData.Weapon.GetCells();
+        FillCells();
+    }
+
+    private void FillCells()
+    {
+        if (Player.PlayerData.Weapon == null) return;
+
+        var cells = Player.PlayerData.Weapon.activeCells;
         var index = 0;
         foreach (var button in Options.ButtonsBinds)
         {

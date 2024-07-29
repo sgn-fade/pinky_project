@@ -19,12 +19,13 @@ public partial class DashIndicator : TextureProgressBar
 
     public override void _Process(double delta)
     {
-        if (Value < MaxValue)
+        Value += delta * 1000;
+
+        if (Value >= MaxValue)
         {
-            Value += delta * 1000;
-            return;
+            SetProcess(false);
         }
-        SetProcess(false);
+
     }
 
     public void StartCooldown(float cooldownTime)

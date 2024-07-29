@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/inventory/InventoryCell.cs" id="1_xgx75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jenmm"]
-size = Vector2(79.8581, 78.2695)
+size = Vector2(83.5112, 94.5621)
 
 [node name="inventory_cell" type="Control"]
 layout_mode = 3

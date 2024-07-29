@@ -7,12 +7,13 @@ public partial class InventoryItem : Resource
 {
 	public enum DataTypes
 	{
+		None,
 		Weapon,
 		Spell,
 		Consumable,
 		Resource,
 	}
-	[Export] public DataTypes DataType { get; set; }
+	[Export] public DataTypes Type { get; set; }
 	[Export] public Texture2D Icon { get; set; }
 	[Export] public Texture2D Background { get; set; }
 	[Export] public bool IsStackable;

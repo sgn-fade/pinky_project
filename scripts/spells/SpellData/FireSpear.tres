@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://iudko4u3wygw"]
 
-[ext_resource type="Texture2D" uid="uid://dleqsphm1bu88" path="res://sprites/ui/Bronze_module_button_state.png" id="1_cyh5e"]
+[ext_resource type="Texture2D" uid="uid://cibvsqkq4mevk" path="res://sprites/ui/Bronze_module_button_state.png" id="1_cyh5e"]
 [ext_resource type="Script" path="res://scripts/spells/Spell.cs" id="2_cb1a1"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("2_cb1a1")
 Rarity = 0
 CooldownTime = 0.0
 ManaCost = 0
-DataType = 0
+Type = 0
 Background = ExtResource("1_cyh5e")
 IsStackable = false
 Value = 0

@@ -2,6 +2,7 @@ using System;
 using Godot;
 using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.ui.inventory;
 
@@ -9,38 +10,28 @@ public partial class SpellCell : InventoryCell
 {
     private int _cellIndex;
 
+    public delegate void SpellChanged(Spell spell, int cellIndex);
+
+    public static event SpellChanged spellChanged;
+
     public override void _Ready()
     {
         SlotType = InventoryItem.DataTypes.Spell;
     }
 
-    // public void OnCellAreaEntered(Area2D area)
-    // {
-    //     if (area.Name == "object" && area.GetParent<InventorySlotObject>().DataType == "spell")
-    //     {
-    //         area.GetParent<InventorySlotObject>().SetTargetCell(this);
-    //     }
-    // }
-
-    // public new void SetObject(InventorySlotObject newObject)
-    // {
-    //     if (newObject.DataType == "spell")
-    //     {
-    //         Object = newObject;
-    //         Empty = false;
-    //         Global.Player.GetWeapon().AddSpell((Spell)newObject.Data, cellIndex);
-    //     }
-    // }
-
+    public override void SetObject(InventorySlotObject newObject)
+    {
+        base.SetObject(newObject);
+        spellChanged?.Invoke(Object.Data as Spell, _cellIndex);
+    }
     public void RestoreObject(InventorySlotObject oldObject)
     {
-        Object = oldObject;
-        Empty = false;
+        base.SetObject(oldObject);        
     }
 
-    public new void Clear()
+    public override void Clear()
     {
         base.Clear();
-        //Global.Player.GetWeapon().RemoveSpell(_cellIndex);
+        spellChanged?.Invoke(null, _cellIndex);
     }
 }

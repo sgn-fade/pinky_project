@@ -168,13 +168,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="107"]
 size = Vector2(11.5384, 14.1935)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_hands", "_animatedSprite")]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_hands", "_animatedSprite", "playerHp", "PlayerView")]
 z_as_relative = false
 collision_layer = 33
 collision_mask = 5
 script = ExtResource("1_ijsvk")
 _hands = NodePath("hands")
 _animatedSprite = NodePath("aSprite")
+playerHp = NodePath("Hurtbox")
+PlayerView = NodePath("hands")
 
 [node name="shadow_under" type="Sprite2D" parent="."]
 z_as_relative = false
@@ -194,10 +196,10 @@ position = Vector2(-0.50001, -5.5)
 scale = Vector2(1.3, -0.775)
 shape = SubResource("107")
 
-[node name="hands" type="Node2D" parent="."]
-visible = false
+[node name="hands" type="Node2D" parent="." node_paths=PackedStringArray("_player")]
 position = Vector2(0, -5)
 script = ExtResource("12_q5bt1")
+_player = NodePath("..")
 
 [node name="teleport_ray" type="RayCast2D" parent="."]
 target_position = Vector2(1, 1)

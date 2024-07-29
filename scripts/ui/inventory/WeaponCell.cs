@@ -1,54 +1,47 @@
 using Godot;
 using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.spells;
 using projectpinky.scripts.weapons;
 
 namespace projectpinky.scripts.ui.inventory;
 
 public partial class WeaponCell : InventoryCell
 {
-    [Signal]
-    public delegate void ButtonPressedEventHandler();
+    public delegate void WeaponChanged(Weapon weapon);
 
+    public static event WeaponChanged weaponChanged;
 
     public override void _Ready()
     {
         SlotType = InventoryItem.DataTypes.Weapon;
     }
 
-    // public new void SetObject(InventorySlotObject newObject)
-    // {
-    //     if (newObject.DataType == "weapon")
-    //     {
-    //         Object = newObject;
-    //         Empty = false;
-    //         //todo event bus
-    //         //EventBus.EmitSignal("switch_hands_stance", newObject.Data);
-    //         Global.Player.SetWeapon((Weapon)newObject.Data);
-    //         //todo event bus
-    //         //EmitSignal("SetWeaponToUI", newObject.Data);
-    //     }
-    // }
-
-    // public void _OnCellAreaEntered(Area2D area)
-    // {
-    //     if (area.Name == "object" && area.GetParent<InventorySlotObject>().DataType == "weapon")
-    //     {
-    //         area.GetParent<InventorySlotObject>().SetTargetCell(this);
-    //     }
-    // }
-
-    public new void Clear()
+    public override void _EnterTree()
     {
-        Empty = true;
-        Object = null;
-        //todo event bus
-        //EventBus.EmitSignal("switch_hands_stance", null);
-        //Global.Player.SetWeapon(null);
+        SpellCell.spellChanged += OnSpellChanged;
     }
 
-    public void _OnTextureButtonPressed()
+    public override void _ExitTree()
     {
-        EmitSignal("ButtonPressed");
+       SpellCell.spellChanged -= OnSpellChanged;
+    }
+
+    private void OnSpellChanged(Spell spell, int cellIndex)
+    {
+        ((Weapon)Object.Data).SetSpell(spell, cellIndex);
+    }
+
+    public override void SetObject(InventorySlotObject newObject)
+    {
+        base.SetObject(newObject);
+        weaponChanged?.Invoke((Weapon)Object.Data);
+    }
+
+
+    public override void Clear()
+    {
+        base.Clear();
+        weaponChanged?.Invoke(null);
     }
 }

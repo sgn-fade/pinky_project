@@ -38,6 +38,7 @@ offset_bottom = 65.3571
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0648073
+scale = Vector2(0.752904, 0.775914)
 texture = ExtResource("12")
 stretch_mode = 4
 

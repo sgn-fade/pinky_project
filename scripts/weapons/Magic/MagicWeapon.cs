@@ -2,7 +2,7 @@ using Godot;
 
 namespace projectpinky.scripts.weapons.Magic;
 [GlobalClass]
-public partial class MagicWeaponData : WeaponData
+public partial class MagicWeapon : Weapon
 {
     [Export] public int Mana;
 }

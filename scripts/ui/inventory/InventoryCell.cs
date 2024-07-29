@@ -5,56 +5,60 @@ namespace projectpinky.scripts.ui.inventory;
 
 public partial class InventoryCell : Control
 {
-	public bool Empty { get; set; } = true;
-	public InventorySlotObject Object;
-	public InventoryItem.DataTypes SlotType { get; set; }
-	//TODO refactor this later (кусается)
-	public void SwapObjects(InventoryCell prevCell, InventorySlotObject newObject)
-	{
-		prevCell.RemoveChild(newObject);
-		AddChild(newObject);
-		newObject.GlobalPosition = GlobalPosition;
-		if (Object != null)
-		{
-			Object.SetCell(prevCell);
-			RemoveChild(Object);
-			prevCell.AddChild(Object);
-			prevCell.SetObject(Object);
+    public bool Empty { get; set; } = true;
+    public InventorySlotObject Object;
+    public InventoryItem.DataTypes SlotType { get; set; }
 
-			SetObject(newObject);
-			return;
-		}
-		prevCell.Clear();
-		SetObject(newObject);
-	}
+    public override void _Ready()
+    {
+        SlotType = InventoryItem.DataTypes.None;
+    }
 
-	public void SetObject(InventorySlotObject newObject)
-	{
-		Object = newObject;
-		Empty = false;
-	}
+    public void SwapObjects(InventoryCell prevCell, InventorySlotObject newObject)
+    {
+        prevCell.SetObject(Object);
+        SetObject(newObject);
+    }
 
-	public void Clear()
-	{
-		Empty = true;
-		Object = null;
-	}
+    public virtual void SetObject(InventorySlotObject newObject)
+    {
+        Clear();
 
-	private void OnCellAreaEntered(Area2D area)
-	{
-		if (area.GetParent() is InventorySlotObject slotObject)
-		{
-			slotObject.SetTargetCell(this);
-		}
-	}
+        if (newObject == null) return;
 
-	private void OnCellAreaExited(Area2D area)
-	{
-		if (area.GetParent() is InventorySlotObject slotObject)
-		{
-			slotObject.SetTargetCell(null);
-		}
-	}
+        AddChild(newObject);
+        newObject.GlobalPosition = GlobalPosition;
+        newObject.CurrentCell = this;
+        Object = newObject;
+        Empty = false;
+    }
+
+    public virtual void Clear()
+    {
+        if (Object != null)
+        {
+            RemoveChild(Object);
+            Object = null;
+        }
+        Empty = true;
+    }
+
+    public void OnCellAreaEntered(Area2D area)
+    {
+        if (area.GetParent() is not InventorySlotObject slotObject) return;
+
+        if (slotObject.Data.Type == SlotType ||
+            SlotType == InventoryItem.DataTypes.None)
+        {
+            slotObject.SetTargetCell(this);
+        }
+    }
+
+    private void OnCellAreaExited(Area2D area)
+    {
+        if (area.GetParent() is InventorySlotObject slotObject)
+        {
+            slotObject.SetTargetCell(null);
+        }
+    }
 }
-
-

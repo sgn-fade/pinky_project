@@ -1,50 +1,41 @@
-using System.Collections.Generic;
 using Godot;
 using projectpinky.scripts.drops;
-using projectpinky.scripts.Globals;
 using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.weapons;
-
-public class Weapon
+[GlobalClass]
+public partial class Weapon : InventoryItem
 {
-    public WeaponData WeaponData { get; set; }
-    private Cell[] activeCells = new Cell[4];
-
-
-	public Cell[] GetCells()
-	{
-		return activeCells;
-	}
-
-
-    public Weapon(WeaponData data)
+    public enum Types
     {
-        WeaponData = data;
-		for (var i = 0; i < 4; i++)
-		{
-			var index = GD.Randi() % activeCells.Length;
-			activeCells[index] ??= new Cell();
-		}
-	}
+        Melee,
+        Range,
+        Magic
+    }
+    public Cell[] activeCells = new Cell[4];
 
+    [Export] public Texture2D Texture { get; set; }
+    [Export] public Types WeaponType { get; set; } = Types.Melee;
+    [Export] public PackedScene HandsScene { get; set; }
+    [Export] public int Damage { get; set; }
 
+    public Weapon()
+    {
+        for (var i = 0; i < 4; i++)
+        {
+            var index = GD.Randi() % activeCells.Length;
+            activeCells[index] ??= new Cell();
+        }
+    }
     public void SetSpell(Spell spell, int cellIndex)
     {
         activeCells[cellIndex].Spell = spell;
-    }
-
-    public void RemoveSpell(int cellIndex)
-    {
-        activeCells[cellIndex].Spell = null;
     }
 
     private void SwapSpells(int firstSlot, int secondSlot)
     {
         (activeCells[firstSlot].Spell, activeCells[secondSlot].Spell) = (activeCells[secondSlot].Spell, activeCells[firstSlot].Spell);
     }
-
-
     public class Cell
     {
         public int Index { get; set; }

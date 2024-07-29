@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://pe7wisviq3yk"]
+[gd_scene load_steps=17 format=3 uid="uid://pe7wisviq3yk"]
 
 [ext_resource type="Texture2D" uid="uid://car84krwoepk5" path="res://sprites/ui/inventory_gun_slots_background.png" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/inventory/PlayerInventory.cs" id="1_tlr2l"]
@@ -8,10 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://djo02qi6h04cx" path="res://sprites/ui/back_arrow/back_arrow_pressed.png" id="6_t07cs"]
 [ext_resource type="Texture2D" uid="uid://cgv24tfyks8io" path="res://sprites/ui/back_arrow/back_arrow_hover.png" id="7_1f8wp"]
 [ext_resource type="Texture2D" uid="uid://ukmieltv2tr1" path="res://sprites/ui/circle_label.png" id="7_cwrlk"]
+[ext_resource type="Texture2D" uid="uid://dyocslded241j" path="res://sprites/ui/inventory/weapon_slot_normal1.png" id="7_e62ae"]
 [ext_resource type="PackedScene" uid="uid://dsq4kktf65hd3" path="res://scenes/ui/inventory/WeaponSpellCell.tscn" id="7_sciju"]
 [ext_resource type="PackedScene" uid="uid://d2tomlxjbg3c6" path="res://scenes/ui/Consumables.tscn" id="8_7whhs"]
+[ext_resource type="Texture2D" uid="uid://dgbiv1lrdkm7h" path="res://sprites/ui/inventory/weapon_slot_pressed.png" id="8_jo8wh"]
 [ext_resource type="PackedScene" uid="uid://cwlxebje1ywyi" path="res://scenes/ui/inventory/weapon_cell.tscn" id="9_fud0s"]
 [ext_resource type="Texture2D" uid="uid://ctend2wplo4na" path="res://sprites/ui/inventory/inventory_grid.png" id="9_ma0ua"]
+[ext_resource type="Texture2D" uid="uid://kbictqobdwaw" path="res://sprites/ui/inventory/weapon_slot_focus.png" id="9_yev7p"]
 [ext_resource type="PackedScene" uid="uid://i8y4ob3n3s2y" path="res://scenes/ui/inventory/inventory_cell.tscn" id="12_nakoi"]
 
 [node name="inventory_ui" type="Control"]
@@ -37,12 +40,13 @@ offset_bottom = 1080.0
 texture = ExtResource("1")
 
 [node name="default_left_side" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="consumables" parent="default_left_side" instance=ExtResource("8_7whhs")]
-visible = false
 layout_mode = 1
 offset_left = 134.68
 offset_top = 712.6
@@ -51,13 +55,22 @@ offset_bottom = 712.6
 scale = Vector2(2.5, 2.5)
 
 [node name="weapon_cell" parent="default_left_side" instance=ExtResource("9_fud0s")]
-visible = false
 offset_left = 720.0
 offset_top = 858.0
 offset_right = 720.0
 offset_bottom = 858.0
-scale = Vector2(4, 4)
 mouse_filter = 0
+
+[node name="TextureButton" type="TextureButton" parent="default_left_side"]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 744.0
+offset_right = 702.0
+offset_bottom = 763.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("7_e62ae")
+texture_pressed = ExtResource("8_jo8wh")
+texture_hover = ExtResource("9_yev7p")
 
 [node name="weapon" type="Control" parent="."]
 anchors_preset = 0
@@ -79,50 +92,34 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="spell_cell" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 896.25
-offset_top = 1090.0
-offset_right = 896.25
-offset_bottom = 1090.0
+offset_left = 752.5
+offset_top = 1148.75
+offset_right = 752.5
+offset_bottom = 1148.75
 scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="spell_cell2" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 736.25
-offset_top = 1196.25
-offset_right = 736.25
-offset_bottom = 1196.25
+offset_left = 552.5
+offset_top = 1150.0
+offset_right = 552.5
+offset_bottom = 1150.0
 scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="spell_cell3" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 562.0
-offset_top = 1266.25
-offset_right = 562.0
-offset_bottom = 1266.25
+offset_left = 342.5
+offset_top = 1153.75
+offset_right = 342.5
+offset_bottom = 1153.75
 scale = Vector2(1, 1)
 mouse_filter = 0
 
 [node name="spell_cell4" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 346.25
-offset_top = 1266.25
-offset_right = 346.25
-offset_bottom = 1266.25
-scale = Vector2(1, 1)
-mouse_filter = 0
-
-[node name="spell_cell5" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 172.5
-offset_top = 1196.25
-offset_right = 172.5
-offset_bottom = 1196.25
-scale = Vector2(1, 1)
-mouse_filter = 0
-
-[node name="spell_cell6" parent="weapon/cells" instance=ExtResource("7_sciju")]
-offset_left = 17.5
-offset_top = 1090.0
-offset_right = 17.5
-offset_bottom = 1090.0
+offset_left = 155.0
+offset_top = 1156.25
+offset_right = 155.0
+offset_bottom = 1156.25
 scale = Vector2(1, 1)
 mouse_filter = 0
 
@@ -157,168 +154,162 @@ scale = Vector2(3, 3)
 mouse_filter = 2
 texture = ExtResource("9_ma0ua")
 
-[node name="cells" type="Control" parent="item_grid"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="Grid" type="GridContainer" parent="item_grid/cells"]
+[node name="Grid" type="GridContainer" parent="item_grid"]
 process_mode = 3
 layout_mode = 0
 offset_left = 1042.5
 offset_top = 199.5
-offset_right = 1082.5
-offset_bottom = 239.5
+offset_right = 1834.5
+offset_bottom = 991.5
 theme_override_constants/h_separation = 132
 theme_override_constants/v_separation = 132
 columns = 7
 
-[node name="inventory_cell" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell2" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell2" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell3" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell3" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell4" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell4" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell5" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell5" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell6" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell6" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell7" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell7" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell8" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell8" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell9" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell9" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell10" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell10" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell11" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell11" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell12" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell12" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell13" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell13" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell14" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell14" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell15" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell15" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell16" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell16" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell17" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell17" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell18" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell18" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell19" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell19" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell20" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell20" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell21" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell21" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell22" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell22" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell23" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell23" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell24" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell24" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell25" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell25" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell26" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell26" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell27" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell27" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell28" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell28" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell29" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell29" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell30" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell30" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell31" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell31" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell32" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell32" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell33" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell33" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell34" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell34" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell35" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell35" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell36" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell36" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell37" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell37" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell38" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell38" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell39" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell39" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell40" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell40" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell41" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell41" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell42" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell42" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell43" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell43" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell44" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell44" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell45" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell45" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell46" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell46" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell47" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell47" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell48" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell48" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="inventory_cell49" parent="item_grid/cells/Grid" instance=ExtResource("12_nakoi")]
+[node name="inventory_cell49" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
 [node name="Control" type="Control" parent="."]
@@ -497,4 +488,5 @@ scale = Vector2(0.5, 0.5)
 text = "hat or 
 brain mut"
 
-[connection signal="pressed" from="weapon/back_arrow" to="." method="_on_back_arrow_pressed"]
+[connection signal="pressed" from="default_left_side/TextureButton" to="." method="OnShowWeaponPressed"]
+[connection signal="pressed" from="weapon/back_arrow" to="." method="OnWeaponBack"]

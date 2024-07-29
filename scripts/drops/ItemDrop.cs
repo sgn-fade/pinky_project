@@ -10,14 +10,14 @@ namespace projectpinky.scripts.drops;
 public partial class ItemDrop : Area2D
 {
 
-    [Export] private Spell[] dropList = new Spell[1];
+    [Export] private InventoryItem[] dropList = new InventoryItem[1];
     [Export] private AnimationPlayer animator;
 
     private bool _playerInArea;
 
     public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionJustPressed("E"))
+        if (Input.IsActionJustPressed("E") && _playerInArea)
         {
             animator.Play("delete");
         }

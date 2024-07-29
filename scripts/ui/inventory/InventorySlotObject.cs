@@ -1,12 +1,13 @@
 using Godot;
 using projectpinky.scripts.drops;
+using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.ui.inventory;
 
 public partial class InventorySlotObject : CharacterBody2D
 {
     public InventoryItem Data { get; set; }
-    private InventoryCell currentCell;
+    public InventoryCell CurrentCell { get; set; }
     private InventoryCell targetCell;
     private bool mouseInArea;
 
@@ -24,6 +25,7 @@ public partial class InventorySlotObject : CharacterBody2D
             ZIndex = 10;
             SetProcess(true);
         }
+
         if (Input.IsActionJustReleased("LMB") && mouseInArea)
         {
             ZIndex = 0;
@@ -46,23 +48,26 @@ public partial class InventorySlotObject : CharacterBody2D
     {
         if (targetCell == null)
         {
-            GlobalPosition = currentCell.GlobalPosition;
+            GlobalPosition = CurrentCell.GlobalPosition;
             return;
         }
-        targetCell.SwapObjects(currentCell, this);
-        SetCell(targetCell);
+
+        targetCell.SwapObjects(CurrentCell, this);
+        CurrentCell = targetCell;
         targetCell = null;
     }
 
-    public void SetCell(InventoryCell cell)
-    {
-        currentCell = cell;
-    }
 
-    public InventoryCell GetCell() => currentCell;
     public void SetTargetCell(InventoryCell cell)
     {
-        if(cell.SlotType == Data.DataType) targetCell = cell;
+        if (
+            cell == null ||
+            cell.SlotType == InventoryItem.DataTypes.None ||
+            cell.SlotType == Data.Type
+        )
+        {
+            targetCell = cell;
+        }
     }
 
     private void OnMouseEntered()

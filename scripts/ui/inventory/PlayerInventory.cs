@@ -10,23 +10,25 @@ namespace projectpinky.scripts.ui;
 
 public partial class PlayerInventory : Control
 {
-    [Export] PackedScene weaponCardScene = GD.Load<PackedScene>("res://scenes/ui/weapon_card.tscn");
     [Export] private PackedScene spellCell;
     [Export] private PackedScene inventoryObject;
 
-    private Weapon.Cell[] cells;
 
     public override void _Ready()
     {
         VisibilityChanged += FillCells;
-        //var wand = GD.Load<PackedScene>("res://scripts/weapons/magic_weapons/old_goblins_magic_wand.gd");
-        //var potion = GD.Load<PackedScene>("res://scripts/drops/potion.gd");
+        WeaponCell.weaponChanged += OnWeaponChanged;
+    }
+
+    public override void _ExitTree()
+    {
+        WeaponCell.weaponChanged -= OnWeaponChanged;
     }
 
     private void FillCells()
     {
         var playerInventory = Global.PlayerLoader.playerInventory;
-        var cellsParent = GetNode<GridContainer>($"item_grid/cells/Grid");
+        var cellsParent = GetNode<GridContainer>($"item_grid/Grid");
 
         for (int i = 0; i < playerInventory.Count; i++)
         {
@@ -37,70 +39,57 @@ public partial class PlayerInventory : Control
                 var obj = inventoryObject.Instantiate<InventorySlotObject>();
                 var item = playerInventory[i];
                 obj.SetData(item);
-                cell.AddChild(obj);
-                obj.SetCell(cell);
                 cell.SetObject(obj);
             }
         }
     }
 
-    private void FIllSpellCells()
+    private void OnShowWeaponPressed()
     {
-        //cells = Global.Player.GetWeapon().GetCells();
-        var childrenCells = GetNode("weapon/cell").GetChildren();
+        GetNode<Control>("default_left_side").Visible = false;
+        GetNode<Control>("weapon").Visible = true;
+    }
 
-        foreach (var cell in cells)
+    private void OnWeaponBack()
+    {
+        GetNode<Control>("default_left_side").Visible = true;
+        GetNode<Control>("weapon").Visible = false;
+    }
+    private void FillSpellCells(Weapon weapon)
+    {
+        var childrenCells = GetNode("weapon/cells").GetChildren();
+
+        foreach (var cell in weapon.activeCells)
         {
             var childrenCell = (SpellCell)childrenCells[cell.Index];
-            childrenCell.Visible = true;
 
             if (cell.Spell != null)
             {
-                var item = inventoryObject.Instantiate<InventorySlotObject>();
-                item.SetData(cell.Spell);
-                item.Position = childrenCell.Position;
-                GetNode<Node>($"/root/Main/$item_grid/items").AddChild(item);
-                item.SetCell(childrenCell);
-                item.Visible = false;
-                childrenCell.RestoreObject(item);
+                var slotObject = inventoryObject.Instantiate<InventorySlotObject>();
+                slotObject.SetData(cell.Spell);
+                childrenCell.RestoreObject(slotObject);
                 //EventBus.EmitSignal("set_spell_icon_to_game", cells[i].Module, cells[i].Button);
             }
         }
     }
     private void RemoveAllCells()
     {
-        //EventBus.EmitSignal("clear_spell_icons");
         foreach (var child in GetNode<Control>($"weapon/cells").GetChildren())
         {
-            child.QueueFree();
-        }
-
-        foreach (var child in GetNode<Control>($"item_grid/items").GetChildren())
-        {
-            if ((string)child.Get("current_cell.slot_type") == "spell")
-            {
-                child.QueueFree();
-            }
+            if(child is SpellCell spellSlot) spellSlot.Clear();
         }
     }
 
-    private void _OnWeaponCellButtonPressed()
+    private void OnWeaponChanged(Weapon weapon)
     {
-        GetNode<Node2D>("/root/Main/$default_right_side").Visible = false;
-        HideObjects("weapon");
-        GetNode<Node2D>("/root/Main/$weapon").Visible = true;
+        RemoveAllCells();
+
+        if (weapon != null)
+        {
+            FillSpellCells(weapon);
+        }
     }
 
-    private void _OnWeaponCellSetWeaponToUI(Node weapon)
-    {
-        //GetNode<Node>("/root/Main/$weapon/weapon_rarity_bg").Call("show_weapon", Player.GetWeapon());
-        if (weapon == null)
-        {
-            RemoveAllCells();
-            return;
-        }
-        //FillCells();
-    }
 
     private void _OnBackArrowPressed()
     {
