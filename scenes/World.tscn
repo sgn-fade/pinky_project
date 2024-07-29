@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/locations/LocationManager.cs" id="1_vtusk"]
 [ext_resource type="PackedScene" uid="uid://dmbbj7fd6gu5j" path="res://scenes/locations/dungeon.tscn" id="2_ufpex"]
 [ext_resource type="PackedScene" uid="uid://bx1mxg4kipto5" path="res://scenes/locations/hub_zone.tscn" id="3_g42eq"]
-[ext_resource type="PackedScene" uid="uid://b28r3fg3w2gov" path="res://scenes/locations/training_zone.tscn" id="4_ibunv"]
+[ext_resource type="PackedScene" path="res://scenes/locations/training_zone.tscn" id="4_ibunv"]
 [ext_resource type="PackedScene" uid="uid://qbrrhv0xfcu7" path="res://scenes/ui/Ui.tscn" id="5"]
 
 [sub_resource type="Environment" id="Environment_blhyc"]
