@@ -26,7 +26,7 @@ public partial class InventorySlotObject : CharacterBody2D
             SetProcess(true);
         }
 
-        if (Input.IsActionJustReleased("LMB") && mouseInArea)
+        if (Input.IsActionJustReleased("LMB") && mouseInArea && IsProcessing())
         {
             ZIndex = 0;
             SetToCell();

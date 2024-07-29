@@ -16,14 +16,15 @@ public partial class InventoryCell : Control
 
     public void SwapObjects(InventoryCell prevCell, InventorySlotObject newObject)
     {
-        prevCell.SetObject(Object);
+        var prevObject = Object;
+        prevCell.Clear();
+        Clear();
+        prevCell.SetObject(prevObject);
         SetObject(newObject);
     }
 
     public virtual void SetObject(InventorySlotObject newObject)
     {
-        Clear();
-
         if (newObject == null) return;
 
         AddChild(newObject);
