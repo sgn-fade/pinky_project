@@ -20,8 +20,6 @@ public partial class Goblin : CharacterBody2D
     }
 
     protected States currentState = States.Idle;
-    [Export] private PackedScene goldDrop;
-
     private Vector2 direction = Vector2.Zero;
     protected float speed = 100.0f;
 
@@ -68,14 +66,4 @@ public partial class Goblin : CharacterBody2D
         }
     }
 
-    public void SpawnDrop()
-    {
-        Random random = new Random();
-        for (int i = 0; i < random.Next(6); i++)
-        {
-            Node2D coins = goldDrop.Instantiate<Node2D>();
-            Global.World.GetWorld().AddChild(coins);
-            coins.GlobalPosition = GlobalPosition + new Vector2(random.Next(11) - 5, random.Next(11) - 5);
-        }
-    }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://b0c6sthqnjd75"]
+[gd_scene load_steps=85 format=3 uid="uid://b0c6sthqnjd75"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_2jq8s"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="6_3lfu6"]
 [ext_resource type="Texture2D" uid="uid://fk1ulw6x3f7j" path="res://sprites/goblin/sword_goblin_move.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b2mlck2d6uoqk" path="res://sprites/goblin/sword_goblin_take_damage.png" id="7_yd27f"]
+[ext_resource type="PackedScene" uid="uid://d3ybej80e5tdi" path="res://scenes/spawner.tscn" id="13_hi0km"]
+[ext_resource type="PackedScene" uid="uid://ctnc3ky8migv" path="res://scenes/drops/gold_drop.tscn" id="14_6okly"]
+[ext_resource type="PackedScene" uid="uid://ckaqfrcpa55mf" path="res://scenes/drops/modules_drop.tscn" id="15_squ5a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0glt"]
 radius = 85.0
@@ -496,6 +499,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7koyh"]
+size = Vector2(12, 16)
+
 [node name="goblin_melee" type="CharacterBody2D"]
 z_as_relative = false
 collision_layer = 4
@@ -548,6 +554,20 @@ sprite_frames = SubResource("56")
 animation = &"take_damage"
 frame_progress = 0.0815902
 flip_h = true
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spawner" parent="Spawners" instance=ExtResource("13_hi0km")]
+_scenes = Array[PackedScene]([ExtResource("15_squ5a")])
+
+[node name="SpawnerGold" parent="Spawners" node_paths=PackedStringArray("_collision") instance=ExtResource("13_hi0km")]
+_scenes = Array[PackedScene]([ExtResource("14_6okly")])
+_collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/SpawnerGold"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_7koyh")
+debug_color = Color(0.854763, 0.368071, 0, 0.42)
 
 [connection signal="TargetEntered" from="ChasingComponent" to="." method="OnChaseTargetEntered"]
 [connection signal="EntityTakeDamage" from="Hurtbox" to="." method="OnEntityTakeDamage"]

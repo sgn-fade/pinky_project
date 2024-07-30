@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3ybej80e5tdi"]
+[gd_scene load_steps=3 format=3 uid="uid://d3ybej80e5tdi"]
 
 [ext_resource type="Script" path="res://scripts/Spawner.cs" id="1_cdeo8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61hd0"]
+size = Vector2(2, 2)
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_cdeo8")
 _scenes = Array[PackedScene]([])
+
+[node name="Visual" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_61hd0")
+disabled = true
+debug_color = Color(0.84718, 1.82897e-06, 0.496172, 0.929412)
