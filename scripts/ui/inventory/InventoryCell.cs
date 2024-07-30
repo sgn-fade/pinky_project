@@ -36,12 +36,7 @@ public partial class InventoryCell : Control
 
     public virtual void Clear()
     {
-        if (Object != null)
-        {
-            RemoveChild(Object);
-            Object = null;
-        }
-        Empty = true;
+        HideObject();
     }
 
     public void OnCellAreaEntered(Area2D area)
@@ -61,5 +56,14 @@ public partial class InventoryCell : Control
         {
             slotObject.SetTargetCell(null);
         }
+    }
+
+    public void HideObject()
+    {
+        if (Object != null)
+        {
+            RemoveChild(Object);
+        }
+        Empty = true;
     }
 }

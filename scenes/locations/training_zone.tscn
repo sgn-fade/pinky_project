@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b28r3fg3w2gov"]
+[gd_scene load_steps=6 format=3 uid="uid://b28r3fg3w2gov"]
 
 [ext_resource type="Texture2D" uid="uid://bjmfnd16r85ne" path="res://sprites/locations/TrainRoom.png" id="1_yk0ct"]
 [ext_resource type="PackedScene" uid="uid://b5001tqqps3vi" path="res://scenes/enemies/training_mannequin.tscn" id="2_n6g6e"]
 [ext_resource type="PackedScene" uid="uid://dai8f5grr0xq" path="res://scenes/drops/weapon_drop.tscn" id="3_vb5mc"]
+[ext_resource type="Resource" uid="uid://cdmct64rq16d1" path="res://scripts/weapons/Magic/Staff.tres" id="4_m8uic"]
+[ext_resource type="Resource" uid="uid://bg84pk4wkvlgl" path="res://scripts/spells/SpellData/Fireball.tres" id="5_7s48d"]
 
 [node name="TrainingZone" type="Node2D"]
 
@@ -39,9 +41,11 @@ position = Vector2(-154, 151)
 
 [node name="weapon_drop" parent="." instance=ExtResource("3_vb5mc")]
 position = Vector2(115, -75)
+dropList = [ExtResource("4_m8uic")]
 
 [node name="weapon_drop2" parent="." instance=ExtResource("3_vb5mc")]
 position = Vector2(151, -21)
+dropList = [ExtResource("5_7s48d")]
 
 [node name="weapon_drop3" parent="." instance=ExtResource("3_vb5mc")]
 position = Vector2(164, 31)

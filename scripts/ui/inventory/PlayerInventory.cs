@@ -76,7 +76,7 @@ public partial class PlayerInventory : Control
     {
         foreach (var child in GetNode<Control>($"weapon/cells").GetChildren())
         {
-            if(child is SpellCell spellSlot) spellSlot.Clear();
+            if(child is SpellCell spellSlot) spellSlot.HideObject();
         }
     }
 

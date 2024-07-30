@@ -23,8 +23,7 @@ public partial class Weapon : InventoryItem
     {
         for (var i = 0; i < 4; i++)
         {
-            var index = GD.Randi() % activeCells.Length;
-            activeCells[index] ??= new Cell();
+            activeCells[i] ??= new Cell();
         }
     }
     public void SetSpell(Spell spell, int cellIndex)

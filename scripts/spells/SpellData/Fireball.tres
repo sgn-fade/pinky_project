@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://bg84pk4wkvlgl"]
+[gd_resource type="Resource" script_class="Spell" load_steps=4 format=3 uid="uid://bg84pk4wkvlgl"]
 
 [ext_resource type="Texture2D" uid="uid://cibvsqkq4mevk" path="res://sprites/ui/Bronze_module_button_state.png" id="1_ppq8m"]
 [ext_resource type="Script" path="res://scripts/spells/Spell.cs" id="2_aycdq"]
+[ext_resource type="Texture2D" uid="uid://eytpcmh7m1m7" path="res://sprites/spell_icons/fireball_icon.png" id="2_xtuyb"]
 
 [resource]
 script = ExtResource("2_aycdq")
 Rarity = 0
 CooldownTime = 0.0
 ManaCost = 0
-Type = 0
+Type = 2
+Icon = ExtResource("2_xtuyb")
 Background = ExtResource("1_ppq8m")
 IsStackable = false
 Value = 0
