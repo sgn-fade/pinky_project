@@ -47,17 +47,15 @@ public partial class PlayerInventory : Control
     private void OnShowWeaponPressed()
     {
         GetNode<Control>("default_left_side").Visible = false;
-        GetNode<Control>("weapon").Visible = true;
     }
 
     private void OnWeaponBack()
     {
         GetNode<Control>("default_left_side").Visible = true;
-        GetNode<Control>("weapon").Visible = false;
     }
     private void FillSpellCells(Weapon weapon)
     {
-        var childrenCells = GetNode("weapon/cells").GetChildren();
+        var childrenCells = GetNode("WeaponSide/cells").GetChildren();
 
         foreach (var cell in weapon.activeCells)
         {
@@ -74,7 +72,7 @@ public partial class PlayerInventory : Control
     }
     private void RemoveAllCells()
     {
-        foreach (var child in GetNode<Control>($"weapon/cells").GetChildren())
+        foreach (var child in GetNode<Control>($"WeaponSide/cells").GetChildren())
         {
             if(child is SpellCell spellSlot) spellSlot.HideObject();
         }

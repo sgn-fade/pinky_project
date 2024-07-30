@@ -37,10 +37,27 @@ public partial class InventoryCell : Control
     public virtual void Clear()
     {
         HideObject();
+        Object = null;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (Object != null)
+        {
+            GetNode<Label>("Label").Text = Object.GetInstanceId().ToString();
+
+        }
+        else
+        {
+            GetNode<Label>("Label").Text = "Empty";
+
+        }
     }
 
     public void OnCellAreaEntered(Area2D area)
     {
+        if (!Visible) return;
+
         if (area.GetParent() is not InventorySlotObject slotObject) return;
 
         if (slotObject.Data.Type == SlotType ||
@@ -65,5 +82,10 @@ public partial class InventoryCell : Control
             RemoveChild(Object);
         }
         Empty = true;
+    }
+
+    public void SwitchMonitoring(bool state)
+    {
+        GetNode<Area2D>("area").Monitoring = state;
     }
 }

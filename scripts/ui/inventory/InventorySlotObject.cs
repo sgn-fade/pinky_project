@@ -46,7 +46,8 @@ public partial class InventorySlotObject : CharacterBody2D
 
     public void SetToCell()
     {
-        if (targetCell == null)
+        if (targetCell == null ||
+            targetCell == CurrentCell)
         {
             GlobalPosition = CurrentCell.GlobalPosition;
             return;

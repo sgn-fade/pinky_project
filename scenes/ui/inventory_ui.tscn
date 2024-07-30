@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://p31ii0hg8cjd" path="res://sprites/ui/back_arrow/back_arrow_idle.png" id="5_f11wr"]
 [ext_resource type="Texture2D" uid="uid://djo02qi6h04cx" path="res://sprites/ui/back_arrow/back_arrow_pressed.png" id="6_t07cs"]
 [ext_resource type="Texture2D" uid="uid://cgv24tfyks8io" path="res://sprites/ui/back_arrow/back_arrow_hover.png" id="7_1f8wp"]
-[ext_resource type="Texture2D" uid="uid://ukmieltv2tr1" path="res://sprites/ui/circle_label.png" id="7_cwrlk"]
 [ext_resource type="Texture2D" uid="uid://dyocslded241j" path="res://sprites/ui/inventory/weapon_slot_normal1.png" id="7_e62ae"]
 [ext_resource type="PackedScene" uid="uid://dsq4kktf65hd3" path="res://scenes/ui/inventory/WeaponSpellCell.tscn" id="7_sciju"]
 [ext_resource type="PackedScene" uid="uid://d2tomlxjbg3c6" path="res://scenes/ui/Consumables.tscn" id="8_7whhs"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cwlxebje1ywyi" path="res://scenes/ui/inventory/weapon_cell.tscn" id="9_fud0s"]
 [ext_resource type="Texture2D" uid="uid://ctend2wplo4na" path="res://sprites/ui/inventory/inventory_grid.png" id="9_ma0ua"]
 [ext_resource type="Texture2D" uid="uid://kbictqobdwaw" path="res://sprites/ui/inventory/weapon_slot_focus.png" id="9_yev7p"]
+[ext_resource type="Script" path="res://scripts/ui/inventory/WeaponSide.cs" id="10_6yubr"]
 [ext_resource type="PackedScene" uid="uid://i8y4ob3n3s2y" path="res://scenes/ui/inventory/inventory_cell.tscn" id="12_nakoi"]
 
 [node name="inventory_ui" type="Control"]
@@ -70,7 +70,7 @@ texture_normal = ExtResource("7_e62ae")
 texture_pressed = ExtResource("8_jo8wh")
 texture_hover = ExtResource("9_yev7p")
 
-[node name="weapon" type="Control" parent="."]
+[node name="WeaponSide" type="Control" parent="."]
 visible = false
 anchors_preset = 0
 offset_left = 124.0
@@ -78,47 +78,48 @@ offset_top = -25.0
 offset_right = 164.0
 offset_bottom = 15.0
 scale = Vector2(0.8, 0.8)
+script = ExtResource("10_6yubr")
 
-[node name="weapon_rarity_bg" parent="weapon" instance=ExtResource("3")]
+[node name="weapon_rarity_bg" parent="WeaponSide" instance=ExtResource("3")]
 offset_left = 230.0
 offset_top = 366.25
 offset_right = 541.0
 offset_bottom = 797.25
 
-[node name="cells" type="Control" parent="weapon"]
+[node name="cells" type="Control" parent="WeaponSide"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="spell_cell" parent="weapon/cells" instance=ExtResource("7_sciju")]
+[node name="spell_cell" parent="WeaponSide/cells" instance=ExtResource("7_sciju")]
 offset_left = 752.5
 offset_top = 1148.75
 offset_right = 752.5
 offset_bottom = 1148.75
 scale = Vector2(1, 1)
 
-[node name="spell_cell2" parent="weapon/cells" instance=ExtResource("7_sciju")]
+[node name="spell_cell2" parent="WeaponSide/cells" instance=ExtResource("7_sciju")]
 offset_left = 552.5
 offset_top = 1151.25
 offset_right = 552.5
 offset_bottom = 1151.25
 scale = Vector2(1, 1)
 
-[node name="spell_cell3" parent="weapon/cells" instance=ExtResource("7_sciju")]
+[node name="spell_cell3" parent="WeaponSide/cells" instance=ExtResource("7_sciju")]
 offset_left = 342.5
 offset_top = 1153.75
 offset_right = 342.5
 offset_bottom = 1153.75
 scale = Vector2(1, 1)
 
-[node name="spell_cell4" parent="weapon/cells" instance=ExtResource("7_sciju")]
+[node name="spell_cell4" parent="WeaponSide/cells" instance=ExtResource("7_sciju")]
 offset_left = 155.0
 offset_top = 1156.25
 offset_right = 155.0
 offset_bottom = 1156.25
 scale = Vector2(1, 1)
 
-[node name="back_arrow" type="TextureButton" parent="weapon"]
+[node name="back_arrow" type="TextureButton" parent="WeaponSide"]
 layout_mode = 0
 offset_left = -113.75
 offset_top = 77.5
@@ -129,16 +130,11 @@ texture_normal = ExtResource("5_f11wr")
 texture_pressed = ExtResource("6_t07cs")
 texture_hover = ExtResource("7_1f8wp")
 
-[node name="spells" type="Control" parent="weapon"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="item_grid" type="Control" parent="."]
 anchors_preset = 0
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="item_grid"]
+[node name="GridBack" type="TextureRect" parent="item_grid"]
 modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 0
 offset_left = 975.0
@@ -307,181 +303,7 @@ layout_mode = 2
 [node name="inventory_cell49" parent="item_grid/Grid" instance=ExtResource("12_nakoi")]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Control" type="Control" parent="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 767.0
-offset_top = 293.0
-offset_right = 807.0
-offset_bottom = 333.0
-scale = Vector2(3, 3)
-
-[node name="TextureRect" type="TextureRect" parent="Control/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_cwrlk")
-
-[node name="Label" type="Label" parent="Control/Control"]
-layout_mode = 0
-offset_left = 3.33333
-offset_top = 13.6667
-offset_right = 79.3333
-offset_bottom = 36.6667
-scale = Vector2(0.5, 0.5)
-text = "hand mut"
-
-[node name="Control2" type="Control" parent="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 104.0
-offset_top = 296.0
-offset_right = 144.0
-offset_bottom = 336.0
-scale = Vector2(3, 3)
-
-[node name="TextureRect" type="TextureRect" parent="Control/Control2"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_cwrlk")
-
-[node name="Label" type="Label" parent="Control/Control2"]
-layout_mode = 0
-offset_left = 3.33333
-offset_top = 13.6667
-offset_right = 79.3333
-offset_bottom = 36.6667
-scale = Vector2(0.5, 0.5)
-text = "hand mut"
-
-[node name="Control3" type="Control" parent="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 307.0
-offset_top = 181.0
-offset_right = 347.0
-offset_bottom = 221.0
-scale = Vector2(3, 3)
-
-[node name="TextureRect" type="TextureRect" parent="Control/Control3"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_cwrlk")
-
-[node name="Label" type="Label" parent="Control/Control3"]
-layout_mode = 0
-offset_left = 3.33333
-offset_top = 13.6667
-offset_right = 79.3333
-offset_bottom = 36.6667
-scale = Vector2(0.5, 0.5)
-text = "mana core"
-
-[node name="Control4" type="Control" parent="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 542.0
-offset_top = 176.0
-offset_right = 582.0
-offset_bottom = 216.0
-scale = Vector2(3, 3)
-
-[node name="TextureRect" type="TextureRect" parent="Control/Control4"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_cwrlk")
-
-[node name="Label" type="Label" parent="Control/Control4"]
-layout_mode = 0
-offset_left = 3.33333
-offset_top = 13.6667
-offset_right = 79.3333
-offset_bottom = 36.6667
-scale = Vector2(0.5, 0.5)
-text = "hp core"
-
-[node name="Control5" type="Control" parent="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 434.0
-offset_top = 288.0
-offset_right = 474.0
-offset_bottom = 328.0
-scale = Vector2(3, 3)
-
-[node name="TextureRect" type="TextureRect" parent="Control/Control5"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_cwrlk")
-
-[node name="Label" type="Label" parent="Control/Control5"]
-layout_mode = 0
-offset_left = 3.33333
-offset_top = 13.6667
-offset_right = 79.3333
-offset_bottom = 36.6667
-scale = Vector2(0.5, 0.5)
-text = "ult mut"
-
-[node name="Control6" type="Control" parent="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 430.0
-offset_top = 454.0
-offset_right = 470.0
-offset_bottom = 494.0
-scale = Vector2(3, 3)
-
-[node name="TextureRect" type="TextureRect" parent="Control/Control6"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_cwrlk")
-
-[node name="Label" type="Label" parent="Control/Control6"]
-layout_mode = 0
-offset_left = 3.33333
-offset_top = 13.6667
-offset_right = 79.3333
-offset_bottom = 36.6667
-scale = Vector2(0.5, 0.5)
-text = "movement 
-mut"
-
-[node name="Control7" type="Control" parent="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 436.0
-offset_top = 75.0
-offset_right = 476.0
-offset_bottom = 115.0
-scale = Vector2(3, 3)
-
-[node name="TextureRect" type="TextureRect" parent="Control/Control7"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_cwrlk")
-
-[node name="Label" type="Label" parent="Control/Control7"]
-layout_mode = 0
-offset_left = 3.33333
-offset_top = 13.6667
-offset_right = 79.3333
-offset_bottom = 36.6667
-scale = Vector2(0.5, 0.5)
-text = "hat or 
-brain mut"
-
 [connection signal="pressed" from="default_left_side/TextureButton" to="." method="OnShowWeaponPressed"]
-[connection signal="pressed" from="weapon/back_arrow" to="." method="OnWeaponBack"]
+[connection signal="pressed" from="default_left_side/TextureButton" to="WeaponSide" method="OnShowWeaponPressed"]
+[connection signal="pressed" from="WeaponSide/back_arrow" to="." method="OnWeaponBack"]
+[connection signal="pressed" from="WeaponSide/back_arrow" to="WeaponSide" method="OnWeaponBack"]

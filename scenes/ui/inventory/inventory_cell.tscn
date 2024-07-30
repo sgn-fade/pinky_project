@@ -11,17 +11,26 @@ anchors_preset = 0
 mouse_filter = 1
 script = ExtResource("1_xgx75")
 
-[node name="cell" type="Area2D" parent="."]
+[node name="area" type="Area2D" parent="."]
 z_index = 2
 z_as_relative = false
 priority = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cell"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
 position = Vector2(0, 1.19209e-07)
 scale = Vector2(0.191591, 0.190351)
 shape = SubResource("RectangleShape2D_jenmm")
 
 [node name="object_pos" type="Marker2D" parent="."]
 
-[connection signal="area_entered" from="cell" to="." method="OnCellAreaEntered"]
-[connection signal="area_exited" from="cell" to="." method="OnCellAreaExited"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -95.0
+offset_top = -87.0
+offset_right = 309.0
+offset_bottom = 50.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 100
+
+[connection signal="area_entered" from="area" to="." method="OnCellAreaEntered"]
+[connection signal="area_exited" from="area" to="." method="OnCellAreaExited"]
