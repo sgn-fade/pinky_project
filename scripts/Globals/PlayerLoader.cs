@@ -35,20 +35,6 @@ public partial class PlayerLoader : Node
     {
         player.GlobalPosition = position;
     }
-    public Node GetClosestObject() => closestObject;
-    public bool SetClosestObject(Node2D obj)
-    {
-        if (
-            obj == null
-            || closestObject == null
-            || obj.GlobalPosition - GetPosition() < closestObject.GlobalPosition - GetPosition()
-            )
-        {
-            closestObject = obj;
-            return true;
-        }
-        return false;
-    }
     public void Restart()
     {
         player.QueueFree();

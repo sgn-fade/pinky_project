@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dai8f5grr0xq"]
+[gd_scene load_steps=18 format=3 uid="uid://dai8f5grr0xq"]
 
 [ext_resource type="Texture2D" uid="uid://nioi6bajkg4l" path="res://sprites/light.png" id="1"]
 [ext_resource type="Script" path="res://scripts/drops/ItemDrop.cs" id="1_wbltj"]
@@ -7,10 +7,11 @@
 [ext_resource type="Resource" uid="uid://5mcx1iyr6t5j" path="res://scripts/spells/SpellData/FireEye.tres" id="5_mc5fx"]
 [ext_resource type="Resource" uid="uid://hsk8wfqmbamn" path="res://scripts/spells/SpellData/FirePillar.tres" id="6_67erw"]
 [ext_resource type="Resource" uid="uid://iudko4u3wygw" path="res://scripts/spells/SpellData/FireSpear.tres" id="7_x3x84"]
+[ext_resource type="PackedScene" uid="uid://cbp5ho3ckqobn" path="res://scenes/Components/InteractableComponent.tscn" id="8_d7lor"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
-radius = 6.0
-height = 12.0
+radius = 7.0
+height = 22.0
 
 [sub_resource type="AtlasTexture" id="2"]
 atlas = ExtResource("2")
@@ -107,8 +108,13 @@ _data = {
 "idle": SubResource("Animation_2ngjr")
 }
 
-[node name="weapon_drop" type="Area2D" node_paths=PackedStringArray("animator")]
-monitorable = false
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xw2fg"]
+radius = 7.0
+height = 22.0
+
+[node name="weapon_drop" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
+collision_layer = 2147483904
+collision_mask = 2147483904
 script = ExtResource("1_wbltj")
 dropList = [ExtResource("2_u4r3v"), ExtResource("5_mc5fx"), ExtResource("6_67erw"), ExtResource("7_x3x84")]
 animator = NodePath("AnimationPlayer")
@@ -172,5 +178,12 @@ libraries = {
 }
 autoplay = "idle"
 
-[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
-[connection signal="body_exited" from="." to="." method="OnBodyExited"]
+[node name="InteractableBox" parent="." node_paths=PackedStringArray("Body") instance=ExtResource("8_d7lor")]
+Body = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableBox"]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xw2fg")
+
+[connection signal="InteractObject" from="InteractableBox" to="." method="AddItem"]

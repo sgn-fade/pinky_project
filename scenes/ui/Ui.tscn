@@ -87,3 +87,4 @@ spread = 0.0
 gravity = Vector2(0, 0)
 
 [node name="game_ui" parent="." instance=ExtResource("8_pdxxg")]
+mouse_filter = 2
