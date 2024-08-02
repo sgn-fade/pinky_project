@@ -81,11 +81,11 @@ public partial class Player : CharacterBody2D
 		}
 		else if (Input.IsActionJustPressed("E"))
 		{
-			// pomenyat
-			ItemDrop drop1 = (ItemDrop)drop.Instantiate();
-			drop1.GlobalPosition = GetGlobalMousePosition();
-			Global.World.AddChild(drop1);
-			//FindClosestObject()?.Interact();
+			//todo dlya testov pomenyat
+			//ItemDrop drop1 = (ItemDrop)drop.Instantiate();
+			//drop1.GlobalPosition = GetGlobalMousePosition();
+			//Global.World.AddChild(drop1);
+			FindClosestObject()?.Interact();
 		}
 
 		if (Input.IsActionJustPressed("Tilda"))
