@@ -14,13 +14,7 @@ public partial class ItemDrop : CharacterBody2D
 
 	private void AddItem()
 	{
-		//animator.Play("delete");
 		Global.Player.AddItem(dropList[GD.Randi() % dropList.Length]);
-		QueueFree();
-	}
-	
-	public void BounceAway()
-	{
-		MoveAndSlide();
+		animator.Play("delete");
 	}
 }

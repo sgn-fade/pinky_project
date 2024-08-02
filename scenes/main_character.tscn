@@ -458,6 +458,8 @@ collision_mask = 2147483648
 
 [node name="shotgun" parent="." instance=ExtResource("14_cherd")]
 position = Vector2(0, -6)
+shootCooldown = 0.5
+bullet = null
 
 [node name="Hurtbox" parent="." instance=ExtResource("10_n7f1l")]
 collision_layer = 4

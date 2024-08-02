@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://iudko4u3wygw"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://iudko4u3wygw"]
 
 [ext_resource type="Texture2D" uid="uid://b72qjfrkdfgr5" path="res://sprites/spell_icons/fire_spear_spell_icon.png" id="1_cepc7"]
 [ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="1_o0hmf"]
