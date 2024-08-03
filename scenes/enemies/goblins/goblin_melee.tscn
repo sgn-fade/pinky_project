@@ -1,10 +1,10 @@
-[gd_scene load_steps=85 format=3 uid="uid://b0c6sthqnjd75"]
+[gd_scene load_steps=100 format=3 uid="uid://b0c6sthqnjd75"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_2jq8s"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="2_5tsbb"]
-[ext_resource type="PackedScene" uid="uid://cyi3okrheyjkj" path="res://scenes/ui/HpBar.tscn" id="2_c6qki"]
-[ext_resource type="PackedScene" uid="uid://cuc320gw43vle" path="res://scenes/Components/chasingComponent.tscn" id="2_m3qem"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HpBar.tscn" id="2_c6qki"]
+[ext_resource type="PackedScene" path="res://scenes/Components/chasingComponent.tscn" id="2_m3qem"]
 [ext_resource type="Texture2D" uid="uid://dsbsqyn2if0do" path="res://sprites/goblin/sword_goblin_idle.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://eea73k3xl6yy" path="res://sprites/goblin/sword_goblin_attak.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="4_1ugsf"]
@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="6_3lfu6"]
 [ext_resource type="Texture2D" uid="uid://fk1ulw6x3f7j" path="res://sprites/goblin/sword_goblin_move.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b2mlck2d6uoqk" path="res://sprites/goblin/sword_goblin_take_damage.png" id="7_yd27f"]
-[ext_resource type="PackedScene" uid="uid://d3ybej80e5tdi" path="res://scenes/spawner.tscn" id="13_hi0km"]
+[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="13_hi0km"]
 [ext_resource type="PackedScene" uid="uid://ctnc3ky8migv" path="res://scenes/drops/gold_drop.tscn" id="14_6okly"]
-[ext_resource type="PackedScene" uid="uid://ckaqfrcpa55mf" path="res://scenes/drops/modules_drop.tscn" id="15_squ5a"]
+[ext_resource type="PackedScene" path="res://scenes/drops/modules_drop.tscn" id="15_squ5a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0glt"]
 radius = 85.0
@@ -24,7 +24,7 @@ height = 275.0
 size = Vector2(17, 25)
 
 [sub_resource type="CircleShape2D" id="55"]
-radius = 33.9179
+radius = 22.8787
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7x7m"]
 atlas = ExtResource("6_3lfu6")
@@ -365,7 +365,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 15.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -376,7 +376,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 3.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -402,7 +402,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -471,9 +471,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("54")
 }],
-"loop": true,
+"loop": false,
 "name": &"spawn",
-"speed": 15.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -501,6 +501,203 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7koyh"]
 size = Vector2(12, 16)
+
+[sub_resource type="Animation" id="Animation_7hk8e"]
+length = 1.58333
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["attack"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.916667, 1.58333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_k3xfd"]
+length = 0.60001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["idle"]
+}
+
+[sub_resource type="Animation" id="Animation_pslqx"]
+length = 0.583333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["move"]
+}
+
+[sub_resource type="Animation" id="Animation_efsxq"]
+length = 1.83333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["spawn"]
+}
+
+[sub_resource type="Animation" id="Animation_max22"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["take_damage"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4jj1q"]
+_data = {
+"attack": SubResource("Animation_7hk8e"),
+"idle": SubResource("Animation_k3xfd"),
+"move": SubResource("Animation_pslqx"),
+"spawn": SubResource("Animation_efsxq"),
+"take_damage": SubResource("Animation_max22")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpy7x"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x0k3r"]
+animation = &"move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v3s5t"]
+animation = &"spawn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6kk73"]
+animation = &"take_damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tmy7g"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wm253"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oy1yy"]
+advance_mode = 2
+advance_condition = &"IsMove"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sq7bb"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uct2m"]
+states/End/position = Vector2(915, 119)
+states/idle/node = SubResource("AnimationNodeAnimation_rpy7x")
+states/idle/position = Vector2(492, 110)
+states/move/node = SubResource("AnimationNodeAnimation_x0k3r")
+states/move/position = Vector2(669, 185)
+states/spawn/node = SubResource("AnimationNodeAnimation_v3s5t")
+states/spawn/position = Vector2(360, 105)
+states/take_damage/node = SubResource("AnimationNodeAnimation_6kk73")
+states/take_damage/position = Vector2(686, 50)
+transitions = ["Start", "spawn", SubResource("AnimationNodeStateMachineTransition_tmy7g"), "spawn", "idle", SubResource("AnimationNodeStateMachineTransition_wm253"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_oy1yy"), "take_damage", "idle", SubResource("AnimationNodeStateMachineTransition_sq7bb")]
 
 [node name="goblin_melee" type="CharacterBody2D"]
 z_as_relative = false
@@ -551,8 +748,7 @@ shape = SubResource("57")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2.99657, -12.0046)
 sprite_frames = SubResource("56")
-animation = &"take_damage"
-frame_progress = 0.0815902
+animation = &"idle"
 flip_h = true
 
 [node name="Spawners" type="Node2D" parent="."]
@@ -569,5 +765,14 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_7koyh")
 debug_color = Color(0.854763, 0.368071, 0, 0.42)
 
-[connection signal="TargetEntered" from="ChasingComponent" to="." method="OnChaseTargetEntered"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4jj1q")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_uct2m")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/IsMove = false
+
 [connection signal="EntityTakeDamage" from="Hurtbox" to="." method="OnEntityTakeDamage"]

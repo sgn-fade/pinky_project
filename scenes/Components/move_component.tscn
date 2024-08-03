@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mwltboui7thu"]
+
+[ext_resource type="Script" path="res://scripts/Physics components/MoveComponent.cs" id="1_5721g"]
+
+[node name="MoveComponent" type="Node2D"]
+script = ExtResource("1_5721g")

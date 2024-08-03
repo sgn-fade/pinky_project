@@ -2,6 +2,7 @@ using Godot;
 using System;
 using projectpinky.scripts.Enemies;
 using projectpinky.scripts.Globals;
+using projectpinky.scripts.Physics_components;
 
 namespace projectpinky.scripts.particles;
 
