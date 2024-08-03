@@ -13,7 +13,7 @@ namespace projectpinky.scripts.player;
 public partial class Player : CharacterBody2D
 {
     [Export] private PlayerView _hands;
-    [Export] private AnimatedSprite2D _animatedSprite;
+    [Export] private AnimationPlayer _animationPlayer;
     [Export] private float _speed = 80;
     [Export] private double _acceleration = 20;
     [Export] private float _dashSpeedConst = 5;
@@ -81,7 +81,7 @@ public partial class Player : CharacterBody2D
             FindClosestObject();
         }
 
-        _animatedSprite.Play(animation);
+        _animationPlayer.Play(animation);
         Velocity = Velocity.Lerp(_input.Normalized() * _speed, (float)(_acceleration * GetProcessDeltaTime()));
         MoveAndSlide();
 
@@ -108,11 +108,18 @@ public partial class Player : CharacterBody2D
     private void Dash()
     {
         playerDashEventHandler?.Invoke(PlayerData.DashCooldown);
+        _animationPlayer.Play("dash");
+        GD.Print("htrgege");
         _dashReady = false;
         GetTree().CreateTimer(PlayerData.DashCooldown).Timeout += () => { _dashReady = true; };
 
         Velocity *= _dashSpeedConst;
-        GetTree().CreateTimer(0.09f).Timeout += () => { Velocity /= _dashSpeedConst; };
+        //GetNode<GpuParticles2D>("GPUParticles2D").Emitting = true;
+        GetTree().CreateTimer(0.09f).Timeout += () =>
+        {
+            Velocity /= _dashSpeedConst;
+            //GetNode<GpuParticles2D>("GPUParticles2D").Emitting = false;
+        };
     }
 
     private void Die()
@@ -136,7 +143,7 @@ public partial class Player : CharacterBody2D
     private void SetCastState(float animationTime, string animationName)
     {
         CurrentState = States.Attack;
-        _animatedSprite.Play(animationName);
+        _animationPlayer.Play(animationName);
         GetTree().CreateTimer(animationTime).Timeout += () => { CurrentState = States.Active; };
     }
 

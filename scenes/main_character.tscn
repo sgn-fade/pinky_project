@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://15vutrjv1g2g"]
+[gd_scene load_steps=37 format=3 uid="uid://15vutrjv1g2g"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_ijsvk"]
 [ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/Player_animation/body/clear_player.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://byjyfa0cd7bnk" path="res://sprites/Player_animation/body/player_move_back.png" id="4_c1e3w"]
 [ext_resource type="PackedScene" uid="uid://c44vmspqdwaev" path="res://scenes/hands/sword_hands.tscn" id="6_txs61"]
+[ext_resource type="Texture2D" uid="uid://c8jdlqeq7lq8j" path="res://icon.png.jpg" id="8_i2pt0"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="10_n7f1l"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="11"]
 [ext_resource type="Script" path="res://scripts/player/PlayerView.cs" id="12_q5bt1"]
@@ -169,13 +170,145 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="107"]
 size = Vector2(11.5384, 14.1935)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_hands", "_animatedSprite")]
+[sub_resource type="Animation" id="Animation_ici3u"]
+resource_name = "dash"
+length = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1e-05, 5220.6),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_jdgrb"]
+resource_name = "idle"
+length = 0.416667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("aSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("aSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["idle"]
+}
+
+[sub_resource type="Animation" id="Animation_fqdrw"]
+resource_name = "move"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("aSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("aSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["move"]
+}
+
+[sub_resource type="Animation" id="Animation_n427d"]
+resource_name = "move_back"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("aSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("aSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["move_back"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6073s"]
+_data = {
+"dash": SubResource("Animation_ici3u"),
+"idle": SubResource("Animation_jdgrb"),
+"move": SubResource("Animation_fqdrw"),
+"move_back": SubResource("Animation_n427d")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b2irv"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = 1.325
+spread = 0.0
+gravity = Vector3(0, 98, 0)
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_hands", "_animationPlayer")]
 z_as_relative = false
 collision_layer = 33
 collision_mask = 5
 script = ExtResource("1_ijsvk")
 _hands = NodePath("hands")
-_animatedSprite = NodePath("aSprite")
+_animationPlayer = NodePath("PlayerAnimationPlayer")
 
 [node name="shadow_under" type="Sprite2D" parent="."]
 z_as_relative = false
@@ -186,7 +319,8 @@ texture = ExtResource("11")
 position = Vector2(-1, 0)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("16")
-animation = &"move"
+animation = &"move_back"
+frame_progress = 0.808854
 offset = Vector2(0, -7.39)
 flip_h = true
 
@@ -196,6 +330,7 @@ scale = Vector2(1.3, -0.775)
 shape = SubResource("107")
 
 [node name="hands" type="Node2D" parent="." node_paths=PackedStringArray("_player")]
+visible = false
 position = Vector2(0, -5)
 script = ExtResource("12_q5bt1")
 _player = NodePath("..")
@@ -213,5 +348,22 @@ collision_layer = 1
 position = Vector2(-0.50001, -5.5)
 scale = Vector2(1.3, -0.775)
 shape = SubResource("107")
+
+[node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6073s")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+scale = Vector2(-0.05, -0.05)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_b2irv")
+texture = ExtResource("8_i2pt0")
+lifetime = 2.0
+one_shot = true
+speed_scale = 6.04
+explosiveness = 0.4
+trail_lifetime = 1.0
 
 [connection signal="EntityTakeDamage" from="Hurtbox" to="." method="OnTakeDamage"]
