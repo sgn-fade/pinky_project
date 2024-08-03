@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q5tphhfnie7g"
-path="res://.godot/imported/strelka.png-79dee408e43c8cfd15587c5a57347892.ctex"
+uid="uid://b34gxq5fjt3ag"
+path="res://.godot/imported/checked_button_on.png-a0ba09b4638e91ca64f3d6e7432075e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/buttons/strelka.png"
-dest_files=["res://.godot/imported/strelka.png-79dee408e43c8cfd15587c5a57347892.ctex"]
+source_file="res://sprites/ui/buttons/checked_button_on.png"
+dest_files=["res://.godot/imported/checked_button_on.png-a0ba09b4638e91ca64f3d6e7432075e9.ctex"]
 
 [params]
 
