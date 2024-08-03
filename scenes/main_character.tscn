@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://15vutrjv1g2g"]
+[gd_scene load_steps=30 format=3 uid="uid://15vutrjv1g2g"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_ijsvk"]
 [ext_resource type="Texture2D" uid="uid://ryb6h77beeqc" path="res://sprites/Player_animation/body/clear_player.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://byjyfa0cd7bnk" path="res://sprites/Player_animation/body/player_move_back.png" id="4_c1e3w"]
+[ext_resource type="PackedScene" uid="uid://c44vmspqdwaev" path="res://scenes/hands/sword_hands.tscn" id="6_txs61"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="10_n7f1l"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="11"]
 [ext_resource type="Script" path="res://scripts/player/PlayerView.cs" id="12_q5bt1"]
@@ -194,10 +195,12 @@ position = Vector2(-0.50001, -5.5)
 scale = Vector2(1.3, -0.775)
 shape = SubResource("107")
 
-[node name="hands" type="Node2D" parent="."]
-visible = false
+[node name="hands" type="Node2D" parent="." node_paths=PackedStringArray("_player")]
 position = Vector2(0, -5)
 script = ExtResource("12_q5bt1")
+_player = NodePath("..")
+
+[node name="melee_hands" parent="hands" instance=ExtResource("6_txs61")]
 
 [node name="teleport_ray" type="RayCast2D" parent="."]
 target_position = Vector2(1, 1)

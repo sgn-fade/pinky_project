@@ -42,3 +42,4 @@ script = ExtResource("1_vtusk")
 dungeon = ExtResource("2_ufpex")
 hubZone = ExtResource("3_g42eq")
 trainZone = ExtResource("4_ibunv")
+currentLocation = 2

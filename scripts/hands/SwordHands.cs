@@ -11,11 +11,11 @@ public partial class SwordHands : Hands
     private int comboCount;
     private Timer comboTimer = new();
 
-
     public enum Animations
     {
         Hit,
     }
+
     public override void _Ready()
     {
         base._Ready();
@@ -33,7 +33,8 @@ public partial class SwordHands : Hands
 
     protected override void RightClickSpell()
     {
-        //TODO parry logic
+        PlayAnimation("parry");
+        Player.Parry();
     }
 
     private void Hit()

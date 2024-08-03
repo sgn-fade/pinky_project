@@ -24,6 +24,7 @@ public partial class Hurtbox : Area2D
 	[Export] public int MaxHp;
 	public int Hp;
 
+	public bool Invincible = false;
 
 	public enum Statuses
 	{
@@ -55,9 +56,12 @@ public partial class Hurtbox : Area2D
 
 	public void TakeDamage(int damage)
 	{
-		Hp -= damage;
-		if (Hp <= 0) EmitSignal(SignalName.EntityDead);
-		EmitSignal(SignalName.EntityTakeDamage, damage);
+		if (!Invincible)
+		{
+			Hp -= damage;
+			if (Hp <= 0) EmitSignal(SignalName.EntityDead);
+			EmitSignal(SignalName.EntityTakeDamage, damage);
+		}
 	}
 
 	public void Heal(int damage)

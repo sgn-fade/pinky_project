@@ -17,6 +17,7 @@ public partial class Player : CharacterBody2D
     [Export] private float _speed = 80;
     [Export] private double _acceleration = 20;
     [Export] private float _dashSpeedConst = 5;
+    [Export] public Hurtbox PlayerHurtBox;
 
     private Vector2 _input = Vector2.Zero;
     private bool _dashReady = true;
@@ -25,11 +26,12 @@ public partial class Player : CharacterBody2D
 
     [Export] private Hurtbox playerHp;
 
-    [Export]public PlayerView PlayerView { get; set; }
+    [Export] public PlayerView PlayerView { get; set; }
     public PlayerData PlayerData { get; set; }
     private List<InteractableComponent> _nearbyObjects = new();
 
     public delegate void ShowAllInteractableObjects(bool status);
+
     public static event ShowAllInteractableObjects showAllInteractableObjects;
 
     public delegate void PlayerHpChanged(int hp, int maxHp);
@@ -47,6 +49,7 @@ public partial class Player : CharacterBody2D
         Inactive,
         Attack
     }
+
     public override void _Ready()
     {
         PlayerData = new PlayerData();
@@ -71,35 +74,36 @@ public partial class Player : CharacterBody2D
         var animation = _input.Length() == 0 ? "idle" : "move";
         if (_nearbyObjects.Count > 0 && animation == "move")
         {
-	        FindClosestObject();
+            FindClosestObject();
         }
         else if (_nearbyObjects.Count > 1 && animation == "move")
         {
-	        FindClosestObject();
+            FindClosestObject();
         }
+
         _animatedSprite.Play(animation);
         Velocity = Velocity.Lerp(_input.Normalized() * _speed, (float)(_acceleration * GetProcessDeltaTime()));
         MoveAndSlide();
 
-	    if (Input.IsActionJustPressed("E"))
+        if (Input.IsActionJustPressed("E"))
         {
-	        //todo dlya testov pomenyat
-	        //ItemDrop drop1 = (ItemDrop)drop.Instantiate();
-	        //drop1.GlobalPosition = GetGlobalMousePosition();
-	        //Global.World.AddChild(drop1);
-	        FindClosestObject()?.Interact();
+            //todo dlya testov pomenyat
+            //ItemDrop drop1 = (ItemDrop)drop.Instantiate();
+            //drop1.GlobalPosition = GetGlobalMousePosition();
+            //Global.World.AddChild(drop1);
+            FindClosestObject()?.Interact();
         }
 
         if (Input.IsActionJustPressed("Tilda"))
         {
-	        showAllInteractableObjects?.Invoke(true);
+            showAllInteractableObjects?.Invoke(true);
         }
+
         if (Input.IsActionJustReleased("Tilda"))
         {
-	        showAllInteractableObjects?.Invoke(false);
+            showAllInteractableObjects?.Invoke(false);
         }
     }
-
 
     private void Dash()
     {
@@ -123,6 +127,12 @@ public partial class Player : CharacterBody2D
         CurrentState = States.Active;
     }
 
+    public void Parry()
+    {
+        PlayerHurtBox.Invincible = true;
+        GetTree().CreateTimer(1).Timeout += () => { PlayerHurtBox.Invincible = false; };
+    }
+
     private void SetCastState(float animationTime, string animationName)
     {
         CurrentState = States.Attack;
@@ -140,25 +150,25 @@ public partial class Player : CharacterBody2D
         PlayerView.SwitchHandsStance(weapon.WeaponData.HandsScene);
         PlayerData.Weapon = weapon;
     }
+
     public InteractableComponent FindClosestObject()
     {
-	    InteractableComponent closestObject = null;
-	    var closestDistance = float.MaxValue;
-	    foreach (var obj in _nearbyObjects)
-	    {
-		    var distance = (obj.GlobalPosition - GlobalPosition).Length();
-		    if (distance < closestDistance)
-		    {
-			    closestDistance = distance;
-			    closestObject = obj;
-		    }
-	    }
+        InteractableComponent closestObject = null;
+        var closestDistance = float.MaxValue;
+        foreach (var obj in _nearbyObjects)
+        {
+            var distance = (obj.GlobalPosition - GlobalPosition).Length();
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestObject = obj;
+            }
+        }
 
-	    return closestObject;
+        return closestObject;
     }
 
     public void AddNewClosestObjects(InteractableComponent obj) => _nearbyObjects.Add(obj);
 
     public void DeleteFromClosestObjects(InteractableComponent obj) => _nearbyObjects.Remove(obj);
 }
-

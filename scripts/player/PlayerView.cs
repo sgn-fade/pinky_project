@@ -10,10 +10,10 @@ public partial class PlayerView : Node2D
     [Export] private Player _player;
     private Hands _currentHands;
 
-    public override void _Ready()
-    {
-        SwitchHandsStance(clear);
-    }
+    //public override void _Ready()
+    //{
+    //SwitchHandsStance(clear);
+    //}
 
     public void SwitchHandsStance(PackedScene newHands)
     {
