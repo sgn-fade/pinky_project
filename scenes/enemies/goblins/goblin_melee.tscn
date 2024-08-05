@@ -1,12 +1,12 @@
-[gd_scene load_steps=96 format=3 uid="uid://b0c6sthqnjd75"]
+[gd_scene load_steps=97 format=3 uid="uid://b0c6sthqnjd75"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_2jq8s"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="2_5tsbb"]
 [ext_resource type="PackedScene" path="res://scenes/ui/HpBar.tscn" id="2_c6qki"]
-[ext_resource type="PackedScene" uid="uid://b55chw7kr0msk" path="res://scenes/Components/chasingComponent.tscn" id="2_m3qem"]
+[ext_resource type="PackedScene" uid="uid://c0hshsei6triv" path="res://scenes/Components/chasingComponent.tscn" id="2_m3qem"]
 [ext_resource type="Texture2D" uid="uid://dsbsqyn2if0do" path="res://sprites/goblin/sword_goblin_idle.png" id="3"]
-[ext_resource type="PackedScene" uid="uid://mwltboui7thu" path="res://scenes/Components/move_component.tscn" id="3_6nyvp"]
+[ext_resource type="PackedScene" path="res://scenes/Components/move_component.tscn" id="3_6nyvp"]
 [ext_resource type="Texture2D" uid="uid://eea73k3xl6yy" path="res://sprites/goblin/sword_goblin_attak.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="4_1ugsf"]
 [ext_resource type="Texture2D" uid="uid://bg15f0751fj4a" path="res://sprites/goblin/goblin_spawn.png" id="6"]
@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://b2mlck2d6uoqk" path="res://sprites/goblin/sword_goblin_take_damage.png" id="7_yd27f"]
 [ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="13_hi0km"]
 [ext_resource type="PackedScene" uid="uid://ctnc3ky8migv" path="res://scenes/drops/gold_drop.tscn" id="14_6okly"]
-[ext_resource type="PackedScene" path="res://scenes/drops/modules_drop.tscn" id="15_squ5a"]
-[ext_resource type="PackedScene" uid="uid://bfl0uvjwccr4g" path="res://scenes/ui/damageLabel.tscn" id="17_1tbwp"]
+[ext_resource type="PackedScene" uid="uid://dai8f5grr0xq" path="res://scenes/drops/weapon_drop.tscn" id="15_squ5a"]
+[ext_resource type="PackedScene" uid="uid://pcwd2ujaemfj" path="res://scenes/ui/damageLabel.tscn" id="17_1tbwp"]
 
 [sub_resource type="Animation" id="Animation_7hk8e"]
 length = 1.58333
@@ -56,6 +56,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MoveComponent:IsActive")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.58333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_k3xfd"]
 length = 0.60001
@@ -87,6 +99,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_pslqx"]
 length = 0.583333
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -199,7 +212,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oy1yy"]
 advance_mode = 2
-advance_condition = &"IsMove"
+advance_condition = &"IsMoving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sq7bb"]
 switch_mode = 2
@@ -209,10 +222,14 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bnee5"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uct2m"]
 states/End/position = Vector2(915, 119)
 states/attack/node = SubResource("AnimationNodeAnimation_5pifk")
-states/attack/position = Vector2(705, 119)
+states/attack/position = Vector2(711, 81)
 states/idle/node = SubResource("AnimationNodeAnimation_rpy7x")
 states/idle/position = Vector2(492, 110)
 states/move/node = SubResource("AnimationNodeAnimation_x0k3r")
@@ -220,8 +237,8 @@ states/move/position = Vector2(669, 185)
 states/spawn/node = SubResource("AnimationNodeAnimation_v3s5t")
 states/spawn/position = Vector2(360, 105)
 states/take_damage/node = SubResource("AnimationNodeAnimation_6kk73")
-states/take_damage/position = Vector2(686, 50)
-transitions = ["Start", "spawn", SubResource("AnimationNodeStateMachineTransition_tmy7g"), "spawn", "idle", SubResource("AnimationNodeStateMachineTransition_wm253"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_oy1yy"), "take_damage", "idle", SubResource("AnimationNodeStateMachineTransition_sq7bb"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_tir6g")]
+states/take_damage/position = Vector2(612, 19)
+transitions = ["Start", "spawn", SubResource("AnimationNodeStateMachineTransition_tmy7g"), "spawn", "idle", SubResource("AnimationNodeStateMachineTransition_wm253"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_oy1yy"), "take_damage", "idle", SubResource("AnimationNodeStateMachineTransition_sq7bb"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_tir6g"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_bnee5")]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0glt"]
 radius = 85.0
@@ -659,10 +676,16 @@ size = Vector2(12, 16)
 [sub_resource type="RectangleShape2D" id="57"]
 size = Vector2(17, 8.5)
 
-[node name="goblin_melee" type="CharacterBody2D"]
+[node name="goblin_melee" type="CharacterBody2D" node_paths=PackedStringArray("_hpBar", "_hurtBox", "_sprite", "_moveComponent", "_animationTree", "_damageLabel")]
 z_as_relative = false
 collision_layer = 4
 script = ExtResource("2")
+_hpBar = NodePath("HpBar")
+_hurtBox = NodePath("Core/Hurtbox")
+_sprite = NodePath("Core/sprite")
+_moveComponent = NodePath("MoveComponent")
+_animationTree = NodePath("AnimationTree")
+_damageLabel = NodePath("value")
 
 [node name="HpBar" parent="." instance=ExtResource("2_c6qki")]
 offset_left = 2.0
@@ -678,20 +701,22 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_uct2m")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/IsMove = false
+parameters/conditions/IsMoving = false
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("MoveTarget", "NodeToFlip") instance=ExtResource("3_6nyvp")]
+IsActive = true
 MoveTarget = NodePath("..")
 FlipByDirection = true
-NodeToFlip = NodePath(".")
-Speed = 10.0
-MaxSpeed = 14.0
+NodeToFlip = NodePath("../Core")
+Speed = 40.0
+MaxSpeed = 50.0
 Acceleration = 0.02
 
 [node name="Core" type="Node2D" parent="."]
 scale = Vector2(-1, 1)
 
 [node name="ChasingComponent" parent="Core" instance=ExtResource("2_m3qem")]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core/ChasingComponent"]
 rotation = 1.5708
@@ -763,5 +788,6 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 shape = SubResource("57")
 
+[connection signal="TargetChanged" from="Core/ChasingComponent" to="." method="OnChaseTargetEntered"]
 [connection signal="EntityTakeDamage" from="Core/Hurtbox" to="." method="OnEntityTakeDamage"]
 [connection signal="area_entered" from="Core/AttackRange" to="." method="OnTargetInAttackRange"]

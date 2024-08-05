@@ -18,4 +18,9 @@ public partial class FireEye : SpellController
     {
         stateMachine.Travel("closing");
     }
+
+    public override string GetAnim()
+    {
+        throw new System.NotImplementedException();
+    }
 }

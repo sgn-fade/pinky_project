@@ -9,7 +9,6 @@ public partial class GoblinMelee : CharacterBody2D
 {
     [Export] private HpBar _hpBar;
     [Export] private Hurtbox _hurtBox;
-    [Export] private AnimatedSprite2D _sprite;
     [Export] private double _attackCooldown = 4;
     [Export] private MoveComponent _moveComponent;
     [Export] private AnimationTree _animationTree;
@@ -23,6 +22,12 @@ public partial class GoblinMelee : CharacterBody2D
         _stateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
 
         _hpBar.Init(_hurtBox.MaxHp);
+        _moveComponent.Init(GlobalPosition);
+    }
+
+    public override void _Process(double delta)
+    {
+        _animationTree.Set("parameters/conditions/IsMoving", _moveComponent.IsActive);
     }
 
     private void Attack()

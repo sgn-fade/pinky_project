@@ -7,7 +7,7 @@ public partial class MoveComponent : Node2D
     [Signal]
     public delegate void EntityComeToTargetEventHandler();
 
-    public bool IsActive { get; set; }
+    [Export] public bool IsActive { get; set; }
     [Export] public CharacterBody2D MoveTarget;
 
     private Node2D _targetEntity;
@@ -49,26 +49,29 @@ public partial class MoveComponent : Node2D
         TargetPosition = targetPoint;
         MoveTarget.GlobalPosition = spawnPosition;
     }
+    public void Init(Vector2 targetPoint)
+    {
+        TargetPosition = targetPoint;
+    }
 
     public override void _Process(double delta)
     {
-        if (IsActive) return;
+        if (!IsActive) return;
         if (TargetEntity != null) TargetPosition = TargetEntity.GlobalPosition;
 
         MoveTarget.Velocity = (TargetPosition - GlobalPosition).Normalized() * (float)Speed;
 
         MoveTarget.MoveAndSlide();
 
-        if (MoveTarget.Velocity.Length() < 0.1)
+        if (MoveTarget.Velocity.Length() < 0.03)
         {
             EmitSignal(SignalName.EntityComeToTarget);
-            IsActive = false;
         }
 
 
         if (Speed < MaxSpeed)
         {
-            Speed *= Acceleration * delta;
+            Speed += Acceleration * delta;
             if (Speed > MaxSpeed) Speed = MaxSpeed;
         }
 

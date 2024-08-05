@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctlgtxxpoisnr"]
+[gd_scene load_steps=3 format=3 uid="uid://dmgdomsusu0e6"]
 
-[ext_resource type="Script" path="res://scripts/chaseTarget.cs" id="1_4dfyb"]
+[ext_resource type="Script" path="res://scripts/ChaseTarget.cs" id="1_p3y5h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0n8xp"]
 size = Vector2(8, 8)
 
 [node name="Area2D" type="Area2D"]
-script = ExtResource("1_4dfyb")
+monitoring = false
+script = ExtResource("1_p3y5h")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0n8xp")

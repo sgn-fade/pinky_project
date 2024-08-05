@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b55chw7kr0msk"]
+[gd_scene load_steps=4 format=3 uid="uid://c0hshsei6triv"]
 
 [ext_resource type="Script" path="res://scripts/ChasingComponent.cs" id="1_wj1g1"]
 
 [sub_resource type="Animation" id="Animation_a1dxl"]
 resource_name = "patrol"
 length = 0.1
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,9 +23,11 @@ _data = {
 "patrol": SubResource("Animation_a1dxl")
 }
 
-[node name="ChasingComponent" type="Area2D"]
+[node name="ChasingComponent" type="Area2D" node_paths=PackedStringArray("_animationPlayer")]
+scale = Vector2(1e-05, 1e-05)
 monitorable = false
 script = ExtResource("1_wj1g1")
+_animationPlayer = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -35,6 +36,7 @@ libraries = {
 autoplay = "patrol"
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

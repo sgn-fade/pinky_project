@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b28r3fg3w2gov"]
+[gd_scene load_steps=4 format=3 uid="uid://b28r3fg3w2gov"]
 
 [ext_resource type="Texture2D" uid="uid://bjmfnd16r85ne" path="res://sprites/locations/TrainRoom.png" id="1_yk0ct"]
 [ext_resource type="PackedScene" uid="uid://b5001tqqps3vi" path="res://scenes/enemies/training_mannequin.tscn" id="2_n6g6e"]
+[ext_resource type="PackedScene" uid="uid://b0c6sthqnjd75" path="res://scenes/enemies/goblins/goblin_melee.tscn" id="3_tnd6l"]
 
 [node name="TrainingZone" type="Node2D"]
 
@@ -35,3 +36,6 @@ position = Vector2(-237, 42)
 
 [node name="TrainingMannequin3" parent="." instance=ExtResource("2_n6g6e")]
 position = Vector2(-154, 151)
+
+[node name="goblin_melee" parent="." instance=ExtResource("3_tnd6l")]
+position = Vector2(220, 96)
