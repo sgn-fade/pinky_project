@@ -5,12 +5,12 @@ namespace projectpinky.scripts.player;
 
 public partial class Camera : CharacterBody2D
 {
-    private PlayerData player;
+    private PlayerLoader player;
     [Export] private Camera2D camera;
 
     public override void _Ready()
     {
-        player = Global.Player;
+        player = Global.PlayerLoader;
     }
 
     public override void _Process(double delta)

@@ -15,6 +15,7 @@ z_index = 0
 z_as_relative = true
 
 [node name="TextureRect" type="TextureRect" parent="." index="2"]
+layout_mode = 0
 offset_left = -10.0
 offset_top = -11.0
 offset_right = 10.0
@@ -23,6 +24,7 @@ texture = ExtResource("3_plnpe")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="." index="3"]
+layout_mode = 0
 offset_left = -22.0
 offset_top = 11.0
 offset_right = 72.0
@@ -31,6 +33,7 @@ scale = Vector2(0.5, 0.5)
 text = "weapon slot"
 
 [node name="TextureButton" type="TextureButton" parent="." index="4"]
+layout_mode = 0
 offset_left = -9.0
 offset_top = -32.0
 offset_right = 9.0

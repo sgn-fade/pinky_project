@@ -25,7 +25,7 @@ public partial class PlayerInventory : Control
 
     private void FillCells()
     {
-        var playerInventory = Global.Player.playerInventory;
+        var playerInventory = Global.PlayerLoader.playerInventory;
         var cellsParent = GetNode<GridContainer>($"item_grid/cells/Grid");
 
         for (int i = 0; i < playerInventory.Count; i++)
@@ -46,7 +46,7 @@ public partial class PlayerInventory : Control
 
     private void FIllSpellCells()
     {
-        cells = Global.Player.GetWeapon().GetCells();
+        //cells = Global.Player.GetWeapon().GetCells();
         var childrenCells = GetNode("weapon/cell").GetChildren();
 
         foreach (var cell in cells)
@@ -57,7 +57,7 @@ public partial class PlayerInventory : Control
             if (cell.Spell != null)
             {
                 var item = inventoryObject.Instantiate<InventorySlotObject>();
-                item.SetData(cell.Spell.Data);
+                item.SetData(cell.Spell);
                 item.Position = childrenCell.Position;
                 GetNode<Node>($"/root/Main/$item_grid/items").AddChild(item);
                 item.SetCell(childrenCell);

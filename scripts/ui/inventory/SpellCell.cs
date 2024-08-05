@@ -1,18 +1,17 @@
 using System;
 using Godot;
+using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
-using projectpinky.scripts.player;
-using projectpinky.scripts.spells;
 
 namespace projectpinky.scripts.ui.inventory;
 
 public partial class SpellCell : InventoryCell
 {
-    private int cellIndex;
+    private int _cellIndex;
 
     public override void _Ready()
     {
-        SlotType = "spell";
+        SlotType = InventoryItem.DataTypes.Spell;
     }
 
     // public void OnCellAreaEntered(Area2D area)
@@ -42,6 +41,6 @@ public partial class SpellCell : InventoryCell
     public new void Clear()
     {
         base.Clear();
-        Global.Player.GetWeapon().RemoveSpell(cellIndex);
+        //Global.Player.GetWeapon().RemoveSpell(_cellIndex);
     }
 }

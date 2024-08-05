@@ -5,14 +5,13 @@ namespace projectpinky.scripts.hands;
 
 public partial class ClearHands : Hands
 {
-    private AnimatedSprite2D sprite;
-
-    public override void _Ready()
+    protected override void LeftClickSpell()
     {
-        sprite = GetNode<AnimatedSprite2D>("sprite");
+        //TODO base hit without gun
     }
-    public override void PlayAnimation(string animationName)
+
+    protected override void RightClickSpell()
     {
-        sprite.Play(animationName);
+        //none
     }
 }

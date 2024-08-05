@@ -10,43 +10,49 @@ public partial class LocationManager : Node2D
 	[Export] private PackedScene trainZone;
 
 	private Node location;
+	private PlayerLoader player;
 
-	private PlayerData player = Global.Player;
+	public enum Locations
+	{
+		Dungeon,
+		Hub,
+		TrainRoom,
+	}
+
+	[Export] private Locations currentLocation;
 	public override void _Ready()
 	{
-		player = Global.Player;
+		player= Global.PlayerLoader;
 		// Vector2 screenSize = new Vector2(1000, 600);
 		Vector2I screenSize = DisplayServer.ScreenGetSize();
 		var window = GetViewport().GetWindow();
 		window.Size = screenSize;
 		player.Spawn();
-		GenerateDungeon();
+		ChangeLocation(GetLocation());
 	}
 
-	private void GenerateDungeon()
+
+	private PackedScene GetLocation()
+	{
+		switch (currentLocation)
+		{
+			case Locations.Dungeon : return dungeon;
+			case Locations.Hub : return hubZone;
+			case Locations.TrainRoom : return trainZone;
+		}
+
+		return null;
+	}
+	private void ChangeLocation(PackedScene newLocation)
 	{
 		location?.QueueFree();
-		location = dungeon.Instantiate();
+		location = newLocation.Instantiate();
 		AddChild(location);
 	}
 
-	private void GoToHub()
-	{
-		location?.QueueFree();
-		location = hubZone.Instantiate();
-		AddChild(location);
-		player.SetPosition(Vector2.Zero);
-	}
-	private void GoToTrain()
-	{
-		location?.QueueFree();
-		location = trainZone.Instantiate();
-		AddChild(location);
-		player.SetPosition(Vector2.Zero);
-	}
 
 	private void LoadGame()
 	{
-		GoToHub();
+		ChangeLocation(hubZone);
 	}
 }

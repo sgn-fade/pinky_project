@@ -1,19 +1,14 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=5 format=3 uid="uid://5mcx1iyr6t5j"]
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://5mcx1iyr6t5j"]
 
-[ext_resource type="Texture2D" uid="uid://blu30o6tp1m66" path="res://sprites/spell_icons/fire_eye_spell_icon.png" id="1_3ck5k"]
 [ext_resource type="Texture2D" uid="uid://cibvsqkq4mevk" path="res://sprites/ui/Bronze_module_button_state.png" id="1_b078r"]
-[ext_resource type="Script" path="res://scripts/spells/SpellData.cs" id="1_cevqb"]
-[ext_resource type="PackedScene" uid="uid://jkixgcns5qlc" path="res://scenes/spell_particles/fire_eye.tscn" id="2_imcf8"]
+[ext_resource type="Script" path="res://scripts/spells/Spell.cs" id="2_0iygy"]
 
 [resource]
-script = ExtResource("1_cevqb")
-AnimationName = ""
+script = ExtResource("2_0iygy")
 Rarity = 0
-CooldownTime = 4.0
-ManaCost = 1
-Particle = ExtResource("2_imcf8")
+CooldownTime = 0.0
+ManaCost = 0
 DataType = 0
-Icon = ExtResource("1_3ck5k")
 Background = ExtResource("1_b078r")
 IsStackable = false
 Value = 0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dleqsphm1bu88"
-path="res://.godot/imported/Bronze_module_button_state.png-5a7477a3b4eecb3a5d754048ca4885a6.ctex"
+uid="uid://vj5l43slkgmx"
+path="res://.godot/imported/HitBoxIcon.png-537864746f56e7e5da44920c4cd43b06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/Bronze_module_button_state.png"
-dest_files=["res://.godot/imported/Bronze_module_button_state.png-5a7477a3b4eecb3a5d754048ca4885a6.ctex"]
+source_file="res://sprites/Editor/Icons/HitBoxIcon.png"
+dest_files=["res://.godot/imported/HitBoxIcon.png-537864746f56e7e5da44920c4cd43b06.ctex"]
 
 [params]
 

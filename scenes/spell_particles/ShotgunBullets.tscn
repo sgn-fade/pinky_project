@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr06hv0qxsd2k"]
+
+[ext_resource type="Script" path="res://scripts/spells/SpellControllers/RangeSpells/Shoot.cs" id="1_xe1go"]
+
+[node name="ShotgunBullets" type="Node2D"]
+script = ExtResource("1_xe1go")

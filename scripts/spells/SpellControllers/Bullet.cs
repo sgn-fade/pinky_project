@@ -11,8 +11,7 @@ public partial class Bullet : CharacterBody2D
 
     public override void _Ready()
     {
-        moveComponent.Init(GetGlobalMousePosition(), Global.Player.GetPosition());
+        moveComponent.Init(GetGlobalMousePosition(), GlobalPosition);
     }
-
     private void OnEntityEntered() => QueueFree();
 }

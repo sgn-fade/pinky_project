@@ -1,4 +1,5 @@
 using Godot;
+using projectpinky.scripts.drops;
 using projectpinky.scripts.Globals;
 using projectpinky.scripts.weapons;
 
@@ -12,7 +13,7 @@ public partial class WeaponCell : InventoryCell
 
     public override void _Ready()
     {
-        SlotType = "weapon";
+        SlotType = InventoryItem.DataTypes.Weapon;
     }
 
     // public new void SetObject(InventorySlotObject newObject)
@@ -43,7 +44,7 @@ public partial class WeaponCell : InventoryCell
         Object = null;
         //todo event bus
         //EventBus.EmitSignal("switch_hands_stance", null);
-        Global.Player.SetWeapon(null);
+        //Global.Player.SetWeapon(null);
     }
 
     public void _OnTextureButtonPressed()

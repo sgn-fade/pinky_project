@@ -24,10 +24,6 @@ adjustment_saturation = 1.8
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_vtusk")
-dungeon = ExtResource("2_ufpex")
-hubZone = ExtResource("3_g42eq")
-trainZone = ExtResource("4_ibunv")
 
 [node name="Ui" parent="." instance=ExtResource("5")]
 
@@ -42,3 +38,7 @@ environment = SubResource("Environment_blhyc")
 [node name="location" type="Node2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
+script = ExtResource("1_vtusk")
+dungeon = ExtResource("2_ufpex")
+hubZone = ExtResource("3_g42eq")
+trainZone = ExtResource("4_ibunv")

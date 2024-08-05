@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/player/Camera.cs" id="1_65mfu"]
 
-[node name="camera_movement" type="CharacterBody2D"]
+[node name="camera_movement" type="CharacterBody2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_65mfu")
+camera = NodePath("cam")
 
 [node name="cam" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

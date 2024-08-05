@@ -59,14 +59,10 @@ public partial class InventorySlotObject : CharacterBody2D
         currentCell = cell;
     }
 
-    public InventoryCell GetCell()
-    {
-        return currentCell;
-    }
-
+    public InventoryCell GetCell() => currentCell;
     public void SetTargetCell(InventoryCell cell)
     {
-        targetCell = cell;
+        if(cell.SlotType == Data.DataType) targetCell = cell;
     }
 
     private void OnMouseEntered()
