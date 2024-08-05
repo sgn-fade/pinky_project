@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://b0c6sthqnjd75"]
+[gd_scene load_steps=96 format=3 uid="uid://b0c6sthqnjd75"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_2jq8s"]
@@ -175,6 +175,9 @@ _data = {
 "take_damage": SubResource("Animation_max22")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5pifk"]
+animation = &"attack"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpy7x"]
 animation = &"idle"
 
@@ -202,8 +205,14 @@ advance_condition = &"IsMove"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tir6g"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uct2m"]
 states/End/position = Vector2(915, 119)
+states/attack/node = SubResource("AnimationNodeAnimation_5pifk")
+states/attack/position = Vector2(705, 119)
 states/idle/node = SubResource("AnimationNodeAnimation_rpy7x")
 states/idle/position = Vector2(492, 110)
 states/move/node = SubResource("AnimationNodeAnimation_x0k3r")
@@ -212,7 +221,7 @@ states/spawn/node = SubResource("AnimationNodeAnimation_v3s5t")
 states/spawn/position = Vector2(360, 105)
 states/take_damage/node = SubResource("AnimationNodeAnimation_6kk73")
 states/take_damage/position = Vector2(686, 50)
-transitions = ["Start", "spawn", SubResource("AnimationNodeStateMachineTransition_tmy7g"), "spawn", "idle", SubResource("AnimationNodeStateMachineTransition_wm253"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_oy1yy"), "take_damage", "idle", SubResource("AnimationNodeStateMachineTransition_sq7bb")]
+transitions = ["Start", "spawn", SubResource("AnimationNodeStateMachineTransition_tmy7g"), "spawn", "idle", SubResource("AnimationNodeStateMachineTransition_wm253"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_oy1yy"), "take_damage", "idle", SubResource("AnimationNodeStateMachineTransition_sq7bb"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_tir6g")]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0glt"]
 radius = 85.0
@@ -697,6 +706,7 @@ position = Vector2(-1, -13)
 shape = SubResource("RectangleShape2D_16kco")
 
 [node name="Hitbox" parent="Core" instance=ExtResource("4_1ugsf")]
+monitoring = false
 Damage = 3
 
 [node name="attack_collision" type="CollisionShape2D" parent="Core/Hitbox"]
@@ -715,6 +725,7 @@ offset = Vector2(158.021, 74)
 position = Vector2(4, -12)
 sprite_frames = SubResource("56")
 animation = &"idle"
+frame = 1
 flip_h = true
 
 [node name="Spawners" type="Node2D" parent="Core"]

@@ -7,13 +7,12 @@ public partial class DamageLabel : Label
     [Export] public int Damage;
     [Export] private AnimationPlayer _animationPlayer;
 
-    public void ShowValue(int playerDamage)
+    public void ShowValue(int damage)
     {
-        if (playerDamage > 0)
-        {
-            _animationPlayer.Play("Move");
-            Damage += playerDamage;
-            Text = (-Damage).ToString();
-        }
+        if (damage <= 0) return;
+
+        _animationPlayer.Play("Move");
+        Damage += damage;
+        Text = (-Damage).ToString();
     }
 }
