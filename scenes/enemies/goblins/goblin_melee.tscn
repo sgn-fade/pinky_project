@@ -676,13 +676,12 @@ size = Vector2(12, 16)
 [sub_resource type="RectangleShape2D" id="57"]
 size = Vector2(17, 8.5)
 
-[node name="goblin_melee" type="CharacterBody2D" node_paths=PackedStringArray("_hpBar", "_hurtBox", "_sprite", "_moveComponent", "_animationTree", "_damageLabel")]
+[node name="goblin_melee" type="CharacterBody2D" node_paths=PackedStringArray("_hpBar", "_hurtBox", "_moveComponent", "_animationTree", "_damageLabel")]
 z_as_relative = false
 collision_layer = 4
 script = ExtResource("2")
 _hpBar = NodePath("HpBar")
 _hurtBox = NodePath("Core/Hurtbox")
-_sprite = NodePath("Core/sprite")
 _moveComponent = NodePath("MoveComponent")
 _animationTree = NodePath("AnimationTree")
 _damageLabel = NodePath("value")
@@ -731,6 +730,7 @@ position = Vector2(-1, -13)
 shape = SubResource("RectangleShape2D_16kco")
 
 [node name="Hitbox" parent="Core" instance=ExtResource("4_1ugsf")]
+collision_mask = 1
 monitoring = false
 Damage = 3
 

@@ -53,6 +53,10 @@ public partial class Hurtbox : Area2D
 		}
 	}
 
+	public override void _Ready() => Revive();
+
+	public void Revive() => Hp = MaxHp;
+
 	public void TakeDamage(int damage)
 	{
 		Hp -= damage;
