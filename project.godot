@@ -204,6 +204,7 @@ LeftAlt={
 
 [layer_names]
 
+2d_physics/layer_1="Player"
 2d_physics/layer_3="enemy"
 2d_physics/layer_8="drops"
 2d_render/walls=false

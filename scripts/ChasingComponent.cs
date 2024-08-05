@@ -3,15 +3,24 @@ using System;
 
 public partial class ChasingComponent : Area2D
 {
+    [Export]private AnimationPlayer _animationPlayer;
+
     [Signal]
-    public delegate void TargetEnteredEventHandler(ChaseTarget chaseTarget);
-    
-    private void OnBodyEntered(Node2D body)
+    public delegate void TargetChangedEventHandler(ChaseTarget chaseTarget);
+
+
+    private void OnAreaEntered(Area2D area)
     {
-        if (body is ChaseTarget chaseTarget)
+        if (area is ChaseTarget chaseTarget)
         {
-            EmitSignal(SignalName.TargetEntered, chaseTarget);
+            _animationPlayer.Stop();
+            EmitSignal(SignalName.TargetChanged, chaseTarget);
         }
+    }
+
+    private void OnTimerTimeout()
+    {
+        _animationPlayer.Play("patrol");
     }
 }
     

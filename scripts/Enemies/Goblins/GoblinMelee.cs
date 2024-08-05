@@ -49,4 +49,9 @@ public partial class GoblinMelee : CharacterBody2D
     {
         _moveComponent.TargetEntity = chaseTarget;
     }
+
+    private void OnTargetInAttackRange(Area2D target)
+    {
+        if(target == _moveComponent.TargetEntity) Attack();
+    }
 }

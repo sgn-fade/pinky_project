@@ -1,16 +1,15 @@
-[gd_scene load_steps=102 format=3 uid="uid://b0c6sthqnjd75"]
+[gd_scene load_steps=94 format=3 uid="uid://b0c6sthqnjd75"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_2jq8s"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="2_5tsbb"]
 [ext_resource type="PackedScene" path="res://scenes/ui/HpBar.tscn" id="2_c6qki"]
-[ext_resource type="PackedScene" path="res://scenes/Components/chasingComponent.tscn" id="2_m3qem"]
+[ext_resource type="PackedScene" uid="uid://b55chw7kr0msk" path="res://scenes/Components/chasingComponent.tscn" id="2_m3qem"]
 [ext_resource type="Texture2D" uid="uid://dsbsqyn2if0do" path="res://sprites/goblin/sword_goblin_idle.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://mwltboui7thu" path="res://scenes/Components/move_component.tscn" id="3_6nyvp"]
 [ext_resource type="Texture2D" uid="uid://eea73k3xl6yy" path="res://sprites/goblin/sword_goblin_attak.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="4_1ugsf"]
 [ext_resource type="Texture2D" uid="uid://bg15f0751fj4a" path="res://sprites/goblin/goblin_spawn.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://bt500pvhsl81p" path="res://sprites/ui/focus_orb.png" id="6_3lfu6"]
 [ext_resource type="Texture2D" uid="uid://fk1ulw6x3f7j" path="res://sprites/goblin/sword_goblin_move.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b2mlck2d6uoqk" path="res://sprites/goblin/sword_goblin_take_damage.png" id="7_yd27f"]
 [ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="13_hi0km"]
@@ -224,59 +223,6 @@ size = Vector2(17, 25)
 
 [sub_resource type="CircleShape2D" id="55"]
 radius = 22.8787
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a7x7m"]
-atlas = ExtResource("6_3lfu6")
-region = Rect2(0, 0, 7, 7)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccjl5"]
-atlas = ExtResource("6_3lfu6")
-region = Rect2(7, 0, 7, 7)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vm5p7"]
-atlas = ExtResource("6_3lfu6")
-region = Rect2(14, 0, 7, 7)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y61fu"]
-atlas = ExtResource("6_3lfu6")
-region = Rect2(21, 0, 7, 7)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5vbsn"]
-atlas = ExtResource("6_3lfu6")
-region = Rect2(28, 0, 7, 7)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hstvu"]
-atlas = ExtResource("6_3lfu6")
-region = Rect2(35, 0, 7, 7)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mt1a6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a7x7m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ccjl5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vm5p7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y61fu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5vbsn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hstvu")
-}],
-"loop": true,
-"name": &"main",
-"speed": 12.0
-}]
-
-[sub_resource type="RectangleShape2D" id="57"]
-size = Vector2(17, 8.5)
 
 [sub_resource type="AtlasTexture" id="11"]
 atlas = ExtResource("4")
@@ -701,12 +647,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7koyh"]
 size = Vector2(12, 16)
 
+[sub_resource type="RectangleShape2D" id="57"]
+size = Vector2(17, 8.5)
+
 [node name="goblin_melee" type="CharacterBody2D"]
 z_as_relative = false
 collision_layer = 4
 script = ExtResource("2")
 
 [node name="HpBar" parent="." instance=ExtResource("2_c6qki")]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = -1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -727,6 +680,7 @@ MaxSpeed = 14.0
 Acceleration = 0.02
 
 [node name="Core" type="Node2D" parent="."]
+scale = Vector2(-1, 1)
 
 [node name="ChasingComponent" parent="Core" instance=ExtResource("2_m3qem")]
 
@@ -739,7 +693,7 @@ debug_color = Color(0.810457, 0, 0.15378, 0.42)
 MaxHp = 15
 
 [node name="hurtbox_collision" type="CollisionShape2D" parent="Core/Hurtbox"]
-position = Vector2(-1.5, -12.5)
+position = Vector2(-1, -13)
 shape = SubResource("RectangleShape2D_16kco")
 
 [node name="Hitbox" parent="Core" instance=ExtResource("4_1ugsf")]
@@ -752,26 +706,15 @@ scale = Vector2(0.7, 0.65)
 shape = SubResource("55")
 
 [node name="shadow_under" type="Sprite2D" parent="Core"]
-position = Vector2(-80, -36)
+position = Vector2(-79, -36)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_2jq8s")
 offset = Vector2(158.021, 74)
 
-[node name="focus" type="AnimatedSprite2D" parent="Core"]
-position = Vector2(-2, -10)
-sprite_frames = SubResource("SpriteFrames_mt1a6")
-animation = &"main"
-autoplay = "main"
-
-[node name="collision" type="CollisionShape2D" parent="Core"]
-position = Vector2(-1, -4)
-shape = SubResource("57")
-
 [node name="sprite" type="AnimatedSprite2D" parent="Core"]
-position = Vector2(2.99657, -12.0046)
+position = Vector2(4, -12)
 sprite_frames = SubResource("56")
-animation = &"spawn"
-frame = 19
+animation = &"idle"
 flip_h = true
 
 [node name="Spawners" type="Node2D" parent="Core"]
@@ -788,10 +731,26 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_7koyh")
 debug_color = Color(0.854763, 0.368071, 0, 0.42)
 
+[node name="AttackRange" type="Area2D" parent="Core"]
+
+[node name="attack_collision2" type="CollisionShape2D" parent="Core/AttackRange"]
+position = Vector2(11.9987, -10.0151)
+rotation = 1.5708
+scale = Vector2(0.7, 0.65)
+shape = SubResource("55")
+
 [node name="value" parent="." instance=ExtResource("17_1tbwp")]
+visible = true
 offset_left = 8.0
-offset_top = -28.0
+offset_top = -25.0
 offset_right = 24.0
-offset_bottom = -14.0
+offset_bottom = -11.0
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+rotation = 3.14159
+scale = Vector2(1, -1)
+shape = SubResource("57")
 
 [connection signal="EntityTakeDamage" from="Core/Hurtbox" to="." method="OnEntityTakeDamage"]
+[connection signal="area_entered" from="Core/AttackRange" to="." method="OnTargetInAttackRange"]
