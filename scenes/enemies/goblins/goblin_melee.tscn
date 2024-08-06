@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://scripts/Enemies/Goblins/GoblinMelee.cs" id="2"]
 [ext_resource type="Texture2D" uid="uid://ths26und4wvm" path="res://sprites/shadow_under.png" id="2_2jq8s"]
 [ext_resource type="PackedScene" uid="uid://waoyc4x7f58p" path="res://scenes/Components/HurtBox.tscn" id="2_5tsbb"]
-[ext_resource type="PackedScene" path="res://scenes/ui/HpBar.tscn" id="2_c6qki"]
+[ext_resource type="PackedScene" uid="uid://cyi3okrheyjkj" path="res://scenes/ui/HpBar.tscn" id="2_c6qki"]
 [ext_resource type="PackedScene" uid="uid://c0hshsei6triv" path="res://scenes/Components/chasingComponent.tscn" id="2_m3qem"]
 [ext_resource type="Texture2D" uid="uid://dsbsqyn2if0do" path="res://sprites/goblin/sword_goblin_idle.png" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/Components/move_component.tscn" id="3_6nyvp"]
+[ext_resource type="PackedScene" uid="uid://mwltboui7thu" path="res://scenes/Components/move_component.tscn" id="3_6nyvp"]
 [ext_resource type="Texture2D" uid="uid://eea73k3xl6yy" path="res://sprites/goblin/sword_goblin_attak.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://bkg7ojexojnox" path="res://scenes/Components/HitBox.tscn" id="4_1ugsf"]
 [ext_resource type="Texture2D" uid="uid://bg15f0751fj4a" path="res://sprites/goblin/goblin_spawn.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://fk1ulw6x3f7j" path="res://sprites/goblin/sword_goblin_move.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b2mlck2d6uoqk" path="res://sprites/goblin/sword_goblin_take_damage.png" id="7_yd27f"]
-[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="13_hi0km"]
+[ext_resource type="PackedScene" uid="uid://d3ybej80e5tdi" path="res://scenes/spawner.tscn" id="13_hi0km"]
 [ext_resource type="PackedScene" uid="uid://ctnc3ky8migv" path="res://scenes/drops/gold_drop.tscn" id="14_6okly"]
 [ext_resource type="PackedScene" uid="uid://dai8f5grr0xq" path="res://scenes/drops/weapon_drop.tscn" id="15_squ5a"]
 [ext_resource type="PackedScene" uid="uid://pcwd2ujaemfj" path="res://scenes/ui/damageLabel.tscn" id="17_1tbwp"]
@@ -703,7 +703,6 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/IsMoving = false
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("MoveTarget", "NodeToFlip") instance=ExtResource("3_6nyvp")]
-IsActive = true
 MoveTarget = NodePath("..")
 FlipByDirection = true
 NodeToFlip = NodePath("../Core")
@@ -750,7 +749,6 @@ offset = Vector2(158.021, 74)
 position = Vector2(4, -12)
 sprite_frames = SubResource("56")
 animation = &"idle"
-frame = 1
 flip_h = true
 
 [node name="Spawners" type="Node2D" parent="Core"]
