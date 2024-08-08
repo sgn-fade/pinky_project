@@ -676,21 +676,21 @@ size = Vector2(12, 16)
 [sub_resource type="RectangleShape2D" id="57"]
 size = Vector2(17, 8.5)
 
-[node name="goblin_melee" type="CharacterBody2D" node_paths=PackedStringArray("_hpBar", "_hurtBox", "_moveComponent", "_animationTree", "_damageLabel")]
+[node name="goblin_melee" type="CharacterBody2D" node_paths=PackedStringArray("_hpBar", "_moveComponent", "_animationTree", "_damageLabel")]
 z_as_relative = false
 collision_layer = 4
 script = ExtResource("2")
 _hpBar = NodePath("HpBar")
-_hurtBox = NodePath("Core/Hurtbox")
 _moveComponent = NodePath("MoveComponent")
 _animationTree = NodePath("AnimationTree")
 _damageLabel = NodePath("value")
 
-[node name="HpBar" parent="." instance=ExtResource("2_c6qki")]
+[node name="HpBar" parent="." node_paths=PackedStringArray("_hurtBox") instance=ExtResource("2_c6qki")]
 offset_left = 2.0
 offset_top = -1.0
 offset_right = 2.0
 offset_bottom = -1.0
+_hurtBox = NodePath("../Core/Hurtbox")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -748,7 +748,8 @@ offset = Vector2(158.021, 74)
 [node name="sprite" type="AnimatedSprite2D" parent="Core"]
 position = Vector2(4, -12)
 sprite_frames = SubResource("56")
-animation = &"idle"
+animation = &"spawn"
+frame = 15
 flip_h = true
 
 [node name="Spawners" type="Node2D" parent="Core"]

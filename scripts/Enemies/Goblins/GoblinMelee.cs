@@ -8,7 +8,6 @@ namespace projectpinky.scripts.Enemies.Goblins;
 public partial class GoblinMelee : CharacterBody2D
 {
     [Export] private HpBar _hpBar;
-    [Export] private Hurtbox _hurtBox;
     [Export] private double _attackCooldown = 4;
     [Export] private MoveComponent _moveComponent;
     [Export] private AnimationTree _animationTree;
@@ -20,8 +19,6 @@ public partial class GoblinMelee : CharacterBody2D
     public override void _Ready()
     {
         _stateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
-
-        _hpBar.Init(_hurtBox.MaxHp);
         _moveComponent.Init(GlobalPosition);
     }
 

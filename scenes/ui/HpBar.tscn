@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bu62dtlhbnlhe" path="res://sprites/enemy_health/enemy_health_middle.png" id="2_fepjp"]
 [ext_resource type="Texture2D" uid="uid://dcyqfis8vyewu" path="res://sprites/enemy_health/enemy_health_progress.png" id="3_50ne5"]
 
-[node name="HpBar" type="Control" node_paths=PackedStringArray("redHpBar", "whiteHpBar", "timer")]
+[node name="HpBar" type="Control" node_paths=PackedStringArray("redHpBar", "whiteHpBar", "_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_sr3od")
 redHpBar = NodePath("hp_bar")
 whiteHpBar = NodePath("middle_white_bar")
-timer = NodePath("Timer")
+_timer = NodePath("Timer")
 
 [node name="middle_white_bar" type="TextureProgressBar" parent="."]
 layout_mode = 0
